@@ -1,0 +1,15 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Bundled / generated artifacts (regenerate from sources)
+_ds_bundle.js
+_ds_manifest.json
+_adherence.oxlintrc.json
+
+# Standalone exports (large, regenerate on demand)
+*(standalone).html
+export/

@@ -1,0 +1,266 @@
+/* ============================================================
+   VIP Home Painting — Design Tokens
+   Luxury cream / navy / gold system. Mobile-first.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* ---------- BRAND COLORS ---------- */
+  --vip-orange:      #E8833A;   /* VIP brand orange — secondary CTA / accent */
+  --vip-gold:        #C9A961;   /* Primary luxury gold */
+  --vip-gold-bright: #FFB200;   /* Brand gold — laurel highlights, stars */
+  --vip-gold-deep:   #A88A47;   /* Hover / serif italic accent */
+  --vip-gold-shine:  linear-gradient(180deg, #E8CC85 0%, #C9A961 50%, #A88A47 100%); /* @kind color */
+  --vip-gold-shine-b:linear-gradient(180deg, #F1D998 0%, #D4AF6A 50%, #B5904F 100%); /* @kind color */
+  --vip-navy:        #1A1F4E;   /* Deep navy — text + dark sections */
+  --vip-navy-deep:   #141838;   /* Footer / deepest dark */
+  --vip-cream:       #F5EFE2;   /* Warm cream — primary secondary surface */
+  --vip-cream-deep:  #EDE4D2;   /* Slightly darker cream alternation */
+  --vip-white:       #FFFFFF;   /* Hero + clean white sections */
+
+  /* ---------- SEMANTIC SURFACES ---------- */
+  --bg-primary:    var(--vip-white);
+  --bg-secondary:  var(--vip-cream);
+  --bg-tertiary:   var(--vip-cream-deep);
+  --bg-dark:       var(--vip-navy);
+  --bg-dark-deep:  var(--vip-navy-deep);
+
+  /* ---------- TEXT ---------- */
+  --fg-primary:   var(--vip-navy);
+  --fg-secondary: #4A4F70;
+  --fg-muted:     #8a8aa3;
+  --fg-inverse:   #FFFFFF;
+  --fg-on-dark-2: rgba(255,255,255,0.85);
+  --fg-accent:    var(--vip-gold-deep);
+  --fg-link:      var(--vip-gold-deep);
+
+  /* ---------- TYPOGRAPHY ---------- */
+  --font-serif:   'Fraunces', 'Cormorant Garamond', Georgia, serif;
+  --font-sans:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --fs-overline:  0.6875rem;   /* 11px */
+  --fs-caption:   0.8125rem;   /* 13px */
+  --fs-body-sm:   0.9375rem;   /* 15px */
+  --fs-body:      1rem;        /* 16px */
+  --fs-body-lg:   1.125rem;    /* 18px */
+  --fs-h6:        1.125rem;    /* 18px */
+  --fs-h5:        1.375rem;    /* 22px */
+  --fs-h4:        1.625rem;    /* 26px */
+  --fs-h3:        2rem;        /* 32px */
+  --fs-h2:        2.625rem;    /* 42px */
+  --fs-h1:        3.25rem;     /* 52px */
+  --fs-display:   4.75rem;     /* 76px — hero */
+
+  --lh-tight:   1.05; /* @kind font */
+  --lh-snug:    1.2; /* @kind font */
+  --lh-normal:  1.5; /* @kind font */
+  --lh-relaxed: 1.65; /* @kind font */
+
+  --tracking-tight:    -0.02em; /* @kind font */
+  --tracking-normal:    0; /* @kind font */
+  --tracking-wide:      0.06em; /* @kind font */
+  --tracking-overline:  0.32em; /* @kind font */
+
+  --fw-regular: 400; /* @kind font */
+  --fw-medium:  500; /* @kind font */
+  --fw-semi:    600; /* @kind font */
+  --fw-bold:    700; /* @kind font */
+  --fw-black:   800; /* @kind font */
+
+  /* ---------- SPACING ---------- */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px;
+  --sp-12: 48px; --sp-16: 64px; --sp-20: 80px; --sp-24: 96px;
+
+  /* ---------- LAYOUT ---------- */
+  --content-max-mobile:  480px;
+  --content-max:         1440px;
+  --gutter:              var(--sp-5);
+  --section-pad-y:       var(--sp-12);
+
+  /* ---------- RADII ---------- */
+  --radius-xs: 4px; --radius-sm: 6px; --radius-md: 10px;
+  --radius-lg: 16px; --radius-xl: 20px; --radius-pill: 999px;
+  --radius-circle: 50%;
+
+  /* ---------- SHADOWS (navy-tinted, luxury) ---------- */
+  --shadow-xs:   0 1px 3px rgba(26,31,78,0.06);
+  --shadow-sm:   0 4px 10px rgba(26,31,78,0.08);
+  --shadow-md:   0 10px 26px rgba(26,31,78,0.12);
+  --shadow-lg:   0 20px 50px rgba(26,31,78,0.18);
+  --shadow-xl:   0 30px 80px rgba(26,31,78,0.28);
+  --shadow-pop:  0 14px 34px rgba(26,31,78,0.18), 0 2px 8px rgba(26,31,78,0.10);
+  --shadow-gold: 0 8px 22px rgba(168,138,71,0.30), inset 0 1px 0 rgba(255,255,255,0.25);
+  --shadow-gold-hover: 0 14px 32px rgba(168,138,71,0.42), inset 0 1px 0 rgba(255,255,255,0.30);
+  --shadow-seal: 0 14px 28px rgba(168,138,71,0.30);
+
+  /* ---------- BORDERS ---------- */
+  --border-hairline: 1px solid rgba(26,31,78,0.10); /* @kind other */
+  --border-soft:     1px solid rgba(26,31,78,0.20); /* @kind other */
+  --border-gold:     1.5px solid var(--vip-gold);
+  --border-gold-soft:1px solid rgba(168,138,71,0.30); /* @kind other */
+  --border-on-dark:  1px solid rgba(255,255,255,0.14); /* @kind other */
+
+  /* ---------- MOTION ---------- */
+  --ease-out-soft:   cubic-bezier(0.22, 1, 0.36, 1); /* @kind other */
+  --ease-out-snap:   cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --ease-in-out:     cubic-bezier(0.65, 0, 0.35, 1); /* @kind other */
+  --dur-fast:     150ms; /* @kind other */
+  --dur-normal:   220ms; /* @kind other */
+  --dur-slow:     420ms; /* @kind other */
+  --dur-reveal:   720ms; /* @kind other */
+}
+
+/* ============================================================
+   TYPOGRAPHY UTILITIES
+   ============================================================ */
+
+.vip-overline {
+  font-family: var(--font-sans);
+  font-size: var(--fs-overline);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-overline);
+  text-transform: uppercase;
+  color: var(--vip-gold-deep);
+  line-height: var(--lh-snug);
+}
+
+.vip-display, .vip-h1 {
+  font-family: var(--font-serif);
+  font-weight: var(--fw-semi);
+  font-size: var(--fs-display);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--vip-navy);
+  text-wrap: balance;
+}
+.vip-h1 { font-size: var(--fs-h1); }
+
+.vip-h2 {
+  font-family: var(--font-serif);
+  font-weight: var(--fw-semi);
+  font-size: var(--fs-h2);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--vip-navy);
+  text-wrap: balance;
+}
+
+.vip-h3 {
+  font-family: var(--font-serif);
+  font-weight: var(--fw-semi);
+  font-size: var(--fs-h3);
+  line-height: var(--lh-snug);
+  color: var(--vip-navy);
+}
+
+.vip-h4 {
+  font-family: var(--font-serif);
+  font-weight: var(--fw-semi);
+  font-size: var(--fs-h4);
+  line-height: var(--lh-snug);
+  color: var(--vip-navy);
+}
+
+.vip-h5 {
+  font-family: var(--font-serif);
+  font-weight: var(--fw-semi);
+  font-size: var(--fs-h5);
+  line-height: var(--lh-snug);
+  color: var(--vip-navy);
+}
+
+/* Italic gold accent for inline headline emphasis */
+.vip-accent {
+  font-style: italic;
+  font-weight: var(--fw-medium);
+  color: var(--vip-gold-deep);
+}
+
+/* "Brush underline" decorator for inline headline accent */
+.vip-brush::after {
+  content: '';
+  display: block;
+  width: 70%;
+  height: 6px;
+  margin-top: 6px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12'><path d='M2 8 Q 50 1 100 6 T 198 5' stroke='%23C9A961' stroke-width='3' fill='none' stroke-linecap='round'/></svg>") no-repeat center/100% 100%;
+}
+
+.vip-sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: var(--fw-regular);
+  font-size: 1.375rem; /* 22px */
+  color: var(--vip-navy);
+  line-height: 1.3;
+}
+
+.vip-body-lg {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-primary);
+}
+
+.vip-body {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-secondary);
+}
+
+.vip-caption {
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption);
+  color: var(--fg-muted);
+  letter-spacing: var(--tracking-wide);
+}
+
+.vip-label {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-overline);
+  letter-spacing: var(--tracking-overline);
+  text-transform: uppercase;
+  color: var(--vip-navy);
+}
+
+/* Drop cap — case studies. Bold gold, large, classic editorial */
+.vip-dropcap::first-letter {
+  font-family: var(--font-serif);
+  font-weight: var(--fw-bold);
+  font-size: 4.2em;
+  line-height: 0.85;
+  float: left;
+  padding: 0.05em 0.12em 0 0;
+  color: var(--vip-gold-deep);
+}
+
+/* ============================================================
+   BUTTON — primary gold (rectangular pill, gradient + shadow)
+   ============================================================ */
+.vip-btn-gold {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 14px 26px;
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(168,138,71,0.40);
+  background: var(--vip-gold-shine);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  font-size: 11.5px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-gold);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform var(--dur-normal) var(--ease-out-soft), box-shadow var(--dur-normal);
+}
+.vip-btn-gold:hover { transform: translateY(-2px); box-shadow: var(--shadow-gold-hover); }
+.vip-btn-gold svg { width: 14px; height: 14px; }
+.vip-btn-gold.lg { padding: 18px 32px; font-size: 13px; }
+.vip-btn-gold.full { width: 100%; }
