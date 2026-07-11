@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VIP Home Painting — Discover the Finish</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="stylesheet" href="../../components.css">
+<link rel="stylesheet" href="../../sections.css">
+<style>
+  /* page-local resets only */
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--vip-navy-deep); font-family: var(--font-sans); }
+  img { max-width: 100%; }
+  .vip-footer-cta {
+    background: var(--vip-navy-deep);
+    color: var(--vip-white);
+    text-align: center;
+    padding: var(--sp-20) var(--gutter) var(--sp-24);
+  }
+  .vip-footer-cta .vip-band__display { color: var(--vip-white); }
+  .vip-footer-cta__wrap { max-width: 640px; margin: 0 auto; }
+  .vip-footer-cta .vip-btn-gold { margin-top: var(--sp-8); }
+  .swap-note {
+    background: #fffbea; color: #6b5518; border-top: 1px solid #e7d8a0;
+    font-family: var(--font-sans); font-size: 12.5px; line-height: 1.5;
+    padding: 12px 18px; text-align: center;
+  }
+  .swap-note b { color: #4a3a08; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     REUSABLE ESTATE SCENE (as an inline template cloned by JS)
+     Recolorable regions: .r-body .r-trim .r-door .r-garage
+     ============================================================ -->
+<template id="estate-template">
+  <svg class="vip-house" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Luxury single-story estate exterior">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0"   stop-color="#141a3e"/>
+        <stop offset="0.45" stop-color="#2c3a6b"/>
+        <stop offset="0.78" stop-color="#6d6f92"/>
+        <stop offset="1"   stop-color="#e0ad7e"/>
+      </linearGradient>
+      <radialGradient id="glow" cx="0.7" cy="0.82" r="0.5">
+        <stop offset="0"  stop-color="#ffe9c2" stop-opacity="0.9"/>
+        <stop offset="0.4" stop-color="#f6cf95" stop-opacity="0.35"/>
+        <stop offset="1"  stop-color="#f6cf95" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ffedc4"/>
+        <stop offset="0.55" stop-color="#f7c877"/>
+        <stop offset="1" stop-color="#e0a24e"/>
+      </linearGradient>
+      <linearGradient id="pool" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#5a6f9a"/>
+        <stop offset="1" stop-color="#243456"/>
+      </linearGradient>
+      <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#e4dccb"/>
+        <stop offset="1" stop-color="#cabfa6"/>
+      </linearGradient>
+      <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#ffffff" stop-opacity="0.10"/>
+        <stop offset="1" stop-color="#000000" stop-opacity="0.16"/>
+      </linearGradient>
+    </defs>
+
+    <!-- sky + glow + stars -->
+    <rect x="0" y="0" width="1600" height="640" fill="url(#sky)"/>
+    <circle cx="1120" cy="720" r="520" fill="url(#glow)"/>
+    <g fill="#ffffff" opacity="0.7">
+      <circle cx="180" cy="90" r="1.6"/><circle cx="320" cy="160" r="1.2"/>
+      <circle cx="520" cy="70" r="1.5"/><circle cx="760" cy="130" r="1.1"/>
+      <circle cx="240" cy="240" r="1.2"/><circle cx="1000" cy="90" r="1.3"/>
+    </g>
+
+    <!-- distant cypress line -->
+    <g fill="#1f3a2c" opacity="0.9">
+      <path d="M60 640 q10 -150 22 0 z"/><path d="M110 640 q10 -180 22 0 z"/>
+      <path d="M1500 640 q11 -170 24 0 z"/><path d="M1548 640 q10 -140 22 0 z"/>
+    </g>
+
+    <!-- palm trees -->
+    <g>
+      <g transform="translate(250,300)">
+        <path d="M20 340 C10 210 6 120 0 30" stroke="#4a3d2c" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <g stroke="#254433" stroke-width="9" fill="none" stroke-linecap="round" opacity="0.95">
+          <path d="M2 34 C-60 6 -110 12 -150 44"/><path d="M2 30 C-46 -22 -70 -44 -78 -86"/>
+          <path d="M2 30 C40 -30 78 -46 128 -44"/><path d="M4 34 C64 8 120 12 158 46"/>
+          <path d="M2 34 C-16 -30 -14 -66 6 -104"/>
+        </g>
+      </g>
+      <g transform="translate(1360,270) scale(1.15)">
+        <path d="M20 360 C12 220 8 120 0 24" stroke="#4a3d2c" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <g stroke="#254433" stroke-width="9" fill="none" stroke-linecap="round" opacity="0.95">
+          <path d="M2 28 C-60 2 -112 10 -150 42"/><path d="M2 26 C-42 -26 -66 -48 -74 -90"/>
+          <path d="M2 26 C42 -32 82 -46 130 -42"/><path d="M4 30 C66 6 122 12 160 44"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- ground -->
+    <rect x="0" y="612" width="1600" height="288" fill="url(#ground)"/>
+    <!-- reflecting pool -->
+    <rect x="470" y="792" width="660" height="70" rx="8" fill="url(#pool)"/>
+    <rect x="470" y="792" width="660" height="16" rx="8" fill="#8fa3c4" opacity="0.5"/>
+    <!-- walkway -->
+    <polygon points="770,700 830,700 900,900 700,900" fill="#efe8d8"/>
+    <g stroke="#d3c8b1" stroke-width="3">
+      <line x1="726" y1="760" x2="874" y2="760"/><line x1="712" y1="812" x2="888" y2="812"/><line x1="700" y1="864" x2="900" y2="864"/>
+    </g>
+
+    <!-- ===== HOUSE ===== -->
+    <!-- left garage wing -->
+    <rect class="r-body" x="150" y="470" width="360" height="180"/>
+    <rect x="150" y="470" width="360" height="180" fill="url(#shade)"/>
+    <rect class="r-trim" x="150" y="456" width="360" height="20"/>
+    <rect class="r-garage" x="182" y="512" width="140" height="138" rx="4"/>
+    <rect class="r-garage" x="338" y="512" width="140" height="138" rx="4"/>
+    <g stroke="#000" stroke-opacity="0.10" stroke-width="3">
+      <line x1="182" y1="548" x2="322" y2="548"/><line x1="182" y1="584" x2="322" y2="584"/><line x1="182" y1="620" x2="322" y2="620"/>
+      <line x1="338" y1="548" x2="478" y2="548"/><line x1="338" y1="584" x2="478" y2="584"/><line x1="338" y1="620" x2="478" y2="620"/>
+    </g>
+    <rect class="r-trim" x="182" y="512" width="140" height="138" fill="none"/>
+
+    <!-- main mass -->
+    <rect class="r-body" x="510" y="410" width="620" height="240"/>
+    <rect x="510" y="410" width="620" height="240" fill="url(#shade)"/>
+    <rect class="r-trim" x="502" y="392" width="636" height="22"/>
+    <!-- picture windows -->
+    <g>
+      <rect class="r-trim" x="548" y="454" width="150" height="150"/>
+      <rect x="558" y="464" width="130" height="130" fill="url(#glass)"/>
+      <line x1="623" y1="464" x2="623" y2="594" stroke="#caa25a" stroke-width="4"/>
+      <line x1="558" y1="529" x2="688" y2="529" stroke="#caa25a" stroke-width="4"/>
+
+      <rect class="r-trim" x="940" y="454" width="150" height="150"/>
+      <rect x="950" y="464" width="130" height="130" fill="url(#glass)"/>
+      <line x1="1015" y1="464" x2="1015" y2="594" stroke="#caa25a" stroke-width="4"/>
+      <line x1="950" y1="529" x2="1080" y2="529" stroke="#caa25a" stroke-width="4"/>
+    </g>
+
+    <!-- entry portico -->
+    <rect class="r-trim" x="726" y="404" width="188" height="16"/>
+    <rect class="r-trim" x="734" y="420" width="14" height="230"/>
+    <rect class="r-trim" x="892" y="420" width="14" height="230"/>
+    <!-- sidelights -->
+    <rect x="760" y="470" width="24" height="180" fill="url(#glass)" opacity="0.9"/>
+    <rect x="856" y="470" width="24" height="180" fill="url(#glass)" opacity="0.9"/>
+    <!-- front door -->
+    <rect class="r-door" x="792" y="452" width="56" height="198" rx="3"/>
+    <circle cx="838" cy="556" r="3.4" fill="#d9c07a"/>
+    <rect x="800" y="470" width="40" height="70" fill="#ffffff" opacity="0.06"/>
+
+    <!-- right low volume -->
+    <rect class="r-body" x="1130" y="486" width="200" height="164"/>
+    <rect x="1130" y="486" width="200" height="164" fill="url(#shade)"/>
+    <rect class="r-trim" x="1122" y="470" width="216" height="20"/>
+    <rect class="r-trim" x="1168" y="516" width="128" height="110"/>
+    <rect x="1178" y="526" width="108" height="90" fill="url(#glass)"/>
+    <line x1="1232" y1="526" x2="1232" y2="616" stroke="#caa25a" stroke-width="4"/>
+
+    <!-- hedges / planting across the base -->
+    <g>
+      <rect x="150" y="636" width="1190" height="26" fill="#2f5540"/>
+      <g fill="#356046">
+        <circle cx="200" cy="640" r="26"/><circle cx="250" cy="638" r="30"/><circle cx="300" cy="642" r="26"/>
+        <circle cx="1180" cy="640" r="28"/><circle cx="1230" cy="638" r="32"/><circle cx="1290" cy="642" r="26"/>
+      </g>
+      <g fill="#3c6a4d">
+        <circle cx="556" cy="632" r="22"/><circle cx="596" cy="636" r="26"/>
+        <circle cx="1010" cy="634" r="24"/><circle cx="1052" cy="638" r="26"/>
+      </g>
+    </g>
+    <!-- foreground planting clusters (framing, low corners) -->
+    <g fill="#284c39">
+      <circle cx="70" cy="690" r="34"/><circle cx="120" cy="702" r="40"/><circle cx="172" cy="694" r="30"/>
+      <circle cx="1430" cy="700" r="34"/><circle cx="1486" cy="710" r="42"/><circle cx="1540" cy="700" r="32"/>
+    </g>
+    <g fill="#356046" opacity="0.8">
+      <circle cx="104" cy="686" r="20"/><circle cx="1470" cy="692" r="22"/>
+    </g>
+    <!-- ground shadow under house -->
+    <rect x="150" y="650" width="1190" height="10" fill="#000" opacity="0.10"/>
+  </svg>
+</template>
+
+<!-- ============================================================
+     1. MAGAZINE STORY HERO
+     ============================================================ -->
+<header class="vip-hero-editorial vip-sec">
+  <!-- ambient stage: SVG scene now; <video> shell ready for a real MP4 -->
+  <div class="vip-hero-editorial__stage is-live" id="heroStage" style="--sc-body:#EDEAE0; --sc-trim:#54504A; --sc-door:#2E3B4E;">
+    <!-- estate scene injected here by JS -->
+  </div>
+
+  <div class="vip-hero-editorial__top">
+    <div class="vip-wordmark">
+      <span class="vip-wordmark__mark"><img src="../../assets/logos/vip-logo-primary.png" alt="VIP Home Painting"></span>
+      <span class="vip-wordmark__type">
+        <span class="vip-wordmark__name">VIP</span>
+        <span class="vip-wordmark__sub">HOME&nbsp;PAINTING</span>
+      </span>
+    </div>
+    <button class="vip-mediactl" id="mediaCtl" type="button" aria-pressed="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="mediaIcon">
+        <rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect>
+      </svg>
+      <span id="mediaLabel">Ambient On</span>
+    </button>
+  </div>
+
+  <div class="vip-hero-editorial__masthead">
+    <div>
+      <p class="vip-story__kicker">How VIP Home Painting Transformed</p>
+      <h1 class="vip-story__head"><em>Miguel &amp; Karla&rsquo;s</em> Home</h1>
+      <p class="vip-story__sub">from dull to <b>jaw-droppingly beautiful</b> — in just four days.</p>
+      <a class="vip-btn-gold lg vip-story__cta" href="#discover">
+        Claim Your Free Color Consultation
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <figure class="vip-portrait" aria-label="Homeowner photo placeholder">
+      <span class="vip-portrait__tag">Photo</span>
+      <span class="vip-portrait__mono">M&amp;K</span>
+      <figcaption class="vip-portrait__cap">Miguel &amp; Karla · Newport Beach</figcaption>
+    </figure>
+  </div>
+</header>
+
+<!-- ============================================================
+     2. DISCOVER THE FINISH
+     ============================================================ -->
+<section class="vip-discover vip-sec" id="discover" aria-label="Discover the Finish color visualizer">
+  <div class="vip-discover__stage" id="finishStage" style="--sc-body:#EDEAE0; --sc-trim:#54504A; --sc-door:#2E3B4E;">
+    <!-- estate scene injected here by JS -->
+    <div class="vip-discover__eyebrow">
+      <span class="k">Discover the Finish</span>
+    </div>
+    <aside class="vip-scheme-card" aria-live="polite">
+      <p class="vip-scheme-card__name" id="scName">Coastal Alabaster</p>
+      <div class="vip-scheme-row">
+        <span class="vip-scheme-row__chip" id="scBodyChip"></span>
+        <span class="vip-scheme-row__txt"><span class="vip-scheme-row__role">Body</span><br><span class="vip-scheme-row__val" id="scBodyVal"></span></span>
+      </div>
+      <div class="vip-scheme-row">
+        <span class="vip-scheme-row__chip" id="scTrimChip"></span>
+        <span class="vip-scheme-row__txt"><span class="vip-scheme-row__role">Trim</span><br><span class="vip-scheme-row__val" id="scTrimVal"></span></span>
+      </div>
+      <div class="vip-scheme-row">
+        <span class="vip-scheme-row__chip" id="scDoorChip"></span>
+        <span class="vip-scheme-row__txt"><span class="vip-scheme-row__role">Front Door</span><br><span class="vip-scheme-row__val" id="scDoorVal"></span></span>
+      </div>
+    </aside>
+  </div>
+
+  <div class="vip-finish-drawer">
+    <div class="vip-finish-drawer__head">
+      <div class="vip-finish-drawer__title">Choose a scheme <small>Tap a bucket</small></div>
+      <button class="vip-finish-drawer__x" type="button" aria-label="Collapse" id="drawerX">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="vip-bucket-row" id="bucketRow" role="listbox" aria-label="Exterior color schemes"></div>
+  </div>
+</section>
+
+<p class="swap-note">Preview build — the estate and paint buckets are elegant <b>placeholders</b> that recolor live. Swap in real VIP project photos (same home in each color) for production; the interaction stays identical.</p>
+
+<!-- ============================================================
+     3. EDITORIAL BAND — Signature Finishes (cream)
+     ============================================================ -->
+<section class="vip-sec vip-band--cream">
+  <div class="vip-sec__inner vip-band__grid">
+    <div class="vip-band__lead">
+      <p class="vip-kicker">The VIP Standard</p>
+      <h2 class="vip-band__display">Every estate deserves a <em>signature</em> finish.</h2>
+      <hr class="vip-rule">
+      <p class="vip-band__body">We treat your home the way a couturier treats fabric — measured, prepped, and finished by hand. No shortcuts, no spray-and-go. Just a flawless coat that photographs as beautifully in ten years as it does on day four.</p>
+    </div>
+    <div class="vip-finishes">
+      <div class="vip-finish-item"><span class="vip-finish-item__no">1</span><div><p class="vip-finish-item__t">Custom Color Consultation</p><p class="vip-finish-item__d">A designer-led session pairs your architecture and light with the perfect Sherwin-Williams palette.</p></div></div>
+      <div class="vip-finish-item"><span class="vip-finish-item__no">2</span><div><p class="vip-finish-item__t">Estate-Grade Preparation</p><p class="vip-finish-item__d">Wash, sand, caulk, and prime — the invisible work that separates a VIP finish from the rest.</p></div></div>
+      <div class="vip-finish-item"><span class="vip-finish-item__no">3</span><div><p class="vip-finish-item__t">Our Insane 1-Year Warranty</p><p class="vip-finish-item__d">If anything isn't perfect, we make it right. No questions asked.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     4. EDITORIAL BAND — Numbers (navy)
+     ============================================================ -->
+<section class="vip-sec vip-band--navy">
+  <div class="vip-sec__inner">
+    <p class="vip-kicker vip-kicker--ondark">Where Luxury Lives</p>
+    <h2 class="vip-band__display">Southern California&rsquo;s finest homes, <em>transformed.</em></h2>
+    <div class="vip-statline">
+      <div class="vip-statline__item"><div class="vip-statline__num">5.0&#9733;</div><div class="vip-statline__lab">Google rating</div></div>
+      <div class="vip-statline__item"><div class="vip-statline__num">120+</div><div class="vip-statline__lab">Estates finished</div></div>
+      <div class="vip-statline__item"><div class="vip-statline__num">100%</div><div class="vip-statline__lab">Satisfaction promise</div></div>
+      <div class="vip-statline__item"><div class="vip-statline__num">1&nbsp;YR</div><div class="vip-statline__lab">Warranty on every job</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER CTA
+     ============================================================ -->
+<section class="vip-footer-cta">
+  <div class="vip-footer-cta__wrap">
+    <p class="vip-kicker vip-kicker--ondark" style="text-align:center;">Your Free Estimate Awaits</p>
+    <h2 class="vip-band__display">Let&rsquo;s make your home the <em>envy of the neighborhood.</em></h2>
+    <a class="vip-btn-gold lg" href="#">
+      Claim Your Irresistible Estimate
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<script>
+/* ---------- color schemes (real Sherwin-Williams names) ---------- */
+const SCHEMES = [
+  { id:"alabaster", label:"Coastal Alabaster",
+    body:{sw:"SW 7008 Alabaster", hex:"#EDEAE0", sheen:"Satin"},
+    trim:{sw:"SW 7048 Urbane Bronze", hex:"#54504A"},
+    door:{sw:"SW 6244 Naval", hex:"#2E3B4E"} },
+  { id:"sandstone", label:"Warm Sandstone",
+    body:{sw:"SW 7036 Accessible Beige", hex:"#D2C4AC", sheen:"Satin"},
+    trim:{sw:"SW 7069 Iron Ore", hex:"#3D3E3E"},
+    door:{sw:"SW 7069 Iron Ore", hex:"#3D3E3E"} },
+  { id:"purebold", label:"Pure & Bold",
+    body:{sw:"SW 7005 Pure White", hex:"#EDEDE6", sheen:"Satin"},
+    trim:{sw:"SW 6258 Tricorn Black", hex:"#2A2B2D"},
+    door:{sw:"SW 6258 Tricorn Black", hex:"#2A2B2D"} },
+  { id:"greige", label:"Soft Greige",
+    body:{sw:"SW 7004 Snowbound", hex:"#EFEDE7", sheen:"Satin"},
+    trim:{sw:"SW 7046 Anonymous", hex:"#6E6A62"},
+    door:{sw:"SW 6187 Rosemary", hex:"#4E5548"} },
+  { id:"shoji", label:"Modern Shoji",
+    body:{sw:"SW 7042 Shoji White", hex:"#E4DCCB", sheen:"Satin"},
+    trim:{sw:"SW 7076 Cyberspace", hex:"#45494E"},
+    door:{sw:"SW 7076 Cyberspace", hex:"#45494E"} },
+];
+
+/* ---------- inject the estate scene into hero + finish stages ---------- */
+const tpl = document.getElementById('estate-template').content;
+document.getElementById('heroStage').prepend(tpl.cloneNode(true));
+document.getElementById('finishStage').prepend(tpl.cloneNode(true));
+
+/* ---------- paint-bucket SVG (top-down open can, color swirl) ---------- */
+function bucketSVG(hex){
+  return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <ellipse cx="50" cy="86" rx="30" ry="8" fill="#000" opacity="0.10"/>
+    <!-- can body -->
+    <path d="M24 44 L28 82 Q29 88 50 88 Q71 88 72 82 L76 44 Z" fill="#cfcabf"/>
+    <path d="M24 44 L28 82 Q29 88 50 88 L50 44 Z" fill="#bcb6aa"/>
+    <!-- rim -->
+    <ellipse cx="50" cy="44" rx="26" ry="9.5" fill="#e9e5dc"/>
+    <ellipse cx="50" cy="44" rx="26" ry="9.5" fill="none" stroke="#b3ac9f" stroke-width="1.4"/>
+    <!-- paint -->
+    <ellipse cx="50" cy="44" rx="21.5" ry="7.6" fill="${hex}"/>
+    <!-- swirl highlight -->
+    <path d="M36 44 Q50 39 64 44 Q50 48 36 44 Z" fill="#ffffff" opacity="0.18"/>
+    <path d="M40 42.5 Q50 40 60 42.5" stroke="#ffffff" stroke-width="1.2" fill="none" opacity="0.35"/>
+    <!-- drip -->
+    <path d="M72 50 q5 3 3 9 q-4 3 -6 -1 z" fill="${hex}"/>
+    <!-- handle -->
+    <path d="M26 46 Q14 30 40 30" stroke="#a8a194" stroke-width="2.4" fill="none"/>
+  </svg>`;
+}
+
+/* ---------- build selectors ---------- */
+const row = document.getElementById('bucketRow');
+SCHEMES.forEach((s, i) => {
+  const b = document.createElement('button');
+  b.className = 'vip-bucket';
+  b.type = 'button';
+  b.setAttribute('role','option');
+  b.setAttribute('aria-pressed','false');
+  b.dataset.i = i;
+  b.innerHTML = `<span class="vip-bucket__can">${bucketSVG(s.body.hex)}</span>
+                 <span class="vip-bucket__label">${s.label}</span>
+                 <span class="vip-bucket__sw">${s.body.sw.replace(/^SW /,'SW ')}</span>`;
+  b.addEventListener('click', () => select(i));
+  row.appendChild(b);
+});
+
+/* ---------- selection logic ---------- */
+const finishStage = document.getElementById('finishStage');
+const els = {
+  name: document.getElementById('scName'),
+  bodyChip: document.getElementById('scBodyChip'), bodyVal: document.getElementById('scBodyVal'),
+  trimChip: document.getElementById('scTrimChip'), trimVal: document.getElementById('scTrimVal'),
+  doorChip: document.getElementById('scDoorChip'), doorVal: document.getElementById('scDoorVal'),
+};
+function select(i){
+  const s = SCHEMES[i];
+  finishStage.style.setProperty('--sc-body', s.body.hex);
+  finishStage.style.setProperty('--sc-trim', s.trim.hex);
+  finishStage.style.setProperty('--sc-door', s.door.hex);
+  els.name.textContent = s.label;
+  els.bodyVal.textContent = `${s.body.sw} · ${s.body.sheen}`;
+  els.trimVal.textContent = s.trim.sw;
+  els.doorVal.textContent = s.door.sw;
+  els.bodyChip.style.background = s.body.hex;
+  els.trimChip.style.background = s.trim.hex;
+  els.doorChip.style.background = s.door.hex;
+  [...row.children].forEach((b,bi)=> b.setAttribute('aria-pressed', bi===i ? 'true':'false'));
+}
+/* keyboard arrow nav across buckets */
+row.addEventListener('keydown', (e)=>{
+  const cur = [...row.children].findIndex(b=>b.getAttribute('aria-pressed')==='true');
+  if(e.key==='ArrowRight'){ e.preventDefault(); const n=(cur+1)%SCHEMES.length; row.children[n].focus(); select(n); }
+  if(e.key==='ArrowLeft'){ e.preventDefault(); const n=(cur-1+SCHEMES.length)%SCHEMES.length; row.children[n].focus(); select(n); }
+});
+select(0);
+
+/* ---------- ambient control (toggles the drift motion) ---------- */
+const heroStage = document.getElementById('heroStage');
+const ctl = document.getElementById('mediaCtl');
+const icon = document.getElementById('mediaIcon');
+const label = document.getElementById('mediaLabel');
+ctl.addEventListener('click', ()=>{
+  const on = heroStage.classList.toggle('is-live');
+  ctl.setAttribute('aria-pressed', on ? 'true':'false');
+  label.textContent = on ? 'Ambient On' : 'Ambient Off';
+  icon.innerHTML = on
+    ? '<rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect>'
+    : '<path d="M7 5l12 7-12 7z"></path>';
+});
+
+/* ---------- drawer collapse ---------- */
+document.getElementById('drawerX').addEventListener('click', (e)=>{
+  const drawer = e.currentTarget.closest('.vip-finish-drawer');
+  const row = document.getElementById('bucketRow');
+  const hidden = row.style.display === 'none';
+  row.style.display = hidden ? 'flex' : 'none';
+  e.currentTarget.setAttribute('aria-label', hidden ? 'Collapse' : 'Expand');
+});
+</script>
+</body>
+</html>
