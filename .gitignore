@@ -13,3 +13,6 @@ _adherence.oxlintrc.json
 # Standalone exports (large, regenerate on demand)
 *(standalone).html
 export/
+
+serve.log
+*.log
