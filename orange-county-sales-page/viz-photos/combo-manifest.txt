@@ -1,0 +1,116 @@
+# 99-combo generation plan: <cat>-<option>--<scheme>.jpg
+# Scheme reference job IDs (pass as medias.value):
+obsidian=7fb17828-85b5-4cfe-a9cb-6bf01af05212
+riviera=d444a625-2ee5-4809-a4db-644493c7d90c
+euro=821ef7e5-5051-411e-8e13-9f85b538a514
+organic=793ec1b4-d107-4b06-9903-2a96e35db663
+pacificsage=f6feaf1f-36b6-4422-b00b-e825c40eb12a
+ibiza=d2db21ec-6f87-4892-912b-eabdfaed4984
+admiral=ee3d02ed-bb36-432c-951b-5fa0b903aba5
+marinelayer=cab82839-6ea7-4715-b48e-bb98794ad261
+pebblebeach=bcae8cf4-7625-47b4-9c04-5edf8f4aff8a
+spanish=3318e875-b801-4d65-939c-a0d359c6b4d6
+resort=54549723-73d8-4c37-8db3-e8df2cf554e2
+# Options: light-led-slot-sconce, light-iron-scroll-lantern, light-bronze-coach-pendant,
+#          siding-cedar-shake, siding-board-batten, siding-stacked-stone-veneer,
+#          premium-smoked-glass-garage, premium-walnut-wood-garage, premium-limestone-pillars
+# Submitted jobs appended below as: <jobid> <combo-filename>
+2d884085-2725-4b21-a74b-b61ff99afcd9 light-led-slot-sconce--obsidian.jpg
+d3a96e9e-3e21-4e94-bfb8-ea38d5cba313 light-iron-scroll-lantern--obsidian.jpg
+7560db3d-5a71-4166-aae6-cab221c1ebf5 light-bronze-coach-pendant--obsidian.jpg
+d6778d27-ba73-4138-a1e6-87821c78e055 siding-cedar-shake--obsidian.jpg
+d0111703-f19c-47b3-b947-bb20cb939295 siding-board-batten--obsidian.jpg
+58504fff-a141-4c3f-ad05-fdb87d681aff siding-stacked-stone-veneer--obsidian.jpg
+2d7a97f8-c38e-40d3-86fe-df43085f1679 premium-smoked-glass-garage--obsidian.jpg
+2c1f40ec-58f7-4949-a834-35d5637a79de premium-walnut-wood-garage--obsidian.jpg
+e27cb857-54bf-4ac5-aa46-bacacede8613 premium-limestone-pillars--obsidian.jpg
+4c409fae-e023-4ba1-b3db-2c707f3f7e75 light-led-slot-sconce--riviera.jpg
+96271bee-79a5-4e4f-b589-fa0c04f2b559 light-iron-scroll-lantern--riviera.jpg
+7ef1482c-f2db-4406-aff7-0297952d2697 light-bronze-coach-pendant--riviera.jpg
+310c3a42-2ce0-478c-b752-07fcc256eb00 siding-cedar-shake--riviera.jpg
+dae7b8dc-80f3-4736-a207-020f5112bd75 siding-board-batten--riviera.jpg
+1a09ce4f-ae56-4c1b-87d4-578cfd35958e siding-stacked-stone-veneer--riviera.jpg
+63150476-cca5-4e5d-99be-36c2f5f11966 premium-smoked-glass-garage--riviera.jpg
+70c9ee30-6692-480c-9538-2b436459a698 premium-walnut-wood-garage--riviera.jpg
+0080b8b1-611d-42e2-b062-0693e26010b4 premium-limestone-pillars--riviera.jpg
+5875937b-c3d6-441e-9a9f-b171a3a7621e light-led-slot-sconce--euro.jpg
+5f44c164-e758-444f-83bf-364bbc39c181 light-iron-scroll-lantern--euro.jpg
+f8e50e25-94ac-41f9-a352-17db7d93b399 light-bronze-coach-pendant--euro.jpg
+35610f60-140d-43c3-8621-3bcb9e8eb377 siding-cedar-shake--euro.jpg
+c79cab08-27ef-4400-ba2c-774f38cd8719 siding-board-batten--euro.jpg
+5c03f90d-b5b0-46a7-80f3-32d45c63cb60 siding-stacked-stone-veneer--euro.jpg
+5bbf17ae-f93e-4eaf-a2f3-494caba23fa0 premium-smoked-glass-garage--euro.jpg
+7c857b81-a6d4-4343-813a-aedd2be57a85 premium-walnut-wood-garage--euro.jpg
+1cca3e50-3652-43c5-8dfd-e45c6925950d premium-limestone-pillars--euro.jpg
+10c9b271-bbd6-4f48-9f1e-2b7c3c3045ef light-led-slot-sconce--organic.jpg
+d3e34251-4164-49c3-8125-0e8bfa74dee5 light-iron-scroll-lantern--organic.jpg
+01a1d268-591e-48d5-bc36-fc5564e6263f light-bronze-coach-pendant--organic.jpg
+b5d60a40-8bfd-4795-ace0-22899b8a5059 siding-cedar-shake--organic.jpg
+807f42cf-c50d-4444-aaae-ad1aa5e3ef51 siding-board-batten--organic.jpg
+ec56fcfe-bcd8-4683-8687-6263597b5ac9 siding-stacked-stone-veneer--organic.jpg
+ca277450-f1a2-4fef-a39a-7ac6c33b9996 premium-smoked-glass-garage--organic.jpg
+3cebf3cc-0fdf-4e43-ae4e-b52a35a755f7 premium-walnut-wood-garage--organic.jpg
+fe923a51-8d85-467e-8ae2-55fc94503bd0 premium-limestone-pillars--organic.jpg
+635b2fa8-6709-4c71-bf40-da54fda1a65f light-led-slot-sconce--pacificsage.jpg
+46b0207a-9c1d-4d5f-b4a7-cd2444d1b987 light-iron-scroll-lantern--pacificsage.jpg
+af018c64-3bd2-4c44-8080-73107062d9a0 light-bronze-coach-pendant--pacificsage.jpg
+42006223-3cff-43c2-ba8d-e197f79e2677 siding-cedar-shake--pacificsage.jpg
+8288597b-d780-4601-99eb-1152bba4bbd7 siding-board-batten--pacificsage.jpg
+f8392318-109b-4e99-9ff0-ec83a5c0e3cd siding-stacked-stone-veneer--pacificsage.jpg
+f6a07f5c-36bf-4341-82fe-b5761a61b483 premium-smoked-glass-garage--pacificsage.jpg
+9df81e3e-e8f4-43e9-b802-31022c164ce7 premium-walnut-wood-garage--pacificsage.jpg
+971d9a5a-37b4-4941-bf8a-4a8221473675 premium-limestone-pillars--pacificsage.jpg
+198822e3-c72d-4d50-81ed-9ea8f4bc470f light-led-slot-sconce--ibiza.jpg
+77586536-191c-47b7-8ce1-9a6fdb106c67 light-iron-scroll-lantern--ibiza.jpg
+d86ed737-7069-473f-9d0e-6ef2b146bcb5 light-bronze-coach-pendant--ibiza.jpg
+24988891-6e79-40d4-a363-fa6fb55449c5 siding-cedar-shake--ibiza.jpg
+032ed39d-7e56-4c48-8e31-6094bb7c5960 siding-board-batten--ibiza.jpg
+142b8396-483b-479d-afcb-d34b45ed3bc9 siding-stacked-stone-veneer--ibiza.jpg
+3d3b6989-5a58-44aa-84f7-75c748b8723e premium-smoked-glass-garage--ibiza.jpg
+43aa4fd8-742f-4ae7-b713-162f27dc788e premium-walnut-wood-garage--ibiza.jpg
+025f628a-537f-45b2-8ac6-b4174e62d813 premium-limestone-pillars--ibiza.jpg
+16791129-be56-4103-aa4f-746ea5245cd6 light-led-slot-sconce--admiral.jpg
+536a84dc-41e8-43b3-9874-5bf25a7b81be light-iron-scroll-lantern--admiral.jpg
+4e1df244-ef03-492d-bf00-f8f604b0a036 light-bronze-coach-pendant--admiral.jpg
+f11e24e2-6d97-49ef-bca2-81f6ef1695dc siding-cedar-shake--admiral.jpg
+3145e559-dab3-4b81-90f2-e4c2f1cc49de siding-board-batten--admiral.jpg
+840c0a54-a97a-4429-a123-98fd0c9b8b69 siding-stacked-stone-veneer--admiral.jpg
+1e1a8fd4-6fcb-424a-acfa-96ca55913d81 premium-smoked-glass-garage--admiral.jpg
+5d95a1d7-31ae-424d-9c08-c3c2a2158b18 premium-walnut-wood-garage--admiral.jpg
+c380c25e-020b-4943-9f34-81c50c5f405a premium-limestone-pillars--admiral.jpg
+514abbd1-8f68-4835-9cff-d3f140901dd6 light-led-slot-sconce--marinelayer.jpg
+b167eeba-30be-4df3-a6ce-38ef4d6a3668 light-iron-scroll-lantern--marinelayer.jpg
+8fc2e16e-e3cc-4358-81e7-f8e8dfb9cb42 light-bronze-coach-pendant--marinelayer.jpg
+c364cba7-40c1-4caa-a30e-663e2627c548 siding-cedar-shake--marinelayer.jpg
+bd35ea12-48bc-453c-9c88-5016bad9f669 siding-board-batten--marinelayer.jpg
+1ed1a62f-fc28-4059-bb2b-2dea6c884f86 siding-stacked-stone-veneer--marinelayer.jpg
+6000be01-347a-44e9-ad47-f37fb2780458 premium-smoked-glass-garage--marinelayer.jpg
+304f0dfb-a36f-4d7e-b141-227176fac231 premium-walnut-wood-garage--marinelayer.jpg
+3308860a-9365-44d5-afab-b7977f14cba0 premium-limestone-pillars--marinelayer.jpg
+55b2668c-711c-4c90-bb30-2314d2899e25 light-led-slot-sconce--pebblebeach.jpg
+c0637d63-a724-4b82-91e8-b14e113d3b1c light-iron-scroll-lantern--pebblebeach.jpg
+ca098828-9b07-457d-8c0a-d8183bf7fb9b light-bronze-coach-pendant--pebblebeach.jpg
+1a735db1-5eec-45e4-a1ae-f835c937e176 siding-cedar-shake--pebblebeach.jpg
+a128b446-2b4b-4792-b8dc-c891fda74d40 siding-board-batten--pebblebeach.jpg
+72a6d6fc-677b-499b-a069-2480bae497c1 siding-stacked-stone-veneer--pebblebeach.jpg
+f7a0450a-17eb-49be-b04d-7af2f35b34f5 premium-smoked-glass-garage--pebblebeach.jpg
+49f3b5d9-b6d6-471f-95e2-c842537f7dca premium-walnut-wood-garage--pebblebeach.jpg
+84b5a3ee-9e70-4562-9d9c-b1ecba3039ee premium-limestone-pillars--pebblebeach.jpg
+0d6a4f9d-2455-470d-9fff-125a6d39c5a5 light-led-slot-sconce--spanish.jpg
+d43f201f-3776-407a-88ae-28507208352f light-iron-scroll-lantern--spanish.jpg
+37f6a1c7-cc92-4fea-ac4d-b5bc20503520 light-bronze-coach-pendant--spanish.jpg
+a5123e67-95ed-45c0-aeca-7d5062f4dcca siding-cedar-shake--spanish.jpg
+2c23664e-8dcc-4894-9ce3-15eb4cff2b8c siding-board-batten--spanish.jpg
+5d9b5955-5e4a-4c7b-a15c-1098240b4bce siding-stacked-stone-veneer--spanish.jpg
+03487db9-e453-43ae-bdb2-c47ad7c063d8 premium-smoked-glass-garage--spanish.jpg
+a79c9c6f-aa62-4fd7-94e7-8946bfe4de3d premium-walnut-wood-garage--spanish.jpg
+2216325b-c770-4c12-9615-ee0cadb93025 premium-limestone-pillars--spanish.jpg
+2c82c74a-90ad-494b-b43d-63f7fab9f56a light-led-slot-sconce--resort.jpg
+44fa0539-5e9b-4baa-8194-8ca323bc485c light-iron-scroll-lantern--resort.jpg
+e2a3b1c9-b568-4c13-90eb-0018b3efb679 light-bronze-coach-pendant--resort.jpg
+dae0e5ce-d7ee-4dd4-8ef9-5bf306e872e4 siding-cedar-shake--resort.jpg
+5c5cef1b-43f6-427a-ba93-f642d632f796 siding-board-batten--resort.jpg
+efc8940f-584c-4454-bd1a-2ab77de32017 siding-stacked-stone-veneer--resort.jpg
+9ac12f5a-222b-4b55-addc-6d51bc5b31c8 premium-smoked-glass-garage--resort.jpg
+34c981be-9899-40cc-b19f-26554a8790ac premium-walnut-wood-garage--resort.jpg
+b87c93fd-3462-46b7-9490-ec08184f211e premium-limestone-pillars--resort.jpg
