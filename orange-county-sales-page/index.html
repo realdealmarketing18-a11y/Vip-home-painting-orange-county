@@ -439,7 +439,7 @@
   .body { font-family: var(--font-sans); font-size: 16px; line-height: 1.65; color: #4A4F70; margin: 0 0 22px; max-width: 720px; }
   section.navy .body, section.navy-deep .body { color: rgba(255,255,255,0.85); }
 
-  /* ============ 1. HERO (white, template order, wider centered) ============ */
+  /* ============ 1. HERO — inner element styles (pill, CTA, body) ============ */
   .hero { padding: 56px 56px 72px; }
   .hero .inner { max-width: 980px; margin: 0 auto; text-align: center; }
   .hero .eyebrow { text-align: center; }
@@ -519,6 +519,123 @@
   .trust-tiles .tile { width: 150px; height: 150px; transition: transform 360ms cubic-bezier(.22,1,.36,1); }
   .trust-tiles .tile:hover { transform: translateY(-4px) scale(1.04); }
   .trust-tiles .tile img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 14px 28px rgba(168,138,71,0.30)); }
+
+  /* ===== Cinematic hero ===== */
+  .hero-cinema { position: relative; min-height: 100svh; padding: 0;
+    overflow: hidden; background: var(--navy-deep);
+    display: flex; flex-direction: column; }
+  .hero-video { position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center 38%; }
+  .hero-scrim { position: absolute; inset: 0; transition: opacity 600ms cubic-bezier(.22,1,.36,1);
+    background: linear-gradient(180deg, rgba(20,24,56,.78) 0%,
+      rgba(26,31,78,.32) 42%, rgba(20,24,56,.86) 100%); }
+  .hero-goldframe { position: absolute; inset: 20px; pointer-events: none;
+    border: 1px solid rgba(201,169,97,.45); z-index: 3;
+    transition: opacity 600ms; }
+  .hero-cinema .hero-stack { position: relative; z-index: 4; flex: 1;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; text-align: center;
+    padding: 96px 24px 32px; max-width: 1000px; margin: 0 auto;
+    transition: opacity 600ms, transform 600ms; }
+  .hero-fleuron { color: var(--gold); font-size: 20px; margin-bottom: 18px; }
+  .eyebrow-ruled { display: flex; align-items: center; gap: 22px;
+    color: var(--cream); font-family: var(--font-sans); font-weight: 500;
+    font-size: 11px; letter-spacing: .3em; text-transform: uppercase; }
+  .eyebrow-ruled::before, .eyebrow-ruled::after { content: '';
+    width: 56px; height: 1px; background: rgba(201,169,97,.7); }
+  .hero-cinema .ttl-hero { color: var(--cream); font-weight: 400;
+    font-size: clamp(30px, 4.6vw, 58px); line-height: 1.12;
+    margin: 26px 0 10px; max-width: 880px; }
+  .hero-cinema .ttl-hero .gold { color: var(--gold-bright);
+    font-style: italic; font-weight: 500; }
+  .hero-kicker { color: var(--gold); margin-top: 6px; }
+  .hero-cinema .avatar-pill { border: 1px solid rgba(201,169,97,.4);
+    background: rgba(20,24,56,.35); backdrop-filter: blur(6px);
+    margin: 28px 0 34px; }
+  .hero-cinema .avatar-pill .name { color: var(--cream); }
+  .hero-cinema .avatar-pill .sub-line { color: rgba(245,239,226,.65); }
+
+  .play-wrap { display: flex; flex-direction: column; align-items: center;
+    gap: 14px; margin-bottom: 36px; }
+  .play-btn { position: relative; width: 76px; height: 76px;
+    border-radius: 50%; border: 1px solid var(--gold);
+    background: rgba(20,24,56,.25); backdrop-filter: blur(6px);
+    cursor: pointer; display: flex; align-items: center;
+    justify-content: center; transition: background 250ms; }
+  .play-btn:hover { background: rgba(201,169,97,.18); }
+  .play-btn:focus-visible { outline: 2px solid var(--gold);
+    outline-offset: 3px; }
+  .play-btn::after { content: ''; position: absolute; inset: -1px;
+    border-radius: 50%; border: 1px solid var(--gold);
+    animation: heroPulse 2.2s cubic-bezier(.22,1,.36,1) infinite; }
+  .play-btn:hover::after { animation-play-state: paused; }
+  @keyframes heroPulse { from { transform: scale(1); opacity: .6; }
+    to { transform: scale(1.65); opacity: 0; } }
+  .play-btn svg { width: 26px; height: 26px; fill: var(--gold-bright);
+    transform: translateX(2px); }
+  .play-label { color: var(--cream); font-weight: 500; font-size: 11px;
+    letter-spacing: .3em; text-transform: uppercase; }
+  .hero-note { color: rgba(245,239,226,.65); font-style: italic;
+    font-size: 12px; letter-spacing: .06em; margin-top: 10px; }
+  .hero-cinema .hero-cta-wrap { flex-direction: column; align-items: center;
+    margin-bottom: 0; }
+
+  .hero-strip { position: relative; z-index: 4; display: grid;
+    grid-template-columns: repeat(4, 1fr); max-width: 1100px;
+    width: calc(100% - 48px); margin: 0 auto; padding: 22px 0 40px;
+    transition: opacity 600ms; }
+  .hero-strip .cell { display: flex; flex-direction: column;
+    align-items: center; gap: 8px; padding: 0 12px; text-align: center; }
+  .hero-strip .cell + .cell { border-left: 1px solid rgba(201,169,97,.3); }
+  .hero-strip svg { width: 26px; height: 26px; stroke: var(--gold);
+    fill: none; stroke-width: 1.5; }
+  .hero-strip .lb { color: var(--cream); font-weight: 600;
+    font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; }
+  .hero-strip .sb { font-family: var(--font-serif); font-style: italic;
+    color: rgba(245,239,226,.7); font-size: 13.5px; }
+
+  /* Feature state */
+  .hero-cinema.playing .hero-stack,
+  .hero-cinema.playing .hero-strip,
+  .hero-cinema.playing .hero-scrim,
+  .hero-cinema.playing .hero-goldframe { opacity: 0; pointer-events: none; }
+  .player-ui { position: absolute; inset: 0; z-index: 6; display: flex;
+    flex-direction: column; justify-content: flex-end; opacity: 0;
+    pointer-events: none; transition: opacity 600ms 300ms;
+    background: linear-gradient(180deg, transparent 70%,
+      rgba(20,24,56,.7) 100%); }
+  .hero-cinema.playing .player-ui { opacity: 1; pointer-events: auto; }
+  .player-bar { display: flex; align-items: center; gap: 16px;
+    padding: 0 40px 34px; }
+  .pb-track { flex: 1; height: 3px; background: rgba(245,239,226,.25);
+    border-radius: 3px; overflow: hidden; cursor: pointer; }
+  .pb-fill { height: 100%; width: 0; background: var(--gold); }
+  .pb-time { color: var(--cream); font-size: 11px;
+    font-variant-numeric: tabular-nums; }
+  .pb-mute, .pb-close { background: none;
+    border: 1px solid rgba(201,169,97,.6); color: var(--cream);
+    font-size: 10px; letter-spacing: .22em; text-transform: uppercase;
+    padding: 9px 18px; border-radius: 999px; cursor: pointer;
+    transition: background 250ms; }
+  .pb-mute:hover, .pb-close:hover { background: rgba(201,169,97,.2); }
+
+  /* badges relocated under viz heading */
+  .trust-tiles-mini { margin: 0 auto 20px; gap: 20px; }
+  .trust-tiles-mini .tile { width: 92px; height: 92px; }
+
+  @media (max-width: 820px) {
+    .hero-goldframe { inset: 12px; }
+    .hero-strip { grid-template-columns: repeat(2, 1fr); gap: 22px 0; }
+    .hero-strip .cell:nth-child(3) { border-left: none; }
+    .player-bar { padding: 0 20px 26px; flex-wrap: wrap; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .play-btn::after { animation: none; opacity: 0; }
+    .hero-video { display: none; }
+    .hero-cinema { background: var(--navy-deep)
+      url('video/hero-poster.jpg') center 38% / cover no-repeat; }
+  }
+
 
   /* ============ 2. COLOR VISUALIZATION SHOWCASE (cream) — the visualization narrative ============ */
   .viz {
@@ -1357,29 +1474,38 @@
   </header>
 
   <!-- ============ 1. HERO ============ -->
-  <section class="hero">
-    <div class="inner">
-      <div class="eyebrow">Orange County Luxury Exterior &amp; Interior Home Painting</div>
-      <h1 class="ttl-hero">Discover How VIP Home Painting <span class="gold">Transformed The Gallagher Family's Newport Beach Estate</span> In Just 5 Days With Custom Color Consultation</h1>
+  <!-- CINEMATIC VIDEO HERO -->
+  <section class="hero hero-cinema" id="hero">
+    <video class="hero-video" id="heroVideo"
+           autoplay muted loop playsinline preload="metadata"
+           poster="video/hero-poster.jpg">
+      <source src="video/gallagher-ambient.webm" type="video/webm">
+      <source src="video/gallagher-ambient.mp4" type="video/mp4">
+    </video>
+    <div class="hero-scrim"></div>
+    <div class="hero-goldframe" aria-hidden="true"></div>
+
+    <div class="hero-stack" id="heroStack">
+      <div class="hero-fleuron" aria-hidden="true">&#10087;</div>
+      <div class="eyebrow eyebrow-ruled">Orange County Luxury Home Painting</div>
+      <h1 class="ttl-hero">Discover How VIP Home Painting
+        <span class="gold">Transformed the Gallagher Family's
+        Newport&nbsp;Beach Estate</span> in Just 5 Days</h1>
+      <div class="hero-kicker eyebrow-ruled">With Custom Color Consultation</div>
 
       <div class="pill-wrap">
-        <div class="avatar-pill"><div class="ph">TG</div><div><div class="name">The Gallagher Family</div><div class="sub-line">Pelican Hill, Newport Beach</div></div></div>
+        <div class="avatar-pill"><div class="ph">TG</div>
+          <div><div class="name">The Gallagher Family</div>
+          <div class="sub-line">Pelican Hill, Newport Beach</div></div></div>
       </div>
 
-      <div class="ba-frame" style="max-width: 980px;">
-        <div class="ba-cap">From Drab to Fab in 5 Days</div>
-        <div class="ba-img before" style="background-image: url('https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=1400&auto=format&fit=crop&q=80')"></div>
-        <div class="ba-img after" id="heroAfter"  style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1400&auto=format&fit=crop&q=80')"></div>
-        <div class="ba-rail">
-          <div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span>
-            <div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div>
-          </div>
-        </div>
-        <div class="ba-label l">Before</div>
-        <div class="ba-label r">After</div>
+      <div class="play-wrap">
+        <button class="play-btn" id="heroPlayBtn"
+                aria-label="Watch the film with sound">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <div class="play-label">Watch the Film</div>
       </div>
-
-      <p class="hero-body">CLAIM YOUR FREE 30-MINUTE CUSTOMIZED HOME COLOR CONSULTATION AND <em>save $1,000's on expensive consultants and avoid common home painting mistakes.</em></p>
 
       <div class="hero-cta-wrap">
         <a href="#quote" class="btn-gold">
@@ -1388,11 +1514,37 @@
             <span class="sub">Irresistible Painting Estimates Included</span>
           </span>
         </a>
+        <p class="hero-note">Save $1,000's on expensive consultants and avoid
+        common home painting mistakes.</p>
       </div>
+    </div>
 
-      <div class="trust-tiles">
-        <div class="tile"><img src="../../assets/badges/vip-custom-color-schemes.png" alt="Custom Color Schemes"/></div>
-        <div class="tile"><img src="../../assets/badges/vip-warranty-laurel.png" alt="Insane 1-Year Warranty"/></div>
+    <div class="hero-strip" id="heroStrip">
+      <div class="cell">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 1 10-10c0 2-1.5 3.5-3.5 3.5H16a2 2 0 0 0-2 2c0 .6.2 1 .5 1.4.3.5.5.9.5 1.6A1.5 1.5 0 0 1 13.5 22Z"/><circle cx="7.5" cy="11.5" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15.5" cy="8.5" r="1"/></svg>
+        <div class="lb">Custom Visualization</div>
+        <div class="sb">See it before we paint</div></div>
+      <div class="cell">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        <div class="lb">1-Year Warranty</div>
+        <div class="sb">No questions asked</div></div>
+      <div class="cell">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <div class="lb">5-Star Rated</div>
+        <div class="sb">Newport's trusted crews</div></div>
+      <div class="cell">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div class="lb">5-Day Transformations</div>
+        <div class="sb">Concierge scheduling</div></div>
+    </div>
+
+    <div class="player-ui" id="playerUi">
+      <div class="player-bar">
+        <span class="pb-time" id="pbCur">0:00</span>
+        <div class="pb-track" id="pbTrack"><div class="pb-fill" id="pbFill"></div></div>
+        <span class="pb-time" id="pbDur">0:00</span>
+        <button class="pb-mute" id="pbMute" aria-label="Mute">Mute</button>
+        <button class="pb-close" id="pbClose">Back to Page</button>
       </div>
     </div>
   </section>
@@ -1400,6 +1552,10 @@
   <!-- ============ 2. COLOR VISUALIZATION SHOWCASE ============ -->
   <section class="viz" id="viz">
     <div class="head">
+      <div class="trust-tiles trust-tiles-mini">
+        <div class="tile"><img src="assets/badges/vip-custom-color-schemes-web.png" alt="Custom Color Schemes"/></div>
+        <div class="tile"><img src="assets/badges/vip-warranty-laurel-web.png" alt="Insane 1-Year Warranty"/></div>
+      </div>
       <div class="eyebrow">Custom Visualization Service</div>
       <h2 class="ttl">See Your Orange County Home In <span class="accent">Every Color</span> Before A Single Brushstroke</h2>
       <p class="sub" style="text-align:center; font-size: 18px; max-width: 620px; margin: 0 auto 28px;">Choose a style direction, then tap any palette. Watch your home transform in real time — exactly what we deliver in our 30-minute consultation.</p>
@@ -2338,6 +2494,60 @@ setTimeout(() => {
     i++;
   }, 1400);
 }, 1200);
+
+/* ===== Cinematic hero: ambient loop + sound gate ===== */
+(function () {
+  const hero  = document.getElementById('hero');
+  const video = document.getElementById('heroVideo');
+  if (!hero || !video) return;
+  const playBtn = document.getElementById('heroPlayBtn');
+  const closeB  = document.getElementById('pbClose');
+  const muteB   = document.getElementById('pbMute');
+  const fill    = document.getElementById('pbFill');
+  const track   = document.getElementById('pbTrack');
+  const cur     = document.getElementById('pbCur');
+  const dur     = document.getElementById('pbDur');
+  const fmt = s => Math.floor(s/60) + ':' + String(Math.floor(s%60)).padStart(2,'0');
+
+  // If autoplay is rejected, sit quietly on the poster.
+  video.play().catch(() => {});
+
+  playBtn.addEventListener('click', () => {
+    hero.classList.add('playing');
+    video.currentTime = 0;
+    video.loop = false;
+    video.muted = false;
+    video.play().catch(() => { video.muted = true; video.play(); });
+  });
+
+  function backToAmbient() {
+    hero.classList.remove('playing');
+    video.muted = true;
+    video.loop = true;
+    video.play().catch(() => {});
+  }
+  closeB.addEventListener('click', backToAmbient);
+  video.addEventListener('ended', backToAmbient);
+
+  muteB.addEventListener('click', () => {
+    video.muted = !video.muted;
+    muteB.textContent = video.muted ? 'Unmute' : 'Mute';
+  });
+
+  video.addEventListener('loadedmetadata', () => {
+    dur.textContent = fmt(video.duration);
+  });
+  video.addEventListener('timeupdate', () => {
+    if (!hero.classList.contains('playing')) return;
+    fill.style.width = (video.currentTime / video.duration * 100) + '%';
+    cur.textContent = fmt(video.currentTime);
+  });
+  track.addEventListener('click', e => {
+    const r = track.getBoundingClientRect();
+    video.currentTime = ((e.clientX - r.left) / r.width) * video.duration;
+  });
+})();
+
 </script>
 </body>
 </html>
