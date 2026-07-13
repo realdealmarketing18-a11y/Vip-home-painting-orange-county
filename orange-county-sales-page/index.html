@@ -877,36 +877,30 @@
   .scheme .name { font-family: var(--font-serif); font-weight: 600; font-style: italic; font-size: 15px; color: var(--navy); margin-bottom: 2px; line-height: 1.2; }
   .scheme .sw { font-family: var(--font-sans); font-size: 9px; color: var(--gold-deep); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin-bottom: 11px; }
   .scheme .dots { display: flex; gap: 8px; }
-  /* open 1-gallon paint can from above — paint fills the can, thin brand-gold rim */
+  /* REAL 1-gallon can photo, paint surface tinted per scheme color */
   .scheme .dot {
-    width: 58px; height: 58px; border-radius: 50%;
+    width: 66px; height: 66px;
     position: relative;
-    background:
-      radial-gradient(circle,
-        transparent 0 77%,
-        #8a6a33 77% 80.5%,
-        #e8cc85 80.5% 86%,
-        #a8863f 86% 90%,
-        #6b5527 90% 93.5%,
-        #2e2a22 93.5% 100%);
-    box-shadow: 0 6px 14px rgba(26,31,78,0.22);
+    background: url('assets/can-top.jpg') center / cover no-repeat;
   }
   .scheme .dot::before {
-    content: ''; position: absolute; inset: 11.5%;
+    content: ''; position: absolute;
+    left: 9.5%; right: 10.5%; top: 10%; bottom: 9%;
     border-radius: 50%;
-    background:
-      radial-gradient(circle at 36% 30%, rgba(255,255,255,0.30), rgba(255,255,255,0) 46%),
-      repeating-radial-gradient(circle at 46% 54%,
-        rgba(0,0,0,0.05) 0 3px, rgba(255,255,255,0.05) 3px 6px, transparent 6px 10px),
-      var(--c, #cccccc);
-    box-shadow: inset 0 3px 8px rgba(0,0,0,0.30), inset 0 -1px 3px rgba(255,255,255,0.14);
+    background: var(--c, #ffffff);
+    mix-blend-mode: multiply;
+    opacity: 0.92;
   }
   .scheme .dot::after {
-    content: ''; position: absolute; left: 41%; top: 47%; width: 13%; height: 13%;
+    content: ''; position: absolute;
+    left: 9.5%; right: 10.5%; top: 10%; bottom: 9%;
     border-radius: 50%;
-    background: radial-gradient(circle at 40% 35%, rgba(255,255,255,0.28), rgba(0,0,0,0.16) 72%);
+    background: var(--c, #ffffff);
+    mix-blend-mode: soft-light;
+    opacity: 0.55;
   }
   .scheme { text-align: center; }
+  .viz-timeline .scheme .dot { width: 44px; height: 44px; }
   .scheme .dots { justify-content: center; gap: 10px; }
 
 
