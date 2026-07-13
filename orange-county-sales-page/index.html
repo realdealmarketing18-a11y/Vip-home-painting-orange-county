@@ -877,35 +877,34 @@
   .scheme .name { font-family: var(--font-serif); font-weight: 600; font-style: italic; font-size: 15px; color: var(--navy); margin-bottom: 2px; line-height: 1.2; }
   .scheme .sw { font-family: var(--font-sans); font-size: 9px; color: var(--gold-deep); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin-bottom: 11px; }
   .scheme .dots { display: flex; gap: 8px; }
-  /* open 1-gallon paint can, viewed from above (Moody flat-lay style) */
+  /* open 1-gallon paint can from above — paint fills the can, thin brand-gold rim */
   .scheme .dot {
     width: 58px; height: 58px; border-radius: 50%;
     position: relative;
     background:
       radial-gradient(circle,
-        #3a3430 0 55.5%,
-        #caa06a 55.5% 59%,
-        #6d4a24 59% 61.5%,
-        #e6bd85 61.5% 66%,
-        #7c5427 66% 68.5%,
-        #23201d 68.5% 85%,
-        #171514 85% 100%);
-    box-shadow: 0 7px 16px rgba(20,18,16,0.35);
+        transparent 0 77%,
+        #8a6a33 77% 80.5%,
+        #e8cc85 80.5% 86%,
+        #a8863f 86% 90%,
+        #6b5527 90% 93.5%,
+        #2e2a22 93.5% 100%);
+    box-shadow: 0 6px 14px rgba(26,31,78,0.22);
   }
   .scheme .dot::before {
-    content: ''; position: absolute; inset: 22.5%;
+    content: ''; position: absolute; inset: 11.5%;
     border-radius: 50%;
     background:
-      radial-gradient(circle at 36% 30%, rgba(255,255,255,0.28), rgba(255,255,255,0) 44%),
+      radial-gradient(circle at 36% 30%, rgba(255,255,255,0.30), rgba(255,255,255,0) 46%),
       repeating-radial-gradient(circle at 46% 54%,
-        rgba(0,0,0,0.055) 0 2px, rgba(255,255,255,0.05) 2px 4px, transparent 4px 7px),
+        rgba(0,0,0,0.05) 0 3px, rgba(255,255,255,0.05) 3px 6px, transparent 6px 10px),
       var(--c, #cccccc);
-    box-shadow: inset 0 3px 7px rgba(0,0,0,0.35), inset 0 -1px 3px rgba(255,255,255,0.15);
+    box-shadow: inset 0 3px 8px rgba(0,0,0,0.30), inset 0 -1px 3px rgba(255,255,255,0.14);
   }
   .scheme .dot::after {
-    content: ''; position: absolute; left: 40%; top: 46%; width: 14%; height: 14%;
+    content: ''; position: absolute; left: 41%; top: 47%; width: 13%; height: 13%;
     border-radius: 50%;
-    background: radial-gradient(circle at 40% 35%, rgba(255,255,255,0.25), rgba(0,0,0,0.18) 70%);
+    background: radial-gradient(circle at 40% 35%, rgba(255,255,255,0.28), rgba(0,0,0,0.16) 72%);
   }
   .scheme { text-align: center; }
   .scheme .dots { justify-content: center; gap: 10px; }
