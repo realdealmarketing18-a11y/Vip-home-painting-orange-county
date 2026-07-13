@@ -677,6 +677,58 @@
   }
 
 
+  /* editorial serial numbers */
+  .sec-no {
+    font-family: var(--font-serif); font-style: italic; font-weight: 500;
+    font-size: 13px; letter-spacing: 0.12em; color: var(--gold-deep);
+    margin-bottom: 8px; text-align: center;
+  }
+  .final-cta .sec-no { text-align: center; }
+
+  /* founder byline */
+  .byline {
+    display: flex; align-items: center; gap: 28px;
+    max-width: 760px; margin: 0 auto 56px;
+    padding: 30px 34px;
+    border-top: 1px solid rgba(201,169,97,0.5);
+    border-bottom: 1px solid rgba(201,169,97,0.5);
+  }
+  .byline-ph {
+    width: 92px; height: 92px; border-radius: 50%;
+    object-fit: cover; flex-shrink: 0;
+    border: 2px solid var(--gold);
+    box-shadow: 0 8px 20px rgba(26,31,78,0.18);
+  }
+  .byline-kicker {
+    font-family: var(--font-sans); font-weight: 700; font-size: 10px;
+    letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-deep);
+    margin-bottom: 8px;
+  }
+  .byline-quote {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: 17px; line-height: 1.5; color: var(--navy); margin: 0 0 10px;
+  }
+  .byline-sig {
+    font-family: var(--font-serif); font-style: italic; font-weight: 600;
+    font-size: 26px; color: var(--gold-deep); line-height: 1;
+  }
+  .byline-role {
+    font-family: var(--font-sans); font-size: 10.5px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: #8a8aa3; margin-top: 4px;
+  }
+  @media (max-width: 640px) {
+    .byline { flex-direction: column; text-align: center; gap: 16px; padding: 24px 18px; }
+  }
+
+  /* style-collection flat-lay banner (Step One) */
+  .style-banner { display: none; margin: 0 0 14px; }
+  .style-banner img {
+    width: 100%; aspect-ratio: 21 / 8; object-fit: cover;
+    border-radius: 12px; display: block;
+    border: 1px solid rgba(201,169,97,0.35);
+    box-shadow: 0 10px 26px rgba(26,31,78,0.16);
+  }
+
   /* ============ 2. COLOR VISUALIZATION SHOWCASE (cream) — the visualization narrative ============ */
   .viz {
     background:
@@ -825,35 +877,35 @@
   .scheme .name { font-family: var(--font-serif); font-weight: 600; font-style: italic; font-size: 15px; color: var(--navy); margin-bottom: 2px; line-height: 1.2; }
   .scheme .sw { font-family: var(--font-sans); font-size: 9px; color: var(--gold-deep); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin-bottom: 11px; }
   .scheme .dots { display: flex; gap: 8px; }
+  /* open 1-gallon paint can, viewed from above (Moody flat-lay style) */
   .scheme .dot {
-    width: 46px; height: 46px; border-radius: 50%;
+    width: 58px; height: 58px; border-radius: 50%;
     position: relative;
     background:
       radial-gradient(circle,
-        #f6efe2 0 63%,
-        #e8c188 63% 69%,
-        #a9713a 69% 75%,
-        #7c4a1e 75% 80%,
-        #c98a4b 80% 90%,
-        #8a5a2b 90% 100%);
-    box-shadow: 0 5px 12px rgba(26,31,78,0.18);
+        #3a3430 0 55.5%,
+        #caa06a 55.5% 59%,
+        #6d4a24 59% 61.5%,
+        #e6bd85 61.5% 66%,
+        #7c5427 66% 68.5%,
+        #23201d 68.5% 85%,
+        #171514 85% 100%);
+    box-shadow: 0 7px 16px rgba(20,18,16,0.35);
   }
   .scheme .dot::before {
-    content: ''; position: absolute; inset: 17%;
+    content: ''; position: absolute; inset: 22.5%;
     border-radius: 50%;
     background:
-      radial-gradient(circle at 36% 30%, rgba(255,255,255,0.38), rgba(255,255,255,0) 46%),
-      conic-gradient(from 210deg,
-        rgba(0,0,0,0.10), rgba(255,255,255,0.06) 25%,
-        rgba(0,0,0,0.05) 55%, rgba(255,255,255,0.05) 80%,
-        rgba(0,0,0,0.10)),
+      radial-gradient(circle at 36% 30%, rgba(255,255,255,0.28), rgba(255,255,255,0) 44%),
+      repeating-radial-gradient(circle at 46% 54%,
+        rgba(0,0,0,0.055) 0 2px, rgba(255,255,255,0.05) 2px 4px, transparent 4px 7px),
       var(--c, #cccccc);
-    box-shadow: inset 0 2px 6px rgba(0,0,0,0.25);
+    box-shadow: inset 0 3px 7px rgba(0,0,0,0.35), inset 0 -1px 3px rgba(255,255,255,0.15);
   }
   .scheme .dot::after {
-    content: ''; position: absolute; inset: 34%;
+    content: ''; position: absolute; left: 40%; top: 46%; width: 14%; height: 14%;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,0,0,0.10) 0 18%, rgba(255,255,255,0.12) 32%, transparent 56%);
+    background: radial-gradient(circle at 40% 35%, rgba(255,255,255,0.25), rgba(0,0,0,0.18) 70%);
   }
   .scheme { text-align: center; }
   .scheme .dots { justify-content: center; gap: 10px; }
@@ -1609,6 +1661,7 @@
   <!-- ============ 2. COLOR VISUALIZATION SHOWCASE ============ -->
   <section class="viz" id="viz">
     <div class="head">
+      <div class="sec-no">No. 01</div>
       <div class="eyebrow">Custom Visualization Service</div>
       <h2 class="ttl">See Your Orange County Home In <span class="accent">Every Color</span> Before A Single Brushstroke</h2>
       <p class="sub" style="text-align:center; font-size: 18px; max-width: 620px; margin: 0 auto 28px;">Choose a style direction, then tap any palette. Watch your home transform in real time — exactly what we deliver in our 30-minute consultation.</p>
@@ -1658,6 +1711,7 @@
             <div class="tl-num-label">Step One</div>
             <h3 class="tl-title">Choose Your <em>Color Scheme</em></h3>
             <p class="tl-desc">Pick a style direction, then a palette — your home re-paints itself in real time.</p>
+            <div class="style-banner" id="styleBanner"><img id="styleBannerImg" alt="Style collection flat-lay"/></div>
             <div class="viz-tabs" id="vizTabs"></div>
             <div class="viz-style-desc" id="vizStyleDesc"></div>
             <div class="scheme-grid" id="schemeGrid"></div>
@@ -1762,6 +1816,7 @@
   <!-- ============ 4. PROCESS (white) ============ -->
   <section id="process">
     <div class="process-head">
+      <div class="sec-no">No. 02</div>
       <div class="eyebrow">Here's a Taste of What to Expect</div>
       <h2 class="ttl">When You Go Through Our Orange County <span class="accent">Color Consult</span> And Exterior Painting Service</h2>
     </div>
@@ -1775,6 +1830,7 @@
   <!-- ============ 5. CASE STUDIES (navy band — 2 col) ============ -->
   <section class="navy" id="work">
     <div class="cases-head">
+      <div class="sec-no">No. 03</div>
       <div class="eyebrow">Orange County Home Painting Projects</div>
       <h2 class="ttl">Transforming Orange County Homes With <span class="accent">Precision &amp; Care</span></h2>
     </div>
@@ -1846,6 +1902,7 @@
   <!-- ============ 7. PILLARS (cream-deep) ============ -->
   <section class="cream-deep">
     <div class="pillars-head">
+      <div class="sec-no">No. 04</div>
       <div class="eyebrow">What We Offer</div>
       <h2 class="ttl">Our Custom Home Painting Company Offers</h2>
     </div>
@@ -1884,6 +1941,7 @@
   <!-- ============ 9. TESTIMONIALS (cream) ============ -->
   <section class="cream">
     <div class="testi-head">
+      <div class="sec-no">No. 05</div>
       <div class="eyebrow">Testimonials</div>
       <h2 class="ttl">What Our <span class="accent">Clients</span> Are Saying</h2>
     </div>
@@ -1915,6 +1973,7 @@
   <!-- ============ 10. STATS (white) ============ -->
   <section>
     <div class="stats-head">
+      <div class="sec-no">No. 06</div>
       <div class="eyebrow">By the Numbers</div>
       <h2 class="ttl">The <span class="accent">Trust</span> We've Earned</h2>
     </div>
@@ -1929,6 +1988,7 @@
   <!-- ============ 11. SERVICES (cream-deep) ============ -->
   <section class="cream-deep" id="services">
     <div class="services-head">
+      <div class="sec-no">No. 07</div>
       <div class="eyebrow">Our Orange County Residential Painting Services</div>
       <h2 class="ttl">We Paint <span class="accent">Exceptional</span> Orange County Living Spaces</h2>
     </div>
@@ -2008,6 +2068,7 @@
 
   <section class="cream" id="service-areas">
     <div class="areas-head">
+      <div class="sec-no">No. 08</div>
       <div class="eyebrow">Where We Work</div>
       <h2 class="ttl">Exterior &amp; Interior Painting Across <span class="accent">Orange County, CA</span></h2>
       <p class="lead">VIP Home Painting serves every luxury community in Orange County. If your estate is in any of these cities, we're your local painting contractor — call <a href="tel:9093125400">(909) 312-5400</a> for a free color consultation and estimate.</p>
@@ -2031,6 +2092,7 @@
   <!-- ============ 11c. FAQ — People Also Ask / AI Search ============ -->
   <section id="faq">
     <div class="faq-head">
+      <div class="sec-no">No. 09</div>
       <div class="eyebrow">Frequently Asked Questions</div>
       <h2 class="ttl">Orange County Painting — <span class="accent">Your Questions Answered</span></h2>
     </div>
@@ -2084,7 +2146,18 @@
       </ul>
     </div>
 
+    <div class="byline">
+      <img class="byline-ph" src="assets/fabian.jpg" alt="Fabian — Founder, VIP Home Painting"/>
+      <div class="byline-txt">
+        <div class="byline-kicker">From the Desk of the Founder</div>
+        <p class="byline-quote">"Every estate deserves to be seen before a single brushstroke. That's my promise to every Orange County homeowner we serve."</p>
+        <div class="byline-sig">Fabian</div>
+        <div class="byline-role">Founder · VIP Home Painting</div>
+      </div>
+    </div>
+
     <div class="final-cta">
+      <div class="sec-no">No. 10</div>
       <div class="ck">Ready To Transform Your Home?</div>
       <h2 class="ttl">Let's Make Your Home the <em>Envy of the Neighborhood</em></h2>
       <a href="#" class="btn-gold"><span class="col-2"><span>Get My Free Quote Now</span><span class="sub">No Pressure · No Obligation · 100% Free</span></span></a>
@@ -2240,6 +2313,16 @@ function renderTabs() {
     $tabs.appendChild(el);
   });
   $styleDesc.innerHTML = STYLES.find(s => s.id === activeStyle).desc;
+  const bWrap = document.getElementById('styleBanner');
+  const bImg  = document.getElementById('styleBannerImg');
+  if (bWrap && bImg) {
+    if (activeStyle === 'all') { bWrap.style.display = 'none'; }
+    else {
+      bImg.onerror = () => { bWrap.style.display = 'none'; };
+      bImg.onload  = () => { bWrap.style.display = 'block'; };
+      bImg.src = 'viz-photos/banner-' + activeStyle + '.jpg';
+    }
+  }
 }
 
 function renderSchemes() {
