@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://realdealmarketing18-a11y.github.io/Vip-home-painting-orange-county/sitemap.xml

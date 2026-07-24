@@ -125,6 +125,24 @@ renders of a real estate transform live.
 - Client repeatedly asked to "reset the link" — that means restart `serve-oc.js` (and
   historically a cloudflared tunnel; superseded by GitHub Pages).
 
+## 4b. IRVINE COMMUNITY PAGE GENERATOR (added 2026-07-23)
+
+`generator/` produces programmatic SEO landing pages for six luxury Irvine
+communities (Orchard Hills, Altair, Portola Springs, Hidden Canyon, Woodbury,
+Stonegate) at `irvine/<slug>/index.html`, plus root `sitemap.xml` + `robots.txt`.
+Run `node generator/generate.js` after editing `generator/communities.json`
+(all copy/SEO data) or `generator/page.css` (module styles/overrides). Five
+body modules rotate in a unique order per page (build fails on duplicate
+orders); hero is the OC cinematic style with a static poster image. The
+**interactive Custom Visualization section is extracted verbatim from the OC
+page at build time** (CSS + HTML + JS, asset paths rewritten) — edit it once
+on the OC page and regenerate. Every page carries JSON-LD (Business w/ geo +
+hasMap, Service, FAQPage, WebPage, Breadcrumbs), an "answer capsule" under
+the hero, and a Google Maps embed + NAP section for local-pack signals
+(off-site checklist: `generator/GOOGLE-MAPS-PLAYBOOK.md`). Full docs:
+`generator/README.md`. Generated pages are committed artifacts — GitHub
+Pages serves them as-is.
+
 ## 5. OPEN ISSUES
 
 - **Browser-pane screenshots time out** in this dev environment (renderer chokes, even on
