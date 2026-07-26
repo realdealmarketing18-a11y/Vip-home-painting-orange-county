@@ -1,0 +1,3 @@
+# Placeholder camera clips — regenerate with: bash make-clips.sh
+# Real build replaces these with Higgsfield Seedance renders.
+assets/vid/*.mp4
