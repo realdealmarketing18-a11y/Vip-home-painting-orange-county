@@ -242,10 +242,16 @@ function modProblemSolution(c, no, bg) {
 /* Interactive Custom Visualization — the highlight, lifted from the OC
    page and localized: same copy, community name in the headline. */
 function vizSection(c) {
-  return VIZ_HTML.replace(
+  const BASE_SUB = 'Choose a style direction, then tap any palette. Watch your home transform in real time — exactly what we deliver in our 30-minute consultation.';
+  let html = VIZ_HTML.replace(
     'See Your Orange County Home In <span class="accent">Every Color</span> Before A Single Brushstroke',
     `See Your ${c.name} Home In <span class="accent">Every Color</span> Before A Single Brushstroke`
   );
+  /* Unique localized lede above the shared tool, so even the boilerplate
+     component sits inside text no other page has. */
+  if (!html.includes(BASE_SUB)) throw new Error(`${c.slug}: viz sub-headline marker not found — did the OC page copy change?`);
+  html = html.replace(BASE_SUB, `${c.vizIntro}</p>\n      <p class="viz-lede-cta">${BASE_SUB}`);
+  return html;
 }
 
 /* Google Maps / local-pack section: embedded community map + NAP block

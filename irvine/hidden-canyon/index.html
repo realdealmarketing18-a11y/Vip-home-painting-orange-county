@@ -1684,6 +1684,22 @@ section.navy .glove-desc { color: rgba(255,255,255,0.85); }
 .ps-s { font-family: var(--font-sans); font-size: 14px; color: #4A4F70; line-height: 1.65; margin: 0; }
 .ps-divider { height: 1px; background: linear-gradient(90deg, rgba(201,169,97,0.55), transparent); margin: 16px 0 0; }
 
+/* ============ VIZ LEDE (unique localized copy above the shared tool) ============ */
+.viz .head .sub {
+  font-family: var(--font-sans) !important; font-style: normal !important;
+  font-size: 15.5px !important; line-height: 1.7 !important; color: #4A4F70 !important;
+  max-width: 760px !important; margin: 0 auto 18px !important; text-align: center;
+}
+.viz .head .viz-lede-cta {
+  font-family: var(--font-serif) !important; font-style: italic !important;
+  font-size: 17.5px !important; line-height: 1.4 !important; color: var(--navy) !important;
+  max-width: 620px !important; margin: 0 auto 28px !important; text-align: center;
+}
+@media (max-width: 600px) {
+  .viz .head .sub { font-size: 14.5px !important; }
+  .viz .head .viz-lede-cta { font-size: 15.5px !important; }
+}
+
 /* ============ MAP / NAP (Google local signals) ============ */
 .map-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; max-width: 1080px; margin: 0 auto; align-items: stretch; }
 .map-embed { border: 1px solid rgba(201,169,97,0.40); border-radius: 4px; overflow: hidden;
@@ -1880,7 +1896,8 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <div class="sec-no">No. 01</div>
       <div class="eyebrow">Custom Visualization Service</div>
       <h2 class="ttl">See Your Hidden Canyon Home In <span class="accent">Every Color</span> Before A Single Brushstroke</h2>
-      <p class="sub" style="text-align:center; font-size: 18px; max-width: 620px; margin: 0 auto 28px;">Choose a style direction, then tap any palette. Watch your home transform in real time — exactly what we deliver in our 30-minute consultation.</p>
+      <p class="sub" style="text-align:center; font-size: 18px; max-width: 620px; margin: 0 auto 28px;">At Hidden Canyon price points, a repaint is not a maintenance item — it is a decision about how the estate presents itself from the gate. Smooth-troweled stucco and limestone read differently in canyon morning light than they do at golden hour, and a white that feels refined at noon can go cold by evening. Before we schedule anything, our design team renders your actual elevation in every scheme under consideration, so the palette you approve is one you have already seen on your own home.</p>
+      <p class="viz-lede-cta">Choose a style direction, then tap any palette. Watch your home transform in real time — exactly what we deliver in our 30-minute consultation.</p>
     </div>
 
     <div class="viz-flow">
