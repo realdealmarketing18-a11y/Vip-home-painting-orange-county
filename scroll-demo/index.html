@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>VIP Home Painting — Fly Through the World of a Luxury Repaint</title>
+  <meta name="description" content="Scroll to fly through the world of VIP Home Painting — from the estate, through the color studio, to the reveal." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* VIP brand theme over the engine's CSS variables */
+    :root, .sw-root {
+      --sw-bg: #F5EFE2;             /* VIP cream */
+      --sw-ink: #1A1F4E;            /* VIP navy */
+      --sw-ink-soft: #4A4F70;
+      --sw-accent: #A88A47;         /* VIP deep gold */
+      --sw-font-display: 'Fraunces', Georgia, serif;
+      --sw-font-body: 'Inter', -apple-system, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div id="top"></div>
+  <div id="world"></div>
+
+  <script src="scrub-engine.js"></script>
+  <script>
+    mountScrollWorld(document.getElementById('world'), {
+      brand: { name: 'VIP Home Painting', href: '#top' },
+      cta: { label: 'Free Color Consultation', href: 'tel:9093125400' },
+      hint: 'scroll to fly in',
+      diveScroll: 1.3,
+      crossfade: 0.08,     /* architecture A: legs only, no connectors */
+      sections: [
+        {
+          id: 'estate', label: 'The Estate',
+          still: 'assets/estate.jpg',
+          clip: 'assets/vid/estate.mp4',
+          accent: '#C9A961',
+          scroll: 1.6, linger: 0.4,
+          eyebrow: 'Orange County Luxury Home Painting',
+          title: 'Every estate has a story. Fly through this one.',
+          body: 'From the curb of a Newport Beach estate to the last coat of enamel — one continuous flight through how VIP paints a home.',
+          tags: ['Newport Beach', 'Irvine', 'Coto de Caza'],
+        },
+        {
+          id: 'canvas', label: 'The Canvas',
+          still: 'assets/canvas.webp',
+          clip: 'assets/vid/canvas.mp4',
+          accent: '#1A1F4E',
+          eyebrow: 'Before a single brushstroke',
+          title: 'The home, exactly as it stands.',
+          body: 'Every project starts with your actual elevation — photographed, studied, and rendered in candidate palettes by our design team.',
+          tags: ['Custom Visualization', 'Free 30-min consult'],
+        },
+        {
+          id: 'studio', label: 'The Color Studio',
+          still: 'assets/studio.jpg',
+          clip: 'assets/vid/studio.mp4',
+          accent: '#E8833A',
+          scroll: 1.5, linger: 0.35,
+          eyebrow: 'The designer palette',
+          title: 'Alabaster. Chatura Gray. Iron Ore.',
+          body: 'Sherwin-Williams luxury palettes, curated per community — and test-rendered on your own home before you commit to a gallon.',
+          tags: ['SW Emerald', 'SW Duration', '11 curated schemes'],
+        },
+        {
+          id: 'spec', label: 'The Specification',
+          still: 'assets/spec.jpg',
+          clip: 'assets/vid/spec.mp4',
+          accent: '#1A1F4E',
+          eyebrow: 'Materials & method',
+          title: 'Sprayed like a factory. Finished like furniture.',
+          body: 'Graco and Titan airless rigs, full wet-mil coats, hand-cut lines — itemized on your estimate so nothing hides in a lump sum.',
+          tags: ['Graco & Titan', 'Itemized pricing', '1-Year Warranty'],
+        },
+        {
+          id: 'reveal', label: 'The Reveal',
+          still: 'assets/reveal.jpg',
+          clip: 'assets/vid/reveal.mp4',
+          accent: '#A88A47',
+          scroll: 1.7, linger: 0.5,
+          eyebrow: 'And it all arrives at',
+          title: 'The envy of the neighborhood.',
+          body: 'See it. Love it. Paint it. Backed by a 1-Year Warranty, no questions asked.',
+          tags: [],
+          cta: {
+            primary: { label: 'Call (909) 312-5400', href: 'tel:9093125400' },
+            secondary: { label: 'Try the Color Visualizer', href: '../orange-county-sales-page/#viz' },
+          },
+        },
+      ],
+      connectors: [null, null, null, null],  /* A-architecture: crossfaded seams */
+    });
+  </script>
+</body>
+</html>

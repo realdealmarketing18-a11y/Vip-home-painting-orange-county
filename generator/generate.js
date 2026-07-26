@@ -132,7 +132,7 @@ function modPortfolio(c, no, bg) {
           <li>${c.cabinetLine}</li>
           <li>1-Year Warranty · Licensed, Bonded &amp; Insured</li>
         </ul>
-        ${ctaButton('Claim Free Color Consultation', `${c.name} estimates, itemized line by line`)}
+        ${ctaButton('Claim Complimentary Color Consultation', `${c.name} estimates, itemized line by line`)}
       </div>
       <div class="photo-grid">
           ${imgs}
@@ -183,14 +183,14 @@ function modColorGuide(c, no, bg) {
     <div class="swatch-grid">${cards}
     </div>
     <div class="sec-head" style="margin:44px auto 0;">
-      <p class="lead" style="font-family:var(--font-serif); font-style:italic; font-size:16.5px;">Every palette is test-rendered on <b>your own home</b> through our free Custom Visualization Service — you approve a color you've already seen, not a paper swatch.</p>
+      <p class="lead" style="font-family:var(--font-serif); font-style:italic; font-size:16.5px;">Every palette is test-rendered on <b>your own home</b> through our complimentary Custom Visualization Service — you approve a color you've already seen, not a paper swatch.</p>
     </div>
   </section>`;
 }
 
 function modProcess(c, no, bg) {
   const steps = [
-    ['Private Color Consultation', 'A 30-minute in-home consultation, then our design team renders your ' + c.name + ' home in each candidate palette through our free <em>Custom Visualization Service</em> — before anything is scheduled.'],
+    ['Private Color Consultation', 'A 30-minute in-home consultation, then our design team renders your ' + c.name + ' home in each candidate palette through our complimentary <em>Custom Visualization Service</em> — before anything is scheduled.'],
     ['Design Review, Handled', 'We prepare the complete color submission package for ' + c.context.hoaNote + ' — swatches, product data sheets, and elevation callouts — so approval never stalls your project.'],
     ['Estate-Grade Preparation', 'Pressure wash, stucco repair floated to match texture, sanding, and bonding primer. Landscaping and hardscape are masked and wrapped before a single gallon is opened.'],
     ['Precision Spray Application', 'Sherwin-Williams Emerald applied with Graco and Titan airless equipment at full wet-mil, back-rolled on stucco, with hand-cut lines at every transition.'],
@@ -398,7 +398,7 @@ function buildPage(c) {
     ['#process', 'Process'],
     ['#portfolio', 'Portfolio'],
     ['#faq', 'FAQ'],
-    ['#quote', 'Free Quote']
+    ['#quote', 'Complimentary Quote']
   ].map(([href, label]) => `<a href="${href}">${label}</a>`).join('\n      ');
 
   const modules = c.moduleOrder
@@ -426,7 +426,7 @@ function buildPage(c) {
 <meta name="description" content="${c.metaDescription}">
 <link rel="canonical" href="${url}">
 
-<!-- Open Graph / AI crawlers -->
+<!-- Open Graph / answer-engine crawlers -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="${c.title}">
 <meta property="og:description" content="${c.metaDescription}">
@@ -486,7 +486,7 @@ ${CSS}
       <div class="hero-kicker eyebrow-ruled">${c.heroKicker}</div>
 
       <div class="hero-cta-wrap">
-        ${ctaButton('Claim Free Color Consultation', 'Irresistible Painting Estimates Included')}
+        ${ctaButton('Claim Complimentary Color Consultation', 'Irresistible Painting Estimates Included')}
         <p class="hero-note">See your ${c.name} home in its new palette before a single brushstroke.</p>
       </div>
     </div>
@@ -541,7 +541,7 @@ ${faqSection(c, c.moduleOrder.length + 3)}
       <div class="sec-no">${secNo(c.moduleOrder.length + 4)}</div>
       <div class="ck">Ready To Transform Your ${c.name} Home?</div>
       <h2 class="ttl">Let's Make Your Home the <em>Envy of ${c.name}</em></h2>
-      ${ctaButton('Get My Free Quote Now', 'No Pressure · No Obligation · 100% Free')}
+      ${ctaButton('Get My Complimentary Quote Now', 'No Pressure · No Obligation · Always Complimentary')}
     </div>
   </section>
 

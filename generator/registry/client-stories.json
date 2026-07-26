@@ -1,0 +1,25 @@
+{
+  "_doc": "One real client story = one page, forever. Marcus checks this before assigning story.is_real_client. Never relocate a real client to a city they don't live in.",
+  "douglas-and-sheri": {
+    "used_on": "/orange-county-sales-page/",
+    "city": "Newport Beach",
+    "community": "Pelican Hill",
+    "project_type": "exterior",
+    "verified": true
+  },
+  "ceasar-and-julie": {
+    "used_on": "/orange-county-sales-page/",
+    "city": "Irvine",
+    "community": "Shady Canyon",
+    "project_type": "exterior",
+    "verified": true
+  },
+  "gallagher-family": {
+    "used_on": "/orange-county-sales-page/",
+    "city": "Newport Beach",
+    "community": "Pelican Hill",
+    "project_type": "exterior",
+    "verified": false,
+    "note": "Hero film subject. Higgsfield-rendered imagery — confirm real-client status before reuse."
+  }
+}

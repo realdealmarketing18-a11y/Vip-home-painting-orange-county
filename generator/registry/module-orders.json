@@ -1,0 +1,65 @@
+{
+  "_doc": "The generator fails the build if two pages share a module order. Marcus assigns an unused permutation from the correct pool and records it here.",
+  "community_pool": [
+    "portfolio",
+    "specs",
+    "colorGuide",
+    "process",
+    "problemSolution"
+  ],
+  "city_pool": [
+    "cost_of_wrong",
+    "pricing",
+    "communities",
+    "color_guide",
+    "hoa",
+    "process",
+    "video",
+    "spotlight",
+    "reviews_map"
+  ],
+  "used": {
+    "/irvine/orchard-hills/": [
+      "portfolio",
+      "colorGuide",
+      "specs",
+      "process",
+      "problemSolution"
+    ],
+    "/irvine/altair/": [
+      "specs",
+      "portfolio",
+      "process",
+      "colorGuide",
+      "problemSolution"
+    ],
+    "/irvine/portola-springs/": [
+      "colorGuide",
+      "process",
+      "portfolio",
+      "problemSolution",
+      "specs"
+    ],
+    "/irvine/hidden-canyon/": [
+      "process",
+      "problemSolution",
+      "colorGuide",
+      "specs",
+      "portfolio"
+    ],
+    "/irvine/woodbury/": [
+      "problemSolution",
+      "specs",
+      "process",
+      "portfolio",
+      "colorGuide"
+    ],
+    "/irvine/stonegate/": [
+      "portfolio",
+      "process",
+      "problemSolution",
+      "colorGuide",
+      "specs"
+    ]
+  }
+}
