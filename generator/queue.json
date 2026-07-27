@@ -1,0 +1,79 @@
+{
+  "_doc": "THE PIPELINE QUEUE. Single source of truth for what each agent works on next. Marcus reads the first cluster with stage=queued. The copywriter reads the first with stage=researched. Seraphina reads the first with stage=copy_complete.",
+  "_stages": [
+    "queued",
+    "researching",
+    "researched",
+    "writing",
+    "copy_complete",
+    "building",
+    "published",
+    "blocked"
+  ],
+  "_stage_owner": {
+    "queued": "marcus",
+    "researching": "marcus",
+    "researched": "copywriter",
+    "writing": "copywriter",
+    "copy_complete": "seraphina",
+    "building": "seraphina",
+    "published": "-",
+    "blocked": "fabian"
+  },
+  "clusters": [
+    {
+      "slug": "irvine",
+      "name": "Irvine",
+      "stage": "researched",
+      "priority": 1,
+      "communities": [
+        "orchard-hills",
+        "altair",
+        "portola-springs",
+        "hidden-canyon",
+        "woodbury",
+        "stonegate"
+      ],
+      "communities_live": true,
+      "city_page_live": false,
+      "research_completed": "2026-07-27",
+      "notes": "6 community pages already live. City page is what remains. local_pack populated from real Apify data.",
+      "blockers": [
+        "street names unverified on all 6 communities",
+        "city page copy not written"
+      ]
+    },
+    {
+      "slug": "anaheim",
+      "name": "Anaheim",
+      "stage": "queued",
+      "priority": 2,
+      "communities": [],
+      "communities_live": false,
+      "city_page_live": false,
+      "notes": "HOME MARKET — the winnable pack. Maps data already scraped (dataset pw6djQiOl1uh6hDsq). Review bar is 55."
+    },
+    {
+      "slug": "newport-beach",
+      "name": "Newport Beach",
+      "stage": "queued",
+      "priority": 3,
+      "communities": [
+        "pelican-hill",
+        "crystal-cove",
+        "pelican-crest"
+      ],
+      "communities_live": false,
+      "city_page_live": false
+    },
+    {
+      "slug": "coto-de-caza",
+      "name": "Coto de Caza",
+      "stage": "queued",
+      "priority": 4,
+      "communities": [],
+      "communities_live": false,
+      "city_page_live": false
+    }
+  ]
+}

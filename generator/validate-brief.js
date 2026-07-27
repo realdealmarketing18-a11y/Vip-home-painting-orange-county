@@ -16,9 +16,15 @@ const path = require('path');
 
 const slug = process.argv[2];
 if (!slug) {
-  console.error('usage: node generator/validate-brief.js <cluster-slug>');
+  console.error('usage: node generator/validate-brief.js <cluster-slug> [--stage research]');
   process.exit(1);
 }
+/* Stage gating: Marcus is responsible for research fields only. Copy fields
+   are the copywriter's job, so `--stage research` skips them — otherwise
+   Marcus could never pass his own handoff gate. */
+const si = process.argv.indexOf('--stage');
+const STAGE = si !== -1 ? process.argv[si + 1] : 'full';
+const CHECK_COPY = STAGE !== 'research';
 
 const DIR = __dirname;
 const briefPath = path.join(DIR, 'briefs', `${slug}.json`);
@@ -99,7 +105,7 @@ else {
 const localComps = (city.local_pack && city.local_pack.top_competitors) || [];
 if (localComps.length < 3) fail(`city.local_pack.top_competitors: need 3+ (Apify Maps), got ${localComps.length}`);
 
-if (!Array.isArray(city.faqs) || city.faqs.length < 6) fail(`city.faqs: need 6+, got ${(city.faqs || []).length}`);
+if (CHECK_COPY && (!Array.isArray(city.faqs) || city.faqs.length < 6)) fail(`city.faqs: need 6+, got ${(city.faqs || []).length}`);
 
 /* ---------------- pricing truth ---------------- */
 const pr = city.pricing || {};
@@ -136,6 +142,9 @@ for (const p of pages) {
   const L = p._label;
   const seo = p.seo || {};
 
+  if (!CHECK_COPY) {
+    /* research stage: only the module-order and story-truth checks below apply */
+  } else {
   if (!seo.meta_title) fail(`${L}: seo.meta_title missing`);
   else if (seo.meta_title.length > 60) fail(`${L}: meta_title ${seo.meta_title.length} chars (max 60)`);
 
@@ -184,6 +193,7 @@ for (const p of pages) {
     const aw = words(faq.a);
     if (aw < 15) fail(`${L}: FAQ answer too thin (${aw} words) — "${String(faq.q).slice(0, 40)}"`);
   }
+  } /* end CHECK_COPY */
 
   /* module order uniqueness — within cluster and against the registry */
   const order = (p.layout && p.layout.module_order) || [];
@@ -229,8 +239,8 @@ for (const c of communities) {
   const extras = c.palette_extras || [];
   if (extras.length !== 2) fail(`${L}: palette_extras needs exactly 2, got ${extras.length}`);
 
-  if (!Array.isArray(c.faqs) || c.faqs.length < 3) fail(`${L}: faqs needs 3+, got ${(c.faqs || []).length}`);
-  if (!Array.isArray(c.problems) || c.problems.length < 4) fail(`${L}: problems needs 4+, got ${(c.problems || []).length}`);
+  if (CHECK_COPY && (!Array.isArray(c.faqs) || c.faqs.length < 3)) fail(`${L}: faqs needs 3+, got ${(c.faqs || []).length}`);
+  if (CHECK_COPY && (!Array.isArray(c.problems) || c.problems.length < 4)) fail(`${L}: problems needs 4+, got ${(c.problems || []).length}`);
 
   const hoa = c.hoa;
   if (!hoa) fail(`${L}: hoa block missing — set has_color_guidelines: null if unknown`);
