@@ -6,14 +6,15 @@
     "confidence": "medium",
     "gaps": [
       "pricing.typical_project_low/high — awaiting real VIP job data from Fabian",
-      "local_pack — awaiting Apify Google Maps scrape",
-      "keywords volume/difficulty — awaiting Semrush API units"
+      "keywords volume/difficulty — awaiting Semrush API units",
+      "VERIFY: OC page schema claims aggregateRating 5.0 from 120 reviews — if real, VIP already leads both markets; if not, remove it"
     ],
     "sources": {
       "market": "https://bestpaintingestimates.com/find-a-location/irvine-ca/",
-      "local_pack": "PENDING apify/google-maps-scraper",
+      "local_pack": "apify compass/crawler-google-places run 2026-07-27 (datasets pw6djQiOl1uh6hDsq, Jd1VPtysGNBzUztT1)",
       "questions": "websearch 2026-07-26 (interim; pending Apify social scrape)",
-      "keywords": "PENDING semrush — API units exhausted"
+      "keywords": "PENDING semrush — API units exhausted",
+      "organic": "firecrawl geo-located search + site maps 2026-07-27"
     }
   },
   "city": {
@@ -62,14 +63,63 @@
       "cost_answer_sentence": "VIP exterior work in Irvine starts at $4.75 per square foot of paintable surface — the premium end of the local range — and every estimate is itemized line by line."
     },
     "local_pack": {
-      "scraped_at": null,
-      "top_competitors": [],
-      "review_count_to_compete": null,
+      "scraped_at": "2026-07-27",
+      "dataset_id": "Jd1VPtysGNBzUztT1",
+      "top_competitors": [
+        {
+          "name": "Ron Romero & Son Painting",
+          "rating": 4.6,
+          "review_count": 57,
+          "primary_category": "Painter",
+          "photo_count": 622,
+          "offers_visualization": false,
+          "review_tags": []
+        },
+        {
+          "name": "OC Integrity Painting",
+          "rating": 5,
+          "review_count": 53,
+          "primary_category": "Painting",
+          "photo_count": 12,
+          "offers_visualization": false,
+          "review_tags": []
+        },
+        {
+          "name": "Ultimate Home Painters",
+          "rating": 4.8,
+          "review_count": 51,
+          "primary_category": "Painter",
+          "photo_count": 128,
+          "offers_visualization": false,
+          "review_tags": []
+        },
+        {
+          "name": "Right Choice Painting Co",
+          "rating": 4.9,
+          "review_count": 29,
+          "primary_category": "Painter",
+          "photo_count": 119,
+          "offers_visualization": false,
+          "review_tags": []
+        },
+        {
+          "name": "The Painting Guys",
+          "rating": 4.9,
+          "review_count": 29,
+          "primary_category": "Painter",
+          "photo_count": 21,
+          "offers_visualization": false,
+          "review_tags": []
+        }
+      ],
+      "review_count_to_compete": 60,
       "category_consensus": [
         "Painter",
         "Painting contractor"
       ],
-      "differentiator_gap": "PENDING scrape"
+      "photo_target": 100,
+      "gbp_posting_gap": "Only 20% of competitors post owner updates at all",
+      "differentiator_gap": "No painter in Anaheim or Irvine carries a single review tag about color visualization, color consultation, or seeing the result before painting. The entire market competes on price, speed, tidiness and professionalism. Pre-paint color confidence is uncontested."
     },
     "keywords": {
       "head_term": {
@@ -81,7 +131,27 @@
       "question_terms": [],
       "harvested_questions": [
         {
-          "q": "how much does it cost to paint a house in irvine",
+          "q": "How do you ensure a high-quality finish on my cabinets?",
+          "source": "gbp q&a irvine",
+          "maps_to": "faq"
+        },
+        {
+          "q": "Is cabinet refinishing a cost-effective way to update my kitchen?",
+          "source": "gbp q&a irvine",
+          "maps_to": "faq"
+        },
+        {
+          "q": "Do you repaint the ceilings?",
+          "source": "gbp q&a irvine",
+          "maps_to": "faq"
+        },
+        {
+          "q": "How do your prices compare to other contractors?",
+          "source": "gbp q&a irvine",
+          "maps_to": "faq"
+        },
+        {
+          "q": "How much does it cost to paint a house in Irvine?",
           "source": "websearch",
           "maps_to": "faq"
         }
