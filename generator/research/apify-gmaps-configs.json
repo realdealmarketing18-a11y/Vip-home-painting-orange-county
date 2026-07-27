@@ -1,35 +1,22 @@
 {
-  "_doc": "Apify Google Maps Scraper (compass/crawler-google-places) configs for the Irvine local-pack study. Run in order. Phase 2 is where the SEO signal lives — reviewsTags/peopleAlsoSearch/questionsAndAnswers only appear when scrapePlaceDetailPage is true.",
+  "_doc": "LEAN design: 2 runs build one reusable review corpus. Collection happens rarely; extraction happens every time a page is built. Grid is deferred — it is optimization, not foundation.",
   "_actor": "compass/crawler-google-places",
-  "phase1_discovery": {
-    "_purpose": "Who is in the competitive set. Cheap, no detail pages. Establishes the roster + review-count bar.",
-    "_est_cost_usd": 0.96,
+  "_principle": "Scrape once, mine ten times. ~2,500 real OC homeowner reviews feed FAQs, problem/solution, proof points, Shorts scripts, GBP posts, review-request coaching, and ad copy.",
+  "run_A_anaheim": {
+    "_purpose": "THE WINNABLE PACK. Your pin is here. Review counts and categories here translate into action you can take this month.",
+    "_feeds": "local_pack for the Anaheim page + GBP category/review strategy",
+    "_est_cost_usd": 1.43,
     "input": {
       "searchStringsArray": [
-        "house painters",
-        "exterior painting",
-        "painting contractor",
-        "cabinet painting"
+        "house painters"
       ],
-      "locationQuery": "Irvine, California",
+      "locationQuery": "Anaheim, California",
       "countryCode": "us",
-      "maxCrawledPlacesPerSearch": 60,
+      "maxCrawledPlacesPerSearch": 25,
       "language": "en",
       "skipClosedPlaces": true,
-      "scrapePlaceDetailPage": false
-    }
-  },
-  "phase2_deep_profile": {
-    "_purpose": "The real payload. Detail pages unlock reviewsTags (Googles own keyword clusters from reviews — these power local-pack justifications), peopleAlsoSearch (Googles competitive graph), questionsAndAnswers, ownerUpdates (GBP posting cadence), reviewsDistribution, imageCategories.",
-    "_est_cost_usd": 1.72,
-    "_note": "Replace placeIds with the top ~20 from phase 1. Using placeIds avoids re-paying for discovery.",
-    "input": {
-      "placeIds": [
-        "<TOP_20_FROM_PHASE_1>"
-      ],
-      "language": "en",
       "scrapePlaceDetailPage": true,
-      "maxReviews": 150,
+      "maxReviews": 100,
       "reviewsSort": "newest",
       "reviewsStartDate": "18 months",
       "scrapeReviewsPersonalData": false,
@@ -38,335 +25,279 @@
       "maxImages": 0
     }
   },
-  "phase3_geo_grid": {
-    "_purpose": "Local pack results change by searcher location. One scrape from the city centroid tells you nothing about who owns Orchard Hills vs Woodbury. One run PER point; compare the ordered result lists.",
-    "_est_cost_usd": 0.6,
-    "_note": "7 runs. Keep maxCrawledPlacesPerSearch low — you only need the top 3-5 ordering per point.",
-    "runs": [
-      {
-        "_point": "irvine-centroid",
-        "_center": [
-          33.6846,
-          -117.8265
-        ],
-        "input": {
-          "searchStringsArray": [
-            "house painters"
-          ],
-          "customGeolocation": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  -117.8385,
-                  33.6726
-                ],
-                [
-                  -117.8145,
-                  33.6726
-                ],
-                [
-                  -117.8145,
-                  33.696600000000004
-                ],
-                [
-                  -117.8385,
-                  33.696600000000004
-                ],
-                [
-                  -117.8385,
-                  33.6726
-                ]
-              ]
-            ]
-          },
-          "countryCode": "us",
-          "maxCrawledPlacesPerSearch": 10,
-          "language": "en",
-          "skipClosedPlaces": true,
-          "scrapePlaceDetailPage": false
-        }
-      },
-      {
-        "_point": "orchard-hills",
-        "_center": [
-          33.7273,
-          -117.7595
-        ],
-        "input": {
-          "searchStringsArray": [
-            "house painters"
-          ],
-          "customGeolocation": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  -117.7715,
-                  33.7153
-                ],
-                [
-                  -117.7475,
-                  33.7153
-                ],
-                [
-                  -117.7475,
-                  33.7393
-                ],
-                [
-                  -117.7715,
-                  33.7393
-                ],
-                [
-                  -117.7715,
-                  33.7153
-                ]
-              ]
-            ]
-          },
-          "countryCode": "us",
-          "maxCrawledPlacesPerSearch": 10,
-          "language": "en",
-          "skipClosedPlaces": true,
-          "scrapePlaceDetailPage": false
-        }
-      },
-      {
-        "_point": "altair",
-        "_center": [
-          33.7069,
-          -117.7203
-        ],
-        "input": {
-          "searchStringsArray": [
-            "house painters"
-          ],
-          "customGeolocation": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  -117.7323,
-                  33.6949
-                ],
-                [
-                  -117.7083,
-                  33.6949
-                ],
-                [
-                  -117.7083,
-                  33.7189
-                ],
-                [
-                  -117.7323,
-                  33.7189
-                ],
-                [
-                  -117.7323,
-                  33.6949
-                ]
-              ]
-            ]
-          },
-          "countryCode": "us",
-          "maxCrawledPlacesPerSearch": 10,
-          "language": "en",
-          "skipClosedPlaces": true,
-          "scrapePlaceDetailPage": false
-        }
-      },
-      {
-        "_point": "portola-springs",
-        "_center": [
-          33.7161,
-          -117.7106
-        ],
-        "input": {
-          "searchStringsArray": [
-            "house painters"
-          ],
-          "customGeolocation": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  -117.7226,
-                  33.7041
-                ],
-                [
-                  -117.6986,
-                  33.7041
-                ],
-                [
-                  -117.6986,
-                  33.7281
-                ],
-                [
-                  -117.7226,
-                  33.7281
-                ],
-                [
-                  -117.7226,
-                  33.7041
-                ]
-              ]
-            ]
-          },
-          "countryCode": "us",
-          "maxCrawledPlacesPerSearch": 10,
-          "language": "en",
-          "skipClosedPlaces": true,
-          "scrapePlaceDetailPage": false
-        }
-      },
-      {
-        "_point": "hidden-canyon",
-        "_center": [
-          33.646,
-          -117.762
-        ],
-        "input": {
-          "searchStringsArray": [
-            "house painters"
-          ],
-          "customGeolocation": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  -117.774,
-                  33.634
-                ],
-                [
-                  -117.75,
-                  33.634
-                ],
-                [
-                  -117.75,
-                  33.658
-                ],
-                [
-                  -117.774,
-                  33.658
-                ],
-                [
-                  -117.774,
-                  33.634
-                ]
-              ]
-            ]
-          },
-          "countryCode": "us",
-          "maxCrawledPlacesPerSearch": 10,
-          "language": "en",
-          "skipClosedPlaces": true,
-          "scrapePlaceDetailPage": false
-        }
-      },
-      {
-        "_point": "woodbury",
-        "_center": [
-          33.7005,
-          -117.743
-        ],
-        "input": {
-          "searchStringsArray": [
-            "house painters"
-          ],
-          "customGeolocation": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  -117.755,
-                  33.6885
-                ],
-                [
-                  -117.731,
-                  33.6885
-                ],
-                [
-                  -117.731,
-                  33.7125
-                ],
-                [
-                  -117.755,
-                  33.7125
-                ],
-                [
-                  -117.755,
-                  33.6885
-                ]
-              ]
-            ]
-          },
-          "countryCode": "us",
-          "maxCrawledPlacesPerSearch": 10,
-          "language": "en",
-          "skipClosedPlaces": true,
-          "scrapePlaceDetailPage": false
-        }
-      },
-      {
-        "_point": "stonegate",
-        "_center": [
-          33.71,
-          -117.73
-        ],
-        "input": {
-          "searchStringsArray": [
-            "house painters"
-          ],
-          "customGeolocation": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  -117.742,
-                  33.698
-                ],
-                [
-                  -117.718,
-                  33.698
-                ],
-                [
-                  -117.718,
-                  33.722
-                ],
-                [
-                  -117.742,
-                  33.722
-                ],
-                [
-                  -117.742,
-                  33.698
-                ]
-              ]
-            ]
-          },
-          "countryCode": "us",
-          "maxCrawledPlacesPerSearch": 10,
-          "language": "en",
-          "skipClosedPlaces": true,
-          "scrapePlaceDetailPage": false
-        }
-      }
-    ]
-  },
-  "phase4_ai_competitor_report": {
-    "_purpose": "Optional. The actor has a built-in AI competitor analysis that writes a ranked strengths/weaknesses report to a competitorAnalysis dataset. Useful as a cross-check on your own read, not a replacement.",
-    "_est_cost_usd": 0.75,
+  "run_B_irvine": {
+    "_purpose": "THE TARGET MARKET. Content and positioning intel — questions, complaints, the visualization gap.",
+    "_feeds": "briefs/irvine.json local_pack + harvested_questions for all 7 Irvine pages",
+    "_est_cost_usd": 1.43,
     "input": {
       "searchStringsArray": [
         "house painters"
       ],
       "locationQuery": "Irvine, California",
       "countryCode": "us",
-      "maxCrawledPlacesPerSearch": 30,
+      "maxCrawledPlacesPerSearch": 25,
+      "language": "en",
+      "skipClosedPlaces": true,
       "scrapePlaceDetailPage": true,
-      "maxReviews": 50,
-      "enableCompetitorAnalysis": true,
-      "maxCompetitorsToAnalyze": 30
+      "maxReviews": 100,
+      "reviewsSort": "newest",
+      "reviewsStartDate": "18 months",
+      "scrapeReviewsPersonalData": false,
+      "maxQuestions": 999,
+      "includeWebResults": true,
+      "maxImages": 0
     }
-  }
+  },
+  "deferred_geo_grid": {
+    "_purpose": "Run ONLY after runs A+B show the Irvine pack is worth fighting for. Maps who owns which village.",
+    "_est_cost_usd": 0.3,
+    "_when": "after a real Irvine location decision",
+    "runs": [
+      {
+        "_point": "orchard-hills",
+        "input": {
+          "searchStringsArray": [
+            "house painters"
+          ],
+          "customGeolocation": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -117.7715,
+                  33.7153
+                ],
+                [
+                  -117.7475,
+                  33.7153
+                ],
+                [
+                  -117.7475,
+                  33.7393
+                ],
+                [
+                  -117.7715,
+                  33.7393
+                ],
+                [
+                  -117.7715,
+                  33.7153
+                ]
+              ]
+            ]
+          },
+          "countryCode": "us",
+          "maxCrawledPlacesPerSearch": 10,
+          "language": "en",
+          "skipClosedPlaces": true
+        }
+      },
+      {
+        "_point": "altair",
+        "input": {
+          "searchStringsArray": [
+            "house painters"
+          ],
+          "customGeolocation": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -117.7323,
+                  33.6949
+                ],
+                [
+                  -117.7083,
+                  33.6949
+                ],
+                [
+                  -117.7083,
+                  33.7189
+                ],
+                [
+                  -117.7323,
+                  33.7189
+                ],
+                [
+                  -117.7323,
+                  33.6949
+                ]
+              ]
+            ]
+          },
+          "countryCode": "us",
+          "maxCrawledPlacesPerSearch": 10,
+          "language": "en",
+          "skipClosedPlaces": true
+        }
+      },
+      {
+        "_point": "portola-springs",
+        "input": {
+          "searchStringsArray": [
+            "house painters"
+          ],
+          "customGeolocation": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -117.7226,
+                  33.7041
+                ],
+                [
+                  -117.6986,
+                  33.7041
+                ],
+                [
+                  -117.6986,
+                  33.7281
+                ],
+                [
+                  -117.7226,
+                  33.7281
+                ],
+                [
+                  -117.7226,
+                  33.7041
+                ]
+              ]
+            ]
+          },
+          "countryCode": "us",
+          "maxCrawledPlacesPerSearch": 10,
+          "language": "en",
+          "skipClosedPlaces": true
+        }
+      },
+      {
+        "_point": "hidden-canyon",
+        "input": {
+          "searchStringsArray": [
+            "house painters"
+          ],
+          "customGeolocation": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -117.774,
+                  33.634
+                ],
+                [
+                  -117.75,
+                  33.634
+                ],
+                [
+                  -117.75,
+                  33.658
+                ],
+                [
+                  -117.774,
+                  33.658
+                ],
+                [
+                  -117.774,
+                  33.634
+                ]
+              ]
+            ]
+          },
+          "countryCode": "us",
+          "maxCrawledPlacesPerSearch": 10,
+          "language": "en",
+          "skipClosedPlaces": true
+        }
+      },
+      {
+        "_point": "woodbury",
+        "input": {
+          "searchStringsArray": [
+            "house painters"
+          ],
+          "customGeolocation": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -117.755,
+                  33.6885
+                ],
+                [
+                  -117.731,
+                  33.6885
+                ],
+                [
+                  -117.731,
+                  33.7125
+                ],
+                [
+                  -117.755,
+                  33.7125
+                ],
+                [
+                  -117.755,
+                  33.6885
+                ]
+              ]
+            ]
+          },
+          "countryCode": "us",
+          "maxCrawledPlacesPerSearch": 10,
+          "language": "en",
+          "skipClosedPlaces": true
+        }
+      },
+      {
+        "_point": "stonegate",
+        "input": {
+          "searchStringsArray": [
+            "house painters"
+          ],
+          "customGeolocation": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -117.742,
+                  33.698
+                ],
+                [
+                  -117.718,
+                  33.698
+                ],
+                [
+                  -117.718,
+                  33.722
+                ],
+                [
+                  -117.742,
+                  33.722
+                ],
+                [
+                  -117.742,
+                  33.698
+                ]
+              ]
+            ]
+          },
+          "countryCode": "us",
+          "maxCrawledPlacesPerSearch": 10,
+          "language": "en",
+          "skipClosedPlaces": true
+        }
+      }
+    ]
+  },
+  "_excluded": {
+    "note": "Never enable for SEO research — these are lead-gen features and cost more than the study.",
+    "fields": [
+      "maximumLeadsEnrichmentRecords ($0.10/record free tier)",
+      "scrapeContacts",
+      "scrapeSocialMediaProfiles",
+      "verifyLeadsEnrichmentEmails",
+      "maxImages"
+    ]
+  },
+  "_guardrail": "Set callOptions.maxTotalChargeUsd on every run as a hard ceiling."
 }
