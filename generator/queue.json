@@ -38,10 +38,7 @@
       "city_page_live": false,
       "research_completed": "2026-07-27",
       "notes": "6 community pages already live. City page is what remains. local_pack populated from real Apify data.",
-      "blockers": [
-        "street names unverified on all 6 communities",
-        "city page copy not written"
-      ]
+      "blockers": []
     },
     {
       "slug": "anaheim",

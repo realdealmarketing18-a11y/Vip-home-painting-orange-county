@@ -7,14 +7,16 @@
     "gaps": [
       "pricing.typical_project_low/high — awaiting real VIP job data from Fabian",
       "keywords volume/difficulty — awaiting Semrush API units",
-      "VERIFY: OC page schema claims aggregateRating 5.0 from 120 reviews — if real, VIP already leads both markets; if not, remove it"
+      "VERIFY: OC page schema claims aggregateRating 5.0 from 120 reviews — if real, VIP already leads both markets; if not, remove it",
+      "HOA association names + design-review rules unverified for 5 of 6 communities (only Altair confirmed) — needs association websites"
     ],
     "sources": {
       "market": "https://bestpaintingestimates.com/find-a-location/irvine-ca/",
       "local_pack": "apify compass/crawler-google-places run 2026-07-27 (datasets pw6djQiOl1uh6hDsq, Jd1VPtysGNBzUztT1)",
       "questions": "websearch 2026-07-26 (interim; pending Apify social scrape)",
       "keywords": "PENDING semrush — API units exhausted",
-      "organic": "firecrawl geo-located search + site maps 2026-07-27"
+      "organic": "firecrawl geo-located search + site maps 2026-07-27",
+      "communities": "firecrawl real-estate listing scrapes 2026-07-27 (redfin, zillow, rubyhome, homes.com, realtor.com)"
     }
   },
   "city": {
@@ -292,8 +294,22 @@
         "note": "Orchard Hills homes lean Tuscan, Santa Barbara, and Spanish Colonial — warm stucco bodies, stone accents, and clay-tile roofs set against the hillside orchards. The palette has to respect that architecture and the village's design review standards."
       },
       "geography_delta": {
-        "streets": [],
-        "landmarks": []
+        "streets": [
+          "Summerland",
+          "Big Sur",
+          "Glacier Valley",
+          "Treeline",
+          "Milpas",
+          "Lugano",
+          "Open Range"
+        ],
+        "landmarks": [
+          "Orchard Hills Shopping Center",
+          "Loma Ridge",
+          "Orchard Hills School"
+        ],
+        "zip": "92602",
+        "guard_gated": true
       },
       "hoa": {
         "association_name": null,
@@ -376,7 +392,12 @@
           "p": "Crews that treat a luxury estate like a tract repaint.",
           "s": "White-glove protocols on every Orchard Hills project: full masking of stone, landscape and hardscape protection, daily clean-up, and a final walkthrough with the founder's checklist."
         }
-      ]
+      ],
+      "market_delta": {
+        "median_home_value": 3509391,
+        "source": "redfin.com/neighborhood/2046/CA/Irvine/Orchard-Hills",
+        "value_tier": 1
+      }
     },
     {
       "page_type": "community",
@@ -395,18 +416,39 @@
         "palette_baseline"
       ],
       "architecture_delta": {
-        "note": "Altair's homes are contemporary and transitional — large uninterrupted stucco planes, deep fascias, and metal-and-glass details. On modern architecture there is nowhere for a mediocre finish to hide: lap marks, roller stipple, and wavy cut lines read instantly."
+        "note": "Altair's homes are contemporary and transitional — large uninterrupted stucco planes, deep fascias, and metal-and-glass details. On modern architecture there is nowhere for a mediocre finish to hide: lap marks, roller stipple, and wavy cut lines read instantly.",
+        "confirmed_styles": [
+          "Modern",
+          "Contemporary"
+        ]
       },
       "geography_delta": {
-        "streets": [],
-        "landmarks": []
+        "streets": [
+          "Bellatrix",
+          "Interstellar",
+          "Pulsar",
+          "Sagan Way",
+          "Eider Run",
+          "Chasma",
+          "Bolide",
+          "Iluna",
+          "Hornbill",
+          "Buttonquail"
+        ],
+        "landmarks": [
+          "Orange County Great Park",
+          "Altair Clubhouse",
+          "Beacon Park"
+        ],
+        "zip": "92618",
+        "guard_gated": true
       },
       "hoa": {
-        "association_name": null,
+        "association_name": "Altair Irvine Master Association",
         "has_color_guidelines": null,
         "approval_required": null,
         "notes": "Altair's community design review",
-        "source": null
+        "source": "rubyhome.com/irvine-ca/altair"
       },
       "palette_extras": [
         {
@@ -482,7 +524,12 @@
           "p": "You can't picture a charcoal-and-white scheme on your own elevation.",
           "s": "Our complimentary custom color visualization shows your actual home in each candidate palette before you commit to a single gallon."
         }
-      ]
+      ],
+      "market_delta": {
+        "median_home_value": 4590000,
+        "source": "rubyhome.com/irvine-ca/altair",
+        "value_tier": 1
+      }
     },
     {
       "page_type": "community",
@@ -492,7 +539,7 @@
         "lat": 33.7161,
         "lng": -117.7106
       },
-      "tier": 1,
+      "tier": 2,
       "inherits": [
         "market",
         "pricing",
@@ -504,8 +551,19 @@
         "note": "Portola Springs is classic Irvine Mediterranean — warm stucco, arched entries, wrought-iron details, and tile roofs stepping up the foothills. The right palette keeps that warmth while reading current, not dated."
       },
       "geography_delta": {
-        "streets": [],
-        "landmarks": []
+        "streets": [
+          "Yellow Iris",
+          "Soaring Eagle",
+          "Pathway",
+          "Campion"
+        ],
+        "landmarks": [
+          "Portola Springs Community Park",
+          "Hicks Canyon Trail",
+          "Loma Ridge"
+        ],
+        "zip": "92618",
+        "guard_gated": false
       },
       "hoa": {
         "association_name": null,
@@ -588,7 +646,12 @@
           "p": "Cabinet painting that leaves brush marks and starts peeling at the hinges.",
           "s": "Factory-finish cabinet refinishing: doors sprayed off-site in urethane enamel, boxes sprayed in place, hardware re-hung square."
         }
-      ]
+      ],
+      "market_delta": {
+        "median_home_value": null,
+        "source": "zillow.com/portola-springs-irvine-ca",
+        "value_tier": 2
+      }
     },
     {
       "page_type": "community",
@@ -607,11 +670,24 @@
         "palette_baseline"
       ],
       "architecture_delta": {
-        "note": "Hidden Canyon's estates are Santa Barbara and transitional in character — smooth-troweled stucco, limestone details, and generous rooflines on canyon-edge lots. Finishes here are judged up close, in person, by owners who know what custom looks like."
+        "note": "Hidden Canyon's estates are Santa Barbara and transitional in character — smooth-troweled stucco, limestone details, and generous rooflines on canyon-edge lots. Finishes here are judged up close, in person, by owners who know what custom looks like.",
+        "confirmed_styles": [
+          "Mediterranean",
+          "Contemporary"
+        ]
       },
       "geography_delta": {
-        "streets": [],
-        "landmarks": []
+        "streets": [
+          "Panorama",
+          "Shady Arbor"
+        ],
+        "landmarks": [
+          "Lake Forest Drive",
+          "Bommer Canyon",
+          "Shady Canyon"
+        ],
+        "zip": "92618",
+        "guard_gated": true
       },
       "hoa": {
         "association_name": null,
@@ -694,7 +770,12 @@
           "p": "Committing to a palette on a multi-million-dollar elevation, sight unseen.",
           "s": "Our complimentary custom color visualization renders your estate in each candidate scheme first — you approve what you've already seen."
         }
-      ]
+      ],
+      "market_delta": {
+        "median_home_value": 9150000,
+        "source": "homes.com/irvine-ca/hidden-canyon-neighborhood",
+        "value_tier": 1
+      }
     },
     {
       "page_type": "community",
@@ -704,7 +785,7 @@
         "lat": 33.7005,
         "lng": -117.743
       },
-      "tier": 1,
+      "tier": 2,
       "inherits": [
         "market",
         "pricing",
@@ -716,8 +797,24 @@
         "note": "Woodbury blends Spanish Colonial, Tuscan, and cottage styles around its garden paseos and the Commons. Inside, its 2005-era kitchens are the classic candidates for cabinet refinishing — solid boxes, dated finishes."
       },
       "geography_delta": {
-        "streets": [],
-        "landmarks": []
+        "streets": [
+          "Vintage",
+          "Great Lawn",
+          "Sarabande",
+          "Mayfair",
+          "Chantilly",
+          "Twin Gables",
+          "Sanctuary",
+          "Flamenco",
+          "Wild Lilac"
+        ],
+        "landmarks": [
+          "Woodbury Town Center",
+          "The Commons",
+          "Jeffrey Open Space Trail"
+        ],
+        "zip": "92620",
+        "guard_gated": false
       },
       "hoa": {
         "association_name": null,
@@ -800,7 +897,12 @@
           "p": "Painters who overspray garden walls, paseos, and your neighbor's roses.",
           "s": "White-glove masking and containment on every Woodbury job — landscaping wrapped, hardscape covered, and a clean site every evening."
         }
-      ]
+      ],
+      "market_delta": {
+        "median_home_value": null,
+        "source": "redfin.com/neighborhood/3114/CA/Irvine/Woodbury",
+        "value_tier": 2
+      }
     },
     {
       "page_type": "community",
@@ -810,7 +912,7 @@
         "lat": 33.71,
         "lng": -117.73
       },
-      "tier": 1,
+      "tier": 2,
       "inherits": [
         "market",
         "pricing",
@@ -822,8 +924,20 @@
         "note": "Stonegate's Santa Barbara and Spanish-influenced homes sit on tight, immaculate streetscapes near the Jeffrey Open Space Trail — where one crisp repaint visibly resets the standard for the block, and design review keeps everyone honest."
       },
       "geography_delta": {
-        "streets": [],
-        "landmarks": []
+        "streets": [
+          "Coleridge",
+          "Dunmore",
+          "Doverwood",
+          "Cortland",
+          "Fenway"
+        ],
+        "landmarks": [
+          "Stonegate Elementary",
+          "Jeffrey Open Space Trail",
+          "Stonegate Park"
+        ],
+        "zip": "92620",
+        "guard_gated": false
       },
       "hoa": {
         "association_name": null,
@@ -906,7 +1020,12 @@
           "p": "Choosing between three whites that all look identical on a paper swatch.",
           "s": "Our complimentary custom color visualization puts each one on your actual elevation in real light — the difference becomes obvious in minutes."
         }
-      ]
+      ],
+      "market_delta": {
+        "median_home_value": 1819000,
+        "source": "zillow.com/stonegate-irvine-ca",
+        "value_tier": 2
+      }
     }
   ]
 }
