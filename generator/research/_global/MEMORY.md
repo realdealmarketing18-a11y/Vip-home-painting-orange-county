@@ -11,12 +11,16 @@ city, promote it to *Confirmed*. When ranking data contradicts a finding, move i
 
 ## CONFIRMED — verified in 2+ markets, act on these
 
-### M-01 · The review bar is ~60, not hundreds
+### M-01 · The review bar is ~60 — and VIP is at 9
 The #1-ranked painter in Anaheim has **55 reviews**. Irvine's top local painter has **57**
 (excluding College Works, a national student franchise, at 172). Median is 20–30.
-**Sixty genuine 5-star reviews puts VIP at or above the top of either market.**
-*Evidence: Apify datasets `pw6djQiOl1uh6hDsq`, `Jd1VPtysGNBzUztT1`, 2026-07-27.*
-→ Never tell Fabian he needs hundreds of reviews. Set the target at 60 and mean it.
+**VIP has 9 reviews, and they were earned in Fontana** (~40 miles from Anaheim, ~50 from Irvine).
+*Evidence: Apify datasets `pw6djQiOl1uh6hDsq`, `Jd1VPtysGNBzUztT1`, 2026-07-27; Fabian 2026-07-27.*
+→ The review gap is VIP's single biggest competitive deficit — roughly 50 behind the leaders
+in both markets. Review acquisition is not a nice-to-have, it is **the** priority.
+→ The target is ~60, not hundreds. At 4–5/month that is a 12-month climb; at 8–10/month, 6.
+→ **Fontana origin matters:** reviews earned at a former location. Confirm the GBP is now
+verified at the Anaheim base — a profile still pinned to Fontana cannot rank in either market.
 
 ### M-02 · Nobody in OC competes on color confidence
 Across ~50 painters in two cities, **zero** carry a review tag about visualization, color
@@ -87,9 +91,11 @@ VIP has no blog at all.
 
 ## OPEN QUESTIONS — need Fabian, block on these if they matter
 
-1. **Is the 120-review claim real?** The OC page schema asserts `aggregateRating` 5.0 from
-   120 reviews. If real, VIP already leads both markets (see M-01) and is not leveraging it.
-   If not, it is a manual-action risk. **Highest priority.**
+1. ~~Is the 120-review claim real?~~ **ANSWERED 2026-07-27: NO.** VIP has 9 Google reviews,
+   earned in Fontana. The schema claimed 5.0 from 120 — removed from the OC page same day.
+   **Still open:** are the three on-page testimonials (Linda Quarry, Carol Brown, Tony
+   Minardi) real Google reviews? They carry a Google badge. And is "120+ Projects Done" a
+   true project count? Both are unaudited claims still live.
 2. **Is VIP EPA Lead Certified?** CertaPro displays it; we don't. Matters on pre-1978 homes.
 3. **Can the warranty go to 2 years?** CertaPro advertises 2; VIP advertises 1. A shopper
    comparing pages sees a worse number next to our name.
