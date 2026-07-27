@@ -14,8 +14,8 @@
     {
       "slug": "orchard-hills",
       "name": "Orchard Hills",
-      "title": "Orchard Hills Luxury House Painters | VIP Home Painting Irvine CA",
-      "metaDescription": "Orchard Hills luxury house painters — estate exterior painting, Graco & Titan airless spray finishes, Sherwin-Williams Emerald systems, and complimentary custom color visualization for Orchard Hills, Irvine. 1-Year Warranty. Call (909) 312-5400.",
+      "title": "Orchard Hills House Painters | Luxury Exteriors — VIP",
+      "metaDescription": "Orchard Hills luxury house painters. See your estate in every color before we paint — complimentary visualization, itemized estimate, 1-Year Warranty.",
       "primaryKeyword": "Orchard Hills luxury house painters",
       "vizIntro": "Orchard Hills elevations are judged against the hillside — warm stucco, stone wainscots, and clay tile that shift color hour by hour as the light moves across the orchards. A shade that looks perfect on a paper swatch in the showroom can read chalky or yellow on your own south-facing wall by two in the afternoon. This is why we render your actual home in every candidate palette first: a repaint in the wrong color costs the entire project over again, and almost nobody who regrets their color ever saw it on their own facade before the crew arrived.",
       "heroEyebrow": "Orchard Hills · Irvine Luxury Home Painting",
@@ -27,22 +27,62 @@
         "hoaNote": "your Orchard Hills community association's design review process",
         "settingNote": "hillside lots along Loma Ridge, where afternoon sun and orchard dust are hard on south- and west-facing elevations"
       },
-      "moduleOrder": ["portfolio", "colorGuide", "specs", "process", "problemSolution"],
-      "geo": { "lat": 33.7273, "lng": -117.7595 },
+      "moduleOrder": [
+        "portfolio",
+        "colorGuide",
+        "specs",
+        "process",
+        "problemSolution"
+      ],
+      "geo": {
+        "lat": 33.7273,
+        "lng": -117.7595
+      },
       "faqs": [
-        { "q": "How much does exterior house painting cost in Orchard Hills, Irvine?", "a": "VIP exterior work in Irvine starts at $4.75 per square foot of paintable surface — the premium end of the local range — and larger Orchard Hills estates with stone accents, extensive trim, or three-coat color changes price above that. Every VIP estimate is itemized line by line — prep, primer, coating, trim, and accents priced separately — and includes a complimentary custom color visualization of your home. Call (909) 312-5400." },
-        { "q": "Do you handle the Orchard Hills design review and HOA color approval?", "a": "Yes. We prepare the complete color submission package for your Orchard Hills community association's design review — swatches, Sherwin-Williams product data sheets, and elevation callouts — as part of every exterior project, so approval doesn't stall your repaint." },
-        { "q": "What are the best paint colors for Orchard Hills' Tuscan and Santa Barbara homes?", "a": "Warm whites and greiges lead in Orchard Hills — Sherwin-Williams Alabaster SW 7008 and Accessible Beige SW 7036 for bodies, with Urbane Bronze SW 7048 or Iron Ore SW 7069 on doors and iron. Our complimentary Custom Visualization Service renders your own home in each palette before you choose." }
+        {
+          "q": "How much does exterior house painting cost in Orchard Hills, Irvine?",
+          "a": "VIP exterior work in Irvine starts at $4.75 per square foot of paintable surface — the premium end of the local range — and larger Orchard Hills estates with stone accents, extensive trim, or three-coat color changes price above that. Every VIP estimate is itemized line by line — prep, primer, coating, trim, and accents priced separately — and includes a complimentary custom color visualization of your home. Call (909) 312-5400."
+        },
+        {
+          "q": "Do you handle the Orchard Hills design review and HOA color approval?",
+          "a": "Yes. We prepare the complete color submission package for your Orchard Hills community association's design review — swatches, Sherwin-Williams product data sheets, and elevation callouts — as part of every exterior project, so approval doesn't stall your repaint."
+        },
+        {
+          "q": "What are the best paint colors for Orchard Hills' Tuscan and Santa Barbara homes?",
+          "a": "Warm whites and greiges lead in Orchard Hills — Sherwin-Williams Alabaster SW 7008 and Accessible Beige SW 7036 for bodies, with Urbane Bronze SW 7048 or Iron Ore SW 7069 on doors and iron. Our complimentary Custom Visualization Service renders your own home in each palette before you choose."
+        }
       ],
       "extraColors": [
-        { "name": "Accessible Beige", "code": "SW 7036", "hex": "#D1C7B8", "note": "A warm greige body color that flatters Orchard Hills' stone wainscots and clay-tile roofs without reading yellow at midday." },
-        { "name": "Urbane Bronze", "code": "SW 7048", "hex": "#54504A", "note": "A deep bronze for entry doors, iron rails, and garage doors — quiet contrast that reads custom, not builder-spec." }
+        {
+          "name": "Accessible Beige",
+          "code": "SW 7036",
+          "hex": "#D1C7B8",
+          "note": "A warm greige body color that flatters Orchard Hills' stone wainscots and clay-tile roofs without reading yellow at midday."
+        },
+        {
+          "name": "Urbane Bronze",
+          "code": "SW 7048",
+          "hex": "#54504A",
+          "note": "A deep bronze for entry doors, iron rails, and garage doors — quiet contrast that reads custom, not builder-spec."
+        }
       ],
       "problems": [
-        { "p": "South-facing stucco fades unevenly on hillside lots, leaving chalky, blotchy elevations within a few seasons.", "s": "We spec Sherwin-Williams Emerald exterior — a self-priming, UV-stable acrylic — and apply a full wet-mil coating by airless spray so every elevation weathers evenly." },
-        { "p": "Design review paperwork stalls the project before it starts.", "s": "We prepare your color submission package — swatches, product data sheets, and elevation notes — formatted for your association's design review, so approval is a formality, not a delay." },
-        { "p": "Estimates from other painters arrive as one vague lump sum.", "s": "Every VIP proposal is itemized — prep, primer, coating system, trim, and accents priced line by line — so you know exactly what you're paying for." },
-        { "p": "Crews that treat a luxury estate like a tract repaint.", "s": "White-glove protocols on every Orchard Hills project: full masking of stone, landscape and hardscape protection, daily clean-up, and a final walkthrough with the founder's checklist." }
+        {
+          "p": "South-facing stucco fades unevenly on hillside lots, leaving chalky, blotchy elevations within a few seasons.",
+          "s": "We spec Sherwin-Williams Emerald exterior — a self-priming, UV-stable acrylic — and apply a full wet-mil coating by airless spray so every elevation weathers evenly."
+        },
+        {
+          "p": "Design review paperwork stalls the project before it starts.",
+          "s": "We prepare your color submission package — swatches, product data sheets, and elevation notes — formatted for your association's design review, so approval is a formality, not a delay."
+        },
+        {
+          "p": "Estimates from other painters arrive as one vague lump sum.",
+          "s": "Every VIP proposal is itemized — prep, primer, coating system, trim, and accents priced line by line — so you know exactly what you're paying for."
+        },
+        {
+          "p": "Crews that treat a luxury estate like a tract repaint.",
+          "s": "White-glove protocols on every Orchard Hills project: full masking of stone, landscape and hardscape protection, daily clean-up, and a final walkthrough with the founder's checklist."
+        }
       ],
       "portfolio": {
         "eyebrow": "The Orchard Hills Portfolio",
@@ -54,8 +94,8 @@
     {
       "slug": "altair",
       "name": "Altair",
-      "title": "Altair Irvine Exterior Painters | Modern Estate Painting — VIP Home Painting",
-      "metaDescription": "Exterior painting for Altair Irvine's modern estates — crisp Graco/Titan airless spray lines, Sherwin-Williams Emerald in Iron Ore & Alabaster, complimentary custom color visualization, itemized pricing, 1-Year Warranty. Call (909) 312-5400.",
+      "title": "Altair Irvine Exterior Painters | Modern Estates — VIP",
+      "metaDescription": "Altair Irvine exterior painters for modern estates. Flawless airless spray finishes, complimentary color visualization, itemized pricing, 1-Year Warranty.",
       "primaryKeyword": "Altair Irvine exterior painters",
       "vizIntro": "On Altair's contemporary architecture, color is doing more work than it does anywhere else in Irvine. Broad uninterrupted stucco planes, deep fascias, and metal detailing mean a charcoal that reads sophisticated on a small sample can turn heavy and flat across a twenty-foot elevation — and the reverse is just as true. Seeing the scheme at full scale on your own home, before a single gallon is tinted, is the difference between a facade that looks designed and one that cost five figures to get wrong twice.",
       "heroEyebrow": "Altair · Irvine Modern Estate Painting",
@@ -67,22 +107,62 @@
         "hoaNote": "Altair's community design review",
         "settingNote": "wide, sun-exposed elevations near the Great Park, where inland heat cycles stress builder-grade coatings"
       },
-      "moduleOrder": ["specs", "portfolio", "process", "colorGuide", "problemSolution"],
-      "geo": { "lat": 33.7069, "lng": -117.7203 },
+      "moduleOrder": [
+        "specs",
+        "portfolio",
+        "process",
+        "colorGuide",
+        "problemSolution"
+      ],
+      "geo": {
+        "lat": 33.7069,
+        "lng": -117.7203
+      },
       "faqs": [
-        { "q": "Do you paint modern and contemporary homes in Altair, Irvine?", "a": "Yes — modern architecture is a VIP specialty. Altair's large stucco planes and sharp rooflines demand airless spray application with Graco and Titan equipment for a uniform, stipple-complimentary film, plus laser-checked masking at every color transition. That's our standard system." },
-        { "q": "Will a dark color like Iron Ore fade on a full-sun Altair elevation?", "a": "Not with the right system. We spec Sherwin-Williams Emerald with fade-resistant colorants rated for dark exterior use, applied at full wet-mil thickness. Deep charcoals like Iron Ore SW 7069 stay deep — and our work is backed by a 1-Year Warranty." },
-        { "q": "How long does it take to paint an Altair home's exterior?", "a": "Most Altair exterior projects are completed in 3 to 5 working days, including preparation, masking, spraying, and detail enamel work — sequenced elevation by elevation with concierge scheduling. Call (909) 312-5400 for a complimentary estimate with color visualization." }
+        {
+          "q": "Do you paint modern and contemporary homes in Altair, Irvine?",
+          "a": "Yes — modern architecture is a VIP specialty. Altair's large stucco planes and sharp rooflines demand airless spray application with Graco and Titan equipment for a uniform, stipple-complimentary film, plus laser-checked masking at every color transition. That's our standard system."
+        },
+        {
+          "q": "Will a dark color like Iron Ore fade on a full-sun Altair elevation?",
+          "a": "Not with the right system. We spec Sherwin-Williams Emerald with fade-resistant colorants rated for dark exterior use, applied at full wet-mil thickness. Deep charcoals like Iron Ore SW 7069 stay deep — and our work is backed by a 1-Year Warranty."
+        },
+        {
+          "q": "How long does it take to paint an Altair home's exterior?",
+          "a": "Most Altair exterior projects are completed in 3 to 5 working days, including preparation, masking, spraying, and detail enamel work — sequenced elevation by elevation with concierge scheduling. Call (909) 312-5400 for a complimentary estimate with color visualization."
+        }
       ],
       "extraColors": [
-        { "name": "Pure White", "code": "SW 7005", "hex": "#EDECE6", "note": "A clean, neutral white for fascias and metal trim that keeps Altair's contemporary lines razor sharp." },
-        { "name": "Peppercorn", "code": "SW 7674", "hex": "#6C6B66", "note": "A soft charcoal for accent volumes and entry surrounds — modern depth without the harshness of pure black." }
+        {
+          "name": "Pure White",
+          "code": "SW 7005",
+          "hex": "#EDECE6",
+          "note": "A clean, neutral white for fascias and metal trim that keeps Altair's contemporary lines razor sharp."
+        },
+        {
+          "name": "Peppercorn",
+          "code": "SW 7674",
+          "hex": "#6C6B66",
+          "note": "A soft charcoal for accent volumes and entry surrounds — modern depth without the harshness of pure black."
+        }
       ],
       "problems": [
-        { "p": "Roller stipple and lap marks ruin the flat, monolithic look modern stucco is designed for.", "s": "We spray every large plane with Graco and Titan airless rigs at a consistent tip and pressure, then back-roll where the substrate calls for it — a uniform film, edge to edge." },
-        { "p": "Dark modern colors like Iron Ore can fail fast in full sun if the wrong product is used.", "s": "We spec Sherwin-Williams Emerald with modern, fade-resistant colorants rated for dark exterior use, so deep charcoals stay deep." },
-        { "p": "Crisp two-tone schemes live or die on the cut lines.", "s": "Laser-checked masking and hand-cut transitions where volumes meet — the detail work that separates an estate finish from a production repaint." },
-        { "p": "You can't picture a charcoal-and-white scheme on your own elevation.", "s": "Our complimentary custom color visualization shows your actual home in each candidate palette before you commit to a single gallon." }
+        {
+          "p": "Roller stipple and lap marks ruin the flat, monolithic look modern stucco is designed for.",
+          "s": "We spray every large plane with Graco and Titan airless rigs at a consistent tip and pressure, then back-roll where the substrate calls for it — a uniform film, edge to edge."
+        },
+        {
+          "p": "Dark modern colors like Iron Ore can fail fast in full sun if the wrong product is used.",
+          "s": "We spec Sherwin-Williams Emerald with modern, fade-resistant colorants rated for dark exterior use, so deep charcoals stay deep."
+        },
+        {
+          "p": "Crisp two-tone schemes live or die on the cut lines.",
+          "s": "Laser-checked masking and hand-cut transitions where volumes meet — the detail work that separates an estate finish from a production repaint."
+        },
+        {
+          "p": "You can't picture a charcoal-and-white scheme on your own elevation.",
+          "s": "Our complimentary custom color visualization shows your actual home in each candidate palette before you commit to a single gallon."
+        }
       ],
       "portfolio": {
         "eyebrow": "The Altair Portfolio",
@@ -94,8 +174,8 @@
     {
       "slug": "portola-springs",
       "name": "Portola Springs",
-      "title": "Portola Springs House Painters | Exterior & Cabinet Painting Irvine — VIP",
-      "metaDescription": "House painters for Portola Springs, Irvine — Spanish & Mediterranean exterior repaints, factory-finish kitchen cabinet painting, Sherwin-Williams Emerald systems, complimentary color visualization, itemized estimates, 1-Year Warranty. (909) 312-5400.",
+      "title": "Portola Springs House Painters, Irvine | VIP Painting",
+      "metaDescription": "Portola Springs house painters in Irvine. Exterior repaints and factory-finish cabinets, complimentary color visualization, itemized estimates, 1-Yr Warranty.",
       "primaryKeyword": "Portola Springs house painters",
       "vizIntro": "Most Portola Springs homes are still wearing some version of the palette the builder chose for the whole street. Modernizing it is the single highest-impact change you can make — and also the easiest one to get wrong, because Mediterranean stucco reacts unpredictably to warm whites and greiges under bright foothill sun. Watch your own elevation change color in real time below, then bring the scheme you chose to a complimentary 30-minute consultation with an itemized estimate attached.",
       "heroEyebrow": "Portola Springs · Irvine Home Painting",
@@ -107,22 +187,62 @@
         "hoaNote": "the Portola Springs community association's design review",
         "settingNote": "foothill elevations that take full inland sun, where builder-grade paint chalks and fades years early"
       },
-      "moduleOrder": ["colorGuide", "process", "portfolio", "problemSolution", "specs"],
-      "geo": { "lat": 33.7161, "lng": -117.7106 },
+      "moduleOrder": [
+        "colorGuide",
+        "process",
+        "portfolio",
+        "problemSolution",
+        "specs"
+      ],
+      "geo": {
+        "lat": 33.7161,
+        "lng": -117.7106
+      },
       "faqs": [
-        { "q": "How much does it cost to paint a house in Portola Springs?", "a": "VIP exterior work starts at $4.75 per square foot of paintable surface — the premium end of the Irvine range — and most Portola Springs homes price from there. Every VIP proposal is itemized line by line with no hidden charges, and includes a complimentary 30-minute custom color visualization of your actual home. Call (909) 312-5400." },
-        { "q": "Do you offer kitchen cabinet painting in Portola Springs?", "a": "Yes — factory-finish cabinet refinishing is one of our most-requested Portola Springs services. Doors and drawers are sprayed off-site in urethane enamel and boxes are sprayed in place, producing a hard, showroom-smooth finish at a fraction of replacement cost." },
-        { "q": "Can you handle the Portola Springs HOA color approval process?", "a": "Yes. We assemble the color submission package for the Portola Springs community association's design review — swatches, product spec sheets, and elevation notes — as part of the project, so the approval step never becomes your problem." }
+        {
+          "q": "How much does it cost to paint a house in Portola Springs?",
+          "a": "VIP exterior work starts at $4.75 per square foot of paintable surface — the premium end of the Irvine range — and most Portola Springs homes price from there. Every VIP proposal is itemized line by line with no hidden charges, and includes a complimentary 30-minute custom color visualization of your actual home. Call (909) 312-5400."
+        },
+        {
+          "q": "Do you offer kitchen cabinet painting in Portola Springs?",
+          "a": "Yes — factory-finish cabinet refinishing is one of our most-requested Portola Springs services. Doors and drawers are sprayed off-site in urethane enamel and boxes are sprayed in place, producing a hard, showroom-smooth finish at a fraction of replacement cost."
+        },
+        {
+          "q": "Can you handle the Portola Springs HOA color approval process?",
+          "a": "Yes. We assemble the color submission package for the Portola Springs community association's design review — swatches, product spec sheets, and elevation notes — as part of the project, so the approval step never becomes your problem."
+        }
       ],
       "extraColors": [
-        { "name": "Shoji White", "code": "SW 7042", "hex": "#E6DFD3", "note": "A soft warm white that modernizes Mediterranean stucco without fighting the roof tile." },
-        { "name": "Agreeable Gray", "code": "SW 7029", "hex": "#D1CBC1", "note": "The most forgiving greige in the deck — beautiful under Portola Springs' bright foothill light, morning and evening." }
+        {
+          "name": "Shoji White",
+          "code": "SW 7042",
+          "hex": "#E6DFD3",
+          "note": "A soft warm white that modernizes Mediterranean stucco without fighting the roof tile."
+        },
+        {
+          "name": "Agreeable Gray",
+          "code": "SW 7029",
+          "hex": "#D1CBC1",
+          "note": "The most forgiving greige in the deck — beautiful under Portola Springs' bright foothill light, morning and evening."
+        }
       ],
       "problems": [
-        { "p": "The original builder palette now reads dated against newer phases of the village.", "s": "A complimentary 30-minute color visualization shows your home in current designer schemes — warm whites, greiges, and deep accents — before you decide anything." },
-        { "p": "Sun-baked foothill elevations chalk and fade within a few years.", "s": "Sherwin-Williams Emerald and Duration exterior systems, applied at full wet-mil by airless spray, are engineered for exactly this exposure." },
-        { "p": "Design review requirements make color changes feel like a bureaucratic project.", "s": "We assemble the color submission package for your association's review — swatches, spec sheets, elevation notes — as part of the job." },
-        { "p": "Cabinet painting that leaves brush marks and starts peeling at the hinges.", "s": "Factory-finish cabinet refinishing: doors sprayed off-site in urethane enamel, boxes sprayed in place, hardware re-hung square." }
+        {
+          "p": "The original builder palette now reads dated against newer phases of the village.",
+          "s": "A complimentary 30-minute color visualization shows your home in current designer schemes — warm whites, greiges, and deep accents — before you decide anything."
+        },
+        {
+          "p": "Sun-baked foothill elevations chalk and fade within a few years.",
+          "s": "Sherwin-Williams Emerald and Duration exterior systems, applied at full wet-mil by airless spray, are engineered for exactly this exposure."
+        },
+        {
+          "p": "Design review requirements make color changes feel like a bureaucratic project.",
+          "s": "We assemble the color submission package for your association's review — swatches, spec sheets, elevation notes — as part of the job."
+        },
+        {
+          "p": "Cabinet painting that leaves brush marks and starts peeling at the hinges.",
+          "s": "Factory-finish cabinet refinishing: doors sprayed off-site in urethane enamel, boxes sprayed in place, hardware re-hung square."
+        }
       ],
       "portfolio": {
         "eyebrow": "The Portola Springs Portfolio",
@@ -134,8 +254,8 @@
     {
       "slug": "hidden-canyon",
       "name": "Hidden Canyon",
-      "title": "Hidden Canyon Irvine Estate Painters | Luxury Exterior Painting — VIP",
-      "metaDescription": "Estate painting for Hidden Canyon, Irvine — guard-gated luxury exteriors finished with Graco/Titan airless spray, Sherwin-Williams Emerald in Alabaster & Iron Ore, white-glove protocols, complimentary color visualization, 1-Year Warranty. (909) 312-5400.",
+      "title": "Hidden Canyon Estate Painters, Irvine | VIP Painting",
+      "metaDescription": "Hidden Canyon estate painters in Irvine. White-glove exteriors for guard-gated homes, complimentary color visualization, itemized estimates, 1-Year Warranty.",
       "vizIntro": "At Hidden Canyon price points, a repaint is not a maintenance item — it is a decision about how the estate presents itself from the gate. Smooth-troweled stucco and limestone read differently in canyon morning light than they do at golden hour, and a white that feels refined at noon can go cold by evening. Before we schedule anything, our design team renders your actual elevation in every scheme under consideration, so the palette you approve is one you have already seen on your own home.",
       "primaryKeyword": "Hidden Canyon estate painters",
       "heroEyebrow": "Hidden Canyon · Irvine Estate Painting",
@@ -147,22 +267,62 @@
         "hoaNote": "Hidden Canyon's community design review",
         "settingNote": "canyon-edge lots where coastal-influenced mornings and hot afternoons cycle the stucco daily"
       },
-      "moduleOrder": ["process", "problemSolution", "colorGuide", "specs", "portfolio"],
-      "geo": { "lat": 33.6460, "lng": -117.7620 },
+      "moduleOrder": [
+        "process",
+        "problemSolution",
+        "colorGuide",
+        "specs",
+        "portfolio"
+      ],
+      "geo": {
+        "lat": 33.646,
+        "lng": -117.762
+      },
       "faqs": [
-        { "q": "Do you work in guard-gated communities like Hidden Canyon?", "a": "Yes — estate work in guard-gated Irvine communities is our core business. Gate clearance is arranged in advance, crews are badged and briefed, and work hours are coordinated with your household and neighbors under white-glove site protocols." },
-        { "q": "How long does an estate repaint take in Hidden Canyon?", "a": "Most Hidden Canyon exteriors are completed in five working days, sequenced elevation by elevation so the home stays fully livable. The project ends with a raking-light inspection and a founder-signed walkthrough, backed by a 1-Year Warranty." },
-        { "q": "What finish do you recommend for Hidden Canyon's smooth-trowel stucco?", "a": "Smooth stucco shows everything, so preparation is the finish: skim repairs floated to match, elastomeric patching, full prime, then Sherwin-Williams Emerald applied by Graco and Titan airless spray for a glass-even film. Colors like Snowbound SW 7004 and Alabaster SW 7008 are rendered on your own elevation first through our complimentary visualization. Call (909) 312-5400." }
+        {
+          "q": "Do you work in guard-gated communities like Hidden Canyon?",
+          "a": "Yes — estate work in guard-gated Irvine communities is our core business. Gate clearance is arranged in advance, crews are badged and briefed, and work hours are coordinated with your household and neighbors under white-glove site protocols."
+        },
+        {
+          "q": "How long does an estate repaint take in Hidden Canyon?",
+          "a": "Most Hidden Canyon exteriors are completed in five working days, sequenced elevation by elevation so the home stays fully livable. The project ends with a raking-light inspection and a founder-signed walkthrough, backed by a 1-Year Warranty."
+        },
+        {
+          "q": "What finish do you recommend for Hidden Canyon's smooth-trowel stucco?",
+          "a": "Smooth stucco shows everything, so preparation is the finish: skim repairs floated to match, elastomeric patching, full prime, then Sherwin-Williams Emerald applied by Graco and Titan airless spray for a glass-even film. Colors like Snowbound SW 7004 and Alabaster SW 7008 are rendered on your own elevation first through our complimentary visualization. Call (909) 312-5400."
+        }
       ],
       "extraColors": [
-        { "name": "Snowbound", "code": "SW 7004", "hex": "#EDEAE4", "note": "A refined, slightly warm white for smooth-trowel stucco — the quiet Santa Barbara look Hidden Canyon was designed around." },
-        { "name": "Tricorn Black", "code": "SW 6258", "hex": "#2F2F30", "note": "For iron gates, lanterns, and window frames — a true black that anchors limestone and white stucco." }
+        {
+          "name": "Snowbound",
+          "code": "SW 7004",
+          "hex": "#EDEAE4",
+          "note": "A refined, slightly warm white for smooth-trowel stucco — the quiet Santa Barbara look Hidden Canyon was designed around."
+        },
+        {
+          "name": "Tricorn Black",
+          "code": "SW 6258",
+          "hex": "#2F2F30",
+          "note": "For iron gates, lanterns, and window frames — a true black that anchors limestone and white stucco."
+        }
       ],
       "problems": [
-        { "p": "Most painting crews aren't set up for guard-gated estate work — access, scheduling, and site conduct included.", "s": "We run concierge scheduling: gate clearance handled in advance, crews badged and briefed, work hours coordinated with your household staff and neighbors." },
-        { "p": "Smooth-trowel stucco shows every patch, pinhole, and lap line.", "s": "Estate-grade prep — skim repairs floated to match, elastomeric patching, full prime — then airless spray application for a glass-even film." },
-        { "p": "A repaint that disrupts the household for weeks.", "s": "Most Hidden Canyon exteriors are completed in five working days, sequenced elevation by elevation so the house stays livable throughout." },
-        { "p": "Committing to a palette on a multi-million-dollar elevation, sight unseen.", "s": "Our complimentary custom color visualization renders your estate in each candidate scheme first — you approve what you've already seen." }
+        {
+          "p": "Most painting crews aren't set up for guard-gated estate work — access, scheduling, and site conduct included.",
+          "s": "We run concierge scheduling: gate clearance handled in advance, crews badged and briefed, work hours coordinated with your household staff and neighbors."
+        },
+        {
+          "p": "Smooth-trowel stucco shows every patch, pinhole, and lap line.",
+          "s": "Estate-grade prep — skim repairs floated to match, elastomeric patching, full prime — then airless spray application for a glass-even film."
+        },
+        {
+          "p": "A repaint that disrupts the household for weeks.",
+          "s": "Most Hidden Canyon exteriors are completed in five working days, sequenced elevation by elevation so the house stays livable throughout."
+        },
+        {
+          "p": "Committing to a palette on a multi-million-dollar elevation, sight unseen.",
+          "s": "Our complimentary custom color visualization renders your estate in each candidate scheme first — you approve what you've already seen."
+        }
       ],
       "portfolio": {
         "eyebrow": "The Hidden Canyon Portfolio",
@@ -174,8 +334,8 @@
     {
       "slug": "woodbury",
       "name": "Woodbury",
-      "title": "Woodbury Irvine House Painting | Factory-Finish Kitchen Cabinet Painters",
-      "metaDescription": "Woodbury Irvine house painting & factory-finish kitchen cabinet painting — Sherwin-Williams Emerald urethane enamel sprayed cabinets, exterior repaints in Alabaster & Chatura Gray, complimentary color visualization, 1-Year Warranty. (909) 312-5400.",
+      "title": "Woodbury Irvine House & Cabinet Painters | VIP",
+      "metaDescription": "Woodbury Irvine house painting and factory-finish kitchen cabinet refinishing. Complimentary color visualization, itemized estimates, and a 1-Year Warranty.",
       "primaryKeyword": "factory finish kitchen cabinet painting Irvine",
       "vizIntro": "Woodbury homeowners usually arrive with one of two questions: what color should the outside be, or what would this kitchen look like without the orange-toned cabinets. Both are expensive to answer by guessing — a wrong exterior means repainting the whole house, and refinished cabinets cannot be undone with a second coat. Use the visualizer below to try full schemes on a real home, then let our design team render your own house and kitchen during a complimentary 30-minute consultation.",
       "heroEyebrow": "Woodbury · Irvine Home & Cabinet Painting",
@@ -187,22 +347,62 @@
         "hoaNote": "the Woodbury community association's design review",
         "settingNote": "mature landscaping and garden walls that demand careful masking and protection during exterior spray work"
       },
-      "moduleOrder": ["problemSolution", "specs", "process", "portfolio", "colorGuide"],
-      "geo": { "lat": 33.7005, "lng": -117.7430 },
+      "moduleOrder": [
+        "problemSolution",
+        "specs",
+        "process",
+        "portfolio",
+        "colorGuide"
+      ],
+      "geo": {
+        "lat": 33.7005,
+        "lng": -117.743
+      },
       "faqs": [
-        { "q": "How much does factory-finish kitchen cabinet painting cost in Woodbury, Irvine?", "a": "Cabinet refinishing is priced per door, drawer, and box face, itemized on every estimate — typically a fraction of the cost of cabinet replacement. Doors and drawers are sprayed off-site in urethane enamel; boxes are sprayed in place. Call (909) 312-5400 for an itemized quote." },
-        { "q": "Will painted cabinets chip or peel?", "a": "Not when the system is right. We use hard-curing urethane enamel over a full degrease-sand-prime sequence, with proper cure time before doors are re-hung. That's what 'factory finish' means — and it's backed by our 1-Year Warranty." },
-        { "q": "Do you also paint Woodbury home exteriors?", "a": "Yes — full exterior repaints with Sherwin-Williams Emerald and Duration systems applied by Graco and Titan airless spray, with landscaping and garden walls masked and protected. We handle the Woodbury community association's design review submission as part of the project." }
+        {
+          "q": "How much does factory-finish kitchen cabinet painting cost in Woodbury, Irvine?",
+          "a": "Cabinet refinishing is priced per door, drawer, and box face, itemized on every estimate — typically a fraction of the cost of cabinet replacement. Doors and drawers are sprayed off-site in urethane enamel; boxes are sprayed in place. Call (909) 312-5400 for an itemized quote."
+        },
+        {
+          "q": "Will painted cabinets chip or peel?",
+          "a": "Not when the system is right. We use hard-curing urethane enamel over a full degrease-sand-prime sequence, with proper cure time before doors are re-hung. That's what 'factory finish' means — and it's backed by our 1-Year Warranty."
+        },
+        {
+          "q": "Do you also paint Woodbury home exteriors?",
+          "a": "Yes — full exterior repaints with Sherwin-Williams Emerald and Duration systems applied by Graco and Titan airless spray, with landscaping and garden walls masked and protected. We handle the Woodbury community association's design review submission as part of the project."
+        }
       ],
       "extraColors": [
-        { "name": "Greek Villa", "code": "SW 7551", "hex": "#EFE9DC", "note": "A creamy white that suits Woodbury's Spanish Colonial detailing — warm in the paseos' filtered light." },
-        { "name": "Dorian Gray", "code": "SW 7017", "hex": "#ACA79E", "note": "A mid-tone gray for shutters and doors that pairs cleanly with both white and greige bodies." }
+        {
+          "name": "Greek Villa",
+          "code": "SW 7551",
+          "hex": "#EFE9DC",
+          "note": "A creamy white that suits Woodbury's Spanish Colonial detailing — warm in the paseos' filtered light."
+        },
+        {
+          "name": "Dorian Gray",
+          "code": "SW 7017",
+          "hex": "#ACA79E",
+          "note": "A mid-tone gray for shutters and doors that pairs cleanly with both white and greige bodies."
+        }
       ],
       "problems": [
-        { "p": "A 2005-era kitchen with solid cabinets but a tired, orange-toned finish.", "s": "Factory-finish cabinet refinishing: doors and drawers sprayed off-site in urethane enamel, boxes sprayed in place — a true furniture-grade result at a fraction of replacement cost." },
-        { "p": "Brush-painted cabinets that chip at the corners within a year.", "s": "We use catalyzed-hardness urethane enamel systems, proper degrease-sand-prime sequence, and cure time before re-hanging — that's what makes the finish last." },
-        { "p": "Exterior colors that have quietly faded a shade lighter than the neighbors'.", "s": "Sherwin-Williams Emerald exterior at full wet-mil by airless spray restores depth and holds it — with a 1-Year Warranty behind it." },
-        { "p": "Painters who overspray garden walls, paseos, and your neighbor's roses.", "s": "White-glove masking and containment on every Woodbury job — landscaping wrapped, hardscape covered, and a clean site every evening." }
+        {
+          "p": "A 2005-era kitchen with solid cabinets but a tired, orange-toned finish.",
+          "s": "Factory-finish cabinet refinishing: doors and drawers sprayed off-site in urethane enamel, boxes sprayed in place — a true furniture-grade result at a fraction of replacement cost."
+        },
+        {
+          "p": "Brush-painted cabinets that chip at the corners within a year.",
+          "s": "We use catalyzed-hardness urethane enamel systems, proper degrease-sand-prime sequence, and cure time before re-hanging — that's what makes the finish last."
+        },
+        {
+          "p": "Exterior colors that have quietly faded a shade lighter than the neighbors'.",
+          "s": "Sherwin-Williams Emerald exterior at full wet-mil by airless spray restores depth and holds it — with a 1-Year Warranty behind it."
+        },
+        {
+          "p": "Painters who overspray garden walls, paseos, and your neighbor's roses.",
+          "s": "White-glove masking and containment on every Woodbury job — landscaping wrapped, hardscape covered, and a clean site every evening."
+        }
       ],
       "portfolio": {
         "eyebrow": "The Woodbury Portfolio",
@@ -214,8 +414,8 @@
     {
       "slug": "stonegate",
       "name": "Stonegate",
-      "title": "Stonegate Irvine House Painters | HOA-Ready Exterior Painting — VIP",
-      "metaDescription": "Stonegate Irvine house painters — HOA-ready exterior repaints in Sherwin-Williams Emerald, Graco/Titan airless spray finishes, designer palettes (Alabaster, Chatura Gray, Iron Ore), complimentary color visualization, 1-Year Warranty. (909) 312-5400.",
+      "title": "Stonegate Irvine House Painters | HOA-Ready | VIP",
+      "metaDescription": "Stonegate Irvine house painters. HOA-ready color submissions, estate-grade spray finish, complimentary visualization, itemized estimates, 1-Year Warranty.",
       "primaryKeyword": "Stonegate Irvine house painters",
       "vizIntro": "Stonegate streets are tight, immaculate, and close enough that one repaint visibly resets the standard for the block — which is exactly why the wrong shade is so costly here. Three approved whites on a swatch card look nearly identical in your hand and completely different across a Santa Barbara facade in afternoon sun. Try full schemes on a real home below, then have our design team render your own elevation before you commit a dollar or submit anything to design review.",
       "heroEyebrow": "Stonegate · Irvine Home Painting",
@@ -227,22 +427,62 @@
         "hoaNote": "the Stonegate community association's design review",
         "settingNote": "sun-washed interior-Irvine exposure that ages flat builder paint quickly"
       },
-      "moduleOrder": ["portfolio", "process", "problemSolution", "colorGuide", "specs"],
-      "geo": { "lat": 33.7100, "lng": -117.7300 },
+      "moduleOrder": [
+        "portfolio",
+        "process",
+        "problemSolution",
+        "colorGuide",
+        "specs"
+      ],
+      "geo": {
+        "lat": 33.71,
+        "lng": -117.73
+      },
       "faqs": [
-        { "q": "Can you get my Stonegate exterior color change approved by the HOA?", "a": "We prepare the complete submission for the Stonegate community association's design review — approved-range swatches, Sherwin-Williams product data, and elevation callouts. We've formatted these packages many times, so approval is a step, not a stall." },
-        { "q": "How much does exterior painting cost in Stonegate, Irvine?", "a": "VIP exterior work starts at $4.75 per square foot of paintable surface — the premium end of the Irvine range — and most Stonegate homes price from there. Every estimate is itemized line by line with no hidden charges and includes a complimentary 30-minute custom color visualization. Call (909) 312-5400." },
-        { "q": "How do I choose between similar whites and greiges for my Stonegate home?", "a": "Don't choose from a paper swatch. Our complimentary Custom Visualization Service renders your actual elevation in each candidate — Alabaster SW 7008, Alpaca SW 7022, Chatura Gray SW 9169 — in real light, so the difference becomes obvious before you commit." }
+        {
+          "q": "Can you get my Stonegate exterior color change approved by the HOA?",
+          "a": "We prepare the complete submission for the Stonegate community association's design review — approved-range swatches, Sherwin-Williams product data, and elevation callouts. We've formatted these packages many times, so approval is a step, not a stall."
+        },
+        {
+          "q": "How much does exterior painting cost in Stonegate, Irvine?",
+          "a": "VIP exterior work starts at $4.75 per square foot of paintable surface — the premium end of the Irvine range — and most Stonegate homes price from there. Every estimate is itemized line by line with no hidden charges and includes a complimentary 30-minute custom color visualization. Call (909) 312-5400."
+        },
+        {
+          "q": "How do I choose between similar whites and greiges for my Stonegate home?",
+          "a": "Don't choose from a paper swatch. Our complimentary Custom Visualization Service renders your actual elevation in each candidate — Alabaster SW 7008, Alpaca SW 7022, Chatura Gray SW 9169 — in real light, so the difference becomes obvious before you commit."
+        }
       ],
       "extraColors": [
-        { "name": "Alpaca", "code": "SW 7022", "hex": "#CBC3B8", "note": "A gentle greige body color that photographs beautifully on Stonegate's Santa Barbara facades." },
-        { "name": "Iron Ore", "code": "SW 7069", "hex": "#434341", "note": "Doubled down as the accent of choice for Stonegate garage doors and shutters — deep, modern, HOA-friendly." }
+        {
+          "name": "Alpaca",
+          "code": "SW 7022",
+          "hex": "#CBC3B8",
+          "note": "A gentle greige body color that photographs beautifully on Stonegate's Santa Barbara facades."
+        },
+        {
+          "name": "Iron Ore",
+          "code": "SW 7069",
+          "hex": "#434341",
+          "note": "Doubled down as the accent of choice for Stonegate garage doors and shutters — deep, modern, HOA-friendly."
+        }
       ],
       "problems": [
-        { "p": "You want a color change, but the design review process feels opaque.", "s": "We prepare the complete submission — approved-range swatches, product data, elevation callouts — for your association's review, and we've formatted these packages many times." },
-        { "p": "Flat builder-grade paint has gone chalky after a decade of full sun.", "s": "Sherwin-Williams Emerald exterior, self-priming and UV-stable, applied at full wet-mil with Graco and Titan airless equipment." },
-        { "p": "Tight lot lines mean overspray risk on your neighbor's car, wall, and roses.", "s": "Containment-first spraying: wind-checked scheduling, full masking, and shielded application on zero-setback elevations." },
-        { "p": "Choosing between three whites that all look identical on a paper swatch.", "s": "Our complimentary custom color visualization puts each one on your actual elevation in real light — the difference becomes obvious in minutes." }
+        {
+          "p": "You want a color change, but the design review process feels opaque.",
+          "s": "We prepare the complete submission — approved-range swatches, product data, elevation callouts — for your association's review, and we've formatted these packages many times."
+        },
+        {
+          "p": "Flat builder-grade paint has gone chalky after a decade of full sun.",
+          "s": "Sherwin-Williams Emerald exterior, self-priming and UV-stable, applied at full wet-mil with Graco and Titan airless equipment."
+        },
+        {
+          "p": "Tight lot lines mean overspray risk on your neighbor's car, wall, and roses.",
+          "s": "Containment-first spraying: wind-checked scheduling, full masking, and shielded application on zero-setback elevations."
+        },
+        {
+          "p": "Choosing between three whites that all look identical on a paper swatch.",
+          "s": "Our complimentary custom color visualization puts each one on your actual elevation in real light — the difference becomes obvious in minutes."
+        }
       ],
       "portfolio": {
         "eyebrow": "The Stonegate Portfolio",
