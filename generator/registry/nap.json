@@ -11,5 +11,11 @@
     "sun": "closed"
   },
   "gbpUrl": "https://g.page/viphomepainting",
-  "serviceAreaNote": "Service-area business — no public street address. Never publish a fabricated address."
+  "serviceAreaNote": "Service-area business — no public street address. Never publish a fabricated address.",
+  "businessAddress": {
+    "locality": "Anaheim",
+    "region": "CA",
+    "country": "US",
+    "note": "Service-area business. Real base city only — no street address published. NEVER set addressLocality to a city VIP does not operate from; that is a fabricated location claim and a GBP suspension risk."
+  }
 }

@@ -327,8 +327,21 @@ function jsonLd(c, url) {
     telephone: CFG.phoneE164,
     email: CFG.email,
     priceRange: '$$$',
-    address: { '@type': 'PostalAddress', addressLocality: 'Irvine', addressRegion: 'CA', addressCountry: 'US' },
+    /* Service-area business. `address` must be the city VIP actually operates
+       from — never the city being marketed to. Claiming an address in a city
+       you don't operate from is a fabricated location: a GBP suspension risk
+       and a trust problem. The marketed area belongs in `areaServed`.
+       Google requires an address on LocalBusiness even for SABs, so we publish
+       the real base locality with no street address. */
+    address: { '@type': 'PostalAddress', addressLocality: 'Anaheim', addressRegion: 'CA', addressCountry: 'US' },
     hasMap: CFG.gbpUrl,
+    /* GeoCircle is the schema.org-sanctioned way to express a service radius
+       for a business without a storefront in the area it serves. */
+    serviceArea: {
+      '@type': 'GeoCircle',
+      geoMidpoint: { '@type': 'GeoCoordinates', latitude: c.geo.lat, longitude: c.geo.lng },
+      geoRadius: 16000
+    },
     areaServed: [
       {
         '@type': 'Place',
