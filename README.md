@@ -12,12 +12,12 @@ This design system is the source of truth for every VIP Home Painting touchpoint
 | File / folder | What's inside |
 |---|---|
 | `README.md` | This file. Brand context, content + visual foundations, iconography. |
-| `SKILL.md` | Agent Skill manifest — how Claude (Code or otherwise) should pick up this system. |
-| `colors_and_type.css` | All design tokens — colors, type ramp, spacing, radii, shadows, gradients, motion. Import this once. |
+| `design-system/SKILL.md` | Agent Skill manifest — how Claude (Code or otherwise) should pick up this system. |
+| `design-system/colors_and_type.css` | All design tokens — colors, type ramp, spacing, radii, shadows, gradients, motion. Import this once. |
 | `assets/logos/` | Paintbrush-crown logo (primary + stacked split). |
 | `assets/badges/` | Gold laurel trust badges — "Custom Color Schemes" and "Our Insane 1-Year Warranty". |
 | `assets/icons/` | Brand-styled icons (subset; see ICONOGRAPHY below). |
-| `fonts/` | Webfonts — currently Google-hosted via `colors_and_type.css` (see Fonts note). |
+| `fonts/` | Webfonts — currently Google-hosted via `design-system/colors_and_type.css` (see Fonts note). |
 | `preview/` | Design-system specimen cards rendered in the Design System tab. |
 | `ui_kits/sales-page/` | Hi-fi React UI kit recreating the mobile sales page. Click-thru prototype lives at `index.html`. |
 | `reference/` | Source materials — copy template, asset guide, design prompt — preserved for reference. |
@@ -113,7 +113,7 @@ VIP copy reads like a sophisticated direct-response sales page wearing a luxury 
 - **Fraunces (variable serif)** — every headline (H1/H2/H3/H4) and the H1 callout in the hero. Optical-size axis tuned to display at large sizes; we use Semi-Bold (600) by default for headlines and Bold (700) for max-impact.
 - **Inter (sans)** — body, labels, buttons, captions, navigation. Weights: Regular 400, Medium 500, Semi-Bold 600, Bold 700.
 - **Drop caps** on case-study paragraphs — Fraunces Bold, gold (`#FF8210`), 3.6× line-height, classic editorial styling.
-- **Type ramp** is encoded as CSS vars (`--fs-display` → `--fs-caption`) in `colors_and_type.css`.
+- **Type ramp** is encoded as CSS vars (`--fs-display` → `--fs-caption`) in `design-system/colors_and_type.css`.
 
 ### Spacing & layout
 - **Mobile-first, max-width 520px**, content centered. Desktop is the same column with more breathing room around it (no multi-column reflows; the 520 max is intentional — preserves the editorial sales-letter feel).
@@ -223,7 +223,7 @@ VIP Home Painting uses **two parallel icon systems** that should never be mixed 
 - Trailing period after the number ("1.", "2.", "3.") — matches the copy template.
 
 ### Drop caps
-- The first letter of case-study paragraphs in Fraunces Bold, sized 3.6× the body, colored gold. Acts as both decoration and reading anchor. Encoded as `.vip-dropcap` in `colors_and_type.css`.
+- The first letter of case-study paragraphs in Fraunces Bold, sized 3.6× the body, colored gold. Acts as both decoration and reading anchor. Encoded as `.vip-dropcap` in `design-system/colors_and_type.css`.
 
 ### What we do NOT use
 - **No emoji.** Anywhere.
@@ -243,17 +243,17 @@ VIP Home Painting uses **two parallel icon systems** that should never be mixed 
 
 The current brand rule is **Fraunces (headlines) + Inter (body)**. The original asset guide referenced Cormorant Garamond + Montserrat + Poppins.
 
-We're loading **Fraunces** and **Inter** from Google Fonts via `colors_and_type.css`. Both are open-source and a perfect match for the brand rule — no substitution required. If you'd like local TTF/WOFF2 files for Figma or offline use, ask and we'll vendor them into `fonts/`.
+We're loading **Fraunces** and **Inter** from Google Fonts via `design-system/colors_and_type.css`. Both are open-source and a perfect match for the brand rule — no substitution required. If you'd like local TTF/WOFF2 files for Figma or offline use, ask and we'll vendor them into `fonts/`.
 
 ---
 
 ## How to use this system
 
-1. **Import the tokens:** `<link rel="stylesheet" href="colors_and_type.css">` once.
+1. **Import the tokens:** `<link rel="stylesheet" href="design-system/colors_and_type.css">` once.
 2. **Reference assets** from `assets/logos/`, `assets/badges/`, `assets/icons/`.
 3. **For new screens, start from `ui_kits/sales-page/`** — it has the hero, video story card, process-steps, case-study, warranty badge, testimonials, and the popup CTA modal.
 4. **Follow the brand rules at the top of this file** — especially the no-AI naming and the navy-shadow rule.
-5. **For new agents:** read `SKILL.md`.
+5. **For new agents:** read `design-system/SKILL.md`.
 
 ---
 

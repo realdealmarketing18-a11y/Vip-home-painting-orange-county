@@ -57,8 +57,8 @@ renders of a real estate transform live.
   Gallagher couple photo in the hero avatar pill.
 - Deleted per client: the old "Exclusive Offers / $750 OFF / FREE consult / FREE pressure
   wash" block, and the old standalone sales pages that used to sit at repo root.
-- Repo root still keeps the design-system reference: `colors_and_type.css`,
-  `components.css`, `SKILL.md`, `README.md` (client chose to keep these).
+- Repo root still keeps the design-system reference: `design-system/colors_and_type.css`,
+  `design-system/components.css`, `design-system/SKILL.md`, `README.md` (client chose to keep these).
 
 **Half-finished / soft spots:** see OPEN ISSUES.
 
@@ -90,7 +90,7 @@ renders of a real estate transform live.
   9 addition renders + 9 `thumb-*.jpg` product shots, `combo-manifest.txt`.
 - Repo root: `index.html` (redirect page), `.nojekyll`, `.gitignore` (+`*.log`),
   deleted `VIP Home Painting Sales Page (standalone).html` + `VIP-Sales-Page-Desktop-standalone.html`.
-- `HANDOFF.md` (this file).
+- `docs/HANDOFF.md` (this file).
 
 ## 4. DECISIONS (easy to accidentally undo — don't)
 

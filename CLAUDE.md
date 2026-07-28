@@ -105,6 +105,13 @@ pages from being filtered as doorway pages.
 
 ---
 
+## REPO LAYOUT
+
+\
+**Nothing loose at root.** Only files that technically must live there —
+, ,  (redirect), , .
+Everything else goes in a folder. See .
+
 ## GOTCHAS
 
 - **Don't write to `~/VIP-Lead-Machine/`** — it runs a vault-backup process that deletes

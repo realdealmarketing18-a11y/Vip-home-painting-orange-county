@@ -8,7 +8,7 @@
 
 ## Read these in order
 1. `README.md` — full brand voice, content fundamentals, visual foundations, iconography rules.
-2. `colors_and_type.css` — every design token. Import once: `<link rel="stylesheet" href="colors_and_type.css">`.
+2. `design-system/colors_and_type.css` — every design token. Import once: `<link rel="stylesheet" href="colors_and_type.css">`.
 3. `ui_kits/sales-page/index.html` — the canonical mobile sales page. Copy patterns from here.
 4. `reference/Sales-Page-Copy-Template-1.md` — exact approved copy for the Inland Empire sales page.
 
