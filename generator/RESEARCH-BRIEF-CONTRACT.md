@@ -8,6 +8,11 @@ builds and interlinks the whole cluster in a single pass.
 
 **Rule:** Marcus writes this file. Seraphina reads this file. Nothing else passes between them.
 
+**Every cluster has THREE page types:**
+1. **City page** — `/irvine/` — the hub
+2. **Community pages** — `/irvine/orchard-hills/` — homeowners (B2C)
+3. **HOA page** — `/irvine/hoa-painting/` — association boards and property managers (B2B)
+
 **File location:** `C:\Users\Owner\oc-site\generator\briefs\{city-slug}.json`
 
 > ⚠️ **Never write briefs to `~/VIP-Lead-Machine/`.** That repo runs an automatic vault-backup
@@ -222,6 +227,68 @@ One file. `city` holds everything researched once. `communities[]` holds only th
   ]
 }
 ```
+
+---
+
+## THE HOA PAGE — required in every cluster
+
+A **different buyer**: boards and property managers buying **common-area** painting on
+recurring maintenance contracts, not homeowners buying a house repaint.
+
+```json
+"hoa": {
+  "page_type": "hoa",
+  "slug": "hoa-painting",
+  "management_companies": [
+    { "name": "Keystone Pacific Property Management", "phone": "(949) 833-2600",
+      "url": "https://www.kppm.com/",
+      "manages": ["Woodbury Community Association","Groves at Orchard Hills",
+                  "Orchard Hills Village II","Portola Springs","Stonegate Village Owners Association"],
+      "vendor_portal": null, "source": "kppm.com press release + portolasprings.org" }
+  ],
+  "associations": [
+    { "community": "woodbury", "name": "Woodbury Community Association", "units": 4067,
+      "manager": "Keystone Pacific",
+      "amenities": ["pools","tennis courts","clubhouse","multiple parks"],
+      "source": "https://www.kppm.com/woodbury-community-association-..." }
+  ],
+  "official_source": "https://cityofirvine.gov/community-development/irvine-homeowners-associations",
+  "common_area_scope": ["clubhouse","pool house","perimeter walls","monuments",
+                        "guard houses","park structures","mailbox kiosks","wrought iron"],
+  "layout": { "module_order": ["scope","process","compliance","spec","references","bid_cta"] },
+  "seo": { "primary_keyword": "HOA painting contractor Irvine",
+           "meta_title": "", "meta_desc": "", "h1": "",
+           "answer_capsule": "", "viz_intro": "" },
+  "faqs": []
+}
+```
+
+### Required for the HOA page
+
+`management_companies` (min 1, **with source**), `associations` (min 3, with unit counts
+where published), `official_source`, `common_area_scope`, `layout.module_order`, full `seo`,
+`faqs` (min 4).
+
+### Research order — authoritative sources first
+
+1. **The city's official HOA lookup**, if it publishes one. Irvine does:
+   `cityofirvine.gov/community-development/irvine-homeowners-associations` — maps parcels to
+   HOA name and management company. A government primary source satisfies the never-invent
+   rule outright. **Always check for this first in every new city.**
+2. Management company sites (press releases name the associations they win)
+3. Association sites (`portolasprings.org`, `livinghiddencanyon.com`)
+4. Listing/neighborhood guides — **corroboration only**, never the sole source
+
+### Copy rules specific to HOA pages
+
+- The CTA is **"Request a bid"**, not "book a consultation" — boards procure, they don't shop
+- Lead with **compliance and documentation**: itemized bids, insurance certificates, licensing,
+  scheduled work windows, resident notification
+- The visualization service is a **governance** tool here: a board voting on a clubhouse color
+  can show residents the rendered result first, which removes the political risk from the vote
+- **Disambiguate similarly-named associations.** Irvine has both "Stonegate Village Owners
+  Association" (our target) and a separate 126-unit "Stonegate Homeowners Association, Inc."
+  from 1973. Confusing them puts false information on the page.
 
 ---
 

@@ -36,6 +36,33 @@ So: research Irvine/Newport for **organic + content** dominance. Research Anahei
 
 ---
 
+## THE SECOND BUYER — HOA / property managers (B2B)
+
+Every cluster needs an HOA page (`/{city}/hoa-painting/`) alongside the homeowner pages.
+Boards and management companies buy **common-area** painting on recurring maintenance
+cycles: clubhouses, pool houses, perimeter walls, monuments, guard houses, park structures,
+iron fencing.
+
+**Why it outweighs its page count:** in Irvine one company — Keystone Pacific — manages at
+least four of the six target villages, including Woodbury Community Association at **4,067
+units**. One relationship reaches thousands of units. No competitor in either market markets
+to HOAs — the same gap as color visualization.
+
+**Always check the city's official HOA lookup first.** Irvine publishes one at
+`cityofirvine.gov/community-development/irvine-homeowners-associations`, mapping parcels to
+HOA name and management company — a government primary source that satisfies the
+never-invent rule outright. Look for the equivalent in every new city.
+
+**Disambiguate similarly-named associations.** Irvine has both "Stonegate Village Owners
+Association" (our target) and a separate 126-unit "Stonegate Homeowners Association, Inc."
+from 1973. Confusing them puts false information on a page.
+
+The CTA is **request a bid**, not book a consultation — boards procure, they don't shop.
+Visualization is a **governance** tool here: a board voting on a clubhouse color can show
+residents the rendered result first, removing the political risk from the vote.
+
+---
+
 ## THE FRAMEWORK — why local landing pages fail
 
 The #1 risk for programmatic local pages is being classified as **doorway pages**: many

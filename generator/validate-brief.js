@@ -249,12 +249,17 @@ for (const c of communities) {
   }
 }
 
-/* ---------------- NAP consistency ---------------- */
-const blob = JSON.stringify(brief);
-if (NAP.phone && !blob.includes(NAP.phone)) warn(`NAP: phone ${NAP.phone} appears nowhere in the brief`);
-const badPhone = blob.match(/\(\d{3}\) \d{3}-\d{4}/g) || [];
+/* ---------------- NAP consistency ----------------
+   Only customer-facing copy may carry a phone number, and it must be VIP's.
+   Research fields legitimately contain third-party numbers (management
+   companies, competitors) — scanning the whole brief would flag those. */
+const copyBlob = JSON.stringify(pages.map(p => ({ seo: p.seo, faqs: p.faqs, urgency: p.urgency, pricing: p.pricing })));
+const badPhone = copyBlob.match(/\(\d{3}\) \d{3}-\d{4}/g) || [];
 for (const ph of new Set(badPhone)) {
-  if (NAP.phone && ph !== NAP.phone) fail(`NAP: phone "${ph}" does not match registry (${NAP.phone})`);
+  if (NAP.phone && ph !== NAP.phone) fail(`NAP: customer-facing copy contains phone "${ph}", not VIP's ${NAP.phone}`);
+}
+if (CHECK_COPY && NAP.phone && !copyBlob.includes(NAP.phone)) {
+  warn(`NAP: VIP's phone ${NAP.phone} appears in no customer-facing copy field`);
 }
 
 /* ---------------- report ---------------- */
