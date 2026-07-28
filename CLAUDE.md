@@ -107,10 +107,23 @@ pages from being filtered as doorway pages.
 
 ## REPO LAYOUT
 
-\
-**Nothing loose at root.** Only files that technically must live there —
-, ,  (redirect), , .
-Everything else goes in a folder. See .
+```
+CLAUDE.md                    auto-loads every session
+context/                     who we are, who we serve, what we sell, how we sound
+generator/                   build system, agents, research, briefs, registries
+design-system/               brand tokens, components, the design SKILL.md
+docs/                        HANDOFF.md and long-form docs
+irvine/                      generated community pages — do not hand-edit
+orange-county-sales-page/    the OC page + all shared assets
+scroll-demo/                 scroll-world prototype
+index.html robots.txt sitemap.xml    must sit at root
+```
+
+**Nothing loose at root.** Only files that technically must live there: `CLAUDE.md`,
+`README.md`, `index.html` (the redirect), `robots.txt`, `sitemap.xml`. Everything else goes
+in a folder — see `context/FABIAN.md`.
+
+---
 
 ## GOTCHAS
 
