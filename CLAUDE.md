@@ -19,10 +19,18 @@ pack, ahead of competitors who have been there longer.
 
 ---
 
-## READ FIRST (business context — the source of truth)
+## READ FIRST
+
+> ### ⚠️ `context/FABIAN.md` — read this before any task.
+> How Fabian works, and it wins when anything conflicts. In short: **short plan before
+> building anything bigger than a quick fix · never say it's done without showing it works ·
+> if a fix feels hacky, redo it right · plain English, he's not a developer · every project
+> in its own folder, nothing loose at root.** He runs on speed and momentum — ship real today
+> over perfect next month, but never ship something false.
 
 | File | What it settles |
 |---|---|
+| **`context/FABIAN.md`** | **How to work. Read first.** |
 | **`context/ABOUT-VIP.md`** | Who VIP is. **Facts only — if a claim isn't verified here, it does not go on a page.** Ends with 8 unverified items. |
 | **`context/DREAM-CUSTOMER.md`** | Who we target and how it changes decisions. Every section ends with a "do differently" instruction. |
 | **`context/OFFER.md`** | What we actually sell. Everything ladders to this. |
