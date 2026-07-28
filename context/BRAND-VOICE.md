@@ -4,12 +4,34 @@ Rules with examples. If a sentence could appear on any painter's website, rewrit
 
 ---
 
+## BRAND VOICE & COPYWRITING GUIDELINES
+
+Our messaging speaks directly to **ultra-high-net-worth (UHNW) estate owners in Southern
+California**. The tone is **professional, high-end, and aspirational**. It is never generic,
+clinical, or sales-heavy.
+
+---
+
 ## THE VOICE IN THREE WORDS
 
 **Quiet authority.** Editorial, not salesy. We are the expensive option and comfortable
 saying so — no exclamation marks, no urgency theater, no shouting.
 
 Think a well-edited home magazine, not a contractor flyer.
+
+### Two clarifications that keep this consistent
+
+**"Aspirational" is not hype.** For a UHNW reader, aspiration comes from restraint and
+specificity — the confidence that we know exactly what their architecture needs. It does not
+come from adjectives. The hype-word ban below still holds; *stunning* and *jaw-dropping* read
+as downmarket to this audience, not aspirational.
+
+**UHNW is the north star, not every reader.** Tier 1 communities are genuinely UHNW
+estate owners — Hidden Canyon $9.15M, Altair $4.59M, Orchard Hills $3.51M. Tier 2 —
+Stonegate $1.82M, Portola Springs, Woodbury — are affluent but not estate-scale. **The
+quality of the voice never drops between tiers**; what changes is what we assume about the
+reader. Never write to a Stonegate owner as though they employ a household staff. See the
+tier table in Rule 4.
 
 ---
 
