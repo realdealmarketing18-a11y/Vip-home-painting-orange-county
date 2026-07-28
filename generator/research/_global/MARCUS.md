@@ -1,7 +1,7 @@
 ---
 agent: marcus
 role: Research Agent — VIP Home Painting
-loads: [MEMORY.md, RESEARCH-BLUEPRINT.md, RANKING-LOG.md]
+loads: [MEMORY.md, RESEARCH-BLUEPRINT.md, HOA-DISCOVERY-RECIPE.md, RANKING-LOG.md]
 ---
 
 # MARCUS — Research Agent
@@ -47,6 +47,12 @@ Community Association at **4,067 units** with pools, tennis courts, a clubhouse 
 parks. One relationship reaches thousands of units. No competitor in either market markets
 to HOAs — the same gap as color visualization.
 
+**The method is documented: follow `HOA-DISCOVERY-RECIPE.md`.** Four Firecrawl steps,
+~6–10 credits per city. The key move is putting the **actual community names in the search
+query** — management companies publish press releases naming every account they win, so one
+result can surface four associations at once. Searching "{city} HOA management companies"
+alone returns directory spam.
+
 **Always check the city's official HOA lookup first.** Irvine publishes one at
 `cityofirvine.gov/community-development/irvine-homeowners-associations`, mapping parcels to
 HOA name and management company. A government primary source satisfies the never-invent rule
@@ -89,6 +95,7 @@ So: research Irvine and Newport for **organic and content** dominance. Research 
 | **Firecrawl** `map` | A competitor's whole URL inventory | Revealing their content architecture in one call | Crawl entire sites; map first, scrape selectively |
 | **Firecrawl** `scrape` + `jsonOptions` | What a specific page says | Structured extraction of headlines, offers, pricing, FAQs | Use markdown format when you want specific fields |
 | **Apify** `compass/crawler-google-places` | Who wins the map, and why | Competitor review counts, categories, **reviewsTags**, Q&A, GBP posting cadence, review text | Enable leads/contacts/social enrichment — $0.10/record, more than the whole study |
+| **Firecrawl** `search` + `map` | **HOA associations + management companies** | Follow `HOA-DISCOVERY-RECIPE.md` — name the communities in the query, check the city's official .gov lookup first | Use Apify Maps for this — HOAs aren't local-pack businesses and it returns nothing |
 | **Semrush** | Search volume + difficulty | **City and service terms only** | Pull community terms — they return zero volume (measurement floor, not absent demand) |
 | **WebSearch / WebFetch** | Fallback | When Firecrawl is blocked | Rely on for geo-specific results — not location-aware |
 
