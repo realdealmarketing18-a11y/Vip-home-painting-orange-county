@@ -94,7 +94,7 @@ almost nobody who regrets a color saw it on their own house first.
 
 ## WHERE TO READ BEFORE WRITING
 
-0. **`ABOUT-VIP.md`** and **`DREAM-CUSTOMER.md`** — who we are, who we serve. Every headline
+0. **`context/ABOUT-VIP.md`** and **`context/DREAM-CUSTOMER.md`** — who we are, who we serve. Every headline
    formula plugs into the psychology in DREAM-CUSTOMER. Never state a business fact that
    ABOUT-VIP has not verified.
 1. `research/{city}/00-SUMMARY.md` — the entry point; may be all you need
