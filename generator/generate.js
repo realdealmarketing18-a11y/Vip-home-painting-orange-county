@@ -152,13 +152,14 @@ function heroStory(story, name, A) {
           <div class="sub-line">${esc(story.client_location || '')}</div></div></div>
       </div>` : ''}
 
-      ${story.youtube_id ? `<div class="play-wrap">
-        <button class="play-btn yt-facade" data-yt="${story.youtube_id}"
+      <div class="play-wrap">
+        <button class="play-btn film-play"
+                ${story.youtube_id ? `data-yt="${story.youtube_id}"` : `data-film="${A}/video/gallagher-ambient.mp4"`}
                 aria-label="Watch the film: ${esc(story.headline.replace(/<[^>]+>/g, ''))}">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
         </button>
         <div class="play-label">${esc(story.play_label || 'Watch the Film')}</div>
-      </div>` : ''}
+      </div>
 
       <div class="hero-cta-wrap">
         ${ctaButton('Claim Complimentary Color Consultation', 'Irresistible Painting Estimates Included')}
@@ -577,6 +578,7 @@ ${BASE_CSS}
 ${FAQ_CSS}
 /* === Community-page overrides + modules (generator/page.css) === */
 ${CSS}
+${FILM_CSS}
 </style>
 </head>
 <body>
@@ -719,6 +721,60 @@ ${faqSection(c, c.moduleOrder.length + 3)}
 
 </div>
 ${VIZ_JS}
+<script>
+/* "Watch the Film" — opens a lightbox over the page. Nothing loads until
+   the button is clicked, so an unwatched film costs nothing. Handles both a
+   YouTube id (once the Irvine commercials exist) and a local mp4 (today). */
+(function () {
+  var btns = document.querySelectorAll(".film-play, .yt-facade, .yt-short");
+  if (!btns.length) return;
+  var modal, stage;
+  function build() {
+    modal = document.createElement("div");
+    modal.className = "film-modal";
+    modal.innerHTML = '<div class="film-stage"><button class="film-close" aria-label="Close film">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">' +
+      '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Close</button></div>';
+    document.body.appendChild(modal);
+    stage = modal.querySelector(".film-stage");
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal || e.target.closest(".film-close")) close();
+    });
+  }
+  function close() {
+    modal.classList.remove("open");
+    document.body.style.overflow = "";
+    var m = stage.querySelector("video, iframe");
+    if (m) m.remove();
+  }
+  function open(el) {
+    if (!modal) build();
+    var yt = el.getAttribute("data-yt");
+    var film = el.getAttribute("data-film");
+    var media;
+    if (yt) {
+      media = document.createElement("iframe");
+      media.src = "https://www.youtube-nocookie.com/embed/" + yt + "?autoplay=1&rel=0";
+      media.title = "VIP Home Painting film";
+      media.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture";
+      media.allowFullscreen = true;
+    } else if (film) {
+      media = document.createElement("video");
+      media.src = film;
+      media.controls = true; media.autoplay = true; media.playsInline = true;
+    } else { return; }
+    stage.appendChild(media);
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  btns.forEach(function (b) {
+    b.addEventListener("click", function (e) { e.preventDefault(); open(b); });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && modal && modal.classList.contains("open")) close();
+  });
+})();
+</script>
 </body>
 </html>
 `;
@@ -730,6 +786,7 @@ ${VIZ_JS}
 
 const CITY_MODULES = require('./city-modules.js');
 const CITY_CSS = fs.readFileSync(path.join(__dirname, 'city-page.css'), 'utf8');
+const FILM_CSS = fs.readFileSync(path.join(__dirname, 'film-player.css'), 'utf8');
 const CITIES_PATH = path.join(__dirname, 'cities.json');
 const CITIES = fs.existsSync(CITIES_PATH) ? JSON.parse(fs.readFileSync(CITIES_PATH, 'utf8')) : { cities: [] };
 
@@ -916,6 +973,7 @@ ${BASE_CSS}
 ${FAQ_CSS}
 ${CSS}
 ${CITY_CSS}
+${FILM_CSS}
 </style>
 </head>
 <body>
@@ -1035,19 +1093,58 @@ ${faqSec}
 </div>
 ${VIZ_JS}
 <script>
-/* YouTube facade — the real iframe only loads on click, so an unplayed
-   video costs nothing in page weight or LCP. */
-document.querySelectorAll('.yt-facade, .yt-short').forEach(function (el) {
-  el.addEventListener('click', function () {
-    var id = el.getAttribute('data-yt');
-    var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
-    f.title = 'VIP Home Painting video';
-    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture';
-    f.allowFullscreen = true;
-    el.replaceWith(f);
+/* "Watch the Film" — opens a lightbox over the page. Nothing loads until
+   the button is clicked, so an unwatched film costs nothing. Handles both a
+   YouTube id (once the Irvine commercials exist) and a local mp4 (today). */
+(function () {
+  var btns = document.querySelectorAll(".film-play, .yt-facade, .yt-short");
+  if (!btns.length) return;
+  var modal, stage;
+  function build() {
+    modal = document.createElement("div");
+    modal.className = "film-modal";
+    modal.innerHTML = '<div class="film-stage"><button class="film-close" aria-label="Close film">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">' +
+      '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Close</button></div>';
+    document.body.appendChild(modal);
+    stage = modal.querySelector(".film-stage");
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal || e.target.closest(".film-close")) close();
+    });
+  }
+  function close() {
+    modal.classList.remove("open");
+    document.body.style.overflow = "";
+    var m = stage.querySelector("video, iframe");
+    if (m) m.remove();
+  }
+  function open(el) {
+    if (!modal) build();
+    var yt = el.getAttribute("data-yt");
+    var film = el.getAttribute("data-film");
+    var media;
+    if (yt) {
+      media = document.createElement("iframe");
+      media.src = "https://www.youtube-nocookie.com/embed/" + yt + "?autoplay=1&rel=0";
+      media.title = "VIP Home Painting film";
+      media.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture";
+      media.allowFullscreen = true;
+    } else if (film) {
+      media = document.createElement("video");
+      media.src = film;
+      media.controls = true; media.autoplay = true; media.playsInline = true;
+    } else { return; }
+    stage.appendChild(media);
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  btns.forEach(function (b) {
+    b.addEventListener("click", function (e) { e.preventDefault(); open(b); });
   });
-});
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && modal && modal.classList.contains("open")) close();
+  });
+})();
 </script>
 </body>
 </html>
@@ -1183,6 +1280,7 @@ ${FAQ_CSS}
 ${CSS}
 ${CITY_CSS}
 ${HOA_CSS}
+${FILM_CSS}
 </style>
 </head>
 <body>
@@ -1283,6 +1381,60 @@ ${faqSec}
   </footer>
 
 </div>
+<script>
+/* "Watch the Film" — opens a lightbox over the page. Nothing loads until
+   the button is clicked, so an unwatched film costs nothing. Handles both a
+   YouTube id (once the Irvine commercials exist) and a local mp4 (today). */
+(function () {
+  var btns = document.querySelectorAll(".film-play, .yt-facade, .yt-short");
+  if (!btns.length) return;
+  var modal, stage;
+  function build() {
+    modal = document.createElement("div");
+    modal.className = "film-modal";
+    modal.innerHTML = '<div class="film-stage"><button class="film-close" aria-label="Close film">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">' +
+      '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Close</button></div>';
+    document.body.appendChild(modal);
+    stage = modal.querySelector(".film-stage");
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal || e.target.closest(".film-close")) close();
+    });
+  }
+  function close() {
+    modal.classList.remove("open");
+    document.body.style.overflow = "";
+    var m = stage.querySelector("video, iframe");
+    if (m) m.remove();
+  }
+  function open(el) {
+    if (!modal) build();
+    var yt = el.getAttribute("data-yt");
+    var film = el.getAttribute("data-film");
+    var media;
+    if (yt) {
+      media = document.createElement("iframe");
+      media.src = "https://www.youtube-nocookie.com/embed/" + yt + "?autoplay=1&rel=0";
+      media.title = "VIP Home Painting film";
+      media.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture";
+      media.allowFullscreen = true;
+    } else if (film) {
+      media = document.createElement("video");
+      media.src = film;
+      media.controls = true; media.autoplay = true; media.playsInline = true;
+    } else { return; }
+    stage.appendChild(media);
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  btns.forEach(function (b) {
+    b.addEventListener("click", function (e) { e.preventDefault(); open(b); });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && modal && modal.classList.contains("open")) close();
+  });
+})();
+</script>
 </body>
 </html>
 `;
