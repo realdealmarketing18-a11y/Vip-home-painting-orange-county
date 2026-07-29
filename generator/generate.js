@@ -515,8 +515,8 @@ ${CSS}
         <div class="sb">No questions asked</div></div>
       <div class="cell">
         ${SVG_STAR}
-        <div class="lb">5-Star Rated</div>
-        <div class="sb">Irvine's trusted crews</div></div>
+        <div class="lb">Licensed &amp; Insured</div>
+        <div class="sb">Bonded in California</div></div>
       <div class="cell">
         ${SVG_CLOCK}
         <div class="lb">5-Day Transformations</div>
@@ -745,7 +745,7 @@ function buildCityPage(c) {
   const navLinks = ['<a href="#viz">Visualize</a>']
     .concat(rendered.filter(k => NAV[k]).map(k => `<a href="#${NAV_ID[k] || k}">${NAV[k]}</a>`))
     .concat(hasFaqs ? ['<a href="#faq">FAQ</a>'] : [])
-    .concat(['<a href="#quote">Free Quote</a>'])
+    .concat(['<a href="#quote">Get a Quote</a>'])
     .join('\n      ');
 
   const footerCommunities = kids
@@ -1210,6 +1210,28 @@ Sitemap: ${CFG.siteBase}/sitemap.xml
 `;
 }
 
+/* ---------------- OUTPUT AUDIT ----------------
+   The brief validator checks the brief. It cannot see strings hardcoded in
+   this generator — which is exactly how "Free Quote" reached a live page.
+   This scans the RENDERED output, which is the only thing customers read. */
+
+function auditOutput(html, label) {
+  const body = html
+    .replace(/<script[\s\S]*?<\/script>/g, '')
+    .replace(/<style[\s\S]*?<\/style>/g, '')
+    .replace(/<!--[\s\S]*?-->/g, '');
+  const problems = [];
+  const hits = (re) => (body.match(re) || []).length;
+  if (hits(/\bfree\b/gi)) problems.push('"free" — use "complimentary"');
+  if (hits(/\bAI\b/g)) problems.push('"AI" — use "our design team"');
+  if (hits(/\bcolour/gi)) problems.push('British "colour" — US spelling');
+  if (hits(/aggregateRating|5-Star Rated/gi)) problems.push('review/rating claim — VIP has 9 reviews, unconfirmed');
+  if (/\b(averages?)\b[^.]{0,40}\$/i.test(body)) problems.push('market-average price claim');
+  const phones = [...new Set(body.match(/\(\d{3}\) \d{3}-\d{4}/g) || [])];
+  for (const p of phones) if (p !== CFG.phone) problems.push(`wrong phone "${p}"`);
+  if (problems.length) throw new Error(`${label} failed the output audit:\n     - ${problems.join('\n     - ')}`);
+}
+
 /* ---------------- VALIDATE + RUN ---------------- */
 
 function validate() {
@@ -1233,18 +1255,24 @@ function main() {
   for (const c of DATA.communities) {
     const dir = path.join(ROOT, CFG.outputDir, c.slug);
     fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(path.join(dir, 'index.html'), buildPage(c), 'utf8');
+    const html = buildPage(c);
+    auditOutput(html, `irvine/${c.slug}`);
+    fs.writeFileSync(path.join(dir, 'index.html'), html, 'utf8');
     console.log(`  ✓ ${CFG.outputDir}/${c.slug}/index.html  [${c.moduleOrder.join(' → ')}]`);
   }
   for (const city of CITIES.cities) {
     const dir = path.join(ROOT, city.slug);
     fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(path.join(dir, 'index.html'), buildCityPage(city), 'utf8');
+    const chtml = buildCityPage(city);
+    auditOutput(chtml, `${city.slug} (city)`);
+    fs.writeFileSync(path.join(dir, 'index.html'), chtml, 'utf8');
     console.log(`  ✓ ${city.slug}/index.html  [CITY: ${(city.layout.module_order||[]).length} modules]`);
     if (city.hoa_page) {
       const hdir = path.join(ROOT, city.slug, city.hoa_page.slug);
       fs.mkdirSync(hdir, { recursive: true });
-      fs.writeFileSync(path.join(hdir, 'index.html'), buildHoaPage(city.hoa_page, city), 'utf8');
+      const hhtml = buildHoaPage(city.hoa_page, city);
+      auditOutput(hhtml, `${city.slug}/${city.hoa_page.slug} (hoa)`);
+      fs.writeFileSync(path.join(hdir, 'index.html'), hhtml, 'utf8');
       console.log(`  ✓ ${city.slug}/${city.hoa_page.slug}/index.html  [HOA: ${(city.hoa_page.layout.module_order||[]).length} modules]`);
     }
   }

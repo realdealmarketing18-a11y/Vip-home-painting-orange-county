@@ -124,6 +124,11 @@ if (avgClaim.test(pr.cost_answer_sentence || '')) {
 /* ---------------- per-page checks ---------------- */
 const pages = [{ ...city, _label: `city:${city.slug}`, _isCity: true },
                ...communities.map(c => ({ ...c, _label: `community:${c.slug}`, _isCity: false }))];
+/* The HOA page is a third page type with its own required copy — it must go
+   through the same limits, banned-word and uniqueness checks as the rest. */
+if (brief.hoa) {
+  pages.push({ ...brief.hoa, name: city.name, _label: `hoa:${brief.hoa.slug}`, _isCity: false, _isHoa: true });
+}
 
 const BANNED = [
   { re: /\bfree\b/i, msg: 'contains "free" — brand standard is "complimentary"' },
@@ -247,6 +252,13 @@ for (const c of communities) {
   else if (hoa.has_color_guidelines !== null && !hoa.source) {
     fail(`${L}: hoa claims guidelines but has no source URL — never invent HOA rules`);
   }
+}
+
+if (CHECK_COPY && brief.hoa) {
+  const hf = (brief.hoa.faqs || []).filter(f => f && f.q && f.a);
+  if (hf.length < 4) fail(`hoa: faqs needs 4+, got ${hf.length}`);
+  if (!brief.hoa.scope_intro) fail('hoa: scope_intro missing');
+  if (!brief.hoa.bid_cta) fail('hoa: bid_cta missing');
 }
 
 /* ---------------- NAP consistency ----------------

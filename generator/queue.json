@@ -24,7 +24,7 @@
     {
       "slug": "irvine",
       "name": "Irvine",
-      "stage": "researched",
+      "stage": "copy_complete",
       "priority": 1,
       "communities": [
         "orchard-hills",

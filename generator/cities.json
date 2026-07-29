@@ -93,12 +93,42 @@
           "HOA approved painter Irvine"
         ],
         "meta_title": "Irvine House Painters | Luxury Exterior Painting — VIP",
-        "meta_desc": "",
-        "h1": "",
-        "answer_capsule": "",
-        "viz_intro": ""
+        "meta_desc": "Irvine house painters for all six villages. See your home in every color before we paint — complimentary visualization, itemized estimate, 1-Year Warranty.",
+        "h1": "Every Other Irvine Painter Guesses. <span class=\"gold\">We Render It First.</span>",
+        "answer_capsule": "VIP Home Painting is the luxury house painting company serving Irvine, CA and all six of its villages — Orchard Hills, Altair, Portola Springs, Hidden Canyon, Woodbury and Stonegate. We repaint exteriors, interiors and kitchen cabinets using Sherwin-Williams Emerald and Duration coatings applied with professional Graco and Titan airless equipment. Every project begins with a complimentary 30-minute consultation in which our design team renders your actual home in each candidate palette. Exterior work starts at $4.75 per square foot of paintable surface, itemized line by line, backed by a 1-Year Warranty. Call (909) 312-5400.",
+        "viz_intro": "Irvine is not one place with one light. Orchard Hills sits against the ridge where afternoon sun pushes warm colors yellow by two. Woodbury’s garden paseos stay filtered and cool. Hidden Canyon takes canyon mornings and hot open afternoons in the same day. The same white behaves like three different colors across those villages, which is why a fan deck decided indoors tells you almost nothing. Choose a direction below and watch a real home change, then let our design team do it with your own elevation.",
+        "hero_eyebrow": "Irvine · Luxury Home Painting"
       },
-      "faqs": [],
+      "faqs": [
+        {
+          "q": "How much does it cost to paint a house in Irvine?",
+          "a": "VIP exterior work in Irvine starts at $4.75 per square foot of paintable surface — the premium end of the local range, which runs roughly $2.74 to $4.89. Every estimate is itemized line by line: prep, primer, coating, trim and accents priced separately, never a lump sum. Paintable surface is the actual area being coated, which is not the same as your home’s square footage. Call (909) 312-5400 for a walkthrough and an itemized figure."
+        },
+        {
+          "q": "Which Irvine villages do you serve?",
+          "a": "All of them. We have dedicated pages for Orchard Hills, Altair, Portola Springs, Hidden Canyon, Woodbury and Stonegate, and we work throughout the rest of Irvine as well. Each village has its own architecture, light conditions and design-review process, so the palette guidance genuinely differs between them."
+        },
+        {
+          "q": "How do your prices compare to other Irvine contractors?",
+          "a": "We are usually more expensive, and we say so plainly. Most painters in this market publish no pricing at all. The difference is in preparation, Sherwin-Williams Emerald and Duration rather than builder-grade product, and seeing the color on your own home before anything is committed. A repaint done twice costs the whole amount again, which is what makes getting it right the first time the cheaper path."
+        },
+        {
+          "q": "Do you repaint ceilings and interiors, or only exteriors?",
+          "a": "Both. Interiors cover walls, ceilings, trim and crown molding, with full masking and daily clean-up. We also refinish kitchen cabinets — doors and drawers sprayed off-site in urethane enamel, boxes sprayed in place, hardware re-hung square, which produces a factory finish rather than a painted one."
+        },
+        {
+          "q": "How long does an exterior repaint take in Irvine?",
+          "a": "Most Irvine exteriors are completed in three to five working days, sequenced elevation by elevation so the house stays livable throughout. Larger estates with extensive trim, stone detailing or a full color change take longer. Your schedule is agreed in writing before the crew arrives."
+        },
+        {
+          "q": "What paint do you use, and why does it matter here?",
+          "a": "Sherwin-Williams Emerald and Duration exterior systems, applied at full wet-mil thickness and never over-thinned. Inland Irvine sun is hard on coatings: builder-grade paint chalks and fades years early, and deep colors in particular fail fast without fade-resistant colorants. All work carries a 1-Year Warranty on labor and materials."
+        },
+        {
+          "q": "Do you handle HOA and design review approval?",
+          "a": "Yes, as part of the project. Nearly every Irvine village requires approval before an exterior color change. We assemble the submission package — swatches, Sherwin-Williams product data sheets and elevation callouts — formatted for your association’s review. We also paint common areas for associations directly; see our HOA and common-area page."
+        }
+      ],
       "child_communities": [
         {
           "name": "Orchard Hills",
@@ -131,21 +161,20 @@
           "tagline": "Santa Barbara streetscapes · HOA-ready palettes"
         }
       ],
-      "communities_intro": "",
-      "color_guide_intro": "",
+      "communities_intro": "We work across every village in Irvine, and they do not share a palette. Guard-gated hillside estates want a different register from garden-paseo townhomes, and design review differs street to street. Choose your village for the architecture, the light, and the colors that actually hold there.",
+      "color_guide_intro": "These three carry most Irvine exteriors, and each one behaves differently depending on which village it lands in. Warm whites flatter clay tile and stone; a grounded greige survives bright inland light without going flat; a deep charcoal makes doors and iron read custom instead of builder-spec.",
       "cost_of_wrong": {
-        "title": "",
-        "body": ""
+        "title": "The Second Repaint Costs Exactly What the First One Did",
+        "body": "A typical Irvine exterior runs four to seven thousand dollars to paint again — the same crew, the same prep, the same weeks of your life, for a color you should have seen the first time. The cost is rarely the paint. It is standing in your own driveway for the next eight years looking at a decision you made from a two-inch card under showroom light."
       },
       "hoa_module": {
-        "intro": "",
+        "intro": "Nearly every Irvine village runs its own design review, and color changes need approval before work begins. We prepare the submission package as part of the project — swatches, Sherwin-Williams product data sheets, and elevation callouts, formatted the way your association expects to receive it. The approval step stops being your problem.",
         "hoa_page_url": "/irvine/hoa-painting/"
       },
       "spotlight": {
-        "eyebrow": "",
-        "title": "",
-        "body": "",
-        "image": "",
+        "eyebrow": "How a Project Actually Looks",
+        "title": "Prep Is the Finish",
+        "body": "On Irvine stucco, everything you can see at the end was decided before a drop of color went on. Pressure wash, crack repair floated to match the existing texture, bonding primer on bare substrate, then Emerald sprayed with a Titan airless and back-rolled so the coating drives into the texture rather than sitting on top of it. Rolling a full exterior is faster for the crew. Spraying is better for the house.",
         "is_representative": true
       },
       "hoa_page": {
@@ -247,17 +276,42 @@
         "references": [],
         "seo": {
           "primary_keyword": "HOA painting contractor Irvine",
-          "meta_title": "",
-          "meta_desc": "",
-          "h1": "",
-          "answer_capsule": "",
-          "viz_intro": ""
+          "meta_title": "HOA Painting Contractor Irvine | Common Areas — VIP",
+          "meta_desc": "HOA painting contractor for Irvine associations. Common-area repaints, bids itemized by structure, and colors rendered for your board before the vote.",
+          "h1": "Irvine <span class=\"gold\">HOA &amp; Common-Area Painting</span> — Bid-Ready, Board-Ready",
+          "answer_capsule": "VIP Home Painting provides common-area painting for homeowners associations and property management companies throughout Irvine, CA. We repaint clubhouses, pool buildings, perimeter walls, community monuments, guard structures, park shelters and wrought iron using Sherwin-Williams Emerald and Duration systems. Bids are itemized by structure so boards can compare proposals like for like, certificates of insurance naming the association are supplied with every proposal, and our design team renders the buildings in each candidate color before the board votes. All work carries a 1-Year Warranty. Call (909) 312-5400.",
+          "viz_intro": "A board choosing a clubhouse color is not making a decorating decision. It is spending shared money on something several hundred residents will look at daily and comment on at the next meeting. That is a hard thing to defend from a swatch passed around a table. We render the actual buildings in every scheme under consideration, so the vote happens on something residents can see rather than something they have to imagine. It takes the political risk out of the decision."
         },
-        "faqs": [],
-        "scope_intro": "",
-        "compliance_block": "",
-        "bid_cta": "",
-        "bid_cta_title": ""
+        "faqs": [
+          {
+            "q": "Do you work with Irvine HOA management companies?",
+            "a": "Yes. Most Irvine villages are professionally managed, and we work with managers directly — walking properties, submitting itemized bids, and coordinating schedules and resident notice without requiring board meetings for every step. Managers can request a bid by phone at (909) 312-5400 or by email."
+          },
+          {
+            "q": "What common areas do you paint for associations?",
+            "a": "Clubhouse interiors and exteriors, pool houses and cabanas, perimeter walls, community monuments, guard houses and gate structures, park shelters, mailbox kiosks, trash enclosures, and wrought iron fencing and railings. If it is association-maintained and it takes paint, it is in scope."
+          },
+          {
+            "q": "How do you price common-area painting?",
+            "a": "Itemized by structure rather than as a single lump figure, so your board can compare our proposal against others line by line and approve scope selectively if the budget requires phasing. Pricing depends on surface area, substrate condition and access. We measure on site rather than estimating from plans."
+          },
+          {
+            "q": "Can the board see the colors before approving them?",
+            "a": "That is the part boards tell us matters most. Our design team renders the actual buildings in each candidate scheme, so the board votes on something residents can see rather than a swatch. It removes the political risk from a decision that several hundred people will have an opinion about."
+          },
+          {
+            "q": "What insurance and documentation do you provide?",
+            "a": "Certificates of insurance naming your association as additional insured, California contractor licensing details, general liability and workers’ compensation coverage, a written work schedule with resident-notice dates per building, and Sherwin-Williams product data sheets for your reserve study records. All supplied with the proposal, not after the award."
+          },
+          {
+            "q": "Will the work disrupt residents or close amenities?",
+            "a": "We sequence building by building so amenities stay open wherever possible, and agree work hours and resident-notice lead times with management before anyone arrives on site. Crews are briefed on gate and pool-area protocol, landscaping and hardscape are protected, and the site is left clean every evening."
+          }
+        ],
+        "scope_intro": "Associations do not buy house repaints. They buy the surfaces every resident passes daily and the ones that determine how the community reads from the street — usually on a reserve-study cycle that already schedules the work.",
+        "compliance_block": "Boards have to justify a spend to residents and auditors, so the paperwork matters as much as the paint. Everything below is supplied with the proposal, not after the award.",
+        "bid_cta": "We will walk the property with your manager, measure every common-area surface, and return a bid itemized by structure — no meeting required, no obligation.",
+        "bid_cta_title": "Put Us on Your Next Bid List"
       }
     }
   ]

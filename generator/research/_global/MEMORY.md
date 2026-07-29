@@ -60,6 +60,22 @@ Prefer it over built-in search. It takes a `location` param, which is the only w
 geo-personalized results. Apify is for Google Maps data specifically.
 *Fabian, 2026-07-27 — "always use firecrawl when searching the web."*
 
+### F-10 · The brief validator cannot see the generator
+"Free Quote" and "5-Star Rated" reached live pages because both were hardcoded in
+generate.js, not in the brief. The validator only reads the brief. Fixed by adding an
+output audit that scans the RENDERED html — the only thing a customer actually reads —
+and fails the build. Rule: validate the artifact, not the input that produced it.
+*Own error, 2026-07-27.*
+
+### F-11 · US spelling — this is an American business
+Wrote "colour" throughout the first Irvine draft. Now caught by the output audit.
+*Own error, 2026-07-27.*
+
+### F-12 · Never guess character counts
+Burned two rounds trying to hit a 150-160 char meta description by eye. Write three
+candidates and let a script pick the one in range.
+*Own error, 2026-07-27.*
+
 ---
 
 # PART 2 · RESEARCH FINDINGS
