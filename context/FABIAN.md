@@ -84,6 +84,40 @@ Before creating a file, ask which folder it belongs in. If there isn't one, make
 that has to sit at root (`CLAUDE.md`, `robots.txt`, `sitemap.xml`, `index.html`) is the only
 exception — and those are exceptions, not precedent.
 
+### 6. Short answers over essays. Bullets over paragraphs.
+
+- Lead with the answer. Context after, only if it changes what I do.
+- Bullets and tables beat prose.
+- Cut every sentence that doesn't change a decision.
+- Long is only justified when I asked for a plan or a strategy.
+
+### 7. Show me drafts before anything gets sent anywhere
+
+**Nothing leaves without my eyes on it first.** Emails, outreach, social posts, GBP posts,
+review requests, anything to a client, HOA, or management company.
+
+Show the draft. Wait. Then send.
+
+Publishing a page to the live site is the one standing exception — that's the job, and it's
+reversible with a push.
+
+---
+
+## MEMORY — you get smarter every week
+
+Your memory lives in **@generator/research/_global/MEMORY.md**, loaded into every session
+alongside this file.
+
+**When I correct you, write the lesson there as a new rule.** Check it before every task.
+
+That file has two halves:
+- **WORKING WITH FABIAN** — lessons from corrections. How I like things done.
+- **RESEARCH FINDINGS** — what we've learned about the market.
+
+Don't mix them. A correction about my preferences is not a market finding.
+
+This is how you go from a good assistant to one that knows exactly how I want things done.
+
 ---
 
 ## WHAT THIS MEANS IN PRACTICE

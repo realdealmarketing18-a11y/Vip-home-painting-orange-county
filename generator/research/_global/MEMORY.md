@@ -1,7 +1,68 @@
-# MARCUS MEMORY — what we've learned
+# MEMORY
 
-Loaded into every Marcus run. **Keep it short and high-signal.** This is not a log; it is the
-distilled set of things that change how the next cluster gets researched.
+Loaded into every session alongside `context/FABIAN.md`. **Short and high-signal.** Not a log
+— the distilled set of things that change what happens next.
+
+**Two halves. Don't mix them.**
+- **PART 1 · WORKING WITH FABIAN** — lessons from corrections. How he likes things done.
+- **PART 2 · RESEARCH FINDINGS** — what we've learned about the market.
+
+---
+
+# PART 1 · WORKING WITH FABIAN
+
+**When Fabian corrects you, add the lesson here as a new rule.** Check before every task.
+Newest at the bottom. Never delete — if a rule stops applying, strike it and say why.
+
+### F-01 · Short answers. Bullets over paragraphs.
+Lead with the answer. Cut every sentence that doesn't change a decision. Long is only
+justified when he asked for a plan or strategy.
+*Fabian, 2026-07-27.*
+
+### F-02 · Plain English — he is not a developer
+"Explain like you're talking to a smart friend, not a guru in code." Lead with what it means
+for the business; mechanism second, if at all. Never hide behind vocabulary.
+*Fabian, 2026-07-27 — "explain like your speaking to a 5th grader not a guru."*
+
+### F-03 · Show drafts before anything is sent
+Emails, outreach, posts, review requests, anything to a client or HOA. Draft → wait → send.
+Publishing a page to the live site is the standing exception.
+*Fabian, 2026-07-27.*
+
+### F-04 · Read it back before saying it's done
+Twice this session something was reported done that wasn't: a CLAUDE.md section written
+through a shell heredoc that stripped its own content, and it was pushed live broken.
+**Verify the artifact, then report.** Not the reverse.
+*Own error, 2026-07-27.*
+
+### F-05 · Never use shell heredocs for multi-line file content
+Bash mangles backticks, parentheses and quotes inside heredocs. Use the Edit/Write tool, or a
+script file in the scratchpad. This broke three separate times in one session.
+*Own error, 2026-07-27.*
+
+### F-06 · Check what you're staging — never blind `git add -A`
+Swept 42MB of throwaway placeholder video into the repo. Git keeps blobs forever; removing
+them later needs a force push. Stage deliberately.
+*Own error, 2026-07-27.*
+
+### F-07 · Verify a claim before building on it
+The site asserted 120 reviews. It was 9. A whole strategy was being shaped around a number
+nobody had checked. **Ask about numbers that sound convenient before they become the plan.**
+*Fabian, 2026-07-27.*
+
+### F-08 · Don't broaden scope
+When he names six communities, research six. Not the neighbouring ones, not the interesting
+adjacent ones. Ask before expanding.
+*Fabian, 2026-07-27 — "lets focus on the specific communities we are targeting only."*
+
+### F-09 · Firecrawl is the default for web search and Google
+Prefer it over built-in search. It takes a `location` param, which is the only way to see
+geo-personalized results. Apify is for Google Maps data specifically.
+*Fabian, 2026-07-27 — "always use firecrawl when searching the web."*
+
+---
+
+# PART 2 · RESEARCH FINDINGS
 
 **Promotion rule:** new findings go to *Candidate*. When a finding holds in a **second**
 city, promote it to *Confirmed*. When ranking data contradicts a finding, move it to
