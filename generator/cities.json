@@ -1,0 +1,153 @@
+{
+  "cities": [
+    {
+      "slug": "irvine",
+      "name": "Irvine",
+      "geo": {
+        "lat": 33.6846,
+        "lng": -117.8265
+      },
+      "wikipedia": "https://en.wikipedia.org/wiki/Irvine,_California",
+      "market": {
+        "home_value_low": 1200000,
+        "home_value_high": 6500000,
+        "median_home_value": 1650000,
+        "median_household_income": 129000,
+        "year_built_range": "1998-2020",
+        "market_rate_range": {
+          "low": 2.74,
+          "high": 4.89,
+          "source": "bestpaintingestimates.com 2026"
+        },
+        "hoa_prevalence": "near-universal — nearly every village has an association with design review"
+      },
+      "pricing": {
+        "exterior_rate_per_paintable_sqft": 4.75,
+        "interior_rate_per_paintable_sqft": 3.25,
+        "typical_project_low": null,
+        "typical_project_high": null,
+        "rate_positioning": "premium",
+        "source": "PENDING real VIP job data",
+        "cost_answer_sentence": "VIP exterior work in Irvine starts at $4.75 per square foot of paintable surface — the premium end of the local range — and every estimate is itemized line by line."
+      },
+      "palette_baseline": {
+        "colors": [
+          {
+            "role": "main_body",
+            "sw_code": "SW 7008",
+            "sw_name": "Alabaster",
+            "hex": "#EDEAE0"
+          },
+          {
+            "role": "trim",
+            "sw_code": "SW 7005",
+            "sw_name": "Pure White",
+            "hex": "#EDECE6"
+          },
+          {
+            "role": "gable",
+            "sw_code": "SW 9169",
+            "sw_name": "Chatura Gray",
+            "hex": "#8A857D"
+          },
+          {
+            "role": "front_door",
+            "sw_code": "SW 7069",
+            "sw_name": "Iron Ore",
+            "hex": "#434341"
+          }
+        ],
+        "trend_note": "Flat all-gray schemes now read dated — position grays as warm and layered, always with contrast."
+      },
+      "media": {
+        "hero_video": {
+          "youtube_id": "",
+          "title": "",
+          "description": "",
+          "duration_iso": "",
+          "upload_date": "",
+          "thumbnail_url": ""
+        },
+        "shorts": [],
+        "media_status": "pending"
+      },
+      "layout": {
+        "module_order": [
+          "cost_of_wrong",
+          "pricing",
+          "communities",
+          "color_guide",
+          "hoa",
+          "process",
+          "video",
+          "spotlight",
+          "reviews_map"
+        ],
+        "hero_variant": "youtube"
+      },
+      "seo": {
+        "primary_keyword": "Irvine house painters",
+        "secondary_keywords": [
+          "exterior painting Irvine CA",
+          "kitchen cabinet painting Irvine",
+          "HOA approved painter Irvine"
+        ],
+        "meta_title": "Irvine House Painters | Luxury Exterior Painting — VIP",
+        "meta_desc": "",
+        "h1": "",
+        "answer_capsule": "",
+        "viz_intro": ""
+      },
+      "faqs": [],
+      "child_communities": [
+        {
+          "name": "Orchard Hills",
+          "url": "/irvine/orchard-hills/",
+          "tagline": "Guard-gated hillside estates · Tuscan & Santa Barbara"
+        },
+        {
+          "name": "Altair",
+          "url": "/irvine/altair/",
+          "tagline": "Guard-gated contemporary · sharp lines, broad planes"
+        },
+        {
+          "name": "Portola Springs",
+          "url": "/irvine/portola-springs/",
+          "tagline": "Foothill Mediterranean · warm stucco & tile"
+        },
+        {
+          "name": "Hidden Canyon",
+          "url": "/irvine/hidden-canyon/",
+          "tagline": "Guard-gated canyon estates · smooth-trowel stucco"
+        },
+        {
+          "name": "Woodbury",
+          "url": "/irvine/woodbury/",
+          "tagline": "Garden paseos · factory-finish cabinet country"
+        },
+        {
+          "name": "Stonegate",
+          "url": "/irvine/stonegate/",
+          "tagline": "Santa Barbara streetscapes · HOA-ready palettes"
+        }
+      ],
+      "communities_intro": "",
+      "color_guide_intro": "",
+      "cost_of_wrong": {
+        "title": "",
+        "body": ""
+      },
+      "hoa_module": {
+        "intro": "",
+        "hoa_page_url": "/irvine/hoa-painting/"
+      },
+      "spotlight": {
+        "eyebrow": "",
+        "title": "",
+        "body": "",
+        "image": "",
+        "is_representative": true
+      }
+    }
+  ]
+}
