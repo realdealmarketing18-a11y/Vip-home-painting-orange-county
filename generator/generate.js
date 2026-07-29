@@ -944,6 +944,240 @@ document.querySelectorAll('.yt-facade, .yt-short').forEach(function (el) {
 `);
 }
 
+/* ============================================================
+   HOA PAGE — the B2B page. Boards and property managers.
+   Lives at /{city}/hoa-painting/, so it shares the community
+   pages' two-level asset depth.
+   ============================================================ */
+
+const HOA_MODULES = require('./hoa-modules.js');
+const HOA_CSS = fs.readFileSync(path.join(__dirname, 'hoa-page.css'), 'utf8');
+
+function hoaJsonLd(h, city, url) {
+  const base = CFG.siteBase;
+  const graph = [{
+    '@type': 'HomeAndConstructionBusiness',
+    '@id': `${base}/#business`,
+    name: CFG.businessName,
+    description: `VIP Home Painting provides common-area painting for homeowners associations and property managers in ${city.name}, CA — clubhouses, pool buildings, perimeter walls, monuments and guard structures.`,
+    url: `${base}/`,
+    telephone: CFG.phoneE164,
+    email: CFG.email,
+    priceRange: '$$$',
+    address: { '@type': 'PostalAddress', addressLocality: 'Anaheim', addressRegion: 'CA', addressCountry: 'US' },
+    hasMap: CFG.gbpUrl,
+    areaServed: [{ '@type': 'City', name: city.name }]
+  }, {
+    '@type': 'Service',
+    '@id': `${url}#service`,
+    name: `HOA & Common-Area Painting in ${city.name}, CA`,
+    serviceType: 'Commercial and Common-Area Painting',
+    description: h.seo.meta_desc,
+    provider: { '@id': `${base}/#business` },
+    areaServed: { '@type': 'City', name: city.name },
+    /* The buyer is an organization, not a household — say so. */
+    audience: { '@type': 'Audience', audienceType: 'Homeowners associations and property management companies' }
+  }];
+  if ((h.faqs || []).filter(f => f.q && f.a).length) {
+    graph.push({ '@type': 'FAQPage', '@id': `${url}#faq`,
+      mainEntity: h.faqs.filter(f => f.q && f.a).map(f => ({
+        '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) });
+  }
+  graph.push({
+    '@type': 'WebPage', '@id': url, name: h.seo.meta_title, url, inLanguage: 'en-US',
+    about: { '@id': `${base}/#business` },
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', '.capsule-text'] }
+  }, {
+    '@type': 'BreadcrumbList', '@id': `${url}#breadcrumbs`,
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'VIP Home Painting — Orange County', item: `${base}/orange-county-sales-page/` },
+      { '@type': 'ListItem', position: 2, name: city.name, item: `${base}/${city.slug}/` },
+      { '@type': 'ListItem', position: 3, name: 'HOA & Common-Area Painting', item: url }
+    ]
+  });
+  return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2);
+}
+
+function buildHoaPage(h, city) {
+  const url = `${CFG.siteBase}/${city.slug}/${h.slug}/`;
+  const A = CFG.assetBase;
+  const H = { CFG, ctaButton, secNo, esc };
+  const ctx = { ...h, city_name: city.name };
+
+  const order = (h.layout && h.layout.module_order) || [];
+  const rendered = [];
+  const modules = order.map((key, i) => {
+    const fn = HOA_MODULES[key];
+    if (!fn) throw new Error(`hoa ${h.slug}: no builder for module "${key}"`);
+    const out = fn(ctx, i + 3, POSITION_BG[i % POSITION_BG.length], H);
+    if (out) rendered.push(key);
+    return out;
+  }).filter(Boolean).join('\n');
+
+  const NAV = { scope: 'Scope', process: 'Process', compliance: 'Documentation',
+                spec: 'Specification', references: 'Communities', bid_cta: 'Request a Bid' };
+  const hasFaqs = (h.faqs || []).filter(f => f.q && f.a).length > 0;
+  const navLinks = rendered.filter(k => NAV[k])
+    .map(k => `<a href="#${k === 'bid_cta' ? 'bid' : k}">${NAV[k]}</a>`)
+    .concat(hasFaqs ? ['<a href="#faq">FAQ</a>'] : [])
+    .join('\n      ');
+
+  const capsule = (h.seo.answer_capsule || '').replace(
+    CFG.phone, `<a href="${CFG.phoneHref}" style="color:var(--gold-deep); font-weight:700; text-decoration:none;">${CFG.phone}</a>`);
+
+  const faqSec = hasFaqs ? `
+  <section class="cream" id="faq">
+    <div class="faq-head">
+      <div class="sec-no">${secNo(order.length + 3)}</div>
+      <div class="eyebrow">Board &amp; Manager Questions</div>
+      <h2 class="ttl">HOA Painting — <span class="accent">Answered</span></h2>
+    </div>
+    <div class="faq-list">${h.faqs.filter(f => f.q && f.a).map((f, i) => `
+      <details class="faq-item"${i === 0 ? ' open' : ''}>
+        <summary class="faq-q">${f.q}<span class="pm">+</span></summary>
+        <div class="faq-a">${f.a.replace(CFG.phone, `<a href="${CFG.phoneHref}">${CFG.phone}</a>`)}</div>
+      </details>`).join('')}
+    </div>
+  </section>` : '';
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>${esc(h.seo.meta_title)}</title>
+<meta name="description" content="${esc(h.seo.meta_desc)}">
+<link rel="canonical" href="${url}">
+
+<!-- Open Graph / answer-engine crawlers -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="${esc(h.seo.meta_title)}">
+<meta property="og:description" content="${esc(h.seo.meta_desc)}">
+<meta property="og:url" content="${url}">
+<meta property="og:site_name" content="VIP Home Painting">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="geo.region" content="US-CA">
+<meta name="geo.placename" content="${esc(city.name)}, California">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+<script type="application/ld+json">
+${hoaJsonLd(h, city, url)}
+</script>
+
+<style>
+${BASE_CSS}
+${FAQ_CSS}
+${CSS}
+${CITY_CSS}
+${HOA_CSS}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="topbar">
+    <a class="top-logo" href="#hero">
+      <img class="logo-img" src="${A}/assets/logos/logo-tagline.png" alt="VIP Home Painting — See it. Love it. Paint it."/>
+    </a>
+    <nav class="top-nav">
+      ${navLinks}
+    </nav>
+    <a href="${CFG.phoneHref}" class="top-phone">
+      ${SVG_PHONE}
+      ${CFG.phone}
+    </a>
+  </header>
+
+  <section class="hero hero-cinema" id="hero">
+    <div class="hero-photo" style="background-image:url('${A}/video/hero-poster.jpg');"></div>
+    <div class="hero-scrim"></div>
+    <div class="hero-goldframe" aria-hidden="true"></div>
+    <div class="hero-stack">
+      <div class="hero-fleuron" aria-hidden="true">&#10087;</div>
+      <div class="eyebrow-ruled">${esc(city.name)} · HOA &amp; Common-Area Painting</div>
+      <h1 class="ttl-hero">${h.seo.h1}</h1>
+      <div class="hero-kicker eyebrow-ruled">Itemized Bids · Certificates On File · 1-Year Warranty</div>
+      <div class="hero-cta-wrap">
+        <a href="${CFG.phoneHref}" class="btn-gold">
+          <span class="col-2"><span>Request a Bid</span><span class="sub">Itemized by structure · no obligation</span></span>
+        </a>
+        <p class="hero-note">We can walk the property and return an itemized bid without a meeting.</p>
+      </div>
+    </div>
+    <div class="hero-strip">
+      <div class="cell">${SVG_STAR}<div class="lb">Licensed &amp; Insured</div><div class="sb">COI naming your association</div></div>
+      <div class="cell"><img class="strip-badge" src="${A}/assets/badges/badge-warranty.png" alt="1-Year Warranty badge"/>
+        <div class="lb">1-Year Warranty</div><div class="sb">Labor &amp; materials</div></div>
+      <div class="cell"><img class="strip-badge" src="${A}/assets/badges/badge-color-schemes.png" alt="Color rendering badge"/>
+        <div class="lb">Rendered Before the Vote</div><div class="sb">Residents see it first</div></div>
+      <div class="cell">${SVG_CLOCK}<div class="lb">Phased Scheduling</div><div class="sb">Amenities stay open</div></div>
+    </div>
+  </section>
+
+  <section class="capsule" id="capsule">
+    <div class="capsule-card">
+      <div class="capsule-kicker">The Short Answer · ${esc(city.name)} HOA Painting</div>
+      <p class="capsule-text">${capsule}</p>
+    </div>
+  </section>
+${modules}
+${faqSec}
+
+  <footer>
+    <div class="f-shell">
+      <div class="f-mast">
+        <div class="f-logo">
+          <img class="f-mark" src="${A}/assets/logos/logo-mark.png" alt="VIP Home Painting"/>
+          <div class="wm"><div class="vip">VIP</div><div class="sub">HOME PAINTING</div></div>
+        </div>
+        <div class="f-tag"><b>We don't just paint homes,</b><br/>we transform lives.</div>
+      </div>
+      <div class="f-cols">
+        <nav class="f-col" aria-label="${esc(city.name)} pages">
+          <div class="f-col-label">${esc(city.name)}</div>
+          <ul class="f-links">
+            <li><a href="../"><b>All ${esc(city.name)} Home Painting</b></a></li>
+            ${(city.child_communities || []).map(x => `<li><a href="../${String(x.url).replace(/^\/[^/]+\//, '')}">${x.name} Home Painting</a></li>`).join('\n            ')}
+            <li><a href="${A}/">Orange County Home Painting</a></li>
+          </ul>
+        </nav>
+        <nav class="f-col" aria-label="Association services">
+          <div class="f-col-label">For Associations</div>
+          <ul class="f-links">
+            <li><a href="#scope">Common-Area Scope</a></li>
+            <li><a href="#compliance">Insurance &amp; Documentation</a></li>
+            <li><a href="#spec">Materials Specification</a></li>
+            <li><a href="#bid">Request a Bid</a></li>
+          </ul>
+        </nav>
+        <div class="f-col">
+          <div class="f-col-label">VIP Concierge</div>
+          <ul class="f-links">
+            <li><a href="${CFG.phoneHref}">${CFG.phone}</a></li>
+            <li><a href="mailto:${CFG.email}">${CFG.email}</a></li>
+            <li><span style="font-size:13.5px; color:rgba(255,255,255,0.78);">Mon–Fri 8am–6pm · Sat 9am–3pm</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="f-bottom">
+        <div class="f-contact">
+          <span>Common-area painting for ${esc(city.name)} associations</span>
+          <a href="${CFG.phoneHref}">${CFG.phone}</a>
+        </div>
+        <div class="f-copy">© ${new Date().getFullYear()} VIP Home Painting. Licensed, Bonded &amp; Insured · 1-Year Warranty on Labor &amp; Materials.</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
+`;
+}
+
 /* ---------------- SITEMAP + ROBOTS ---------------- */
 
 function buildSitemap() {
@@ -952,6 +1186,7 @@ function buildSitemap() {
     { loc: `${CFG.siteBase}/`, priority: '0.8' },
     { loc: `${CFG.siteBase}/orange-county-sales-page/`, priority: '1.0' },
     ...CITIES.cities.map(c => ({ loc: `${CFG.siteBase}/${c.slug}/`, priority: '0.95' })),
+    ...CITIES.cities.flatMap(c => c.hoa_page ? [{ loc: `${CFG.siteBase}/${c.slug}/${c.hoa_page.slug}/`, priority: '0.85' }] : []),
     ...DATA.communities.map(c => ({ loc: `${CFG.siteBase}/${CFG.outputDir}/${c.slug}/`, priority: '0.9' }))
   ];
   const entries = urls.map(u => `  <url>
@@ -1006,6 +1241,12 @@ function main() {
     fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(path.join(dir, 'index.html'), buildCityPage(city), 'utf8');
     console.log(`  ✓ ${city.slug}/index.html  [CITY: ${(city.layout.module_order||[]).length} modules]`);
+    if (city.hoa_page) {
+      const hdir = path.join(ROOT, city.slug, city.hoa_page.slug);
+      fs.mkdirSync(hdir, { recursive: true });
+      fs.writeFileSync(path.join(hdir, 'index.html'), buildHoaPage(city.hoa_page, city), 'utf8');
+      console.log(`  ✓ ${city.slug}/${city.hoa_page.slug}/index.html  [HOA: ${(city.hoa_page.layout.module_order||[]).length} modules]`);
+    }
   }
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), buildSitemap(), 'utf8');
   console.log('  ✓ sitemap.xml');

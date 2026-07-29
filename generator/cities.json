@@ -147,6 +147,117 @@
         "body": "",
         "image": "",
         "is_representative": true
+      },
+      "hoa_page": {
+        "slug": "hoa-painting",
+        "layout": {
+          "module_order": [
+            "scope",
+            "process",
+            "compliance",
+            "spec",
+            "references",
+            "bid_cta"
+          ]
+        },
+        "common_area_scope": [
+          "clubhouse interiors and exteriors",
+          "pool houses and cabanas",
+          "perimeter walls",
+          "community monuments",
+          "guard houses and gate structures",
+          "park structures and shade shelters",
+          "mailbox kiosks",
+          "trash enclosures",
+          "wrought iron fencing and railings"
+        ],
+        "management_companies": [
+          {
+            "name": "Keystone Pacific Property Management",
+            "phone": "(949) 833-2600",
+            "url": "https://www.kppm.com/",
+            "manages": [
+              "Woodbury Community Association",
+              "Groves at Orchard Hills",
+              "Orchard Hills Village II",
+              "Portola Springs Association",
+              "Stonegate Village Owners Association (SVOA)"
+            ],
+            "vendor_portal": null,
+            "source": "kppm.com press release + portolasprings.org + socalhomefix.com"
+          }
+        ],
+        "associations": [
+          {
+            "community": "woodbury",
+            "name": "Woodbury Community Association",
+            "units": 4067,
+            "manager": "Keystone Pacific",
+            "amenities": [
+              "pools",
+              "tennis courts",
+              "state-of-the-art clubhouse",
+              "multiple parks"
+            ],
+            "onsite_staff": 4,
+            "source": "https://www.kppm.com/woodbury-community-association-groves-at-orchard-hills-and-orchard-hills-village-ii-select-keystone-pacific-for-community-management-services/"
+          },
+          {
+            "community": "orchard-hills",
+            "name": "The Groves / The Reserve / The Summit (three separate HOAs)",
+            "units": null,
+            "manager": "Keystone Pacific",
+            "dues_monthly": "300-500 (Groves/Reserve), 774-975 (Summit/Crestview)",
+            "note": "The Reserve has 24-hour live guard service. Three boards = three decision-makers.",
+            "source": "socalhomefix.com/living-in-orchard-hills-irvine + kppm.com"
+          },
+          {
+            "community": "portola-springs",
+            "name": "Portola Springs Association",
+            "units": null,
+            "manager": "Keystone Pacific",
+            "contact": "reconnect@keystonepacific.com",
+            "source": "https://portolasprings.org/"
+          },
+          {
+            "community": "stonegate",
+            "name": "Stonegate Village Owners Association (SVOA)",
+            "units": null,
+            "manager": "Keystone Pacific",
+            "disambiguation": "NOT the separate 126-unit Stonegate Homeowners Association Inc (reg. 1973)",
+            "source": "socalhomefix.com/neighborhoods/stonegate-irvine"
+          },
+          {
+            "community": "altair",
+            "name": "Altair Irvine Master Association",
+            "units": null,
+            "manager": null,
+            "source": "rubyhome.com/irvine-ca/altair"
+          },
+          {
+            "community": "hidden-canyon",
+            "name": null,
+            "units": null,
+            "manager": null,
+            "note": "24/7 guard-gated; own site livinghiddencanyon.com",
+            "source": "https://www.livinghiddencanyon.com/"
+          }
+        ],
+        "official_source": "https://cityofirvine.gov/community-development/irvine-homeowners-associations",
+        "references": [],
+        "seo": {
+          "primary_keyword": "HOA painting contractor Irvine",
+          "meta_title": "",
+          "meta_desc": "",
+          "h1": "",
+          "answer_capsule": "",
+          "viz_intro": ""
+        },
+        "faqs": [],
+        "scope_intro": "",
+        "compliance_block": "",
+        "bid_cta": "",
+        "bid_cta_title": ""
       }
     }
   ]

@@ -1,0 +1,68 @@
+/* ============================================================
+   HOA PAGE MODULES — styles
+   Appended after page.css + city-page.css. The register here is
+   governance and documentation: squarer, quieter, less editorial
+   flourish than the homeowner pages.
+   ============================================================ */
+
+/* ---- SCOPE ---- */
+.hoa-scope-card { max-width: 940px; margin: 0 auto; background: #fff;
+  border: 1px solid rgba(168,138,71,0.35); border-radius: 2px;
+  box-shadow: 0 14px 34px rgba(26,31,78,0.10); padding: 34px 40px; }
+.hoa-scope { list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px 36px; }
+.hoa-scope li { font-family: var(--font-sans); font-size: 14.5px; line-height: 1.55;
+  color: #3A3F60; display: flex; gap: 12px; align-items: flex-start; }
+.hoa-scope li::before { content: ''; flex-shrink: 0; width: 7px; height: 7px; margin-top: 7px;
+  background: var(--gold); border-radius: 1px; }
+
+/* ---- COMPLIANCE DOCS ---- */
+.hoa-docs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  max-width: 1080px; margin: 0 auto; }
+.hoa-doc { background: #fff; border: 1px solid rgba(168,138,71,0.30); border-radius: 2px;
+  padding: 24px 22px; box-shadow: 0 6px 16px rgba(26,31,78,0.08); position: relative; }
+.hoa-doc::before { content: ''; position: absolute; top: -1px; left: 22px; width: 40px; height: 3px;
+  background: var(--gold-shine); border-radius: 0 0 3px 3px; }
+.hoa-doc-t { font-family: var(--font-serif); font-weight: 600; font-size: 17px;
+  color: var(--navy); line-height: 1.25; margin-bottom: 9px; }
+.hoa-doc-d { font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: #4A4F70; }
+
+/* ---- REFERENCES ---- */
+.hoa-refs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  max-width: 1080px; margin: 0 auto; }
+.hoa-ref { background: var(--cream); border: 1px solid rgba(168,138,71,0.30);
+  border-radius: 2px; padding: 24px 22px; }
+.hoa-ref-name { font-family: var(--font-serif); font-weight: 600; font-size: 18px;
+  color: var(--navy); line-height: 1.2; }
+.hoa-ref-meta { font-family: var(--font-sans); font-weight: 700; font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-deep); margin: 7px 0; }
+.hoa-ref-scope { font-family: var(--font-sans); font-size: 13px; line-height: 1.6; color: #4A4F70; }
+
+/* ---- BID CTA ---- */
+.hoa-bid { max-width: 820px; margin: 0 auto; text-align: center; }
+.hoa-bid .eyebrow { display: flex; align-items: center; justify-content: center; gap: 18px; }
+.hoa-bid .eyebrow::before, .hoa-bid .eyebrow::after { content: ''; height: 1px; width: 60px; flex-shrink: 0; }
+.hoa-bid .eyebrow::before { background: linear-gradient(90deg, transparent, rgba(201,169,97,0.75)); }
+.hoa-bid .eyebrow::after  { background: linear-gradient(90deg, rgba(201,169,97,0.75), transparent); }
+.hoa-bid .ttl { font-size: 40px; margin-bottom: 20px; }
+.hoa-bid-body { font-family: var(--font-serif); font-style: italic; font-size: 19px;
+  line-height: 1.55; color: var(--navy); max-width: 660px; margin: 0 auto 30px; }
+.hoa-bid-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 26px; }
+.hoa-bid-actions .btn-gold { min-width: 340px; padding: 18px 30px; }
+.hoa-bid-note { font-family: var(--font-sans); font-size: 13px; line-height: 1.7;
+  color: #4A4F70; max-width: 620px; margin: 0 auto; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 1024px) {
+  .hoa-docs, .hoa-refs { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 860px) {
+  .hoa-scope { grid-template-columns: 1fr; }
+  .hoa-scope-card { padding: 26px 24px; }
+  .hoa-bid .ttl { font-size: 30px; }
+  .hoa-bid-body { font-size: 17px; }
+}
+@media (max-width: 600px) {
+  .hoa-docs, .hoa-refs { grid-template-columns: 1fr; }
+  .hoa-bid-actions .btn-gold { min-width: 0; width: 100%; }
+}
