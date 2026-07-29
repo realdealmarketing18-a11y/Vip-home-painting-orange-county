@@ -48,6 +48,9 @@ const JOBS = {
   }
 };
 
+/* Vivienne is the copywriter. Both names work. */
+JOBS.vivienne = JOBS.copywriter;
+
 const byPriority = (a, b) => (a.priority || 99) - (b.priority || 99);
 const find = (slug) => q.clusters.find(c => c.slug === slug);
 
@@ -70,13 +73,14 @@ function gateResult(slug, stage) {
 if (cmd === 'status') {
   console.log('\nCLUSTER PIPELINE\n');
   const w = Math.max(...q.clusters.map(c => c.name.length)) + 2;
+  const ow = Math.max(...Object.values(OWNER).map(o => String(o).length)) + 2;
   for (const c of [...q.clusters].sort(byPriority)) {
     const owner = OWNER[c.stage] || '?';
     const brief = briefExists(c.slug) ? 'brief ✓' : 'no brief';
     const pages = [c.city_page_live ? 'city live' : null,
                    c.communities_live ? `${c.communities.length} communities live` : null]
                    .filter(Boolean).join(' · ') || 'nothing live';
-    console.log(`  ${String(c.priority).padEnd(3)}${c.name.padEnd(w)}${c.stage.padEnd(15)}→ ${owner.padEnd(12)}${brief.padEnd(10)}${pages}`);
+    console.log(`  ${String(c.priority).padEnd(3)}${c.name.padEnd(w)}${c.stage.padEnd(15)}→ ${owner.padEnd(ow)}${brief.padEnd(10)}${pages}`);
     for (const b of (c.blockers || [])) console.log(`      ⚠ ${b}`);
   }
   console.log('');

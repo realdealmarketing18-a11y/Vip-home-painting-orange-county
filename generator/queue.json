@@ -13,8 +13,8 @@
   "_stage_owner": {
     "queued": "marcus",
     "researching": "marcus",
-    "researched": "copywriter",
-    "writing": "copywriter",
+    "researched": "vivienne (copywriter)",
+    "writing": "vivienne (copywriter)",
     "copy_complete": "seraphina",
     "building": "seraphina",
     "published": "-",
@@ -72,5 +72,11 @@
       "communities_live": false,
       "city_page_live": false
     }
-  ]
+  ],
+  "_roster": {
+    "marcus": "Research — finds and verifies the facts",
+    "vivienne": "Copy — turns research into page copy",
+    "seraphina": "Build — generates and publishes the pages",
+    "aurora": "Media — video, renders, photography (not yet active)"
+  }
 }
