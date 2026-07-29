@@ -114,7 +114,112 @@ function ctaButton(label, sub) {
   return `<a href="${CFG.phoneHref}" class="btn-gold"><span class="col-2"><span>${label}</span><span class="sub">${sub}</span></span></a>`;
 }
 
+/* ---------------- STORY HERO ----------------
+   The cinematic hero from the OC page: film background, storytelling
+   headline, avatar pill, play gate. Renders only when a story AND a
+   YouTube id both exist — otherwise the page falls back to the static
+   poster hero. Drop in the Irvine film and this activates itself.
+
+   Uses the YouTube facade rather than a raw iframe: the poster shows
+   instantly, the player only loads on click, so an unwatched film costs
+   nothing in page weight. */
+
+function heroStory(story, name, A) {
+  if (!story || !story.youtube_id || !story.headline) return null;
+  const poster = story.thumbnail_url || `https://i.ytimg.com/vi/${story.youtube_id}/maxresdefault.jpg`;
+  const avatar = story.avatar_photo
+    ? `<img src="${A}/${story.avatar_photo}" alt="${esc(story.client_name || '')}"/>`
+    : esc(story.initials || '');
+  return `
+  <section class="hero hero-cinema hero-story" id="hero">
+    <div class="hero-photo" style="background-image:url('${poster}');"></div>
+    <div class="hero-scrim"></div>
+    <div class="hero-goldframe" aria-hidden="true"></div>
+
+    <div class="hero-stack">
+      <div class="hero-fleuron" aria-hidden="true">&#10087;</div>
+      <div class="eyebrow eyebrow-ruled">${esc(story.eyebrow || `${name} Luxury Home Painting`)}</div>
+      <h1 class="ttl-hero">${story.headline}</h1>
+      <div class="hero-kicker eyebrow-ruled">${esc(story.kicker || 'With Custom Color Consultation')}</div>
+
+      ${story.client_name ? `<div class="pill-wrap">
+        <div class="avatar-pill"><div class="ph">${avatar}</div>
+          <div><div class="name">${esc(story.client_name)}</div>
+          <div class="sub-line">${esc(story.client_location || '')}</div></div></div>
+      </div>` : ''}
+
+      <div class="play-wrap">
+        <button class="play-btn yt-facade" data-yt="${story.youtube_id}"
+                aria-label="Watch the film: ${esc(story.headline.replace(/<[^>]+>/g, ''))}">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <div class="play-label">${esc(story.play_label || 'Watch the Film')}</div>
+      </div>
+
+      <div class="hero-cta-wrap">
+        ${ctaButton('Claim Complimentary Color Consultation', 'Irresistible Painting Estimates Included')}
+        ${story.note ? `<p class="hero-note">${esc(story.note)}</p>` : ''}
+      </div>
+    </div>
+
+    <div class="hero-strip">
+      <div class="cell">
+        <img class="strip-badge" src="${A}/assets/badges/badge-color-schemes.png" alt="Custom Color Schemes badge"/>
+        <div class="lb">Custom Visualization</div><div class="sb">See it before we paint</div></div>
+      <div class="cell">
+        <img class="strip-badge" src="${A}/assets/badges/badge-warranty.png" alt="1-Year Warranty badge"/>
+        <div class="lb">1-Year Warranty</div><div class="sb">No questions asked</div></div>
+      <div class="cell">${SVG_STAR}<div class="lb">Licensed &amp; Insured</div><div class="sb">Bonded in California</div></div>
+      <div class="cell">${SVG_CLOCK}<div class="lb">${esc(story.days ? `${story.days}-Day Transformations` : '5-Day Transformations')}</div>
+        <div class="sb">Concierge scheduling</div></div>
+    </div>
+  </section>`;
+}
+
 /* ---------------- MODULES ---------------- */
+
+/* CASE STUDY — the OC page's storytelling shape: avatar pill, tag,
+   headline, before/after slider, drop-cap story, Reason/Strategy/Mood.
+   Renders only when a real story exists. Never invent one. */
+function modCaseStudy(c, no, bg) {
+  const cs = (c.case_studies || []).filter(s => s && s.headline && s.story);
+  if (!cs.length) return '';
+  const cards = cs.map(s => `
+      <article class="case-card">
+        ${s.client_name ? `<div class="pill-wrap"><div class="avatar-pill"><div class="ph">${esc(s.initials || '')}</div>
+          <div><div class="name">${esc(s.client_name)}</div><div class="sub-line">${esc(s.client_location || '')}</div></div></div></div>` : ''}
+        <div style="text-align:center;"><div class="case-tag">${esc(s.tag || 'Home Exterior Painting')}</div></div>
+        <h3 class="case-head">${esc(s.headline)}</h3>
+        <div class="ba-frame">
+          ${s.caption ? `<div class="ba-cap">${esc(s.caption)}</div>` : ''}
+          <div class="ba-img before" style="background-image: url('${s.before_photo}')"></div>
+          <div class="ba-img after"  style="background-image: url('${s.after_photo}')"></div>
+          <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span>
+            <div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
+          <div class="ba-label l">Before</div>
+          <div class="ba-label r">After</div>
+        </div>
+        <p class="drop">${esc(s.story)}</p>
+        ${(s.reason || s.strategy || s.mood) ? `<ul class="case-detail-list">
+          ${s.reason ? `<li><div class="lbl">Reason</div><div class="val">${esc(s.reason)}</div></li>` : ''}
+          ${s.strategy ? `<li><div class="lbl">Strategy</div><div class="val">${esc(s.strategy)}</div></li>` : ''}
+          ${s.mood ? `<li><div class="lbl">Mood</div><div class="val">${esc(s.mood)}</div></li>` : ''}
+        </ul>` : ''}
+        ${s.is_representative ? '<p class="sp-note">Representative project.</p>' : ''}
+        ${ctaButton('Claim Complimentary Color Consultation', 'Irresistible Estimates Included')}
+      </article>`).join('');
+  return `
+  <section class="navy" id="work">
+    <div class="sec-head">
+      <div class="sec-no">${secNo(no)}</div>
+      <div class="eyebrow">${esc(c.name)} Home Painting Projects</div>
+      <h2 class="ttl">Transforming ${esc(c.name)} Homes With <span class="accent">Precision &amp; Care</span></h2>
+    </div>
+    <div class="cases-grid">${cards}
+    </div>
+  </section>`;
+}
+
 
 function modPortfolio(c, no, bg) {
   const imgs = PORTFOLIO_IMGS.map(u => `<div style="background-image:url('${u}')"></div>`).join('\n          ');
@@ -307,6 +412,7 @@ function faqSection(c, no) {
 }
 
 const MODULE_BUILDERS = {
+  caseStudy: modCaseStudy,
   portfolio: modPortfolio,
   specs: modSpecs,
   colorGuide: modColorGuide,
@@ -487,7 +593,7 @@ ${CSS}
   </header>
 
   <!-- ============ HERO — unified cinematic style, static image ============ -->
-  <section class="hero hero-cinema" id="hero">
+  ${heroStory(c.hero_story, c.name, A) || `<section class="hero hero-cinema" id="hero">
     <div class="hero-photo" style="background-image:url('${A}/video/hero-poster.jpg');"></div>
     <div class="hero-scrim"></div>
     <div class="hero-goldframe" aria-hidden="true"></div>
@@ -522,7 +628,7 @@ ${CSS}
         <div class="lb">5-Day Transformations</div>
         <div class="sb">Concierge scheduling</div></div>
     </div>
-  </section>
+  </section>`}
 
   <!-- ============ ANSWER CAPSULE — the short answer, up top ============ -->
   <section class="capsule" id="capsule">
@@ -1238,9 +1344,13 @@ function validate() {
   const seen = new Set();
   for (const c of DATA.communities) {
     const order = c.moduleOrder;
-    const sorted = [...order].sort().join(',');
-    if (sorted !== [...MODULE_KEYS].sort().join(',')) {
-      throw new Error(`${c.slug}: moduleOrder must be a permutation of [${MODULE_KEYS.join(', ')}], got [${order.join(', ')}]`);
+    const known = Object.keys(MODULE_BUILDERS);
+    const unknown = order.filter(k => !known.includes(k));
+    if (unknown.length) {
+      throw new Error(`${c.slug}: unknown module(s) [${unknown.join(', ')}] — known: ${known.join(', ')}`);
+    }
+    if (new Set(order).size !== order.length) {
+      throw new Error(`${c.slug}: moduleOrder repeats a module`);
     }
     const key = order.join('>');
     if (seen.has(key)) {
