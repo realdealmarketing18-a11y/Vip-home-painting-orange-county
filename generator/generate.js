@@ -125,8 +125,12 @@ function ctaButton(label, sub) {
    nothing in page weight. */
 
 function heroStory(story, name, A) {
-  if (!story || !story.youtube_id || !story.headline) return null;
-  const poster = story.thumbnail_url || `https://i.ytimg.com/vi/${story.youtube_id}/maxresdefault.jpg`;
+  /* The STORY is what makes this hero — the film is an upgrade, not a
+     requirement. Renders on a headline alone; the play gate appears later
+     when a youtube_id is added. */
+  if (!story || !story.headline) return null;
+  const poster = story.thumbnail_url
+    || (story.youtube_id ? `https://i.ytimg.com/vi/${story.youtube_id}/maxresdefault.jpg` : `${A}/video/hero-poster.jpg`);
   const avatar = story.avatar_photo
     ? `<img src="${A}/${story.avatar_photo}" alt="${esc(story.client_name || '')}"/>`
     : esc(story.initials || '');
@@ -148,13 +152,13 @@ function heroStory(story, name, A) {
           <div class="sub-line">${esc(story.client_location || '')}</div></div></div>
       </div>` : ''}
 
-      <div class="play-wrap">
+      ${story.youtube_id ? `<div class="play-wrap">
         <button class="play-btn yt-facade" data-yt="${story.youtube_id}"
                 aria-label="Watch the film: ${esc(story.headline.replace(/<[^>]+>/g, ''))}">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
         </button>
         <div class="play-label">${esc(story.play_label || 'Watch the Film')}</div>
-      </div>
+      </div>` : ''}
 
       <div class="hero-cta-wrap">
         ${ctaButton('Claim Complimentary Color Consultation', 'Irresistible Painting Estimates Included')}
@@ -930,7 +934,7 @@ ${CITY_CSS}
     </a>
   </header>
 
-  <section class="hero hero-cinema" id="hero">
+  ${heroStory(c.hero_story, c.name, A) || `<section class="hero hero-cinema" id="hero">
     ${heroMedia}
     <div class="hero-scrim"></div>
     <div class="hero-goldframe" aria-hidden="true"></div>
@@ -952,7 +956,7 @@ ${CITY_CSS}
       <div class="cell">${SVG_STAR}<div class="lb">Licensed &amp; Insured</div><div class="sb">Bonded in California</div></div>
       <div class="cell">${SVG_CLOCK}<div class="lb">5-Day Transformations</div><div class="sb">Concierge scheduling</div></div>
     </div>
-  </section>
+  </section>`}
 
   <section class="capsule" id="capsule">
     <div class="capsule-card">
