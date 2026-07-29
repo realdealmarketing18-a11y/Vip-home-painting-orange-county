@@ -84,7 +84,7 @@ so broken work cannot hand off.
 | Stage | Owner | Reads |
 |---|---|---|
 | `queued` → `researched` | Marcus | `generator/research/_global/MARCUS.md` |
-| `researched` → `copy_complete` | Copywriter | `generator/research/_global/COPY-SLOTS.md` |
+| `researched` → `copy_complete` | Copywriter | `generator/agents/copywriter/COPYWRITER.md` |
 | `copy_complete` → `published` | Seraphina | `generator/PIPELINE.md` |
 
 **Key files:** `generator/RESEARCH-BRIEF-CONTRACT.md` (the handoff schema) ·

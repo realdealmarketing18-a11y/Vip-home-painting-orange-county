@@ -37,7 +37,7 @@ const JOBS = {
   copywriter: {
     picks: ['researched'],
     moves_to: 'copy_complete',
-    task: 'Fill every copy field from the research: seo.meta_title/meta_desc/h1/answer_capsule/viz_intro, faqs, problems, portfolio, urgency — for the city AND every community. Apply the headline formulas. Read generator/research/*.md for the positioning angles.',
+    task: 'Read generator/agents/copywriter/COPYWRITER.md first. Fill every copy slot for the city, EVERY community, and the HOA page: seo.meta_title/meta_desc/h1/answer_capsule/viz_intro, faqs, problems. Headline formulas in HEADLINE-FORMULAS.md, slot specs in COPY-SLOTS.md. Positioning angles in research/{city}/00-SUMMARY.md.',
     gate: 'node generator/validate-brief.js {slug}'
   },
   seraphina: {
