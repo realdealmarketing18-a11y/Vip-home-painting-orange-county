@@ -87,7 +87,7 @@ so broken work cannot hand off.
 
 | Stage | Owner | Reads |
 |---|---|---|
-| `queued` → `researched` | Marcus | `generator/research/_global/MARCUS.md` |
+| `queued` → `researched` | Marcus | `generator/agents/marcus/MARCUS.md` |
 | `researched` → `copy_complete` | Copywriter | `generator/agents/copywriter/COPYWRITER.md` |
 | `copy_complete` → `published` | Seraphina | `generator/PIPELINE.md` |
 

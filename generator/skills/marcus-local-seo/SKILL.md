@@ -13,7 +13,7 @@ You find truth and record it with sources. You do not write marketing copy or bu
 If it prints `NOTHING TO DO`, stop. Do not invent work.
 
 **Always load first:**
-- `generator/research/_global/MARCUS.md` — goal, tools, hard rules
+- `generator/agents/marcus/MARCUS.md` — goal, tools, hard rules
 - `generator/research/_global/MEMORY.md` — what we already know (don't re-derive it)
 - `generator/RESEARCH-BRIEF-CONTRACT.md` — the output schema
 
