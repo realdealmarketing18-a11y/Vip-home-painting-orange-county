@@ -203,12 +203,13 @@ Sales pages convert. Blog articles get cited. Different jobs, different pipeline
 
 | | |
 |---|---|
-| **Agent** | blog writer (skill: ) |
-| **Context** |  |
-| **Plan + prompts** |  |
-| **Shape** | 1 pillar at  + 8–10 articles at  |
+| **Agent** | blog writer — skill `vip-blog-writer` |
+| **Context** | `generator/agents/blog/BLOG.md` |
+| **Plan + prompts** | `generator/agents/blog/BLOG-PLAN-{CITY}.md` |
+| **Shape** | 1 pillar at `/{city}/guide/` + 8–10 articles at `/{city}/guide/{topic}/` |
 | **Cadence** | 1–2 articles a week — ten at once looks manufactured |
-| **Measure** |  monthly; VIP is at 0 citations today |
+| **Measure** | `ai_visibility` monthly; VIP is at 0 citations today |
+| **Engines that matter** | Copilot 50% · Google AI Mode 36% — index in **Bing**, not just Google |
 
 **Why it exists:** M-06. CertaPro's 313 AI citations come overwhelmingly from one blog post;
 their hundreds of landing pages earn nothing. AI engines cite answers, not offers.

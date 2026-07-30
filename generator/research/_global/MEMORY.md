@@ -83,6 +83,12 @@ commit.** It ends with a ranked list of known gaps — check it before proposing
 *Fabian, 2026-07-27 — "should this be saved within the folder of workflow so it can be
 found and in memory so it can come back to it and optimize it."*
 
+### F-14 · Shell heredocs keep eating backticks — this is the third time
+F-05 said this already and I did it again writing the WORKFLOW blog-track table: every
+`code span` came out empty. **For any file content with backticks, braces or quotes, use
+the Write/Edit tool or a scratchpad .js file. Never a bash heredoc. No exceptions.**
+*Own error, 2026-07-30 — repeat of F-05.*
+
 ---
 
 # PART 2 · RESEARCH FINDINGS
