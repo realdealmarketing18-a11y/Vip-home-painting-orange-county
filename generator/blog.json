@@ -1,0 +1,259 @@
+{
+  "pillars": [
+    {
+      "slug": "guide",
+      "city_slug": "irvine",
+      "city_name": "Irvine",
+      "updated": "2026-07-30",
+      "published": "2026-07-30",
+      "kicker": "The Irvine Guide",
+      "title": "The Irvine Homeowner’s Guide to Choosing an Exterior Color <em>Without the Regret</em>",
+      "title_plain": "The Irvine Homeowner’s Guide to Choosing an Exterior Color Without the Regret",
+      "subtitle": "Six villages. Six different lights. One way to be certain before you commit.",
+      "seo": {
+        "meta_title": "Irvine Exterior Color Guide | Six Villages — VIP Painting",
+        "meta_desc": "How to choose an exterior color in Irvine without regretting it. Six villages, six light conditions, real Sherwin-Williams palettes, and what a repaint costs."
+      },
+      "layout": {
+        "module_order": [
+          "intro",
+          "why_different",
+          "visualizer",
+          "villages",
+          "common",
+          "cost",
+          "articles",
+          "close"
+        ]
+      },
+      "toc": [
+        {
+          "id": "intro",
+          "label": "Start here"
+        },
+        {
+          "id": "why-different",
+          "label": "Why Irvine is not one market"
+        },
+        {
+          "id": "viz",
+          "label": "Try it on a real home"
+        },
+        {
+          "id": "villages",
+          "label": "The six villages"
+        },
+        {
+          "id": "common",
+          "label": "What every repaint shares"
+        },
+        {
+          "id": "cost",
+          "label": "What it costs"
+        },
+        {
+          "id": "articles",
+          "label": "Read next"
+        },
+        {
+          "id": "close",
+          "label": "Seeing it first"
+        }
+      ],
+      "intro": "At nine in the morning in Woodbury, filtered through the paseo trees, Alabaster looks like the warmest, calmest white you have ever seen. At two in the afternoon on a west-facing slope in Orchard Hills, the same paint on the same wall reads yellow.\n\nNothing changed except the light. That is the problem with choosing an exterior color the way almost everyone chooses one — from a two-inch card, indoors, under a showroom bulb, for a decision that will sit on the front of your house for the next eight years.\n\nThis guide walks the six villages of Irvine and what each one does to color. It is the same walk we take with homeowners before anything is scheduled.",
+      "viz_intro": "Before reading further, try it. Pick a style direction and tap through the palettes — the home below re-paints itself in real time. It is a demonstration of the same thing our design team does with your actual elevation during a complimentary consultation: you see the color on the house before a single gallon is tinted, instead of imagining it from a swatch.",
+      "why_different": {
+        "heading": "Why Irvine Is Not One Market",
+        "body": "People say \"Irvine\" as though it were a single place with a single look. It is not. The villages were built in different decades by different builders in different architectural languages, and they sit at different elevations with genuinely different exposure.\n\nThe value spread alone is roughly five to one, from Stonegate’s close-set Santa Barbara streetscapes to Hidden Canyon’s guard-gated canyon estates. Three of the six are gated. Each runs its own design review, and Orchard Hills alone has three separate associations.\n\nA palette that looks considered in one village can look borrowed in the next.",
+        "stats": [
+          {
+            "value": "6",
+            "label": "villages, each with its own design review"
+          },
+          {
+            "value": "5×",
+            "label": "spread in home value across them"
+          },
+          {
+            "value": "4",
+            "label": "distinct architectural styles"
+          }
+        ]
+      },
+      "villages_heading": "The Six Villages",
+      "villages_intro": "Architecture, light, and the palettes that actually hold in each one.",
+      "villages": [
+        {
+          "slug": "orchard-hills",
+          "name": "Orchard Hills",
+          "url": "/irvine/orchard-hills/",
+          "meta": "Guard-gated · Tuscan & Santa Barbara · ~$3.5M",
+          "body": "Orchard Hills sits against the ridge, and that changes everything about color. Warm stucco, stone wainscots and clay tile all take direct afternoon sun, and a white that looked composed at nine in the morning can read distinctly yellow by two. Streets like Summerland and Glacier Valley run along slopes where west-facing elevations get the worst of it.\n\nThe village is three separate associations — The Groves, The Reserve and The Summit — each with its own board and its own design review. That matters more than most homeowners expect when a color change is on the table.",
+          "palette": [
+            {
+              "name": "Alabaster",
+              "code": "SW 7008",
+              "hex": "#EDEAE0"
+            },
+            {
+              "name": "Accessible Beige",
+              "code": "SW 7036",
+              "hex": "#D1C7B8"
+            },
+            {
+              "name": "Urbane Bronze",
+              "code": "SW 7048",
+              "hex": "#54504A"
+            }
+          ]
+        },
+        {
+          "slug": "altair",
+          "name": "Altair",
+          "url": "/irvine/altair/",
+          "meta": "Guard-gated · Contemporary · ~$4.6M",
+          "body": "Altair is the one village where the architecture, not the light, sets the rule. Broad uninterrupted stucco planes and deep fascias mean there is nowhere for a mediocre finish to hide — roller stipple and lap marks that would vanish on a textured Mediterranean facade are obvious across twenty feet of flat wall.\n\nThe streets are named for astronomy. Bellatrix is a star in Orion, Chasma is a planetary canyon, Bolide is a bright meteor, and Sagan Way needs no explanation. The community itself is named for the star Altair. A palette here should feel deliberate and modern rather than warm and traditional.",
+          "palette": [
+            {
+              "name": "Pure White",
+              "code": "SW 7005",
+              "hex": "#EDECE6"
+            },
+            {
+              "name": "Iron Ore",
+              "code": "SW 7069",
+              "hex": "#434341"
+            },
+            {
+              "name": "Peppercorn",
+              "code": "SW 7674",
+              "hex": "#6C6B66"
+            }
+          ]
+        },
+        {
+          "slug": "portola-springs",
+          "name": "Portola Springs",
+          "url": "/irvine/portola-springs/",
+          "meta": "Foothill Mediterranean",
+          "body": "Most Portola Springs homes are still wearing some version of the palette the builder chose for the entire street. That makes a repaint the single highest-impact change available here — and also the easiest to get wrong, because Mediterranean stucco reacts unpredictably to warm whites under bright foothill light.\n\nStreets run botanical: Yellow Iris, Soaring Eagle, Campion. The village steps up toward Loma Ridge, so elevation and exposure vary noticeably from one block to the next.",
+          "palette": [
+            {
+              "name": "Shoji White",
+              "code": "SW 7042",
+              "hex": "#E6DFD3"
+            },
+            {
+              "name": "Agreeable Gray",
+              "code": "SW 7029",
+              "hex": "#D1CBC1"
+            }
+          ]
+        },
+        {
+          "slug": "hidden-canyon",
+          "name": "Hidden Canyon",
+          "url": "/irvine/hidden-canyon/",
+          "meta": "Guard-gated 24/7 · ~$9.2M",
+          "body": "Hidden Canyon is the most valuable village in Irvine by a factor of two, and the smallest. Smooth-troweled stucco and limestone on canyon-edge lots means the finish is judged from three feet, not thirty — every patch, pinhole and lap line is visible if the preparation was not right.\n\nThe canyon gives you two different light conditions in one day: cool, often marine-influenced mornings, then hot open afternoons. A white that feels refined at noon can go noticeably cold by evening. Panorama and Shady Arbor are the streets you will see on listings.",
+          "palette": [
+            {
+              "name": "Snowbound",
+              "code": "SW 7004",
+              "hex": "#EDEAE4"
+            },
+            {
+              "name": "Tricorn Black",
+              "code": "SW 6258",
+              "hex": "#2F2F30"
+            }
+          ]
+        },
+        {
+          "slug": "woodbury",
+          "name": "Woodbury",
+          "url": "/irvine/woodbury/",
+          "meta": "Garden paseos · 4,067 units",
+          "body": "Woodbury is the largest village on this list and the one where light works differently. Mature landscaping and garden paseos keep much of the community filtered and cool through the day, which flatters warmer whites that would go brassy on an exposed hillside. Vintage, Great Lawn, Sarabande and Chantilly are typical of its streets.\n\nIt is also the kitchen village. Woodbury was built out around 2005, which means solid cabinet boxes wearing dated finishes — the exact case where refinishing beats replacing.",
+          "palette": [
+            {
+              "name": "Greek Villa",
+              "code": "SW 7551",
+              "hex": "#EFE9DC"
+            },
+            {
+              "name": "Dorian Gray",
+              "code": "SW 7017",
+              "hex": "#ACA79E"
+            }
+          ]
+        },
+        {
+          "slug": "stonegate",
+          "name": "Stonegate",
+          "url": "/irvine/stonegate/",
+          "meta": "Santa Barbara streetscapes · ~$1.8M",
+          "body": "Stonegate streets are tight, immaculate and close enough together that one repaint visibly resets the standard for the block. Coleridge, Dunmore, Doverwood and Fenway are close-set Santa Barbara facades where your neighbours will notice the result whether or not they say so.\n\nThat proximity is also a practical constraint. Zero-setback elevations mean overspray risk on a neighbour’s car, wall and planting, so containment and wind-checked scheduling matter more here than anywhere else in Irvine.",
+          "palette": [
+            {
+              "name": "Alpaca",
+              "code": "SW 7022",
+              "hex": "#CBC3B8"
+            },
+            {
+              "name": "Chatura Gray",
+              "code": "SW 9169",
+              "hex": "#8A857D"
+            }
+          ]
+        }
+      ],
+      "common": {
+        "heading": "What Every Irvine Repaint Has in Common",
+        "body": "The villages differ. The work underneath does not.\n\nOn stucco, everything you can see at the end was decided before a drop of color went on. Rolling a full exterior is faster for the crew; spraying and back-rolling is better for the house, because it drives the coating into the texture instead of leaving it sitting on top.",
+        "points": [
+          "Pressure wash, then stucco crack and patch repair floated to match the existing texture",
+          "Bonding primer on any bare substrate — not a shortcut worth taking on inland exposure",
+          "Sherwin-Williams Emerald and Duration, two coats at full wet-mil, never over-thinned",
+          "Graco and Titan airless application, back-rolled on stucco, hand-cut at every transition",
+          "Your community association’s design review package prepared as part of the project",
+          "Raking-light inspection at the end, then a 1-Year Warranty on labor and materials"
+        ]
+      },
+      "cost": {
+        "heading": "What It Costs",
+        "answer": "VIP exterior work in Irvine starts at <b>$4.75 per square foot of paintable surface</b> — the premium end of a local market that runs roughly $2.74 to $4.89. Every estimate is itemized line by line: preparation, primer, coating, trim and accents priced separately, never a single lump sum.",
+        "body": "Paintable surface is not the same as your home’s square footage. It is the actual area being coated — walls, fascia, trim, eaves — which on a two-story stucco home usually runs somewhere near the interior figure but is measured on site rather than assumed.\n\nWe sit at the premium end and say so plainly. The argument for it is not craftsmanship in the abstract; it is that a repaint done twice costs the whole amount again.",
+        "article_url": "/irvine/guide/what-does-it-cost/"
+      },
+      "articles_heading": "Read Next",
+      "articles_intro": "The questions Irvine homeowners ask most often, answered properly.",
+      "articles": [
+        {
+          "title": "5 Things That Change What Painting Your Irvine Home Actually Costs",
+          "sub": "Why two identical-looking houses on the same street get quotes $8,000 apart.",
+          "url": "/irvine/guide/what-does-it-cost/"
+        },
+        {
+          "title": "Avoid the $7,000 Repaint: What Goes Wrong When You Choose a Color From a Swatch",
+          "sub": "Almost nobody who regrets their color ever saw it on their own house first.",
+          "url": "/irvine/guide/what-goes-wrong/"
+        },
+        {
+          "title": "How to Get Your Exterior Color Approved by an Irvine HOA Without Three Rounds of Revisions",
+          "sub": "What design review committees actually look at.",
+          "url": "/irvine/guide/hoa-color-approval/"
+        },
+        {
+          "title": "3 Ways to Choose Between Three Identical-Looking Whites Without Guessing",
+          "sub": "On a paper card they are the same. On your house they are not.",
+          "url": "/irvine/guide/choosing-between-whites/"
+        }
+      ],
+      "close": {
+        "heading": "Seeing It First",
+        "body": "A wrong exterior color costs the entire project again — four to seven thousand dollars for a typical Irvine home, plus the weeks and the living with it. And almost nobody who ends up regretting their color ever looked at it on their own facade before the crew arrived.\n\nThat is the whole reason our design team renders your actual home in every palette you are considering, at no cost, before anything is scheduled. You approve a color you have already seen on your own house. It takes about thirty minutes."
+      }
+    }
+  ]
+}

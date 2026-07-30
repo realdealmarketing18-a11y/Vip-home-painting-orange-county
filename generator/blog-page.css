@@ -1,0 +1,140 @@
+/* ============================================================
+   PILLAR / BLOG PAGE — editorial register
+   Narrower measure, larger body type, quieter chrome than the
+   sales pages. This is built to be READ, not scanned.
+   ============================================================ */
+
+.pl-wrap { max-width: 1180px; margin: 0 auto; padding: 0 56px; }
+
+/* ---- MASTHEAD ---- */
+.pl-masthead { padding: 84px 0 44px; border-bottom: 1px solid rgba(26,31,78,0.10); }
+.pl-kicker { font-family: var(--font-sans); font-weight: 700; font-size: 11px;
+  letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 20px; }
+.pl-title { font-family: var(--font-serif); font-weight: 600; font-size: 52px; line-height: 1.08;
+  letter-spacing: -0.02em; color: var(--navy); margin: 0 0 20px; max-width: 900px; text-wrap: balance; }
+.pl-title em { font-style: italic; color: var(--gold-deep); font-weight: 500; }
+.pl-sub { font-family: var(--font-serif); font-style: italic; font-size: 22px; line-height: 1.4;
+  color: #4A4F70; margin: 0 0 26px; max-width: 720px; }
+.pl-byline { display: flex; align-items: center; gap: 14px; }
+.pl-byline img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover;
+  border: 2px solid var(--gold); }
+.pl-byline-txt { font-family: var(--font-sans); font-size: 12.5px; color: #4A4F70; line-height: 1.5; }
+.pl-byline-txt b { color: var(--navy); display: block; font-size: 13.5px; }
+
+/* ---- BODY — the editorial measure ---- */
+.pl-body { display: grid; grid-template-columns: 240px 1fr; gap: 64px;
+  align-items: start; padding: 48px 0 24px; }
+.pl-article { max-width: 680px; }
+.pl-section { margin-bottom: 52px; scroll-margin-top: 90px; }
+.pl-article p { font-family: var(--font-sans); font-size: 17px; line-height: 1.75;
+  color: #3A3F60; margin: 0 0 20px; }
+.pl-lead { font-size: 19px !important; line-height: 1.7 !important; color: var(--navy) !important; }
+.pl-lead:first-child::first-letter { font-family: var(--font-serif); font-weight: 600;
+  font-size: 4em; line-height: 0.85; float: left; padding: 0.06em 0.12em 0 0; color: var(--gold-deep); }
+.pl-h2 { font-family: var(--font-serif); font-weight: 600; font-size: 32px; line-height: 1.15;
+  color: var(--navy); margin: 0 0 18px; letter-spacing: -0.01em; }
+.pl-h3 { font-family: var(--font-serif); font-weight: 600; font-size: 23px; line-height: 1.2;
+  color: var(--navy); margin: 0; }
+.pl-article a { color: var(--gold-deep); text-decoration: none;
+  border-bottom: 1px solid rgba(168,138,71,0.4); }
+.pl-article a:hover { border-bottom-color: var(--gold-deep); }
+
+/* ---- TABLE OF CONTENTS ---- */
+.pl-toc { position: sticky; top: 90px; }
+.pl-toc-lbl { font-family: var(--font-sans); font-weight: 700; font-size: 10px;
+  letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold-deep);
+  margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid rgba(168,138,71,0.3); }
+.pl-toc ol { list-style: none; margin: 0; padding: 0; counter-reset: toc; }
+.pl-toc li { counter-increment: toc; margin-bottom: 11px; }
+.pl-toc a { font-family: var(--font-sans); font-size: 13px; line-height: 1.45; color: #4A4F70;
+  text-decoration: none; display: flex; gap: 10px; transition: color 200ms; }
+.pl-toc a::before { content: counter(toc, decimal-leading-zero);
+  font-family: var(--font-serif); font-style: italic; color: var(--gold-deep); flex-shrink: 0; }
+.pl-toc a:hover { color: var(--navy); }
+
+/* ---- STATS ---- */
+.pl-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0; }
+.pl-stat { background: var(--cream); border-radius: 2px; padding: 20px 18px; text-align: center; }
+.pl-stat-n { font-family: var(--font-serif); font-weight: 600; font-size: 26px; color: var(--navy); line-height: 1.1; }
+.pl-stat-l { font-family: var(--font-sans); font-size: 11.5px; line-height: 1.45; color: #4A4F70; margin-top: 7px; }
+
+/* ---- VILLAGES ---- */
+.pl-villages { display: flex; flex-direction: column; gap: 36px; margin-top: 28px; }
+.pl-village { padding-left: 22px; border-left: 2px solid rgba(168,138,71,0.35); scroll-margin-top: 90px; }
+.pl-village-head { margin-bottom: 12px; }
+.pl-village-meta { font-family: var(--font-sans); font-weight: 700; font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-deep); margin-top: 6px; }
+.pl-palette { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+.pl-chip { display: inline-flex; align-items: center; gap: 8px; background: #fff;
+  border: 1px solid rgba(168,138,71,0.3); border-radius: 2px; padding: 7px 12px;
+  font-family: var(--font-sans); font-size: 12px; color: var(--navy); }
+.pl-chip i { width: 16px; height: 16px; border-radius: 2px; background: var(--c);
+  box-shadow: inset 0 0 0 1px rgba(26,31,78,0.12); }
+.pl-chip em { font-style: normal; color: var(--gold-deep); font-size: 10.5px; letter-spacing: 0.04em; }
+.pl-village-link { display: inline-block; font-family: var(--font-sans); font-weight: 700;
+  font-size: 12.5px; color: var(--gold-deep); text-decoration: none;
+  border-bottom: 1px solid rgba(168,138,71,0.45); padding-bottom: 2px; }
+
+/* ---- ANSWER BLOCK — the extractable paragraph ---- */
+.pl-answer { background: var(--cream); border-left: 3px solid var(--gold);
+  border-radius: 2px; padding: 22px 26px; margin: 0 0 24px; }
+.pl-answer-lbl { font-family: var(--font-sans); font-weight: 700; font-size: 10px;
+  letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 9px; }
+.pl-answer p { margin: 0 !important; font-size: 17px !important; color: var(--navy) !important; }
+
+/* ---- LISTS ---- */
+.pl-list { list-style: none; margin: 20px 0; padding: 0; }
+.pl-list li { font-family: var(--font-sans); font-size: 16.5px; line-height: 1.7; color: #3A3F60;
+  padding-left: 26px; margin-bottom: 12px; position: relative; }
+.pl-list li::before { content: ''; position: absolute; left: 0; top: 11px;
+  width: 7px; height: 7px; background: var(--gold); border-radius: 1px; }
+
+.pl-inline-link { display: inline-block; margin-top: 8px; font-family: var(--font-sans);
+  font-weight: 700; font-size: 13px; color: var(--gold-deep); text-decoration: none;
+  border-bottom: 1px solid rgba(168,138,71,0.45); padding-bottom: 2px; }
+
+/* ---- ARTICLE CARDS ---- */
+.pl-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 24px; }
+.pl-card { display: block; background: #fff; border: 1px solid rgba(168,138,71,0.3);
+  border-radius: 2px; padding: 20px 20px; text-decoration: none !important;
+  transition: transform 260ms cubic-bezier(.22,1,.36,1), box-shadow 260ms, border-color 260ms; }
+.pl-card:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(26,31,78,0.12);
+  border-color: var(--gold); }
+.pl-card-t { font-family: var(--font-serif); font-weight: 600; font-size: 17px; line-height: 1.25;
+  color: var(--navy); }
+.pl-card-s { font-family: var(--font-sans); font-size: 12.5px; line-height: 1.5;
+  color: #4A4F70; margin-top: 7px; }
+
+/* ---- CLOSE ---- */
+.pl-close { border-top: 1px solid rgba(168,138,71,0.4); padding-top: 40px; }
+.pl-cta { margin-top: 26px; }
+
+/* ---- THE VISUALIZER, dropped into an editorial column ---- */
+.pl-viz { margin: 0 0 52px; }
+.pl-viz .viz { padding: 0 !important; background: none !important; }
+.pl-viz .viz .head { text-align: left !important; margin-left: 0 !important; max-width: 680px !important; }
+.pl-viz .viz .head .ttl { font-size: 32px !important; }
+.pl-viz .viz .head .eyebrow { justify-content: flex-start !important; }
+.pl-viz .viz .head .eyebrow::before { display: none !important; }
+.pl-viz .sec-no { text-align: left !important; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 1024px) {
+  .pl-wrap { padding: 0 32px; }
+  .pl-body { grid-template-columns: 1fr; gap: 0; }
+  .pl-toc { position: static; margin-bottom: 40px; padding-bottom: 28px;
+    border-bottom: 1px solid rgba(26,31,78,0.10); }
+  .pl-toc ol { columns: 2; column-gap: 32px; }
+  .pl-title { font-size: 42px; }
+}
+@media (max-width: 640px) {
+  .pl-wrap { padding: 0 20px; }
+  .pl-masthead { padding: 56px 0 32px; }
+  .pl-title { font-size: 31px; }
+  .pl-sub { font-size: 18px; }
+  .pl-h2 { font-size: 25px; }
+  .pl-article p { font-size: 16px; }
+  .pl-lead { font-size: 17px !important; }
+  .pl-toc ol { columns: 1; }
+  .pl-stats, .pl-cards { grid-template-columns: 1fr; }
+}

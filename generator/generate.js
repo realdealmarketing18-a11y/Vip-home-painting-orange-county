@@ -784,6 +784,11 @@ ${VIZ_JS}
    CITY PAGES — the hub. Different job, different modules.
    ============================================================ */
 
+const BLOG_MODULES = require('./blog-modules.js');
+const BLOG_CSS = fs.readFileSync(path.join(__dirname, 'blog-page.css'), 'utf8');
+const BLOG_PATH = path.join(__dirname, 'blog.json');
+const BLOG = fs.existsSync(BLOG_PATH) ? JSON.parse(fs.readFileSync(BLOG_PATH, 'utf8')) : { pillars: [] };
+
 const CITY_MODULES = require('./city-modules.js');
 const CITY_CSS = fs.readFileSync(path.join(__dirname, 'city-page.css'), 'utf8');
 const FILM_CSS = fs.readFileSync(path.join(__dirname, 'film-player.css'), 'utf8');
@@ -909,9 +914,13 @@ function buildCityPage(c) {
                 process: 'Process', hoa: 'HOA', video: 'Video', spotlight: 'Projects' };
   const NAV_ID = { color_guide: 'colors' };
   const hasFaqs = (c.faqs || []).filter(f => f.q && f.a).length > 0;
+  /* Link out to the pillar guide if one exists for this city — it needs the
+     link for discovery, and the city page is its strongest referrer. */
+  const pillar = (BLOG.pillars || []).find(x => x.city_slug === c.slug);
   const navLinks = ['<a href="#viz">Visualize</a>']
     .concat(rendered.filter(k => NAV[k]).map(k => `<a href="#${NAV_ID[k] || k}">${NAV[k]}</a>`))
     .concat(hasFaqs ? ['<a href="#faq">FAQ</a>'] : [])
+    .concat(pillar ? [`<a href="${pillar.slug}/">Guide</a>`] : [])
     .concat(['<a href="#quote">Get a Quote</a>'])
     .join('\n      ');
 
@@ -1440,6 +1449,206 @@ ${faqSec}
 `;
 }
 
+/* ============================================================
+   PILLAR PAGE — the city guide at /{city}/guide/
+
+   Editorial, not a sales page. Its job is humans and internal
+   linking; the cluster articles are what earn AI citations (M-06).
+   Lives two levels deep, so it shares the community asset base.
+   ============================================================ */
+
+
+function pillarJsonLd(p, url) {
+  const base = CFG.siteBase;
+  const graph = [{
+    '@type': 'Article',
+    '@id': `${url}#article`,
+    headline: p.title_plain || p.title,
+    description: p.seo.meta_desc,
+    inLanguage: 'en-US',
+    author: { '@type': 'Organization', name: CFG.businessName, url: `${base}/` },
+    publisher: { '@id': `${base}/#business` },
+    datePublished: p.published || undefined,
+    dateModified: p.updated || p.published || undefined,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    about: (p.villages || []).map(v => ({ '@type': 'Place', name: `${v.name}, ${p.city_name}, CA` }))
+  }, {
+    '@type': 'HomeAndConstructionBusiness',
+    '@id': `${base}/#business`,
+    name: CFG.businessName,
+    url: `${base}/`,
+    telephone: CFG.phoneE164,
+    address: { '@type': 'PostalAddress', addressLocality: 'Anaheim', addressRegion: 'CA', addressCountry: 'US' }
+  }];
+  /* ItemList — the pillar owns the cluster */
+  const arts = (p.articles || []).filter(a => a.title && a.url);
+  if (arts.length) {
+    graph.push({
+      '@type': 'ItemList', '@id': `${url}#cluster`,
+      itemListElement: arts.map((a, i) => ({
+        '@type': 'ListItem', position: i + 1, name: a.title, url: `${base}${a.url}` }))
+    });
+  }
+  graph.push({
+    '@type': 'BreadcrumbList', '@id': `${url}#breadcrumbs`,
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: p.city_name, item: `${base}/${p.city_slug}/` },
+      { '@type': 'ListItem', position: 2, name: 'Guide', item: url }
+    ]
+  });
+  return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2);
+}
+
+function buildPillarPage(p) {
+  const url = `${CFG.siteBase}/${p.city_slug}/${p.slug}/`;
+  const A = CFG.assetBase;
+  const H = { CFG, ctaButton, esc, A };
+
+  /* URLs are stored absolute (/irvine/orchard-hills/) but GitHub Pages serves
+     from a repo subpath, where a leading slash resolves to the domain root and
+     404s. From /{city}/guide/ a sibling community is one level up; a cluster
+     article is a sibling folder. */
+  const relSib = (u) => '../' + String(u).replace(new RegExp(`^/${p.city_slug}/`), '');   // community
+  const relArt = (u) => String(u).replace(new RegExp(`^/${p.city_slug}/${p.slug}/`), ''); // article
+  const pRel = {
+    ...p,
+    villages: (p.villages || []).map(v => ({ ...v, url: v.url ? relSib(v.url) : '' })),
+    articles: (p.articles || []).map(a => ({ ...a, url: a.url ? relArt(a.url) : '' })),
+    cost: p.cost ? { ...p.cost, article_url: p.cost.article_url ? relArt(p.cost.article_url) : '' } : p.cost
+  };
+
+  const order = (p.layout && p.layout.module_order) || [];
+  const body = order.map(k => {
+    if (k === 'visualizer') {
+      return `\n  <div class="pl-viz">${vizSection({ name: p.city_name, vizIntro: p.viz_intro })}</div>`;
+    }
+    const fn = BLOG_MODULES[k];
+    if (!fn) throw new Error(`pillar ${p.slug}: no builder for module "${k}"`);
+    return fn(pRel, H);
+  }).filter(Boolean).join('\n');
+
+  const toc = BLOG_MODULES.toc(p, H);
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>${esc(p.seo.meta_title)}</title>
+<meta name="description" content="${esc(p.seo.meta_desc)}">
+<link rel="canonical" href="${url}">
+
+<!-- Open Graph / answer-engine crawlers -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="${esc(p.seo.meta_title)}">
+<meta property="og:description" content="${esc(p.seo.meta_desc)}">
+<meta property="og:url" content="${url}">
+<meta property="og:site_name" content="VIP Home Painting">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+<script type="application/ld+json">
+${pillarJsonLd(p, url)}
+</script>
+
+<style>
+${BASE_CSS}
+${FAQ_CSS}
+${CSS}
+${BLOG_CSS}
+${FILM_CSS}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="topbar">
+    <a class="top-logo" href="../">
+      <img class="logo-img" src="${A}/assets/logos/logo-tagline.png" alt="VIP Home Painting — See it. Love it. Paint it."/>
+    </a>
+    <nav class="top-nav">
+      <a href="../">${esc(p.city_name)}</a>
+      <a href="#villages">Villages</a>
+      <a href="#cost">Costs</a>
+      <a href="#articles">Guides</a>
+      <a href="../hoa-painting/">For HOAs</a>
+    </nav>
+    <a href="${CFG.phoneHref}" class="top-phone">
+      ${SVG_PHONE}
+      ${CFG.phone}
+    </a>
+  </header>
+
+  <div class="pl-wrap">
+    <header class="pl-masthead">
+      <div class="pl-kicker">${esc(p.kicker || `${p.city_name} Guide`)}</div>
+      <h1 class="pl-title">${p.title}</h1>
+      <p class="pl-sub">${esc(p.subtitle || '')}</p>
+      <div class="pl-byline">
+        <img src="${A}/assets/fabian.jpg" alt="Fabian — Founder, VIP Home Painting"/>
+        <div class="pl-byline-txt"><b>Fabian</b>Founder, VIP Home Painting${p.updated ? ` · Updated ${esc(p.updated)}` : ''}</div>
+      </div>
+    </header>
+
+    <div class="pl-body">
+      ${toc}
+      <div class="pl-article">
+${body}
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="f-shell">
+      <div class="f-mast">
+        <div class="f-logo">
+          <img class="f-mark" src="${A}/assets/logos/logo-mark.png" alt="VIP Home Painting"/>
+          <div class="wm"><div class="vip">VIP</div><div class="sub">HOME PAINTING</div></div>
+        </div>
+        <div class="f-tag"><b>We don't just paint homes,</b><br/>we transform lives.</div>
+      </div>
+      <div class="f-cols">
+        <nav class="f-col" aria-label="${esc(p.city_name)} pages">
+          <div class="f-col-label">${esc(p.city_name)}</div>
+          <ul class="f-links">
+            <li><a href="../"><b>All ${esc(p.city_name)} Home Painting</b></a></li>
+            ${pRel.villages.filter(v => v.url).map(v => `<li><a href="${v.url}">${esc(v.name)}</a></li>`).join('\n            ')}
+            <li><a href="../hoa-painting/">HOA &amp; Common-Area Painting</a></li>
+          </ul>
+        </nav>
+        <nav class="f-col" aria-label="Guides">
+          <div class="f-col-label">Guides</div>
+          <ul class="f-links">
+            ${pRel.articles.filter(a => a.url).slice(0, 5).map(a => `<li><a href="${a.url}">${esc(a.title)}</a></li>`).join('\n            ') || '<li><span style="font-size:13.5px;color:rgba(255,255,255,0.6);">Coming soon</span></li>'}
+          </ul>
+        </nav>
+        <div class="f-col">
+          <div class="f-col-label">VIP Concierge</div>
+          <ul class="f-links">
+            <li><a href="${CFG.phoneHref}">${CFG.phone}</a></li>
+            <li><a href="mailto:${CFG.email}">${CFG.email}</a></li>
+            <li><span style="font-size:13.5px; color:rgba(255,255,255,0.78);">Mon–Fri 8am–6pm · Sat 9am–3pm</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="f-bottom">
+        <div class="f-contact">
+          <span>Serving every village of ${esc(p.city_name)}, CA</span>
+          <a href="${CFG.phoneHref}">${CFG.phone}</a>
+        </div>
+        <div class="f-copy">© ${new Date().getFullYear()} VIP Home Painting. Licensed, Bonded &amp; Insured · 1-Year Warranty on Labor &amp; Materials.</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+${VIZ_JS}
+</body>
+</html>
+`;
+}
+
 /* ---------------- SITEMAP + ROBOTS ---------------- */
 
 function buildSitemap() {
@@ -1449,6 +1658,7 @@ function buildSitemap() {
     { loc: `${CFG.siteBase}/orange-county-sales-page/`, priority: '1.0' },
     ...CITIES.cities.map(c => ({ loc: `${CFG.siteBase}/${c.slug}/`, priority: '0.95' })),
     ...CITIES.cities.flatMap(c => c.hoa_page ? [{ loc: `${CFG.siteBase}/${c.slug}/${c.hoa_page.slug}/`, priority: '0.85' }] : []),
+    ...BLOG.pillars.map(p => ({ loc: `${CFG.siteBase}/${p.city_slug}/${p.slug}/`, priority: '0.8' })),
     ...DATA.communities.map(c => ({ loc: `${CFG.siteBase}/${CFG.outputDir}/${c.slug}/`, priority: '0.9' }))
   ];
   const entries = urls.map(u => `  <url>
@@ -1541,6 +1751,14 @@ function main() {
       fs.writeFileSync(path.join(hdir, 'index.html'), hhtml, 'utf8');
       console.log(`  ✓ ${city.slug}/${city.hoa_page.slug}/index.html  [HOA: ${(city.hoa_page.layout.module_order||[]).length} modules]`);
     }
+  }
+  for (const pillar of BLOG.pillars) {
+    const pdir = path.join(ROOT, pillar.city_slug, pillar.slug);
+    fs.mkdirSync(pdir, { recursive: true });
+    const phtml = buildPillarPage(pillar);
+    auditOutput(phtml, `${pillar.city_slug}/${pillar.slug} (pillar)`);
+    fs.writeFileSync(path.join(pdir, 'index.html'), phtml, 'utf8');
+    console.log(`  ✓ ${pillar.city_slug}/${pillar.slug}/index.html  [PILLAR: ${(pillar.layout.module_order||[]).length} sections]`);
   }
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), buildSitemap(), 'utf8');
   console.log('  ✓ sitemap.xml');
