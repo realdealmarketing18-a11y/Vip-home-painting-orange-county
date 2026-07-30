@@ -203,6 +203,9 @@ gap we have** — educational posts are the only thing earning AI citations in t
   Gemini, Perplexity) and `keyword_rank`. It is a third-party scraper solving captchas, so
   treat it as periodic research, not a scheduled dependency. Full eval:
   `_global/TOOL-EVAL-AHREFS-ACTOR.md`.
+- **The blog plan lives in `generator/agents/blog/BLOG-PLAN-{CITY}.md`** — pillar + 9
+  articles, each with a title, direction, bullets and a copy-paste prompt. Method and the
+  cannibalization rule are in `agents/blog/BLOG.md`.
 - **No keyword tool has volume for community terms.** Ahrefs and Semrush both estimate from
   clickstream; "orchard hills house painters" is below the measurement floor of every tool
   that exists. Judge community pages on Search Console impressions, never on a keyword tool.

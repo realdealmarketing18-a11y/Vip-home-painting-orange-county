@@ -197,6 +197,27 @@ Cadence: **~1 cluster every 2–3 days.**
 
 ---
 
+## THE BLOG TRACK — runs alongside, not inside, the page pipeline
+
+Sales pages convert. Blog articles get cited. Different jobs, different pipeline.
+
+| | |
+|---|---|
+| **Agent** | blog writer (skill: ) |
+| **Context** |  |
+| **Plan + prompts** |  |
+| **Shape** | 1 pillar at  + 8–10 articles at  |
+| **Cadence** | 1–2 articles a week — ten at once looks manufactured |
+| **Measure** |  monthly; VIP is at 0 citations today |
+
+**Why it exists:** M-06. CertaPro's 313 AI citations come overwhelmingly from one blog post;
+their hundreds of landing pages earn nothing. AI engines cite answers, not offers.
+
+**The guard:** never write a title that competes with a sales page. Sales pages answer
+"who to hire"; the blog answers "how to decide".
+
+---
+
 ## IMPROVING THIS SYSTEM
 
 This workflow is not finished. When something better is found, change it here and note why.
@@ -208,8 +229,8 @@ This workflow is not finished. When something better is found, change it here an
 2. **Semrush is out of credits.** No volume or difficulty data yet — though M-05 suggests
    volume is less decisive here than assumed.
 3. **No real project totals.** Pricing ranges must come from job data, never computed.
-4. **No blog — now the #1 gap.** AI-citation data (M-06) shows educational articles are the
-   only pages earning AI citations in this market. Sales pages earn none. VIP has zero blog.
+4. **Blog: planned, not written.** BLOG-PLAN-IRVINE.md has the pillar + 9 articles with
+   prompts ready. Nothing published yet. This is the #1 gap (M-06).
 5. **The films don't exist yet.** Every hero currently plays the same OC commercial.
 6. **Aurora isn't active** — the media agent for renders and photography.
 
