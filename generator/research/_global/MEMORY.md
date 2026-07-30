@@ -118,6 +118,17 @@ CertaPro lists 30 cities and zero neighborhoods. Universal Coat runs 2 services 
 Stubbins does service × region. **Not one competitor has a neighborhood page.**
 → VIP's six community pages have almost no direct competition. Go deeper, not wider.
 
+### M-05 · Domain authority barely matters in these SERPs
+Ahrefs DR for every painter competing here: CertaPro **71** (national franchise, 989k
+backlinks) — and then a cliff. Universal Coat ranks **#3 in Anaheim at DR 0.2**. Stubbins
+ranks #7 in Irvine at DR 0.3. Anaheim House Painters ranks #8 at DR 0.
+**VIP is DR 0 — exactly level with businesses already on page one.**
+*Evidence: apify pro100chok/ahrefs-seo-tools, website_authority, 2026-07-30.*
+→ **Do not spend on link building.** It is not what wins these SERPs.
+→ The gap to Universal Coat is not authority, it is page count: they have ~40 landing
+pages, VIP has 9. Build pages, earn reviews, work the GBP.
+→ Reinforces C-05: relevance and local specificity decide these results, not metrics.
+
 ### M-04 · Directories own half of page one
 Yelp, Thumbtack, Houzz, HomeAdvisor take 4–5 of 8 organic slots in both cities. Only **3–4
 real painting companies** rank per city.
@@ -172,6 +183,16 @@ VIP has no blog at all.
   will blow the context window.
 
 ---
+
+- **Ahrefs actor (`pro100chok/ahrefs-seo-tools`) works for `website_authority`, not for
+  `keyword_metrics`** — the latter returned empty for "irvine house painters". ~$0.015 per
+  result, no subscription. Untested and promising: `ai_visibility` (citations in ChatGPT,
+  Gemini, Perplexity) and `keyword_rank`. It is a third-party scraper solving captchas, so
+  treat it as periodic research, not a scheduled dependency. Full eval:
+  `_global/TOOL-EVAL-AHREFS-ACTOR.md`.
+- **No keyword tool has volume for community terms.** Ahrefs and Semrush both estimate from
+  clickstream; "orchard hills house painters" is below the measurement floor of every tool
+  that exists. Judge community pages on Search Console impressions, never on a keyword tool.
 
 ## OPEN QUESTIONS — need Fabian, block on these if they matter
 

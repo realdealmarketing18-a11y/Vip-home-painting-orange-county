@@ -5,7 +5,7 @@
 This is a living document. When we find a better way, **update it here** — see
 [Improving this system](#improving-this-system) at the bottom.
 
-Last updated: 2026-07-27 · Irvine cluster complete (8 pages live)
+Last updated: 2026-07-30 · Irvine cluster live · Ahrefs actor evaluated (step 1d)
 
 ---
 
@@ -14,7 +14,7 @@ Last updated: 2026-07-27 · Irvine cluster complete (8 pages live)
 | Step | Who | Tools | Produces |
 |---|---|---|---|
 | 0 | scheduler | cron / Hermes | wakes an agent |
-| 1 | **Marcus** | Firecrawl · Apify · Semrush | the research half of the brief |
+| 1 | **Marcus** | Firecrawl · Apify Maps · Apify Ahrefs · Semrush | the research half of the brief |
 | 2 | gate | `validate-brief.js --stage research` | pass / refuse |
 | 3 | **Vivienne** | `slots.js` (no web tools) | the copy half of the brief |
 | 4 | gate | `validate-brief.js` | pass / refuse |
@@ -76,6 +76,15 @@ Extracts: competitor review counts, ratings, categories, photo counts, GBP posti
 
 Search volume and difficulty. **Reads zero for village terms** — that's a measurement floor,
 not absent demand. Never kill a community page on Semrush data.
+
+### 1d · Apify Ahrefs actor — ~$0.10 per city
+
+`pro100chok/ahrefs-seo-tools`, `searchType: "website_authority"` — competitor Domain Rating,
+backlinks and referring domains. Established that DR is barely a ranking factor here
+(see MEMORY M-05), which is why link building is not on the plan.
+
+✅ `website_authority` works · ❌ `keyword_metrics` returns empty
+🔬 Untested, promising: `ai_visibility`, `keyword_rank`, `serp_overview`
 
 ### Marcus's output
 
@@ -194,7 +203,10 @@ This workflow is not finished. When something better is found, change it here an
 
 1. **Reddit questions are unreachable.** Two r/orangecounty threads rank page-one for Irvine
    and are the richest question source found. Firecrawl is blocked; needs an Apify Reddit actor.
-2. **Semrush is out of credits.** No real volume or difficulty data yet.
+2. **Semrush is out of credits.** No volume or difficulty data yet — though M-05 suggests
+   volume is less decisive here than assumed.
+2b. **`ai_visibility` untested.** The one endpoint that would measure whether VIP gets cited
+   by ChatGPT or Perplexity. Nothing else we have does this.
 3. **No real project totals.** Pricing ranges must come from job data, never computed.
 4. **No blog.** Universal Coat runs city-specific guides; VIP has none.
 5. **The films don't exist yet.** Every hero currently plays the same OC commercial.

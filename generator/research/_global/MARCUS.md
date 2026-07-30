@@ -109,6 +109,7 @@ So: research Irvine and Newport for **organic and content** dominance. Research 
 | **Firecrawl** `scrape` + `jsonOptions` | What a specific page says | Structured extraction of headlines, offers, pricing, FAQs | Use markdown format when you want specific fields |
 | **Apify** `compass/crawler-google-places` | Who wins the map, and why | Competitor review counts, categories, **reviewsTags**, Q&A, GBP posting cadence, review text | Enable leads/contacts/social enrichment — $0.10/record, more than the whole study |
 | **Firecrawl** `search` + `map` | **HOA associations + management companies** | Follow `HOA-DISCOVERY-RECIPE.md` — name the communities in the query, check the city's official .gov lookup first | Use Apify Maps for this — HOAs aren't local-pack businesses and it returns nothing |
+| **Apify** `pro100chok/ahrefs-seo-tools` | Competitor domain authority | `website_authority` — DR, backlinks, referring domains. ~$0.10 per city. Also `ai_visibility` for ChatGPT/Gemini/Perplexity citations. | Rely on `keyword_metrics` — it returns empty |
 | **Semrush** | Search volume + difficulty | **City and service terms only** | Pull community terms — they return zero volume (measurement floor, not absent demand) |
 | **WebSearch / WebFetch** | Fallback | When Firecrawl is blocked | Rely on for geo-specific results — not location-aware |
 
