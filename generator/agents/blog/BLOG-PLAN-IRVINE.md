@@ -8,6 +8,32 @@ paste it, and it has everything needed.
 
 ---
 
+## STATUS — 2026-07-30
+
+| | Article | State |
+|---|---|---|
+| — | `/irvine/guide/` (pillar) | ✅ **live** |
+| 1 | `what-does-it-cost` | ✅ **live** — ~1,960 words |
+| 2 | `hoa-color-approval` | ✅ **live** — ~1,630 words |
+| 3 | `choosing-between-whites` | ✅ **live** — ~1,890 words |
+| 6 | `what-goes-wrong` | ✅ **live** — ~1,840 words |
+| 4 | `cabinet-refinishing-vs-replacing` | ⬜ prompt ready below |
+| 5 | `how-long-paint-lasts` | ⬜ prompt ready below |
+| 7 | `best-colors-by-architecture` | ⬜ prompt ready below |
+| 8 | `how-to-vet-a-painter` | ⬜ prompt ready below |
+| 9 | `when-to-paint` | ⬜ prompt ready below |
+
+The four live articles were written to close the pillar's dead links — its cards pointed at
+URLs that did not exist. **The remaining five are additive**, so they can be written one at a
+time without breaking anything.
+
+**To add one:** append an object to `pillars[0].cluster[]` in `generator/blog.json`, add a
+matching card to `pillars[0].articles[]`, run `node generator/generate.js`. The gate
+(`validate-brief.js irvine`) fails the build if a card points at an article that has no
+cluster entry, so a 404 card cannot reach production again.
+
+---
+
 # 🏛 THE PILLAR
 
 ## `/irvine/guide/`

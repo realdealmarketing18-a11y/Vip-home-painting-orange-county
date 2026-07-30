@@ -785,6 +785,7 @@ ${VIZ_JS}
    ============================================================ */
 
 const BLOG_MODULES = require('./blog-modules.js');
+const ARTICLE_MODULES = require('./article-modules.js');
 const BLOG_CSS = fs.readFileSync(path.join(__dirname, 'blog-page.css'), 'utf8');
 const BLOG_PATH = path.join(__dirname, 'blog.json');
 const BLOG = fs.existsSync(BLOG_PATH) ? JSON.parse(fs.readFileSync(BLOG_PATH, 'utf8')) : { pillars: [] };
@@ -1649,6 +1650,226 @@ ${VIZ_JS}
 `;
 }
 
+/* ============================================================
+   CLUSTER ARTICLE PAGE  —  /{city}/{pillar}/{topic}/
+
+   The pages built to be cited (M-06). Three levels deep, which is
+   one deeper than every other page type, so the shared CSS and the
+   viz script need their asset paths pushed out a level — see
+   deepen() below. Everything else mirrors the pillar.
+   ============================================================ */
+
+/* CFG.assetBase is written for a two-deep page ('../../orange-county-sales-page').
+   The CSS blocks are rewritten once at module load, so an article three levels
+   deep would resolve every background image one directory too high. One helper,
+   one place, rather than a second set of rewritten constants. */
+const ASSET_BASE_DEEP = '../' + CFG.assetBase;
+const deepen = (s) => String(s).split(CFG.assetBase).join(ASSET_BASE_DEEP);
+
+function articleJsonLd(a, url) {
+  const base = CFG.siteBase;
+  const graph = [{
+    '@type': 'Article',
+    '@id': url + '#article',
+    headline: a.title_plain || a.title,
+    description: a.seo.meta_desc,
+    inLanguage: 'en-US',
+    author: { '@type': 'Organization', name: CFG.businessName, url: base + '/' },
+    publisher: { '@id': base + '/#business' },
+    datePublished: a.published || undefined,
+    dateModified: a.updated || a.published || undefined,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    isPartOf: { '@id': base + '/' + a.city_slug + '/' + a.pillar_slug + '/#article' },
+    about: { '@type': 'Place', name: a.city_name + ', CA' },
+    /* speakable points at the answer block — the chunk built to be quoted */
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.ar-answer', '.pl-lead'] }
+  }, {
+    '@type': 'HomeAndConstructionBusiness',
+    '@id': base + '/#business',
+    name: CFG.businessName,
+    url: base + '/',
+    telephone: CFG.phoneE164,
+    address: { '@type': 'PostalAddress', addressLocality: 'Anaheim', addressRegion: 'CA', addressCountry: 'US' }
+  }];
+
+  /* FAQPage — built from the same array the visible FAQ renders from,
+     so the two can never drift apart. */
+  const faq = (a.faq || []).filter(f => f.q && f.a);
+  if (faq.length) {
+    graph.push({
+      '@type': 'FAQPage', '@id': url + '#faq',
+      mainEntity: faq.map(f => ({
+        '@type': 'Question', name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a.replace(/<[^>]+>/g, '') }
+      }))
+    });
+  }
+
+  graph.push({
+    '@type': 'BreadcrumbList', '@id': url + '#breadcrumbs',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: a.city_name, item: base + '/' + a.city_slug + '/' },
+      { '@type': 'ListItem', position: 2, name: 'Guide', item: base + '/' + a.city_slug + '/' + a.pillar_slug + '/' },
+      { '@type': 'ListItem', position: 3, name: a.title_plain || a.title, item: url }
+    ]
+  });
+  return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2);
+}
+
+function buildArticlePage(a, pillar) {
+  const url = CFG.siteBase + '/' + a.city_slug + '/' + a.pillar_slug + '/' + a.slug + '/';
+  const A = ASSET_BASE_DEEP;
+  const H = { CFG, ctaButton, esc, A };
+
+  /* From /{city}/{pillar}/{slug}/ :
+       the pillar   is '../'
+       a sibling    is '../{slug}/'
+       the city hub is '../../'
+       a village    is '../../{slug}/'                                    */
+  const relSelf = (u) => '../' + String(u).replace(new RegExp('^/' + a.city_slug + '/' + a.pillar_slug + '/'), '');
+  const relCity = (u) => '../../' + String(u).replace(new RegExp('^/' + a.city_slug + '/'), '');
+  const aRel = {
+    ...a,
+    pillar_url: '../',
+    related: (a.related || []).map(r => ({
+      ...r,
+      url: r.url ? (r.village ? relCity(r.url) : relSelf(r.url)) : ''
+    }))
+  };
+
+  const order = (a.layout && a.layout.module_order) || [];
+  const body = order.map(k => {
+    if (k === 'visualizer') {
+      return '\n  <div class="pl-viz">' + deepen(vizSection({ name: a.city_name, vizIntro: a.viz_intro })) + '</div>';
+    }
+    const fn = ARTICLE_MODULES[k];
+    if (!fn) throw new Error('article ' + a.slug + ': no builder for module "' + k + '"');
+    return fn(aRel, H);
+  }).filter(Boolean).join('\n');
+
+  const toc = ARTICLE_MODULES.toc(a, H);
+  const villages = (pillar && pillar.villages || []).filter(v => v.url && v.name);
+
+  return '<!DOCTYPE html>\n' +
+'<html lang="en">\n' +
+'<head>\n' +
+'<meta charset="UTF-8">\n' +
+'<meta name="viewport" content="width=device-width, initial-scale=1">\n' +
+'\n' +
+'<title>' + esc(a.seo.meta_title) + '</title>\n' +
+'<meta name="description" content="' + esc(a.seo.meta_desc) + '">\n' +
+'<link rel="canonical" href="' + url + '">\n' +
+'\n' +
+'<!-- Open Graph / answer-engine crawlers -->\n' +
+'<meta property="og:type" content="article">\n' +
+'<meta property="og:title" content="' + esc(a.seo.meta_title) + '">\n' +
+'<meta property="og:description" content="' + esc(a.seo.meta_desc) + '">\n' +
+'<meta property="og:url" content="' + url + '">\n' +
+'<meta property="og:site_name" content="VIP Home Painting">\n' +
+'<meta name="twitter:card" content="summary_large_image">\n' +
+'<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">\n' +
+'\n' +
+'<script type="application/ld+json">\n' +
+articleJsonLd(a, url) + '\n' +
+'</script>\n' +
+'\n' +
+'<style>\n' +
+deepen(BASE_CSS) + '\n' +
+deepen(FAQ_CSS) + '\n' +
+deepen(CSS) + '\n' +
+BLOG_CSS + '\n' +
+FILM_CSS + '\n' +
+'</style>\n' +
+'</head>\n' +
+'<body>\n' +
+'<div class="page">\n' +
+'\n' +
+'  <header class="topbar">\n' +
+'    <a class="top-logo" href="../../">\n' +
+'      <img class="logo-img" src="' + A + '/assets/logos/logo-tagline.png" alt="VIP Home Painting — See it. Love it. Paint it."/>\n' +
+'    </a>\n' +
+'    <nav class="top-nav">\n' +
+'      <a href="../../">' + esc(a.city_name) + '</a>\n' +
+'      <a href="../">The Guide</a>\n' +
+'      <a href="#faq">Questions</a>\n' +
+'      <a href="../../hoa-painting/">For HOAs</a>\n' +
+'    </nav>\n' +
+'    <a href="' + CFG.phoneHref + '" class="top-phone">\n' +
+'      ' + SVG_PHONE + '\n' +
+'      ' + CFG.phone + '\n' +
+'    </a>\n' +
+'  </header>\n' +
+'\n' +
+'  <div class="pl-wrap">\n' +
+'    <header class="pl-masthead">\n' +
+'      <div class="pl-kicker"><a href="../" style="color:inherit;text-decoration:none;">' + esc(a.kicker || (a.city_name + ' Guide')) + '</a></div>\n' +
+'      <h1 class="pl-title">' + a.title + '</h1>\n' +
+'      <p class="pl-sub">' + esc(a.subtitle || '') + '</p>\n' +
+'      <div class="pl-byline">\n' +
+'        <img src="' + A + '/assets/fabian.jpg" alt="Fabian — Founder, VIP Home Painting"/>\n' +
+'        <div class="pl-byline-txt"><b>Fabian</b>Founder, VIP Home Painting' + (a.updated ? ' · Updated ' + esc(a.updated) : '') + '</div>\n' +
+'      </div>\n' +
+'    </header>\n' +
+'\n' +
+'    <div class="pl-body">\n' +
+'      ' + toc + '\n' +
+'      <div class="pl-article">\n' +
+body + '\n' +
+'      </div>\n' +
+'    </div>\n' +
+'  </div>\n' +
+'\n' +
+'  <footer>\n' +
+'    <div class="f-shell">\n' +
+'      <div class="f-mast">\n' +
+'        <div class="f-logo">\n' +
+'          <img class="f-mark" src="' + A + '/assets/logos/logo-mark.png" alt="VIP Home Painting"/>\n' +
+'          <div class="wm"><div class="vip">VIP</div><div class="sub">HOME PAINTING</div></div>\n' +
+'        </div>\n' +
+'        <div class="f-tag"><b>We don\'t just paint homes,</b><br/>we transform lives.</div>\n' +
+'      </div>\n' +
+'      <div class="f-cols">\n' +
+'        <nav class="f-col" aria-label="' + esc(a.city_name) + ' pages">\n' +
+'          <div class="f-col-label">' + esc(a.city_name) + '</div>\n' +
+'          <ul class="f-links">\n' +
+'            <li><a href="../../"><b>All ' + esc(a.city_name) + ' Home Painting</b></a></li>\n' +
+            villages.map(v => '<li><a href="' + relCity(v.url) + '">' + esc(v.name) + '</a></li>').join('\n            ') + '\n' +
+'            <li><a href="../../hoa-painting/">HOA &amp; Common-Area Painting</a></li>\n' +
+'          </ul>\n' +
+'        </nav>\n' +
+'        <nav class="f-col" aria-label="Guides">\n' +
+'          <div class="f-col-label">Guides</div>\n' +
+'          <ul class="f-links">\n' +
+'            <li><a href="../"><b>The ' + esc(a.city_name) + ' Color Guide</b></a></li>\n' +
+            (pillar && pillar.articles || []).filter(x => x.url && x.slug !== a.slug)
+              .map(x => '<li><a href="' + relSelf(x.url) + '">' + esc(x.title) + '</a></li>').join('\n            ') + '\n' +
+'          </ul>\n' +
+'        </nav>\n' +
+'        <div class="f-col">\n' +
+'          <div class="f-col-label">VIP Concierge</div>\n' +
+'          <ul class="f-links">\n' +
+'            <li><a href="' + CFG.phoneHref + '">' + CFG.phone + '</a></li>\n' +
+'            <li><a href="mailto:' + CFG.email + '">' + CFG.email + '</a></li>\n' +
+'            <li><span style="font-size:13.5px; color:rgba(255,255,255,0.78);">Mon–Fri 8am–6pm · Sat 9am–3pm</span></li>\n' +
+'          </ul>\n' +
+'        </div>\n' +
+'      </div>\n' +
+'      <div class="f-bottom">\n' +
+'        <div class="f-contact">\n' +
+'          <span>Serving every village of ' + esc(a.city_name) + ', CA</span>\n' +
+'          <a href="' + CFG.phoneHref + '">' + CFG.phone + '</a>\n' +
+'        </div>\n' +
+'        <div class="f-copy">© ' + new Date().getFullYear() + ' VIP Home Painting. Licensed, Bonded &amp; Insured · 1-Year Warranty on Labor &amp; Materials.</div>\n' +
+'      </div>\n' +
+'    </div>\n' +
+'  </footer>\n' +
+'\n' +
+'</div>\n' +
+deepen(VIZ_JS) + '\n' +
+'</body>\n' +
+'</html>\n';
+}
+
 /* ---------------- SITEMAP + ROBOTS ---------------- */
 
 function buildSitemap() {
@@ -1659,6 +1880,7 @@ function buildSitemap() {
     ...CITIES.cities.map(c => ({ loc: `${CFG.siteBase}/${c.slug}/`, priority: '0.95' })),
     ...CITIES.cities.flatMap(c => c.hoa_page ? [{ loc: `${CFG.siteBase}/${c.slug}/${c.hoa_page.slug}/`, priority: '0.85' }] : []),
     ...BLOG.pillars.map(p => ({ loc: `${CFG.siteBase}/${p.city_slug}/${p.slug}/`, priority: '0.8' })),
+    ...BLOG.pillars.flatMap(p => (p.cluster || []).map(a => ({ loc: `${CFG.siteBase}/${a.city_slug}/${a.pillar_slug}/${a.slug}/`, priority: '0.7' }))),
     ...DATA.communities.map(c => ({ loc: `${CFG.siteBase}/${CFG.outputDir}/${c.slug}/`, priority: '0.9' }))
   ];
   const entries = urls.map(u => `  <url>
@@ -1759,6 +1981,15 @@ function main() {
     auditOutput(phtml, `${pillar.city_slug}/${pillar.slug} (pillar)`);
     fs.writeFileSync(path.join(pdir, 'index.html'), phtml, 'utf8');
     console.log(`  ✓ ${pillar.city_slug}/${pillar.slug}/index.html  [PILLAR: ${(pillar.layout.module_order||[]).length} sections]`);
+    for (const art of (pillar.cluster || [])) {
+      const adir = path.join(ROOT, art.city_slug, art.pillar_slug, art.slug);
+      fs.mkdirSync(adir, { recursive: true });
+      const ahtml = buildArticlePage(art, pillar);
+      auditOutput(ahtml, `${art.city_slug}/${art.pillar_slug}/${art.slug} (article)`);
+      fs.writeFileSync(path.join(adir, 'index.html'), ahtml, 'utf8');
+      const words = ahtml.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '').replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+      console.log(`  ✓ ${art.city_slug}/${art.pillar_slug}/${art.slug}/index.html  [ARTICLE: ~${words} words]`);
+    }
   }
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), buildSitemap(), 'utf8');
   console.log('  ✓ sitemap.xml');

@@ -217,6 +217,35 @@ their hundreds of landing pages earn nothing. AI engines cite answers, not offer
 **The guard:** never write a title that competes with a sales page. Sales pages answer
 "who to hire"; the blog answers "how to decide".
 
+### How a blog page actually gets built
+
+Both types are generated from `generator/blog.json` — nothing here is hand-written either.
+
+| Piece | Pillar | Article |
+|---|---|---|
+| Data | `pillars[]` | `pillars[].cluster[]` |
+| Modules | `blog-modules.js` (8) | `article-modules.js` (9) |
+| Builder | `buildPillarPage()` | `buildArticlePage()` |
+| CSS | `blog-page.css` | same file, `.ar-*` block |
+| Schema | Article · ItemList · Breadcrumb | Article · **FAQPage** · Breadcrumb · speakable |
+| Depth | 2 levels | **3 levels** — see below |
+
+**The depth trap.** `CFG.assetBase` is written for a two-deep page (`../../orange-county-…`),
+and the CSS blocks are rewritten once at module load. An article sits one level deeper, so
+every asset URL — including the ones inside CSS `url()` and the visualizer's `DIR` — has to be
+pushed out a level. That is what `deepen()` in `generate.js` does. **Any future page type
+deeper than two levels must use it**, or backgrounds and viz photos silently 404 on GitHub
+Pages while looking fine locally.
+
+**The article is the citation unit.** Every one carries an answer block written to survive
+being quoted with no page around it (it names the city and the company rather than saying
+"we"), a table where the data supports one, and 4+ FAQs whose visible text matches the
+FAQPage JSON-LD exactly. `speakable` points at `.ar-answer`.
+
+**The gate covers it.** `validate-brief.js` counts the pillar and cluster in its page total and
+fails if the pillar advertises an article that has no `cluster[]` entry — the dead-card defect
+that shipped once already.
+
 ---
 
 ## IMPROVING THIS SYSTEM
@@ -230,8 +259,9 @@ This workflow is not finished. When something better is found, change it here an
 2. **Semrush is out of credits.** No volume or difficulty data yet — though M-05 suggests
    volume is less decisive here than assumed.
 3. **No real project totals.** Pricing ranges must come from job data, never computed.
-4. **Blog: planned, not written.** BLOG-PLAN-IRVINE.md has the pillar + 9 articles with
-   prompts ready. Nothing published yet. This is the #1 gap (M-06).
+4. **Blog: 5 of 10 published.** Pillar + 4 articles live. The remaining five have prompts
+   ready in BLOG-PLAN-IRVINE.md and are purely additive. Still zero measured AI citations —
+   re-run `ai_visibility` in ~30 days once the pages have been crawled (M-06).
 5. **The films don't exist yet.** Every hero currently plays the same OC commercial.
 6. **Aurora isn't active** — the media agent for renders and photography.
 

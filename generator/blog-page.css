@@ -138,3 +138,112 @@
   .pl-toc ol { columns: 1; }
   .pl-stats, .pl-cards { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   CLUSTER ARTICLES
+   Same editorial column as the pillar, plus the blocks that exist
+   to be extracted: the answer, the table, the takeaways.
+   ============================================================ */
+
+/* ---- THE ANSWER BLOCK — first thing under the lead, and the
+   chunk an answer engine is most likely to quote ---- */
+.ar-answer {
+  background: #FBFAF7;
+  border: 1px solid rgba(26,31,78,0.12);
+  border-left: 3px solid var(--gold, #B08D57);
+  border-radius: 3px;
+  padding: 28px 32px;
+  margin: 8px 0 4px;
+}
+.ar-answer p { margin: 0 0 14px; }
+.ar-answer p:last-child { margin-bottom: 0; }
+.ar-answer-list { margin: 16px 0 0; padding-left: 20px; }
+.ar-answer-list li { margin-bottom: 9px; line-height: 1.62; }
+.ar-answer-list li:last-child { margin-bottom: 0; }
+
+/* ---- NUMBERED SECTION HEADINGS — for the "5 things that…" shape ---- */
+.ar-num {
+  display: inline-block;
+  font-family: var(--font-serif, Georgia, serif);
+  font-size: 0.78em;
+  color: var(--gold, #B08D57);
+  margin-right: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- CALLOUT — one sentence that deserves to stop the eye ---- */
+.ar-callout {
+  border-left: 2px solid var(--gold, #B08D57);
+  padding: 4px 0 4px 22px;
+  margin: 26px 0;
+}
+.ar-callout p {
+  font-family: var(--font-serif, Georgia, serif);
+  font-style: italic;
+  font-size: 19px !important;
+  line-height: 1.55;
+  color: var(--ink, #1A1F4E);
+  margin: 0;
+}
+
+/* ---- TABLE — scrolls inside itself on narrow screens so the page
+   body never scrolls sideways ---- */
+.ar-table-wrap { overflow-x: auto; margin: 26px 0 12px; -webkit-overflow-scrolling: touch; }
+.ar-table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  font-size: 15.5px;
+  line-height: 1.5;
+}
+.ar-table th, .ar-table td {
+  text-align: left;
+  padding: 13px 16px;
+  border-bottom: 1px solid rgba(26,31,78,0.10);
+  vertical-align: top;
+}
+.ar-table thead th {
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-size: 11.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(26,31,78,0.62);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(26,31,78,0.22);
+  white-space: nowrap;
+}
+.ar-table tbody th { font-weight: 600; color: var(--ink, #1A1F4E); }
+.ar-table tbody tr:last-child th,
+.ar-table tbody tr:last-child td { border-bottom: none; }
+.ar-table tbody tr:nth-child(odd) { background: rgba(26,31,78,0.022); }
+.ar-table-note {
+  font-size: 14px !important;
+  color: rgba(26,31,78,0.62);
+  font-style: italic;
+  margin-top: 4px !important;
+}
+
+/* ---- TAKEAWAYS ---- */
+.ar-takeaways {
+  background: var(--navy, #1A1F4E);
+  border-radius: 3px;
+  padding: 30px 34px;
+  margin: 12px 0;
+}
+.ar-takeaways .pl-answer-lbl { color: var(--gold, #B08D57); }
+.ar-takeaways ol { margin: 14px 0 0; padding-left: 22px; color: #fff; }
+.ar-takeaways li {
+  margin-bottom: 12px;
+  line-height: 1.6;
+  font-size: 16.5px;
+  color: rgba(255,255,255,0.90);
+}
+.ar-takeaways li:last-child { margin-bottom: 0; }
+.ar-takeaways b, .ar-takeaways strong { color: #fff; }
+
+@media (max-width: 640px) {
+  .ar-answer { padding: 22px 20px; }
+  .ar-takeaways { padding: 24px 22px; }
+  .ar-callout p { font-size: 17.5px !important; }
+  .ar-num { display: block; margin: 0 0 4px; }
+}

@@ -232,28 +232,800 @@
         {
           "title": "5 Things That Change What Painting Your Irvine Home Actually Costs",
           "sub": "Why two identical-looking houses on the same street get quotes $8,000 apart.",
-          "url": "/irvine/guide/what-does-it-cost/"
+          "url": "/irvine/guide/what-does-it-cost/",
+          "slug": "what-does-it-cost"
         },
         {
           "title": "Avoid the $7,000 Repaint: What Goes Wrong When You Choose a Color From a Swatch",
           "sub": "Almost nobody who regrets their color ever saw it on their own house first.",
-          "url": "/irvine/guide/what-goes-wrong/"
+          "url": "/irvine/guide/what-goes-wrong/",
+          "slug": "what-goes-wrong"
         },
         {
           "title": "How to Get Your Exterior Color Approved by an Irvine HOA Without Three Rounds of Revisions",
           "sub": "What design review committees actually look at.",
-          "url": "/irvine/guide/hoa-color-approval/"
+          "url": "/irvine/guide/hoa-color-approval/",
+          "slug": "hoa-color-approval"
         },
         {
           "title": "3 Ways to Choose Between Three Identical-Looking Whites Without Guessing",
           "sub": "On a paper card they are the same. On your house they are not.",
-          "url": "/irvine/guide/choosing-between-whites/"
+          "url": "/irvine/guide/choosing-between-whites/",
+          "slug": "choosing-between-whites"
         }
       ],
       "close": {
         "heading": "Seeing It First",
         "body": "A wrong exterior color costs the entire project again — four to seven thousand dollars for a typical Irvine home, plus the weeks and the living with it. And almost nobody who ends up regretting their color ever looked at it on their own facade before the crew arrived.\n\nThat is the whole reason our design team renders your actual home in every palette you are considering, at no cost, before anything is scheduled. You approve a color you have already seen on your own house. It takes about thirty minutes."
-      }
+      },
+      "cluster": [
+        {
+          "city_slug": "irvine",
+          "pillar_slug": "guide",
+          "city_name": "Irvine",
+          "kicker": "The Irvine Guide",
+          "published": "2026-07-30",
+          "updated": "2026-07-30",
+          "slug": "what-does-it-cost",
+          "title": "5 Things That Change What Painting Your Irvine Home <em>Actually Costs</em>",
+          "title_plain": "5 Things That Change What Painting Your Irvine Home Actually Costs",
+          "subtitle": "Why two houses that look identical from the street get quotes thousands of dollars apart.",
+          "seo": {
+            "meta_title": "What Does It Cost to Paint a House in Irvine? | VIP Painting",
+            "meta_desc": "Irvine exterior painting runs about $2.74–$4.89 per square foot. The five things that decide where your home lands, and what an itemized estimate covers."
+          },
+          "layout": {
+            "module_order": [
+              "intro",
+              "answer",
+              "sections",
+              "table",
+              "takeaways",
+              "faq",
+              "related",
+              "close"
+            ]
+          },
+          "toc": [
+            {
+              "id": "answer",
+              "label": "The short answer"
+            },
+            {
+              "id": "surface",
+              "label": "1 · Paintable surface"
+            },
+            {
+              "id": "prep",
+              "label": "2 · What the stucco hides"
+            },
+            {
+              "id": "colors",
+              "label": "3 · How many colors"
+            },
+            {
+              "id": "access",
+              "label": "4 · Height and access"
+            },
+            {
+              "id": "spec",
+              "label": "5 · The coating spec"
+            },
+            {
+              "id": "table",
+              "label": "What an estimate itemizes"
+            },
+            {
+              "id": "faq",
+              "label": "Questions people ask"
+            }
+          ],
+          "intro": "Two homes on the same Irvine street, same builder, same floor plan, built the same year. One quote comes back at the low end of the market. The other comes back several thousand dollars higher. Neither painter is trying to take advantage of anyone.\n\nThe difference is almost never the paint. It is five things, and only one of them is visible from the curb.",
+          "answer": {
+            "label": "The short answer",
+            "body": "Exterior painting in Irvine, California runs roughly <b>$2.74 to $4.89 per square foot of paintable surface</b> based on published local rate data. <b>VIP Home Painting starts at $4.75 per square foot of paintable surface</b>, at the premium end of that range.\n\nWhere a specific home lands inside the range is decided by five variables, in rough order of impact:",
+            "points": [
+              "<b>Paintable surface area</b> — which is not the same number as your home’s square footage",
+              "<b>Substrate condition</b> — how much crack repair, patching and priming the stucco needs before any color goes on",
+              "<b>Number of colors in the scheme</b> — body, trim, fascia, doors and accents are separate cut-ins, not one pass",
+              "<b>Height and access</b> — second stories, hillside lots and zero-setback elevations all change the labor",
+              "<b>Coating specification</b> — product line, film thickness, and whether the crew back-rolls or only sprays"
+            ]
+          },
+          "sections": [
+            {
+              "id": "surface",
+              "number": "1",
+              "heading": "Paintable surface is not your square footage",
+              "body": "This is the single most common misunderstanding, and it is the reason two quotes on the same house can look like they are describing different projects.\n\nWhen a listing says a home is 3,200 square feet, that is conditioned interior floor area. Paintable surface is something else entirely — the actual area a brush or sprayer has to cover. Exterior walls, fascia, eaves and soffits, trim, garage doors, railings, shutters. It is measured elevation by elevation on site.\n\nA two-story home with tall entry volumes and deep overhangs can have far more paintable surface than a single-story home of the same interior footage. A home with extensive stone or brick wainscot can have considerably less. Neither is knowable from a listing.",
+              "callout": "If a quote arrives without anyone having measured your elevations, it is an estimate of a house in general, not of your house."
+            },
+            {
+              "id": "prep",
+              "number": "2",
+              "heading": "What the stucco is hiding",
+              "body": "On stucco — which is most of Irvine — everything you can see when the job is finished was decided before a drop of color went on.\n\nHairline cracking is normal on stucco and does not mean anything is structurally wrong. But every crack has to be opened, filled and floated to match the surrounding texture, or it telegraphs straight through the new coating within a season. A home with substantial crack repair carries real hours that a home with sound stucco does not.\n\nThe same is true of bare substrate. Anywhere the previous coating has failed, chalked or been repaired needs bonding primer before topcoat. This is the line item most likely to be quietly missing from a cheaper bid, and it is the one that decides whether the finish lasts eight years or three.",
+              "list": [
+                "Pressure wash to remove chalking, dust and organic growth",
+                "Crack repair opened, filled, and floated to match existing texture",
+                "Bonding primer on all bare or repaired substrate",
+                "Caulking at every transition, penetration and dissimilar-material joint"
+              ]
+            },
+            {
+              "id": "colors",
+              "number": "3",
+              "heading": "How many colors are actually in the scheme",
+              "body": "A single-color repaint and a four-color scheme are not the same job, even on the same house.\n\nEvery additional color is a separate mobilization: separate masking, separate cut-in by hand, separate dry time before the adjacent surface can be worked. A body-and-trim scheme is standard. Add a contrasting fascia, a front door in a third color, and shutters or a garage door in a fourth, and the labor rises noticeably even though the material cost barely moves.\n\nThis is worth knowing before you fall in love with a five-color elevation. It is not that it cannot be done well — it is that it should be priced honestly as what it is."
+            },
+            {
+              "id": "access",
+              "number": "4",
+              "heading": "Height, slope, and how close the neighbors are",
+              "body": "Labor is the majority of any exterior repaint, and access is what decides how much labor a given square foot takes.\n\nSecond-story elevations mean staging, ladders or lifts, and slower, more careful work. Hillside lots — much of Orchard Hills sits against the ridge — can mean a downhill elevation that needs scaffolding to reach at all. And in tighter villages like Stonegate, where homes sit close together with minimal setback, containment is not optional. Overspray onto a neighbor’s car, wall or planting is a genuine risk, which means more masking, more shielding, and scheduling around wind rather than against it.\n\nNone of that shows up in a square-foot number. All of it shows up in the hours."
+            },
+            {
+              "id": "spec",
+              "number": "5",
+              "heading": "The specification, and what \"two coats\" actually means",
+              "body": "Two bids can both say \"two coats\" and describe meaningfully different work.\n\nCoating applied too thin, or over-thinned to spray more easily, technically leaves two coats on the wall and delivers a fraction of the intended film thickness. Manufacturers publish a wet-mil spec for a reason. Applying below it is the most invisible way to reduce cost on a painting job, and the homeowner does not find out for several years.\n\nThe other variable is method. Spraying alone is faster. Spraying and then back-rolling drives the coating into the stucco texture instead of leaving it bridging on top of it, which is what adhesion and service life depend on. It takes longer, and it is the correct way to do it.",
+              "callout": "VIP specifies Sherwin-Williams Emerald and Duration, two coats at full wet-mil, never over-thinned — sprayed and back-rolled on stucco with Graco and Titan airless equipment."
+            }
+          ],
+          "table": {
+            "id": "table",
+            "heading": "What an itemized estimate should show you",
+            "intro": "Every VIP estimate is broken out line by line rather than presented as a single number. That is partly transparency and partly self-defense: a lump sum is impossible to compare against another bid, and it is where scope quietly disappears.",
+            "columns": [
+              "Line item",
+              "What it covers",
+              "What makes it move"
+            ],
+            "rows": [
+              [
+                "Surface preparation",
+                "Pressure wash, crack repair, patching, sanding, scraping of failed coating",
+                "Age and condition of existing stucco"
+              ],
+              [
+                "Priming",
+                "Bonding primer on bare, repaired or chalking substrate",
+                "How much of the wall is exposed after prep"
+              ],
+              [
+                "Caulking &amp; sealing",
+                "Transitions, penetrations, window and door perimeters",
+                "Number of openings and material joints"
+              ],
+              [
+                "Body coating",
+                "Two coats at full wet-mil, sprayed and back-rolled",
+                "Paintable surface area and access height"
+              ],
+              [
+                "Trim, fascia &amp; eaves",
+                "Hand cut-in, separate color, separate pass",
+                "Linear footage and number of colors"
+              ],
+              [
+                "Doors &amp; accents",
+                "Garage doors, entry door, shutters, railings, ironwork",
+                "How many accent colors are in the scheme"
+              ],
+              [
+                "Containment &amp; protection",
+                "Masking, shielding, landscape and hardscape protection",
+                "Setback distance and proximity to neighbors"
+              ],
+              [
+                "Association submittal",
+                "Design review package prepared for your community association",
+                "Included — not a separate charge"
+              ]
+            ],
+            "note": "Typical project totals are deliberately not published here. A total is only meaningful once the elevations have been measured, and a number invented for a web page is worth nothing to you."
+          },
+          "takeaways": {
+            "heading": "What to remember",
+            "points": [
+              "Ask for the <b>paintable surface measurement</b>, not a price based on your home’s square footage.",
+              "Ask what happens to <b>cracks and bare substrate</b> specifically. Vague answers here are the most expensive kind.",
+              "Ask whether the crew <b>back-rolls on stucco</b> or only sprays.",
+              "Ask for the estimate <b>itemized</b>. If two bids are far apart, the difference is almost always a line one of them left out.",
+              "Count the <b>colors in your scheme</b> before comparing quotes — a four-color elevation is a different job from a two-color one."
+            ]
+          },
+          "faq_heading": "Questions people ask",
+          "faq": [
+            {
+              "q": "How much does it cost to paint a house in Irvine?",
+              "a": "Published rates for Irvine, CA run roughly $2.74 to $4.89 per square foot of paintable surface. VIP Home Painting starts at $4.75 per square foot of paintable surface, at the premium end of that range. The final figure depends on paintable surface area, the condition of the existing stucco, how many colors are in the scheme, access and height, and the coating specification."
+            },
+            {
+              "q": "How do your prices compare to other contractors?",
+              "a": "VIP sits at the premium end of the Irvine range and says so plainly rather than competing on price. The argument for it is not craftsmanship in the abstract — it is that a repaint done twice costs the whole amount again. Every estimate is itemized line by line so it can be compared honestly against any other bid."
+            },
+            {
+              "q": "Why is one painting quote so much cheaper than another?",
+              "a": "Almost always because of something that was left out rather than something that was discounted. The most common omissions are bonding primer on bare substrate, crack repair floated to match texture, and back-rolling on stucco. All three are invisible on the day the job finishes and decisive three years later. Comparing itemized estimates rather than totals is the only reliable way to see the difference."
+            },
+            {
+              "q": "What is paintable surface, and why not just use my square footage?",
+              "a": "Paintable surface is the actual area being coated — exterior walls, fascia, eaves, soffits, trim, garage doors and railings — measured elevation by elevation on site. Your home’s square footage is conditioned interior floor area, which is a different number. A two-story home with tall entry volumes can have far more paintable surface than a single-story home of the same interior footage."
+            },
+            {
+              "q": "Is the estimate itself complimentary?",
+              "a": "Yes. The consultation, the measurement, and the Custom Visualization Service that renders your home in every palette you are considering are all provided at no cost, before anything is scheduled. Call (909) 312-5400."
+            }
+          ],
+          "related_heading": "Read next",
+          "related": [
+            {
+              "title": "What Goes Wrong When You Choose a Color From a Swatch",
+              "sub": "The $7,000 mistake, and why light is the reason for it.",
+              "url": "/irvine/guide/what-goes-wrong/"
+            },
+            {
+              "title": "Choosing Between Three Identical-Looking Whites",
+              "sub": "LRV, undertone, and how to stop guessing.",
+              "url": "/irvine/guide/choosing-between-whites/"
+            },
+            {
+              "title": "Getting Your Color Approved by an Irvine HOA",
+              "sub": "Who actually decides, and what to have ready.",
+              "url": "/irvine/guide/hoa-color-approval/"
+            }
+          ],
+          "close": {
+            "heading": "Seeing It First",
+            "body": "A wrong exterior color costs the entire project again — four to seven thousand dollars for a typical Irvine home, plus the weeks and the living with it. And almost nobody who ends up regretting their color ever looked at it on their own facade before the crew arrived.\n\nThat is the whole reason our design team renders your actual home in every palette you are considering, at no cost, before anything is scheduled. You approve a color you have already seen on your own house. It takes about thirty minutes."
+          }
+        },
+        {
+          "city_slug": "irvine",
+          "pillar_slug": "guide",
+          "city_name": "Irvine",
+          "kicker": "The Irvine Guide",
+          "published": "2026-07-30",
+          "updated": "2026-07-30",
+          "slug": "what-goes-wrong",
+          "title": "Avoid the $7,000 Repaint: <em>What Goes Wrong</em> When You Choose a Color From a Swatch",
+          "title_plain": "Avoid the $7,000 Repaint: What Goes Wrong When You Choose a Color From a Swatch",
+          "subtitle": "Almost nobody who regrets their exterior color ever saw it on their own house first.",
+          "seo": {
+            "meta_title": "Why Exterior Paint Colors Look Wrong on the House | Irvine",
+            "meta_desc": "A two-inch swatch is not the same color on 2,000 square feet of Irvine stucco. The four reasons why, and how to be certain before you commit to a repaint."
+          },
+          "layout": {
+            "module_order": [
+              "intro",
+              "answer",
+              "sections",
+              "visualizer",
+              "takeaways",
+              "faq",
+              "related",
+              "close"
+            ]
+          },
+          "toc": [
+            {
+              "id": "answer",
+              "label": "The short answer"
+            },
+            {
+              "id": "scale",
+              "label": "Scale changes the color"
+            },
+            {
+              "id": "light",
+              "label": "Irvine light changes it again"
+            },
+            {
+              "id": "texture",
+              "label": "Stucco is not paper"
+            },
+            {
+              "id": "fixed",
+              "label": "What you cannot repaint"
+            },
+            {
+              "id": "viz",
+              "label": "See it on a real home"
+            },
+            {
+              "id": "faq",
+              "label": "Questions people ask"
+            }
+          ],
+          "intro": "The card is two inches wide. It is printed on flat paper. You are looking at it indoors, under a fluorescent fixture, holding it next to four other cards that are also two inches wide.\n\nThe wall is two thousand square feet of textured stucco in full Southern California sun, next to a clay tile roof you are not replacing and a stone wainscot you are not touching.\n\nThese are not the same color, and they were never going to be.",
+          "answer": {
+            "label": "The short answer",
+            "body": "An exterior paint color chosen from a swatch frequently looks wrong on the finished house for four reasons that are all predictable and none of which are the painter’s fault:",
+            "points": [
+              "<b>Scale</b> — the same pigment reads dramatically more saturated across a large surface than on a small card",
+              "<b>Light</b> — direction, time of day and surrounding reflected color shift how a paint appears, and in Irvine that shift is severe",
+              "<b>Texture</b> — stucco casts thousands of micro-shadows that paper does not, which reads visually darker",
+              "<b>Fixed elements</b> — roof tile, stone, hardscape and window frames are not changing, and the new color has to live with them"
+            ]
+          },
+          "sections": [
+            {
+              "id": "scale",
+              "heading": "The same color is a different color at scale",
+              "body": "This is a well-documented perceptual effect and it catches almost everyone. A hue viewed across a large area appears more intense and more saturated than the identical hue viewed on a small sample. A beige that looked restrained on a card can read distinctly gold across an entire elevation. A soft gray-green can arrive at full strength as something closer to sage.\n\nThe practical consequence: people routinely choose one to two steps stronger than they meant to, discover it at the moment the crew pulls the masking, and then have to decide whether to live with it or pay for the whole job again."
+            },
+            {
+              "id": "light",
+              "heading": "Irvine light is not one light",
+              "body": "The villages of Irvine sit at different elevations with genuinely different exposure, and that does more to your color than most homeowners expect.\n\nIn Woodbury, mature landscaping and garden paseos keep much of the community filtered and cool through the day, which flatters warmer whites that would go brassy elsewhere. On a west-facing slope in Orchard Hills, that same warm white takes direct afternoon sun off the ridge and reads yellow. Hidden Canyon gives you two different conditions in a single day — cool, often marine-influenced mornings, then hot open afternoons — so a white that feels refined at noon can go noticeably cold by evening.\n\nSame paint. Same wall. Different hour, different village, different color.",
+              "callout": "A color is not a property of the paint. It is a property of the paint, the surface, the light, and everything nearby that is reflecting into it."
+            },
+            {
+              "id": "texture",
+              "heading": "Stucco is not paper",
+              "body": "A paint chip is a flat, smooth, matte printed surface. A stucco wall is a landscape of peaks and valleys, and every one of them casts a small shadow.\n\nThe visual result is that the same color reads meaningfully deeper on stucco than on the card, and the effect gets stronger the heavier the texture. A smooth-troweled finish, like much of Hidden Canyon, behaves differently again — it holds the color closer to true, which is precisely why any imperfection in the preparation is visible from three feet.\n\nSheen compounds it. The same color in a higher sheen picks up more directional light and appears to shift through the day, while a flatter finish holds steadier but shows surface irregularity more readily."
+            },
+            {
+              "id": "fixed",
+              "heading": "The things you are not repainting decide more than you think",
+              "body": "Your roof is staying. So is the stone wainscot, the driveway, the window frames, and in most Irvine villages a good deal of hardscape and mature planting.\n\nEvery one of those surfaces reflects color back onto the wall. A terracotta tile roof throws warm light down onto the fascia and upper body all day. Large expanses of green landscaping push a subtle cool cast onto shaded elevations. A warm-toned stone base can make a neutral gray body read faintly lilac by contrast — an effect nobody predicts from a card and everybody notices on the finished house.\n\nThis is the failure mode that produces the most regret, because the color is not wrong in isolation. It is wrong next to the four things that were always going to stay."
+            },
+            {
+              "id": "cost",
+              "heading": "What getting it wrong actually costs",
+              "body": "A wrong exterior color is not a touch-up. It is the entire project again — full preparation, full material, full labor — because the surface has to be recoated in its entirety for the finish to be uniform.\n\nFor a typical Irvine home that is four to seven thousand dollars, paid a second time, plus another stretch of weeks with the house staged and the crew on site. And in a design-review community it can also mean a second submittal to the association.\n\nAgainst that, the cost of being certain in advance is thirty minutes."
+            }
+          ],
+          "viz_intro": "This is the point. Pick a style direction below and tap through the palettes — the home re-paints itself in real time. It is a demonstration of what our design team does with your actual elevation during a complimentary consultation: you see the color on the house, in context, before a single gallon is tinted.",
+          "takeaways": {
+            "heading": "What to remember",
+            "points": [
+              "Expect any color to read <b>stronger and deeper</b> on the house than on the card. Almost everyone chooses a step too strong.",
+              "Judge a candidate color <b>at three different times of day</b>, on the elevation that actually faces the sun.",
+              "Hold it against the <b>roof, the stone and the hardscape</b> — the things you are not repainting are half the decision.",
+              "A repaint to fix a color is the <b>whole project again</b>, not a touch-up.",
+              "The only reliable test is <b>seeing it on your own house</b> before anything is scheduled."
+            ]
+          },
+          "faq_heading": "Questions people ask",
+          "faq": [
+            {
+              "q": "Why does my paint look different on the wall than it did on the swatch?",
+              "a": "Four reasons, all predictable. Scale makes a color read more saturated across a large surface than on a small card. Light direction and time of day shift how the pigment appears. Stucco texture casts micro-shadows that make the color read deeper than it does on flat paper. And fixed elements you are not repainting — roof tile, stone, hardscape, landscaping — reflect their own color back onto the wall."
+            },
+            {
+              "q": "Should I paint a test patch on the house first?",
+              "a": "A large sample board moved around the elevations through the day is far better than judging from a card, and better than a small patch painted directly on the wall, which is influenced by the color already underneath it. The limitation of any physical sample is that it still shows you a fragment rather than the whole house. Rendering your actual elevation in the candidate palettes shows you the finished result, which is the thing you are actually deciding on."
+            },
+            {
+              "q": "How much does it cost to repaint if I choose the wrong color?",
+              "a": "It costs the entire project again — roughly four to seven thousand dollars for a typical Irvine exterior — because the surface has to be fully recoated for the finish to be uniform. It is not a touch-up. In a design-review community it may also require a second submittal to the association."
+            },
+            {
+              "q": "Does the roof really affect what exterior color I should choose?",
+              "a": "Substantially. A terracotta or clay tile roof reflects warm light onto the fascia and upper body of the house throughout the day, which pushes neutral colors warmer than they appear in isolation. Since the roof is not changing, it is one of the fixed constraints the color has to work with rather than a detail to consider afterward."
+            }
+          ],
+          "related_heading": "Read next",
+          "related": [
+            {
+              "title": "Choosing Between Three Identical-Looking Whites",
+              "sub": "LRV, undertone, and how to stop guessing.",
+              "url": "/irvine/guide/choosing-between-whites/"
+            },
+            {
+              "title": "5 Things That Change What Painting Your Home Costs",
+              "sub": "Why identical houses get quotes thousands apart.",
+              "url": "/irvine/guide/what-does-it-cost/"
+            },
+            {
+              "title": "Painting in Orchard Hills",
+              "sub": "Hillside light, three associations, and the palettes that hold.",
+              "url": "/irvine/orchard-hills/",
+              "village": true
+            }
+          ],
+          "close": {
+            "heading": "Seeing It First",
+            "body": "A wrong exterior color costs the entire project again — four to seven thousand dollars for a typical Irvine home, plus the weeks and the living with it. And almost nobody who ends up regretting their color ever looked at it on their own facade before the crew arrived.\n\nThat is the whole reason our design team renders your actual home in every palette you are considering, at no cost, before anything is scheduled. You approve a color you have already seen on your own house. It takes about thirty minutes."
+          }
+        },
+        {
+          "city_slug": "irvine",
+          "pillar_slug": "guide",
+          "city_name": "Irvine",
+          "kicker": "The Irvine Guide",
+          "published": "2026-07-30",
+          "updated": "2026-07-30",
+          "slug": "hoa-color-approval",
+          "title": "How to Get Your Exterior Color Approved by an Irvine HOA <em>Without Three Rounds of Revisions</em>",
+          "title_plain": "How to Get Your Exterior Color Approved by an Irvine HOA Without Three Rounds of Revisions",
+          "subtitle": "Who actually decides, what to have ready, and the mistake that sends most applications back.",
+          "seo": {
+            "meta_title": "Irvine HOA Exterior Paint Color Approval — How It Works",
+            "meta_desc": "Find your association, understand who decides, and submit once. A practical guide to exterior color approval across the six villages of Irvine, CA."
+          },
+          "layout": {
+            "module_order": [
+              "intro",
+              "answer",
+              "sections",
+              "table",
+              "faq",
+              "takeaways",
+              "related",
+              "close"
+            ]
+          },
+          "toc": [
+            {
+              "id": "answer",
+              "label": "The short answer"
+            },
+            {
+              "id": "which",
+              "label": "Find your actual association"
+            },
+            {
+              "id": "authority",
+              "label": "The guidelines are the authority"
+            },
+            {
+              "id": "ready",
+              "label": "What to have ready"
+            },
+            {
+              "id": "mistake",
+              "label": "The mistake that costs a round"
+            },
+            {
+              "id": "table",
+              "label": "Who manages which village"
+            },
+            {
+              "id": "faq",
+              "label": "Questions people ask"
+            }
+          ],
+          "intro": "Most exterior color applications in Irvine are not rejected. They are returned — for a missing document, an unclear sample, or a submittal sent to the wrong body entirely. Each return costs weeks, and the weeks are the part homeowners actually mind.\n\nThe process is not difficult. It is just specific, and it differs by village.",
+          "answer": {
+            "label": "The short answer",
+            "body": "Exterior color changes in Irvine’s master-planned villages generally require written approval from the community association’s architectural or design review body <b>before</b> work begins. Getting through in one round comes down to four steps:",
+            "points": [
+              "<b>Identify the exact association</b> that governs your property — several Irvine villages contain more than one",
+              "<b>Obtain that association’s current architectural guidelines</b> and treat them, not general advice, as the authority",
+              "<b>Submit a complete package</b> the first time, with the colors clearly identified by manufacturer name and code",
+              "<b>Do not start work</b> until written approval is in hand, regardless of how routine the change seems"
+            ]
+          },
+          "sections": [
+            {
+              "id": "which",
+              "heading": "Step one: find out which association actually governs your home",
+              "body": "This sounds trivial and it is where a surprising number of submittals go wrong.\n\nThe City of Irvine publishes an official lookup tool that maps a property to its homeowners association and management company. It is a government primary source, and it is more reliable than a listing site, a neighborhood forum, or the assumption that your village has one association.\n\nStart at <b>cityofirvine.gov/community-development/irvine-homeowners-associations</b>.",
+              "callout": "Orchard Hills is not one association. The Groves, The Reserve and The Summit each have their own board and their own review. Submitting to the wrong one costs you the full cycle.",
+              "list": [
+                "<b>Orchard Hills</b> — multiple separate associations, each with its own board",
+                "<b>Stonegate</b> — Stonegate Village Owners Association (SVOA). Note that a separate, unrelated 126-unit \"Stonegate Homeowners Association, Inc.\" exists elsewhere; they are not the same entity",
+                "<b>Woodbury</b> — Woodbury Community Association, one of the largest in Irvine at 4,067 units",
+                "<b>Portola Springs</b> — Portola Springs Association",
+                "<b>Altair</b> — Altair Irvine Master Association",
+                "<b>Hidden Canyon</b> — self-presented at livinghiddencanyon.com"
+              ]
+            },
+            {
+              "id": "authority",
+              "heading": "Step two: the guidelines are the authority, not anyone’s advice",
+              "body": "Every association sets its own architectural standards, and they are not interchangeable between villages — or, in Orchard Hills, between associations inside the same village.\n\nRequest the current architectural guidelines and the CC&amp;Rs from your management company in writing, and read the section on exterior modifications before you fall in love with a palette. What is approvable in one Irvine village may not be in the next, and guidelines are revised periodically, so a neighbor’s successful submittal from four years ago is not a reliable guide.\n\nAnyone who tells you what your HOA will accept without having read your association’s current guidelines is guessing. That includes painters."
+            },
+            {
+              "id": "ready",
+              "heading": "Step three: what to have ready before you submit",
+              "body": "Requirements vary by association, so the guidelines you obtained in step two govern. That said, applications generally turn on being able to show the reviewers precisely what they are approving — which means unambiguous color identification and a clear picture of the result.\n\nThe items below are what VIP assembles as part of the project, at no additional cost. If you are managing the submittal yourself, they are a reasonable starting checklist to compare against your association’s actual form.",
+              "list": [
+                "The association’s current architectural application form, completed in full",
+                "Every color identified by <b>manufacturer, name and code</b> — for example Sherwin-Williams Alabaster SW 7008 — never by description alone",
+                "Physical color samples or manufacturer chips, as the guidelines specify",
+                "A clear indication of which color goes on which element: body, trim, fascia, garage door, entry door, accents",
+                "Photographs of the existing elevations",
+                "A rendering of the proposed colors on your actual home, where the association accepts one",
+                "Contractor license and insurance information, if the form requests it"
+              ]
+            },
+            {
+              "id": "mistake",
+              "heading": "The mistake that costs most people a round",
+              "body": "It is not choosing a bold color. It is submitting something the committee cannot evaluate with confidence.\n\nA reviewer looking at three paper chips stapled to a form has to imagine the result on your elevation, in your village’s light, next to your roof. Faced with genuine uncertainty, a committee’s safest decision is to ask for more information — which is a return, and another cycle.\n\nGiving them the finished picture removes that uncertainty. It is the same reason the visualization matters to you: the difference between a decision made on imagination and a decision made on sight.\n\nThe second most common mistake is starting work before written approval arrives. Verbal encouragement from a board member is not approval, and unwinding unapproved work is far more expensive than waiting."
+            }
+          ],
+          "table": {
+            "id": "table",
+            "heading": "Who manages which village",
+            "intro": "Confirmed management for the six villages we serve, as of our most recent research. Management contracts change, so verify against the City of Irvine lookup before relying on it.",
+            "columns": [
+              "Village",
+              "Association",
+              "Management"
+            ],
+            "rows": [
+              [
+                "Woodbury",
+                "Woodbury Community Association — 4,067 units",
+                "Keystone Pacific"
+              ],
+              [
+                "Orchard Hills",
+                "Multiple: The Groves, The Reserve, The Summit",
+                "Keystone Pacific"
+              ],
+              [
+                "Portola Springs",
+                "Portola Springs Association",
+                "Keystone Pacific"
+              ],
+              [
+                "Stonegate",
+                "Stonegate Village Owners Association (SVOA)",
+                "Keystone Pacific"
+              ],
+              [
+                "Altair",
+                "Altair Irvine Master Association",
+                "Not confirmed"
+              ],
+              [
+                "Hidden Canyon",
+                "Guard-gated, self-presented community",
+                "Not confirmed"
+              ]
+            ],
+            "note": "Where management is listed as not confirmed, we have not verified it from a primary source and will not state one. Use the City of Irvine lookup for your specific parcel."
+          },
+          "takeaways": {
+            "heading": "What to remember",
+            "points": [
+              "Confirm your <b>exact association</b> through the City of Irvine lookup before anything else.",
+              "Get the <b>current guidelines in writing</b>. They are the authority; a neighbor’s old approval is not.",
+              "Identify every color by <b>manufacturer, name and code</b>, and say which element each one goes on.",
+              "Submit <b>complete the first time</b> — returns cost weeks, not days.",
+              "Never start work before <b>written approval</b> is in hand."
+            ]
+          },
+          "faq_heading": "Questions people ask",
+          "faq": [
+            {
+              "q": "Do I need HOA approval to repaint my house in Irvine?",
+              "a": "In Irvine’s master-planned villages, exterior color changes generally require written approval from the community association’s architectural or design review body before work begins. Requirements are set by each association individually, so the governing document is your own association’s current architectural guidelines. Confirm which association governs your property using the City of Irvine homeowners association lookup."
+            },
+            {
+              "q": "How do I find out which HOA my Irvine home belongs to?",
+              "a": "The City of Irvine publishes an official lookup tool that maps a property to its homeowners association and management company, at cityofirvine.gov/community-development/irvine-homeowners-associations. This matters more than it sounds: several Irvine villages contain more than one association. Orchard Hills alone includes The Groves, The Reserve and The Summit, each with its own board and review process."
+            },
+            {
+              "q": "Does VIP Home Painting handle the HOA submittal?",
+              "a": "Yes. Preparing your community association’s design review package is included as part of the project rather than charged separately. That covers identifying colors by manufacturer and code, documenting which color goes on which element, and providing a rendering of the proposed palette on your actual home where the association accepts one."
+            },
+            {
+              "q": "What happens if I paint without approval?",
+              "a": "Associations can require unapproved work to be brought back into compliance, which in the case of exterior color means repainting the house at your own cost. Verbal encouragement from a board member or neighbor is not approval. Wait for the written decision — the delay is far cheaper than the alternative."
+            },
+            {
+              "q": "How long does architectural approval take in Irvine?",
+              "a": "Timelines are set by each association and published in its own governing documents, so we will not quote a number that may not apply to your village. Request the review schedule and meeting calendar from your management company at the same time you request the guidelines. What is within your control is submitting a complete package the first time, since returns add a full cycle."
+            }
+          ],
+          "related_heading": "Read next",
+          "related": [
+            {
+              "title": "What Goes Wrong When You Choose a Color From a Swatch",
+              "sub": "Why committees ask for more information.",
+              "url": "/irvine/guide/what-goes-wrong/"
+            },
+            {
+              "title": "5 Things That Change What Painting Your Home Costs",
+              "sub": "The estimate, itemized.",
+              "url": "/irvine/guide/what-does-it-cost/"
+            },
+            {
+              "title": "HOA &amp; Common-Area Painting",
+              "sub": "For boards and property managers.",
+              "url": "/irvine/hoa-painting/",
+              "village": true
+            }
+          ],
+          "close": {
+            "heading": "Seeing It First",
+            "body": "A wrong exterior color costs the entire project again — four to seven thousand dollars for a typical Irvine home, plus the weeks and the living with it. And almost nobody who ends up regretting their color ever looked at it on their own facade before the crew arrived.\n\nThat is the whole reason our design team renders your actual home in every palette you are considering, at no cost, before anything is scheduled. You approve a color you have already seen on your own house. It takes about thirty minutes."
+          }
+        },
+        {
+          "city_slug": "irvine",
+          "pillar_slug": "guide",
+          "city_name": "Irvine",
+          "kicker": "The Irvine Guide",
+          "published": "2026-07-30",
+          "updated": "2026-07-30",
+          "slug": "choosing-between-whites",
+          "title": "3 Ways to Choose Between Three Identical-Looking Whites <em>Without Guessing</em>",
+          "title_plain": "3 Ways to Choose Between Three Identical-Looking Whites Without Guessing",
+          "subtitle": "On a paper card they are the same. On your house, in your village, they are not.",
+          "seo": {
+            "meta_title": "How to Choose Between White Exterior Paint Colors | Irvine",
+            "meta_desc": "Alabaster, Pure White, Snowbound, Greek Villa, Shoji White. Use LRV and undertone to tell them apart, then see the winner on your own Irvine home."
+          },
+          "layout": {
+            "module_order": [
+              "intro",
+              "answer",
+              "table",
+              "sections",
+              "visualizer",
+              "faq",
+              "related",
+              "close"
+            ]
+          },
+          "toc": [
+            {
+              "id": "answer",
+              "label": "The short answer"
+            },
+            {
+              "id": "table",
+              "label": "Five whites, compared"
+            },
+            {
+              "id": "lrv",
+              "label": "1 · Read the LRV"
+            },
+            {
+              "id": "undertone",
+              "label": "2 · Find the undertone"
+            },
+            {
+              "id": "see",
+              "label": "3 · See it on the house"
+            },
+            {
+              "id": "viz",
+              "label": "Try it now"
+            },
+            {
+              "id": "faq",
+              "label": "Questions people ask"
+            }
+          ],
+          "intro": "You have narrowed it to three whites. Side by side on the counter they are indistinguishable — three slightly different pieces of white paper.\n\nOn two thousand square feet of stucco, in Irvine sun, next to a clay tile roof, they are not remotely the same. One will look crisp and composed. One will go faintly yellow by mid-afternoon. One will read cold and slightly blue on the shaded elevation.\n\nThere are two published numbers that tell you most of this before you commit, and one way to be certain.",
+          "answer": {
+            "label": "The short answer",
+            "body": "To distinguish between white exterior paint colors that look identical on a chip, use three things in order:",
+            "points": [
+              "<b>Light Reflectance Value (LRV)</b> — the manufacturer’s published 0–100 figure for how much light the color reflects. Higher reads brighter and flatter in strong sun; lower holds more depth and shows shadow",
+              "<b>Undertone</b> — the faint hue underneath the white, usually yellow, greige or gray. This is what decides whether it harmonizes with your roof and stone or fights them",
+              "<b>Seeing it rendered on your own elevation</b> — the only step that accounts for your village’s light, your texture, and everything you are not repainting"
+            ]
+          },
+          "table": {
+            "id": "table",
+            "heading": "Five whites people actually shortlist in Irvine",
+            "intro": "These are Sherwin-Williams whites that appear repeatedly across the villages we work in. LRV is the manufacturer’s published Light Reflectance Value.",
+            "columns": [
+              "Color",
+              "LRV",
+              "Undertone",
+              "Where it tends to hold in Irvine"
+            ],
+            "rows": [
+              [
+                "Pure White <em>SW 7005</em>",
+                "84",
+                "Near-neutral, very slightly warm",
+                "Contemporary elevations with broad flat planes — Altair"
+              ],
+              [
+                "Greek Villa <em>SW 7551</em>",
+                "84",
+                "Warm, subtle yellow and beige",
+                "Filtered, shaded light — Woodbury’s garden paseos"
+              ],
+              [
+                "Snowbound <em>SW 7004</em>",
+                "83",
+                "Slight gray — a cool white",
+                "Smooth-troweled stucco and canyon light — Hidden Canyon"
+              ],
+              [
+                "Alabaster <em>SW 7008</em>",
+                "82",
+                "Soft warm, creamy yellow-beige",
+                "Widely used; goes yellow on hot west-facing slopes"
+              ],
+              [
+                "Shoji White <em>SW 7042</em>",
+                "74",
+                "Warm greige, noticeably deeper",
+                "Bright foothill exposure where a high-LRV white would glare"
+              ]
+            ],
+            "note": "LRV and undertone are the manufacturer’s published characteristics. Confirm against a current physical chip before finalizing, and treat any on-screen color as an approximation."
+          },
+          "sections": [
+            {
+              "id": "lrv",
+              "number": "1",
+              "heading": "Read the LRV before you read the name",
+              "body": "Light Reflectance Value is a number from 0 to 100 describing how much visible light a color reflects. Pure black sits near 0; the brightest available whites approach the high 80s. Sherwin-Williams publishes an LRV for every color they make, and it is the most useful single number in the entire selection process.\n\nThe reason it matters more outdoors than indoors is that exterior light is not adjustable. An LRV of 84 in full Irvine afternoon sun on a west-facing wall is genuinely bright — bright enough that architectural detail flattens out and shadow lines disappear. Drop to the mid-70s and the same elevation keeps its depth.\n\nThe practical rule: <b>the more direct sun an elevation takes, the more you should question a very high LRV.</b> On a shaded or filtered elevation, high LRV is what keeps the house from looking dull.",
+              "callout": "Alabaster at 82 and Shoji White at 74 are only eight points apart on paper. On a sunlit stucco wall, that is the difference between crisp and glaring."
+            },
+            {
+              "id": "undertone",
+              "number": "2",
+              "heading": "Find the undertone, because that is what will clash",
+              "body": "No white is actually white. Every one has a faint hue mixed underneath — most commonly yellow, beige, greige or gray — and that undertone is invisible on a card and unmissable on a house.\n\nThe way to see it is by comparison, not in isolation. Put your candidates against a sheet of plain printer paper, which is close to a true white. The undertone that was invisible a moment ago becomes obvious: one card goes creamy, another goes distinctly cool.\n\nThen hold them against the things you are not changing. A warm creamy white next to a terracotta tile roof reads harmonious. The same white next to cool gray slate can read dingy. A cool gray-undertoned white against warm stone can read faintly blue. This is where whites actually fail — not on their own merits, but against the fixed elements.",
+              "list": [
+                "<b>Warm undertone</b> — Alabaster, Greek Villa. Harmonize with clay tile, terracotta, warm stone and wood",
+                "<b>Cool undertone</b> — Snowbound. Sits well with gray roofing, slate, black window frames and contemporary detailing",
+                "<b>Near-neutral</b> — Pure White. The most flexible, and the least forgiving of imperfect preparation",
+                "<b>Greige</b> — Shoji White. Reads as a white at a distance and as a warm neutral up close"
+              ]
+            },
+            {
+              "id": "see",
+              "number": "3",
+              "heading": "Then see it on your own house, because the first two only narrow it",
+              "body": "LRV and undertone will reliably get you from thirty candidates to three. They will not pick the winner, because neither number knows anything about your specific house.\n\nThey do not know your elevation faces west into afternoon sun coming off the Orchard Hills ridge. They do not know your roof is terracotta and throws warm light onto the fascia all day. They do not know your stucco carries a heavy texture that will read the color two steps deeper, or that your neighbor’s mature landscaping puts a cool cast on the north side every morning.\n\nThat is the gap the Custom Visualization Service closes. Our design team renders your actual home — your elevation, your roof, your surroundings — in each of the finalists, so the decision is made by looking rather than imagining. It costs nothing, it happens before anything is scheduled, and it takes about thirty minutes."
+            }
+          ],
+          "viz_intro": "Try the principle here first. Pick a direction and tap through the palettes — the home below re-paints itself in real time so you can watch how much a small shift in undertone changes the whole elevation. Then we do it with your house.",
+          "faq_heading": "Questions people ask",
+          "faq": [
+            {
+              "q": "What is LRV and why does it matter for exterior paint?",
+              "a": "Light Reflectance Value is a manufacturer-published number from 0 to 100 describing how much visible light a color reflects, where 0 is black and the brightest whites reach the high 80s. It matters more outdoors than indoors because exterior light cannot be adjusted. A very high LRV on a west-facing wall in full Irvine sun can flatten architectural detail and wash out shadow lines, while a lower LRV keeps depth on the same elevation."
+            },
+            {
+              "q": "How do I see the undertone in a white paint color?",
+              "a": "Compare it rather than viewing it alone. Hold the candidate against a sheet of plain printer paper, which is close to a true white — the undertone that was invisible in isolation becomes obvious, reading either creamy and warm or distinctly cool. Then hold it against your roof, stone and hardscape, since those fixed elements are what an undertone will either harmonize with or fight."
+            },
+            {
+              "q": "What is the difference between Alabaster and Greek Villa?",
+              "a": "Both are warm whites with subtle yellow and beige undertones, but Greek Villa is published at LRV 84 against Alabaster at 82, so Greek Villa reads slightly brighter and Alabaster carries marginally more depth and creaminess. On a shaded or filtered elevation the difference is very subtle. In direct Irvine afternoon sun it is more apparent, and both can push yellow on a hot west-facing slope."
+            },
+            {
+              "q": "Is Snowbound a warm or cool white?",
+              "a": "Cool. Sherwin-Williams describes Snowbound SW 7004 as having a slight gray undertone and pairing well with other gray-influenced colors. That makes it a reasonable choice alongside gray roofing, slate, black window frames and contemporary detailing, and a poor one next to warm terracotta tile, where its cool cast can read dingy by contrast."
+            },
+            {
+              "q": "Which white is best for an Irvine home?",
+              "a": "There is no single answer, because the six villages of Irvine have genuinely different light. Woodbury’s filtered garden paseos flatter warmer whites that would go brassy on an exposed Orchard Hills slope, and Hidden Canyon’s cool marine mornings and hot open afternoons make a white behave differently across a single day. Narrow with LRV and undertone, then have the finalists rendered on your own elevation before deciding. Call (909) 312-5400 to arrange it."
+            }
+          ],
+          "related_heading": "Read next",
+          "related": [
+            {
+              "title": "What Goes Wrong When You Choose a Color From a Swatch",
+              "sub": "The $7,000 mistake, and the four reasons behind it.",
+              "url": "/irvine/guide/what-goes-wrong/"
+            },
+            {
+              "title": "Getting Your Color Approved by an Irvine HOA",
+              "sub": "Identify colors by code, and submit once.",
+              "url": "/irvine/guide/hoa-color-approval/"
+            },
+            {
+              "title": "Painting in Woodbury",
+              "sub": "Filtered paseo light, and the whites that hold in it.",
+              "url": "/irvine/woodbury/",
+              "village": true
+            }
+          ],
+          "close": {
+            "heading": "Seeing It First",
+            "body": "A wrong exterior color costs the entire project again — four to seven thousand dollars for a typical Irvine home, plus the weeks and the living with it. And almost nobody who ends up regretting their color ever looked at it on their own facade before the crew arrived.\n\nThat is the whole reason our design team renders your actual home in every palette you are considering, at no cost, before anything is scheduled. You approve a color you have already seen on your own house. It takes about thirty minutes."
+          }
+        }
+      ]
     }
   ]
 }

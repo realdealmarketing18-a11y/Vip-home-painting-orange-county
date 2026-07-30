@@ -274,9 +274,59 @@ if (CHECK_COPY && NAP.phone && !copyBlob.includes(NAP.phone)) {
   warn(`NAP: VIP's phone ${NAP.phone} appears in no customer-facing copy field`);
 }
 
+/* ---------------- blog track: pillar + cluster ----------------
+   The HOA page once bypassed every check because the gate only knew about
+   the city and the communities. The blog track is a whole content type, so
+   it gets counted and checked here rather than discovered on a live page. */
+const BLOG_PATH = path.join(__dirname, 'blog.json');
+const blog = fs.existsSync(BLOG_PATH) ? JSON.parse(fs.readFileSync(BLOG_PATH, 'utf8')) : { pillars: [] };
+const pillars = (blog.pillars || []).filter(p => p.city_slug === slug);
+let blogPages = 0;
+
+for (const p of pillars) {
+  blogPages++;
+  const PL = 'pillar:' + p.slug;
+  if (!p.seo || !p.seo.meta_title || !p.seo.meta_desc) fail(PL + ': seo.meta_title and seo.meta_desc are required');
+  if (!(p.layout && (p.layout.module_order || []).length)) fail(PL + ': layout.module_order missing');
+  if (!(p.villages || []).length) warn(PL + ': no villages — the pillar is the internal-link engine, it should link down');
+
+  /* every article the pillar advertises must exist in the cluster, or the
+     card is a 404 on a live page — exactly the defect this gate now covers */
+  const built = new Set((p.cluster || []).map(a => a.slug));
+  for (const card of (p.articles || [])) {
+    const m = String(card.url || '').match(new RegExp('^/' + p.city_slug + '/' + p.slug + '/([^/]+)/$'));
+    if (!m) continue;
+    if (!built.has(m[1])) fail(PL + ': links to article "' + m[1] + '" that has no entry in cluster[] — the card would 404');
+  }
+
+  for (const a of (p.cluster || [])) {
+    blogPages++;
+    const AL = 'article:' + a.slug;
+    if (!a.slug) fail(AL + ': slug missing');
+    if (a.city_slug !== p.city_slug || a.pillar_slug !== p.slug) fail(AL + ': city_slug/pillar_slug must match its pillar');
+    if (!a.seo || !a.seo.meta_title || !a.seo.meta_desc) fail(AL + ': seo.meta_title and seo.meta_desc are required');
+    else {
+      if (a.seo.meta_title.length > 60) fail(AL + ': meta_title is ' + a.seo.meta_title.length + ' chars, max 60');
+      if (a.seo.meta_desc.length > 160) fail(AL + ': meta_desc is ' + a.seo.meta_desc.length + ' chars, max 160');
+    }
+    if (!(a.layout && (a.layout.module_order || []).length)) fail(AL + ': layout.module_order missing');
+    if (!a.title_plain) fail(AL + ': title_plain missing — the schema headline must be tag-free');
+    else if (/<[a-z/]/i.test(a.title_plain)) fail(AL + ': title_plain contains HTML');
+
+    /* the answer block and the FAQ are what earn citations (M-06) */
+    if (!(a.answer && a.answer.body)) fail(AL + ': answer.body missing — this is the block engines quote');
+    const faqs = (a.faq || []).filter(f => f && f.q && f.a);
+    if (faqs.length < 4) fail(AL + ': faq needs 4+, got ' + faqs.length);
+
+    /* an article that links nowhere is a dead end in the cluster */
+    if (!(a.related || []).length) fail(AL + ': related[] empty — every article links to siblings and up to the pillar');
+    if (!a.close || !a.close.body) fail(AL + ': close.body missing — the offer appears once, at the end');
+  }
+}
+
 /* ---------------- report ---------------- */
-const pageCount = pages.length;
-console.log(`\nCluster: ${slug} — 1 city + ${communities.length} communities (${pageCount} pages)`);
+const pageCount = pages.length + blogPages;
+console.log(`\nCluster: ${slug} — 1 city + ${communities.length} communities + ${blogPages} blog (${pageCount} pages)`);
 console.log(`Confidence: ${brief.meta && brief.meta.confidence}`);
 
 if (warns.length) {
