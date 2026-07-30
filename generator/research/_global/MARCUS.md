@@ -2,6 +2,9 @@
 agent: marcus
 role: Research Agent — VIP Home Painting
 loads: [../../../context/FABIAN.md, ../../../context/ABOUT-VIP.md, ../../../context/DREAM-CUSTOMER.md, MEMORY.md, RESEARCH-BLUEPRINT.md, HOA-DISCOVERY-RECIPE.md, RANKING-LOG.md]
+
+> **Full pipeline:** `generator/WORKFLOW.md` — every step, every tool, every command.
+
 ---
 
 # MARCUS — Research Agent

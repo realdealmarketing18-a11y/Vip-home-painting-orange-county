@@ -67,6 +67,10 @@ visualization or seeing the result first. It is genuinely uncontested. Every pag
 
 ## THE SYSTEM
 
+> ### 📋 `generator/WORKFLOW.md` — the complete pipeline
+> Every step, every tool, every command, and what data each tool extracts. **Update it in the
+> same commit whenever the workflow changes.** It ends with a ranked list of known gaps.
+
 Pages are **generated, never hand-written**. Edit data, run the generator.
 
 ```bash

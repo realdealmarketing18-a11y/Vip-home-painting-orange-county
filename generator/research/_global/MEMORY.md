@@ -76,6 +76,13 @@ Burned two rounds trying to hit a 150-160 char meta description by eye. Write th
 candidates and let a script pick the one in range.
 *Own error, 2026-07-27.*
 
+### F-13 · The workflow lives in generator/WORKFLOW.md — keep it current
+Every step, every tool, every command, and what each tool extracts. A diagram in chat
+disappears; this does not. **Whoever changes the workflow updates that file in the same
+commit.** It ends with a ranked list of known gaps — check it before proposing "new" work.
+*Fabian, 2026-07-27 — "should this be saved within the folder of workflow so it can be
+found and in memory so it can come back to it and optimize it."*
+
 ---
 
 # PART 2 · RESEARCH FINDINGS
