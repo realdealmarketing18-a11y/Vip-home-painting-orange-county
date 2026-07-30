@@ -12,10 +12,10 @@ keyword volume — but that turns out to matter less than expected.**
 | Endpoint | Result |
 |---|---|
 | `website_authority` | ✅ **Works.** Real DR, backlinks, referring domains. |
+| `ai_visibility` | ✅ **Works — and it is the best endpoint.** See the update at the bottom. |
 | `keyword_metrics` | ❌ **Returned empty.** No volume, no difficulty, no SERP. |
 
-Two of the sixteen endpoints, chosen because they're the two that decide whether this
-replaces Semrush. Untested: keyword_ideas, ai_visibility, keyword_rank, serp_overview,
+Three of sixteen endpoints. Still untested: keyword_ideas, keyword_rank, serp_overview,
 backlinks_list, traffic_overview.
 
 ---
@@ -68,8 +68,8 @@ problem, just not an asset.
 | Exact rank check (domain + keyword + country) | ✓ | ✅ `keyword_rank` — could automate our rank-check loop |
 | Pricing | subscription + API units, **currently exhausted** | pay per result, no subscription |
 
-**The AI-visibility endpoints are the real prize.** Nothing else we have measures whether VIP
-gets cited by ChatGPT or Perplexity, and that's an explicit goal. Worth testing next.
+**The AI-visibility endpoints are the real prize — now confirmed.** See the update at the
+bottom: it produced the single most actionable finding of the evaluation.
 
 ---
 
@@ -106,10 +106,91 @@ keyword tool.
 
 1. **`website_authority`** — competitor DR benchmarking, once per city. ~$0.10. Already
    produced the most strategically useful finding of the week.
-2. **`ai_visibility`** — test next. Directly serves the AI-search goal and nothing else we
-   have does it.
+2. **`ai_visibility`** — ✅ tested, adopted. Run monthly. Produced M-06.
 3. **`keyword_rank`** — evaluate as a replacement for the manual Firecrawl rank-check loop.
 
 **Keep Semrush** for city-level volume and difficulty when credits are topped up — the one
 thing this actor failed at. But given the DR finding, volume data is less decisive than we
 assumed: these SERPs are won on relevance and local specificity, not on metrics.
+
+
+---
+
+# UPDATE · `ai_visibility` TESTED 2026-07-30 — ✅ WORKS, AND IT'S THE BEST ENDPOINT
+
+Returns total AI citations, a per-model breakdown, the exact pages being cited, competing
+cited domains, the topics triggering citations, and a monthly timeline. ~$0.05 for 3 domains.
+
+## The numbers
+
+| Domain | AI citations |
+|---|---|
+| **certapro.com** | **313** |
+| universalcoat.com | **0** |
+| **viphomepainting.com** | **0** |
+
+## Which engines actually cite in this industry
+
+| Model | CertaPro citations |
+|---|---|
+| **Copilot** | **155** |
+| **Google AI Mode (keywords)** | **114** |
+| Google AI Overviews (keywords) | 13 |
+| Grok | 12 |
+| ChatGPT | 6 |
+| Gemini | 6 |
+| Perplexity | 4 |
+| Google AI Mode | 2 |
+| Google AI Overviews | 1 |
+
+**Copilot and Google AI Mode are 269 of 313 citations — 86%.** ChatGPT and Perplexity, the
+two everyone optimizes for, account for **ten between them**.
+
+→ Copilot runs on Bing. **A Bing Places listing matters far more than assumed.**
+→ Optimizing for ChatGPT specifically would be aiming at 2% of the citations in this market.
+
+## 🚨 WHAT ACTUALLY GETS CITED — this is the finding
+
+CertaPro's most-cited pages:
+
+| Page | Mentions |
+|---|---|
+| `/community/what-are-the-pros-and-cons-of-textured-paint/` | **55** |
+| greenyplace.com — *disadvantages of textured paint* | 37 |
+| `/york/learning-hub/paint-brands/` | 15 |
+| njpaintingservices.com — *pros and cons of paint texture* | 15 |
+| `/national-reviews/` | 11 |
+
+**Every top-cited page is an educational article. Not one is a sales page, a service page, or
+a location page.**
+
+CertaPro has hundreds of city landing pages. They earn essentially zero AI citations. One
+blog post about textured paint earns 55.
+
+→ **AI engines cite answers, not offers.** A page that sells gets ignored; a page that
+explains gets quoted.
+→ This promotes **C-04** (city-specific blog guides) from a nice-to-have to the single
+highest-leverage content gap VIP has.
+
+## And the space is wide open
+
+CertaPro's citation topics are almost entirely **brand lookups** — "certapro painters",
+"certapro reviews", "certapro coupon". Only *textured paint* is a generic question.
+
+Nobody in this market is earning citations for the questions homeowners actually ask:
+what does painting cost, how do I choose a color, how long does it last, do I need HOA
+approval. **That space is empty.**
+
+## What to do
+
+1. **Start a blog.** Educational articles answering real questions — the ones already
+   harvested in `04-keywords.md` and the GBP Q&A.
+2. **Write answers, not pitches.** The sales pages convert; the blog earns citations. Two
+   different jobs.
+3. **Claim Bing Places.** Copilot is 50% of citations in this industry and runs on Bing.
+4. **Re-run `ai_visibility` monthly** to track VIP moving off zero.
+
+## Verdict on the actor, revised
+
+**Adopt it.** `website_authority` and `ai_visibility` both work and both produced findings
+that changed the plan. `keyword_metrics` is the only tested failure — and Semrush covers that.

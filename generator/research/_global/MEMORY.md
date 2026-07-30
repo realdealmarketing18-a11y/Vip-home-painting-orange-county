@@ -134,6 +134,18 @@ Yelp, Thumbtack, Houzz, HomeAdvisor take 4–5 of 8 organic slots in both cities
 real painting companies** rank per city.
 → The competitive set is far thinner than it looks. Do not be intimidated by result counts.
 
+### M-06 · AI engines cite blog posts, not sales pages
+CertaPro has **313 AI citations**. VIP and Universal Coat have **0**.
+But every one of CertaPro's top-cited pages is an educational article — their
+`/community/what-are-the-pros-and-cons-of-textured-paint/` post alone earns **55**.
+Their hundreds of city landing pages earn essentially nothing.
+*Evidence: apify pro100chok/ahrefs-seo-tools, ai_visibility, 2026-07-30.*
+→ **AI engines cite answers, not offers.** Sales pages convert; blog posts get quoted.
+→ **Copilot (155) + Google AI Mode (114) = 86% of citations.** ChatGPT (6) and Perplexity
+(4) are almost irrelevant here. Copilot runs on Bing — **claim Bing Places.**
+→ CertaPro's citation topics are almost all brand lookups. The generic homeowner questions
+— cost, color choice, durability, HOA approval — are **uncontested**.
+
 ---
 
 ## CANDIDATE — seen once, watch for confirmation
@@ -159,9 +171,10 @@ generic *Irvine city* page. Positions 3-5 are painters in **Michigan and Connect
 with wrong-state matches. This is stronger than "low competition" — the SERP is *starved*.
 A real Orchard Hills page should rank quickly once indexed. **This is the thesis to watch.**
 
-### C-04 · City-specific blog guides are cheap and effective
-Universal Coat runs `/blog/irvine-exterior-painting-guide`, `/blog/anaheim-house-painting-guide`.
-VIP has no blog at all.
+### C-04 · ~~City-specific blog guides are cheap and effective~~ → **see M-06, now confirmed**
+Universal Coat runs `/blog/irvine-exterior-painting-guide`. VIP has no blog at all.
+AI-citation data promoted this from "cheap and effective" to **the highest-leverage content
+gap we have** — educational posts are the only thing earning AI citations in this market.
 
 ---
 

@@ -5,7 +5,7 @@
 This is a living document. When we find a better way, **update it here** — see
 [Improving this system](#improving-this-system) at the bottom.
 
-Last updated: 2026-07-30 · Irvine cluster live · Ahrefs actor evaluated (step 1d)
+Last updated: 2026-07-30 · Irvine live · Ahrefs actor adopted · AI-citation gap found (M-06)
 
 ---
 
@@ -83,8 +83,10 @@ not absent demand. Never kill a community page on Semrush data.
 backlinks and referring domains. Established that DR is barely a ranking factor here
 (see MEMORY M-05), which is why link building is not on the plan.
 
-✅ `website_authority` works · ❌ `keyword_metrics` returns empty
-🔬 Untested, promising: `ai_visibility`, `keyword_rank`, `serp_overview`
+✅ `website_authority` — competitor DR (produced M-05)
+✅ `ai_visibility` — AI citations per model, and **which pages earn them** (produced M-06)
+❌ `keyword_metrics` returns empty
+🔬 Still untested: `keyword_rank`, `serp_overview`
 
 ### Marcus's output
 
@@ -205,10 +207,9 @@ This workflow is not finished. When something better is found, change it here an
    and are the richest question source found. Firecrawl is blocked; needs an Apify Reddit actor.
 2. **Semrush is out of credits.** No volume or difficulty data yet — though M-05 suggests
    volume is less decisive here than assumed.
-2b. **`ai_visibility` untested.** The one endpoint that would measure whether VIP gets cited
-   by ChatGPT or Perplexity. Nothing else we have does this.
 3. **No real project totals.** Pricing ranges must come from job data, never computed.
-4. **No blog.** Universal Coat runs city-specific guides; VIP has none.
+4. **No blog — now the #1 gap.** AI-citation data (M-06) shows educational articles are the
+   only pages earning AI citations in this market. Sales pages earn none. VIP has zero blog.
 5. **The films don't exist yet.** Every hero currently plays the same OC commercial.
 6. **Aurora isn't active** — the media agent for renders and photography.
 
