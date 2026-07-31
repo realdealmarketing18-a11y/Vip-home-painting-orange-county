@@ -1887,14 +1887,12 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
    the house as it stands, then a few finished directions, then the detail
    layer. Images do the work, so there is no script to keep alive here. */
 
-/* Reclaim the table-of-contents column and its gap (240 + 64). This is the
-   one element on an editorial page that must not obey the measure. */
-.pl-viz {
-  width: calc(100% + 304px);
-  margin-left: -304px;
-  margin-bottom: 60px;
-}
-.vj { max-width: 900px; margin: 0 auto; }
+/* This used to pull 304px left to reclaim the table-of-contents column.
+   That put it underneath a sticky TOC, which then sat on top of the
+   renders for the whole scroll. The measure stays; a 680px render is
+   still three times the 223px the old two-column widget managed. */
+.pl-viz { margin-bottom: 60px; }
+.vj { width: 100%; }
 
 .vj-intro { margin-bottom: 44px; }
 .vj-eyebrow {
@@ -1903,8 +1901,10 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   margin-bottom: 14px;
 }
 
-/* ---- a stage ---- */
-.vj-step { margin-bottom: 52px; }
+/* ---- a stage ----
+   These are <section> elements, so they inherit the sales page's global
+   56px section padding and were quietly costing 112px of render width. */
+.vj-step { padding: 0; margin-bottom: 52px; }
 .vj-step:last-of-type { margin-bottom: 40px; }
 .vj-step-head {
   display: grid; grid-template-columns: auto 1fr; gap: 0 18px;
@@ -2004,8 +2004,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     border-bottom: 1px solid rgba(26,31,78,0.10); }
   .pl-toc ol { columns: 2; column-gap: 32px; }
   .pl-title { font-size: 42px; }
-  /* the TOC column is gone, so there is nothing left to reclaim */
-  .pl-viz { width: 100%; margin-left: 0; }
 }
 
 @media (max-width: 640px) {
@@ -2228,84 +2226,16 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   <nav class="pl-toc" aria-label="On this page">
     <div class="pl-toc-lbl">On this page</div>
     <ol>
+      <li><a href="#viz">See it on a real home</a></li>
       <li><a href="#answer">The short answer</a></li>
       <li><a href="#table">Five whites, compared</a></li>
       <li><a href="#lrv">1 · Read the LRV</a></li>
       <li><a href="#undertone">2 · Find the undertone</a></li>
       <li><a href="#see">3 · See it on the house</a></li>
-      <li><a href="#viz">Try it now</a></li>
       <li><a href="#faq">Questions people ask</a></li>
     </ol>
   </nav>
       <div class="pl-article">
-
-  <section class="pl-section" id="intro">
-      <p class="pl-lead">You have narrowed it to three whites. Side by side on the counter they are indistinguishable — three slightly different pieces of white paper.</p>
-      <p class="pl-lead">On two thousand square feet of stucco, in Irvine sun, next to a clay tile roof, they are not remotely the same. One will look crisp and composed. One will go faintly yellow by mid-afternoon. One will read cold and slightly blue on the shaded elevation.</p>
-      <p class="pl-lead">There are two published numbers that tell you most of this before you commit, and one way to be certain.</p>
-  </section>
-
-  <section class="pl-section" id="answer">
-    <div class="ar-answer">
-      <div class="pl-answer-lbl">The short answer</div>
-      <p>To distinguish between white exterior paint colors that look identical on a chip, use three things in order:</p>
-      <ul class="ar-answer-list">
-        <li><b>Light Reflectance Value (LRV)</b> — the manufacturer’s published 0–100 figure for how much light the color reflects. Higher reads brighter and flatter in strong sun; lower holds more depth and shows shadow</li>
-        <li><b>Undertone</b> — the faint hue underneath the white, usually yellow, greige or gray. This is what decides whether it harmonizes with your roof and stone or fights them</li>
-        <li><b>Seeing it rendered on your own elevation</b> — the only step that accounts for your village’s light, your texture, and everything you are not repainting</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="pl-section" id="table">
-    <h2 class="pl-h2">Five whites people actually shortlist in Irvine</h2>
-    <p>These are Sherwin-Williams whites that appear repeatedly across the villages we work in. LRV is the manufacturer’s published Light Reflectance Value.</p>
-    <div class="ar-table-wrap">
-      <table class="ar-table">
-        <thead><tr><th>Color</th><th>LRV</th><th>Undertone</th><th>Where it tends to hold in Irvine</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">Pure White <em>SW 7005</em></th><td>84</td><td>Near-neutral, very slightly warm</td><td>Contemporary elevations with broad flat planes — Altair</td></tr>
-          <tr><th scope="row">Greek Villa <em>SW 7551</em></th><td>84</td><td>Warm, subtle yellow and beige</td><td>Filtered, shaded light — Woodbury’s garden paseos</td></tr>
-          <tr><th scope="row">Snowbound <em>SW 7004</em></th><td>83</td><td>Slight gray — a cool white</td><td>Smooth-troweled stucco and canyon light — Hidden Canyon</td></tr>
-          <tr><th scope="row">Alabaster <em>SW 7008</em></th><td>82</td><td>Soft warm, creamy yellow-beige</td><td>Widely used; goes yellow on hot west-facing slopes</td></tr>
-          <tr><th scope="row">Shoji White <em>SW 7042</em></th><td>74</td><td>Warm greige, noticeably deeper</td><td>Bright foothill exposure where a high-LRV white would glare</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="ar-table-note">LRV and undertone are the manufacturer’s published characteristics. Confirm against a current physical chip before finalizing, and treat any on-screen color as an approximation.</p>
-  </section>
-
-  <section class="pl-section" id="lrv">
-    <h2 class="pl-h2"><span class="ar-num">1</span>Read the LRV before you read the name</h2>
-    <p>Light Reflectance Value is a number from 0 to 100 describing how much visible light a color reflects. Pure black sits near 0; the brightest available whites approach the high 80s. Sherwin-Williams publishes an LRV for every color they make, and it is the most useful single number in the entire selection process.</p>
-    <p>The reason it matters more outdoors than indoors is that exterior light is not adjustable. An LRV of 84 in full Irvine afternoon sun on a west-facing wall is genuinely bright — bright enough that architectural detail flattens out and shadow lines disappear. Drop to the mid-70s and the same elevation keeps its depth.</p>
-    <p>The practical rule: <b>the more direct sun an elevation takes, the more you should question a very high LRV.</b> On a shaded or filtered elevation, high LRV is what keeps the house from looking dull.</p>
-    
-    <div class="ar-callout"><p>Alabaster at 82 and Shoji White at 74 are only eight points apart on paper. On a sunlit stucco wall, that is the difference between crisp and glaring.</p></div>
-  </section>
-
-  <section class="pl-section" id="undertone">
-    <h2 class="pl-h2"><span class="ar-num">2</span>Find the undertone, because that is what will clash</h2>
-    <p>No white is actually white. Every one has a faint hue mixed underneath — most commonly yellow, beige, greige or gray — and that undertone is invisible on a card and unmissable on a house.</p>
-    <p>The way to see it is by comparison, not in isolation. Put your candidates against a sheet of plain printer paper, which is close to a true white. The undertone that was invisible a moment ago becomes obvious: one card goes creamy, another goes distinctly cool.</p>
-    <p>Then hold them against the things you are not changing. A warm creamy white next to a terracotta tile roof reads harmonious. The same white next to cool gray slate can read dingy. A cool gray-undertoned white against warm stone can read faintly blue. This is where whites actually fail — not on their own merits, but against the fixed elements.</p>
-    <ul class="pl-list">
-      <li><b>Warm undertone</b> — Alabaster, Greek Villa. Harmonize with clay tile, terracotta, warm stone and wood</li>
-      <li><b>Cool undertone</b> — Snowbound. Sits well with gray roofing, slate, black window frames and contemporary detailing</li>
-      <li><b>Near-neutral</b> — Pure White. The most flexible, and the least forgiving of imperfect preparation</li>
-      <li><b>Greige</b> — Shoji White. Reads as a white at a distance and as a warm neutral up close</li>
-    </ul>
-    
-  </section>
-
-  <section class="pl-section" id="see">
-    <h2 class="pl-h2"><span class="ar-num">3</span>Then see it on your own house, because the first two only narrow it</h2>
-    <p>LRV and undertone will reliably get you from thirty candidates to three. They will not pick the winner, because neither number knows anything about your specific house.</p>
-    <p>They do not know your elevation faces west into afternoon sun coming off the Orchard Hills ridge. They do not know your roof is terracotta and throws warm light onto the fascia all day. They do not know your stucco carries a heavy texture that will read the color two steps deeper, or that your neighbor’s mature landscaping puts a cool cast on the north side every morning.</p>
-    <p>That is the gap the Custom Visualization Service closes. Our design team renders your actual home — your elevation, your roof, your surroundings — in each of the finalists, so the decision is made by looking rather than imagining. It costs nothing, it happens before anything is scheduled, and it takes about thirty minutes.</p>
-    
-    
-  </section>
 
   <div class="pl-viz">
   <div class="vj" id="viz">
@@ -2410,6 +2340,74 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Claim Complimentary Color Consultation</span><span class="sub">See your home in every color before a single gallon is tinted</span></span></a>
     </div>
   </div></div>
+
+  <section class="pl-section" id="intro">
+      <p class="pl-lead">You have narrowed it to three whites. Side by side on the counter they are indistinguishable — three slightly different pieces of white paper.</p>
+      <p class="pl-lead">On two thousand square feet of stucco, in Irvine sun, next to a clay tile roof, they are not remotely the same. One will look crisp and composed. One will go faintly yellow by mid-afternoon. One will read cold and slightly blue on the shaded elevation.</p>
+      <p class="pl-lead">There are two published numbers that tell you most of this before you commit, and one way to be certain.</p>
+  </section>
+
+  <section class="pl-section" id="answer">
+    <div class="ar-answer">
+      <div class="pl-answer-lbl">The short answer</div>
+      <p>To distinguish between white exterior paint colors that look identical on a chip, use three things in order:</p>
+      <ul class="ar-answer-list">
+        <li><b>Light Reflectance Value (LRV)</b> — the manufacturer’s published 0–100 figure for how much light the color reflects. Higher reads brighter and flatter in strong sun; lower holds more depth and shows shadow</li>
+        <li><b>Undertone</b> — the faint hue underneath the white, usually yellow, greige or gray. This is what decides whether it harmonizes with your roof and stone or fights them</li>
+        <li><b>Seeing it rendered on your own elevation</b> — the only step that accounts for your village’s light, your texture, and everything you are not repainting</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="pl-section" id="table">
+    <h2 class="pl-h2">Five whites people actually shortlist in Irvine</h2>
+    <p>These are Sherwin-Williams whites that appear repeatedly across the villages we work in. LRV is the manufacturer’s published Light Reflectance Value.</p>
+    <div class="ar-table-wrap">
+      <table class="ar-table">
+        <thead><tr><th>Color</th><th>LRV</th><th>Undertone</th><th>Where it tends to hold in Irvine</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Pure White <em>SW 7005</em></th><td>84</td><td>Near-neutral, very slightly warm</td><td>Contemporary elevations with broad flat planes — Altair</td></tr>
+          <tr><th scope="row">Greek Villa <em>SW 7551</em></th><td>84</td><td>Warm, subtle yellow and beige</td><td>Filtered, shaded light — Woodbury’s garden paseos</td></tr>
+          <tr><th scope="row">Snowbound <em>SW 7004</em></th><td>83</td><td>Slight gray — a cool white</td><td>Smooth-troweled stucco and canyon light — Hidden Canyon</td></tr>
+          <tr><th scope="row">Alabaster <em>SW 7008</em></th><td>82</td><td>Soft warm, creamy yellow-beige</td><td>Widely used; goes yellow on hot west-facing slopes</td></tr>
+          <tr><th scope="row">Shoji White <em>SW 7042</em></th><td>74</td><td>Warm greige, noticeably deeper</td><td>Bright foothill exposure where a high-LRV white would glare</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ar-table-note">LRV and undertone are the manufacturer’s published characteristics. Confirm against a current physical chip before finalizing, and treat any on-screen color as an approximation.</p>
+  </section>
+
+  <section class="pl-section" id="lrv">
+    <h2 class="pl-h2"><span class="ar-num">1</span>Read the LRV before you read the name</h2>
+    <p>Light Reflectance Value is a number from 0 to 100 describing how much visible light a color reflects. Pure black sits near 0; the brightest available whites approach the high 80s. Sherwin-Williams publishes an LRV for every color they make, and it is the most useful single number in the entire selection process.</p>
+    <p>The reason it matters more outdoors than indoors is that exterior light is not adjustable. An LRV of 84 in full Irvine afternoon sun on a west-facing wall is genuinely bright — bright enough that architectural detail flattens out and shadow lines disappear. Drop to the mid-70s and the same elevation keeps its depth.</p>
+    <p>The practical rule: <b>the more direct sun an elevation takes, the more you should question a very high LRV.</b> On a shaded or filtered elevation, high LRV is what keeps the house from looking dull.</p>
+    
+    <div class="ar-callout"><p>Alabaster at 82 and Shoji White at 74 are only eight points apart on paper. On a sunlit stucco wall, that is the difference between crisp and glaring.</p></div>
+  </section>
+
+  <section class="pl-section" id="undertone">
+    <h2 class="pl-h2"><span class="ar-num">2</span>Find the undertone, because that is what will clash</h2>
+    <p>No white is actually white. Every one has a faint hue mixed underneath — most commonly yellow, beige, greige or gray — and that undertone is invisible on a card and unmissable on a house.</p>
+    <p>The way to see it is by comparison, not in isolation. Put your candidates against a sheet of plain printer paper, which is close to a true white. The undertone that was invisible a moment ago becomes obvious: one card goes creamy, another goes distinctly cool.</p>
+    <p>Then hold them against the things you are not changing. A warm creamy white next to a terracotta tile roof reads harmonious. The same white next to cool gray slate can read dingy. A cool gray-undertoned white against warm stone can read faintly blue. This is where whites actually fail — not on their own merits, but against the fixed elements.</p>
+    <ul class="pl-list">
+      <li><b>Warm undertone</b> — Alabaster, Greek Villa. Harmonize with clay tile, terracotta, warm stone and wood</li>
+      <li><b>Cool undertone</b> — Snowbound. Sits well with gray roofing, slate, black window frames and contemporary detailing</li>
+      <li><b>Near-neutral</b> — Pure White. The most flexible, and the least forgiving of imperfect preparation</li>
+      <li><b>Greige</b> — Shoji White. Reads as a white at a distance and as a warm neutral up close</li>
+    </ul>
+    
+  </section>
+
+  <section class="pl-section" id="see">
+    <h2 class="pl-h2"><span class="ar-num">3</span>Then see it on your own house, because the first two only narrow it</h2>
+    <p>LRV and undertone will reliably get you from thirty candidates to three. They will not pick the winner, because neither number knows anything about your specific house.</p>
+    <p>They do not know your elevation faces west into afternoon sun coming off the Orchard Hills ridge. They do not know your roof is terracotta and throws warm light onto the fascia all day. They do not know your stucco carries a heavy texture that will read the color two steps deeper, or that your neighbor’s mature landscaping puts a cool cast on the north side every morning.</p>
+    <p>That is the gap the Custom Visualization Service closes. Our design team renders your actual home — your elevation, your roof, your surroundings — in each of the finalists, so the decision is made by looking rather than imagining. It costs nothing, it happens before anything is scheduled, and it takes about thirty minutes.</p>
+    
+    
+  </section>
 
   <section class="pl-section" id="faq">
     <h2 class="pl-h2">Questions people ask</h2>

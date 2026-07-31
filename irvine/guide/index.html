@@ -1877,14 +1877,12 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
    the house as it stands, then a few finished directions, then the detail
    layer. Images do the work, so there is no script to keep alive here. */
 
-/* Reclaim the table-of-contents column and its gap (240 + 64). This is the
-   one element on an editorial page that must not obey the measure. */
-.pl-viz {
-  width: calc(100% + 304px);
-  margin-left: -304px;
-  margin-bottom: 60px;
-}
-.vj { max-width: 900px; margin: 0 auto; }
+/* This used to pull 304px left to reclaim the table-of-contents column.
+   That put it underneath a sticky TOC, which then sat on top of the
+   renders for the whole scroll. The measure stays; a 680px render is
+   still three times the 223px the old two-column widget managed. */
+.pl-viz { margin-bottom: 60px; }
+.vj { width: 100%; }
 
 .vj-intro { margin-bottom: 44px; }
 .vj-eyebrow {
@@ -1893,8 +1891,10 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   margin-bottom: 14px;
 }
 
-/* ---- a stage ---- */
-.vj-step { margin-bottom: 52px; }
+/* ---- a stage ----
+   These are <section> elements, so they inherit the sales page's global
+   56px section padding and were quietly costing 112px of render width. */
+.vj-step { padding: 0; margin-bottom: 52px; }
 .vj-step:last-of-type { margin-bottom: 40px; }
 .vj-step-head {
   display: grid; grid-template-columns: auto 1fr; gap: 0 18px;
@@ -1994,8 +1994,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     border-bottom: 1px solid rgba(26,31,78,0.10); }
   .pl-toc ol { columns: 2; column-gap: 32px; }
   .pl-title { font-size: 42px; }
-  /* the TOC column is gone, so there is nothing left to reclaim */
-  .pl-viz { width: 100%; margin-left: 0; }
 }
 
 @media (max-width: 640px) {
@@ -2219,9 +2217,9 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   <nav class="pl-toc" aria-label="On this page">
     <div class="pl-toc-lbl">On this page</div>
     <ol>
+      <li><a href="#viz">See it on a real home</a></li>
       <li><a href="#intro">Start here</a></li>
       <li><a href="#why-different">Why Irvine is not one market</a></li>
-      <li><a href="#viz">Try it on a real home</a></li>
       <li><a href="#villages">The six villages</a></li>
       <li><a href="#common">What every repaint shares</a></li>
       <li><a href="#cost">What it costs</a></li>
@@ -2230,33 +2228,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     </ol>
   </nav>
       <div class="pl-article">
-
-  <section class="pl-section" id="intro">
-      <p class="pl-lead">At nine in the morning in Woodbury, filtered through the paseo trees, Alabaster looks like the warmest, calmest white you have ever seen. At two in the afternoon on a west-facing slope in Orchard Hills, the same paint on the same wall reads yellow.</p>
-      <p class="pl-lead">Nothing changed except the light. That is the problem with choosing an exterior color the way almost everyone chooses one — from a two-inch card, indoors, under a showroom bulb, for a decision that will sit on the front of your house for the next eight years.</p>
-      <p class="pl-lead">This guide walks the six villages of Irvine and what each one does to color. It is the same walk we take with homeowners before anything is scheduled.</p>
-  </section>
-
-  <section class="pl-section" id="why-different">
-    <h2 class="pl-h2">Why Irvine Is Not One Market</h2>
-    <p>People say "Irvine" as though it were a single place with a single look. It is not. The villages were built in different decades by different builders in different architectural languages, and they sit at different elevations with genuinely different exposure.</p>
-    <p>The value spread alone is roughly five to one, from Stonegate’s close-set Santa Barbara streetscapes to Hidden Canyon’s guard-gated canyon estates. Three of the six are gated. Each runs its own design review, and Orchard Hills alone has three separate associations.</p>
-    <p>A palette that looks considered in one village can look borrowed in the next.</p>
-    <div class="pl-stats">
-        <div class="pl-stat">
-          <div class="pl-stat-n">6</div>
-          <div class="pl-stat-l">villages, each with its own design review</div>
-        </div>
-        <div class="pl-stat">
-          <div class="pl-stat-n">5×</div>
-          <div class="pl-stat-l">spread in home value across them</div>
-        </div>
-        <div class="pl-stat">
-          <div class="pl-stat-n">4</div>
-          <div class="pl-stat-l">distinct architectural styles</div>
-        </div>
-    </div>
-  </section>
 
   <div class="pl-viz">
   <div class="vj" id="viz">
@@ -2361,6 +2332,33 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Claim Complimentary Color Consultation</span><span class="sub">See your home in every color before a single gallon is tinted</span></span></a>
     </div>
   </div></div>
+
+  <section class="pl-section" id="intro">
+      <p class="pl-lead">At nine in the morning in Woodbury, filtered through the paseo trees, Alabaster looks like the warmest, calmest white you have ever seen. At two in the afternoon on a west-facing slope in Orchard Hills, the same paint on the same wall reads yellow.</p>
+      <p class="pl-lead">Nothing changed except the light. That is the problem with choosing an exterior color the way almost everyone chooses one — from a two-inch card, indoors, under a showroom bulb, for a decision that will sit on the front of your house for the next eight years.</p>
+      <p class="pl-lead">This guide walks the six villages of Irvine and what each one does to color. It is the same walk we take with homeowners before anything is scheduled.</p>
+  </section>
+
+  <section class="pl-section" id="why-different">
+    <h2 class="pl-h2">Why Irvine Is Not One Market</h2>
+    <p>People say "Irvine" as though it were a single place with a single look. It is not. The villages were built in different decades by different builders in different architectural languages, and they sit at different elevations with genuinely different exposure.</p>
+    <p>The value spread alone is roughly five to one, from Stonegate’s close-set Santa Barbara streetscapes to Hidden Canyon’s guard-gated canyon estates. Three of the six are gated. Each runs its own design review, and Orchard Hills alone has three separate associations.</p>
+    <p>A palette that looks considered in one village can look borrowed in the next.</p>
+    <div class="pl-stats">
+        <div class="pl-stat">
+          <div class="pl-stat-n">6</div>
+          <div class="pl-stat-l">villages, each with its own design review</div>
+        </div>
+        <div class="pl-stat">
+          <div class="pl-stat-n">5×</div>
+          <div class="pl-stat-l">spread in home value across them</div>
+        </div>
+        <div class="pl-stat">
+          <div class="pl-stat-n">4</div>
+          <div class="pl-stat-l">distinct architectural styles</div>
+        </div>
+    </div>
+  </section>
 
   <section class="pl-section" id="villages">
     <h2 class="pl-h2">The Six Villages</h2>

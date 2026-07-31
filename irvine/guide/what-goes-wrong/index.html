@@ -1879,14 +1879,12 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
    the house as it stands, then a few finished directions, then the detail
    layer. Images do the work, so there is no script to keep alive here. */
 
-/* Reclaim the table-of-contents column and its gap (240 + 64). This is the
-   one element on an editorial page that must not obey the measure. */
-.pl-viz {
-  width: calc(100% + 304px);
-  margin-left: -304px;
-  margin-bottom: 60px;
-}
-.vj { max-width: 900px; margin: 0 auto; }
+/* This used to pull 304px left to reclaim the table-of-contents column.
+   That put it underneath a sticky TOC, which then sat on top of the
+   renders for the whole scroll. The measure stays; a 680px render is
+   still three times the 223px the old two-column widget managed. */
+.pl-viz { margin-bottom: 60px; }
+.vj { width: 100%; }
 
 .vj-intro { margin-bottom: 44px; }
 .vj-eyebrow {
@@ -1895,8 +1893,10 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   margin-bottom: 14px;
 }
 
-/* ---- a stage ---- */
-.vj-step { margin-bottom: 52px; }
+/* ---- a stage ----
+   These are <section> elements, so they inherit the sales page's global
+   56px section padding and were quietly costing 112px of render width. */
+.vj-step { padding: 0; margin-bottom: 52px; }
 .vj-step:last-of-type { margin-bottom: 40px; }
 .vj-step-head {
   display: grid; grid-template-columns: auto 1fr; gap: 0 18px;
@@ -1996,8 +1996,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     border-bottom: 1px solid rgba(26,31,78,0.10); }
   .pl-toc ol { columns: 2; column-gap: 32px; }
   .pl-title { font-size: 42px; }
-  /* the TOC column is gone, so there is nothing left to reclaim */
-  .pl-viz { width: 100%; margin-left: 0; }
 }
 
 @media (max-width: 640px) {
@@ -2220,79 +2218,16 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   <nav class="pl-toc" aria-label="On this page">
     <div class="pl-toc-lbl">On this page</div>
     <ol>
+      <li><a href="#viz">See it on a real home</a></li>
       <li><a href="#answer">The short answer</a></li>
       <li><a href="#scale">Scale changes the color</a></li>
       <li><a href="#light">Irvine light changes it again</a></li>
       <li><a href="#texture">Stucco is not paper</a></li>
       <li><a href="#fixed">What you cannot repaint</a></li>
-      <li><a href="#viz">See it on a real home</a></li>
       <li><a href="#faq">Questions people ask</a></li>
     </ol>
   </nav>
       <div class="pl-article">
-
-  <section class="pl-section" id="intro">
-      <p class="pl-lead">The card is two inches wide. It is printed on flat paper. You are looking at it indoors, under a fluorescent fixture, holding it next to four other cards that are also two inches wide.</p>
-      <p class="pl-lead">The wall is two thousand square feet of textured stucco in full Southern California sun, next to a clay tile roof you are not replacing and a stone wainscot you are not touching.</p>
-      <p class="pl-lead">These are not the same color, and they were never going to be.</p>
-  </section>
-
-  <section class="pl-section" id="answer">
-    <div class="ar-answer">
-      <div class="pl-answer-lbl">The short answer</div>
-      <p>An exterior paint color chosen from a swatch frequently looks wrong on the finished house for four reasons that are all predictable and none of which are the painter’s fault:</p>
-      <ul class="ar-answer-list">
-        <li><b>Scale</b> — the same pigment reads dramatically more saturated across a large surface than on a small card</li>
-        <li><b>Light</b> — direction, time of day and surrounding reflected color shift how a paint appears, and in Irvine that shift is severe</li>
-        <li><b>Texture</b> — stucco casts thousands of micro-shadows that paper does not, which reads visually darker</li>
-        <li><b>Fixed elements</b> — roof tile, stone, hardscape and window frames are not changing, and the new color has to live with them</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="pl-section" id="scale">
-    <h2 class="pl-h2">The same color is a different color at scale</h2>
-    <p>This is a well-documented perceptual effect and it catches almost everyone. A hue viewed across a large area appears more intense and more saturated than the identical hue viewed on a small sample. A beige that looked restrained on a card can read distinctly gold across an entire elevation. A soft gray-green can arrive at full strength as something closer to sage.</p>
-    <p>The practical consequence: people routinely choose one to two steps stronger than they meant to, discover it at the moment the crew pulls the masking, and then have to decide whether to live with it or pay for the whole job again.</p>
-    
-    
-  </section>
-
-  <section class="pl-section" id="light">
-    <h2 class="pl-h2">Irvine light is not one light</h2>
-    <p>The villages of Irvine sit at different elevations with genuinely different exposure, and that does more to your color than most homeowners expect.</p>
-    <p>In Woodbury, mature landscaping and garden paseos keep much of the community filtered and cool through the day, which flatters warmer whites that would go brassy elsewhere. On a west-facing slope in Orchard Hills, that same warm white takes direct afternoon sun off the ridge and reads yellow. Hidden Canyon gives you two different conditions in a single day — cool, often marine-influenced mornings, then hot open afternoons — so a white that feels refined at noon can go noticeably cold by evening.</p>
-    <p>Same paint. Same wall. Different hour, different village, different color.</p>
-    
-    <div class="ar-callout"><p>A color is not a property of the paint. It is a property of the paint, the surface, the light, and everything nearby that is reflecting into it.</p></div>
-  </section>
-
-  <section class="pl-section" id="texture">
-    <h2 class="pl-h2">Stucco is not paper</h2>
-    <p>A paint chip is a flat, smooth, matte printed surface. A stucco wall is a landscape of peaks and valleys, and every one of them casts a small shadow.</p>
-    <p>The visual result is that the same color reads meaningfully deeper on stucco than on the card, and the effect gets stronger the heavier the texture. A smooth-troweled finish, like much of Hidden Canyon, behaves differently again — it holds the color closer to true, which is precisely why any imperfection in the preparation is visible from three feet.</p>
-    <p>Sheen compounds it. The same color in a higher sheen picks up more directional light and appears to shift through the day, while a flatter finish holds steadier but shows surface irregularity more readily.</p>
-    
-    
-  </section>
-
-  <section class="pl-section" id="fixed">
-    <h2 class="pl-h2">The things you are not repainting decide more than you think</h2>
-    <p>Your roof is staying. So is the stone wainscot, the driveway, the window frames, and in most Irvine villages a good deal of hardscape and mature planting.</p>
-    <p>Every one of those surfaces reflects color back onto the wall. A terracotta tile roof throws warm light down onto the fascia and upper body all day. Large expanses of green landscaping push a subtle cool cast onto shaded elevations. A warm-toned stone base can make a neutral gray body read faintly lilac by contrast — an effect nobody predicts from a card and everybody notices on the finished house.</p>
-    <p>This is the failure mode that produces the most regret, because the color is not wrong in isolation. It is wrong next to the four things that were always going to stay.</p>
-    
-    
-  </section>
-
-  <section class="pl-section" id="cost">
-    <h2 class="pl-h2">What getting it wrong actually costs</h2>
-    <p>A wrong exterior color is not a touch-up. It is the entire project again — full preparation, full material, full labor — because the surface has to be recoated in its entirety for the finish to be uniform.</p>
-    <p>For a typical Irvine home that is four to seven thousand dollars, paid a second time, plus another stretch of weeks with the house staged and the crew on site. And in a design-review community it can also mean a second submittal to the association.</p>
-    <p>Against that, the cost of being certain in advance is thirty minutes.</p>
-    
-    
-  </section>
 
   <div class="pl-viz">
   <div class="vj" id="viz">
@@ -2397,6 +2332,69 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Claim Complimentary Color Consultation</span><span class="sub">See your home in every color before a single gallon is tinted</span></span></a>
     </div>
   </div></div>
+
+  <section class="pl-section" id="intro">
+      <p class="pl-lead">The card is two inches wide. It is printed on flat paper. You are looking at it indoors, under a fluorescent fixture, holding it next to four other cards that are also two inches wide.</p>
+      <p class="pl-lead">The wall is two thousand square feet of textured stucco in full Southern California sun, next to a clay tile roof you are not replacing and a stone wainscot you are not touching.</p>
+      <p class="pl-lead">These are not the same color, and they were never going to be.</p>
+  </section>
+
+  <section class="pl-section" id="answer">
+    <div class="ar-answer">
+      <div class="pl-answer-lbl">The short answer</div>
+      <p>An exterior paint color chosen from a swatch frequently looks wrong on the finished house for four reasons that are all predictable and none of which are the painter’s fault:</p>
+      <ul class="ar-answer-list">
+        <li><b>Scale</b> — the same pigment reads dramatically more saturated across a large surface than on a small card</li>
+        <li><b>Light</b> — direction, time of day and surrounding reflected color shift how a paint appears, and in Irvine that shift is severe</li>
+        <li><b>Texture</b> — stucco casts thousands of micro-shadows that paper does not, which reads visually darker</li>
+        <li><b>Fixed elements</b> — roof tile, stone, hardscape and window frames are not changing, and the new color has to live with them</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="pl-section" id="scale">
+    <h2 class="pl-h2">The same color is a different color at scale</h2>
+    <p>This is a well-documented perceptual effect and it catches almost everyone. A hue viewed across a large area appears more intense and more saturated than the identical hue viewed on a small sample. A beige that looked restrained on a card can read distinctly gold across an entire elevation. A soft gray-green can arrive at full strength as something closer to sage.</p>
+    <p>The practical consequence: people routinely choose one to two steps stronger than they meant to, discover it at the moment the crew pulls the masking, and then have to decide whether to live with it or pay for the whole job again.</p>
+    
+    
+  </section>
+
+  <section class="pl-section" id="light">
+    <h2 class="pl-h2">Irvine light is not one light</h2>
+    <p>The villages of Irvine sit at different elevations with genuinely different exposure, and that does more to your color than most homeowners expect.</p>
+    <p>In Woodbury, mature landscaping and garden paseos keep much of the community filtered and cool through the day, which flatters warmer whites that would go brassy elsewhere. On a west-facing slope in Orchard Hills, that same warm white takes direct afternoon sun off the ridge and reads yellow. Hidden Canyon gives you two different conditions in a single day — cool, often marine-influenced mornings, then hot open afternoons — so a white that feels refined at noon can go noticeably cold by evening.</p>
+    <p>Same paint. Same wall. Different hour, different village, different color.</p>
+    
+    <div class="ar-callout"><p>A color is not a property of the paint. It is a property of the paint, the surface, the light, and everything nearby that is reflecting into it.</p></div>
+  </section>
+
+  <section class="pl-section" id="texture">
+    <h2 class="pl-h2">Stucco is not paper</h2>
+    <p>A paint chip is a flat, smooth, matte printed surface. A stucco wall is a landscape of peaks and valleys, and every one of them casts a small shadow.</p>
+    <p>The visual result is that the same color reads meaningfully deeper on stucco than on the card, and the effect gets stronger the heavier the texture. A smooth-troweled finish, like much of Hidden Canyon, behaves differently again — it holds the color closer to true, which is precisely why any imperfection in the preparation is visible from three feet.</p>
+    <p>Sheen compounds it. The same color in a higher sheen picks up more directional light and appears to shift through the day, while a flatter finish holds steadier but shows surface irregularity more readily.</p>
+    
+    
+  </section>
+
+  <section class="pl-section" id="fixed">
+    <h2 class="pl-h2">The things you are not repainting decide more than you think</h2>
+    <p>Your roof is staying. So is the stone wainscot, the driveway, the window frames, and in most Irvine villages a good deal of hardscape and mature planting.</p>
+    <p>Every one of those surfaces reflects color back onto the wall. A terracotta tile roof throws warm light down onto the fascia and upper body all day. Large expanses of green landscaping push a subtle cool cast onto shaded elevations. A warm-toned stone base can make a neutral gray body read faintly lilac by contrast — an effect nobody predicts from a card and everybody notices on the finished house.</p>
+    <p>This is the failure mode that produces the most regret, because the color is not wrong in isolation. It is wrong next to the four things that were always going to stay.</p>
+    
+    
+  </section>
+
+  <section class="pl-section" id="cost">
+    <h2 class="pl-h2">What getting it wrong actually costs</h2>
+    <p>A wrong exterior color is not a touch-up. It is the entire project again — full preparation, full material, full labor — because the surface has to be recoated in its entirety for the finish to be uniform.</p>
+    <p>For a typical Irvine home that is four to seven thousand dollars, paid a second time, plus another stretch of weeks with the house staged and the crew on site. And in a design-review community it can also mean a second submittal to the association.</p>
+    <p>Against that, the cost of being certain in advance is thirty minutes.</p>
+    
+    
+  </section>
 
   <section class="pl-section" id="takeaways">
     <div class="ar-takeaways">

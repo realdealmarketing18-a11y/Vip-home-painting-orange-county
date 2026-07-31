@@ -16,9 +16,9 @@
       },
       "layout": {
         "module_order": [
+          "visualizer",
           "intro",
           "why_different",
-          "visualizer",
           "villages",
           "common",
           "cost",
@@ -28,16 +28,16 @@
       },
       "toc": [
         {
+          "id": "viz",
+          "label": "See it on a real home"
+        },
+        {
           "id": "intro",
           "label": "Start here"
         },
         {
           "id": "why-different",
           "label": "Why Irvine is not one market"
-        },
-        {
-          "id": "viz",
-          "label": "Try it on a real home"
         },
         {
           "id": "villages",
@@ -498,10 +498,10 @@
           },
           "layout": {
             "module_order": [
+              "visualizer",
               "intro",
               "answer",
               "sections",
-              "visualizer",
               "takeaways",
               "faq",
               "related",
@@ -509,6 +509,10 @@
             ]
           },
           "toc": [
+            {
+              "id": "viz",
+              "label": "See it on a real home"
+            },
             {
               "id": "answer",
               "label": "The short answer"
@@ -528,10 +532,6 @@
             {
               "id": "fixed",
               "label": "What you cannot repaint"
-            },
-            {
-              "id": "viz",
-              "label": "See it on a real home"
             },
             {
               "id": "faq",
@@ -856,17 +856,21 @@
           },
           "layout": {
             "module_order": [
+              "visualizer",
               "intro",
               "answer",
               "table",
               "sections",
-              "visualizer",
               "faq",
               "related",
               "close"
             ]
           },
           "toc": [
+            {
+              "id": "viz",
+              "label": "See it on a real home"
+            },
             {
               "id": "answer",
               "label": "The short answer"
@@ -886,10 +890,6 @@
             {
               "id": "see",
               "label": "3 · See it on the house"
-            },
-            {
-              "id": "viz",
-              "label": "Try it now"
             },
             {
               "id": "faq",
