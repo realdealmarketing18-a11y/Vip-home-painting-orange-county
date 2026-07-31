@@ -94,13 +94,13 @@ function topNav(ctx) {
     return [
       menu('cities', 'Cities', countyCities, esc),
       menu('guides', 'Guides', (ctx.countyGuides || []), esc),
-      menu('services', 'Services', [
+      menu('services', 'Services', (ctx.countyHoa || []).concat([
         { label: 'Exterior Painting', url: '#services' },
         { label: 'Interior Painting', url: '#services' },
         { label: 'Kitchen Cabinets', url: '#services' },
         { label: 'Color Visualization', url: '#viz' },
         { label: 'Our Work', url: '#work' }
-      ], esc),
+      ]), esc),
       '\n      <a href="#quote">Complimentary Quote</a>'
     ].filter(Boolean).join('');
   }
@@ -112,22 +112,29 @@ function topNav(ctx) {
     : [{ label: ctx.cityName, url: L(`/${ctx.citySlug}/`), current: true }]
   ).concat([{ label: 'All of Orange County', url: `${A}/` }]);
 
-  /* Neighborhoods — this city's, never another's. The silo rule. */
+  /* Neighborhoods — this city's, never another's. The silo rule.
+     Places only. HOA & Common-Area used to sit here and was the one item in
+     the list that wasn't a place; it belongs under Services, which is what
+     it is. */
   const hoodItems = [{ label: `All ${ctx.cityName} Painting`, url: L(`/${ctx.citySlug}/`), strong: true }]
     .concat((ctx.communities || []).filter(v => v.url && v.name)
-      .map(v => ({ label: v.name, url: L(v.url) })))
-    .concat(ctx.hoaUrl ? [{ label: 'HOA & Common-Area', url: L(ctx.hoaUrl) }] : []);
+      .map(v => ({ label: v.name, url: L(v.url) })));
 
   const guideItems = (ctx.guideUrl ? [{ label: `The ${ctx.cityName} Color Guide`, url: L(ctx.guideUrl), strong: true }] : [])
     .concat((ctx.articles || []).filter(a => a.url && a.title).slice(0, 6)
       .map(a => ({ label: a.title, url: L(a.url) })));
 
-  const serviceItems = [
-    { label: 'Exterior Painting', url: `${A}/#services` },
-    { label: 'Interior Painting', url: `${A}/#services` },
-    { label: 'Kitchen Cabinets', url: `${A}/#services` },
-    { label: 'Color Visualization', url: `${A}/#viz` }
-  ];
+  /* The HOA page leads because it is the only entry here that is a page of
+     ours rather than a section of the county page. */
+  const serviceItems = (ctx.hoaUrl
+      ? [{ label: `${ctx.cityName} HOA & Common-Area Painting`, url: L(ctx.hoaUrl), strong: true }]
+      : [])
+    .concat([
+      { label: 'Exterior Painting', url: `${A}/#services` },
+      { label: 'Interior Painting', url: `${A}/#services` },
+      { label: 'Kitchen Cabinets', url: `${A}/#services` },
+      { label: 'Color Visualization', url: `${A}/#viz` }
+    ]);
 
   return [
     menu('cities', 'Cities', cityItems, esc),

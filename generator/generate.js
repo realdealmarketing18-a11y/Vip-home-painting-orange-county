@@ -1804,6 +1804,12 @@ function main() {
       cityName: (CITIES.cities[0] || {}).name || '', citySlug: (CITIES.cities[0] || {}).slug || '',
       countyLink: (u) => '..' + u,
       countyGuides: guides,
+      /* every city's HOA page — real pages, so they lead the Services list */
+      countyHoa: (CITIES.cities || []).filter(c => c.hoa_page).map(c => ({
+        label: `${c.name} HOA & Common-Area Painting`,
+        url: `../${c.slug}/${c.hoa_page.slug}/`,
+        strong: true
+      })),
       link: (u) => '..' + u
     });
     const head = oc.slice(0, s);
