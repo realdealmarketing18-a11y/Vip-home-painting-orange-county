@@ -87,7 +87,7 @@ separately. No lump sums. Competitors publish no pricing at all; CertaPro's Irvi
 
 | | Status |
 |---|---|
-| Warranty | **1 year**, labor and materials, no questions asked |
+| Warranty | **2 years**, labor and materials, no questions asked — *Fabian raised it from 1 on 2026-07-31* |
 | Licensing | Licensed, Bonded & Insured — State of California |
 | **Google reviews** | **9** — earned in Fontana. Rating unconfirmed (a directory shows 4.6, the site claims 5-star). |
 
@@ -95,9 +95,13 @@ separately. No lump sums. Competitors publish no pricing at all; CertaPro's Irvi
 #1-ranked painter in Anaheim has 55. VIP is roughly 50 behind. No `aggregateRating` schema,
 no review counts, no "5-Star Rated" until verified.
 
-**Where competitors beat us — handle honestly, don't write around it:** CertaPro advertises a
-**2-year warranty** (we say 1) and displays **EPA Lead Certified** (we don't). If the warranty
-stays at 1 year, make the case for why our prep spec makes it the better deal.
+**The warranty gap is closed.** CertaPro advertises 2 years; we now match it. Do not write
+"longer than the competition" — matching is not beating, and the claim would be false.
+State the 2-Year Warranty plainly and let the prep spec carry the argument.
+
+**Where competitors still beat us:** CertaPro displays **EPA Lead Certified** and we do not
+yet. Fabian is working on that and the CSLB number as of 2026-07-31 — until both land, do
+not imply either.
 
 ---
 
@@ -116,9 +120,11 @@ Fraunces (serif) + Inter (sans)
 ## ⚠️ UNVERIFIED — do not put these on a page until Fabian confirms
 
 1. **CSLB license number** — never captured. Competitors display theirs; it's a real trust
-   signal and it belongs in the footer and schema.
-2. **EPA Lead Certified?** — matters on pre-1978 homes.
-3. **Can the warranty go to 2 years?**
+   signal and it belongs in the footer and schema. *Fabian working on it, 2026-07-31.*
+2. **EPA Lead Certified?** — matters on pre-1978 homes. *Fabian working on it, 2026-07-31.*
+3. ~~Can the warranty go to 2 years?~~ **RESOLVED 2026-07-31 — yes, 2 years.** Every page
+   now says 2-Year Warranty. If this ever changes back, it changes in the data files, not
+   by hand: `briefs/`, `cities.json`, `communities.json`, `blog.json`, and the county page.
 4. **Real project totals** by city/tier — pricing ranges must come from job data, never
    computed from the rate.
 5. **Actual Google rating** — 4.6 or 5.0.

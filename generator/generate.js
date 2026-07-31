@@ -172,8 +172,8 @@ function heroStory(story, name, A) {
         <img class="strip-badge" src="${A}/assets/badges/badge-color-schemes.png" alt="Custom Color Schemes badge"/>
         <div class="lb">Custom Visualization</div><div class="sb">See it before we paint</div></div>
       <div class="cell">
-        <img class="strip-badge" src="${A}/assets/badges/badge-warranty.png" alt="1-Year Warranty badge"/>
-        <div class="lb">1-Year Warranty</div><div class="sb">No questions asked</div></div>
+        <img class="strip-badge" src="${A}/assets/badges/badge-warranty.png" alt="${CFG.warranty} badge"/>
+        <div class="lb">${CFG.warranty}</div><div class="sb">No questions asked</div></div>
       <div class="cell">${SVG_STAR}<div class="lb">Licensed &amp; Insured</div><div class="sb">Bonded in California</div></div>
       <div class="cell">${SVG_CLOCK}<div class="lb">${esc(story.days ? `${story.days}-Day Transformations` : '5-Day Transformations')}</div>
         <div class="sb">Concierge scheduling</div></div>
@@ -240,7 +240,7 @@ function modPortfolio(c, no, bg) {
           <li>Graco &amp; Titan professional airless spray application</li>
           <li>Sherwin-Williams Emerald &amp; Duration coating systems</li>
           <li>${c.cabinetLine}</li>
-          <li>1-Year Warranty · Licensed, Bonded &amp; Insured</li>
+          <li>${CFG.warranty} · Licensed, Bonded &amp; Insured</li>
         </ul>
         ${ctaButton('Claim Complimentary Color Consultation', `${c.name} estimates, itemized line by line`)}
       </div>
@@ -267,7 +267,7 @@ function modSpecs(c, no, bg) {
       <div class="st-row"><span class="st-k">Application</span><span class="st-v"><b>Graco and Titan professional airless spray rigs</b>, back-rolled on stucco to drive coating into the texture, with hand-cut lines at every color transition.</span></div>
       <div class="st-row"><span class="st-k">Site Protection</span><span class="st-v">Full masking and containment for ${c.context.settingNote} — landscaping wrapped, hardscape covered, wind-checked spray scheduling, clean site every evening.</span></div>
       <div class="st-row"><span class="st-k">Transparency</span><span class="st-v">Every proposal is <b>itemized line by line</b> — prep, primer, coating, trim, and accents priced separately. No lump sums, no hidden charges.</span></div>
-      <div class="st-row"><span class="st-k">Warranty</span><span class="st-v"><b>1-Year Warranty on labor and materials</b>, no questions asked. Licensed, Bonded &amp; Insured in the State of California.</span></div>
+      <div class="st-row"><span class="st-k">Warranty</span><span class="st-v"><b>${CFG.warranty} on labor and materials</b>, no questions asked. Licensed, Bonded &amp; Insured in the State of California.</span></div>
     </div>
   </section>`;
 }
@@ -304,7 +304,7 @@ function modProcess(c, no, bg) {
     ['Design Review, Handled', 'We prepare the complete color submission package for ' + c.context.hoaNote + ' — swatches, product data sheets, and elevation callouts — so approval never stalls your project.'],
     ['Estate-Grade Preparation', 'Pressure wash, stucco repair floated to match texture, sanding, and bonding primer. Landscaping and hardscape are masked and wrapped before a single gallon is opened.'],
     ['Precision Spray Application', 'Sherwin-Williams Emerald applied with Graco and Titan airless equipment at full wet-mil, back-rolled on stucco, with hand-cut lines at every transition.'],
-    ['Founder’s Walkthrough &amp; Warranty', 'Raking-light inspection of every elevation, touch-ups before you ask, and a signed walkthrough — backed by our 1-Year Warranty, no questions asked.']
+    ['Founder’s Walkthrough &amp; Warranty', `Raking-light inspection of every elevation, touch-ups before you ask, and a signed walkthrough — backed by our ${CFG.warranty}, no questions asked.`]
   ];
   const rows = steps.map((s, i) => `
       <div class="glove-step">
@@ -433,7 +433,7 @@ function jsonLd(c, url) {
     '@id': `${CFG.siteBase}/#business`,
     name: CFG.businessName,
     alternateName: 'VIP Premier Painting',
-    description: `VIP Home Painting is the luxury residential painting company serving ${c.name} and the villages of Irvine, CA — exterior painting, interior painting, and factory-finish kitchen cabinet refinishing using Sherwin-Williams coating systems and professional Graco and Titan airless spray application, backed by a 1-Year Warranty.`,
+    description: `VIP Home Painting is the luxury residential painting company serving ${c.name} and the villages of Irvine, CA — exterior painting, interior painting, and factory-finish kitchen cabinet refinishing using Sherwin-Williams coating systems and professional Graco and Titan airless spray application, backed by a ${CFG.warranty}.`,
     url: `${CFG.siteBase}/`,
     telephone: CFG.phoneE164,
     email: CFG.email,
@@ -614,8 +614,8 @@ ${FILM_CSS}
         <div class="lb">Custom Visualization</div>
         <div class="sb">See it before we paint</div></div>
       <div class="cell">
-        <img class="strip-badge" src="${A}/assets/badges/badge-warranty.png" alt="Insane 1-Year Warranty badge"/>
-        <div class="lb">1-Year Warranty</div>
+        <img class="strip-badge" src="${A}/assets/badges/badge-warranty.png" alt="Insane ${CFG.warranty} badge"/>
+        <div class="lb">${CFG.warranty}</div>
         <div class="sb">No questions asked</div></div>
       <div class="cell">
         ${SVG_STAR}
@@ -762,7 +762,7 @@ function cityJsonLd(c, url) {
     '@type': 'HomeAndConstructionBusiness',
     '@id': `${base}/#business`,
     name: CFG.businessName,
-    description: `VIP Home Painting is the luxury residential painting company serving ${c.name}, CA — exterior painting, interior painting, and factory-finish kitchen cabinet refinishing, backed by a 1-Year Warranty.`,
+    description: `VIP Home Painting is the luxury residential painting company serving ${c.name}, CA — exterior painting, interior painting, and factory-finish kitchen cabinet refinishing, backed by a ${CFG.warranty}.`,
     url: `${base}/`,
     telephone: CFG.phoneE164,
     email: CFG.email,
@@ -969,8 +969,8 @@ ${FILM_CSS}
     <div class="hero-strip">
       <div class="cell"><img class="strip-badge" src="${A}/assets/badges/badge-color-schemes.png" alt="Custom Color Schemes badge"/>
         <div class="lb">Custom Visualization</div><div class="sb">See it before we paint</div></div>
-      <div class="cell"><img class="strip-badge" src="${A}/assets/badges/badge-warranty.png" alt="1-Year Warranty badge"/>
-        <div class="lb">1-Year Warranty</div><div class="sb">No questions asked</div></div>
+      <div class="cell"><img class="strip-badge" src="${A}/assets/badges/badge-warranty.png" alt="${CFG.warranty} badge"/>
+        <div class="lb">${CFG.warranty}</div><div class="sb">No questions asked</div></div>
       <div class="cell">${SVG_STAR}<div class="lb">Licensed &amp; Insured</div><div class="sb">Bonded in California</div></div>
       <div class="cell">${SVG_CLOCK}<div class="lb">5-Day Transformations</div><div class="sb">Concierge scheduling</div></div>
     </div>
@@ -1222,7 +1222,7 @@ ${FILM_CSS}
       <div class="hero-fleuron" aria-hidden="true">&#10087;</div>
       <div class="eyebrow-ruled">${esc(city.name)} · HOA &amp; Common-Area Painting</div>
       <h1 class="ttl-hero">${h.seo.h1}</h1>
-      <div class="hero-kicker eyebrow-ruled">Itemized Bids · Certificates On File · 1-Year Warranty</div>
+      <div class="hero-kicker eyebrow-ruled">Itemized Bids · Certificates On File · ${CFG.warranty}</div>
       <div class="hero-cta-wrap">
         <a href="${CFG.phoneHref}" class="btn-gold">
           <span class="col-2"><span>Request a Bid</span><span class="sub">Itemized by structure · no obligation</span></span>
@@ -1232,8 +1232,8 @@ ${FILM_CSS}
     </div>
     <div class="hero-strip">
       <div class="cell">${SVG_STAR}<div class="lb">Licensed &amp; Insured</div><div class="sb">COI naming your association</div></div>
-      <div class="cell"><img class="strip-badge" src="${A}/assets/badges/badge-warranty.png" alt="1-Year Warranty badge"/>
-        <div class="lb">1-Year Warranty</div><div class="sb">Labor &amp; materials</div></div>
+      <div class="cell"><img class="strip-badge" src="${A}/assets/badges/badge-warranty.png" alt="${CFG.warranty} badge"/>
+        <div class="lb">${CFG.warranty}</div><div class="sb">Labor &amp; materials</div></div>
       <div class="cell"><img class="strip-badge" src="${A}/assets/badges/badge-color-schemes.png" alt="Color rendering badge"/>
         <div class="lb">Rendered Before the Vote</div><div class="sb">Residents see it first</div></div>
       <div class="cell">${SVG_CLOCK}<div class="lb">Phased Scheduling</div><div class="sb">Amenities stay open</div></div>

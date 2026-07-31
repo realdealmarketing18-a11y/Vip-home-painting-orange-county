@@ -99,9 +99,16 @@ for (const p of pages) {
   for (const ph of [...new Set(body.match(/\(\d{3}\)\s*\d{3}-\d{4}/g) || [])]) {
     if (ph !== CFG.phone) probs.push(`wrong phone "${ph}"`);
   }
+  /* The warranty length was hardcoded in generator source in 14 places and went
+     stale the moment Fabian changed it. It lives in config now; this asserts the
+     pages actually agree, and that no ${CFG...} placeholder leaked out unrendered. */
+  const wrongWarranty = (body.match(/\b\d+-Year Warranty\b/g) || []).filter(w => w !== CFG.warranty);
+  if (wrongWarranty.length) probs.push(`warranty says "${[...new Set(wrongWarranty)].join('", "')}" but config says "${CFG.warranty}"`);
+  if (/\$\{[A-Za-z.]+\}/.test(body)) probs.push('an unrendered ${...} placeholder is visible on the page');
+
   if (probs.length) { bad(`${p.rel}: ${probs.join(' · ')}`); copyBad++; }
 }
-if (!copyBad) ok('no banned copy on any page');
+if (!copyBad) ok(`no banned copy; warranty reads "${CFG.warranty}" on every page`);
 
 /* ---------- 3. schema parses; FAQ matches what is visible ---------- */
 console.log('\n3. structured data');

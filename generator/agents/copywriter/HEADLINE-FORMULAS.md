@@ -101,7 +101,7 @@ fails on duplicate H1s.
 - See what Sherwin-Williams Emerald actually looks like on **your** home.
 - Schemes curated for your home's architecture — not a generic palette.
 - Graco and Titan airless application, back-rolled on stucco, full wet-mil.
-- Licensed, Bonded & Insured. 1-Year Warranty on labor and materials.
+- Licensed, Bonded & Insured. 2-Year Warranty on labor and materials.
 
 ### Risk reversal
 - Avoid the mistake that costs the whole project twice.

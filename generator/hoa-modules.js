@@ -48,7 +48,7 @@ M.process = (c, no, bg, H) => {
     ['Phased Execution',
      'Work is sequenced building by building so amenities stay open. Full masking, daily clean-up, and crews briefed on gate and pool-area protocol.'],
     ['Board Walkthrough &amp; Warranty',
-     'Final walkthrough with your manager or board representative, punch list closed before sign-off, backed by our 1-Year Warranty on labor and materials.']
+     `Final walkthrough with your manager or board representative, punch list closed before sign-off, backed by our ${H.CFG.warranty} on labor and materials.`]
   ];
   const rows = steps.map(([t, d], i) => `
       <div class="glove-step">
@@ -79,7 +79,7 @@ M.compliance = (c, no, bg, H) => {
     ['Itemized Bid', 'Priced by structure and by scope item — prep, primer, coating, trim — so bids are genuinely comparable.'],
     ['Written Work Schedule', 'Start and finish dates per building, with resident-notice lead time agreed in advance.'],
     ['Product Data Sheets', 'Sherwin-Williams specifications for every product, for your reserve study and records.'],
-    ['1-Year Warranty', 'Labor and materials, in writing, no questions asked.']
+    [H.CFG.warranty, 'Labor and materials, in writing, no questions asked.']
   ].map(([t, d]) => `
         <div class="hoa-doc">
           <div class="hoa-doc-t">${t}</div>
@@ -114,7 +114,7 @@ M.spec = (c, no, bg, H) => `
       <div class="st-row"><span class="st-k">Iron &amp; Metalwork</span><span class="st-v">Rust treatment and spot-prime on gates, railings and light poles before finish coats.</span></div>
       <div class="st-row"><span class="st-k">Site Protection</span><span class="st-v">Landscaping wrapped, hardscape and pool surrounds covered, wind-checked spray scheduling, clean site every evening. Amenities stay open wherever sequencing allows.</span></div>
       <div class="st-row"><span class="st-k">Resident Impact</span><span class="st-v">Written notice dates per building, crews badged and briefed on gate protocol, work hours agreed with management.</span></div>
-      <div class="st-row"><span class="st-k">Warranty</span><span class="st-v"><b>1-Year Warranty on labor and materials.</b> Licensed, Bonded &amp; Insured in the State of California.</span></div>
+      <div class="st-row"><span class="st-k">Warranty</span><span class="st-v"><b>${H.CFG.warranty} on labor and materials.</b> Licensed, Bonded &amp; Insured in the State of California.</span></div>
     </div>
   </section>`;
 

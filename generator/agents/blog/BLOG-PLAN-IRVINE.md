@@ -259,7 +259,7 @@ Link once to /irvine/guide/ and once to /irvine/woodbury/.
 - Why dark colors fail fastest without fade-resistant colorants
 - Emerald and Duration vs. builder-grade, in plain terms
 - Stucco needs back-rolling, not just spraying
-- What a 1-Year Warranty does and doesn't cover
+- What a 2-Year Warranty does and doesn't cover
 
 **✂️ PROMPT**
 ```
@@ -270,7 +270,7 @@ URL /irvine/guide/how-long-paint-lasts/ · 1,100–1,400 words
 ANSWER FIRST: most early failure is preparation and film thickness, not the paint itself.
 Cover Irvine's inland sun on south/west elevations specifically. Explain full wet-mil and
 back-rolling on stucco in plain English. Name Sherwin-Williams Emerald and Duration.
-Mention the 1-Year Warranty accurately — labor and materials.
+Mention the 2-Year Warranty accurately — labor and materials.
 No invented longevity statistics. Link once to /irvine/guide/.
 ```
 

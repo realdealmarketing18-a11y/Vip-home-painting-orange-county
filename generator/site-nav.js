@@ -254,7 +254,7 @@ function buildFooter(ctx) {
           <span>${esc(ctx.bottomLine || `Serving every village of ${ctx.cityName}, CA`)}</span>
           <a href="${CFG.phoneHref}">${CFG.phone}</a>
         </div>
-        <div class="f-copy">© ${new Date().getFullYear()} VIP Home Painting. Licensed, Bonded &amp; Insured · 1-Year Warranty on Labor &amp; Materials.</div>
+        <div class="f-copy">© ${new Date().getFullYear()} VIP Home Painting. Licensed, Bonded &amp; Insured · 2-Year Warranty on Labor &amp; Materials.</div>
       </div>
     </div>
   </footer>`;

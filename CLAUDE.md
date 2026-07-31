@@ -73,6 +73,9 @@ Bing, so **Bing Places and Bing Webmaster Tools matter more than any ChatGPT tac
 - **Never invent** street names, HOA rules, client stories, or reviews
 - **Never publish an address in a city VIP doesn't operate from** — base is Anaheim
 - Phone in customer copy is **(909) 312-5400** and nothing else
+- Warranty is **2 years** (raised from 1 on 2026-07-31). It lives in
+  `communities.json → config.warranty` — never type the length into a template again.
+  CertaPro also advertises 2, so **never write "longer than the competition."**
 
 ---
 
@@ -88,9 +91,15 @@ Pages are **generated, never hand-written**. Edit data, run the generator.
 node generator/generate.js                        # build all pages
 node generator/pipeline.js status                 # the board
 node generator/pipeline.js next marcus            # what's next, for whom
-node generator/validate-brief.js irvine           # the gate
+node generator/validate-brief.js irvine           # the gate — checks the INPUT
+node generator/verify-site.js                     # the gate — checks the OUTPUT
 node generator/rank-check.js report               # ranking movement
 ```
+
+**Two gates, and the second one matters more.** `validate-brief.js` checks the brief;
+`verify-site.js` checks rendered HTML — dead and absolute links, banned copy, schema,
+FAQ parity, the silo rule, warranty length. Every miss that reached a live page was
+invisible to input validation. Never publish with either red.
 
 **Three agents, one queue, file-based handoff.** No agent talks to another agent — they read
 and write the same files. `pipeline.js claim` refuses to advance a cluster whose gate fails,
@@ -187,8 +196,7 @@ already scraped (dataset `pw6djQiOl1uh6hDsq`), review bar is 55.
 
 ### Open with Fabian
 
-CSLB license number (never captured, competitors display theirs) · EPA Lead Certified? ·
-can the warranty go to 2 years (CertaPro advertises 2 against our 1) · real project totals for
-pricing ranges · actual Google rating (a directory shows 4.6, the site said 5) · are the three
+CSLB license number *(Fabian working on it)* · EPA Lead Certified? *(Fabian working on it)* ·
+real project totals for pricing ranges · actual Google rating (a directory shows 4.6, the site said 5) · are the three
 on-page testimonials real · is the Gallagher family a real client or a produced film subject
 (registry says unverified) · migrate to viphomepainting.com?

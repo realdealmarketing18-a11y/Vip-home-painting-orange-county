@@ -64,13 +64,19 @@ WHAT MATTERS ABOUT ANAHEIM SPECIFICALLY
 - For every community record, from a primary source, with the source URL in the
   brief: real street names, architecture style, HOA / management company, price band.
 
-TOOLS
-- Firecrawl for all web search and anything on google.com — it returns better data
-  than plain search.
-- Apify for Google Maps.
-- Semrush is out of credits. Do not depend on it.
+TOOLS — read generator/research/_global/TOOLS.md first. It rates every tool on
+whether it ever changed a decision, and says which are load-bearing.
+- Tier 1, use these: Firecrawl (all web search and anything on google.com — always
+  pass the location so you see the SERP a local buyer sees), Apify Google Maps
+  (scrapePlaceDetailPage: true or the useful fields are missing), Apify Ahrefs
+  (website_authority and ai_visibility).
+- Tier 2, optional: Semrush for city and service terms only. Never pull community
+  terms — zero volume there is a measurement floor, not absent demand — and never
+  kill a community page on it. This run must complete without it.
 - Prefer government and city primary sources (City of Anaheim, county HOA lookups)
   over listing sites and blogs.
+- If a new research tool has been connected, run the acceptance test in TOOLS.md
+  before trusting it, and write up the result as TOOL-EVAL-{NAME}.md.
 
 HARD RULES — a violation is a failed run, not a small problem
 - Never invent street names, HOA rules, client stories, reviews or ratings.
@@ -292,9 +298,13 @@ Anaheim — that needs Fabian's login, and every Maps tactic in the Anaheim play
 is blocked until it happens. Organic and AI-search work is unaffected.
 
 **Still open with Fabian**, and each one leaves a hole in the copy until answered:
-CSLB license number · EPA Lead certification · whether the warranty can go to
-2 years · real project totals for pricing ranges · the actual Google rating ·
-whether the three on-page testimonials are real.
+CSLB license number *(in progress)* · EPA Lead certification *(in progress)* · real
+project totals for pricing ranges · the actual Google rating · whether the three
+on-page testimonials are real.
+
+**Settled 2026-07-31:** the warranty is **2 years**, labor and materials. Every page
+says so. Do not write "longer than the competition" — CertaPro also advertises 2,
+so matching is not beating.
 
 **To run one immediately** instead of waiting for its schedule, set Schedule to
 Manual and trigger it, or just run the same instructions in a normal session.

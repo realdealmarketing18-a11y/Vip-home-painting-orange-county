@@ -93,7 +93,7 @@ Irvine = 8 pages. Every one needs its own slots filled.
 | HOA rules not sourced in the brief | → "your community association's design review" |
 | Any phone but (909) 312-5400 | NAP consistency is a ranking factor |
 
-**Verified badges you may use:** Licensed, Bonded & Insured · 1-Year Warranty ·
+**Verified badges you may use:** Licensed, Bonded & Insured · 2-Year Warranty ·
 Sherwin-Williams Emerald & Duration · Graco & Titan airless application.
 
 ---
@@ -125,7 +125,7 @@ HEADLINE:    ← a formula from HEADLINE-FORMULAS.md, under 10 words, place name
 SUBHEAD:     [specific benefit] + [proof element]
 BODY:        2 sentences. Name a real street or landmark.
 CTA:         "Claim Complimentary Color Consultation"
-BADGES:      Licensed, Bonded & Insured | 1-Year Warranty | Sherwin-Williams Emerald
+BADGES:      Licensed, Bonded & Insured | 2-Year Warranty | Sherwin-Williams Emerald
 ```
 
 ### 2 · THE VISUALIZER *(fixed — you write only the lede)*

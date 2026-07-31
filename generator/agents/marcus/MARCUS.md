@@ -102,6 +102,16 @@ So: research Irvine and Newport for **organic and content** dominance. Research 
 
 ## TOOLS — what each one is for
 
+> **`research/_global/TOOLS.md` is the source** on which tools are proven, which are
+> not, and how a new one earns a place. It rates a tool on one thing: whether it ever
+> changed a decision. Read it before adopting anything, and update it the day a tool
+> proves or fails.
+>
+> **Tier 1, load-bearing** — Firecrawl · Apify Maps · Apify Ahrefs. Every finding that
+> rewrote the plan came from these three.
+> **Tier 2, useful but never decisive** — Semrush, WebSearch/WebFetch. Nothing in the
+> pipeline may depend on them, and nothing does.
+
 | Tool | Answers | Use it for | Do NOT |
 |---|---|---|---|
 | **Firecrawl** `search` | Who ranks organically | Geo-located SERPs — pass `location: "Irvine, California, United States"`. This is the only way to see what a local searcher sees. | Use it on Reddit — it's blocked |
@@ -110,7 +120,7 @@ So: research Irvine and Newport for **organic and content** dominance. Research 
 | **Apify** `compass/crawler-google-places` | Who wins the map, and why | Competitor review counts, categories, **reviewsTags**, Q&A, GBP posting cadence, review text | Enable leads/contacts/social enrichment — $0.10/record, more than the whole study |
 | **Firecrawl** `search` + `map` | **HOA associations + management companies** | Follow `research/_global/HOA-DISCOVERY-RECIPE.md` — name the communities in the query, check the city's official .gov lookup first | Use Apify Maps for this — HOAs aren't local-pack businesses and it returns nothing |
 | **Apify** `pro100chok/ahrefs-seo-tools` | Competitor domain authority | `website_authority` — DR, backlinks, referring domains. ~$0.10 per city. Also `ai_visibility` for ChatGPT/Gemini/Perplexity citations. | Rely on `keyword_metrics` — it returns empty |
-| **Semrush** | Search volume + difficulty | **City and service terms only** | Pull community terms — they return zero volume (measurement floor, not absent demand) |
+| **Semrush** *(Tier 2)* | Search volume + difficulty | **City and service terms only.** Treat as optional — the gate passes without it | Pull community terms (zero volume is a measurement floor, not absent demand) · **never kill a community page on it** · never make a run depend on it |
 | **WebSearch / WebFetch** | Fallback | When Firecrawl is blocked | Rely on for geo-specific results — not location-aware |
 
 ### Non-negotiable settings

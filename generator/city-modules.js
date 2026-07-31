@@ -60,7 +60,7 @@ M.pricing = (c, no, bg, H) => {
     'Sherwin-Williams Emerald &amp; Duration coating systems',
     'Graco &amp; Titan airless application, back-rolled on stucco',
     'HOA design-review submission package',
-    '1-Year Warranty on labor &amp; materials'
+    `${H.CFG.warranty} on labor &amp; materials`
   ].map(i => `<li>${i}</li>`).join('\n          ');
 
   return `
@@ -276,7 +276,7 @@ M.process = (c, no, bg, H) => {
     ['Precision Spray Application',
      'Sherwin-Williams Emerald applied with Graco and Titan airless equipment at full wet-mil, back-rolled on stucco, hand-cut at every transition.'],
     ['Founder’s Walkthrough &amp; Warranty',
-     'Raking-light inspection of every elevation, touch-ups before you ask, and a signed walkthrough — backed by our 1-Year Warranty.']
+     `Raking-light inspection of every elevation, touch-ups before you ask, and a signed walkthrough — backed by our ${H.CFG.warranty}.`]
   ];
   const rows = steps.map(([t, d], i) => `
       <div class="glove-step">
