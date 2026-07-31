@@ -58,20 +58,86 @@ function liveCities(CITIES) {
   return list.length > 1 ? list : [];
 }
 
-/* ---- TOP NAV CITY SWITCHER ----
-   Rendered as a details/summary so it works with no JavaScript. */
-function cityNav(ctx) {
-  const cities = liveCities(ctx.CITIES);
-  if (!cities.length) return '';
-  const L = ctx.link;
+/* ---- TOP NAV ----
+
+   Ten flat items crushed the header: the logo collapsed to a sliver and the
+   phone number wrapped onto three lines. Four categories instead, each one
+   opening its own list, identical on every page type.
+
+     Cities · Neighborhoods · Guides · Services
+
+   details/summary so it opens without JavaScript; NAV_SCRIPT below only
+   adds the courtesy of closing the others. */
+function menu(id, label, items, esc) {
+  const live = (items || []).filter(i => i && i.url && i.label);
+  if (!live.length) return '';
   return `
-      <details class="nav-cities">
-        <summary>Cities</summary>
-        <div class="nav-cities-menu">
-          ${cities.map(c => `<a href="${L(c.url)}"${c.slug === ctx.citySlug ? ' aria-current="page"' : ''}>${ctx.esc(c.name)}</a>`).join('\n          ')}
+      <details class="nav-item" data-nav="${id}">
+        <summary>${esc(label)}</summary>
+        <div class="nav-menu">
+          ${live.map(i => `<a href="${i.url}"${i.current ? ' aria-current="page"' : ''}${i.strong ? ' class="is-lead"' : ''}>${esc(i.label)}</a>`).join('\n          ')}
         </div>
       </details>`;
 }
+
+function topNav(ctx) {
+  const { esc, A } = ctx;
+  const L = ctx.link;
+  const cities = liveCities(ctx.CITIES);
+
+  /* Cities — always at least the current city plus the county page, so the
+     category is never empty and grows on its own as cities are published. */
+  const cityItems = (cities.length
+    ? cities.map(c => ({ label: c.name, url: L(c.url), current: c.slug === ctx.citySlug }))
+    : [{ label: ctx.cityName, url: L(`/${ctx.citySlug}/`), current: true }]
+  ).concat([{ label: 'All of Orange County', url: `${A}/` }]);
+
+  /* Neighborhoods — this city's, never another's. The silo rule. */
+  const hoodItems = [{ label: `All ${ctx.cityName} Painting`, url: L(`/${ctx.citySlug}/`), strong: true }]
+    .concat((ctx.communities || []).filter(v => v.url && v.name)
+      .map(v => ({ label: v.name, url: L(v.url) })))
+    .concat(ctx.hoaUrl ? [{ label: 'HOA & Common-Area', url: L(ctx.hoaUrl) }] : []);
+
+  const guideItems = (ctx.guideUrl ? [{ label: `The ${ctx.cityName} Color Guide`, url: L(ctx.guideUrl), strong: true }] : [])
+    .concat((ctx.articles || []).filter(a => a.url && a.title).slice(0, 6)
+      .map(a => ({ label: a.title, url: L(a.url) })));
+
+  const serviceItems = [
+    { label: 'Exterior Painting', url: `${A}/#services` },
+    { label: 'Interior Painting', url: `${A}/#services` },
+    { label: 'Kitchen Cabinets', url: `${A}/#services` },
+    { label: 'Color Visualization', url: `${A}/#viz` }
+  ];
+
+  return [
+    menu('cities', 'Cities', cityItems, esc),
+    menu('hoods', 'Neighborhoods', hoodItems, esc),
+    menu('guides', 'Guides', guideItems, esc),
+    menu('services', 'Services', serviceItems, esc)
+  ].filter(Boolean).join('');
+}
+
+/* Closes the other menus when one opens, and closes on outside click or Escape.
+   Everything still works with this script absent. */
+const NAV_SCRIPT = `<script>
+(function(){
+  var items = [].slice.call(document.querySelectorAll('.top-nav .nav-item'));
+  if (!items.length) return;
+  items.forEach(function(d){
+    d.addEventListener('toggle', function(){
+      if (!d.open) return;
+      items.forEach(function(o){ if (o !== d) o.open = false; });
+    });
+  });
+  document.addEventListener('click', function(e){
+    if (e.target.closest && e.target.closest('.top-nav .nav-item')) return;
+    items.forEach(function(d){ d.open = false; });
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') items.forEach(function(d){ d.open = false; });
+  });
+})();
+</script>`;
 
 /* ---- THE FOOTER ----
 
@@ -167,4 +233,4 @@ function buildFooter(ctx) {
   </footer>`;
 }
 
-module.exports = { linker, liveCities, cityNav, buildFooter };
+module.exports = { linker, liveCities, topNav, buildFooter, NAV_SCRIPT };

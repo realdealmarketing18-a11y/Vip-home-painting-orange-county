@@ -514,25 +514,8 @@ function buildPage(c) {
   const url = `${CFG.siteBase}/${CFG.outputDir}/${c.slug}/`;
   const A = CFG.assetBase;
 
-  /* Fixed, funnel-ordered nav — identical on every community page,
-     independent of the body-module rotation.
-
-     The two real links matter more than they look. A community page is a
-     leaf: without them the only way up was the logo, and the Guide had no
-     inbound link from any of the six. Up to the hub, across to the guide. */
-  const cityPillar = (BLOG.pillars || []).find(x => x.city_slug === CFG.outputDir);
-  const cityName = ((CITIES.cities || []).find(x => x.slug === CFG.outputDir) || {}).name || 'City';
-  const navLinks = [
-    ['../', `All ${cityName}`],
-    ['#viz', 'Visualize'],
-    ['#colors', 'Colors'],
-    ['#process', 'Process'],
-    ['#portfolio', 'Portfolio'],
-    ['#faq', 'FAQ']
-  ].concat(cityPillar ? [[`../${cityPillar.slug}/`, 'Guide']] : [])
-   .concat([['#quote', 'Complimentary Quote']])
-   .map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join('\n      ')
-   + cityNav(navCtx(`/${CFG.outputDir}/${c.slug}/`, CFG.outputDir, A));
+  /* One nav for every page type — four categories, built in site-nav.js. */
+  const navLinks = topNav(navCtx(`/${CFG.outputDir}/${c.slug}/`, CFG.outputDir, A));
 
   const modules = c.moduleOrder
     .map((k, i) => MODULE_BUILDERS[k](c, i + 2, POSITION_BG[i]))
@@ -683,6 +666,7 @@ ${faqSection(c, c.moduleOrder.length + 3)}
 ${buildFooter(navCtx(`/${CFG.outputDir}/${c.slug}/`, CFG.outputDir, A))}
 
 </div>
+${NAV_SCRIPT}
 ${VIZ_JS}
 <script>
 /* "Watch the Film" — opens a lightbox over the page. Nothing loads until
@@ -752,7 +736,7 @@ const ARTICLE_MODULES = require('./article-modules.js');
 /* The editorial retelling of the visualizer. Its scheme, style and option
    data is read back out of the sales page so the two cannot drift apart. */
 const { extractVizData, vizJourney } = require('./viz-journey.js');
-const { linker, liveCities, cityNav, buildFooter } = require('./site-nav.js');
+const { linker, liveCities, topNav, buildFooter, NAV_SCRIPT } = require('./site-nav.js');
 const VIZ_DATA = extractVizData(BASE_PAGE);
 const BLOG_CSS = fs.readFileSync(path.join(__dirname, 'blog-page.css'), 'utf8');
 const BLOG_PATH = path.join(__dirname, 'blog.json');
@@ -889,18 +873,7 @@ function buildCityPage(c) {
   /* Link out to the pillar guide if one exists for this city — it needs the
      link for discovery, and the city page is its strongest referrer. */
   const pillar = (BLOG.pillars || []).find(x => x.city_slug === c.slug);
-  /* "HOA" used to be an on-page anchor, which left /{city}/hoa-painting/
-     with zero links from its own hub — the page was reachable only from a
-     community footer. A hub that does not link to its own child is not a hub. */
-  const navLinks = ['<a href="#viz">Visualize</a>']
-    .concat(rendered.filter(k => NAV[k]).map(k => (k === 'hoa' && c.hoa_page)
-      ? `<a href="${c.hoa_page.slug}/">HOA</a>`
-      : `<a href="#${NAV_ID[k] || k}">${NAV[k]}</a>`))
-    .concat(hasFaqs ? ['<a href="#faq">FAQ</a>'] : [])
-    .concat(pillar ? [`<a href="${pillar.slug}/">Guide</a>`] : [])
-    .concat(['<a href="#quote">Get a Quote</a>'])
-    .join('\n      ')
-    + cityNav(navCtx(`/${c.slug}/`, c.slug, A));
+  const navLinks = topNav(navCtx(`/${c.slug}/`, c.slug, A));
 
   const footerCommunities = kids
     .map(x => `<li><a href="${x.href}">${x.name} Home Painting</a></li>`).join('\n            ');
@@ -1035,6 +1008,7 @@ ${faqSec}
 ${buildFooter(navCtx(`/${c.slug}/`, c.slug, A))}
 
 </div>
+${NAV_SCRIPT}
 ${VIZ_JS}
 <script>
 /* "Watch the Film" — opens a lightbox over the page. Nothing loads until
@@ -1168,14 +1142,7 @@ function buildHoaPage(h, city) {
   const NAV = { scope: 'Scope', process: 'Process', compliance: 'Documentation',
                 spec: 'Specification', references: 'Communities', bid_cta: 'Request a Bid' };
   const hasFaqs = (h.faqs || []).filter(f => f.q && f.a).length > 0;
-  /* Same leaf problem as the community pages — up to the hub, across to the guide. */
-  const hoaPillar = (BLOG.pillars || []).find(x => x.city_slug === city.slug);
-  const navLinks = [`<a href="../">All ${esc(city.name)}</a>`]
-    .concat(rendered.filter(k => NAV[k]).map(k => `<a href="#${k === 'bid_cta' ? 'bid' : k}">${NAV[k]}</a>`))
-    .concat(hasFaqs ? ['<a href="#faq">FAQ</a>'] : [])
-    .concat(hoaPillar ? [`<a href="../${hoaPillar.slug}/">Guide</a>`] : [])
-    .join('\n      ')
-    + cityNav(navCtx(`/${city.slug}/${h.slug}/`, city.slug, A));
+  const navLinks = topNav(navCtx(`/${city.slug}/${h.slug}/`, city.slug, A));
 
   const capsule = (h.seo.answer_capsule || '').replace(
     CFG.phone, `<a href="${CFG.phoneHref}" style="color:var(--gold-deep); font-weight:700; text-decoration:none;">${CFG.phone}</a>`);
@@ -1462,13 +1429,7 @@ ${FILM_CSS}
     <a class="top-logo" href="../">
       <img class="logo-img" src="${A}/assets/logos/logo-tagline.png" alt="VIP Home Painting — See it. Love it. Paint it."/>
     </a>
-    <nav class="top-nav">
-      <a href="../">${esc(p.city_name)}</a>
-      <a href="#villages">Villages</a>
-      <a href="#cost">Costs</a>
-      <a href="#articles">Guides</a>
-      <a href="../hoa-painting/">For HOAs</a>
-      ${cityNav(navCtx(`/${p.city_slug}/${p.slug}/`, p.city_slug, A))}
+    <nav class="top-nav">${topNav(navCtx(`/${p.city_slug}/${p.slug}/`, p.city_slug, A))}
     </nav>
     <a href="${CFG.phoneHref}" class="top-phone">
       ${SVG_PHONE}
@@ -1498,6 +1459,7 @@ ${body}
 ${buildFooter(navCtx(`/${p.city_slug}/${p.slug}/`, p.city_slug, A))}
 
 </div>
+${NAV_SCRIPT}
 </body>
 </html>
 `;
@@ -1642,11 +1604,7 @@ FILM_CSS + '\n' +
 '      <img class="logo-img" src="' + A + '/assets/logos/logo-tagline.png" alt="VIP Home Painting — See it. Love it. Paint it."/>\n' +
 '    </a>\n' +
 '    <nav class="top-nav">\n' +
-'      <a href="../../">' + esc(a.city_name) + '</a>\n' +
-'      <a href="../">The Guide</a>\n' +
-'      <a href="#faq">Questions</a>\n' +
-'      <a href="../../hoa-painting/">For HOAs</a>\n' +
-cityNav(navCtx(`/${a.city_slug}/${a.pillar_slug}/${a.slug}/`, a.city_slug, A)) + '\n' +
+topNav(navCtx(`/${a.city_slug}/${a.pillar_slug}/${a.slug}/`, a.city_slug, A)) + '\n' +
 '    </nav>\n' +
 '    <a href="' + CFG.phoneHref + '" class="top-phone">\n' +
 '      ' + SVG_PHONE + '\n' +
@@ -1676,6 +1634,7 @@ body + '\n' +
 buildFooter(navCtx(`/${a.city_slug}/${a.pillar_slug}/${a.slug}/`, a.city_slug, A)) + '\n' +
 '\n' +
 '</div>\n' +
+NAV_SCRIPT + '\n' +
 '</body>\n' +
 '</html>\n';
 }

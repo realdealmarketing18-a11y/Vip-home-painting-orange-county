@@ -1420,15 +1420,63 @@ body { font-family: var(--font-sans); }
   display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 40px;
   border-bottom: 1px solid rgba(26,31,78,0.06);
 }
-.top-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.top-logo img.logo-img { height: 48px; width: auto; display: block; }
-.top-nav { display: flex; justify-content: center; gap: 36px; }
-.top-nav a { font-family: var(--font-sans); font-weight: 600; font-size: 11.5px; letter-spacing: 0.20em; text-transform: uppercase; color: var(--navy); text-decoration: none; padding: 6px 0; position: relative; transition: color 220ms; }
-.top-nav a:hover { color: var(--gold-deep); }
-.top-nav a::after { content: ''; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: var(--gold); transition: width 280ms cubic-bezier(.22,1,.36,1); }
-.top-nav a:hover::after { width: 100%; }
-.top-phone { display: inline-flex; align-items: center; gap: 6px; color: var(--navy); text-decoration: none; font-family: var(--font-sans); font-weight: 700; font-size: 13px; letter-spacing: 0.04em; }
-.top-phone svg { width: 16px; height: 16px; color: var(--gold-deep); }
+/* The logo and the phone are fixed points — the nav is what gives way.
+   Without these two, ten nav items squeezed the logo to a sliver and
+   wrapped the phone number onto three lines. */
+.top-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+.top-logo img.logo-img { height: 48px; width: auto; display: block; max-width: none; }
+.top-phone {
+  display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; white-space: nowrap;
+  color: var(--navy); text-decoration: none; font-family: var(--font-sans);
+  font-weight: 700; font-size: 13px; letter-spacing: 0.04em;
+}
+.top-phone svg { width: 16px; height: 16px; color: var(--gold-deep); flex-shrink: 0; }
+
+/* ---- NAV: four categories, each opening its own list ---- */
+.top-nav { display: flex; justify-content: center; align-items: center; gap: 30px; min-width: 0; }
+.top-nav a,
+.top-nav .nav-item > summary {
+  font-family: var(--font-sans); font-weight: 600; font-size: 11.5px;
+  letter-spacing: 0.20em; text-transform: uppercase; color: var(--navy);
+  text-decoration: none; padding: 6px 0; position: relative;
+  transition: color 220ms; white-space: nowrap;
+}
+.top-nav > a:hover { color: var(--gold-deep); }
+.top-nav > a::after { content: ''; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: var(--gold); transition: width 280ms cubic-bezier(.22,1,.36,1); }
+.top-nav > a:hover::after { width: 100%; }
+
+.nav-item { position: relative; }
+.nav-item > summary {
+  list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+}
+.nav-item > summary::-webkit-details-marker { display: none; }
+.nav-item > summary::after {
+  content: ''; width: 5px; height: 5px; margin-top: -3px; flex-shrink: 0;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg); transition: transform 200ms;
+}
+.nav-item > summary:hover { color: var(--gold-deep); }
+.nav-item[open] > summary { color: var(--gold-deep); }
+.nav-item[open] > summary::after { transform: rotate(-135deg); margin-top: 2px; }
+
+.nav-menu {
+  position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%);
+  background: #fff; border: 1px solid rgba(168,138,71,0.32); border-radius: 3px;
+  box-shadow: 0 18px 44px rgba(26,31,78,0.16);
+  padding: 8px 0; min-width: 232px; z-index: 60;
+}
+.nav-menu::before {   /* keeps the pointer from falling through the gap */
+  content: ''; position: absolute; top: -14px; left: 0; right: 0; height: 14px;
+}
+.nav-menu a {
+  display: block; padding: 10px 20px; white-space: nowrap;
+  font-family: var(--font-sans); font-weight: 500; font-size: 12.5px;
+  letter-spacing: 0.02em; text-transform: none; color: var(--navy); text-decoration: none;
+}
+.nav-menu a:hover { background: var(--cream); color: var(--gold-deep); }
+.nav-menu a.is-lead { font-weight: 700; }
+.nav-menu a.is-lead + a { border-top: 1px solid rgba(26,31,78,0.08); margin-top: 4px; padding-top: 12px; }
+.nav-menu a[aria-current="page"] { color: var(--gold-deep); font-weight: 700; }
 
 /* ============ SHARED ============ */
 .btn-gold {
@@ -2222,12 +2270,45 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <img class="logo-img" src="../../orange-county-sales-page/assets/logos/logo-tagline.png" alt="VIP Home Painting — See it. Love it. Paint it."/>
     </a>
     <nav class="top-nav">
-      <a href="../">Irvine</a>
-      <a href="#villages">Villages</a>
-      <a href="#cost">Costs</a>
-      <a href="#articles">Guides</a>
-      <a href="../hoa-painting/">For HOAs</a>
-      
+      <details class="nav-item" data-nav="cities">
+        <summary>Cities</summary>
+        <div class="nav-menu">
+          <a href="../" aria-current="page">Irvine</a>
+          <a href="../../orange-county-sales-page/">All of Orange County</a>
+        </div>
+      </details>
+      <details class="nav-item" data-nav="hoods">
+        <summary>Neighborhoods</summary>
+        <div class="nav-menu">
+          <a href="../" class="is-lead">All Irvine Painting</a>
+          <a href="../orchard-hills/">Orchard Hills</a>
+          <a href="../altair/">Altair</a>
+          <a href="../portola-springs/">Portola Springs</a>
+          <a href="../hidden-canyon/">Hidden Canyon</a>
+          <a href="../woodbury/">Woodbury</a>
+          <a href="../stonegate/">Stonegate</a>
+          <a href="../hoa-painting/">HOA &amp; Common-Area</a>
+        </div>
+      </details>
+      <details class="nav-item" data-nav="guides">
+        <summary>Guides</summary>
+        <div class="nav-menu">
+          <a href="./" class="is-lead">The Irvine Color Guide</a>
+          <a href="what-does-it-cost/">What a Repaint Costs</a>
+          <a href="what-goes-wrong/">Why Colors Look Wrong</a>
+          <a href="hoa-color-approval/">Getting HOA Approval</a>
+          <a href="choosing-between-whites/">Choosing Between Whites</a>
+        </div>
+      </details>
+      <details class="nav-item" data-nav="services">
+        <summary>Services</summary>
+        <div class="nav-menu">
+          <a href="../../orange-county-sales-page/#services">Exterior Painting</a>
+          <a href="../../orange-county-sales-page/#services">Interior Painting</a>
+          <a href="../../orange-county-sales-page/#services">Kitchen Cabinets</a>
+          <a href="../../orange-county-sales-page/#viz">Color Visualization</a>
+        </div>
+      </details>
     </nav>
     <a href="tel:9093125400" class="top-phone">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -2605,5 +2686,24 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   </footer>
 
 </div>
+<script>
+(function(){
+  var items = [].slice.call(document.querySelectorAll('.top-nav .nav-item'));
+  if (!items.length) return;
+  items.forEach(function(d){
+    d.addEventListener('toggle', function(){
+      if (!d.open) return;
+      items.forEach(function(o){ if (o !== d) o.open = false; });
+    });
+  });
+  document.addEventListener('click', function(e){
+    if (e.target.closest && e.target.closest('.top-nav .nav-item')) return;
+    items.forEach(function(d){ d.open = false; });
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') items.forEach(function(d){ d.open = false; });
+  });
+})();
+</script>
 </body>
 </html>
