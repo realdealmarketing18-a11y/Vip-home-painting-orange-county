@@ -1813,6 +1813,37 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 .f-tag { font-family: var(--font-serif); font-style: italic; font-size: 15px; color: var(--gold-bright); line-height: 1.4; text-align: right; }
 .f-tag b { font-style: normal; font-weight: 600; color: #fff; }
 .f-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; align-items: start; }
+/* The footer grows a column once a city has a guide, and another once a
+   second city exists. Column count comes from the builder, not a guess. */
+.f-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.f-cols-4 { grid-template-columns: 1.15fr 1.15fr 1fr 0.9fr; gap: 40px; }
+
+/* ---- CITY SWITCHER ----
+   details/summary so it opens with no JavaScript. Only rendered once a
+   second city is live; a switcher holding one city is noise. */
+.nav-cities { position: relative; display: inline-block; }
+.nav-cities > summary {
+  list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;
+}
+.nav-cities > summary::-webkit-details-marker { display: none; }
+.nav-cities > summary::after {
+  content: ''; width: 5px; height: 5px; margin-top: -3px;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg); transition: transform 200ms;
+}
+.nav-cities[open] > summary::after { transform: rotate(-135deg); margin-top: 1px; }
+.nav-cities-menu {
+  position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%);
+  background: #fff; border: 1px solid rgba(168,138,71,0.35); border-radius: 3px;
+  box-shadow: 0 16px 38px rgba(26,31,78,0.18);
+  padding: 8px 0; min-width: 190px; z-index: 60;
+}
+.nav-cities-menu a {
+  display: block; padding: 9px 18px; white-space: nowrap;
+  font-size: 13px; color: var(--navy); text-decoration: none;
+}
+.nav-cities-menu a:hover { background: var(--cream); color: var(--gold-deep); }
+.nav-cities-menu a[aria-current="page"] { color: var(--gold-deep); font-weight: 700; }
 .f-col-label { font-family: var(--font-sans); font-weight: 700; font-size: 10.5px;
   letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
 .f-links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; align-items: flex-start; }
@@ -1835,6 +1866,8 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   section { padding: 60px 32px; }
   .capsule { padding: 48px 32px 40px; }
   .swatch-grid { grid-template-columns: 1fr 1fr; }
+  /* four columns get cramped well before phone width */
+  .f-cols-4 { grid-template-columns: 1fr 1fr; gap: 36px 40px; }
 }
 @media (max-width: 860px) {
   .top-nav { display: none; }
@@ -1862,7 +1895,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   footer { padding: 56px 24px 28px; }
   .f-mast { flex-direction: column; align-items: center; text-align: center; gap: 18px; }
   .f-tag { text-align: center; }
-  .f-cols { grid-template-columns: 1fr; gap: 34px; }
+  .f-cols, .f-cols-3, .f-cols-4 { grid-template-columns: 1fr; gap: 34px; }
   .f-links { align-items: center; }
   .f-col { text-align: center; }
   .f-bottom { flex-direction: column; justify-content: center; text-align: center; }
@@ -2064,7 +2097,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <a href="#pricing">Pricing</a>
       <a href="#communities">Communities</a>
       <a href="#colors">Colors</a>
-      <a href="#hoa">HOA</a>
+      <a href="hoa-painting/">HOA</a>
       <a href="#process">Process</a>
       <a href="#spotlight">Projects</a>
       <a href="#faq">FAQ</a>
@@ -2412,7 +2445,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           <li><b>We prepare the submission package</b>Swatches, Sherwin-Williams product data, elevation callouts.</li>
           <li><b>You submit — or we submit for you</b>Formatted the way your board expects to receive it.</li>
         </ul>
-        <a class="hoa-link" href="/irvine/hoa-painting/">Managing an association or property? See our HOA &amp; common-area page →</a>
+        <a class="hoa-link" href="hoa-painting/">Managing an association or property? See our HOA &amp; common-area page →</a>
       </div>
       <div class="hoa-panel">
         <div class="hoa-panel-lbl">Nobody else writes about this</div>
@@ -2568,6 +2601,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     </div>
   </section>
 
+
   <footer>
     <div class="f-shell">
       <div class="f-mast">
@@ -2577,17 +2611,28 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
         </div>
         <div class="f-tag"><b>We don't just paint homes,</b><br/>we transform lives.</div>
       </div>
-      <div class="f-cols">
-        <nav class="f-col" aria-label="Irvine communities we serve">
-          <div class="f-col-label">Irvine Communities</div>
+      <div class="f-cols f-cols-4">
+        <nav class="f-col" aria-label="Irvine pages">
+          <div class="f-col-label">Irvine</div>
           <ul class="f-links">
-            <li><a href="orchard-hills/">Orchard Hills Home Painting</a></li>
-            <li><a href="altair/">Altair Home Painting</a></li>
-            <li><a href="portola-springs/">Portola Springs Home Painting</a></li>
-            <li><a href="hidden-canyon/">Hidden Canyon Home Painting</a></li>
-            <li><a href="woodbury/">Woodbury Home Painting</a></li>
-            <li><a href="stonegate/">Stonegate Home Painting</a></li>
-            <li><a href="../orange-county-sales-page/">Orange County Home Painting</a></li>
+            <li><a href="./"><b>All Irvine Home Painting</b></a></li>
+            <li><a href="orchard-hills/">Orchard Hills</a></li>
+            <li><a href="altair/">Altair</a></li>
+            <li><a href="portola-springs/">Portola Springs</a></li>
+            <li><a href="hidden-canyon/">Hidden Canyon</a></li>
+            <li><a href="woodbury/">Woodbury</a></li>
+            <li><a href="stonegate/">Stonegate</a></li>
+            <li><a href="hoa-painting/">HOA &amp; Common-Area Painting</a></li>
+          </ul>
+        </nav>
+        <nav class="f-col" aria-label="Irvine guides">
+          <div class="f-col-label">Guides</div>
+          <ul class="f-links">
+            <li><a href="guide/"><b>The Irvine Color Guide</b></a></li>
+            <li><a href="guide/what-does-it-cost/">What a Repaint Costs</a></li>
+            <li><a href="guide/what-goes-wrong/">Why Colors Look Wrong</a></li>
+            <li><a href="guide/hoa-color-approval/">Getting HOA Approval</a></li>
+            <li><a href="guide/choosing-between-whites/">Choosing Between Whites</a></li>
           </ul>
         </nav>
         <nav class="f-col" aria-label="Premium services">
@@ -2597,6 +2642,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
             <li><a href="../orange-county-sales-page/#services">Premium Interior Painting</a></li>
             <li><a href="../orange-county-sales-page/#services">Kitchen Cabinet Painting</a></li>
             <li><a href="../orange-county-sales-page/#viz">Custom Color Visualization</a></li>
+            <li><a href="../orange-county-sales-page/">All of Orange County</a></li>
           </ul>
         </nav>
         <div class="f-col">

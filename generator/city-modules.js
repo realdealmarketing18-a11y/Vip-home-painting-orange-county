@@ -163,7 +163,7 @@ M.hoa = (c, no, bg, H) => {
         <ul class="checks">
           ${steps}
         </ul>
-        ${h.hoa_page_url ? `<a class="hoa-link" href="${h.hoa_page_url}">Managing an association or property? See our HOA &amp; common-area page →</a>` : ''}
+        ${h.hoa_page_url ? `<a class="hoa-link" href="${H.link ? H.link(h.hoa_page_url) : h.hoa_page_url}">Managing an association or property? See our HOA &amp; common-area page →</a>` : ''}
       </div>
       <div class="hoa-panel">
         <div class="hoa-panel-lbl">Nobody else writes about this</div>

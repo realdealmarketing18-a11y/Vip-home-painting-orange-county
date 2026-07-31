@@ -318,6 +318,37 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 .f-tag { font-family: var(--font-serif); font-style: italic; font-size: 15px; color: var(--gold-bright); line-height: 1.4; text-align: right; }
 .f-tag b { font-style: normal; font-weight: 600; color: #fff; }
 .f-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; align-items: start; }
+/* The footer grows a column once a city has a guide, and another once a
+   second city exists. Column count comes from the builder, not a guess. */
+.f-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.f-cols-4 { grid-template-columns: 1.15fr 1.15fr 1fr 0.9fr; gap: 40px; }
+
+/* ---- CITY SWITCHER ----
+   details/summary so it opens with no JavaScript. Only rendered once a
+   second city is live; a switcher holding one city is noise. */
+.nav-cities { position: relative; display: inline-block; }
+.nav-cities > summary {
+  list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;
+}
+.nav-cities > summary::-webkit-details-marker { display: none; }
+.nav-cities > summary::after {
+  content: ''; width: 5px; height: 5px; margin-top: -3px;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg); transition: transform 200ms;
+}
+.nav-cities[open] > summary::after { transform: rotate(-135deg); margin-top: 1px; }
+.nav-cities-menu {
+  position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%);
+  background: #fff; border: 1px solid rgba(168,138,71,0.35); border-radius: 3px;
+  box-shadow: 0 16px 38px rgba(26,31,78,0.18);
+  padding: 8px 0; min-width: 190px; z-index: 60;
+}
+.nav-cities-menu a {
+  display: block; padding: 9px 18px; white-space: nowrap;
+  font-size: 13px; color: var(--navy); text-decoration: none;
+}
+.nav-cities-menu a:hover { background: var(--cream); color: var(--gold-deep); }
+.nav-cities-menu a[aria-current="page"] { color: var(--gold-deep); font-weight: 700; }
 .f-col-label { font-family: var(--font-sans); font-weight: 700; font-size: 10.5px;
   letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
 .f-links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; align-items: flex-start; }
@@ -340,6 +371,8 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   section { padding: 60px 32px; }
   .capsule { padding: 48px 32px 40px; }
   .swatch-grid { grid-template-columns: 1fr 1fr; }
+  /* four columns get cramped well before phone width */
+  .f-cols-4 { grid-template-columns: 1fr 1fr; gap: 36px 40px; }
 }
 @media (max-width: 860px) {
   .top-nav { display: none; }
@@ -367,7 +400,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   footer { padding: 56px 24px 28px; }
   .f-mast { flex-direction: column; align-items: center; text-align: center; gap: 18px; }
   .f-tag { text-align: center; }
-  .f-cols { grid-template-columns: 1fr; gap: 34px; }
+  .f-cols, .f-cols-3, .f-cols-4 { grid-template-columns: 1fr; gap: 34px; }
   .f-links { align-items: center; }
   .f-col { text-align: center; }
   .f-bottom { flex-direction: column; justify-content: center; text-align: center; }

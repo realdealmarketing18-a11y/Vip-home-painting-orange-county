@@ -1712,6 +1712,37 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 .f-tag { font-family: var(--font-serif); font-style: italic; font-size: 15px; color: var(--gold-bright); line-height: 1.4; text-align: right; }
 .f-tag b { font-style: normal; font-weight: 600; color: #fff; }
 .f-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; align-items: start; }
+/* The footer grows a column once a city has a guide, and another once a
+   second city exists. Column count comes from the builder, not a guess. */
+.f-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.f-cols-4 { grid-template-columns: 1.15fr 1.15fr 1fr 0.9fr; gap: 40px; }
+
+/* ---- CITY SWITCHER ----
+   details/summary so it opens with no JavaScript. Only rendered once a
+   second city is live; a switcher holding one city is noise. */
+.nav-cities { position: relative; display: inline-block; }
+.nav-cities > summary {
+  list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;
+}
+.nav-cities > summary::-webkit-details-marker { display: none; }
+.nav-cities > summary::after {
+  content: ''; width: 5px; height: 5px; margin-top: -3px;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg); transition: transform 200ms;
+}
+.nav-cities[open] > summary::after { transform: rotate(-135deg); margin-top: 1px; }
+.nav-cities-menu {
+  position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%);
+  background: #fff; border: 1px solid rgba(168,138,71,0.35); border-radius: 3px;
+  box-shadow: 0 16px 38px rgba(26,31,78,0.18);
+  padding: 8px 0; min-width: 190px; z-index: 60;
+}
+.nav-cities-menu a {
+  display: block; padding: 9px 18px; white-space: nowrap;
+  font-size: 13px; color: var(--navy); text-decoration: none;
+}
+.nav-cities-menu a:hover { background: var(--cream); color: var(--gold-deep); }
+.nav-cities-menu a[aria-current="page"] { color: var(--gold-deep); font-weight: 700; }
 .f-col-label { font-family: var(--font-sans); font-weight: 700; font-size: 10.5px;
   letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
 .f-links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; align-items: flex-start; }
@@ -1734,6 +1765,8 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   section { padding: 60px 32px; }
   .capsule { padding: 48px 32px 40px; }
   .swatch-grid { grid-template-columns: 1fr 1fr; }
+  /* four columns get cramped well before phone width */
+  .f-cols-4 { grid-template-columns: 1fr 1fr; gap: 36px 40px; }
 }
 @media (max-width: 860px) {
   .top-nav { display: none; }
@@ -1761,7 +1794,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   footer { padding: 56px 24px 28px; }
   .f-mast { flex-direction: column; align-items: center; text-align: center; gap: 18px; }
   .f-tag { text-align: center; }
-  .f-cols { grid-template-columns: 1fr; gap: 34px; }
+  .f-cols, .f-cols-3, .f-cols-4 { grid-template-columns: 1fr; gap: 34px; }
   .f-links { align-items: center; }
   .f-col { text-align: center; }
   .f-bottom { flex-direction: column; justify-content: center; text-align: center; }
@@ -2203,6 +2236,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <a href="../">The Guide</a>
       <a href="#faq">Questions</a>
       <a href="../../hoa-painting/">For HOAs</a>
+
     </nav>
     <a href="tel:9093125400" class="top-phone">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -2395,6 +2429,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     </div>
   </div>
 
+
   <footer>
     <div class="f-shell">
       <div class="f-mast">
@@ -2404,12 +2439,12 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
         </div>
         <div class="f-tag"><b>We don't just paint homes,</b><br/>we transform lives.</div>
       </div>
-      <div class="f-cols">
+      <div class="f-cols f-cols-4">
         <nav class="f-col" aria-label="Irvine pages">
           <div class="f-col-label">Irvine</div>
           <ul class="f-links">
             <li><a href="../../"><b>All Irvine Home Painting</b></a></li>
-<li><a href="../../orchard-hills/">Orchard Hills</a></li>
+            <li><a href="../../orchard-hills/">Orchard Hills</a></li>
             <li><a href="../../altair/">Altair</a></li>
             <li><a href="../../portola-springs/">Portola Springs</a></li>
             <li><a href="../../hidden-canyon/">Hidden Canyon</a></li>
@@ -2418,13 +2453,24 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
             <li><a href="../../hoa-painting/">HOA &amp; Common-Area Painting</a></li>
           </ul>
         </nav>
-        <nav class="f-col" aria-label="Guides">
+        <nav class="f-col" aria-label="Irvine guides">
           <div class="f-col-label">Guides</div>
           <ul class="f-links">
             <li><a href="../"><b>The Irvine Color Guide</b></a></li>
-<li><a href="../what-does-it-cost/">5 Things That Change What Painting Your Irvine Home Actually Costs</a></li>
-            <li><a href="../what-goes-wrong/">Avoid the $7,000 Repaint: What Goes Wrong When You Choose a Color From a Swatch</a></li>
-            <li><a href="../choosing-between-whites/">3 Ways to Choose Between Three Identical-Looking Whites Without Guessing</a></li>
+            <li><a href="../what-does-it-cost/">What a Repaint Costs</a></li>
+            <li><a href="../what-goes-wrong/">Why Colors Look Wrong</a></li>
+            <li><a href="./">Getting HOA Approval</a></li>
+            <li><a href="../choosing-between-whites/">Choosing Between Whites</a></li>
+          </ul>
+        </nav>
+        <nav class="f-col" aria-label="Premium services">
+          <div class="f-col-label">Premium Services</div>
+          <ul class="f-links">
+            <li><a href="../../../orange-county-sales-page/#services">Residential Exterior Painting</a></li>
+            <li><a href="../../../orange-county-sales-page/#services">Premium Interior Painting</a></li>
+            <li><a href="../../../orange-county-sales-page/#services">Kitchen Cabinet Painting</a></li>
+            <li><a href="../../../orange-county-sales-page/#viz">Custom Color Visualization</a></li>
+            <li><a href="../../../orange-county-sales-page/">All of Orange County</a></li>
           </ul>
         </nav>
         <div class="f-col">

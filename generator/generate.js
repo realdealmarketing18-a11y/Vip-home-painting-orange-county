@@ -515,15 +515,24 @@ function buildPage(c) {
   const A = CFG.assetBase;
 
   /* Fixed, funnel-ordered nav — identical on every community page,
-     independent of the body-module rotation. */
+     independent of the body-module rotation.
+
+     The two real links matter more than they look. A community page is a
+     leaf: without them the only way up was the logo, and the Guide had no
+     inbound link from any of the six. Up to the hub, across to the guide. */
+  const cityPillar = (BLOG.pillars || []).find(x => x.city_slug === CFG.outputDir);
+  const cityName = ((CITIES.cities || []).find(x => x.slug === CFG.outputDir) || {}).name || 'City';
   const navLinks = [
+    ['../', `All ${cityName}`],
     ['#viz', 'Visualize'],
     ['#colors', 'Colors'],
     ['#process', 'Process'],
     ['#portfolio', 'Portfolio'],
-    ['#faq', 'FAQ'],
-    ['#quote', 'Complimentary Quote']
-  ].map(([href, label]) => `<a href="${href}">${label}</a>`).join('\n      ');
+    ['#faq', 'FAQ']
+  ].concat(cityPillar ? [[`../${cityPillar.slug}/`, 'Guide']] : [])
+   .concat([['#quote', 'Complimentary Quote']])
+   .map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join('\n      ')
+   + cityNav(navCtx(`/${CFG.outputDir}/${c.slug}/`, CFG.outputDir, A));
 
   const modules = c.moduleOrder
     .map((k, i) => MODULE_BUILDERS[k](c, i + 2, POSITION_BG[i]))
@@ -671,53 +680,7 @@ ${faqSection(c, c.moduleOrder.length + 3)}
   </section>
 
   <!-- ============ FOOTER ============ -->
-  <footer>
-    <div class="f-shell">
-      <div class="f-mast">
-        <div class="f-logo">
-          <img class="f-mark" src="${A}/assets/logos/logo-mark.png" alt="VIP Home Painting"/>
-          <div class="wm"><div class="vip">VIP</div><div class="sub">HOME PAINTING</div></div>
-        </div>
-        <div class="f-tag"><b>We don't just paint homes,</b><br/>we transform lives.</div>
-      </div>
-
-      <div class="f-cols">
-        <nav class="f-col" aria-label="Irvine communities we serve">
-          <div class="f-col-label">Irvine Communities</div>
-          <ul class="f-links">
-            <li><a href="../"><b>All Irvine Home Painting</b></a></li>
-            ${otherCommunities}
-            <li><a href="${A}/">Orange County Home Painting</a></li>
-          </ul>
-        </nav>
-        <nav class="f-col" aria-label="Premium services">
-          <div class="f-col-label">Premium Services</div>
-          <ul class="f-links">
-            <li><a href="${A}/#services">Residential Exterior Painting</a></li>
-            <li><a href="${A}/#services">Premium Interior Painting</a></li>
-            <li><a href="${A}/#services">Kitchen Cabinet Painting</a></li>
-            <li><a href="${A}/#viz">Custom Color Visualization</a></li>
-          </ul>
-        </nav>
-        <div class="f-col">
-          <div class="f-col-label">VIP Concierge</div>
-          <ul class="f-links">
-            <li><a href="${CFG.phoneHref}">${CFG.phone}</a></li>
-            <li><a href="mailto:${CFG.email}">${CFG.email}</a></li>
-            <li><span style="font-size:13.5px; color:rgba(255,255,255,0.78);">Mon–Fri 8am–6pm · Sat 9am–3pm</span></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="f-bottom">
-        <div class="f-contact">
-          <span>Serving ${c.name} &amp; every village of Irvine, CA</span>
-          <a href="${CFG.phoneHref}">${CFG.phone}</a>
-        </div>
-        <div class="f-copy">© ${new Date().getFullYear()} VIP Home Painting. Licensed, Bonded &amp; Insured · 1-Year Warranty on Labor &amp; Materials.</div>
-      </div>
-    </div>
-  </footer>
+${buildFooter(navCtx(`/${CFG.outputDir}/${c.slug}/`, CFG.outputDir, A))}
 
 </div>
 ${VIZ_JS}
@@ -789,6 +752,7 @@ const ARTICLE_MODULES = require('./article-modules.js');
 /* The editorial retelling of the visualizer. Its scheme, style and option
    data is read back out of the sales page so the two cannot drift apart. */
 const { extractVizData, vizJourney } = require('./viz-journey.js');
+const { linker, liveCities, cityNav, buildFooter } = require('./site-nav.js');
 const VIZ_DATA = extractVizData(BASE_PAGE);
 const BLOG_CSS = fs.readFileSync(path.join(__dirname, 'blog-page.css'), 'utf8');
 const BLOG_PATH = path.join(__dirname, 'blog.json');
@@ -893,7 +857,10 @@ function cityJsonLd(c, url) {
 function buildCityPage(c) {
   const url = `${CFG.siteBase}/${c.slug}/`;
   const A = '../orange-county-sales-page';
-  const H = { CFG, ctaButton, secNo, esc };
+  /* link() turns the absolute paths stored in cities.json into correct relative
+     links — cities.json carries "/irvine/hoa-painting/", which 404s on the
+     GitHub Pages subpath if emitted raw. */
+  const H = { CFG, ctaButton, secNo, esc, link: linker(`/${c.slug}/`) };
 
   /* Child URLs are stored absolute (/irvine/orchard-hills/) but GitHub Pages
      serves this site from a repo subpath, where a leading slash resolves to
@@ -922,12 +889,18 @@ function buildCityPage(c) {
   /* Link out to the pillar guide if one exists for this city — it needs the
      link for discovery, and the city page is its strongest referrer. */
   const pillar = (BLOG.pillars || []).find(x => x.city_slug === c.slug);
+  /* "HOA" used to be an on-page anchor, which left /{city}/hoa-painting/
+     with zero links from its own hub — the page was reachable only from a
+     community footer. A hub that does not link to its own child is not a hub. */
   const navLinks = ['<a href="#viz">Visualize</a>']
-    .concat(rendered.filter(k => NAV[k]).map(k => `<a href="#${NAV_ID[k] || k}">${NAV[k]}</a>`))
+    .concat(rendered.filter(k => NAV[k]).map(k => (k === 'hoa' && c.hoa_page)
+      ? `<a href="${c.hoa_page.slug}/">HOA</a>`
+      : `<a href="#${NAV_ID[k] || k}">${NAV[k]}</a>`))
     .concat(hasFaqs ? ['<a href="#faq">FAQ</a>'] : [])
     .concat(pillar ? [`<a href="${pillar.slug}/">Guide</a>`] : [])
     .concat(['<a href="#quote">Get a Quote</a>'])
-    .join('\n      ');
+    .join('\n      ')
+    + cityNav(navCtx(`/${c.slug}/`, c.slug, A));
 
   const footerCommunities = kids
     .map(x => `<li><a href="${x.href}">${x.name} Home Painting</a></li>`).join('\n            ');
@@ -1059,50 +1032,7 @@ ${faqSec}
     </div>
   </section>
 
-  <footer>
-    <div class="f-shell">
-      <div class="f-mast">
-        <div class="f-logo">
-          <img class="f-mark" src="${A}/assets/logos/logo-mark.png" alt="VIP Home Painting"/>
-          <div class="wm"><div class="vip">VIP</div><div class="sub">HOME PAINTING</div></div>
-        </div>
-        <div class="f-tag"><b>We don't just paint homes,</b><br/>we transform lives.</div>
-      </div>
-      <div class="f-cols">
-        <nav class="f-col" aria-label="${esc(c.name)} communities we serve">
-          <div class="f-col-label">${esc(c.name)} Communities</div>
-          <ul class="f-links">
-            ${footerCommunities}
-            <li><a href="${A}/">Orange County Home Painting</a></li>
-          </ul>
-        </nav>
-        <nav class="f-col" aria-label="Premium services">
-          <div class="f-col-label">Premium Services</div>
-          <ul class="f-links">
-            <li><a href="${A}/#services">Residential Exterior Painting</a></li>
-            <li><a href="${A}/#services">Premium Interior Painting</a></li>
-            <li><a href="${A}/#services">Kitchen Cabinet Painting</a></li>
-            <li><a href="${A}/#viz">Custom Color Visualization</a></li>
-          </ul>
-        </nav>
-        <div class="f-col">
-          <div class="f-col-label">VIP Concierge</div>
-          <ul class="f-links">
-            <li><a href="${CFG.phoneHref}">${CFG.phone}</a></li>
-            <li><a href="mailto:${CFG.email}">${CFG.email}</a></li>
-            <li><span style="font-size:13.5px; color:rgba(255,255,255,0.78);">Mon–Fri 8am–6pm · Sat 9am–3pm</span></li>
-          </ul>
-        </div>
-      </div>
-      <div class="f-bottom">
-        <div class="f-contact">
-          <span>Serving every village of ${esc(c.name)}, CA</span>
-          <a href="${CFG.phoneHref}">${CFG.phone}</a>
-        </div>
-        <div class="f-copy">© ${new Date().getFullYear()} VIP Home Painting. Licensed, Bonded &amp; Insured · 1-Year Warranty on Labor &amp; Materials.</div>
-      </div>
-    </div>
-  </footer>
+${buildFooter(navCtx(`/${c.slug}/`, c.slug, A))}
 
 </div>
 ${VIZ_JS}
@@ -1238,10 +1168,14 @@ function buildHoaPage(h, city) {
   const NAV = { scope: 'Scope', process: 'Process', compliance: 'Documentation',
                 spec: 'Specification', references: 'Communities', bid_cta: 'Request a Bid' };
   const hasFaqs = (h.faqs || []).filter(f => f.q && f.a).length > 0;
-  const navLinks = rendered.filter(k => NAV[k])
-    .map(k => `<a href="#${k === 'bid_cta' ? 'bid' : k}">${NAV[k]}</a>`)
+  /* Same leaf problem as the community pages — up to the hub, across to the guide. */
+  const hoaPillar = (BLOG.pillars || []).find(x => x.city_slug === city.slug);
+  const navLinks = [`<a href="../">All ${esc(city.name)}</a>`]
+    .concat(rendered.filter(k => NAV[k]).map(k => `<a href="#${k === 'bid_cta' ? 'bid' : k}">${NAV[k]}</a>`))
     .concat(hasFaqs ? ['<a href="#faq">FAQ</a>'] : [])
-    .join('\n      ');
+    .concat(hoaPillar ? [`<a href="../${hoaPillar.slug}/">Guide</a>`] : [])
+    .join('\n      ')
+    + cityNav(navCtx(`/${city.slug}/${h.slug}/`, city.slug, A));
 
   const capsule = (h.seo.answer_capsule || '').replace(
     CFG.phone, `<a href="${CFG.phoneHref}" style="color:var(--gold-deep); font-weight:700; text-decoration:none;">${CFG.phone}</a>`);
@@ -1348,51 +1282,7 @@ ${FILM_CSS}
 ${modules}
 ${faqSec}
 
-  <footer>
-    <div class="f-shell">
-      <div class="f-mast">
-        <div class="f-logo">
-          <img class="f-mark" src="${A}/assets/logos/logo-mark.png" alt="VIP Home Painting"/>
-          <div class="wm"><div class="vip">VIP</div><div class="sub">HOME PAINTING</div></div>
-        </div>
-        <div class="f-tag"><b>We don't just paint homes,</b><br/>we transform lives.</div>
-      </div>
-      <div class="f-cols">
-        <nav class="f-col" aria-label="${esc(city.name)} pages">
-          <div class="f-col-label">${esc(city.name)}</div>
-          <ul class="f-links">
-            <li><a href="../"><b>All ${esc(city.name)} Home Painting</b></a></li>
-            ${(city.child_communities || []).map(x => `<li><a href="../${String(x.url).replace(/^\/[^/]+\//, '')}">${x.name} Home Painting</a></li>`).join('\n            ')}
-            <li><a href="${A}/">Orange County Home Painting</a></li>
-          </ul>
-        </nav>
-        <nav class="f-col" aria-label="Association services">
-          <div class="f-col-label">For Associations</div>
-          <ul class="f-links">
-            <li><a href="#scope">Common-Area Scope</a></li>
-            <li><a href="#compliance">Insurance &amp; Documentation</a></li>
-            <li><a href="#spec">Materials Specification</a></li>
-            <li><a href="#bid">Request a Bid</a></li>
-          </ul>
-        </nav>
-        <div class="f-col">
-          <div class="f-col-label">VIP Concierge</div>
-          <ul class="f-links">
-            <li><a href="${CFG.phoneHref}">${CFG.phone}</a></li>
-            <li><a href="mailto:${CFG.email}">${CFG.email}</a></li>
-            <li><span style="font-size:13.5px; color:rgba(255,255,255,0.78);">Mon–Fri 8am–6pm · Sat 9am–3pm</span></li>
-          </ul>
-        </div>
-      </div>
-      <div class="f-bottom">
-        <div class="f-contact">
-          <span>Common-area painting for ${esc(city.name)} associations</span>
-          <a href="${CFG.phoneHref}">${CFG.phone}</a>
-        </div>
-        <div class="f-copy">© ${new Date().getFullYear()} VIP Home Painting. Licensed, Bonded &amp; Insured · 1-Year Warranty on Labor &amp; Materials.</div>
-      </div>
-    </div>
-  </footer>
+${buildFooter(navCtx(`/${city.slug}/${h.slug}/`, city.slug, A, `Serving association boards across ${city.name}, CA`))}
 
 </div>
 <script>
@@ -1578,6 +1468,7 @@ ${FILM_CSS}
       <a href="#cost">Costs</a>
       <a href="#articles">Guides</a>
       <a href="../hoa-painting/">For HOAs</a>
+      ${cityNav(navCtx(`/${p.city_slug}/${p.slug}/`, p.city_slug, A))}
     </nav>
     <a href="${CFG.phoneHref}" class="top-phone">
       ${SVG_PHONE}
@@ -1604,48 +1495,7 @@ ${body}
     </div>
   </div>
 
-  <footer>
-    <div class="f-shell">
-      <div class="f-mast">
-        <div class="f-logo">
-          <img class="f-mark" src="${A}/assets/logos/logo-mark.png" alt="VIP Home Painting"/>
-          <div class="wm"><div class="vip">VIP</div><div class="sub">HOME PAINTING</div></div>
-        </div>
-        <div class="f-tag"><b>We don't just paint homes,</b><br/>we transform lives.</div>
-      </div>
-      <div class="f-cols">
-        <nav class="f-col" aria-label="${esc(p.city_name)} pages">
-          <div class="f-col-label">${esc(p.city_name)}</div>
-          <ul class="f-links">
-            <li><a href="../"><b>All ${esc(p.city_name)} Home Painting</b></a></li>
-            ${pRel.villages.filter(v => v.url).map(v => `<li><a href="${v.url}">${esc(v.name)}</a></li>`).join('\n            ')}
-            <li><a href="../hoa-painting/">HOA &amp; Common-Area Painting</a></li>
-          </ul>
-        </nav>
-        <nav class="f-col" aria-label="Guides">
-          <div class="f-col-label">Guides</div>
-          <ul class="f-links">
-            ${pRel.articles.filter(a => a.url).slice(0, 5).map(a => `<li><a href="${a.url}">${esc(a.title)}</a></li>`).join('\n            ') || '<li><span style="font-size:13.5px;color:rgba(255,255,255,0.6);">Coming soon</span></li>'}
-          </ul>
-        </nav>
-        <div class="f-col">
-          <div class="f-col-label">VIP Concierge</div>
-          <ul class="f-links">
-            <li><a href="${CFG.phoneHref}">${CFG.phone}</a></li>
-            <li><a href="mailto:${CFG.email}">${CFG.email}</a></li>
-            <li><span style="font-size:13.5px; color:rgba(255,255,255,0.78);">Mon–Fri 8am–6pm · Sat 9am–3pm</span></li>
-          </ul>
-        </div>
-      </div>
-      <div class="f-bottom">
-        <div class="f-contact">
-          <span>Serving every village of ${esc(p.city_name)}, CA</span>
-          <a href="${CFG.phoneHref}">${CFG.phone}</a>
-        </div>
-        <div class="f-copy">© ${new Date().getFullYear()} VIP Home Painting. Licensed, Bonded &amp; Insured · 1-Year Warranty on Labor &amp; Materials.</div>
-      </div>
-    </div>
-  </footer>
+${buildFooter(navCtx(`/${p.city_slug}/${p.slug}/`, p.city_slug, A))}
 
 </div>
 </body>
@@ -1796,6 +1646,7 @@ FILM_CSS + '\n' +
 '      <a href="../">The Guide</a>\n' +
 '      <a href="#faq">Questions</a>\n' +
 '      <a href="../../hoa-painting/">For HOAs</a>\n' +
+cityNav(navCtx(`/${a.city_slug}/${a.pillar_slug}/${a.slug}/`, a.city_slug, A)) + '\n' +
 '    </nav>\n' +
 '    <a href="' + CFG.phoneHref + '" class="top-phone">\n' +
 '      ' + SVG_PHONE + '\n' +
@@ -1822,54 +1673,35 @@ body + '\n' +
 '    </div>\n' +
 '  </div>\n' +
 '\n' +
-'  <footer>\n' +
-'    <div class="f-shell">\n' +
-'      <div class="f-mast">\n' +
-'        <div class="f-logo">\n' +
-'          <img class="f-mark" src="' + A + '/assets/logos/logo-mark.png" alt="VIP Home Painting"/>\n' +
-'          <div class="wm"><div class="vip">VIP</div><div class="sub">HOME PAINTING</div></div>\n' +
-'        </div>\n' +
-'        <div class="f-tag"><b>We don\'t just paint homes,</b><br/>we transform lives.</div>\n' +
-'      </div>\n' +
-'      <div class="f-cols">\n' +
-'        <nav class="f-col" aria-label="' + esc(a.city_name) + ' pages">\n' +
-'          <div class="f-col-label">' + esc(a.city_name) + '</div>\n' +
-'          <ul class="f-links">\n' +
-'            <li><a href="../../"><b>All ' + esc(a.city_name) + ' Home Painting</b></a></li>\n' +
-            villages.map(v => '<li><a href="' + relCity(v.url) + '">' + esc(v.name) + '</a></li>').join('\n            ') + '\n' +
-'            <li><a href="../../hoa-painting/">HOA &amp; Common-Area Painting</a></li>\n' +
-'          </ul>\n' +
-'        </nav>\n' +
-'        <nav class="f-col" aria-label="Guides">\n' +
-'          <div class="f-col-label">Guides</div>\n' +
-'          <ul class="f-links">\n' +
-'            <li><a href="../"><b>The ' + esc(a.city_name) + ' Color Guide</b></a></li>\n' +
-            (pillar && pillar.articles || []).filter(x => x.url && x.slug !== a.slug)
-              .map(x => '<li><a href="' + relSelf(x.url) + '">' + esc(x.title) + '</a></li>').join('\n            ') + '\n' +
-'          </ul>\n' +
-'        </nav>\n' +
-'        <div class="f-col">\n' +
-'          <div class="f-col-label">VIP Concierge</div>\n' +
-'          <ul class="f-links">\n' +
-'            <li><a href="' + CFG.phoneHref + '">' + CFG.phone + '</a></li>\n' +
-'            <li><a href="mailto:' + CFG.email + '">' + CFG.email + '</a></li>\n' +
-'            <li><span style="font-size:13.5px; color:rgba(255,255,255,0.78);">Mon–Fri 8am–6pm · Sat 9am–3pm</span></li>\n' +
-'          </ul>\n' +
-'        </div>\n' +
-'      </div>\n' +
-'      <div class="f-bottom">\n' +
-'        <div class="f-contact">\n' +
-'          <span>Serving every village of ' + esc(a.city_name) + ', CA</span>\n' +
-'          <a href="' + CFG.phoneHref + '">' + CFG.phone + '</a>\n' +
-'        </div>\n' +
-'        <div class="f-copy">© ' + new Date().getFullYear() + ' VIP Home Painting. Licensed, Bonded &amp; Insured · 1-Year Warranty on Labor &amp; Materials.</div>\n' +
-'      </div>\n' +
-'    </div>\n' +
-'  </footer>\n' +
+buildFooter(navCtx(`/${a.city_slug}/${a.pillar_slug}/${a.slug}/`, a.city_slug, A)) + '\n' +
 '\n' +
 '</div>\n' +
 '</body>\n' +
 '</html>\n';
+}
+
+
+/* Assemble what the shared footer needs for one page. Everything is keyed
+   off the city slug, which is what keeps a silo a silo: an Anaheim page can
+   only ever be handed Anaheim's villages, guide and cluster. */
+function navCtx(fromPath, citySlug, assetBase, bottomLine) {
+  const city = (CITIES.cities || []).find(c => c.slug === citySlug);
+  const pillar = (BLOG.pillars || []).find(p => p.city_slug === citySlug);
+  return {
+    from: fromPath,
+    link: linker(fromPath),
+    citySlug,
+    cityName: city ? city.name : citySlug.replace(/\b\w/g, s => s.toUpperCase()),
+    communities: (city && city.child_communities) || [],
+    hoaUrl: city && city.hoa_page ? `/${citySlug}/${city.hoa_page.slug}/` : '',
+    guideUrl: pillar ? `/${citySlug}/${pillar.slug}/` : '',
+    articles: pillar ? (pillar.cluster || []).map(a => ({
+      title: a.nav_title || a.title_plain || a.slug,
+      url: `/${citySlug}/${pillar.slug}/${a.slug}/`
+    })) : [],
+    bottomLine,
+    CITIES, CFG, esc, A: assetBase
+  };
 }
 
 /* ---------------- SITEMAP + ROBOTS ---------------- */
