@@ -1784,6 +1784,35 @@ function main() {
       console.log(`  ✓ ${art.city_slug}/${art.pillar_slug}/${art.slug}/index.html  [ARTICLE: ~${words} words]`);
     }
   }
+  /* The county page is hand-maintained, which is exactly how its nav drifted:
+     it still carried the old flat links after every generated page had moved
+     on. Its nav is now written from site-nav.js like everyone else's. */
+  {
+    const ocPath = path.join(ROOT, 'orange-county-sales-page', 'index.html');
+    const START = '<!-- NAV:START', END = '<!-- NAV:END -->';
+    let oc = fs.readFileSync(ocPath, 'utf8');
+    const s = oc.indexOf(START), e = oc.indexOf(END);
+    if (s < 0 || e < 0) throw new Error('county page: NAV:START/NAV:END markers missing — nav cannot be kept in sync');
+    const pillar = (BLOG.pillars || [])[0];
+    const guides = pillar ? [{ label: `The ${pillar.city_name} Color Guide`, url: `../${pillar.city_slug}/${pillar.slug}/`, strong: true }]
+      .concat((pillar.cluster || []).map(a => ({
+        label: a.nav_title || a.title_plain || a.slug,
+        url: `../${a.city_slug}/${a.pillar_slug}/${a.slug}/`
+      }))) : [];
+    const nav = topNav({
+      isCounty: true, esc, CITIES, CFG, A: '.',
+      cityName: (CITIES.cities[0] || {}).name || '', citySlug: (CITIES.cities[0] || {}).slug || '',
+      countyLink: (u) => '..' + u,
+      countyGuides: guides,
+      link: (u) => '..' + u
+    });
+    const head = oc.slice(0, s);
+    const marker = oc.slice(s, oc.indexOf('-->', s) + 3);
+    const next = head + marker + '\n' + nav + '\n      ' + oc.slice(e);
+    if (next !== oc) { fs.writeFileSync(ocPath, next, 'utf8'); }
+    console.log(`  ✓ orange-county-sales-page/index.html  [NAV synced: ${(nav.match(/<summary>/g) || []).length} categories]`);
+  }
+
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), buildSitemap(), 'utf8');
   console.log('  ✓ sitemap.xml');
   fs.writeFileSync(path.join(ROOT, 'robots.txt'), buildRobots(), 'utf8');

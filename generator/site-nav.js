@@ -85,6 +85,26 @@ function topNav(ctx) {
   const L = ctx.link;
   const cities = liveCities(ctx.CITIES);
 
+  /* The county page sits above every city, so "Neighborhoods" has no meaning
+     there — it means *this city's* neighborhoods. It gets the other three
+     plus its own quote link. Same component, same shape, correct scope. */
+  if (ctx.isCounty) {
+    const countyCities = (cities.length ? cities : [{ name: ctx.cityName, slug: ctx.citySlug, url: `/${ctx.citySlug}/` }])
+      .map(c => ({ label: `${c.name} Home Painting`, url: ctx.countyLink(c.url) }));
+    return [
+      menu('cities', 'Cities', countyCities, esc),
+      menu('guides', 'Guides', (ctx.countyGuides || []), esc),
+      menu('services', 'Services', [
+        { label: 'Exterior Painting', url: '#services' },
+        { label: 'Interior Painting', url: '#services' },
+        { label: 'Kitchen Cabinets', url: '#services' },
+        { label: 'Color Visualization', url: '#viz' },
+        { label: 'Our Work', url: '#work' }
+      ], esc),
+      '\n      <a href="#quote">Complimentary Quote</a>'
+    ].filter(Boolean).join('');
+  }
+
   /* Cities — always at least the current city plus the county page, so the
      category is never empty and grows on its own as cities are published. */
   const cityItems = (cities.length
