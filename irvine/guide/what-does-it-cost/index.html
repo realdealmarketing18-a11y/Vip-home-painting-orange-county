@@ -1879,14 +1879,122 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 .pl-close { border-top: 1px solid rgba(168,138,71,0.4); padding-top: 40px; }
 .pl-cta { margin-top: 26px; }
 
-/* ---- THE VISUALIZER, dropped into an editorial column ---- */
-.pl-viz { margin: 0 0 52px; }
-.pl-viz .viz { padding: 0 !important; background: none !important; }
-.pl-viz .viz .head { text-align: left !important; margin-left: 0 !important; max-width: 680px !important; }
-.pl-viz .viz .head .ttl { font-size: 32px !important; }
-.pl-viz .viz .head .eyebrow { justify-content: flex-start !important; }
-.pl-viz .viz .head .eyebrow::before { display: none !important; }
-.pl-viz .sec-no { text-align: left !important; }
+/* ---- THE VISUALIZATION JOURNEY ----
+
+   The sales page gives its visualizer 1,180px for a pinned stage beside a
+   scrolling timeline. In a 680px editorial measure that grid crushed the
+   before/after to 223px. So blog pages tell it as a sequence instead:
+   the house as it stands, then a few finished directions, then the detail
+   layer. Images do the work, so there is no script to keep alive here. */
+
+/* Reclaim the table-of-contents column and its gap (240 + 64). This is the
+   one element on an editorial page that must not obey the measure. */
+.pl-viz {
+  width: calc(100% + 304px);
+  margin-left: -304px;
+  margin-bottom: 60px;
+}
+.vj { max-width: 900px; margin: 0 auto; }
+
+.vj-intro { margin-bottom: 44px; }
+.vj-eyebrow {
+  font-family: var(--font-sans); font-weight: 700; font-size: 10.5px;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-deep);
+  margin-bottom: 14px;
+}
+
+/* ---- a stage ---- */
+.vj-step { margin-bottom: 52px; }
+.vj-step:last-of-type { margin-bottom: 40px; }
+.vj-step-head {
+  display: grid; grid-template-columns: auto 1fr; gap: 0 18px;
+  align-items: baseline; margin-bottom: 20px;
+}
+.vj-step-n {
+  grid-row: 1 / 3;
+  font-family: var(--font-serif); font-style: italic; font-weight: 600;
+  font-size: 30px; color: var(--gold-deep); line-height: 1;
+}
+.vj-step-t {
+  font-family: var(--font-serif); font-weight: 600; font-size: 25px;
+  color: var(--navy); margin: 0; line-height: 1.2; letter-spacing: -0.01em;
+}
+.vj-step-d {
+  font-family: var(--font-sans); font-size: 15.5px; line-height: 1.6;
+  color: #4A4F70; margin: 7px 0 0; max-width: 620px;
+}
+
+/* ---- the before ---- */
+.vj-before { position: relative; border-radius: 3px; overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(201,169,97,0.40), 0 22px 50px rgba(26,31,78,0.18); }
+.vj-before img { width: 100%; height: auto; display: block; }
+.vj-tag {
+  position: absolute; left: 16px; bottom: 16px;
+  font-family: var(--font-sans); font-weight: 700; font-size: 10px;
+  letter-spacing: 0.24em; text-transform: uppercase; color: #fff;
+  background: rgba(20,24,58,0.82); padding: 7px 13px; border-radius: 2px;
+  backdrop-filter: blur(3px);
+}
+
+/* ---- the directions ----
+   Stacked, not side by side. Three renders in a row came out 248px wide,
+   which is the same "can't see it" problem in a different shape. Each
+   direction gets the full column and its own moment on the way down. */
+.vj-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+.vj-card { margin: 0; }
+.vj-shot {
+  border-radius: 3px; overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(201,169,97,0.38), 0 18px 40px rgba(26,31,78,0.16);
+}
+.vj-shot img { width: 100%; height: auto; display: block; }
+
+/* caption runs along the bottom of its render rather than under a column */
+.vj-card figcaption {
+  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+  padding: 15px 4px 0;
+}
+.vj-card figcaption b {
+  font-family: var(--font-serif); font-weight: 600;
+  font-size: 19px; color: var(--navy); line-height: 1.2;
+}
+.vj-card figcaption span {
+  font-family: var(--font-sans); font-size: 13.5px;
+  color: #6A6F8C; line-height: 1.45;
+}
+.vj-card figcaption em {
+  margin-left: auto;
+  font-family: var(--font-sans); font-style: normal;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold-deep); white-space: nowrap;
+}
+.vj-chips { display: flex; gap: 5px; }
+.vj-chips i {
+  width: 24px; height: 24px; border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(26,31,78,0.16);
+}
+
+/* ---- the option row ---- */
+.vj-opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.vj-opt { margin: 0; }
+.vj-opt img {
+  width: 100%; height: auto; display: block; border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(201,169,97,0.34), 0 8px 20px rgba(26,31,78,0.12);
+}
+.vj-opt figcaption {
+  font-family: var(--font-sans); font-size: 12.5px; color: #4A4F70;
+  text-align: center; margin-top: 10px;
+}
+
+/* ---- close ---- */
+.vj-close {
+  border-top: 1px solid rgba(168,138,71,0.4);
+  padding-top: 30px; max-width: 680px;
+}
+.vj-close p {
+  font-family: var(--font-sans); font-size: 17px; line-height: 1.7;
+  color: #3A3F60; margin: 0 0 22px;
+}
+.vj-close b { color: var(--navy); }
 
 /* ---- RESPONSIVE ---- */
 @media (max-width: 1024px) {
@@ -1896,7 +2004,10 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     border-bottom: 1px solid rgba(26,31,78,0.10); }
   .pl-toc ol { columns: 2; column-gap: 32px; }
   .pl-title { font-size: 42px; }
+  /* the TOC column is gone, so there is nothing left to reclaim */
+  .pl-viz { width: 100%; margin-left: 0; }
 }
+
 @media (max-width: 640px) {
   .pl-wrap { padding: 0 20px; }
   .pl-masthead { padding: 56px 0 32px; }
@@ -1907,6 +2018,14 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   .pl-lead { font-size: 17px !important; }
   .pl-toc ol { columns: 1; }
   .pl-stats, .pl-cards { grid-template-columns: 1fr; }
+  /* one render at a time on a phone — a half-width render shows nothing */
+  .vj-opts { grid-template-columns: 1fr; gap: 26px; }
+  .vj-grid { gap: 30px; }
+  .vj-card figcaption { gap: 12px; }
+  .vj-card figcaption em { margin-left: 0; }
+  .vj-step-n { font-size: 24px; }
+  .vj-step-t { font-size: 21px; }
+  .vj-step { margin-bottom: 40px; }
 }
 
 /* ============================================================
@@ -2334,449 +2453,5 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   </footer>
 
 </div>
-<script>
-/* ============ B/A SLIDER ============ */
-function initBA(frameEl) {
-  const after = frameEl.querySelector('.ba-img.after');
-  if (!after) return;
-  const handle = frameEl.querySelector('.ba-handle');
-  const rail = frameEl.querySelector('.ba-rail');
-  if (!handle || !rail) return;
-  let pos = 50, dragging = false;
-  const setPos = (p) => {
-    pos = Math.max(2, Math.min(98, p));
-    after.style.clipPath = `inset(0 0 0 ${pos}%)`;
-    handle.style.left = pos + '%';
-  };
-  const move = (clientX) => { const r = frameEl.getBoundingClientRect(); setPos(((clientX - r.left) / r.width) * 100); };
-  rail.addEventListener('mousedown', e => { dragging = true; move(e.clientX); });
-  window.addEventListener('mousemove', e => { if (dragging) move(e.clientX); });
-  window.addEventListener('mouseup', () => dragging = false);
-  rail.addEventListener('touchstart', e => { dragging = true; move(e.touches[0].clientX); }, { passive: true });
-  window.addEventListener('touchmove', e => { if (dragging) move(e.touches[0].clientX); }, { passive: true });
-  window.addEventListener('touchend', () => dragging = false);
-  setPos(50);
-  setTimeout(() => { let seq = [50, 38, 62, 50], i = 0; const tick = () => { if (i >= seq.length) return; setPos(seq[i++]); setTimeout(tick, 360); }; tick(); }, 600);
-}
-document.querySelectorAll('.ba-frame').forEach(initBA);
-
-/* ============ COLOR VISUALIZATION SCHEMES ============ */
-const STYLES = [
-  { id: 'all',     label: 'All Options',          desc: 'Every curated direction — <b>browse the full palette library.</b>' },
-  { id: 'bold',    label: 'Bold & Modern',        desc: 'Stark, ultra-luxury contemporary — <b>clean geometric contrast that commands the street.</b>' },
-  { id: 'earthy',  label: 'Warm & Earthy',        desc: 'Organic-modern luxury — <b>creamy whites and premium natural timber.</b>' },
-  { id: 'subtle',  label: 'Subtle & Elegant',     desc: 'Timeless coastal elegance — <b>made for the Newport Beach marine layer.</b>' },
-  { id: 'spanish', label: 'Spanish Revival',      desc: 'The Santa Barbara luxe — <b>elite, clean, authentic Spanish heritage.</b>' },
-  { id: 'resort',  label: 'Ultra-Luxury Resort',  desc: 'The Beverly Hills transitional — <b>monochromatic, soft, boutique-hotel rich.</b>' }
-];
-
-/* Each palette is a COMPLETE estate look: paint + columns/portico +
-   lighting + stucco texture + glass/wood garage doors + stone pillars —
-   rendered photorealistically on the client's own home photo. */
-const SCHEMES = [
-  { id: 'obsidian',    name: 'Obsidian Monolith',        sw: 'SW Iron Ore · Tricorn Black',          style: 'bold',    main: '#434341', trim: '#2F2F30', accent: '#5B5E62' },
-  { id: 'riviera',     name: 'Riviera Tuxedo',           sw: 'SW Snowbound · Black Magic',           style: 'bold',    main: '#EDEAE0', trim: '#2A2A2C', accent: '#3B3B3E' },
-  { id: 'euro',        name: 'Euro-Industrial Estate',   sw: 'SW Peppercorn · Cityscape',            style: 'bold',    main: '#585A5C', trim: '#9A9C98', accent: '#7E8285' },
-  { id: 'organic',     name: 'Coastal Organic Compound', sw: 'SW Alabaster · Urbane Bronze',         style: 'earthy',  main: '#EDEAE0', trim: '#54504A', accent: '#9C7B53' },
-  { id: 'pacificsage', name: 'Pacific Sage Estate',      sw: 'SW Evergreen Fog · Shoji White',       style: 'earthy',  main: '#95978A', trim: '#E6DFD3', accent: '#A98D4B' },
-  { id: 'ibiza',       name: 'Ibiza Luxury Villa',       sw: 'SW Balanced Beige · Aesthetic White',  style: 'earthy',  main: '#D1C7B8', trim: '#E8E3DA', accent: '#C8B59B' },
-  { id: 'admiral',     name: 'Newport Admiral',          sw: 'SW Repose Gray · Pure White',          style: 'subtle',  main: '#CCC9C0', trim: '#F0EFE9', accent: '#2F2F30' },
-  { id: 'marinelayer', name: 'Marine Layer',             sw: 'SW Sea Salt · Hi-Reflective White',    style: 'subtle',  main: '#CDD2CA', trim: '#F7F7F1', accent: '#BFC7C5' },
-  { id: 'pebblebeach', name: 'Pebble Beach Manor',       sw: 'SW Accessible Beige · Dover White',    style: 'subtle',  main: '#D1C7B8', trim: '#EFE8D8', accent: '#95948C' },
-  { id: 'spanish',     name: 'Santa Barbara Luxe',       sw: 'SW Alabaster · Tricorn Black',         style: 'spanish', main: '#F1EDE2', trim: '#2F2F30', accent: '#B5714A' },
-  { id: 'resort',      name: 'Beverly Hills Resort',     sw: 'SW City Loft · Bronze',                style: 'resort',  main: '#D6D2C9', trim: '#D6D2C9', accent: '#8C6E4C' }
-];
-
-const $tabs = document.getElementById('vizTabs');
-const $styleDesc = document.getElementById('vizStyleDesc');
-const $grid = document.getElementById('schemeGrid');
-const $preview = document.getElementById('vizPreview');
-const $name = document.getElementById('vizName');
-const $heroAfter = document.getElementById('heroAfter');
-
-let activeStyle = 'all';
-let active = SCHEMES[0].id;
-
-function visibleSchemes() {
-  return activeStyle === 'all' ? SCHEMES : SCHEMES.filter(s => s.style === activeStyle);
-}
-
-function renderTabs() {
-  $tabs.innerHTML = '';
-  STYLES.forEach(st => {
-    const el = document.createElement('button');
-    el.className = 'viz-tab' + (st.id === activeStyle ? ' active' : '');
-    el.textContent = st.label;
-    el.addEventListener('click', () => {
-      activeStyle = st.id;
-      const list = visibleSchemes();
-      if (!list.find(s => s.id === active)) { active = list[0].id; apply(list[0]); }
-      renderTabs(); renderSchemes();
-    });
-    $tabs.appendChild(el);
-  });
-  $styleDesc.innerHTML = STYLES.find(s => s.id === activeStyle).desc;
-  const bWrap = document.getElementById('styleBanner');
-  const bImg  = document.getElementById('styleBannerImg');
-  if (bWrap && bImg) {
-    if (activeStyle === 'all') { bWrap.style.display = 'none'; }
-    else {
-      bImg.onerror = () => { bWrap.style.display = 'none'; };
-      bImg.onload  = () => { bWrap.style.display = 'block'; };
-      bImg.src = '../../../orange-county-sales-page/viz-photos/banner-' + activeStyle + '.jpg';
-    }
-  }
-}
-
-function renderSchemes() {
-  $grid.innerHTML = '';
-  visibleSchemes().forEach(s => {
-    const el = document.createElement('div');
-    el.className = 'scheme' + (s.id === active ? ' active' : '');
-    el.innerHTML = `
-      <div class="name">${s.name}</div>
-      <div class="sw">${s.sw}</div>
-      <div class="dots">
-        <div class="dot" style="--c:${s.main}"></div>
-        <div class="dot" style="--c:${s.trim}"></div>
-        <div class="dot" style="--c:${s.accent}"></div>
-      </div>
-    `;
-    el.addEventListener('click', () => { active = s.id; apply(s); renderSchemes(); });
-    $grid.appendChild(el);
-  });
-}
-
-function apply(s) {
-  $preview.style.setProperty('--tint', s.main);
-  $name.textContent = `${s.name} · ${s.sw}`;
-  const stamp = $preview.querySelector('.swatch-mini');
-  if (stamp) stamp.style.background = s.main;
-  if ($heroAfter) {
-    $heroAfter.classList.add('tinted');
-    $heroAfter.style.setProperty('--tint', s.main);
-  }
-  paintElevate(s);
-  const sc = document.getElementById('specColor');
-  if (sc) sc.textContent = s.name;
-  vizPhoto.request('scheme', s.id);
-}
-
-/* ============ REAL-PHOTO SWAP ENGINE ============
-   Drop your photos into  viz-photos/  (next to this file) and they appear
-   automatically with a smooth crossfade — no code changes needed.
-
-   Naming convention (jpg or png):
-     base.jpg                     → BEFORE photo (original color scheme)
-     scheme-<id>.jpg              → AFTER photo per palette:
-        scheme-shadow / scheme-navy / scheme-bronze / scheme-greige
-        scheme-sand / scheme-sage / scheme-fog / scheme-cashmere
-     light-modern-sconce.jpg, light-classic-lantern.jpg, light-coach-pendant.jpg
-     siding-lap-vinyl.jpg, siding-cedar-shake.jpg, siding-hardie-board.jpg
-     premium-glass-garage.jpg, premium-natural-stone.jpg, premium-stone-columns.jpg
-
-   Most-specific photo wins: an option photo (e.g. premium-glass-garage)
-   overrides the scheme photo. If no photo exists yet for a selection, the
-   color-tint preview is used as the fallback. */
-const vizPhoto = (function(){
-  const DIR = '../../../orange-county-sales-page/viz-photos/';
-  const EXTS = ['jpg', 'png', 'jpeg', 'webp'];
-  const cache = {};                 // key → url | null (null = not found)
-  const layerA = document.getElementById('swapA');
-  const layerB = document.getElementById('swapB');
-  const afterEl = document.getElementById('vpAfter');
-  let frontIsA = false;
-  let lastShown = '';
-  let reqSeq = 0;
-
-  function probe(key) {             // resolve first extension that loads
-    if (key in cache) return Promise.resolve(cache[key]);
-    return new Promise(resolve => {
-      let i = 0;
-      const tryNext = () => {
-        if (i >= EXTS.length) { cache[key] = null; resolve(null); return; }
-        const url = DIR + key + '.' + EXTS[i++];
-        const img = new Image();
-        img.onload = () => { cache[key] = url; resolve(url); };
-        img.onerror = tryNext;
-        img.src = url;
-      };
-      tryNext();
-    });
-  }
-
-  function crossfadeTo(url) {
-    if (url === lastShown) return;
-    lastShown = url;
-    const incoming = frontIsA ? layerB : layerA;
-    const outgoing = frontIsA ? layerA : layerB;
-    incoming.style.backgroundImage = `url('${url}')`;
-    requestAnimationFrame(() => {
-      incoming.classList.add('show');
-      outgoing.classList.remove('show');
-    });
-    frontIsA = !frontIsA;
-    afterEl.classList.add('photo-mode');
-  }
-
-  function fallbackToTint() {
-    lastShown = '';
-    layerA.classList.remove('show');
-    layerB.classList.remove('show');
-    afterEl.classList.remove('photo-mode');
-  }
-
-  /* selection state — the photo shown is the most specific one available */
-  const state = { scheme: null, light: null, siding: null, premium: null, lastCat: 'scheme' };
-
-  /* Combos render the chosen addition INSIDE the chosen color scheme.
-     Key formats:
-       scheme-<scheme>             → full palette look
-       <cat>-<option>--<scheme>    → that addition ON that scheme (combo)
-       <cat>-<option>              → addition on the original home
-     Rule: once a scheme is chosen, the preview NEVER reverts to the
-     original colors — if a combo photo is missing we hold the scheme. */
-  async function resolveAndShow() {
-    const seq = ++reqSeq;
-    const cat = state.lastCat;
-
-    if (state.scheme && cat !== 'scheme' && state[cat]) {
-      /* 1) exact combo: option rendered on the chosen scheme */
-      const combo = await probe(cat + '-' + state[cat] + '--' + state.scheme);
-      if (seq !== reqSeq) return;
-      if (combo) { crossfadeTo(combo); return; }
-      /* 2) hold the scheme — never flip back to original colors */
-      const su = await probe('scheme-' + state.scheme);
-      if (seq !== reqSeq) return;
-      if (su) { crossfadeTo(su); return; }
-    }
-
-    if (state.scheme) {
-      const su = await probe('scheme-' + state.scheme);
-      if (seq !== reqSeq) return;
-      if (su) { crossfadeTo(su); return; }
-    }
-
-    /* no scheme chosen yet → option on the original home */
-    if (cat !== 'scheme' && state[cat]) {
-      const url = await probe(cat + '-' + state[cat]);
-      if (seq !== reqSeq) return;
-      if (url) { crossfadeTo(url); return; }
-    }
-    fallbackToTint();
-  }
-
-  /* base (BEFORE) photo, applied once if present */
-  probe('base').then(url => {
-    if (!url) return;
-    const before = document.querySelector('#vizPreview .vp-before');
-    if (before) before.style.backgroundImage = `url('${url}')`;
-    const heroBefore = document.querySelector('.hero .ba-img.before');
-    if (heroBefore) heroBefore.style.backgroundImage = `url('${url}')`;
-  });
-
-  return {
-    request(cat, id) {
-      state[cat] = id;
-      state.lastCat = cat;
-      resolveAndShow();
-    }
-  };
-})();
-
-/* ---- Elevate the Vision: tint every option thumbnail to the chosen scheme ---- */
-function paintElevate(s) {
-  document.querySelectorAll('.elv-thumb').forEach(t => {
-    t.style.setProperty('--m', s.main);
-    t.style.setProperty('--t', s.trim);
-    t.style.setProperty('--a', s.accent);
-  });
-}
-
-/* Option selection within each category — updates the pinned spec sheet */
-const SPEC_TARGET = { light: 'specLight', siding: 'specSiding', premium: 'specPremium' };
-const slugify = t => t.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-document.querySelectorAll('.elevate-options').forEach(group => {
-  const cat = group.getAttribute('data-cat');
-  group.querySelectorAll('.elv-opt').forEach(opt => {
-    opt.addEventListener('click', () => {
-      group.querySelectorAll('.elv-opt').forEach(o => o.classList.remove('active'));
-      opt.classList.add('active');
-      const label = opt.querySelector('.elv-label');
-      const target = document.getElementById(SPEC_TARGET[cat]);
-      if (label && target) target.textContent = label.textContent;
-      if (label) {
-        vizPhoto.request(cat, slugify(label.textContent));
-        const stamp = document.getElementById('vizName');
-        if (stamp) {
-          const sch = SCHEMES.find(s => s.id === active);
-          stamp.textContent = sch ? `${sch.name} + ${label.textContent}` : label.textContent;
-        }
-      }
-    });
-  });
-});
-
-/* ---- Scroll-driven timeline: fill the rail + light up steps as you descend ---- */
-(function(){
-  const timeline = document.getElementById('vizTimeline');
-  const fill = document.getElementById('tlFill');
-  if (!timeline || !fill) return;
-  const steps = [...timeline.querySelectorAll('.tl-step')];
-  let ticking = false;
-  function update() {
-    ticking = false;
-    const rect = timeline.getBoundingClientRect();
-    const anchor = window.innerHeight * 0.45;
-    const prog = Math.max(0, Math.min(1, (anchor - rect.top) / rect.height));
-    fill.style.height = (prog * 100) + '%';
-    steps.forEach(st => {
-      const dot = st.querySelector('.tl-dot').getBoundingClientRect();
-      if (dot.top <= anchor + 24) st.classList.add('active');
-      else st.classList.remove('active');
-    });
-  }
-  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-  window.addEventListener('resize', update, { passive: true });
-  update();
-})();
-
-/* ---- Pinned preview: draggable Before/After + Auto Sweep ---- */
-(function(){
-  const frame = document.getElementById('vizPreview');
-  const after = document.getElementById('vpAfter');
-  const rail = document.getElementById('vpRail');
-  const handle = document.getElementById('vpHandle');
-  const sweepBtn = document.getElementById('vpSweep');
-  if (!frame || !after || !rail || !handle) return;
-  let pos = 50, dragging = false, sweepRAF = null;
-  function setPos(p) {
-    pos = Math.max(2, Math.min(98, p));
-    after.style.clipPath = `inset(0 0 0 ${pos}%)`;
-    handle.style.left = pos + '%';
-  }
-  function move(clientX) { const r = frame.getBoundingClientRect(); setPos(((clientX - r.left) / r.width) * 100); }
-  function stopSweep() { if (sweepRAF) { cancelAnimationFrame(sweepRAF); sweepRAF = null; } if (sweepBtn) sweepBtn.classList.remove('on'); }
-  rail.addEventListener('mousedown', e => { stopSweep(); dragging = true; move(e.clientX); });
-  window.addEventListener('mousemove', e => { if (dragging) move(e.clientX); });
-  window.addEventListener('mouseup', () => dragging = false);
-  rail.addEventListener('touchstart', e => { stopSweep(); dragging = true; move(e.touches[0].clientX); }, { passive: true });
-  window.addEventListener('touchmove', e => { if (dragging) move(e.touches[0].clientX); }, { passive: true });
-  window.addEventListener('touchend', () => dragging = false);
-  if (sweepBtn) {
-    sweepBtn.addEventListener('click', () => {
-      if (sweepRAF) { stopSweep(); return; }
-      sweepBtn.classList.add('on');
-      const start = performance.now(), dur = 5200;
-      function tick(now) {
-        const t = Math.min(1, (now - start) / dur);
-        // ease in-out sweep: 50 → 6 → 94 → 50
-        const wave = Math.sin(t * Math.PI * 2 - Math.PI / 2);
-        setPos(50 + wave * 44);
-        if (t < 1) { sweepRAF = requestAnimationFrame(tick); } else { setPos(50); stopSweep(); }
-      }
-      sweepRAF = requestAnimationFrame(tick);
-    });
-  }
-  setPos(50);
-  /* gentle entrance nudge so users see it's draggable */
-  setTimeout(() => { let seq = [50, 30, 70, 50], i = 0; const t = () => { if (i >= seq.length || dragging || sweepRAF) return; setPos(seq[i++]); setTimeout(t, 420); }; t(); }, 1400);
-})();
-
-/* ---- Gallery-frame parallax: a subtle 3D tilt on the pinned preview,
-   driven by progress through the timeline steps (rAF-throttled scroll).
-   Transform-only, so the drag slider's rect mapping stays accurate. ---- */
-(function(){
-  const frame = document.getElementById('vizPreview');
-  const timeline = document.getElementById('vizTimeline');
-  if (!frame || !timeline) return;
-  const desktop = window.matchMedia('(min-width: 861px)');
-  const still = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let ticking = false;
-  function update() {
-    ticking = false;
-    if (!desktop.matches || still.matches) { frame.style.transform = ''; return; }
-    const rect = timeline.getBoundingClientRect();
-    const anchor = window.innerHeight * 0.45;
-    const prog = Math.max(0, Math.min(1, (anchor - rect.top) / rect.height));
-    const rx = (3 - prog * 6).toFixed(2);       /*  3° → -3° */
-    const ry = (prog * 4 - 2).toFixed(2);       /* -2° →  2° */
-    frame.style.transform = `perspective(1400px) rotateX(${rx}deg) rotateY(${ry}deg)`;
-  }
-  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
-  window.addEventListener('resize', update, { passive: true });
-  update();
-})();
-
-renderTabs();
-renderSchemes();
-apply(SCHEMES[0]);
-
-/* Auto-cycle through schemes on first load as a teaser */
-setTimeout(() => {
-  let i = 1;
-  const cycle = setInterval(() => {
-    if (i >= 4) { clearInterval(cycle); return; }
-    active = SCHEMES[i].id;
-    apply(SCHEMES[i]);
-    renderSchemes();
-    i++;
-  }, 1400);
-}, 1200);
-
-/* ===== Cinematic hero: ambient loop + sound gate ===== */
-(function () {
-  const hero  = document.getElementById('hero');
-  const video = document.getElementById('heroVideo');
-  if (!hero || !video) return;
-  const playBtn = document.getElementById('heroPlayBtn');
-  const closeB  = document.getElementById('pbClose');
-  const muteB   = document.getElementById('pbMute');
-  const fill    = document.getElementById('pbFill');
-  const track   = document.getElementById('pbTrack');
-  const cur     = document.getElementById('pbCur');
-  const dur     = document.getElementById('pbDur');
-  const fmt = s => Math.floor(s/60) + ':' + String(Math.floor(s%60)).padStart(2,'0');
-
-  // If autoplay is rejected, sit quietly on the poster.
-  video.play().catch(() => {});
-
-  playBtn.addEventListener('click', () => {
-    hero.classList.add('playing');
-    video.currentTime = 0;
-    video.loop = false;
-    video.muted = false;
-    video.play().catch(() => { video.muted = true; video.play(); });
-  });
-
-  function backToAmbient() {
-    hero.classList.remove('playing');
-    video.muted = true;
-    video.loop = true;
-    video.play().catch(() => {});
-  }
-  closeB.addEventListener('click', backToAmbient);
-  video.addEventListener('ended', backToAmbient);
-
-  muteB.addEventListener('click', () => {
-    video.muted = !video.muted;
-    muteB.textContent = video.muted ? 'Unmute' : 'Mute';
-  });
-
-  video.addEventListener('loadedmetadata', () => {
-    dur.textContent = fmt(video.duration);
-  });
-  video.addEventListener('timeupdate', () => {
-    if (!hero.classList.contains('playing')) return;
-    fill.style.width = (video.currentTime / video.duration * 100) + '%';
-    cur.textContent = fmt(video.currentTime);
-  });
-  track.addEventListener('click', e => {
-    const r = track.getBoundingClientRect();
-    video.currentTime = ((e.clientX - r.left) / r.width) * video.duration;
-  });
-})();
-
-</script>
 </body>
 </html>

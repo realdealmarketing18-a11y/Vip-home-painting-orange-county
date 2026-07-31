@@ -109,14 +109,122 @@
 .pl-close { border-top: 1px solid rgba(168,138,71,0.4); padding-top: 40px; }
 .pl-cta { margin-top: 26px; }
 
-/* ---- THE VISUALIZER, dropped into an editorial column ---- */
-.pl-viz { margin: 0 0 52px; }
-.pl-viz .viz { padding: 0 !important; background: none !important; }
-.pl-viz .viz .head { text-align: left !important; margin-left: 0 !important; max-width: 680px !important; }
-.pl-viz .viz .head .ttl { font-size: 32px !important; }
-.pl-viz .viz .head .eyebrow { justify-content: flex-start !important; }
-.pl-viz .viz .head .eyebrow::before { display: none !important; }
-.pl-viz .sec-no { text-align: left !important; }
+/* ---- THE VISUALIZATION JOURNEY ----
+
+   The sales page gives its visualizer 1,180px for a pinned stage beside a
+   scrolling timeline. In a 680px editorial measure that grid crushed the
+   before/after to 223px. So blog pages tell it as a sequence instead:
+   the house as it stands, then a few finished directions, then the detail
+   layer. Images do the work, so there is no script to keep alive here. */
+
+/* Reclaim the table-of-contents column and its gap (240 + 64). This is the
+   one element on an editorial page that must not obey the measure. */
+.pl-viz {
+  width: calc(100% + 304px);
+  margin-left: -304px;
+  margin-bottom: 60px;
+}
+.vj { max-width: 900px; margin: 0 auto; }
+
+.vj-intro { margin-bottom: 44px; }
+.vj-eyebrow {
+  font-family: var(--font-sans); font-weight: 700; font-size: 10.5px;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-deep);
+  margin-bottom: 14px;
+}
+
+/* ---- a stage ---- */
+.vj-step { margin-bottom: 52px; }
+.vj-step:last-of-type { margin-bottom: 40px; }
+.vj-step-head {
+  display: grid; grid-template-columns: auto 1fr; gap: 0 18px;
+  align-items: baseline; margin-bottom: 20px;
+}
+.vj-step-n {
+  grid-row: 1 / 3;
+  font-family: var(--font-serif); font-style: italic; font-weight: 600;
+  font-size: 30px; color: var(--gold-deep); line-height: 1;
+}
+.vj-step-t {
+  font-family: var(--font-serif); font-weight: 600; font-size: 25px;
+  color: var(--navy); margin: 0; line-height: 1.2; letter-spacing: -0.01em;
+}
+.vj-step-d {
+  font-family: var(--font-sans); font-size: 15.5px; line-height: 1.6;
+  color: #4A4F70; margin: 7px 0 0; max-width: 620px;
+}
+
+/* ---- the before ---- */
+.vj-before { position: relative; border-radius: 3px; overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(201,169,97,0.40), 0 22px 50px rgba(26,31,78,0.18); }
+.vj-before img { width: 100%; height: auto; display: block; }
+.vj-tag {
+  position: absolute; left: 16px; bottom: 16px;
+  font-family: var(--font-sans); font-weight: 700; font-size: 10px;
+  letter-spacing: 0.24em; text-transform: uppercase; color: #fff;
+  background: rgba(20,24,58,0.82); padding: 7px 13px; border-radius: 2px;
+  backdrop-filter: blur(3px);
+}
+
+/* ---- the directions ----
+   Stacked, not side by side. Three renders in a row came out 248px wide,
+   which is the same "can't see it" problem in a different shape. Each
+   direction gets the full column and its own moment on the way down. */
+.vj-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+.vj-card { margin: 0; }
+.vj-shot {
+  border-radius: 3px; overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(201,169,97,0.38), 0 18px 40px rgba(26,31,78,0.16);
+}
+.vj-shot img { width: 100%; height: auto; display: block; }
+
+/* caption runs along the bottom of its render rather than under a column */
+.vj-card figcaption {
+  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+  padding: 15px 4px 0;
+}
+.vj-card figcaption b {
+  font-family: var(--font-serif); font-weight: 600;
+  font-size: 19px; color: var(--navy); line-height: 1.2;
+}
+.vj-card figcaption span {
+  font-family: var(--font-sans); font-size: 13.5px;
+  color: #6A6F8C; line-height: 1.45;
+}
+.vj-card figcaption em {
+  margin-left: auto;
+  font-family: var(--font-sans); font-style: normal;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold-deep); white-space: nowrap;
+}
+.vj-chips { display: flex; gap: 5px; }
+.vj-chips i {
+  width: 24px; height: 24px; border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(26,31,78,0.16);
+}
+
+/* ---- the option row ---- */
+.vj-opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.vj-opt { margin: 0; }
+.vj-opt img {
+  width: 100%; height: auto; display: block; border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(201,169,97,0.34), 0 8px 20px rgba(26,31,78,0.12);
+}
+.vj-opt figcaption {
+  font-family: var(--font-sans); font-size: 12.5px; color: #4A4F70;
+  text-align: center; margin-top: 10px;
+}
+
+/* ---- close ---- */
+.vj-close {
+  border-top: 1px solid rgba(168,138,71,0.4);
+  padding-top: 30px; max-width: 680px;
+}
+.vj-close p {
+  font-family: var(--font-sans); font-size: 17px; line-height: 1.7;
+  color: #3A3F60; margin: 0 0 22px;
+}
+.vj-close b { color: var(--navy); }
 
 /* ---- RESPONSIVE ---- */
 @media (max-width: 1024px) {
@@ -126,7 +234,10 @@
     border-bottom: 1px solid rgba(26,31,78,0.10); }
   .pl-toc ol { columns: 2; column-gap: 32px; }
   .pl-title { font-size: 42px; }
+  /* the TOC column is gone, so there is nothing left to reclaim */
+  .pl-viz { width: 100%; margin-left: 0; }
 }
+
 @media (max-width: 640px) {
   .pl-wrap { padding: 0 20px; }
   .pl-masthead { padding: 56px 0 32px; }
@@ -137,6 +248,14 @@
   .pl-lead { font-size: 17px !important; }
   .pl-toc ol { columns: 1; }
   .pl-stats, .pl-cards { grid-template-columns: 1fr; }
+  /* one render at a time on a phone — a half-width render shows nothing */
+  .vj-opts { grid-template-columns: 1fr; gap: 26px; }
+  .vj-grid { gap: 30px; }
+  .vj-card figcaption { gap: 12px; }
+  .vj-card figcaption em { margin-left: 0; }
+  .vj-step-n { font-size: 24px; }
+  .vj-step-t { font-size: 21px; }
+  .vj-step { margin-bottom: 40px; }
 }
 
 /* ============================================================

@@ -786,6 +786,10 @@ ${VIZ_JS}
 
 const BLOG_MODULES = require('./blog-modules.js');
 const ARTICLE_MODULES = require('./article-modules.js');
+/* The editorial retelling of the visualizer. Its scheme, style and option
+   data is read back out of the sales page so the two cannot drift apart. */
+const { extractVizData, vizJourney } = require('./viz-journey.js');
+const VIZ_DATA = extractVizData(BASE_PAGE);
 const BLOG_CSS = fs.readFileSync(path.join(__dirname, 'blog-page.css'), 'utf8');
 const BLOG_PATH = path.join(__dirname, 'blog.json');
 const BLOG = fs.existsSync(BLOG_PATH) ? JSON.parse(fs.readFileSync(BLOG_PATH, 'utf8')) : { pillars: [] };
@@ -1521,7 +1525,7 @@ function buildPillarPage(p) {
   const order = (p.layout && p.layout.module_order) || [];
   const body = order.map(k => {
     if (k === 'visualizer') {
-      return `\n  <div class="pl-viz">${vizSection({ name: p.city_name, vizIntro: p.viz_intro })}</div>`;
+      return `\n  <div class="pl-viz">${vizJourney(p, { CFG, ctaButton, esc, A }, VIZ_DATA)}</div>`;
     }
     const fn = BLOG_MODULES[k];
     if (!fn) throw new Error(`pillar ${p.slug}: no builder for module "${k}"`);
@@ -1644,7 +1648,6 @@ ${body}
   </footer>
 
 </div>
-${VIZ_JS}
 </body>
 </html>
 `;
@@ -1740,7 +1743,7 @@ function buildArticlePage(a, pillar) {
   const order = (a.layout && a.layout.module_order) || [];
   const body = order.map(k => {
     if (k === 'visualizer') {
-      return '\n  <div class="pl-viz">' + deepen(vizSection({ name: a.city_name, vizIntro: a.viz_intro })) + '</div>';
+      return '\n  <div class="pl-viz">' + vizJourney(a, H, VIZ_DATA) + '</div>';
     }
     const fn = ARTICLE_MODULES[k];
     if (!fn) throw new Error('article ' + a.slug + ': no builder for module "' + k + '"');
@@ -1865,7 +1868,6 @@ body + '\n' +
 '  </footer>\n' +
 '\n' +
 '</div>\n' +
-deepen(VIZ_JS) + '\n' +
 '</body>\n' +
 '</html>\n';
 }
