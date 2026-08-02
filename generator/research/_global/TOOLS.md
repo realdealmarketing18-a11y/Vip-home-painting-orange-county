@@ -97,20 +97,33 @@ not absence. Primary verbatim source for the Halo worksheet.
 
 ## TIER 2 — USEFUL, NOT LOAD-BEARING
 
-### Keyword tools, as a category
-**No keyword tool has ever changed a decision here, and the reason is structural.**
+### DataForSEO — the replacement, pending auth
+**Connected 2026-07-31. Returns HTTP 403 on every endpoint** — tested across Keyword Data,
+Labs and AI Optimization, so it is account-level, not a bad parameter. Either the OAuth
+prompt was not approved or the account has no balance.
 
-Community terms return **zero volume** from all of them. That is a measurement floor —
-clickstream panels do not resolve below a threshold — not absent demand. Firecrawl proved
-the demand exists by showing those SERPs are *starved* (C-05).
+**Pay-as-you-go, ~$0.01/task + $0.0001/row** — cents per run, not a subscription, which is
+why it survives the free-only decision. It is still real money per call: no unattended
+loops without a ceiling.
 
-- **Semrush** — city and service terms only. Optional; the gate passes without it.
-- **Ahrefs MCP** — connected 2026-07-31, returns `Insufficient plan` on every paid
-  endpoint. API v3 needs a **Lite plan ($129/mo)**. **Decision: not buying** — see
-  `TOOL-EVAL-AHREFS-MCP.md`. Only `public-domain-rating-free` works, and that needs a
-  free API key from **2026-08-10** to keep working.
-- **Never kill a community page on zero-volume data.** The single most expensive mistake
-  available with any of these.
+This replaces both Ahrefs and Semrush the moment it authenticates. A five-prompt report
+pack is already written and VIP-specific in **`prompts/`** — competitors, cities and open
+questions filled in. **Run `prompts/02-keyword-research.md` first**: it is built to settle
+the community-term question, and whatever it returns goes in `MEMORY.md`.
+
+### Superseded
+- **Semrush** — MCP disconnected. Never changed a decision here.
+- **Ahrefs MCP** — connected then dropped; every paid endpoint needed a **$129/mo Lite
+  plan**. Declined. See `TOOL-EVAL-AHREFS-MCP.md`. The **Apify Ahrefs actor** (Tier 1
+  above) is unaffected and still works.
+
+### The rule that outlives all of them
+Community terms return **zero volume** from every keyword tool tested so far. That is a
+measurement floor — clickstream panels do not resolve below a threshold — **not absent
+demand**. Firecrawl proved the demand by showing those SERPs are *starved* (C-05).
+
+**Never kill a community page on zero-volume data.** The single most expensive mistake
+available with any of these tools.
 
 ### WebSearch / WebFetch
 Fallback only, for when Firecrawl is blocked. **Not location-aware**, so never trust it

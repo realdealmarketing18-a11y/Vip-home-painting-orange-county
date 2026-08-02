@@ -120,10 +120,14 @@ So: research Irvine and Newport for **organic and content** dominance. Research 
 > **Tier 2, useful but never decisive** — keyword tools as a category, WebSearch/WebFetch.
 > Nothing in the pipeline may depend on them, and nothing does.
 >
-> **Standing decision 2026-07-31: free tools only.** The Ahrefs MCP is connected but every
-> paid endpoint returns `Insufficient plan`; we are not buying a plan. No keyword tool
-> resolves community terms anyway — the free answer is Search Console impressions, which is
-> not connected yet. See `TOOL-EVAL-AHREFS-MCP.md`.
+> **Keyword data 2026-07-31: DataForSEO replaces Ahrefs and Semrush.** Pay-as-you-go cents
+> per call, no subscription. A VIP-specific five-prompt report pack lives in
+> `research/_global/prompts/` — **run `02-keyword-research.md` first**, it is built to settle
+> the community-term question. **Currently returning 403** (auth or balance), so this run
+> must still complete without it. See `TOOL-EVAL-DATAFORSEO.md`.
+>
+> Ahrefs MCP was tested and declined — $129/mo for data we would not use. The Apify Ahrefs
+> *actor* is unaffected and stays Tier 1.
 
 | Tool | Answers | Use it for | Do NOT |
 |---|---|---|---|

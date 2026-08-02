@@ -89,6 +89,14 @@ F-05 said this already and I did it again writing the WORKFLOW blog-track table:
 the Write/Edit tool or a scratchpad .js file. Never a bash heredoc. No exceptions.**
 *Own error, 2026-07-30 — repeat of F-05.*
 
+### F-15 · `node -e "..."` eats backticks exactly like a heredoc does
+Fourth occurrence. Writing M-10 through `node -e` with a template literal, bash expanded
+the backticked `github.io` as a command substitution and left an empty gap in the file.
+**The rule is not "avoid heredocs" — it is: any file content containing backticks goes
+through the Write/Edit tool or a scratchpad `.js` file, never through a shell argument
+of any shape.** Read the file back afterwards; the corruption is silent.
+*Own error, 2026-07-31 — repeat of F-05 and F-14.*
+
 ---
 
 # PART 2 · RESEARCH FINDINGS
@@ -169,6 +177,17 @@ autocomplete, and Fabian's consult calls. Reddit is still blocked, so this theme
 thinnest part of the research and the most valuable. See `HALO-WORKSHEET.md`.
 → Second confirmation of **M-02** from a different angle: the market's entire vocabulary
 is about execution, not about the decision. Nobody is competing on certainty.
+
+### M-10 · Three separate tools are now blocked by the same thing: the domain
+The site lives on a github.io subpath. Domain-level analysis of `github.io` returns
+GitHub's data, not ours — so DataForSEO's Site Explorer and Content Gap endpoints, Google
+Search Console, and Bing Webmaster Tools are all unusable until VIP owns the domain being
+measured.
+*Evidence: DataForSEO connector review + GSC/Bing verification requirements, 2026-07-31.*
+→ **Migrating to viphomepainting.com has stopped being a preference and become the
+bottleneck for measurement.** Three tools, one blocker.
+→ Do not verify GSC or Bing against github.io first — verification has to be redone after
+a move, so the domain decision comes first.
 
 ### M-09 · The free tool we are missing beats the paid one we can't have
 Ahrefs MCP connected 2026-07-31. Every paid endpoint returns `Insufficient plan`; API v3
