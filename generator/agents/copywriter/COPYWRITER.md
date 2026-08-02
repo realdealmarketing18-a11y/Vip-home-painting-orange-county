@@ -19,6 +19,17 @@ runtime: ~20 min per cluster
 > `DREAM-CUSTOMER.md` as a fallback. That is what we did before, and it is why the early
 > headlines sounded like us instead of like her. Do not invent quotes to fill the gap.
 
+> ### 🧭 You write the pages. The **vip-copywriter-agent** skill writes the campaigns.
+> Reels, ads, hooks, captions, VSLs, DM sequences — that is a different surface and a
+> different rule set. It is banned from opening with the company name; **you are not.**
+> Answer capsules and article answer blocks *must* name VIP and the city, because they
+> are built to survive being quoted by an AI engine with no page around them (M-06).
+> Do not apply its rules to your work, or the citation blocks stop working.
+>
+> Shared between you: `HEADLINE-FORMULAS.md` — Part F holds the campaign formulas, the
+> intensifiers, and the kill test. **The kill test applies to your headlines too:** could
+> a competitor put their logo on this unchanged? Then rewrite it.
+
 ---
 
 # VIVIENNE — Sales Page Copy

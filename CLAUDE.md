@@ -118,9 +118,21 @@ produces articles 1–2 a week. See `generator/agents/blog/BLOG-WORKFLOW.md`.
 skill runs the *buyer* half — Halo Strategy, verbatim language, what Diane fears and has
 already tried — into `research/{city}/07-VOICE.md`, from the template at
 `research/_global/HALO-WORKSHEET.md`. Marcus answers *where can we win*; that answers
-*what do we say*, and the copywriter pulls headlines from its language bank instead of
+*what do we say*, and both copywriters pull headlines from its language bank instead of
 inventing them. **Only ~3% of homeowners are ready to buy; the copy targets the 97% who
 are stalling**, and their language is not in Google reviews (M-07).
+
+**Two copywriters, two surfaces — don't cross the rules.**
+
+| | `vip-copywriter` (Vivienne) | `vip-copywriter-agent` |
+|---|---|---|
+| Writes | city / community / HOA page copy | reels, ads, hooks, captions, VSLs, DMs |
+| Lands in | the brief → generated HTML | social, paid, video |
+| Company name | **required** in answer capsules — they must survive being quoted (M-06) | **banned** from the opening — open with her |
+| Goal | rank and get cited | stop the scroll, drive one call or DM |
+
+Shared: `HEADLINE-FORMULAS.md` — Part F is the campaign set, plus the **kill test**
+(*could a competitor put their logo on this unchanged?*), which applies to both.
 
 **Key files:** `generator/RESEARCH-BRIEF-CONTRACT.md` (the handoff schema) ·
 `generator/briefs/{city}.json` (the handoff file) · `generator/research/{city}/00-SUMMARY.md`

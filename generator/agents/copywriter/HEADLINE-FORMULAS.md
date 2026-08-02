@@ -148,6 +148,39 @@ fails on duplicate H1s.
 
 ---
 
+## PART F — CAMPAIGN FORMULAS (reels, ads, hooks, HVCO titles)
+
+Used by the **vip-copywriter-agent** skill. Fill every bracket **from the research
+language bank** (`research/{city}/07-VOICE.md`) — never from imagination.
+
+**Odd numbers pull harder than even. Always draft 10, kill 9.**
+
+| # | Formula | Example |
+|---|---|---|
+| F1 | `[Number] [Trigger] Things You Must Know Before [Action]` | 7 Alarming Things You Must Know Before Hiring an Irvine Painter |
+| F2 | `[Number] [Trigger] Mistakes No [Insider] Will Tell You About` | 11 Costly Color Mistakes No Painter Will Tell You About |
+| F3 | `How to [Desired Result] Without [Thing They Dread]` | How to Know Your Color Is Right Without Repainting to Find Out |
+| F4 | `[Do the Hard Thing] in [Timeframe] Even If [Their Shortcoming]` | Pick Your Exterior Color in One Afternoon Even If You've Stalled Two Years |
+| F5 | `Why [Common Belief] Is Wrong — And What to Do Instead` | Why Paint Chips Are the Worst Way to Choose a Color |
+| F6 | `What You Should Never Do When [Situation]` | What You Should Never Do Before Signing a Painting Contract |
+| F7 | `The Truth About [Thing in Their World]` | The Truth About Why Your Neighbor's White Looks Wrong on Your House |
+| F8 | `[Specific Person] Did [Specific Thing]. Here's What Happened.` | She Taped 14 Paint Chips to Her Stucco. For Six Weeks. |
+
+**F6 is loss framing** — people click harder on what to avoid than what to do.
+**F8 is the strongest reel opener** — story beats claim.
+
+### Intensifiers
+Add **one, never two**: a bracketed twist (*#4 Costs Most of Them $6,000*), a dollar
+figure, a village name, or a timeframe.
+
+### The kill test
+> **Could a competitor put their logo on this headline unchanged?**
+> If yes, rewrite it.
+
+That test applies to every headline in this file, not just Part F.
+
+---
+
 ## PART E — BRANDING RULES
 
 ### Always
