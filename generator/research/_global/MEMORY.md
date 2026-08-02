@@ -154,6 +154,31 @@ Their hundreds of city landing pages earn essentially nothing.
 
 ---
 
+### M-07 · Google reviews answer the wrong question for copy
+Sampled 17 reviews of a 53-review Anaheim painter (Horacio Guillermo Castellani) from the
+Maps dataset. **Every single one is about the crew** — clean, on time, fair price,
+attention to detail, "didn't skimp." **Not one mentions choosing a color, uncertainty, or
+regret.**
+*Evidence: apify dataset `pw6djQiOl1uh6hDsq`, review text, 2026-07-31.*
+→ Reviews are written by the **3% who already bought**. They are excellent for
+**Barriers** — *"Finding a contractor you can trust is not an easy task"*, and one buyer
+who *"gave him a small job first, and if he met my expectations, the entire house"* — and
+near-useless for **Pains & Fears**, which live entirely pre-purchase.
+→ **Never source Theme 2 of the Halo worksheet from reviews.** Fears live in forums,
+autocomplete, and Fabian's consult calls. Reddit is still blocked, so this theme is the
+thinnest part of the research and the most valuable. See `HALO-WORKSHEET.md`.
+→ Second confirmation of **M-02** from a different angle: the market's entire vocabulary
+is about execution, not about the decision. Nobody is competing on certainty.
+
+### M-08 · The Maps scrape pulls adjacent trades, not just painters
+The Anaheim dataset (`pw6djQiOl1uh6hDsq`, 25 records) contains window and door companies,
+flooring, rain gutters, and cabinet showrooms alongside painters.
+*Evidence: direct read, 2026-07-31.*
+→ **Filter by category before counting anything.** Review-bar and competitor-count numbers
+computed over the raw dataset are inflated by businesses we do not compete with.
+
+---
+
 ## CANDIDATE — seen once, watch for confirmation
 
 ### C-01 · An Anaheim HQ does not block Irvine organic rankings
@@ -224,8 +249,9 @@ gap we have** — educational posts are the only thing earning AI citations in t
    Minardi) real Google reviews? They carry a Google badge. And is "120+ Projects Done" a
    true project count? Both are unaudited claims still live.
 2. **Is VIP EPA Lead Certified?** CertaPro displays it; we don't. Matters on pre-1978 homes.
-3. **Can the warranty go to 2 years?** CertaPro advertises 2; VIP advertises 1. A shopper
-   comparing pages sees a worse number next to our name.
+3. ~~Can the warranty go to 2 years?~~ **ANSWERED 2026-07-31: YES.** Fabian raised it to 2,
+   matching CertaPro. Every page updated; it now lives in `communities.json → config.warranty`.
+   **Never write "longer than the competition"** — matching is not beating.
 
 ---
 

@@ -1,10 +1,23 @@
 ---
 agent: copywriter
 role: Sales Page Copywriter — VIP Home Painting
-loads: [../../../context/FABIAN.md, ../../../context/ABOUT-VIP.md, ../../../context/DREAM-CUSTOMER.md, ../../../context/OFFER.md, ../../../context/BRAND-VOICE.md, ../../research/_global/MEMORY.md, HEADLINE-FORMULAS.md, COPY-SLOTS.md]
+loads: [../../../context/FABIAN.md, ../../../context/ABOUT-VIP.md, ../../../context/DREAM-CUSTOMER.md, ../../../context/OFFER.md, ../../../context/BRAND-VOICE.md, ../../research/_global/MEMORY.md, ../../research/{city}/07-VOICE.md, HEADLINE-FORMULAS.md, COPY-SLOTS.md]
 runtime: ~20 min per cluster
 
 > **Full pipeline:** `generator/WORKFLOW.md` — every step, every tool, every command.
+
+> ### 🗣 Pull headlines from `research/{city}/07-VOICE.md`, not from your own head.
+> That file is the verbatim language bank — what homeowners actually said, with a source
+> on every line. Produced by the **vip-research-agent** skill, template at
+> `research/_global/HALO-WORKSHEET.md`.
+>
+> **Fear outweighs aspiration.** Theme 2 (Pains & Fears) is the highest-value section;
+> lead from it. Prefer her words over ours every time — if a headline sounds like a
+> brochure, you wrote it instead of finding it.
+>
+> **If the file does not exist**, say so in your report and write from
+> `DREAM-CUSTOMER.md` as a fallback. That is what we did before, and it is why the early
+> headlines sounded like us instead of like her. Do not invent quotes to fill the gap.
 
 ---
 

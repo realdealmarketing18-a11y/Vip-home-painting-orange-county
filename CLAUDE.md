@@ -114,6 +114,14 @@ so broken work cannot hand off.
 **A fourth track runs alongside:** the blog. Marcus's research feeds it, a separate writer
 produces articles 1–2 a week. See `generator/agents/blog/BLOG-WORKFLOW.md`.
 
+**Research has two halves, and Marcus is only one of them.** The **vip-research-agent**
+skill runs the *buyer* half — Halo Strategy, verbatim language, what Diane fears and has
+already tried — into `research/{city}/07-VOICE.md`, from the template at
+`research/_global/HALO-WORKSHEET.md`. Marcus answers *where can we win*; that answers
+*what do we say*, and the copywriter pulls headlines from its language bank instead of
+inventing them. **Only ~3% of homeowners are ready to buy; the copy targets the 97% who
+are stalling**, and their language is not in Google reviews (M-07).
+
 **Key files:** `generator/RESEARCH-BRIEF-CONTRACT.md` (the handoff schema) ·
 `generator/briefs/{city}.json` (the handoff file) · `generator/research/{city}/00-SUMMARY.md`
 (the copywriter's entry point) · `generator/research/_global/MEMORY.md` (what we've learned).

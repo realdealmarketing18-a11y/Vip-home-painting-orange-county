@@ -13,6 +13,7 @@ unless both gates pass.
 | # | Name | Schedule | Moves Anaheim |
 |---|---|---|---|
 | 1 | `anaheim-research` | Daily 8:00 AM | `queued` → `researched` |
+| 1b | `anaheim-voice` | Daily 10:00 AM | writes `07-VOICE.md` — the language bank |
 | 2 | `anaheim-copy` | Daily 11:30 AM | `researched` → `copy_complete` |
 | 3 | `anaheim-publish` | Daily 2:00 PM | `copy_complete` → `published` |
 | 4 | `vip-blog` | Weekly, Tue 9:00 AM | writes the guide + one article |
@@ -97,6 +98,75 @@ still a gap, and the exact gate output.
 
 ---
 
+## 1b · anaheim-voice
+
+**Name**
+```
+anaheim-voice
+```
+
+**Description**
+```
+Halo Strategy buyer research — the verbatim language bank the copy is written from
+```
+
+**Instructions**
+```
+Read CLAUDE.md and context/FABIAN.md first. Use the vip-research-agent skill.
+
+This is the BUYER half of research. Marcus answers "where can we win"; you answer
+"what do we say". Both run before copy.
+
+FIRST:
+  Check whether generator/research/anaheim/07-VOICE.md already exists and is filled.
+  If it is, stop and report "already done" unless it is more than a quarter old.
+
+Copy generator/research/_global/HALO-WORKSHEET.md to
+generator/research/anaheim/07-VOICE.md and fill every section.
+
+WHO YOU ARE RESEARCHING
+Only ~3% of homeowners are ready to hire today. Competitors fight over them with
+"FREE ESTIMATE". The money is in the ~97% who are problem-aware and stalling.
+Research the stallers. The standing avatar is Diane, the Reluctant Repainter —
+45-65, Anaheim Hills, $1.5M-$5M home, decides aesthetics, spouse approves spend.
+Her core fear is picking a color, living with it ten years, and hating it. She is
+buying certainty; paint is the delivery mechanism.
+
+SOURCES THAT ACTUALLY WORK — the skill has the full table
+- Google autocomplete: curl "https://suggestqueries.google.com/complete/search?client=firefox&q=SEED"
+- Bing autocomplete:   curl "https://api.bing.com/osjson.aspx?query=SEED"
+- Apify Maps review text, Anaheim dataset pw6djQiOl1uh6hDsq — already paid for.
+  FILTER TO PAINTERS: the scrape also pulled windows, flooring, gutters and cabinets (M-08).
+- Firecrawl for Houzz threads and Sherwin-Williams color forums. Always pass location.
+- Reddit is BLOCKED for Firecrawl. Nextdoor is login-walled. Record both as not checked.
+
+THE TRAP — read M-07 in research/_global/MEMORY.md
+Google reviews are written by the 3% who ALREADY BOUGHT. Verified on real Anaheim
+data: 17 reviews of a 53-review local painter, every one about the crew — clean, on
+time, fair price — and not one about choosing a color or regretting it. So reviews
+are good for Theme 3 (Barriers) and near-useless for Theme 2 (Pains & Fears), which
+is the highest-value theme and lives entirely pre-purchase.
+Do not fill Theme 2 from reviews. If forums are unreachable, mark it
+"[THIN — source blocked]" and say so. A thin honest theme is usable; a padded one
+poisons every headline downstream.
+
+HARD RULES
+- NO INVENTED QUOTES. Ever. Every line carries a source URL. Unsourced lines are
+  marked [VERIFY] and may not be used in copy.
+- Capture verbatim. Never paraphrase into marketing voice. If a line in the language
+  bank reads like a brochure, you wrote it instead of finding it — go back to the source.
+- Fear outweighs aspiration. Interior and exterior are different fears; separate them.
+- Do not pad a section to hit a minimum count.
+
+REPORT: the top 3 hair-on-fire concerns with quotes, the gap statement, three hook
+candidates traced to real lines, and explicitly which sources you could not reach.
+Then remind Fabian that his own consult notes would outperform every source here —
+three questions after each call: what made you finally call, what stopped you last
+time, what were you afraid would happen.
+```
+
+---
+
 ## 2 · anaheim-copy
 
 **Name**
@@ -119,9 +189,16 @@ If it says nothing to do, stop and report that — the research stage has not
 finished yet. Do not start writing without a brief; do not write research yourself.
 
 Otherwise do the task it prints. Your inputs are
-generator/research/anaheim/00-SUMMARY.md and generator/briefs/anaheim.json.
+generator/research/anaheim/00-SUMMARY.md, generator/briefs/anaheim.json, and
+generator/research/anaheim/07-VOICE.md — the verbatim language bank.
 Follow generator/agents/copywriter/COPYWRITER.md, HEADLINE-FORMULAS.md,
 COPY-SLOTS.md and STORY-SLOTS.md.
+
+PULL HEADLINES FROM 07-VOICE.md, NOT FROM YOUR OWN HEAD. That file is what real
+homeowners said, with a source on every line. Lead from Theme 2 (Pains & Fears) —
+fear outweighs aspiration. Prefer her words over ours every time.
+If 07-VOICE.md does not exist, say so in your report and fall back to
+context/DREAM-CUSTOMER.md. Never invent a quote to fill the gap.
 
 Write copy for: the Anaheim city page, one page per community in the brief, and
 the Anaheim HOA / common-area page.
