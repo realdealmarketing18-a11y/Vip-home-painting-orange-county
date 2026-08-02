@@ -178,7 +178,32 @@ for (const p of (BLOG.pillars || [])) {
 if (!clusterBad) ok('every pillar card points at a real article');
 
 /* ---------- 7. module_order uniqueness ---------- */
-console.log('\n7. doorway-page guard');
+/* ---------- 7. indexation posture matches the config ---------- */
+console.log('\n7. indexation posture');
+const wantNoindex = !!CFG.staging;
+let postureBad = 0;
+for (const p of pages) {
+  const html = read(p);
+  const tag = (html.match(/<meta name="robots" content="([^"]*)">/) || [])[1] || '';
+  const isNoindex = /noindex/i.test(tag);
+  if (wantNoindex && !isNoindex) { bad(`${p.rel}: config.staging is true but this page says "${tag}"`); postureBad++; }
+  if (!wantNoindex && isNoindex) { bad(`${p.rel}: LIVE build but this page is noindex — it will not rank`); postureBad++; }
+}
+if (!postureBad) {
+  ok(wantNoindex
+    ? `staging build — all ${pages.length} pages noindex, nothing will be indexed`
+    : `live build — all ${pages.length} pages indexable`);
+}
+/* the county page is hand-maintained and was the one that drifted */
+const ocFile = path.join(ROOT, 'orange-county-sales-page', 'index.html');
+if (fs.existsSync(ocFile)) {
+  const octag = (fs.readFileSync(ocFile, 'utf8').match(/<meta name="robots" content="([^"]*)">/) || [])[1] || '';
+  /noindex/i.test(octag) === wantNoindex
+    ? ok(`county page matches (${octag})`)
+    : bad(`county page says "${octag}" but config.staging is ${CFG.staging}`);
+}
+
+console.log('\n8. doorway-page guard');
 const seen = new Map();
 let dupe = 0;
 for (const c of CITIES.cities) {

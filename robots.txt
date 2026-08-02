@@ -1,4 +1,6 @@
+# STAGING BUILD — not the live site.
+# The real site launches on WordPress at viphomepainting.com.
+# Every page carries <meta name="robots" content="noindex, nofollow">.
+# Flip config.staging to false in communities.json at launch.
 User-agent: *
 Allow: /
-
-Sitemap: https://realdealmarketing18-a11y.github.io/Vip-home-painting-orange-county/sitemap.xml

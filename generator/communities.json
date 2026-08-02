@@ -10,7 +10,9 @@
     "assetBase": "../../orange-county-sales-page",
     "gbpUrl": "https://g.page/viphomepainting",
     "warrantyYears": 2,
-    "warranty": "2-Year Warranty"
+    "warranty": "2-Year Warranty",
+    "staging": true,
+    "_staging_doc": "true = this build is a staging site: every page emits noindex and robots.txt disallows. Flip to false ONLY when launching on the real domain, and change siteBase in the same edit."
   },
   "communities": [
     {

@@ -70,6 +70,15 @@ const VIZ_JS = (() => {
   return rewriteAssetPaths(BASE_PAGE.slice(s, e + '</script>'.length));
 })();
 
+
+/* Staging builds must not be indexed — see communities.json config.staging.
+   Crawlable but noindex on purpose: blocking in robots.txt would stop Google
+   reading the noindex, and a URL linked from elsewhere could still land in
+   the index. */
+const ROBOTS_META = CFG.staging
+  ? 'noindex, nofollow'
+  : 'index, follow, max-snippet:-1, max-image-preview:large';
+
 const MODULE_KEYS = ['portfolio', 'specs', 'colorGuide', 'process', 'problemSolution'];
 
 /* Core Sherwin-Williams palette shown on every page (swatch hexes are
@@ -556,7 +565,7 @@ function buildPage(c) {
 <!-- Geo / Local -->
 <meta name="geo.region" content="US-CA">
 <meta name="geo.placename" content="${c.name}, Irvine, California">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="robots" content="${ROBOTS_META}">
 
 <!-- ============ STRUCTURED DATA — LocalBusiness + Service + WebPage ============ -->
 <script type="application/ld+json">
@@ -922,7 +931,7 @@ function buildCityPage(c) {
 
 <meta name="geo.region" content="US-CA">
 <meta name="geo.placename" content="${esc(c.name)}, California">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="robots" content="${ROBOTS_META}">
 
 <script type="application/ld+json">
 ${cityJsonLd(c, url)}
@@ -1183,7 +1192,7 @@ function buildHoaPage(h, city) {
 
 <meta name="geo.region" content="US-CA">
 <meta name="geo.placename" content="${esc(city.name)}, California">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="robots" content="${ROBOTS_META}">
 
 <script type="application/ld+json">
 ${hoaJsonLd(h, city, url)}
@@ -1408,7 +1417,7 @@ function buildPillarPage(p) {
 <meta property="og:url" content="${url}">
 <meta property="og:site_name" content="VIP Home Painting">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="robots" content="${ROBOTS_META}">
 
 <script type="application/ld+json">
 ${pillarJsonLd(p, url)}
@@ -1582,7 +1591,7 @@ function buildArticlePage(a, pillar) {
 '<meta property="og:url" content="' + url + '">\n' +
 '<meta property="og:site_name" content="VIP Home Painting">\n' +
 '<meta name="twitter:card" content="summary_large_image">\n' +
-'<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">\n' +
+'<meta name="robots" content="' + ROBOTS_META + '">\n' +
 '\n' +
 '<script type="application/ld+json">\n' +
 articleJsonLd(a, url) + '\n' +
@@ -1690,6 +1699,18 @@ ${entries}
 }
 
 function buildRobots() {
+  /* A staging build advertises nothing. The noindex tag on every page does the
+     real work; withholding the sitemap just avoids inviting a crawl we do not
+     want. Flip config.staging to false at launch. */
+  if (CFG.staging) {
+    return `# STAGING BUILD — not the live site.
+# The real site launches on WordPress at viphomepainting.com.
+# Every page carries <meta name="robots" content="noindex, nofollow">.
+# Flip config.staging to false in communities.json at launch.
+User-agent: *
+Allow: /
+`;
+  }
   return `User-agent: *
 Allow: /
 
@@ -1814,7 +1835,14 @@ function main() {
     });
     const head = oc.slice(0, s);
     const marker = oc.slice(s, oc.indexOf('-->', s) + 3);
-    const next = head + marker + '\n' + nav + '\n      ' + oc.slice(e);
+    let next = head + marker + '\n' + nav + '\n      ' + oc.slice(e);
+
+    /* Its robots meta is hand-written too, and was the one page still saying
+       "index, follow" after the whole generated site went noindex. Sync it. */
+    next = next.replace(
+      /<meta name="robots" content="[^"]*">/,
+      `<meta name="robots" content="${ROBOTS_META}">`
+    );
     if (next !== oc) { fs.writeFileSync(ocPath, next, 'utf8'); }
     console.log(`  ✓ orange-county-sales-page/index.html  [NAV synced: ${(nav.match(/<summary>/g) || []).length} categories]`);
   }
