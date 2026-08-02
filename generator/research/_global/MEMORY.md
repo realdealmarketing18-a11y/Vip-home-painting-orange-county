@@ -170,6 +170,22 @@ thinnest part of the research and the most valuable. See `HALO-WORKSHEET.md`.
 → Second confirmation of **M-02** from a different angle: the market's entire vocabulary
 is about execution, not about the decision. Nobody is competing on certainty.
 
+### M-09 · The free tool we are missing beats the paid one we can't have
+Ahrefs MCP connected 2026-07-31. Every paid endpoint returns `Insufficient plan`; API v3
+needs a **Lite plan at $129/mo**. Only `public-domain-rating-free` works — it returned
+CertaPro **DR 71**, which corroborates M-05 from the source itself.
+*Evidence: direct endpoint tests + help.ahrefs.com/en/articles/6559232-about-api-v3, 2026-07-31.*
+→ **Decision: free tools only.** Buying Lite would, on our own evidence, purchase the same
+zero we already get for community terms.
+→ **The gap is Google Search Console, not Ahrefs.** GSC reports *actual impressions for
+actual queries*, including the long tail below every keyword tool's floor. It is the only
+thing that can measure a community term, it is free, and **it is not connected.** Same for
+Bing Webmaster Tools — Copilot is 50% of AI citations and runs on Bing (M-06).
+→ Both need domain verification, which must be redone if the site moves to
+viphomepainting.com. **Decide the domain question first.**
+→ Deadline: the free DR endpoint loses unauthenticated access **2026-08-10**. A free API
+key keeps it alive; five minutes, no cost.
+
 ### M-08 · The Maps scrape pulls adjacent trades, not just painters
 The Anaheim dataset (`pw6djQiOl1uh6hDsq`, 25 records) contains window and door companies,
 flooring, rain gutters, and cabinet showrooms alongside painters.

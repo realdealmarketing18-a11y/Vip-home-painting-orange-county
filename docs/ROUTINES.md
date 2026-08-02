@@ -71,9 +71,11 @@ whether it ever changed a decision, and says which are load-bearing.
   pass the location so you see the SERP a local buyer sees), Apify Google Maps
   (scrapePlaceDetailPage: true or the useful fields are missing), Apify Ahrefs
   (website_authority and ai_visibility).
-- Tier 2, optional: Semrush for city and service terms only. Never pull community
-  terms — zero volume there is a measurement floor, not absent demand — and never
-  kill a community page on it. This run must complete without it.
+- Tier 2, optional: keyword tools for city and service terms only. Never pull community
+  terms — zero volume there is a measurement floor, not absent demand — and never kill a
+  community page on it. FREE TOOLS ONLY (decision 2026-07-31): the Ahrefs MCP is connected
+  but unpaid and returns nothing; do not plan around it. This run must complete without
+  any keyword tool, and it can.
 - Prefer government and city primary sources (City of Anaheim, county HOA lookups)
   over listing sites and blogs.
 - If a new research tool has been connected, run the acceptance test in TOOLS.md

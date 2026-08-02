@@ -7,6 +7,20 @@ Last revised **2026-07-31**.
 
 ---
 
+## STANDING DECISION — free tools only (2026-07-31)
+
+Fabian's call. No paid SEO subscriptions.
+
+This costs us less than it sounds. Every finding that ever changed the plan came from
+Firecrawl, Apify Maps, or a $0.10 Apify actor run — **not one came from a keyword
+subscription.** And the one thing a paid tool would have bought us, community-term volume,
+comes back zero from all of them anyway.
+
+**The free tools that would move us furthest are not connected yet:** Google Search Console
+and Bing Webmaster Tools. See "The real gap" below.
+
+---
+
 ## THE TEST A TOOL HAS TO PASS
 
 A tool earns a place by **changing a decision**, not by returning data.
@@ -67,23 +81,36 @@ That finding created the entire blog track and the article page type.
 
 ---
 
+### Google & Bing autocomplete — free, and underrated
+Real phrases real people type, straight from the source, no account needed.
+
+```bash
+curl "https://suggestqueries.google.com/complete/search?client=firefox&q=SEED"
+curl "https://api.bing.com/osjson.aspx?query=SEED"
+```
+
+*Tested 2026-07-31 — returns lines like "why does my paint color look different on the
+wall".* Seed phrasing matters: too-specific seeds return empty, which is the floor again,
+not absence. Primary verbatim source for the Halo worksheet.
+
+---
+
 ## TIER 2 — USEFUL, NOT LOAD-BEARING
 
-### Semrush
-**Has never changed a decision here, and the reason is structural, not budgetary.**
+### Keyword tools, as a category
+**No keyword tool has ever changed a decision here, and the reason is structural.**
 
-Community terms return **zero volume**. That is a measurement floor — clickstream panels
-do not resolve below a certain threshold — not absent demand. Firecrawl proved demand
-exists at that level by showing the SERPs are starved.
+Community terms return **zero volume** from all of them. That is a measurement floor —
+clickstream panels do not resolve below a threshold — not absent demand. Firecrawl proved
+the demand exists by showing those SERPs are *starved* (C-05).
 
-So Semrush is usable for **city and service terms only**, and even there it has told us
-nothing we acted on.
-
-- **Never kill a community page on zero-volume data.** This is the single most expensive
-  mistake available with this tool.
-- Mine the city long-tail, then modify by community name.
-- Credits come and go. Nothing in the pipeline may *depend* on it — the gate must pass
-  without it, and it does.
+- **Semrush** — city and service terms only. Optional; the gate passes without it.
+- **Ahrefs MCP** — connected 2026-07-31, returns `Insufficient plan` on every paid
+  endpoint. API v3 needs a **Lite plan ($129/mo)**. **Decision: not buying** — see
+  `TOOL-EVAL-AHREFS-MCP.md`. Only `public-domain-rating-free` works, and that needs a
+  free API key from **2026-08-10** to keep working.
+- **Never kill a community page on zero-volume data.** The single most expensive mistake
+  available with any of these.
 
 ### WebSearch / WebFetch
 Fallback only, for when Firecrawl is blocked. **Not location-aware**, so never trust it
@@ -91,36 +118,48 @@ for anything geo-specific. Fine for reading a named document.
 
 ---
 
-## THE REAL GAP — what to buy for
+## THE REAL GAP — and why the free answer beats the paid one
 
-Read this before evaluating a new tool.
+**No keyword tool reports usable data at the level we operate.** Ahrefs and Semrush both
+estimate from clickstream and both return zero for community terms. We build pages for
+"orchard hills house painters" and have no demand data for the exact terms the strategy
+rests on.
 
-**No keyword tool we have tested reports usable data at the level we operate.** Ahrefs and
-Semrush both estimate from clickstream and both return zero for community terms. We are
-building pages for "orchard hills house painters" and flying blind on demand for exactly
-the terms the strategy rests on.
+**Standing decision (2026-07-31): free tools only.** Paying $129/mo for Ahrefs Lite would,
+on the evidence, buy us the same zero.
 
-We have worked around it — Firecrawl shows the SERP is starved, which is a stronger buy
-signal than volume anyway. But it is a workaround.
+### The free tools that actually close it — and are not set up yet
 
-### Acceptance test for a new research tool
+| Tool | Cost | Why it beats a keyword tool | Status |
+|---|---|---|---|
+| **Google Search Console** | free | Reports **actual impressions for actual queries**, including the long tail below every tool's floor. The only thing that can measure a community term at all | ⬜ **not connected** |
+| **Bing Webmaster Tools** | free | Copilot is **50% of AI citations** and runs on Bing (M-06). Cheapest unclaimed win we have | ⬜ **not connected** |
+| **Google Business Profile** | free | Maps ranking, review engine, insights | ⚠️ pinned to Fontana |
 
-Do not adopt on a feature list. Run this:
+MEMORY.md already states the rule: **judge community pages on Search Console impressions,
+never on a keyword tool.** We just have not turned it on. That is the gap — not Ahrefs.
+
+Both need domain verification. Once the site moves to viphomepainting.com that has to be
+redone, so it is worth deciding the domain question first.
+
+### Acceptance test for any new research tool
+
+Do not adopt on a feature list. Run this, then write it up:
 
 1. **The community-term test.** Query `orchard hills house painters` and
-   `anaheim hills house painters`. Does it return a real number, a modelled estimate, or
-   zero? If zero, it is another clickstream panel and it does not close the gap. Say so
-   and keep it in Tier 2.
-2. **The geo test.** Does it return a SERP as seen *from* Anaheim, or a national one?
-   Non-negotiable — a national SERP is the wrong answer to every question we ask.
-3. **The AI-citation test.** Can it show which pages get cited by Copilot and Google AI
-   Mode specifically? ChatGPT-only visibility data is measuring 6% of the problem.
-4. **The decision test.** After one real city, write down what it changed. If nothing, it
-   is Tier 2 no matter how good the interface is.
+   `anaheim hills house painters`. Real number, modelled estimate, or zero? Zero means
+   another clickstream panel — Tier 2, say so plainly.
+2. **The geo test.** A SERP as seen *from* Anaheim, or a national one? A national SERP is
+   the wrong answer to every question we ask.
+3. **The AI-citation test.** Copilot and Google AI Mode specifically. ChatGPT-only
+   visibility measures 6% of the problem.
+4. **The decision test.** After one real city, write down what it changed. Nothing changed
+   means Tier 2, however good the interface.
+5. **The free test.** Standing rule now: is there a free tool that answers the same
+   question? For keyword demand there is, and it is Search Console.
 
-**Then write the result up** as `TOOL-EVAL-{NAME}.md` next to
-`TOOL-EVAL-AHREFS-ACTOR.md`, add a row here, and note it in `MEMORY.md`. A tool with no
-written evaluation does not get used in the pipeline.
+Write the result as `TOOL-EVAL-{NAME}.md`, add a row here, note it in `MEMORY.md`.
+**A tool with no written evaluation does not get used in the pipeline.**
 
 ### Worth checking Irvine against, once a better tool is connected
 

@@ -117,8 +117,13 @@ So: research Irvine and Newport for **organic and content** dominance. Research 
 >
 > **Tier 1, load-bearing** — Firecrawl · Apify Maps · Apify Ahrefs. Every finding that
 > rewrote the plan came from these three.
-> **Tier 2, useful but never decisive** — Semrush, WebSearch/WebFetch. Nothing in the
-> pipeline may depend on them, and nothing does.
+> **Tier 2, useful but never decisive** — keyword tools as a category, WebSearch/WebFetch.
+> Nothing in the pipeline may depend on them, and nothing does.
+>
+> **Standing decision 2026-07-31: free tools only.** The Ahrefs MCP is connected but every
+> paid endpoint returns `Insufficient plan`; we are not buying a plan. No keyword tool
+> resolves community terms anyway — the free answer is Search Console impressions, which is
+> not connected yet. See `TOOL-EVAL-AHREFS-MCP.md`.
 
 | Tool | Answers | Use it for | Do NOT |
 |---|---|---|---|
