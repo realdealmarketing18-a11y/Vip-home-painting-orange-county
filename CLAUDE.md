@@ -93,8 +93,20 @@ node generator/pipeline.js status                 # the board
 node generator/pipeline.js next marcus            # what's next, for whom
 node generator/validate-brief.js irvine           # the gate — checks the INPUT
 node generator/verify-site.js                     # the gate — checks the OUTPUT
+node generator/publish-wp.js irvine               # dry run: push pages to WordPress
 node generator/rank-check.js report               # ranking movement
 ```
+
+**github.io is the BUILD site, not the destination.** The real site is WordPress +
+Elementor on Hostinger at **viphomepainting.com**. Every page here carries
+`noindex,nofollow` — driven by `communities.json → config.staging` — so Google never
+indexes a staging twin we would then have to compete with. **At launch: set
+`staging: false`, point `siteBase` at the real domain, rebuild.** One edit.
+
+**The pages stay generated after the move.** `publish-wp.js` pushes them into WordPress
+on an Elementor **Canvas** template (no theme chrome, so our generic class names —
+`.body`, `.page`, `.ttl` — cannot collide with the theme). Elementor is for the pages
+Fabian designs by hand: home, about, contact, gallery. It never touches these.
 
 **Two gates, and the second one matters more.** `validate-brief.js` checks the brief;
 `verify-site.js` checks rendered HTML — dead and absolute links, banned copy, schema,
