@@ -325,6 +325,165 @@
         "note": "See your home in every color before a single brushstroke.",
         "days": 4
       }
+    },
+    {
+      "slug": "anaheim",
+      "name": "Anaheim",
+      "geo": {
+        "lat": 33.8366,
+        "lng": -117.9143
+      },
+      "wikipedia": "https://en.wikipedia.org/wiki/Anaheim,_California",
+      "market": {
+        "home_value_low": 1100000,
+        "home_value_high": 6200000,
+        "median_home_value": 1134500,
+        "median_household_income": null,
+        "year_built_range": "1979-1993 across the gated communities",
+        "market_rate_range": {
+          "low": 2.74,
+          "high": 4.89,
+          "source": "bestpaintingestimates.com 2026"
+        },
+        "hoa_prevalence": "common in the hillside communities; Anaheim publishes no official HOA register, so association details are verified per community",
+        "source": "homes.com median sale price, Anaheim Hills, 2026-08-02"
+      },
+      "pricing": {
+        "exterior_rate_per_paintable_sqft": 4.75,
+        "interior_rate_per_paintable_sqft": 3.25,
+        "typical_project_low": null,
+        "typical_project_high": null,
+        "rate_positioning": "premium",
+        "source": "PENDING real VIP job data",
+        "cost_answer_sentence": "VIP exterior work in Anaheim starts at $4.75 per square foot of paintable surface — the premium end of a local market that runs roughly $2.74 to $4.89. Every estimate is itemized line by line: preparation, primer, coating, trim and accents priced separately, never a single lump sum.",
+        "intro": "Anaheim is the market where we are asked about price first and most directly, and we would rather answer it in public than in a driveway. Here is the number, and here is exactly what moves it."
+      },
+      "palette_baseline": {
+        "colors": [
+          {
+            "role": "main_body",
+            "sw_name": "Alabaster",
+            "sw_code": "SW 7008",
+            "hex": "#EDEAE0"
+          },
+          {
+            "role": "trim",
+            "sw_name": "Accessible Beige",
+            "sw_code": "SW 7036",
+            "hex": "#D1C7B8"
+          },
+          {
+            "role": "gable",
+            "sw_name": "Urbane Bronze",
+            "sw_code": "SW 7048",
+            "hex": "#54504A"
+          },
+          {
+            "role": "front_door",
+            "sw_name": "Iron Ore",
+            "sw_code": "SW 7069",
+            "hex": "#434341"
+          }
+        ],
+        "trend_note": "Anaheim Hills sits above the basin on open, unshaded slopes, and the canyon light is harder than anything in Irvine. Warm whites that behave on a filtered street go noticeably brassy up here by mid-afternoon. That is the single most common reason a color chosen indoors disappoints outdoors in this city."
+      },
+      "layout": {
+        "module_order": [
+          "pricing",
+          "cost_of_wrong",
+          "communities",
+          "hoa",
+          "color_guide",
+          "spotlight",
+          "process",
+          "reviews_map"
+        ],
+        "hero_variant": "static"
+      },
+      "seo": {
+        "primary_keyword": "anaheim house painters",
+        "secondary_keywords": [
+          "anaheim hills house painters",
+          "exterior painting anaheim",
+          "anaheim painting company",
+          "peralta hills painters"
+        ],
+        "meta_title": "Anaheim House Painters | See Your Color First — VIP",
+        "meta_desc": "Anaheim exterior painting from $4.75 per square foot of paintable surface. See your own home rendered in every color before we paint. Itemized estimates.",
+        "h1": "Anaheim House Painters Who Show You the Color <span class=\"accent\">on Your Own Home</span> First",
+        "answer_capsule": "VIP Home Painting is a luxury residential painting company based in Anaheim, CA, serving Anaheim Hills and the surrounding hillside communities including Peralta Hills, Summit Pointe, Belsomet and Crown Pointe. We repaint exteriors, interiors and kitchen cabinets using Sherwin-Williams Emerald and Duration coatings applied with professional Graco and Titan airless equipment. Every project begins with a complimentary consultation in which our design team renders your actual home in each candidate palette, so you approve a color you have already seen on your own house. Exterior work starts at $4.75 per square foot of paintable surface, itemized line by line, backed by a 2-Year Warranty. Call (909) 312-5400.",
+        "viz_intro": "Pick a direction and tap through the palettes. The home below repaints itself in real time — the same thing our design team does with your actual elevation during a complimentary consultation, before a single gallon is tinted.",
+        "hero_eyebrow": "Anaheim, California"
+      },
+      "hero_story": {
+        "eyebrow": "Our Home Market",
+        "headline": "We Are Based in Anaheim. These Are the Streets We Drive Every Day.",
+        "kicker": "Anaheim Hills, Peralta Hills, and the gated communities above Santa Ana Canyon.",
+        "play_label": "Watch the Film",
+        "note": "A two-minute look at how the Custom Visualization Service works."
+      },
+      "faqs": [
+        {
+          "q": "How much does it cost to paint a house in Anaheim?",
+          "a": "Published rates for the area run roughly $2.74 to $4.89 per square foot of paintable surface. VIP Home Painting starts at $4.75 per square foot of paintable surface, at the premium end of that range. Paintable surface is the actual area being coated — walls, fascia, eaves, trim — measured on site, not your home's square footage. Every estimate is itemized so it can be compared honestly against any other bid. Call (909) 312-5400."
+        },
+        {
+          "q": "Do you serve Anaheim Hills specifically?",
+          "a": "Yes. Anaheim Hills and the hillside communities above Santa Ana Canyon are our closest work — VIP is based in Anaheim. That includes Peralta Hills, Summit Pointe, Belsomet and Crown Pointe, each of which we have written a dedicated page for because the light, the lot sizes and the housing stock genuinely differ between them."
+        },
+        {
+          "q": "Why does my paint color look different once it is on the house?",
+          "a": "Four reasons, and all of them are predictable. Scale makes a color read more saturated across a large wall than on a small card. Anaheim Hills sits on open, unshaded slopes where afternoon light is much harder than it is lower down, which pushes warm whites toward brass. Stucco texture casts micro-shadows that read deeper than flat paper. And the roof, stone and hardscape you are not repainting reflect their own color back onto the wall. That is why we render your actual elevation before anything is scheduled."
+        },
+        {
+          "q": "Do you handle the HOA design review paperwork?",
+          "a": "We prepare your community association's design review package as part of the project — colors identified by manufacturer, name and code, which color goes on which element, and a rendering of the proposed palette on your own home where your association accepts one. Requirements are set by each association individually, so we work from your association's current guidelines rather than assumptions."
+        },
+        {
+          "q": "What coatings do you use?",
+          "a": "Sherwin-Williams Emerald and Duration exterior systems, two coats at full wet-mil thickness and never over-thinned, applied with professional Graco and Titan airless equipment and back-rolled on stucco. Anaheim Hills exposure is hard on coatings — open slopes, long sun, and real temperature swings between canyon mornings and afternoons. Builder-grade paint chalks and fades years early up here. All work carries a 2-Year Warranty on labor and materials."
+        },
+        {
+          "q": "How long does an exterior repaint take?",
+          "a": "Most single-family exteriors run three to five working days depending on preparation, access and how many colors are in the scheme. Hillside lots with a downhill elevation take longer because the staging does. We sequence elevation by elevation so the home stays livable throughout, and finish with a raking-light inspection before sign-off."
+        }
+      ],
+      "child_communities": [
+        {
+          "name": "Peralta Hills",
+          "url": "/anaheim/peralta-hills/",
+          "tagline": "Acre-plus estates · equestrian · no streetlights by design"
+        },
+        {
+          "name": "Summit Pointe",
+          "url": "/anaheim/summit-pointe/",
+          "tagline": "Guard-gated · 243 homes · 180-degree views"
+        },
+        {
+          "name": "Belsomet",
+          "url": "/anaheim/belsomet/",
+          "tagline": "Guard-gated · 100 homes · canyon and city lights"
+        },
+        {
+          "name": "Crown Pointe",
+          "url": "/anaheim/crown-pointe/",
+          "tagline": "Private gated · sixteen homes total"
+        }
+      ],
+      "communities_intro": "Anaheim Hills is not one place. An acre-plus estate in Peralta Hills with no streetlights on the road and a 3,000-square-foot lot behind the Belsomet gate are different houses, different light, and different decisions. These are the four we know best.",
+      "color_guide_intro": "These four hold up in Anaheim Hills light specifically — open slopes, long afternoons, and far less shade than anywhere in Irvine. Every one of them gets rendered on your own elevation before you commit to it.",
+      "cost_of_wrong": {
+        "title": "A Wrong Color Costs the Whole Job <span class=\"accent\">Twice</span>",
+        "body": "A repaint you regret is not a touch-up. The surface has to be recoated in its entirety for the finish to be uniform, which means full preparation, full material and full labor a second time — four to seven thousand dollars for a typical Anaheim home, plus another stretch of weeks with the house staged. And almost nobody who ends up regretting a color ever looked at it on their own facade first."
+      },
+      "hoa_module": {
+        "intro": "Most of the gated communities above Santa Ana Canyon run some form of architectural review, and the requirements are set by each association individually — Anaheim publishes no central register the way some cities do. So we work from your association's own current guidelines rather than assumptions, and we prepare the submittal package as part of the project."
+      },
+      "spotlight": {
+        "eyebrow": "Why Anaheim Is Different",
+        "title": "Harder Light Than Anywhere in Irvine",
+        "body": "Anaheim Hills sits above the basin on open, largely unshaded slopes. There are no mature paseo canopies here filtering the afternoon the way Woodbury has. A warm white that behaves on a filtered Irvine street can go noticeably brassy on a west-facing Anaheim Hills elevation by two in the afternoon. It is the single most common reason a color chosen indoors disappoints outdoors in this city, and it is the entire reason we render your own elevation before anything is scheduled."
+      }
     }
   ]
 }

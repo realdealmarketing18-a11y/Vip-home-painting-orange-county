@@ -153,16 +153,28 @@ if (!siloBad) ok('no page links into another city\'s child pages');
 
 /* ---------- 5. nav + footer are the shared build ---------- */
 console.log('\n5. navigation');
-const WANT = ['Cities', 'Neighborhoods', 'Guides', 'Services'];
+/* Cities, Neighborhoods and Services exist for every city. Guides only exists
+   once that city has a pillar — a city without a guide should not fail, and
+   faking the menu to satisfy a checker would be worse than missing it. */
+const ALWAYS = ['Cities', 'Neighborhoods', 'Services'];
 let navBad = 0;
 for (const p of pages) {
   const html = read(p);
   const nav = (html.match(/<nav class="top-nav">([\s\S]*?)<\/nav>/) || [])[1] || '';
   const cats = (nav.match(/<summary>([^<]*)<\/summary>/g) || []).map(s => s.replace(/<[^>]*>/g, ''));
-  if (JSON.stringify(cats) !== JSON.stringify(WANT)) { bad(`${p.rel}: nav is ${JSON.stringify(cats)}`); navBad++; }
+  const hasPillar = (BLOG.pillars || []).some(x => x.city_slug === p.city);
+  const want = hasPillar ? ['Cities', 'Neighborhoods', 'Guides', 'Services'] : ALWAYS;
+  if (JSON.stringify(cats) !== JSON.stringify(want)) {
+    bad(`${p.rel}: nav is ${JSON.stringify(cats)}, expected ${JSON.stringify(want)}`);
+    navBad++;
+  }
   if (!/<div class="f-col-label">/.test(html)) { bad(`${p.rel}: no footer columns`); navBad++; }
 }
-if (!navBad) ok(`all ${pages.length} pages carry the same four nav categories and the shared footer`);
+if (!navBad) {
+  const withGuide = [...new Set(pages.filter(p => (BLOG.pillars || []).some(x => x.city_slug === p.city)).map(p => p.city))];
+  ok(`all ${pages.length} pages carry the shared nav and footer`);
+  ok(`Guides menu present only where a pillar exists (${withGuide.join(', ') || 'none'})`);
+}
 
 /* ---------- 6. every pillar card has a real article ---------- */
 console.log('\n6. pillar → cluster');

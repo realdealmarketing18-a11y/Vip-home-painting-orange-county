@@ -520,11 +520,13 @@ function jsonLd(c, url) {
 /* ---------------- PAGE ---------------- */
 
 function buildPage(c) {
-  const url = `${CFG.siteBase}/${CFG.outputDir}/${c.slug}/`;
+  /* a community belongs to exactly one city — see communities.json city field */
+  const cityDir = c.city || CFG.outputDir;
+  const url = `${CFG.siteBase}/${cityDir}/${c.slug}/`;
   const A = CFG.assetBase;
 
   /* One nav for every page type — four categories, built in site-nav.js. */
-  const navLinks = topNav(navCtx(`/${CFG.outputDir}/${c.slug}/`, CFG.outputDir, A));
+  const navLinks = topNav(navCtx(`/${cityDir}/${c.slug}/`, cityDir, A));
 
   const modules = c.moduleOrder
     .map((k, i) => MODULE_BUILDERS[k](c, i + 2, POSITION_BG[i]))
@@ -672,7 +674,7 @@ ${faqSection(c, c.moduleOrder.length + 3)}
   </section>
 
   <!-- ============ FOOTER ============ -->
-${buildFooter(navCtx(`/${CFG.outputDir}/${c.slug}/`, CFG.outputDir, A))}
+${buildFooter(navCtx(`/${cityDir}/${c.slug}/`, cityDir, A))}
 
 </div>
 ${NAV_SCRIPT}
@@ -1683,7 +1685,7 @@ function buildSitemap() {
     ...CITIES.cities.flatMap(c => c.hoa_page ? [{ loc: `${CFG.siteBase}/${c.slug}/${c.hoa_page.slug}/`, priority: '0.85' }] : []),
     ...BLOG.pillars.map(p => ({ loc: `${CFG.siteBase}/${p.city_slug}/${p.slug}/`, priority: '0.8' })),
     ...BLOG.pillars.flatMap(p => (p.cluster || []).map(a => ({ loc: `${CFG.siteBase}/${a.city_slug}/${a.pillar_slug}/${a.slug}/`, priority: '0.7' }))),
-    ...DATA.communities.map(c => ({ loc: `${CFG.siteBase}/${CFG.outputDir}/${c.slug}/`, priority: '0.9' }))
+    ...DATA.communities.map(c => ({ loc: `${CFG.siteBase}/${c.city || CFG.outputDir}/${c.slug}/`, priority: '0.9' }))
   ];
   const entries = urls.map(u => `  <url>
     <loc>${u.loc}</loc>
@@ -1765,12 +1767,12 @@ function validate() {
 function main() {
   validate();
   for (const c of DATA.communities) {
-    const dir = path.join(ROOT, CFG.outputDir, c.slug);
+    const dir = path.join(ROOT, c.city || CFG.outputDir, c.slug);
     fs.mkdirSync(dir, { recursive: true });
     const html = buildPage(c);
     auditOutput(html, `irvine/${c.slug}`);
     fs.writeFileSync(path.join(dir, 'index.html'), html, 'utf8');
-    console.log(`  ✓ ${CFG.outputDir}/${c.slug}/index.html  [${c.moduleOrder.join(' → ')}]`);
+    console.log(`  ✓ ${c.city || CFG.outputDir}/${c.slug}/index.html  [${c.moduleOrder.join(' → ')}]`);
   }
   for (const city of CITIES.cities) {
     const dir = path.join(ROOT, city.slug);

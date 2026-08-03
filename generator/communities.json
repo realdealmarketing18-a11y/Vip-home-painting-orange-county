@@ -102,7 +102,8 @@
         "play_label": "Watch the Film",
         "note": "Hillside light changes everything. See yours before we paint it.",
         "days": 5
-      }
+      },
+      "city": "irvine"
     },
     {
       "slug": "altair",
@@ -191,7 +192,8 @@
         "play_label": "Watch the Film",
         "note": "On broad stucco planes there is nowhere for a mediocre finish to hide.",
         "days": 5
-      }
+      },
+      "city": "irvine"
     },
     {
       "slug": "portola-springs",
@@ -280,7 +282,8 @@
         "play_label": "Watch the Film",
         "note": "Modernize the builder palette without guessing at the result.",
         "days": 4
-      }
+      },
+      "city": "irvine"
     },
     {
       "slug": "hidden-canyon",
@@ -369,7 +372,8 @@
         "play_label": "Watch the Film",
         "note": "Gate clearance, crew briefing, and a founder-signed walkthrough.",
         "days": 5
-      }
+      },
+      "city": "irvine"
     },
     {
       "slug": "woodbury",
@@ -458,7 +462,8 @@
         "play_label": "Watch the Film",
         "note": "Factory-finish cabinets, sprayed off-site in urethane enamel.",
         "days": 4
-      }
+      },
+      "city": "irvine"
     },
     {
       "slug": "stonegate",
@@ -547,6 +552,359 @@
         "play_label": "Watch the Film",
         "note": "One repaint visibly resets the standard for the block.",
         "days": 4
+      },
+      "city": "irvine"
+    },
+    {
+      "city": "anaheim",
+      "slug": "peralta-hills",
+      "name": "Peralta Hills",
+      "title": "Peralta Hills Estate Painters, Anaheim | VIP Home Painting",
+      "metaDescription": "Peralta Hills estate painting on acre-plus grounds. See your home rendered in every color before we paint. Itemized estimates, 2-Year Warranty.",
+      "primaryKeyword": "peralta hills painters",
+      "vizIntro": "Pick a direction and tap through the palettes — the home below repaints itself in real time. Our design team does exactly this with your own elevation, at no cost, before anything is scheduled.",
+      "heroEyebrow": "Peralta Hills · Anaheim",
+      "h1": "Peralta Hills Estate Painting — <span class=\"accent\">See It on Your Own Acre</span> First",
+      "heroKicker": "One-acre minimums, custom homes, and a road with no streetlights on it.",
+      "capsule": "VIP Home Painting provides estate exterior and interior painting for Peralta Hills in Anaheim, CA — the city's historic estate enclave, where lots run to a one-acre minimum, equestrian use is permitted, and the streets were built without streetlights, curbs or gutters by design. We repaint grand custom homes and Mediterranean villas using Sherwin-Williams Emerald and Duration systems applied with professional Graco and Titan airless equipment. Every project begins with a complimentary consultation in which your actual home is rendered in each candidate palette. Exterior work starts at $4.75 per square foot of paintable surface, itemized line by line, backed by a 2-Year Warranty. Call (909) 312-5400.",
+      "context": {
+        "intro": "Peralta Hills was laid out to feel semi-rural and still does. One-acre minimum lots, equestrian allowances, and no streetlights, curbs or gutters — not an oversight, a design decision, and it is the thing that makes painting here genuinely different.",
+        "hoaNote": "Peralta Hills has its own association, the Peralta Hills Estates Improvement Association. We prepare the design review package as part of the project, working from your association's current guidelines rather than assumptions."
+      },
+      "moduleOrder": [
+        "specs",
+        "colorGuide",
+        "portfolio",
+        "problemSolution",
+        "process"
+      ],
+      "geo": {
+        "lat": 33.8447,
+        "lng": -117.7855
+      },
+      "faqs": [
+        {
+          "q": "What makes painting a Peralta Hills estate different?",
+          "a": "Two things, and both come from how the neighborhood was built. Acre-plus grounds mean the house is seen from a distance across open land rather than from a sidewalk twenty feet away, so the body color carries far more of the impression than the trim does. And because Peralta Hills has no streetlights by design, the only light on your house after dark is what you install — a color is judged in full daylight and in near-darkness, with very little in between."
+        },
+        {
+          "q": "How much does it cost to paint a home in Peralta Hills?",
+          "a": "VIP exterior work starts at $4.75 per square foot of paintable surface, against a local market running roughly $2.74 to $4.89. Peralta Hills homes are custom and vary enormously, so paintable surface is measured on site elevation by elevation rather than estimated from square footage. Every estimate is itemized — preparation, primer, coating, trim and accents priced separately. Call (909) 312-5400."
+        },
+        {
+          "q": "Do you handle the Peralta Hills association submittal?",
+          "a": "Yes. Peralta Hills has its own association, the Peralta Hills Estates Improvement Association. We prepare the design review package as part of the project: every color identified by manufacturer, name and code, which color goes on which element, and a rendering of the proposed palette on your actual home. We work from your association's current guidelines rather than assumptions."
+        },
+        {
+          "q": "Can you work around horses and livestock on the property?",
+          "a": "Yes. Equestrian use is permitted in Peralta Hills and a number of properties have stables, arenas or paddocks. We sequence work and containment so animals are not exposed to spray drift or fumes, keep equipment clear of paddock access, and agree the working order with you before the crew arrives."
+        },
+        {
+          "q": "What coatings do you use on an estate exterior?",
+          "a": "Sherwin-Williams Emerald and Duration, two coats at full wet-mil thickness and never over-thinned, sprayed and back-rolled on stucco with Graco and Titan airless equipment. On an acre-plus property with long unbroken elevations, film thickness is what determines whether the finish still looks even in eight years. All work carries a 2-Year Warranty on labor and materials."
+        }
+      ],
+      "extraColors": [
+        {
+          "name": "Shoji White",
+          "code": "SW 7042",
+          "hex": "#E6DFD3",
+          "note": "A warm greige that holds its composure on wide, sun-exposed estate elevations where a brighter white would glare."
+        },
+        {
+          "name": "Urbane Bronze",
+          "code": "SW 7048",
+          "hex": "#54504A",
+          "note": "For fascia, ironwork and the deep accents that read from across an acre of open ground."
+        }
+      ],
+      "problems": [
+        {
+          "problem": "The house is seen from two hundred feet, not twenty.",
+          "solution": "On acre-plus grounds the body color does almost all the work and the trim reads as detail. We render the full elevation at distance, not just a swatch close up, so you are judging what the road actually sees."
+        },
+        {
+          "problem": "No streetlights means no forgiving light after dark.",
+          "solution": "Peralta Hills was built without streetlights on purpose. We look at candidate palettes in daylight and against your own exterior lighting, because those are the only two conditions the house is ever seen in."
+        },
+        {
+          "problem": "Custom homes have no standard elevation to price from.",
+          "solution": "Paintable surface is measured on site, elevation by elevation, and the estimate is itemized line by line. No lump sums and no figure computed from your interior square footage."
+        }
+      ],
+      "portfolio": {
+        "intro": "Estate exteriors, interiors and cabinetry across Anaheim Hills."
+      },
+      "cabinetLine": "Cabinet doors and drawers are sprayed off-site in Sherwin-Williams urethane enamel for a hard, showroom-smooth finish, then rehung — no brush marks, no lingering odor in the house.",
+      "hero_story": {
+        "eyebrow": "Peralta Hills",
+        "headline": "The Road Has No Streetlights. That Changes How You Choose a Color.",
+        "kicker": "One-acre minimums, custom homes, and light you cannot borrow from anywhere else.",
+        "play_label": "Watch the Film"
+      }
+    },
+    {
+      "city": "anaheim",
+      "slug": "summit-pointe",
+      "name": "Summit Pointe",
+      "title": "Summit Pointe Anaheim Hills House Painters | VIP",
+      "metaDescription": "Summit Pointe house painting in Anaheim Hills. Guard-gated, built 1991 — see your home in every color before we paint. Itemized estimates.",
+      "primaryKeyword": "summit pointe anaheim hills painters",
+      "vizIntro": "Pick a direction and tap through the palettes. The home below repaints itself in real time — the same thing our design team does with your own elevation before anything is scheduled.",
+      "heroEyebrow": "Summit Pointe · Anaheim Hills",
+      "h1": "Summit Pointe Painting — <span class=\"accent\">See the Color Before</span> the Crew Arrives",
+      "heroKicker": "Guard-gated, 243 homes, and views that show every elevation from a distance.",
+      "capsule": "VIP Home Painting serves Summit Pointe, the guard-gated community of 243 homes in Anaheim Hills, CA. Built in 1991, Summit Pointe homes are now several repaint cycles on from their original builder palette. We repaint exteriors, interiors and kitchen cabinets using Sherwin-Williams Emerald and Duration coatings applied with professional Graco and Titan airless spray equipment, and every project starts with a complimentary consultation in which your actual home is rendered in each candidate palette. Exterior work starts at $4.75 per square foot of paintable surface, itemized line by line, backed by a 2-Year Warranty. Call (909) 312-5400.",
+      "context": {
+        "intro": "Summit Pointe was built in 1991 — which means most homes here are on their third owner and well past the point where the original builder palette still looks deliberate. With 243 homes behind one gate and panoramic views off many of them, an elevation here is seen from further away and by more neighbors than almost anywhere in the city.",
+        "hoaNote": "Summit Pointe runs under a community association. We prepare the design review package as part of the project, working from your association's current guidelines."
+      },
+      "moduleOrder": [
+        "colorGuide",
+        "portfolio",
+        "problemSolution",
+        "process",
+        "specs"
+      ],
+      "geo": {
+        "lat": 33.8556,
+        "lng": -117.7385
+      },
+      "faqs": [
+        {
+          "q": "How much does it cost to paint a house in Summit Pointe?",
+          "a": "VIP exterior work starts at $4.75 per square foot of paintable surface, against a local market of roughly $2.74 to $4.89. Summit Pointe lots run about 3,400 to just over 7,000 square feet, so paintable surface is measured on site rather than assumed. Every estimate is itemized — preparation, primer, coating, trim and accents priced separately. Call (909) 312-5400."
+        },
+        {
+          "q": "My home still has the original 1991 colors. Is that a problem?",
+          "a": "It is the most common situation in Summit Pointe and it is not a problem — it is an opportunity most owners underuse. A repaint that simply refreshes the builder palette costs almost exactly the same as one that changes it. Since you are paying for the preparation and the coating either way, the only question worth asking is whether the color is the one you actually want for the next eight years."
+        },
+        {
+          "q": "Do the panoramic views change how I should choose a color?",
+          "a": "They change who sees it. Many Summit Pointe homes have 180-degree exposure, which means your elevation is visible from well beyond your own street. Colors that read as subtle from the driveway can read very differently at distance, so we render the full elevation rather than showing you a close-up swatch."
+        },
+        {
+          "q": "Can you work inside a guard-gated community?",
+          "a": "Yes. Summit Pointe is guard-gated, and we handle gate clearance for the crew and any deliveries as part of scheduling — vehicle details and crew names provided in advance, so nothing arrives unannounced at the gate. Materials are staged on your property, not on the street."
+        },
+        {
+          "q": "What coatings do you use?",
+          "a": "Sherwin-Williams Emerald and Duration exterior systems, two coats at full wet-mil thickness, sprayed and back-rolled on stucco with Graco and Titan airless equipment. Anaheim Hills sits on open slopes with long afternoon sun, which is hard on coatings — builder-grade paint chalks and fades years early up here. All work carries a 2-Year Warranty on labor and materials."
+        }
+      ],
+      "extraColors": [
+        {
+          "name": "Accessible Beige",
+          "code": "SW 7036",
+          "hex": "#D1C7B8",
+          "note": "A warm neutral that reads as considered rather than builder-default, and holds up under open hillside sun."
+        },
+        {
+          "name": "Peppercorn",
+          "code": "SW 7674",
+          "hex": "#6C6B66",
+          "note": "For fascia and accent volumes where a 1991 elevation needs definition it never originally had."
+        }
+      ],
+      "problems": [
+        {
+          "problem": "The 1991 builder palette still on most of the street.",
+          "solution": "A color change costs nearly the same as a refresh, because you are paying for preparation and coating either way. We show you both on your own elevation before you decide."
+        },
+        {
+          "problem": "Your home is visible from well outside your street.",
+          "solution": "With 180-degree views off many Summit Pointe homes, we render the full elevation at distance rather than showing a swatch, so you judge what the neighborhood actually sees."
+        },
+        {
+          "problem": "Getting a crew and materials through a guarded gate.",
+          "solution": "Vehicle details and crew names go to the gate in advance, deliveries are scheduled, and everything stages on your property rather than the street."
+        }
+      ],
+      "portfolio": {
+        "intro": "Exteriors, interiors and cabinetry across the gated communities of Anaheim Hills."
+      },
+      "cabinetLine": "Cabinet doors and drawers are sprayed off-site in Sherwin-Williams urethane enamel for a factory-smooth finish — the single highest-impact change available in a 1991 kitchen without replacing the boxes.",
+      "hero_story": {
+        "eyebrow": "Summit Pointe",
+        "headline": "Built in 1991. Most of the Street Is Still Wearing the Builder's Choice.",
+        "kicker": "A color change costs almost exactly what a refresh costs. Worth knowing before you decide.",
+        "play_label": "Watch the Film"
+      }
+    },
+    {
+      "city": "anaheim",
+      "slug": "belsomet",
+      "name": "Belsomet",
+      "title": "Belsomet Anaheim Hills House Painters | VIP Home Painting",
+      "metaDescription": "Belsomet house painting in Anaheim Hills — guard-gated, 100 homes. See your home rendered in every color first. Itemized estimates, 2-Year Warranty.",
+      "primaryKeyword": "belsomet anaheim hills painters",
+      "vizIntro": "Pick a direction and tap through the palettes — the home repaints itself in real time. Our design team does the same with your own elevation, at no cost, before anything is scheduled.",
+      "heroEyebrow": "Belsomet · Anaheim Hills",
+      "h1": "Belsomet House Painting — <span class=\"accent\">One Hundred Homes,</span> and Yours Is Seen by All of Them",
+      "heroKicker": "Guard-gated, built 1993, canyon and city-light views.",
+      "capsule": "VIP Home Painting serves Belsomet, the guard-gated community of roughly 100 homes in Anaheim Hills, CA. Built in 1993 on standard residential parcels with canyon, mountain and city-light views, Belsomet homes are now three decades on from their original finish. We repaint exteriors, interiors and kitchen cabinets using Sherwin-Williams Emerald and Duration systems applied with professional Graco and Titan airless equipment, and every project begins with a complimentary consultation in which your actual home is rendered in each candidate palette. Exterior work starts at $4.75 per square foot of paintable surface, itemized line by line, backed by a 2-Year Warranty. Call (909) 312-5400.",
+      "context": {
+        "intro": "Belsomet is small — around a hundred homes behind the gate, on Bridgewood Drive and the courts and circles off it. On a community that size, a repaint is not a private decision. Every neighbor sees it, and it visibly resets what the standard looks like.",
+        "hoaNote": "Belsomet runs under a community association. We prepare the design review package as part of the project, working from your association's current guidelines rather than assumptions."
+      },
+      "moduleOrder": [
+        "problemSolution",
+        "colorGuide",
+        "portfolio",
+        "specs",
+        "process"
+      ],
+      "geo": {
+        "lat": 33.8531,
+        "lng": -117.7442
+      },
+      "faqs": [
+        {
+          "q": "How much does it cost to paint a house in Belsomet?",
+          "a": "VIP exterior work starts at $4.75 per square foot of paintable surface, against a local market of roughly $2.74 to $4.89. Belsomet parcels run about 3,000 to 4,200 square feet, so homes here are closer together and paintable surface is measured on site. Every estimate is itemized — preparation, primer, coating, trim and accents priced separately. Call (909) 312-5400."
+        },
+        {
+          "q": "The homes are close together. Is overspray a risk?",
+          "a": "It is the risk worth taking seriously in Belsomet, and it is a containment question rather than a spraying question. On parcels of this size we mask and shield to the property line, protect neighboring vehicles, walls and planting, and schedule spray work around wind rather than against it. Back-rolling on stucco also puts the coating into the texture rather than leaving it airborne."
+        },
+        {
+          "q": "My home was built in 1993 and has never been fully repainted. Where do we start?",
+          "a": "With the substrate, not the color. After three decades, hairline stucco cracking is normal and does not mean anything structural is wrong — but every crack has to be opened, filled and floated to match the surrounding texture or it telegraphs through the new coating within a season. Anywhere the original coating has chalked or failed needs bonding primer before topcoat. That work is what decides whether the finish lasts eight years or three."
+        },
+        {
+          "q": "Do the canyon and city-light views affect color choice?",
+          "a": "They affect when the house is seen. Belsomet elevations catch canyon and mountain light through the day and city lights after dark, so a color is being judged across a much wider range of conditions than a flat inland street. We render your elevation rather than relying on a swatch chosen indoors."
+        },
+        {
+          "q": "Can you get a crew through the gate?",
+          "a": "Yes. Belsomet is guard-gated. Vehicle details and crew names go to the gate in advance and deliveries are scheduled, so nothing arrives unannounced. Materials stage on your property rather than on the street."
+        }
+      ],
+      "extraColors": [
+        {
+          "name": "Snowbound",
+          "code": "SW 7004",
+          "hex": "#EDEAE4",
+          "note": "A cool white with a slight gray undertone — Sherwin-Williams' own description — which suits canyon light better than a creamy white does."
+        },
+        {
+          "name": "Dorian Gray",
+          "code": "SW 7017",
+          "hex": "#ACA79E",
+          "note": "A mid neutral that gives a 1993 elevation definition without fighting the view behind it."
+        }
+      ],
+      "problems": [
+        {
+          "problem": "A hundred homes. Everyone sees the result.",
+          "solution": "On a community this size a repaint resets the standard for the street. We render your own elevation first so the decision is made by looking rather than imagining."
+        },
+        {
+          "problem": "Parcels are close together and overspray is a real risk.",
+          "solution": "Masking and shielding to the property line, neighboring cars, walls and planting protected, and spray work scheduled around wind rather than against it."
+        },
+        {
+          "problem": "Thirty years of hairline stucco cracking.",
+          "solution": "Every crack opened, filled and floated to match the existing texture, and bonding primer anywhere the original coating has chalked or failed. That is what the finish actually rests on."
+        }
+      ],
+      "portfolio": {
+        "intro": "Exteriors, interiors and cabinetry across the guard-gated communities of Anaheim Hills."
+      },
+      "cabinetLine": "Cabinet doors and drawers are sprayed off-site in Sherwin-Williams urethane enamel for a factory-smooth finish, then rehung — the highest-impact change available in a 1993 kitchen with sound boxes.",
+      "hero_story": {
+        "eyebrow": "Belsomet",
+        "headline": "One Hundred Homes Behind the Gate. Yours Is Seen by Every One of Them.",
+        "kicker": "Which is why the color is worth being certain about before the crew arrives.",
+        "play_label": "Watch the Film"
+      }
+    },
+    {
+      "city": "anaheim",
+      "slug": "crown-pointe",
+      "name": "Crown Pointe",
+      "title": "Crown Pointe Anaheim House Painters | Sixteen Homes | VIP",
+      "metaDescription": "Crown Pointe Anaheim house painting — a private gated community of sixteen homes. See your color rendered on your own home first. Itemized estimates.",
+      "primaryKeyword": "crown pointe anaheim painters",
+      "vizIntro": "Pick a direction and tap through the palettes. The home below repaints itself in real time — exactly what our design team does with your own elevation, at no cost, before anything is scheduled.",
+      "heroEyebrow": "Crown Pointe · Anaheim",
+      "h1": "Crown Pointe Painting — <span class=\"accent\">Sixteen Homes.</span> Everyone Will Notice.",
+      "heroKicker": "A private gated community small enough that one repaint changes the whole street.",
+      "capsule": "VIP Home Painting serves Crown Pointe, the private gated community of just sixteen homes on S Crown Pointe Drive in Anaheim, CA. On a community this small, one exterior repaint visibly resets the standard for the entire street. We repaint exteriors, interiors and kitchen cabinets using Sherwin-Williams Emerald and Duration coatings applied with professional Graco and Titan airless spray equipment, and every project begins with a complimentary consultation in which your actual home is rendered in each candidate palette. Exterior work starts at $4.75 per square foot of paintable surface, itemized line by line, backed by a 2-Year Warranty. Call (909) 312-5400.",
+      "context": {
+        "intro": "Crown Pointe is sixteen homes. Not sixteen on your block — sixteen in the whole community, on S Crown Pointe Drive. That is small enough that every owner knows every house, and small enough that one repaint is genuinely conspicuous.",
+        "hoaNote": "We prepare your association's design review package as part of the project, working from its current guidelines rather than assumptions."
+      },
+      "moduleOrder": [
+        "process",
+        "portfolio",
+        "specs",
+        "colorGuide",
+        "problemSolution"
+      ],
+      "geo": {
+        "lat": 33.8478,
+        "lng": -117.7509
+      },
+      "faqs": [
+        {
+          "q": "How much does it cost to paint a house in Crown Pointe?",
+          "a": "VIP exterior work starts at $4.75 per square foot of paintable surface, against a local market of roughly $2.74 to $4.89. Paintable surface is the actual area being coated — walls, fascia, eaves, trim — measured on site rather than taken from your home's square footage. Every estimate is itemized: preparation, primer, coating, trim and accents priced separately, never a lump sum. Call (909) 312-5400."
+        },
+        {
+          "q": "With only sixteen homes, will a new color stand out too much?",
+          "a": "It will stand out — that is unavoidable in a community this size, and it is exactly why the decision is worth getting right rather than rushing. The useful question is not whether people will notice but whether what they notice looks deliberate. Seeing the finished palette rendered on your own elevation before anything is scheduled is what turns that from a gamble into a decision."
+        },
+        {
+          "q": "Will the work disturb the other homes?",
+          "a": "Sixteen homes means short driveways and close neighbors, so containment matters more here than the spraying does. We mask and shield to the property line, protect neighboring vehicles, walls and planting, keep the street clear, and schedule spray work around wind. Materials stage on your property."
+        },
+        {
+          "q": "How long will it take?",
+          "a": "Most single-family exteriors here run three to five working days depending on preparation and how many colors are in the scheme. We sequence elevation by elevation so the home stays fully livable, and finish with a raking-light inspection before sign-off — the light angle that shows any missed detail."
+        },
+        {
+          "q": "What coatings do you use?",
+          "a": "Sherwin-Williams Emerald and Duration exterior systems, two coats at full wet-mil thickness and never over-thinned, sprayed and back-rolled on stucco with Graco and Titan airless equipment. All work carries a 2-Year Warranty on labor and materials."
+        }
+      ],
+      "extraColors": [
+        {
+          "name": "Alabaster",
+          "code": "SW 7008",
+          "hex": "#EDEAE0",
+          "note": "The most-requested warm white in Orange County — and one that needs checking against hard afternoon light before you commit to it here."
+        },
+        {
+          "name": "Iron Ore",
+          "code": "SW 7069",
+          "hex": "#434341",
+          "note": "For doors, shutters and ironwork — the accent that reads instantly on a short, tight street."
+        }
+      ],
+      "problems": [
+        {
+          "problem": "Sixteen homes. There is nowhere to hide a mistake.",
+          "solution": "On a street this small the repaint is conspicuous either way. We render the finished palette on your own elevation first, so what the neighbors notice is that it looks deliberate."
+        },
+        {
+          "problem": "Close neighbors and a short private street.",
+          "solution": "Masking and shielding to the property line, neighboring cars and planting protected, the street kept clear, and spray work scheduled around wind."
+        },
+        {
+          "problem": "A lump-sum quote you cannot compare against anything.",
+          "solution": "Every estimate is broken out line by line — preparation, primer, coating, trim, accents — so it can be set against any other bid honestly."
+        }
+      ],
+      "portfolio": {
+        "intro": "Exteriors, interiors and cabinetry across Anaheim and the hillside communities."
+      },
+      "cabinetLine": "Cabinet doors and drawers are sprayed off-site in Sherwin-Williams urethane enamel for a hard, factory-smooth finish, then rehung — no brush marks and no lingering odor in the house.",
+      "hero_story": {
+        "eyebrow": "Crown Pointe",
+        "headline": "Sixteen Homes in the Whole Community. Everyone Will See It.",
+        "kicker": "Which is a good reason to look at the color on your own house before anyone else does.",
+        "play_label": "Watch the Film"
       }
     }
   ]
