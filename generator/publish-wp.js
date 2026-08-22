@@ -248,7 +248,13 @@ const findBySlug = async (slug, parent) => {
         rank_math_description: x.description,
         rank_math_canonical_url: wpPageUrl,
         rank_math_robots: /noindex/i.test(x.robots) ? ['noindex', 'nofollow'] : ['index', 'follow'],
-        rank_math_rich_snippet: 'off'
+        rank_math_rich_snippet: 'off',
+        /* Tells wp-mu-plugins/vip-generated-pages.php to leave this page alone:
+           no wpautop (it injects <p> tags inside our <style> block and silently
+           kills CSS parsing) and no theme stylesheet (it overrides our fonts and
+           layout even under Elementor Canvas). Without this flag the page
+           publishes and renders as unstyled fragments. */
+        _vip_generated: '1'
       }
     };
 
