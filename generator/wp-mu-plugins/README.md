@@ -78,6 +78,26 @@ the DOM and still not parse:
 // true = our stylesheet parsed
 ```
 
+## Re-registering the assets in the Media library
+
+The 146 files under `wp-content/uploads/vip-assets/` are served as static files. They were
+also registered as WordPress attachments so they appear in **Media**, but this must be done
+with intermediate size generation **off**:
+
+```php
+add_filter( 'intermediate_image_sizes_advanced', '__return_empty_array', 99 );
+add_filter( 'big_image_size_threshold', '__return_false', 99 );
+```
+
+**Why this is not optional.** `wp_generate_attachment_metadata()` writes resized copies into
+the same folder. The visualizer probes that folder by filename (`scheme-obsidian.jpg`,
+`premium-limestone-pillars--ibiza.jpg`), so extra files there are not harmless clutter — and
+a scanner that re-reads the folder will register its own thumbnails and recurse. That
+happened once: 146 files became 511 before it was caught.
+
+To undo a bad run, delete the attachment rows with **direct SQL**, not
+`wp_delete_attachment()` — that function deletes the file too and will take the originals.
+
 ## If a page ever renders as unstyled text again
 
 In order of likelihood:

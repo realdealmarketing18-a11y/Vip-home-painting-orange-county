@@ -97,6 +97,34 @@ through the Write/Edit tool or a scratchpad `.js` file, never through a shell ar
 of any shape.** Read the file back afterwards; the corruption is silent.
 *Own error, 2026-07-31 — repeat of F-05 and F-14.*
 
+### F-16 · Scope assets by what the code *builds*, not by what the markup *shows*
+Two failures from one root cause, both found by Fabian, not by me.
+
+**a) Only 3 of 11 scheme photos were uploaded.** I scoped the asset copy by scanning the
+rendered markup. But the visualizer constructs its filenames at runtime from two JS arrays
+— 11 schemes × 9 options — so 99 combination images (`premium-limestone-pillars--ibiza.jpg`)
+appear nowhere in the HTML. Clicking a colour scheme silently fell back to an Unsplash
+placeholder. **When a page builds URLs in JS, the asset list comes from the same arrays the
+JS iterates — never from a DOM scan.**
+
+**b) Registering those files as WP attachments started a runaway loop.**
+`wp_generate_attachment_metadata()` writes resized copies *next to the original*. My
+scanner then saw those as new sources and registered them too, generating thumbnails of
+thumbnails: 146 files became 511, and names like
+`hero-poster-1024x685-768x514-300x201-150x150.jpg` appeared. Caught at 224 attachments.
+**Two rules:** never let WordPress generate intermediate sizes inside a directory the site
+probes by filename — pass `intermediate_image_sizes_advanced → __return_empty_array` and
+`big_image_size_threshold → __return_false`; and never let a scan-then-write job re-read
+its own output directory. Cleanup had to use direct SQL, because `wp_delete_attachment()`
+deletes the underlying file and would have taken the originals with it.
+
+**c) The debugging trap that cost the most time.** The Browser pane runs `hidden`, so
+`requestAnimationFrame` never fires — and the crossfade applies its `.show` class inside a
+rAF callback. Clicks looked like they were failing every other time. That was the harness,
+not the site. **Any verification of rAF-driven behaviour in this environment must shim
+`requestAnimationFrame` to a timer first, or it reports phantom bugs.**
+*Own error, 2026-08-22.*
+
 ---
 
 # PART 2 · RESEARCH FINDINGS
