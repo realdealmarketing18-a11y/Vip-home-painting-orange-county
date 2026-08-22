@@ -260,4 +260,66 @@ function buildFooter(ctx) {
   </footer>`;
 }
 
-module.exports = { linker, liveCities, topNav, buildFooter, NAV_SCRIPT };
+/* The county page needs a different footer from a city page: it sits above all
+   the cities rather than inside one, so it gets a column per live city instead
+   of one "Cities We Serve" list.
+
+   Its hand-written footer was how 18 dead links reached the front page — links
+   to /newport-beach-painting/, /exterior-painting/, /estimate/ and a dozen more
+   that were never built, plus /hidden-hills-painting/ and
+   /rancho-cucamonga-painting/, which are not even Orange County. Building it
+   from the same data as everything else means a link can only exist if the page
+   does. Never hand-write a link into this footer again. */
+function buildCountyFooter(ctx) {
+  const { CFG, esc, CITIES } = ctx;
+  const L = ctx.link;                       // '/irvine/' -> '../irvine/'
+  const cities = liveCities(CITIES);
+
+  const cityCols = cities.map(c => {
+    const full = (CITIES.cities || []).find(x => x.slug === c.slug) || {};
+    const kids = (full.child_communities || []).filter(v => v.url && v.name);
+    return `
+        <nav class="f-col" aria-label="${esc(c.name)} pages">
+          <div class="f-col-label">${esc(c.name)}</div>
+          <ul class="f-links">
+            <li><a href="${L(c.url)}"><b>All ${esc(c.name)} Home Painting</b></a></li>
+            ${kids.map(v => `<li><a href="${L(v.url)}">${esc(v.name)}</a></li>`).join('\n            ')}
+            ${full.hoa_page ? `<li><a href="${L(`/${c.slug}/${full.hoa_page.slug}/`)}">HOA &amp; Common-Area Painting</a></li>` : ''}
+          </ul>
+        </nav>`;
+  });
+
+  /* Services point at sections of this page, because that is where they live.
+     A link to /exterior-painting/ would be a promise of a page we do not have. */
+  const servicesCol = `
+        <nav class="f-col" aria-label="Premium services">
+          <div class="f-col-label">Premium Services</div>
+          <ul class="f-links">
+            <li><a href="#services">Residential Exterior Painting</a></li>
+            <li><a href="#services">Premium Interior Painting</a></li>
+            <li><a href="#services">Kitchen Cabinet Painting</a></li>
+            <li><a href="#viz">Custom Color Visualization</a></li>
+            <li><a href="#work">Our Work</a></li>
+            <li><a href="#process">Our Process</a></li>
+          </ul>
+        </nav>`;
+
+  const concierge = `
+        <div class="f-col">
+          <div class="f-col-label">VIP Concierge</div>
+          <ul class="f-links">
+            <li><a href="#quote">Request a Complimentary Quote</a></li>
+            <li><a href="${CFG.phoneHref}">${CFG.phone}</a></li>
+            <li><a href="mailto:${CFG.email}">${CFG.email}</a></li>
+            <li><span style="font-size:13.5px; color:rgba(255,255,255,0.78);">Mon–Fri 8am–6pm · Sat 9am–3pm</span></li>
+          </ul>
+        </div>`;
+
+  const cols = [...cityCols, servicesCol, concierge];
+
+  return `
+      <div class="f-cols f-cols-${cols.length}">${cols.join('')}
+      </div>`;
+}
+
+module.exports = { linker, liveCities, topNav, buildFooter, buildCountyFooter, NAV_SCRIPT };

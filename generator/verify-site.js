@@ -215,7 +215,64 @@ if (fs.existsSync(ocFile)) {
     : bad(`county page says "${octag}" but config.staging is ${CFG.staging}`);
 }
 
-console.log('\n8. doorway-page guard');
+/* ---------------------------------------------------------------
+   The county page is the front page and the top of the silo, but it
+   is hand-maintained, so none of the checks above see it. Everything
+   here is something that was actually wrong on it: a badge <img> with
+   both the wrong path and the wrong filename, a canonical still
+   pointing at the build site, and a "Where We Work" section of dead
+   divs that linked to none of the pages below it.
+   --------------------------------------------------------------- */
+console.log('\n8. county page (front page, hand-maintained)');
+if (!fs.existsSync(ocFile)) {
+  bad('orange-county-sales-page/index.html is missing');
+} else {
+  const oc = fs.readFileSync(ocFile, 'utf8');
+  const ocDir = path.dirname(ocFile);
+
+  // every local asset it references must exist on disk
+  const missing = [];
+  for (const m of oc.matchAll(/(?:src|href)="((?!https?:|tel:|mailto:|#|data:)[^"]+)"/g)) {
+    const ref = m[1].split(/[?#]/)[0];
+    if (!ref || ref.endsWith('/')) continue;              // directory links handled below
+    if (!fs.existsSync(path.resolve(ocDir, ref))) missing.push(ref);
+  }
+  missing.length
+    ? missing.forEach(r => bad(`county page references a file that does not exist: ${r}`))
+    : ok('every asset the county page references exists on disk');
+
+  // it must link DOWN to each city hub, or the silo has no top
+  const noLink = CITIES.cities.filter(c => !oc.includes(`../${c.slug}/`));
+  noLink.length
+    ? noLink.forEach(c => bad(`county page never links down to /${c.slug}/`))
+    : ok(`links down to all ${CITIES.cities.length} city hubs (${CITIES.cities.map(c => c.slug).join(', ')})`);
+
+  // and every city link it does carry has to resolve
+  const dead = [];
+  for (const m of oc.matchAll(/href="(\.\.\/[^"]+\/)"/g)) {
+    if (!fs.existsSync(path.resolve(ocDir, m[1], 'index.html'))) dead.push(m[1]);
+  }
+  dead.length
+    ? [...new Set(dead)].forEach(d => bad(`county page links to a page that does not exist: ${d}`))
+    : ok('no dead internal links');
+
+  /* Absolute "/foo/" links are the specific shape that rotted: 18 of them, every
+     one pointing at a page that was never built. On the build site they 404 on
+     the subpath too. Allow only paths that exist. */
+  const absDead = [...new Set([...oc.matchAll(/href="(\/[^"#][^"]*)"/g)].map(m => m[1]))]
+    .filter(u => !fs.existsSync(path.join(ROOT, u, 'index.html')));
+  absDead.length
+    ? absDead.forEach(u => bad(`county page has an absolute link to a page that does not exist: ${u}`))
+    : ok('no absolute links to missing pages');
+
+  // canonical must name the real domain, never the build host
+  const canon = (oc.match(/<link rel="canonical" href="([^"]*)"/) || [])[1] || '';
+  /github\.io/.test(canon)
+    ? bad(`county canonical still points at the build site: ${canon}`)
+    : ok(`canonical is ${canon || 'MISSING'}`);
+}
+
+console.log('\n9. doorway-page guard');
 const seen = new Map();
 let dupe = 0;
 for (const c of CITIES.cities) {

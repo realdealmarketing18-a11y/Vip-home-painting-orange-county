@@ -5,20 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- ============ PRIMARY SEO META — Orange County ============ -->
-<title>Exterior House Painting Orange County CA | VIP Home Painting — Newport Beach, Irvine, Coto de Caza</title>
-<meta name="description" content="VIP Home Painting — Orange County's premier luxury residential exterior &amp; interior painting company. Serving Newport Beach, Irvine, Coto de Caza, Newport Coast &amp; all OC communities. Complimentary custom color visualization + 2-Year Warranty. Call (909) 312-5400.">
-<link rel="canonical" href="https://realdealmarketing18-a11y.github.io/Vip-home-painting-orange-county/orange-county-sales-page/">
+<title>Exterior House Painting Orange County CA | VIP Home Painting — Irvine, Anaheim, Newport Beach</title>
+<meta name="description" content="VIP Home Painting — Orange County's luxury residential exterior &amp; interior painting company, based in Anaheim. Serving Irvine, Anaheim, Newport Beach, Coto de Caza &amp; all OC communities. See your own home in every color before you commit, plus a 2-Year Warranty. Call (909) 312-5400.">
+<link rel="canonical" href="https://viphomepainting.com/">
 
 <!-- Open Graph / AI crawlers -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Exterior House Painting Orange County CA | VIP Home Painting">
 <meta property="og:description" content="Orange County's luxury residential painting service. Complimentary custom color visualization + 2-Year Warranty. Newport Beach, Irvine, Coto de Caza and more.">
-<meta property="og:url" content="https://realdealmarketing18-a11y.github.io/Vip-home-painting-orange-county/orange-county-sales-page/">
+<meta property="og:url" content="https://viphomepainting.com/">
 <meta property="og:site_name" content="VIP Home Painting">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://viphomepainting.com/wp-content/uploads/vip-assets/video/hero-poster.jpg">
+<meta property="og:image:width" content="1152">
+<meta property="og:image:height" content="771">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Exterior House Painting Orange County CA | VIP Home Painting">
 <meta name="twitter:description" content="Orange County's luxury residential painting service. Complimentary color visualization + 2-Year Warranty.">
+<meta name="twitter:image" content="https://viphomepainting.com/wp-content/uploads/vip-assets/video/hero-poster.jpg">
 
 <!-- Geo / Local -->
 <meta name="geo.region" content="US-CA">
@@ -40,14 +44,15 @@
       "telephone": "+19093125400",
       "email": "Contact@VIPHomePainting.com",
       "priceRange": "$$$",
-      "image": "https://viphomepainting.com/assets/og-image.jpg",
+      "image": "https://viphomepainting.com/wp-content/uploads/vip-assets/video/hero-poster.jpg",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Orange County",
+        "addressLocality": "Anaheim",
         "addressRegion": "CA",
         "addressCountry": "US"
       },
       "areaServed": [
+        { "@type": "City", "name": "Anaheim", "sameAs": "https://en.wikipedia.org/wiki/Anaheim,_California" },
         { "@type": "City", "name": "Newport Beach", "sameAs": "https://en.wikipedia.org/wiki/Newport_Beach,_California" },
         { "@type": "City", "name": "Irvine", "sameAs": "https://en.wikipedia.org/wiki/Irvine,_California" },
         { "@type": "City", "name": "Coto de Caza", "sameAs": "https://en.wikipedia.org/wiki/Coto_de_Caza,_California" },
@@ -1959,7 +1964,7 @@
           <li>100% Satisfaction Guaranteed</li>
         </ul>
       </div>
-      <div class="warranty-seal"><img src="../../assets/badges/vip-warranty-laurel.png" alt="Insane 2-Year Warranty"/></div>
+      <div class="warranty-seal"><img src="assets/badges/vip-warranty-laurel-web.png" alt="VIP Home Painting 2-Year Warranty seal" loading="lazy" width="448" height="600"/></div>
     </div>
   </section>
 
@@ -2088,6 +2093,50 @@
     .area-card .ac-sub { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.06em; color: var(--gold-deep); }
     @media (max-width: 900px) { .areas-grid { grid-template-columns: repeat(2, 1fr); } }
 
+    /* ---- city hubs: the two cities that have their own pages ---- */
+    .city-hubs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; max-width: 1080px; margin: 0 auto 46px; }
+    .city-hub {
+      background: #fff; border: 1.5px solid rgba(168,138,71,0.34); border-radius: 18px;
+      padding: 26px 26px 22px; box-shadow: 0 10px 28px rgba(26,31,78,0.09);
+      display: flex; flex-direction: column;
+    }
+    .city-hub .ch-head {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 14px;
+      text-decoration: none; padding-bottom: 14px; margin-bottom: 16px;
+      border-bottom: 1px solid rgba(168,138,71,0.26);
+    }
+    .city-hub .ch-name { font-family: var(--font-serif); font-weight: 600; font-size: 27px; color: var(--navy); line-height: 1.1; }
+    .city-hub .ch-go { font-family: var(--font-sans); font-size: 11.5px; letter-spacing: 0.06em; color: var(--gold-deep); font-weight: 700; white-space: nowrap; }
+    .city-hub .ch-head:hover .ch-go { text-decoration: underline; }
+    .city-hub .ch-label {
+      font-family: var(--font-sans); font-size: 10.5px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #6B7093; margin-bottom: 10px;
+    }
+    .city-hub .ch-links { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .city-hub .ch-links a {
+      font-family: var(--font-sans); font-size: 13.5px; color: var(--navy); text-decoration: none;
+      background: rgba(168,138,71,0.09); border: 1px solid rgba(168,138,71,0.26);
+      border-radius: 999px; padding: 6px 13px; transition: background 200ms, border-color 200ms;
+    }
+    .city-hub .ch-links a:hover { background: rgba(168,138,71,0.20); border-color: var(--gold); }
+    .city-hub .ch-foot {
+      margin-top: auto; padding-top: 14px; border-top: 1px solid rgba(168,138,71,0.20);
+      display: flex; flex-direction: column; gap: 7px;
+    }
+    .city-hub .ch-foot a {
+      font-family: var(--font-sans); font-size: 13.5px; font-weight: 600;
+      color: var(--gold-deep); text-decoration: none;
+    }
+    .city-hub .ch-foot a:hover { text-decoration: underline; }
+    .city-hub .ch-note { font-family: var(--font-sans); font-size: 13px; color: #4A4F70; line-height: 1.5; }
+
+    .areas-more { max-width: 1080px; margin: 0 auto; }
+    .areas-more .am-title {
+      font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #6B7093; text-align: center; margin-bottom: 18px;
+    }
+    @media (max-width: 900px) { .city-hubs { grid-template-columns: 1fr; gap: 18px; } }
+
     /* FAQ */
     .faq-head { text-align: center; max-width: 760px; margin: 0 auto 40px; }
     .faq-list { max-width: 880px; margin: 0 auto; }
@@ -2137,20 +2186,67 @@
       <h2 class="ttl">Exterior &amp; Interior Painting Across <span class="accent">Orange County, CA</span></h2>
       <p class="lead">VIP Home Painting serves every luxury community in Orange County. If your estate is in any of these cities, we're your local painting contractor — call <a href="tel:9093125400">(909) 312-5400</a> for a complimentary color consultation and estimate.</p>
     </div>
-    <div class="areas-grid">
-      <div class="area-card"><div class="ac-name">Newport Beach</div><div class="ac-sub">Exterior · $5.50/sqft</div></div>
-      <div class="area-card"><div class="ac-name">Newport Coast</div><div class="ac-sub">Crystal Cove · Pelican Crest</div></div>
-      <div class="area-card"><div class="ac-name">Irvine</div><div class="ac-sub">Shady Canyon · Turtle Ridge</div></div>
-      <div class="area-card"><div class="ac-name">Coto de Caza</div><div class="ac-sub">Gated Estate Specialist</div></div>
-      <div class="area-card"><div class="ac-name">Laguna Beach</div><div class="ac-sub">Coastal Color Specialists</div></div>
-      <div class="area-card"><div class="ac-name">Laguna Niguel</div><div class="ac-sub">Full-Service OC Contractor</div></div>
-      <div class="area-card"><div class="ac-name">Mission Viejo</div><div class="ac-sub">Complimentary Color Consultation</div></div>
-      <div class="area-card"><div class="ac-name">Dana Point</div><div class="ac-sub">Coastal Home Specialists</div></div>
-      <div class="area-card"><div class="ac-name">Ladera Ranch</div><div class="ac-sub">Covenant Hills Estates</div></div>
-      <div class="area-card"><div class="ac-name">Corona del Mar</div><div class="ac-sub">Luxury Exterior Painting</div></div>
-      <div class="area-card"><div class="ac-name">San Clemente</div><div class="ac-sub">Coastal &amp; Spanish Style</div></div>
-      <div class="area-card"><div class="ac-name">Yorba Linda</div><div class="ac-sub">Estate &amp; Luxury Homes</div></div>
+    <!-- AREAS:START — cities with their own pages link down into the silo.
+         Cities below the fold are served but have no page yet; they stay as
+         plain text on purpose. Never link a city that has no page. -->
+    <div class="city-hubs">
+
+      <div class="city-hub">
+        <a class="ch-head" href="../irvine/">
+          <span class="ch-name">Irvine</span>
+          <span class="ch-go">View Irvine painting →</span>
+        </a>
+        <div class="ch-label">Villages we paint</div>
+        <div class="ch-links">
+          <a href="../irvine/orchard-hills/">Orchard Hills</a>
+          <a href="../irvine/altair/">Altair</a>
+          <a href="../irvine/portola-springs/">Portola Springs</a>
+          <a href="../irvine/hidden-canyon/">Hidden Canyon</a>
+          <a href="../irvine/woodbury/">Woodbury</a>
+          <a href="../irvine/stonegate/">Stonegate</a>
+        </div>
+        <div class="ch-foot">
+          <a href="../irvine/hoa-painting/">HOA &amp; Common-Area Painting</a>
+          <a href="../irvine/guide/">The Irvine Color Guide</a>
+        </div>
+      </div>
+
+      <div class="city-hub">
+        <a class="ch-head" href="../anaheim/">
+          <span class="ch-name">Anaheim</span>
+          <span class="ch-go">View Anaheim painting →</span>
+        </a>
+        <div class="ch-label">Communities we paint</div>
+        <div class="ch-links">
+          <a href="../anaheim/peralta-hills/">Peralta Hills</a>
+          <a href="../anaheim/summit-pointe/">Summit Pointe</a>
+          <a href="../anaheim/belsomet/">Belsomet</a>
+          <a href="../anaheim/crown-pointe/">Crown Pointe</a>
+        </div>
+        <div class="ch-foot">
+          <span class="ch-note">Our shop is in Anaheim — it's where we start most mornings.</span>
+        </div>
+      </div>
+
     </div>
+
+    <div class="areas-more">
+      <div class="am-title">Also serving across Orange County</div>
+      <div class="areas-grid">
+        <div class="area-card"><div class="ac-name">Newport Beach</div><div class="ac-sub">Harbor &amp; Coastal Estates</div></div>
+        <div class="area-card"><div class="ac-name">Newport Coast</div><div class="ac-sub">Crystal Cove · Pelican Crest</div></div>
+        <div class="area-card"><div class="ac-name">Coto de Caza</div><div class="ac-sub">Gated Estate Specialist</div></div>
+        <div class="area-card"><div class="ac-name">Laguna Beach</div><div class="ac-sub">Coastal Color Specialists</div></div>
+        <div class="area-card"><div class="ac-name">Laguna Niguel</div><div class="ac-sub">Full-Service OC Contractor</div></div>
+        <div class="area-card"><div class="ac-name">Mission Viejo</div><div class="ac-sub">Complimentary Color Consultation</div></div>
+        <div class="area-card"><div class="ac-name">Dana Point</div><div class="ac-sub">Coastal Home Specialists</div></div>
+        <div class="area-card"><div class="ac-name">Ladera Ranch</div><div class="ac-sub">Covenant Hills Estates</div></div>
+        <div class="area-card"><div class="ac-name">Corona del Mar</div><div class="ac-sub">Luxury Exterior Painting</div></div>
+        <div class="area-card"><div class="ac-name">San Clemente</div><div class="ac-sub">Coastal &amp; Spanish Style</div></div>
+        <div class="area-card"><div class="ac-name">Yorba Linda</div><div class="ac-sub">Estate &amp; Luxury Homes</div></div>
+      </div>
+    </div>
+    <!-- AREAS:END -->
   </section>
 
   <!-- ============ 11c. FAQ — People Also Ask / AI Search ============ -->
@@ -2239,41 +2335,57 @@
         <div class="f-tag"><b>We don't just paint homes,</b><br/>we transform lives.</div>
       </div>
 
-      <div class="f-cols">
-        <nav class="f-col" aria-label="Communities we serve">
-          <div class="f-col-label">Communities We Serve</div>
+      <!-- FOOTER:START — generate.js rewrites everything between these markers
+           from site-nav.js on every build, the same way the nav is handled.
+           This block used to be hand-written and every one of its 18 links was
+           dead. Edit site-nav.js, never here. -->
+      <div class="f-cols f-cols-4">
+        <nav class="f-col" aria-label="Irvine pages">
+          <div class="f-col-label">Irvine</div>
           <ul class="f-links">
-            <li><a href="/newport-beach-painting/">Newport Beach Home Painting</a></li>
-            <li><a href="/newport-coast-painting/">Newport Coast Home Painting</a></li>
-            <li><a href="/irvine-painting/">Irvine Home Painting</a></li>
-            <li><a href="/coto-de-caza-painting/">Coto de Caza Home Painting</a></li>
-            <li><a href="/ladera-ranch-painting/">Ladera Ranch Home Painting</a></li>
-            <li><a href="/hidden-hills-painting/">Hidden Hills Home Painting</a></li>
-            <li><a href="/rancho-cucamonga-painting/">Rancho Cucamonga Home Painting</a></li>
-            <li><a href="/corona-painting/">Corona Home Painting</a></li>
+            <li><a href="../irvine/"><b>All Irvine Home Painting</b></a></li>
+            <li><a href="../irvine/orchard-hills/">Orchard Hills</a></li>
+            <li><a href="../irvine/altair/">Altair</a></li>
+            <li><a href="../irvine/portola-springs/">Portola Springs</a></li>
+            <li><a href="../irvine/hidden-canyon/">Hidden Canyon</a></li>
+            <li><a href="../irvine/woodbury/">Woodbury</a></li>
+            <li><a href="../irvine/stonegate/">Stonegate</a></li>
+            <li><a href="../irvine/hoa-painting/">HOA &amp; Common-Area Painting</a></li>
+          </ul>
+        </nav>
+        <nav class="f-col" aria-label="Anaheim pages">
+          <div class="f-col-label">Anaheim</div>
+          <ul class="f-links">
+            <li><a href="../anaheim/"><b>All Anaheim Home Painting</b></a></li>
+            <li><a href="../anaheim/peralta-hills/">Peralta Hills</a></li>
+            <li><a href="../anaheim/summit-pointe/">Summit Pointe</a></li>
+            <li><a href="../anaheim/belsomet/">Belsomet</a></li>
+            <li><a href="../anaheim/crown-pointe/">Crown Pointe</a></li>
+            
           </ul>
         </nav>
         <nav class="f-col" aria-label="Premium services">
           <div class="f-col-label">Premium Services</div>
           <ul class="f-links">
-            <li><a href="/exterior-painting/">Residential Exterior Painting</a></li>
-            <li><a href="/interior-painting/">Premium Interior Painting</a></li>
-            <li><a href="/kitchen-cabinet-painting/">Kitchen Cabinet Painting</a></li>
-            <li><a href="/color-visualization/">Custom Color Visualization</a></li>
-            <li><a href="/hoa-painting-specifications/">HOA &amp; Gated Community Specifications</a></li>
+            <li><a href="#services">Residential Exterior Painting</a></li>
+            <li><a href="#services">Premium Interior Painting</a></li>
+            <li><a href="#services">Kitchen Cabinet Painting</a></li>
+            <li><a href="#viz">Custom Color Visualization</a></li>
+            <li><a href="#work">Our Work</a></li>
+            <li><a href="#process">Our Process</a></li>
           </ul>
         </nav>
-        <nav class="f-col" aria-label="VIP concierge">
+        <div class="f-col">
           <div class="f-col-label">VIP Concierge</div>
           <ul class="f-links">
-            <li><a href="/estimate/">Request Custom Estimate</a></li>
-            <li><a href="/schedule-consultation/">Schedule Color Consultation</a></li>
-            <li><a href="/our-process/">Architectural Integrity &amp; Process</a></li>
-            <li><a href="/our-work/">Estate Success Stories</a></li>
-            <li><a href="/credentials/">CA License, Bond &amp; Credentials</a></li>
+            <li><a href="#quote">Request a Complimentary Quote</a></li>
+            <li><a href="tel:9093125400">(909) 312-5400</a></li>
+            <li><a href="mailto:Contact@VIPHomePainting.com">Contact@VIPHomePainting.com</a></li>
+            <li><span style="font-size:13.5px; color:rgba(255,255,255,0.78);">Mon–Fri 8am–6pm · Sat 9am–3pm</span></li>
           </ul>
-        </nav>
+        </div>
       </div>
+      <!-- FOOTER:END -->
 
       <div class="f-bottom">
         <div class="f-contact">

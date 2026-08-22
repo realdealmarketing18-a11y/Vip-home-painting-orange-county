@@ -747,7 +747,7 @@ const ARTICLE_MODULES = require('./article-modules.js');
 /* The editorial retelling of the visualizer. Its scheme, style and option
    data is read back out of the sales page so the two cannot drift apart. */
 const { extractVizData, vizJourney } = require('./viz-journey.js');
-const { linker, liveCities, topNav, buildFooter, NAV_SCRIPT } = require('./site-nav.js');
+const { linker, liveCities, topNav, buildFooter, buildCountyFooter, NAV_SCRIPT } = require('./site-nav.js');
 const VIZ_DATA = extractVizData(BASE_PAGE);
 const BLOG_CSS = fs.readFileSync(path.join(__dirname, 'blog-page.css'), 'utf8');
 const BLOG_PATH = path.join(__dirname, 'blog.json');
@@ -1838,6 +1838,19 @@ function main() {
     const head = oc.slice(0, s);
     const marker = oc.slice(s, oc.indexOf('-->', s) + 3);
     let next = head + marker + '\n' + nav + '\n      ' + oc.slice(e);
+
+    /* Same treatment for the footer, and for the same reason. Hand-written, it
+       had accumulated 18 links to pages that were never built — including two
+       cities outside Orange County entirely. */
+    const FS = '<!-- FOOTER:START', FE = '<!-- FOOTER:END -->';
+    const fs0 = next.indexOf(FS), fe0 = next.indexOf(FE);
+    if (fs0 < 0 || fe0 < 0) throw new Error('county page: FOOTER:START/FOOTER:END markers missing — footer cannot be kept in sync');
+    const footer = buildCountyFooter({
+      CFG, esc, CITIES,
+      link: (u) => '..' + u
+    });
+    const fMarker = next.slice(fs0, next.indexOf('-->', fs0) + 3);
+    next = next.slice(0, fs0) + fMarker + footer + '\n      ' + next.slice(fe0);
 
     /* Its robots meta is hand-written too, and was the one page still saying
        "index, follow" after the whole generated site went noindex. Sync it. */
