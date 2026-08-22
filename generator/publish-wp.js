@@ -131,8 +131,32 @@ function rewriteCanonical(x, wpPageUrl) {
    WP media library and set ASSET_BASE to the uploads URL so nothing depends on
    github.io staying up. */
 const ASSET_BASE = (process.env.ASSET_BASE || `${CFG.siteBase}/orange-county-sales-page`).replace(/\/$/, '');
+
+/* Where the county page lives on WordPress. Its content is the site's front page
+   ("Luxury Home Painting Southern California"), so links to it go to the root. */
+const OC_PAGE = process.env.OC_PAGE || '/';
+
+/* Two different things share the "../orange-county-sales-page" prefix, and they
+   must NOT be rewritten the same way:
+
+     assets  ../orange-county-sales-page/assets|viz-photos|video/...
+             -> ASSET_BASE, wherever the files are actually served from
+
+     links   ../orange-county-sales-page/  and  /#services, /#viz
+             -> the WordPress page
+
+   Rewriting both to ASSET_BASE — which the first version did — pointed every
+   "All of Orange County" and Services menu item at the github.io staging site.
+   Visitors would leave the real domain, and the live site would be linking to a
+   noindexed twin of itself. */
 function rewriteAssets(html) {
-  return html.replace(/(?:\.\.\/)+orange-county-sales-page/g, ASSET_BASE);
+  const rel = '(?:\\.\\./)+orange-county-sales-page';
+  return html
+    // assets first: only the three directories that actually hold files
+    .replace(new RegExp(`${rel}/(assets|viz-photos|video)/`, 'g'), `${ASSET_BASE}/$1/`)
+    // then whatever is left is a page link
+    .replace(new RegExp(`${rel}/`, 'g'), OC_PAGE)
+    .replace(new RegExp(rel, 'g'), OC_PAGE);
 }
 
 /* The page content WordPress stores. Styles and scripts travel WITH the
