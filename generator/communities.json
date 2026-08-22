@@ -12,7 +12,9 @@
     "warrantyYears": 2,
     "warranty": "2-Year Warranty",
     "staging": true,
-    "_staging_doc": "true = this build is a staging site: every page emits noindex and robots.txt disallows. Flip to false ONLY when launching on the real domain, and change siteBase in the same edit."
+    "_staging_doc": "true = this build is a staging site: every page emits noindex and robots.txt disallows. Flip to false ONLY when launching on the real domain, and change siteBase in the same edit.",
+    "countyIndexable": true,
+    "_countyIndexable_doc": "true = the Orange County page (the WordPress front page) emits index,follow even while staging is true. It is the live front page of viphomepainting.com and was already indexed; publishing it noindex would have removed the homepage from Google. Every other page still follows config.staging."
   },
   "communities": [
     {

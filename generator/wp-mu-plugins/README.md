@@ -1,6 +1,6 @@
 # WordPress-side fixes — required for generated pages to render
 
-These two PHP files live **on the server**, not in this repo's build. They are kept
+These three PHP files live **on the server**, not in this repo's build. They are kept
 here so they are not lost if the site is rebuilt, migrated, or restored from a backup.
 
 **Installed at:** `wp-content/novamira-sandbox/` on viphomepainting.com
@@ -11,9 +11,13 @@ if you have file access.)*
 |---|---|
 | `vip-rankmath-rest-meta.php` | Rank Math silently overriding the SEO head |
 | `vip-generated-pages.php` | WordPress and the theme silently breaking the CSS |
+| `vip-rankmath-head.php` | Two competing JSON-LD graphs, and a missing `og:image` |
 
-**Without these, the pages publish and render — badly.** Both problems were invisible
-to a status-code check and only showed up on the live page.
+**Without these, the pages publish and render — badly.** Every one of these problems was
+invisible to a status-code check and only showed up on the live page.
+
+All three apply **only** to pages carrying `_vip_generated = 1`. Anything Fabian builds
+in Elementor — home, about, contact, gallery — is untouched.
 
 ---
 
@@ -77,6 +81,26 @@ the DOM and still not parse:
   .some(r => r.selectorText === '.page'); } catch(e) { return false; } })
 // true = our stylesheet parsed
 ```
+
+## 3 · `vip-rankmath-head.php`
+
+`publish-wp.js` sends the body, styles, scripts and JSON-LD — **not the source file's
+`<head>`**. Title, description, canonical and robots survive because they travel as Rank
+Math meta. Everything else in the head does not, and two things went wrong on the live
+front page because of it:
+
+- **Two JSON-LD graphs.** Our pages carry a page-specific graph in the content. Rank Math
+  emits its own generic one into the head no matter what `rank_math_rich_snippet` says.
+  The filter `rank_math/json_ld` returns an empty array for our pages, leaving one graph.
+- **No `og:image`.** Rank Math filled in title/description/url and left the image empty,
+  so every share of the home page was a bare text card. The plugin prints the image tags
+  itself, and refuses to if the file is not on disk.
+
+**Also fixed at the same time, and not by this plugin:** Rank Math was publishing
+`twitter:data1 = realdealplanning@gmail.com` under "Written by", because WordPress user 1
+had its **display name set to the email address**. It is now "VIP Home Painting". The
+login is unchanged — `user_login` and the password were not touched. If a new admin user
+is ever created, set its display name before publishing anything.
 
 ## Re-registering the assets in the Media library
 

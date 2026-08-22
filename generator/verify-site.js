@@ -210,9 +210,16 @@ if (!postureBad) {
 const ocFile = path.join(ROOT, 'orange-county-sales-page', 'index.html');
 if (fs.existsSync(ocFile)) {
   const octag = (fs.readFileSync(ocFile, 'utf8').match(/<meta name="robots" content="([^"]*)">/) || [])[1] || '';
+  /* This file is the staging twin, so it tracks config.staging like every other
+     page. config.countyIndexable applies only to the WordPress copy and is
+     applied by publish-wp.js, never here — a staging twin that invites indexing
+     is the thing we are avoiding. */
   /noindex/i.test(octag) === wantNoindex
     ? ok(`county page matches (${octag})`)
     : bad(`county page says "${octag}" but config.staging is ${CFG.staging}`);
+  if (CFG.countyIndexable) {
+    ok('countyIndexable on — the WordPress front page will publish index,follow');
+  }
 }
 
 /* ---------------------------------------------------------------

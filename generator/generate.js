@@ -1853,7 +1853,12 @@ function main() {
     next = next.slice(0, fs0) + fMarker + footer + '\n      ' + next.slice(fe0);
 
     /* Its robots meta is hand-written too, and was the one page still saying
-       "index, follow" after the whole generated site went noindex. Sync it. */
+       "index, follow" after the whole generated site went noindex. Sync it.
+
+       Note this file stays noindex even when config.countyIndexable is on. This
+       copy is the github.io staging twin, and a twin that invites indexing is
+       the exact thing we are avoiding. Only the WordPress copy goes live —
+       publish-wp.js applies countyIndexable when it writes rank_math_robots. */
     next = next.replace(
       /<meta name="robots" content="[^"]*">/,
       `<meta name="robots" content="${ROBOTS_META}">`

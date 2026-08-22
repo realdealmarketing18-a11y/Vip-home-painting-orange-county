@@ -168,6 +168,16 @@ const OC_PAGE = process.env.OC_PAGE || '/';
 const COUNTY_SLUG = process.env.COUNTY_SLUG || 'orange-county';
 const SET_FRONT = args.includes('--set-front');
 
+/* viphomepainting.com's front page was already live and indexed. Publishing it
+   with the staging noindex would have removed the homepage of a running business
+   from Google — so config.countyIndexable lets this one page go out indexable
+   while every page below it waits for launch.
+
+   It is applied here rather than in the generated file on purpose: the file is
+   the github.io staging twin, and that copy must stay noindex. Same page, two
+   destinations, two answers. */
+const countyIndexable = (p) => !!(p && p.isCounty && CFG.countyIndexable);
+
 /* Two different things share the "../orange-county-sales-page" prefix, and they
    must NOT be rewritten the same way:
 
@@ -305,7 +315,8 @@ const findBySlug = async (slug, parent) => {
       console.log(`     title  ${x.fullTitle.slice(0, 68)}`);
       console.log(`     canon  ${x.canonical}`);
       console.log(`     schema ${x.jsonld ? JSON.parse(x.jsonld)['@graph'].map(g => g['@type']).join(', ') : 'NONE'}`);
-      if (x.robots && /noindex/.test(x.robots)) console.log(`     robots ${x.robots}   <-- staging`);
+      if (countyIndexable(p)) console.log(`     robots index, follow   <-- countyIndexable: live front page, overrides staging`);
+      else if (x.robots && /noindex/.test(x.robots)) console.log(`     robots ${x.robots}   <-- staging`);
       continue;
     }
 
@@ -321,7 +332,8 @@ const findBySlug = async (slug, parent) => {
         rank_math_title: x.fullTitle,
         rank_math_description: x.description,
         rank_math_canonical_url: wpPageUrl,
-        rank_math_robots: /noindex/i.test(x.robots) ? ['noindex', 'nofollow'] : ['index', 'follow'],
+        rank_math_robots: countyIndexable(p) ? ['index', 'follow']
+          : (/noindex/i.test(x.robots) ? ['noindex', 'nofollow'] : ['index', 'follow']),
         rank_math_rich_snippet: 'off',
         /* Tells wp-mu-plugins/vip-generated-pages.php to leave this page alone:
            no wpautop (it injects <p> tags inside our <style> block and silently

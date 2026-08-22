@@ -103,6 +103,13 @@ Elementor on Hostinger at **viphomepainting.com**. Every page here carries
 indexes a staging twin we would then have to compete with. **At launch: set
 `staging: false`, point `siteBase` at the real domain, rebuild.** One edit.
 
+**One deliberate exception: the front page.** `config.countyIndexable: true` publishes the
+Orange County page to WordPress as `index,follow` while everything below it stays dark.
+viphomepainting.com's home page was already live and indexed; shipping it `noindex` would
+have pulled a running business's home page out of Google. The flag applies **only to the
+WordPress copy** — the github.io twin of that page stays `noindex`, because a staging twin
+inviting indexation is the thing we are avoiding. Same page, two destinations, two answers.
+
 **The pages stay generated after the move.** `publish-wp.js` pushes them into WordPress
 on an Elementor **Canvas** template (no theme chrome, so our generic class names —
 `.body`, `.page`, `.ttl` — cannot collide with the theme). Elementor is for the pages
@@ -204,6 +211,14 @@ in a folder — see `context/FABIAN.md`.
 ---
 
 ## CURRENT STATE
+
+**The Orange County page is live as viphomepainting.com's front page** (WP page id 4046,
+`index,follow`). It is the top of the silo and links down to all 18 city pages. Its nav
+**and footer** are both generator-synced now — the footer used to be hand-written and all
+18 of its links were dead, two of them to cities outside Orange County.
+Fabian's previous Elementor home page is **untouched and still live** at
+`/luxury-home-painting-southern-california/` — only detached. To undo the switch, set
+`page_on_front` back to **3605**.
 
 **Irvine — 13 pages live**, gate passes, output audit clean:
 `/irvine/` · 6 villages · `/irvine/hoa-painting/` · `/irvine/guide/` · **4 cluster articles**
