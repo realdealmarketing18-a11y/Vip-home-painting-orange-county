@@ -14,6 +14,12 @@
      node generator/publish-wp.js              dry run, all pages
      node generator/publish-wp.js irvine       dry run, one city
      node generator/publish-wp.js --live       actually write
+     node generator/publish-wp.js --only=irvine  one page, for a contained test
+
+   ASSET_BASE — where images are served from. Now the WP media library:
+     ASSET_BASE=https://viphomepainting.com/wp-content/uploads/vip-assets
+   The 26 referenced files were pulled there from the build host, so the live
+   site no longer depends on github.io staying up.
 
    AUTH — never put these in the repo:
      WP_URL=https://viphomepainting.com
