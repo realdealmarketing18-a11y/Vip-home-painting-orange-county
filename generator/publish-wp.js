@@ -218,6 +218,26 @@ function rewriteCountyPaths(html) {
     .replace(/(["'])\.\.\/([a-z0-9-]+)\//g, '$1/$2/');
 }
 
+/* Assets that do not sit in the vip-assets tree.
+
+   Everything under wp-content/uploads/vip-assets/ was placed there with the
+   Novamira file connector. That connector was offline when the navy brush was
+   added, so it went in through the WordPress media library instead and lives
+   at a different path. Without this map the header logo 404s on all 19 pages.
+
+   Housekeeping: copy the file into vip-assets/assets/logos/ and delete the
+   entry — nothing else needs to change. */
+const ASSET_OVERRIDES = {
+  'assets/logos/logo-brush-navy.png':
+    'https://viphomepainting.com/wp-content/uploads/2026/08/logo-brush-navy.png'
+};
+function applyAssetOverrides(html) {
+  for (const [rel, abs] of Object.entries(ASSET_OVERRIDES)) {
+    html = html.split(`${ASSET_BASE}/${rel}`).join(abs);
+  }
+  return html;
+}
+
 /* The page content WordPress stores. Styles and scripts travel WITH the
    content so the page is self-contained and Canvas needs to supply nothing. */
 function buildContent(x, isCounty) {
@@ -233,7 +253,7 @@ ${x.jsonld}
 <script>
 ${x.scripts}
 </script>`;
-  return isCounty ? rewriteCountyPaths(html) : rewriteAssets(html);
+  return applyAssetOverrides(isCounty ? rewriteCountyPaths(html) : rewriteAssets(html));
 }
 
 /* ---------- WP REST ---------- */
