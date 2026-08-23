@@ -374,6 +374,17 @@
   .hero-cinema .avatar-pill .name { color: var(--cream); }
   .hero-cinema .avatar-pill .sub-line { color: rgba(245,239,226,.65); }
 
+  /* Lede placement — the client chip sits between the eyebrow and the h1.
+     Its own margins are reset here because .pill-wrap and .avatar-pill both
+     carry spacing tuned for the old spot below the headline; stacked, they
+     opened a 36px hole between the chip and the line it introduces. */
+  .pill-wrap-lede { margin-bottom: 0; }
+  .hero-cinema .pill-wrap-lede .avatar-pill { margin: 20px 0 0; }
+  .hero-cinema .pill-wrap-lede + .ttl-hero { margin-top: 22px; }
+  /* the chip used to sit between the kicker and the film block and was doing
+     that spacing for free; now that it leads, the play block needs its own */
+  .hero-cinema .play-wrap { margin-top: 26px; }
+
   .play-wrap { display: flex; flex-direction: column; align-items: center;
     gap: 14px; margin-bottom: 36px; }
   .play-btn { position: relative; width: 76px; height: 76px;
@@ -1403,7 +1414,7 @@
     .hero-fleuron { font-size: 16px; margin-bottom: 10px; }
     .hero-cinema .ttl-hero { margin: 16px 0 8px; }
     .hero-cinema .avatar-pill { margin: 18px 0 20px; }
-    .play-wrap { margin-bottom: 22px; gap: 10px; }
+    .hero-cinema .play-wrap { margin-top: 22px; margin-bottom: 22px; gap: 10px; }
     .hero-strip { padding: 16px 0 28px; }
     .hero-strip .strip-badge { width: 58px; height: 58px; }
   }
@@ -1425,12 +1436,14 @@
     .hero-kicker { margin-top: 4px; }
 
     .hero-cinema .avatar-pill { margin: 14px 0 16px; padding: 5px 16px 5px 5px; }
+    .hero-cinema .pill-wrap-lede .avatar-pill { margin: 13px 0 0; }
+    .hero-cinema .pill-wrap-lede + .ttl-hero { margin-top: 14px; }
     .avatar-pill .ph { width: 38px; height: 38px; }
     .avatar-pill .name { font-size: 14px; }
     .avatar-pill .sub-line { font-size: 11.5px; }
 
     /* the play button stays, and keeps pulsing — just sized for a phone */
-    .play-wrap { margin-bottom: 16px; gap: 8px; }
+    .hero-cinema .play-wrap { margin-top: 18px; margin-bottom: 16px; gap: 8px; }
     .play-btn { width: 58px; height: 58px; }
     .play-btn svg { width: 20px; height: 20px; }
     .play-label { font-size: 10px; letter-spacing: .22em; }
@@ -1508,7 +1521,9 @@
     .hero-fleuron { margin-bottom: 10px; }
     .hero-cinema .ttl-hero { margin: 18px 0 8px; }
     .hero-cinema .avatar-pill { margin: 14px 0 18px; }
-    .play-wrap { margin-bottom: 18px; gap: 10px; }
+    .hero-cinema .pill-wrap-lede .avatar-pill { margin: 16px 0 0; }
+    .hero-cinema .pill-wrap-lede + .ttl-hero { margin-top: 18px; }
+    .hero-cinema .play-wrap { margin-top: 22px; margin-bottom: 18px; gap: 10px; }
     .hero-strip { padding: 10px 0 16px; }
     .hero-strip .strip-badge { width: 58px; height: 58px; }
   }
