@@ -1,6 +1,7 @@
 # TOOLS — what is proven, what is not, and how a new one earns a place
 
 Single source on research tooling. `MARCUS.md` and the skill point here.
+**The method that uses these tools: `COMPETITOR-RESEARCH-PLAYBOOK.md`.**
 **Update this the same day a tool proves or fails.**
 
 Last revised **2026-07-31**.

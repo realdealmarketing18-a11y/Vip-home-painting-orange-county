@@ -1,5 +1,8 @@
 # RESEARCH BLUEPRINT — Irvine Local Pack Takeover
 
+**City-agnostic method and the rules behind it: `COMPETITOR-RESEARCH-PLAYBOOK.md`.**
+This file is the Irvine execution detail.
+
 How the Research Agent turns an Apify Google Maps scrape into copy inputs for the
 Sales Page Agent. Configs: `apify-gmaps-configs.json`. Actor:
 [`compass/crawler-google-places`](https://apify.com/compass/crawler-google-places) (`nwua9Gu5YrADL7ZDj`).

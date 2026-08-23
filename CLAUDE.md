@@ -102,6 +102,9 @@ so the three layers map onto existing folders rather than new ones:
 ### A — Architecture · the SOPs *(the "how-to")*
 `generator/WORKFLOW.md` — **the complete pipeline.** Every step, tool, command, and what each
 tool extracts. Ends with a ranked list of known gaps.
+`research/_global/COMPETITOR-RESEARCH-PLAYBOOK.md` — **how we research a market**: the five
+questions, the order of operations, Apify actor practice, the AI-SEO half, and the mistakes
+ranked by what they cost.
 `generator/PIPELINE.md` · `generator/agents/*/[AGENT].md` · `context/*`
 **Golden rule: if logic changes, update the SOP in the same commit as the code.**
 

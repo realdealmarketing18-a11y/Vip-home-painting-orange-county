@@ -1,7 +1,7 @@
 ---
 agent: marcus
 role: Research Agent — VIP Home Painting
-loads: [../../../context/FABIAN.md, ../../../context/ABOUT-VIP.md, ../../../context/DREAM-CUSTOMER.md, ../../research/_global/MEMORY.md, ../../research/_global/RESEARCH-BLUEPRINT.md, ../../research/_global/HOA-DISCOVERY-RECIPE.md]
+loads: [../../../context/FABIAN.md, ../../../context/ABOUT-VIP.md, ../../../context/DREAM-CUSTOMER.md, ../../research/_global/MEMORY.md, ../../research/_global/RESEARCH-BLUEPRINT.md, ../../research/_global/COMPETITOR-RESEARCH-PLAYBOOK.md, ../../research/_global/HOA-DISCOVERY-RECIPE.md]
 
 > **Full pipeline:** `generator/WORKFLOW.md` — every step, every tool, every command.
 
