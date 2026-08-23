@@ -582,7 +582,31 @@
      --brand-orange is sampled from the logo artwork (#F76E0B) so the typed
      wordmark matches the brush exactly. */
   .top-logo { text-decoration: none; }
-  .top-logo .logo-brush { height: 46px; width: auto; display: block; flex-shrink: 0; }
+  /* Locked down on purpose. WordPress themes and plugins routinely ship
+     `img { width: 100% }` or `height: auto !important`, and either one turns
+     this into a stretched, oversized brush that runs over the wordmark next to
+     it — which is exactly what "cut off on the right" looks like. aspect-ratio
+     pins the width to the artwork, object-fit guarantees no distortion even if
+     something forces both dimensions, and flex: 0 0 auto stops it being
+     squeezed by a narrow column.
+
+     The size is !important because a theme rule carrying !important beat the
+     plain version outright (tested: the brush blew up to 460x1232). It is
+     driven by --brush-h so the responsive steps below stay ordinary CSS
+     instead of an !important arms race across four breakpoints. */
+  .top-logo { --brush-h: 46px; }
+  .top-logo .logo-brush {
+    height: var(--brush-h) !important;
+    width: auto !important;
+    aspect-ratio: 156 / 418;
+    object-fit: contain;
+    max-width: none !important;
+    min-width: 0;
+    flex: 0 0 auto;
+    display: block;
+  }
+  /* the wordmark must never be the thing that gives way either */
+  .top-logo .wm { min-width: 0; }
   .top-logo .wm { display: flex; flex-direction: column; line-height: 1; }
   .top-logo .wm .vip {
     font-family: var(--font-serif); font-weight: 700; font-size: 21px;
@@ -1617,13 +1641,13 @@
   @media (max-width: 900px) {
     .topbar { gap: 12px; }
     .top-logo { gap: 8px; }
-    .top-logo .logo-brush { height: 40px; }
+    .top-logo { --brush-h: 40px; }
     .top-logo .wm .vip { font-size: 16px; }
     .top-logo .wm .tag { font-size: 9px; margin-top: 4px; }
   }
   @media (max-width: 600px) {
     .topbar { padding-left: 14px; padding-right: 14px; gap: 8px; }
-    .top-logo .logo-brush { height: 40px; }
+    .top-logo { --brush-h: 40px; }
     .top-logo .wm .vip { font-size: 16px; }
     .top-logo .wm .tag { font-size: 9.5px; letter-spacing: 0; }
     /* 13px keeps the number legible and buys ~20px of slack so the bar cannot
@@ -1643,7 +1667,7 @@
     .top-logo .wm .vip {
       display: flex; flex-direction: column; font-size: 13.5px; line-height: 1.12;
     }
-    .top-logo .logo-brush { height: 36px; }
+    .top-logo { --brush-h: 36px; }
   }
 
   @media (max-width: 900px) {
@@ -1885,7 +1909,7 @@ body { font-family: var(--font-sans); }
    set a height here: this file is appended after the base sheet, and a plain
    rule beats a media-query rule of equal specificity regardless of order — a
    height here silently cancelled the 40px and 36px mobile steps. */
-.top-logo .logo-brush { max-width: none; }
+.top-logo .logo-brush { max-width: none !important; aspect-ratio: 156 / 418; object-fit: contain; }
 .top-phone {
   display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; white-space: nowrap;
   color: var(--navy); text-decoration: none; font-family: var(--font-sans);
