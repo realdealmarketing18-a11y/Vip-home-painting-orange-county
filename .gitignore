@@ -16,3 +16,7 @@ export/
 
 serve.log
 *.log
+
+# B.L.A.S.T. ephemeral workbench — intermediates only, never deliverables
+.tmp/*
+!.tmp/README.md
