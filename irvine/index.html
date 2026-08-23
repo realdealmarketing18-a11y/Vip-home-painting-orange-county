@@ -579,8 +579,15 @@
 
   /* ===== Editorial magazine refinements ===== */
   /* ---- header lockup: brush image + live text ----
-     --brand-orange is sampled from the logo artwork (#F76E0B) so the typed
-     wordmark matches the brush exactly. */
+     The brush is cropped straight out of the navy/gold lockup artwork — its
+     form, gradients and shading are the original pixels, only the surrounding
+     type was cropped away. The words are live text so they stay sharp: dropped
+     in as one image the wordmark rendered 9.6px and the tagline 4.6px, because
+     the full-height brush sets the scale and everything beside it pays.
+
+     Colours are the site tokens, which the artwork already matches almost
+     exactly — sampled #C89E62 gold against --gold #C9A961, and #0F1F4A navy
+     against --navy #1A1F4E. */
   .top-logo { text-decoration: none; }
   /* Locked down on purpose. WordPress themes and plugins routinely ship
      `img { width: 100% }` or `height: auto !important`, and either one turns
@@ -598,7 +605,7 @@
   .top-logo .logo-brush {
     height: var(--brush-h) !important;
     width: auto !important;
-    aspect-ratio: 156 / 418;
+    aspect-ratio: 128 / 294;
     object-fit: contain;
     max-width: none !important;
     min-width: 0;
@@ -610,13 +617,25 @@
   .top-logo .wm { display: flex; flex-direction: column; line-height: 1; }
   .top-logo .wm .vip {
     font-family: var(--font-serif); font-weight: 700; font-size: 21px;
-    color: var(--brand-orange); letter-spacing: .005em; white-space: nowrap;
+    color: var(--gold-deep); letter-spacing: .005em; white-space: nowrap;
+  }
+  /* The artwork's wordmark is bevelled gold. Flat gold looks thin next to it,
+     so the type carries the same vertical gold gradient the buttons use.
+     Guarded: without background-clip support the plain --gold-deep above
+     stands, rather than transparent text on a white bar. */
+  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .top-logo .wm .vip {
+      background: var(--gold-shine);
+      -webkit-background-clip: text;
+              background-clip: text;
+      color: transparent;
+    }
   }
   .top-logo .wm .tag {
     font-family: var(--font-sans); font-weight: 600; font-size: 10.5px;
-    color: #3C3B40; letter-spacing: .004em; white-space: nowrap; margin-top: 5px;
+    color: var(--navy); letter-spacing: .004em; white-space: nowrap; margin-top: 5px;
   }
-  .top-logo .wm .tag b { color: var(--brand-orange); font-weight: 700; }
+  .top-logo .wm .tag b { color: var(--gold-deep); font-weight: 700; }
   .f-mark { height: 66px; width: auto; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.45)); }
   .hero-strip .strip-badge { width: 78px; height: 78px; object-fit: contain;
     filter: drop-shadow(0 6px 14px rgba(0,0,0,0.35)); }
@@ -1909,7 +1928,7 @@ body { font-family: var(--font-sans); }
    set a height here: this file is appended after the base sheet, and a plain
    rule beats a media-query rule of equal specificity regardless of order — a
    height here silently cancelled the 40px and 36px mobile steps. */
-.top-logo .logo-brush { max-width: none !important; aspect-ratio: 156 / 418; object-fit: contain; }
+.top-logo .logo-brush { max-width: none !important; aspect-ratio: 128 / 294; object-fit: contain; }
 .top-phone {
   display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; white-space: nowrap;
   color: var(--navy); text-decoration: none; font-family: var(--font-sans);
@@ -2469,7 +2488,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <header class="topbar">
     <a class="top-logo" href="#hero">
-      <img class="logo-brush" src="../orange-county-sales-page/assets/logos/logo-mark.png" alt="" width="156" height="418" fetchpriority="high"/>
+      <img class="logo-brush" src="../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" fetchpriority="high"/>
       <span class="wm">
         <span class="vip"><span>VIP</span> <span>HOME PAINTING</span></span>
         <span class="tag">Visualize it. <b>See it.</b> Paint it.</span>

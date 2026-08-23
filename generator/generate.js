@@ -590,7 +590,7 @@ ${FILM_CSS}
   <!-- ============ TOP BAR ============ -->
   <header class="topbar">
     <a class="top-logo" href="#hero">
-      <img class="logo-brush" src="${A}/assets/logos/logo-mark.png" alt="" width="156" height="418" fetchpriority="high"/>
+      <img class="logo-brush" src="${A}/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" fetchpriority="high"/>
       <span class="wm">
         <span class="vip"><span>VIP</span> <span>HOME PAINTING</span></span>
         <span class="tag">Visualize it. <b>See it.</b> Paint it.</span>
@@ -956,7 +956,7 @@ ${FILM_CSS}
 
   <header class="topbar">
     <a class="top-logo" href="#hero">
-      <img class="logo-brush" src="${A}/assets/logos/logo-mark.png" alt="" width="156" height="418" fetchpriority="high"/>
+      <img class="logo-brush" src="${A}/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" fetchpriority="high"/>
       <span class="wm">
         <span class="vip"><span>VIP</span> <span>HOME PAINTING</span></span>
         <span class="tag">Visualize it. <b>See it.</b> Paint it.</span>
@@ -1222,7 +1222,7 @@ ${FILM_CSS}
 
   <header class="topbar">
     <a class="top-logo" href="#hero">
-      <img class="logo-brush" src="${A}/assets/logos/logo-mark.png" alt="" width="156" height="418" fetchpriority="high"/>
+      <img class="logo-brush" src="${A}/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" fetchpriority="high"/>
       <span class="wm">
         <span class="vip"><span>VIP</span> <span>HOME PAINTING</span></span>
         <span class="tag">Visualize it. <b>See it.</b> Paint it.</span>
@@ -1450,7 +1450,7 @@ ${FILM_CSS}
 
   <header class="topbar">
     <a class="top-logo" href="../">
-      <img class="logo-brush" src="${A}/assets/logos/logo-mark.png" alt="" width="156" height="418" fetchpriority="high"/>
+      <img class="logo-brush" src="${A}/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" fetchpriority="high"/>
       <span class="wm">
         <span class="vip"><span>VIP</span> <span>HOME PAINTING</span></span>
         <span class="tag">Visualize it. <b>See it.</b> Paint it.</span>
@@ -1628,7 +1628,7 @@ FILM_CSS + '\n' +
 '\n' +
 '  <header class="topbar">\n' +
 '    <a class="top-logo" href="../../">\n' +
-'      <img class="logo-brush" src="' + A + '/assets/logos/logo-mark.png" alt="" width="156" height="418" fetchpriority="high"/>\n' +
+'      <img class="logo-brush" src="' + A + '/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" fetchpriority="high"/>\n' +
 '      <span class="wm">\n' +
 '        <span class="vip"><span>VIP</span> <span>HOME PAINTING</span></span>\n' +
 '        <span class="tag">Visualize it. <b>See it.</b> Paint it.</span>\n' +
