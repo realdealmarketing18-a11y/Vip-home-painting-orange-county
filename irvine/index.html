@@ -1109,7 +1109,7 @@
   .pillar { background: #fff; border: 1px solid rgba(168,138,71,0.25); border-radius: 16px; padding: 28px; display: flex; gap: 20px; align-items: flex-start; box-shadow: 0 10px 26px rgba(26,31,78,0.08); transition: transform 240ms cubic-bezier(.22,1,.36,1), box-shadow 240ms; }
   .pillar:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(26,31,78,0.14); }
   .pillar .num { width: 52px; height: 52px; border-radius: 50%; background: var(--navy); color: var(--gold-bright); font-family: var(--font-serif); font-weight: 600; font-style: italic; font-size: 22px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .pillar h4 { font-family: var(--font-serif); font-weight: 600; font-size: 22px; color: var(--navy); margin: 4px 0 8px; line-height: 1.2; }
+  .pillar h3 { font-family: var(--font-serif); font-weight: 600; font-size: 22px; color: var(--navy); margin: 4px 0 8px; line-height: 1.2; }
   .pillar p { font-family: var(--font-sans); font-size: 14.5px; color: #4A4F70; margin: 0; line-height: 1.6; }
 
   /* ============ 9. WHAT WE DO (white) ============ */
@@ -1166,7 +1166,7 @@
   .service:hover { transform: translateY(-4px); box-shadow: 0 24px 50px rgba(26,31,78,0.22); }
   .service-img { aspect-ratio: 16/10; background-size: cover; background-position: center; }
   .service-body { padding: 26px; }
-  .service-body h4 { font-family: var(--font-serif); font-weight: 600; font-size: 22px; color: var(--gold-deep); margin: 0 0 10px; line-height: 1.2; font-style: italic; }
+  .service-body h3 { font-family: var(--font-serif); font-weight: 600; font-size: 22px; color: var(--gold-deep); margin: 0 0 10px; line-height: 1.2; font-style: italic; }
   .service-body p { font-family: var(--font-sans); font-size: 14.5px; color: #4A4F70; line-height: 1.6; margin: 0 0 16px; }
   .svc-link { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-sans); font-weight: 700; color: var(--gold-deep); font-size: 11.5px; letter-spacing: 0.20em; text-transform: uppercase; text-decoration: none; }
   .svc-link::after { content: '→'; }
@@ -1461,7 +1461,7 @@
     .tl-desc { font-size: 13.5px; }
     .case-head { font-size: 17px; }
     .step-title { font-size: 19px; }
-    .pillar h4, .service-body h4, .elevate-card h4 { font-size: 18px; }
+    .pillar h3, .service-body h3, .elevate-card h4 { font-size: 18px; }
     .area-card .ac-name { font-size: 16px; }
     .faq-q { font-size: 16px; padding: 18px 18px; }
     .body, .section-body, .step-desc, .pillar p,
@@ -1479,6 +1479,150 @@
     .top-logo .wm .vip { font-size: 19px; }
     .trust-tiles { flex-wrap: wrap; }
     .offer-amt { font-size: 34px; }
+  }
+
+  /* ==========================================================
+     HERO — FIT THE FOLD
+     Last block in the sheet on purpose: the hero rules live up
+     near .hero-cinema, but the generic mobile blocks above target
+     .hero and would otherwise win on source order.
+
+     The problem being fixed: the hero ran 1282px on a 375x812
+     phone — 1.58 screens — because .hero-stack kept its 96px
+     desktop top padding and centred itself inside a 100svh box,
+     then the badge strip added 323px underneath. The headline sat
+     169px below the bar and the CTA landed at 955px, well past the
+     fold. Nobody scrolls that far to find the button.
+
+     Fix is spacing, not content: start the stack at the top, tighten
+     the vertical rhythm, let the section size to its content, and
+     shrink the badge strip into a compact band that reads as its own
+     unit right under the CTA.
+     ========================================================== */
+
+  /* ---- TABLET (≤900px) ---- */
+  @media (max-width: 900px) {
+    /* size to content instead of forcing a full screen, so the badge
+       strip is no longer pushed into a second screen */
+    .hero-cinema { min-height: auto; }
+    .hero-cinema .hero-stack {
+      justify-content: flex-start;
+      padding: 40px 24px 22px;
+    }
+    .hero-fleuron { font-size: 16px; margin-bottom: 10px; }
+    .hero-cinema .ttl-hero { margin: 16px 0 8px; }
+    .hero-cinema .avatar-pill { margin: 18px 0 20px; }
+    .play-wrap { margin-bottom: 22px; gap: 10px; }
+    .hero-strip { padding: 16px 0 28px; }
+    .hero-strip .strip-badge { width: 58px; height: 58px; }
+  }
+
+  /* ---- MOBILE (≤600px) ---- */
+  @media (max-width: 600px) {
+    .hero-cinema .hero-stack { padding: 18px 18px 14px; }
+
+    /* pure ornament, and it cost 38px above the headline */
+    .hero-fleuron { display: none; }
+
+    /* the ruled eyebrow's 56px rules forced the label to wrap in two
+       lines on a 375px screen; short rules keep it on one */
+    .hero-cinema .eyebrow-ruled { gap: 10px; font-size: 9.5px; letter-spacing: .16em; }
+    .hero-cinema .eyebrow-ruled::before,
+    .hero-cinema .eyebrow-ruled::after { width: 20px; }
+
+    .hero-cinema .ttl-hero { font-size: 25px; line-height: 1.18; margin: 12px 0 6px; }
+    .hero-kicker { margin-top: 4px; }
+
+    .hero-cinema .avatar-pill { margin: 14px 0 16px; padding: 5px 16px 5px 5px; }
+    .avatar-pill .ph { width: 38px; height: 38px; }
+    .avatar-pill .name { font-size: 14px; }
+    .avatar-pill .sub-line { font-size: 11.5px; }
+
+    /* the play button stays, and keeps pulsing — just sized for a phone */
+    .play-wrap { margin-bottom: 16px; gap: 8px; }
+    .play-btn { width: 58px; height: 58px; }
+    .play-btn svg { width: 20px; height: 20px; }
+    .play-label { font-size: 10px; letter-spacing: .22em; }
+
+    /* full-width tap target; 380px min-width was overflowing a 375px screen */
+    .hero-cinema .hero-cta-wrap { width: 100%; }
+    .hero-cinema .hero-cta-wrap .btn-gold {
+      min-width: 0; width: 100%; padding: 15px 16px; font-size: 12px;
+    }
+    .hero-note { font-size: 11.5px; margin-top: 8px; line-height: 1.45; }
+
+    /* badges: their own compact band, reading as a unit under the CTA
+       rather than a 323px tail nobody reaches */
+    .hero-strip {
+      width: calc(100% - 36px);
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px 0;
+      padding: 16px 0 22px;
+      border-top: 1px solid rgba(201,169,97,.22);
+    }
+    .hero-strip .cell { padding: 0 8px; gap: 5px; }
+    .hero-strip .strip-badge { width: 46px; height: 46px; }
+    .hero-strip svg { width: 21px; height: 21px; }
+    .hero-strip .lb { font-size: 9px; letter-spacing: .13em; line-height: 1.3; }
+    .hero-strip .sb { font-size: 11.5px; line-height: 1.3; }
+  }
+
+  /* ---- SMALL MOBILE (≤380px) ---- */
+  @media (max-width: 380px) {
+    .hero-cinema .ttl-hero { font-size: 23px; }
+    .hero-strip .strip-badge { width: 42px; height: 42px; }
+    .hero-strip .sb { font-size: 11px; }
+  }
+
+  /* ---- TOUCH TARGETS (≤900px) ----
+     Anything a thumb has to hit needs ~44px. Three were well under:
+     the header phone number was a 16px-tall, 12px-type link with no
+     padding — and on a phone that is the single most likely tap on
+     the whole page. The others are the visualizer's style tabs and
+     the "Learn More" links in Services. Padding only, so nothing
+     moves on desktop and no type scale changes. */
+  @media (max-width: 900px) {
+    .top-phone {
+      min-height: 44px; padding: 6px 4px; font-size: 14px;
+    }
+    .top-phone svg { width: 18px; height: 18px; }
+    .viz-tab { min-height: 44px; display: inline-flex; align-items: center; }
+    .svc-link { min-height: 44px; padding: 12px 0; }
+
+    /* footer + nav lists, the city-hub chips and the hub card links */
+    .f-links a, .nav-menu a, .f-contact a {
+      display: inline-flex; align-items: center; min-height: 44px;
+    }
+    .city-hub .ch-links a { min-height: 44px; display: inline-flex; align-items: center; padding: 6px 15px; }
+    .city-hub .ch-foot a { min-height: 44px; display: inline-flex; align-items: center; }
+    .city-hub .ch-foot { gap: 0; }
+  }
+
+  /* ---- DESKTOP: pull the badge strip into the first screen ----
+     The hero is min-height:100svh and the stack is flex:1, so the whole
+     section only fits one screen if stack + strip stay under 100svh.
+     At 1440x900 it came to 973px and the badges fell 154px past the
+     fold — the two things the offer rests on, custom visualization and
+     the warranty, were the ones nobody saw. These trims buy back ~80px
+     of pure whitespace; the type scale is untouched. */
+  @media (min-width: 901px) {
+    /* .topbar is position:sticky, so it takes a row of flow space above the
+       hero. A 100svh hero therefore always ran one topbar-height past the
+       fold — which is why the badge strip never fit no matter how much
+       padding came off. Subtract the bar instead.
+       Bar height = vertical padding x2 + 48px logo + 1px border. */
+    .hero-cinema { min-height: calc(100svh - 77px); }
+
+    .hero-cinema .hero-stack { padding: 28px 24px 12px; }
+    .hero-fleuron { margin-bottom: 10px; }
+    .hero-cinema .ttl-hero { margin: 18px 0 8px; }
+    .hero-cinema .avatar-pill { margin: 14px 0 18px; }
+    .play-wrap { margin-bottom: 18px; gap: 10px; }
+    .hero-strip { padding: 10px 0 16px; }
+    .hero-strip .strip-badge { width: 58px; height: 58px; }
+  }
+  @media (min-width: 1025px) {
+    .hero-cinema { min-height: calc(100svh - 81px); }   /* .topbar padding goes 14px -> 16px here */
   }
 
     .areas-head { text-align: center; max-width: 760px; margin: 0 auto 40px; }

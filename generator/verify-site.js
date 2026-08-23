@@ -58,7 +58,13 @@ if (!pages.length) {
 }
 
 const read = p => fs.readFileSync(p.file, 'utf8');
-const bodyOf = h => h.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '');
+/* Rendered copy only: drop script, style and HTML comments. Comments are build
+   notes, not customer-facing text, and flagging "AI crawlers" in a section
+   marker is a false positive that trains people to ignore the check. */
+const bodyOf = h => h
+  .replace(/<script[\s\S]*?<\/script>/g, '')
+  .replace(/<style[\s\S]*?<\/style>/g, '')
+  .replace(/<!--[\s\S]*?-->/g, '');
 
 console.log(`\nVERIFY SITE — ${pages.length} page(s)${only ? `, city "${only}"` : ''}\n`);
 
@@ -84,11 +90,12 @@ for (const p of pages) {
 if (!deadTotal) ok(`no dead links across ${pages.length} pages`);
 if (!absTotal) ok('no absolute links');
 
-/* ---------- 2. banned copy, in rendered body text ---------- */
-console.log('\n2. copy rules (rendered text, not source)');
-let copyBad = 0;
-for (const p of pages) {
-  const body = bodyOf(read(p));
+/* ---------- 2. banned copy, in rendered body text ----------
+   Extracted so the county page gets the identical test. It did not for a
+   long time, and "5-Star Rated" sat in the front-page hero badge strip the
+   whole while — the exact claim CLAUDE.md bans, on the most visible page on
+   the site. A rule that only runs on generated pages is not a rule. */
+function copyProblems(body) {
   const hit = (re) => (body.match(re) || []).length;
   const probs = [];
   if (hit(/\bfree\b/gi)) probs.push('"free" (use complimentary)');
@@ -105,7 +112,13 @@ for (const p of pages) {
   const wrongWarranty = (body.match(/\b\d+-Year Warranty\b/g) || []).filter(w => w !== CFG.warranty);
   if (wrongWarranty.length) probs.push(`warranty says "${[...new Set(wrongWarranty)].join('", "')}" but config says "${CFG.warranty}"`);
   if (/\$\{[A-Za-z.]+\}/.test(body)) probs.push('an unrendered ${...} placeholder is visible on the page');
+  return probs;
+}
 
+console.log('\n2. copy rules (rendered text, not source)');
+let copyBad = 0;
+for (const p of pages) {
+  const probs = copyProblems(bodyOf(read(p)));
   if (probs.length) { bad(`${p.rel}: ${probs.join(' · ')}`); copyBad++; }
 }
 if (!copyBad) ok(`no banned copy; warranty reads "${CFG.warranty}" on every page`);
@@ -271,6 +284,12 @@ if (!fs.existsSync(ocFile)) {
   absDead.length
     ? absDead.forEach(u => bad(`county page has an absolute link to a page that does not exist: ${u}`))
     : ok('no absolute links to missing pages');
+
+  /* the same copy rules the 18 generated pages get */
+  const ocProbs = copyProblems(bodyOf(oc));
+  ocProbs.length
+    ? ocProbs.forEach(p => bad(`county page: ${p}`))
+    : ok('no banned copy on the county page');
 
   // canonical must name the real domain, never the build host
   const canon = (oc.match(/<link rel="canonical" href="([^"]*)"/) || [])[1] || '';
