@@ -590,7 +590,11 @@ ${FILM_CSS}
   <!-- ============ TOP BAR ============ -->
   <header class="topbar">
     <a class="top-logo" href="#hero">
-      <img class="logo-img" src="${A}/assets/logos/logo-tagline.png" alt="VIP Home Painting — See it. Love it. Paint it."/>
+      <img class="logo-brush" src="${A}/assets/logos/logo-mark.png" alt="" width="156" height="418" fetchpriority="high"/>
+      <span class="wm">
+        <span class="vip"><span>VIP</span> <span>HOME PAINTING</span></span>
+        <span class="tag">Visualize it. <b>See it.</b> Paint it.</span>
+      </span>
     </a>
     <nav class="top-nav">
       ${navLinks}
@@ -952,7 +956,11 @@ ${FILM_CSS}
 
   <header class="topbar">
     <a class="top-logo" href="#hero">
-      <img class="logo-img" src="${A}/assets/logos/logo-tagline.png" alt="VIP Home Painting — See it. Love it. Paint it."/>
+      <img class="logo-brush" src="${A}/assets/logos/logo-mark.png" alt="" width="156" height="418" fetchpriority="high"/>
+      <span class="wm">
+        <span class="vip"><span>VIP</span> <span>HOME PAINTING</span></span>
+        <span class="tag">Visualize it. <b>See it.</b> Paint it.</span>
+      </span>
     </a>
     <nav class="top-nav">
       ${navLinks}
@@ -1214,7 +1222,11 @@ ${FILM_CSS}
 
   <header class="topbar">
     <a class="top-logo" href="#hero">
-      <img class="logo-img" src="${A}/assets/logos/logo-tagline.png" alt="VIP Home Painting — See it. Love it. Paint it."/>
+      <img class="logo-brush" src="${A}/assets/logos/logo-mark.png" alt="" width="156" height="418" fetchpriority="high"/>
+      <span class="wm">
+        <span class="vip"><span>VIP</span> <span>HOME PAINTING</span></span>
+        <span class="tag">Visualize it. <b>See it.</b> Paint it.</span>
+      </span>
     </a>
     <nav class="top-nav">
       ${navLinks}
@@ -1438,7 +1450,11 @@ ${FILM_CSS}
 
   <header class="topbar">
     <a class="top-logo" href="../">
-      <img class="logo-img" src="${A}/assets/logos/logo-tagline.png" alt="VIP Home Painting — See it. Love it. Paint it."/>
+      <img class="logo-brush" src="${A}/assets/logos/logo-mark.png" alt="" width="156" height="418" fetchpriority="high"/>
+      <span class="wm">
+        <span class="vip"><span>VIP</span> <span>HOME PAINTING</span></span>
+        <span class="tag">Visualize it. <b>See it.</b> Paint it.</span>
+      </span>
     </a>
     <nav class="top-nav">${topNav(navCtx(`/${p.city_slug}/${p.slug}/`, p.city_slug, A))}
     </nav>
@@ -1612,7 +1628,11 @@ FILM_CSS + '\n' +
 '\n' +
 '  <header class="topbar">\n' +
 '    <a class="top-logo" href="../../">\n' +
-'      <img class="logo-img" src="' + A + '/assets/logos/logo-tagline.png" alt="VIP Home Painting — See it. Love it. Paint it."/>\n' +
+'      <img class="logo-brush" src="' + A + '/assets/logos/logo-mark.png" alt="" width="156" height="418" fetchpriority="high"/>\n' +
+'      <span class="wm">\n' +
+'        <span class="vip"><span>VIP</span> <span>HOME PAINTING</span></span>\n' +
+'        <span class="tag">Visualize it. <b>See it.</b> Paint it.</span>\n' +
+'      </span>\n' +
 '    </a>\n' +
 '    <nav class="top-nav">\n' +
 topNav(navCtx(`/${a.city_slug}/${a.pillar_slug}/${a.slug}/`, a.city_slug, A)) + '\n' +

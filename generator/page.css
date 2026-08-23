@@ -40,7 +40,16 @@ body { font-family: var(--font-sans); }
    Without these two, ten nav items squeezed the logo to a sliver and
    wrapped the phone number onto three lines. */
 .top-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
-.top-logo img.logo-img { height: 48px; width: auto; display: block; max-width: none; }
+/* Header lockup: the brush is an image, the words are real text. The old
+   single PNG was a wide lockup whose height is set by the tall brush while its
+   legibility is set by the type — capped at 48px in the bar it rendered at 11%
+   scale and the tagline came out around 5px of glyph height. Splitting it lets
+   each part size independently and stays crisp at any DPI.
+   Size and breakpoints come from the base stylesheet (the county page). Do NOT
+   set a height here: this file is appended after the base sheet, and a plain
+   rule beats a media-query rule of equal specificity regardless of order — a
+   height here silently cancelled the 40px and 36px mobile steps. */
+.top-logo .logo-brush { max-width: none; }
 .top-phone {
   display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; white-space: nowrap;
   color: var(--navy); text-decoration: none; font-family: var(--font-sans);
