@@ -56,6 +56,9 @@ const WP_PASS = process.env.WP_APP_PASSWORD;
    directions. Canvas removes the collision entirely rather than fighting it. */
 const TEMPLATE = 'elementor_canvas';
 
+/* Service pages live at the root beside the cities. */
+const SERVICES = (() => { try { return JSON.parse(fs.readFileSync(path.join(__dirname, 'services.json'), 'utf8')).services || []; } catch (e) { return []; } })();
+
 /* ---------- discover what to publish, in parent-first order ---------- */
 function discover() {
   const out = [];
@@ -78,6 +81,13 @@ function discover() {
       }
     }
   }
+  if (!onlyCity) {
+    for (const s of SERVICES) {
+      const f = path.join(ROOT, s.slug, 'index.html');
+      if (fs.existsSync(f)) out.push({ file: f, rel: s.slug, slug: s.slug, parentPath: null, type: 'service', depth: 1 });
+    }
+  }
+
   const sorted = out.sort((a, b) => a.depth - b.depth);   // parents before children
 
   /* The Orange County page is the site's front page and the top of the silo.

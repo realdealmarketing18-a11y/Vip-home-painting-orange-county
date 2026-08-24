@@ -31,6 +31,14 @@
    So: store every internal path absolute ('/irvine/woodbury/') and let
    this turn it into the correct relative link from wherever you are.
    One place to get right instead of a rel() per page type. */
+/* The service registry drives the Services menu. Typed nav items are how the
+   three 'Learn More' links on the front page ended up pointing at nothing for
+   months — a menu entry should not be able to exist without its page. */
+const SERVICES = (() => {
+  try { return JSON.parse(require('fs').readFileSync(require('path').join(__dirname,'services.json'),'utf8')).services || []; }
+  catch (e) { return []; }
+})();
+
 function linker(fromPath) {
   const from = String(fromPath).split('/').filter(Boolean);
   return (toPath) => {
@@ -95,13 +103,11 @@ function topNav(ctx) {
       menu('cities', 'Cities', countyCities, esc),
       menu('guides', 'Guides', (ctx.countyGuides || []), esc),
       menu('services', 'Services', (ctx.countyHoa || []).concat([
-        { label: 'Exterior Painting', url: '#services' },
-        { label: 'Interior Painting', url: '#services' },
-        { label: 'Kitchen Cabinets', url: '#services' },
+        ...SERVICES.map(s => ({ label: s.nav_label, url: ctx.countyLink('/' + s.slug + '/') })),
         { label: 'Color Visualization', url: '#viz' },
         { label: 'Our Work', url: '#work' }
       ]), esc),
-      '\n      <a href="#quote">Complimentary Quote</a>'
+      `\n      <a href="${ctx.quoteHref || '#quote'}">Complimentary Quote</a>`
     ].filter(Boolean).join('');
   }
 
@@ -130,9 +136,7 @@ function topNav(ctx) {
       ? [{ label: `${ctx.cityName} HOA & Common-Area Painting`, url: L(ctx.hoaUrl), strong: true }]
       : [])
     .concat([
-      { label: 'Exterior Painting', url: `${A}/#services` },
-      { label: 'Interior Painting', url: `${A}/#services` },
-      { label: 'Kitchen Cabinets', url: `${A}/#services` },
+      ...SERVICES.map(s => ({ label: s.nav_label, url: L('/' + s.slug + '/') })),
       { label: 'Color Visualization', url: `${A}/#viz` }
     ]);
 
@@ -284,7 +288,7 @@ function buildFooter(ctx) {
    from the same data as everything else means a link can only exist if the page
    does. Never hand-write a link into this footer again. */
 function buildCountyFooter(ctx) {
-  const { CFG, esc, CITIES } = ctx;
+  const { CFG, esc, CITIES, A } = ctx;
   const L = ctx.link;                       // '/irvine/' -> '../irvine/'
   const cities = liveCities(CITIES);
 
@@ -308,12 +312,10 @@ function buildCountyFooter(ctx) {
         <nav class="f-col" aria-label="Premium services">
           <div class="f-col-label">Premium Services</div>
           <ul class="f-links">
-            <li><a href="#services">Residential Exterior Painting</a></li>
-            <li><a href="#services">Premium Interior Painting</a></li>
-            <li><a href="#services">Kitchen Cabinet Painting</a></li>
-            <li><a href="#viz">Custom Color Visualization</a></li>
-            <li><a href="#work">Our Work</a></li>
-            <li><a href="#process">Our Process</a></li>
+            ${SERVICES.map(s => `<li><a href="${L('/' + s.slug + '/')}">${esc(s.nav_label)}</a></li>`).join('\n            ')}
+            <li><a href="${ctx.anchorBase || ''}#viz">Custom Color Visualization</a></li>
+            <li><a href="${ctx.anchorBase || ''}#work">Our Work</a></li>
+            <li><a href="${ctx.anchorBase || ''}#process">Our Process</a></li>
           </ul>
         </nav>`;
 
@@ -321,7 +323,7 @@ function buildCountyFooter(ctx) {
         <div class="f-col">
           <div class="f-col-label">VIP Concierge</div>
           <ul class="f-links">
-            <li><a href="#quote">Request a Complimentary Quote</a></li>
+            <li><a href="${ctx.anchorBase || ctx.quoteHref || '#quote'}">Request a Complimentary Quote</a></li>
             <li><a href="${CFG.phoneHref}">${CFG.phone}</a></li>
             <li><a href="mailto:${CFG.email}">${CFG.email}</a></li>
             <li><span style="font-size:13.5px; color:rgba(255,255,255,0.78);">Mon–Fri 8am–6pm · Sat 9am–3pm</span></li>
@@ -329,10 +331,44 @@ function buildCountyFooter(ctx) {
         </div>`;
 
   const cols = [...cityCols, servicesCol, concierge];
-
-  return `
+  const colsBlock = `
       <div class="f-cols f-cols-${cols.length}">${cols.join('')}
       </div>`;
+
+  /* Two callers, two shapes. The county page has its own <footer> shell and
+     only wants the columns injected between its FOOTER markers. A service page
+     has no shell of its own, so it needs the whole thing — including the NAP
+     line, which is the reason this branch exists: without it the service pages
+     shipped with no readable name, locality or phone at all. */
+  if (!ctx.standalone) return colsBlock;
+
+  return `
+  <footer>
+    <div class="f-shell">
+      <div class="f-mast">
+        <div class="f-logo">
+          <img class="f-mark" src="${A}/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" loading="lazy"/>
+          <div class="wm"><div class="vip">VIP</div><div class="sub">HOME PAINTING</div></div>
+        </div>
+        <div class="f-tag"><b>We don't just paint homes,</b><br/>we transform lives.</div>
+      </div>
+${colsBlock}
+      <div class="f-bottom">
+        <div class="f-contact">
+          <span>${esc(ctx.bottomLine || 'Serving every city in Orange County, CA')}</span>
+          <a href="${CFG.phoneHref}">${CFG.phone}</a>
+        </div>
+        <div class="f-nap">
+          <span class="nap-name">${esc(CFG.businessName)}</span>
+          <span class="nap-sep">·</span>
+          <span class="nap-loc">Anaheim, CA</span>
+          <span class="nap-sep">·</span>
+          <a class="nap-tel" href="${CFG.phoneHref}">${CFG.phone}</a>
+        </div>
+        <div class="f-copy">© ${new Date().getFullYear()} VIP Home Painting. Licensed, Bonded &amp; Insured · ${esc(CFG.warranty)} on Labor &amp; Materials.</div>
+      </div>
+    </div>
+  </footer>`;
 }
 
 module.exports = { linker, liveCities, topNav, buildFooter, buildCountyFooter, NAV_SCRIPT };

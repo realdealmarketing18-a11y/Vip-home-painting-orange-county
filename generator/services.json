@@ -1,0 +1,171 @@
+{
+  "_doc": "Service pages — the county-level 'what we do' branch of the silo. Dedicated service pages are the #1 local organic factor and the #2 AI-visibility factor (Whitespark 2026), and until these existed the Services menu and three 'Learn More' links on the front page pointed at nothing. Every problem/solution pair below is lifted from the Irvine research in briefs/irvine.json — none of it is invented. Copy rules from CLAUDE.md apply: complimentary not free, starts-at pricing only, no rating claims, warranty from config.",
+
+  "services": [
+    {
+      "slug": "exterior-painting",
+      "name": "Exterior House Painting",
+      "short": "Exterior",
+      "nav_label": "Exterior House Painting",
+      "hero_formula": "A6 — the cost of wrong",
+      "h1": "A Wrong Exterior Color Costs the <span class=\"gold\">Whole Job Twice</span>",
+      "hero_kicker": "See it on your own elevation first",
+      "sub": "Your home rendered in every candidate palette — matched to Orange County light — before a single gallon is tinted.",
+      "layout": { "module_order": ["problems", "system", "visualize", "process", "pricing", "where"] },
+      "seo": {
+        "primary_keyword": "exterior house painting Orange County",
+        "meta_title": "Exterior House Painting Orange County | VIP Home Painting",
+        "meta_desc": "Exterior house painting across Orange County. See your home in every color before we paint — complimentary visualization, itemized estimate, 2-Year Warranty.",
+        "answer_capsule": "VIP Home Painting provides exterior house painting across Orange County, CA, from a base in Anaheim. Exterior work is specified in Sherwin-Williams Emerald and Duration coating systems and applied at full wet-mil by Graco and Titan airless spray. Every project begins with a complimentary custom visualization of your own home in each candidate palette, is quoted line by line rather than as a lump sum, and is backed by a 2-Year Warranty on labor and materials. Call (909) 312-5400."
+      },
+      "intro": "Exterior paint is the one decision on your house that every neighbor sees, every day, for the next decade. It is also the one most people commit to from a two-inch swatch held against a wall in the wrong light. That is why our exterior work starts on a screen, not a ladder.",
+      "scope": [
+        "Stucco, siding, and trim",
+        "Fascia, eaves, and soffits",
+        "Garage doors and entry doors",
+        "Wrought iron, railings, and gates",
+        "Shutters and window trim",
+        "Garden walls and pilasters"
+      ],
+      "system": {
+        "title": "What we actually put on the wall",
+        "body": "The coating and the application matter more than the color. Both are specified before the estimate, and both appear on it.",
+        "specs": [
+          { "k": "Coating", "v": "Sherwin-Williams Emerald and Duration exterior systems — self-priming, UV-stable acrylics" },
+          { "k": "Application", "v": "Graco and Titan airless spray at consistent tip and pressure, back-rolled where the substrate calls for it" },
+          { "k": "Film build", "v": "Full wet-mil, so every elevation weathers at the same rate" },
+          { "k": "Warranty", "v": "2-Year Warranty on labor and materials" }
+        ]
+      },
+      "problems": [
+        { "p": "South-facing stucco fades unevenly on hillside lots, leaving chalky, blotchy elevations within a few seasons.", "s": "We spec Sherwin-Williams Emerald exterior — a self-priming, UV-stable acrylic — and apply a full wet-mil coating by airless spray so every elevation weathers evenly." },
+        { "p": "Roller stipple and lap marks ruin the flat, monolithic look modern stucco is designed for.", "s": "We spray every large plane with Graco and Titan airless rigs at a consistent tip and pressure, then back-roll where the substrate calls for it — a uniform film, edge to edge." },
+        { "p": "Dark modern colors like Iron Ore can fail fast in full sun if the wrong product is used.", "s": "We spec Sherwin-Williams Emerald with modern, fade-resistant colorants rated for dark exterior use, so deep charcoals stay deep." },
+        { "p": "Crisp two-tone schemes live or die on the cut lines.", "s": "Laser-checked masking and hand-cut transitions where volumes meet — the detail work that separates an estate finish from a production repaint." },
+        { "p": "Painters who overspray garden walls, paseos, and your neighbor's roses.", "s": "White-glove masking and containment on every job — landscaping wrapped, hardscape covered, and a clean site every evening." }
+      ],
+      "process": [
+        { "t": "Visualize", "d": "Your actual home rendered in each candidate palette. You approve a picture, not a swatch." },
+        { "t": "Specify", "d": "Coating system, prep scope and access plan written down, then priced line by line." },
+        { "t": "Prepare", "d": "Wash, repair, mask and prime. This is the half of the job that decides how long the other half lasts." },
+        { "t": "Spray", "d": "Airless application at full wet-mil, elevation by elevation, so the house stays livable." },
+        { "t": "Walk it", "d": "A final walkthrough against the checklist before we pull masking." }
+      ],
+      "pricing": {
+        "rate_line": "Exterior work starts at $4.75 per square foot of paintable surface.",
+        "body": "Where a project lands above that depends on the home — how much prep and repair the existing paint needs, the amount of trim and detail work, the height and access, and the finish you choose. A straightforward repaint and a stucco estate with extensive wood trim are not the same job. Every estimate is itemized: prep, primer, coating system, trim and accents priced separately."
+      },
+      "faqs": [
+        { "q": "How long does an exterior repaint take?", "a": "Most homes are completed in about five working days, sequenced elevation by elevation so the house stays livable throughout. Larger estates with extensive trim take longer, and the estimate says which." },
+        { "q": "Do you handle HOA design review?", "a": "Yes. We prepare the color submission package — swatches, product data sheets and elevation notes — formatted for your association's design review, so approval is a formality rather than a delay." },
+        { "q": "What paint do you use on exteriors?", "a": "Sherwin-Williams Emerald and Duration exterior systems, applied at full wet-mil by airless spray. Emerald is a self-priming, UV-stable acrylic, which is what keeps deep colors from chalking on sun-exposed elevations." },
+        { "q": "Can I see the color on my house before committing?", "a": "That is how every project starts. Our complimentary Custom Visualization Service renders your actual home in each candidate palette, so you approve something you have already seen." }
+      ]
+    },
+
+    {
+      "slug": "interior-painting",
+      "name": "Interior House Painting",
+      "short": "Interior",
+      "nav_label": "Interior House Painting",
+      "hero_formula": "A1 — risk reversal",
+      "h1": "Before We Roll a Single Wall, <span class=\"gold\">You'll See the Room Finished</span>",
+      "hero_kicker": "Interior painting across Orange County",
+      "sub": "Interior color behaves nothing like the swatch. We render the room in your own light before anything is committed.",
+      "layout": { "module_order": ["visualize", "problems", "system", "pricing", "where"] },
+      "seo": {
+        "primary_keyword": "interior house painting Orange County",
+        "meta_title": "Interior House Painting Orange County | VIP Home Painting",
+        "meta_desc": "Interior house painting across Orange County. See the room finished before we start — complimentary visualization, itemized estimate, 2-Year Warranty.",
+        "answer_capsule": "VIP Home Painting provides interior house painting across Orange County, CA, from a base in Anaheim. Interior work is specified in Sherwin-Williams coating systems, applied by brush, roller or spray depending on the surface, with full masking and containment of floors, furnishings and fixtures. Every project begins with a complimentary custom visualization, is quoted line by line rather than as a lump sum, and is backed by a 2-Year Warranty on labor and materials. Call (909) 312-5400."
+      },
+      "intro": "Interior color is the one people get wrong most often, because a room changes a paint color more than the paint changes the room. North light cools it. A warm floor pushes it. A single wall of glass can make a greige read green by four in the afternoon. Seeing it rendered in your own room removes the guess.",
+      "scope": [
+        "Walls, ceilings, and trim",
+        "Doors, casings, and baseboards",
+        "Crown moulding and wainscot",
+        "Stairwells and two-storey volumes",
+        "Built-ins and shelving",
+        "Garage interiors"
+      ],
+      "system": {
+        "title": "How the work is contained",
+        "body": "On an occupied house, protection is the difference between a repaint and a disruption.",
+        "specs": [
+          { "k": "Coating", "v": "Sherwin-Williams interior systems, sheen specified per room and surface" },
+          { "k": "Application", "v": "Brush, roller or spray chosen by surface — sprayed where a flat monolithic finish matters, cut by hand where it does not" },
+          { "k": "Containment", "v": "Floors, furnishings and fixtures masked and covered; site left clean every evening" },
+          { "k": "Warranty", "v": "2-Year Warranty on labor and materials" }
+        ]
+      },
+      "problems": [
+        { "p": "A color that looked right on the swatch reads completely different once it is on four walls.", "s": "Our complimentary custom visualization shows the room rendered in each candidate color before anything is bought, so the surprise happens on screen instead of on your walls." },
+        { "p": "Estimates from other painters arrive as one vague lump sum.", "s": "Every VIP proposal is itemized — prep, primer, coating system, trim and accents priced line by line — so you know exactly what you are paying for." },
+        { "p": "A repaint that turns the house into a worksite for weeks.", "s": "Work is sequenced room by room with full containment, so the household keeps functioning and the site is clean every evening." },
+        { "p": "Crews that treat a luxury home like a tract repaint.", "s": "White-glove protocols on every project: full masking, floor and furnishing protection, daily clean-up, and a final walkthrough against the founder's checklist." }
+      ],
+      "pricing": {
+        "rate_line": "Interior work starts at $3.25 per square foot of paintable surface.",
+        "body": "Where a project lands above that depends on the rooms — ceiling height, the amount of trim and moulding, how much patching and repair the walls need, the number of color changes, and the sheen you choose. Every estimate is itemized rather than quoted as a single figure."
+      },
+      "faqs": [
+        { "q": "Do we need to move out during interior painting?", "a": "No. Work is sequenced room by room with full containment, so the household keeps functioning. We agree the order of rooms before the first day so you always know which part of the house is in use." },
+        { "q": "How do you protect furniture and floors?", "a": "Everything that stays is masked and covered — floors, furnishings, fixtures and hardware — and the site is cleaned every evening rather than at the end of the job." },
+        { "q": "Can you match a color I already have?", "a": "Yes. Bring us a sample and we will match it. We will also render it back to you in the actual room first, because an existing color rarely reads the same on a freshly prepared surface." },
+        { "q": "What sheen should interior walls be?", "a": "It depends on the room and how much cleaning the surface will take. We specify sheen per room and per surface on the estimate rather than applying one finish throughout, and we will explain the reasoning for each." }
+      ]
+    },
+
+    {
+      "slug": "kitchen-cabinet-painting",
+      "name": "Kitchen Cabinet Painting",
+      "short": "Cabinets",
+      "nav_label": "Kitchen Cabinet Painting",
+      "hero_formula": "A3 — transformation promise",
+      "h1": "The Kitchens People Assume Were Replaced <span class=\"gold\">Were Refinished</span>",
+      "hero_kicker": "Factory-finish cabinet refinishing",
+      "sub": "Doors sprayed off-site in urethane enamel, boxes sprayed in place — a furniture-grade finish at a fraction of replacement.",
+      "layout": { "module_order": ["problems", "system", "visualize", "pricing", "where"] },
+      "seo": {
+        "primary_keyword": "kitchen cabinet painting Orange County",
+        "meta_title": "Kitchen Cabinet Painting Orange County | VIP Home Painting",
+        "meta_desc": "Kitchen cabinet refinishing across Orange County. Doors sprayed off-site in urethane enamel for a furniture-grade finish. 2-Year Warranty.",
+        "answer_capsule": "VIP Home Painting refinishes kitchen cabinets across Orange County, CA, from a base in Anaheim. Doors and drawer fronts are removed and sprayed off-site in urethane enamel while boxes are sprayed in place, hardware is re-hung square, and the finish is allowed to cure before the kitchen returns to use. The result is a furniture-grade finish at a fraction of the cost of replacement, backed by a 2-Year Warranty on labor and materials. Call (909) 312-5400."
+      },
+      "intro": "Most kitchens that look like they were replaced were not. If the boxes are sound and the layout works, the expensive part of the kitchen is already right — what has aged is the finish. Refinishing addresses exactly that, and nothing else.",
+      "scope": [
+        "Doors and drawer fronts, sprayed off-site",
+        "Cabinet boxes, sprayed in place",
+        "Islands and peninsulas",
+        "Open shelving and glass-front units",
+        "Toe kicks and end panels",
+        "Hardware removal and square re-hang"
+      ],
+      "system": {
+        "title": "Why it survives a kitchen",
+        "body": "A cabinet finish gets touched, cleaned and knocked more than any other painted surface in the house. Ordinary wall paint does not survive it.",
+        "specs": [
+          { "k": "Coating", "v": "Catalyzed-hardness urethane enamel — a cabinet-grade system, not wall paint" },
+          { "k": "Doors", "v": "Removed and sprayed off-site, so there is no brush texture and no overspray in your kitchen" },
+          { "k": "Sequence", "v": "Degrease, sand, prime, spray — then full cure time before anything is re-hung" },
+          { "k": "Warranty", "v": "2-Year Warranty on labor and materials" }
+        ]
+      },
+      "problems": [
+        { "p": "Cabinet painting that leaves brush marks and starts peeling at the hinges.", "s": "Factory-finish cabinet refinishing: doors sprayed off-site in urethane enamel, boxes sprayed in place, hardware re-hung square." },
+        { "p": "Brush-painted cabinets that chip at the corners within a year.", "s": "We use catalyzed-hardness urethane enamel systems, a proper degrease-sand-prime sequence, and full cure time before re-hanging — that is what makes the finish last." },
+        { "p": "A 2005-era kitchen with solid cabinets but a tired, orange-toned finish.", "s": "Factory-finish refinishing: doors and drawers sprayed off-site in urethane enamel, boxes sprayed in place — a true furniture-grade result at a fraction of replacement cost." }
+      ],
+      "pricing": {
+        "rate_line": "Cabinet refinishing is quoted per door, drawer and box rather than by square foot.",
+        "body": "The count is what drives it — how many doors and drawer fronts, whether boxes and interiors are included, the condition of the existing finish, and whether hardware is being reused or replaced. We count the kitchen and itemize it rather than quoting a lump sum."
+      },
+      "faqs": [
+        { "q": "How long is the kitchen out of use?", "a": "Doors and drawer fronts leave for the spray shop while boxes are sprayed in place, so the kitchen stays partly usable through most of the work. We agree the timing before we start and tell you which days the cabinets are open." },
+        { "q": "Is refinishing cheaper than replacing cabinets?", "a": "Substantially, when the boxes are sound and the layout works. Refinishing addresses the finish, which is what has usually aged, and leaves the structure and layout you already paid for in place." },
+        { "q": "Will the finish chip like painted cabinets do?", "a": "That failure comes from wall paint applied over a poorly prepared surface. We use catalyzed-hardness urethane enamel over a degrease-sand-prime sequence, with full cure time before anything is re-hung, and back it with a 2-Year Warranty." },
+        { "q": "Can you match a new color to my existing countertops?", "a": "Yes, and you will see it first. We render the kitchen in each candidate color against your existing counters and floor before anything is sprayed." }
+      ]
+    }
+  ]
+}

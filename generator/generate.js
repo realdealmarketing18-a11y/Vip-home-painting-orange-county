@@ -1103,6 +1103,9 @@ ${VIZ_JS}
    ============================================================ */
 
 const HOA_MODULES = require('./hoa-modules.js');
+const SERVICE_MODULES = require('./service-modules.js');
+const SERVICES = JSON.parse(fs.readFileSync(path.join(__dirname, 'services.json'), 'utf8')).services;
+const SERVICE_CSS = fs.readFileSync(path.join(__dirname, 'service-page.css'), 'utf8');
 const HOA_CSS = fs.readFileSync(path.join(__dirname, 'hoa-page.css'), 'utf8');
 
 function hoaJsonLd(h, city, url) {
@@ -1394,6 +1397,247 @@ function pillarJsonLd(p, url) {
     ]
   });
   return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2);
+}
+
+/* ============================================================
+   SERVICE PAGES — the "what we do" branch of the silo.
+
+   Dedicated service pages are the #1 local organic factor and the
+   #2 AI-visibility factor. Until these existed, the Services menu
+   and three "Learn More" links on the front page pointed at nothing.
+
+   A service page is county-level: it never claims a city, and it
+   links DOWN to the city hubs instead of competing with them.
+   ============================================================ */
+
+function serviceJsonLd(s, url) {
+  const base = CFG.siteBase;
+  const graph = [{
+    '@type': 'HousePainter',
+    '@id': `${base}/#business`,
+    name: CFG.businessName,
+    url: `${base}/`,
+    telephone: CFG.phoneE164,
+    email: CFG.email,
+    priceRange: '$$$',
+    address: { '@type': 'PostalAddress', addressLocality: 'Anaheim', addressRegion: 'CA', addressCountry: 'US' },
+    areaServed: (CITIES.cities || []).map(c => ({
+      '@type': 'City', name: c.name,
+      sameAs: `https://en.wikipedia.org/wiki/${c.name.replace(/ /g, '_')},_California`
+    })).concat([{ '@type': 'AdministrativeArea', name: 'Orange County, California' }])
+  }, {
+    /* The Service node is what makes this read as a service page to a
+       parser rather than as one more landing page. */
+    '@type': 'Service',
+    '@id': `${url}#service`,
+    name: s.name,
+    serviceType: s.name,
+    description: s.seo.meta_desc,
+    provider: { '@id': `${base}/#business` },
+    areaServed: { '@type': 'AdministrativeArea', name: 'Orange County, California' },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: `${s.name} — scope`,
+      itemListElement: (s.scope || []).map(x => ({
+        '@type': 'Offer', itemOffered: { '@type': 'Service', name: x }
+      }))
+    }
+  }, {
+    '@type': 'WebPage',
+    '@id': url,
+    name: s.seo.meta_title,
+    url,
+    inLanguage: 'en-US',
+    about: { '@id': `${base}/#business` },
+    speakable: { '@type': 'SpeakableSpecification', cssSelector: ['h1', '.capsule-text'] }
+  }, {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'VIP Home Painting — Orange County', item: `${base}/orange-county-sales-page/` },
+      { '@type': 'ListItem', position: 2, name: s.name, item: url }
+    ]
+  }];
+
+  const faqs = (s.faqs || []).filter(f => f.q && f.a);
+  if (faqs.length) {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${url}#faq`,
+      mainEntity: faqs.map(f => ({
+        '@type': 'Question', name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a }
+      }))
+    });
+  }
+  return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2);
+}
+
+function buildServicePage(s) {
+  const url = `${CFG.siteBase}/${s.slug}/`;
+  const A = CFG.assetBase;
+  const cityLinks = (CITIES.cities || []).map(c => ({ name: c.name, url: `../${c.slug}/` }));
+  const H = { CFG, ctaButton, secNo, esc, A, cityLinks };
+
+  const order = (s.layout && s.layout.module_order) || [];
+  const modules = order.map((key, i) => {
+    const fn = SERVICE_MODULES[key];
+    if (!fn) throw new Error(`service ${s.slug}: no builder for module "${key}"`);
+    return fn(s, i + 3, POSITION_BG[i % POSITION_BG.length], H);
+  }).filter(Boolean).join('\n');
+
+  const faqs = (s.faqs || []).filter(f => f.q && f.a);
+  const faqSec = faqs.length ? `
+  <section class="cream" id="faq">
+    <div class="faq-head">
+      <div class="sec-no">${secNo(order.length + 3)}</div>
+      <div class="eyebrow">Common Questions</div>
+      <h2 class="ttl">${esc(s.name)} — <span class="accent">Answered</span></h2>
+    </div>
+    <div class="faq-list">${faqs.map((f, i) => `
+      <details class="faq-item"${i === 0 ? ' open' : ''}>
+        <summary class="faq-q">${esc(f.q)}<span class="pm">+</span></summary>
+        <div class="faq-a">${esc(f.a).split(CFG.phone).join(`<a href="${CFG.phoneHref}">${CFG.phone}</a>`)}</div>
+      </details>`).join('')}
+    </div>
+  </section>` : '';
+
+  const capsule = esc(s.seo.answer_capsule || '')
+    .split(CFG.phone)
+    .join(`<a href="${CFG.phoneHref}" style="color:var(--gold-deep); font-weight:700; text-decoration:none;">${CFG.phone}</a>`);
+
+  /* County-level nav and footer. Handing a service page a city context made it
+     list that city's villages and guide in both — a silo crossing, and the gate
+     caught it. A service page belongs to the county, not to Irvine. */
+  const L = linker(`/${s.slug}/`);
+  const nav = {
+    isCounty: true,
+    esc, CITIES, CFG, A,
+    link: L,
+    countyLink: L,
+    anchorBase: `${A}/`,          // #viz / #work live on the county page
+    quoteHref: CFG.phoneHref,     // a service page has no #quote section
+    cityName: (CITIES.cities[0] || {}).name || '',
+    citySlug: (CITIES.cities[0] || {}).slug || '',
+    countyGuides: [],
+    countyHoa: (CITIES.cities || []).filter(c => c.hoa_page).map(c => ({
+      label: `${c.name} HOA & Common-Area Painting`,
+      url: L(`/${c.slug}/${c.hoa_page.slug}/`), strong: true
+    })),
+    standalone: true,
+    bottomLine: 'Serving every city in Orange County, CA'
+  };
+
+  const scopeSec = (s.scope || []).length ? `
+  <section id="scope">
+    <div class="sec-head">
+      <div class="sec-no">${secNo(2)}</div>
+      <div class="eyebrow">What's Included</div>
+      <h2 class="ttl">${esc(s.name)} — <span class="accent">The Scope</span></h2>
+      ${s.intro ? `<p class="lead">${esc(s.intro)}</p>` : ''}
+    </div>
+    <ul class="scope-list">${s.scope.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+  </section>` : '';
+
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700;800&display=swap">
+<title>${esc(s.seo.meta_title)}</title>
+<meta name="description" content="${esc(s.seo.meta_desc)}">
+<link rel="canonical" href="${url}">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="${esc(s.seo.meta_title)}">
+<meta property="og:description" content="${esc(s.seo.meta_desc)}">
+<meta property="og:url" content="${url}">
+<meta property="og:site_name" content="VIP Home Painting">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="geo.region" content="US-CA">
+<meta name="geo.placename" content="Orange County, California">
+<meta name="robots" content="${ROBOTS_META}">
+
+<script type="application/ld+json">
+${serviceJsonLd(s, url)}
+</script>
+
+<style>
+${BASE_CSS}
+${FAQ_CSS}
+${CSS}
+${CITY_CSS}
+${HOA_CSS}
+${SERVICE_CSS}
+</style>
+</head>
+<body>
+<div class="page">
+<a class="skip-link" href="#hero">Skip to content</a>
+
+  <header class="topbar">
+    <a class="top-logo" href="#hero">
+      <img class="logo-brush" src="${A}/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" fetchpriority="high"/>
+      <span class="wm">
+        <span class="vip"><span>VIP</span> <span>HOME PAINTING</span></span>
+        <span class="tag">Visualize it. <b>See it.</b> Paint it.</span>
+      </span>
+    </a>
+    <nav class="top-nav">
+      ${topNav(nav)}
+    </nav>
+    <a href="${CFG.phoneHref}" class="top-phone">
+      ${SVG_PHONE}
+      ${CFG.phone}
+    </a>
+  </header>
+
+  <section class="hero hero-cinema" id="hero">
+    <div class="hero-photo" style="background-image:url('${A}/video/hero-poster.jpg');"></div>
+    <div class="hero-scrim"></div>
+    <div class="hero-goldframe" aria-hidden="true"></div>
+    <div class="hero-stack">
+      <div class="hero-fleuron" aria-hidden="true">&#10087;</div>
+      <div class="eyebrow-ruled">Orange County · ${esc(s.name)}</div>
+      <h1 class="ttl-hero">${s.h1}</h1>
+      <div class="hero-kicker eyebrow-ruled">${esc(s.hero_kicker)}</div>
+      <div class="hero-cta-wrap">
+        <a href="${CFG.phoneHref}" class="btn-gold">
+          <span class="col-2"><span>Claim Complimentary Color Consultation</span><span class="sub">Itemized estimate included</span></span>
+        </a>
+        <p class="hero-note">${esc(s.sub)}</p>
+      </div>
+    </div>
+    <div class="hero-strip">
+      <div class="cell"><img class="strip-badge" src="${A}/assets/badges/badge-color-schemes.png" alt="Custom visualization badge" loading="lazy" width="447" height="410"/>
+        <div class="lb">Custom Visualization</div><div class="sb">See it before we paint</div></div>
+      <div class="cell"><img class="strip-badge" src="${A}/assets/badges/badge-warranty.png" alt="${CFG.warranty} badge" loading="lazy" width="447" height="366"/>
+        <div class="lb">${CFG.warranty}</div><div class="sb">Labor &amp; materials</div></div>
+      <div class="cell">${SVG_STAR}<div class="lb">Licensed &amp; Insured</div><div class="sb">Every crew, every job</div></div>
+      <div class="cell">${SVG_CLOCK}<div class="lb">Itemized Estimates</div><div class="sb">Never one lump sum</div></div>
+    </div>
+  </section>
+
+  <section class="capsule" id="capsule">
+    <div class="capsule-card">
+      <div class="capsule-kicker">The Short Answer · ${esc(s.name)}</div>
+      <p class="capsule-text">${capsule}</p>
+    </div>
+  </section>
+${scopeSec}
+${modules}
+${faqSec}
+
+${buildCountyFooter(nav)}
+
+</div>
+</body>
+</html>`;
+  return cityAssets(html);
 }
 
 function buildPillarPage(p) {
@@ -1721,6 +1965,7 @@ function buildSitemap() {
   const urls = [
     { loc: `${CFG.siteBase}/`, priority: '0.8' },
     { loc: `${CFG.siteBase}/orange-county-sales-page/`, priority: '1.0' },
+    ...SERVICES.map(s => ({ loc: `${CFG.siteBase}/${s.slug}/`, priority: '0.9' })),
     ...CITIES.cities.map(c => ({ loc: `${CFG.siteBase}/${c.slug}/`, priority: '0.95' })),
     ...CITIES.cities.flatMap(c => c.hoa_page ? [{ loc: `${CFG.siteBase}/${c.slug}/${c.hoa_page.slug}/`, priority: '0.85' }] : []),
     ...BLOG.pillars.map(p => ({ loc: `${CFG.siteBase}/${p.city_slug}/${p.slug}/`, priority: '0.8' })),
@@ -1830,6 +2075,18 @@ function main() {
       console.log(`  ✓ ${city.slug}/${city.hoa_page.slug}/index.html  [HOA: ${(city.hoa_page.layout.module_order||[]).length} modules]`);
     }
   }
+  /* Service pages sit at the root, beside the cities rather than inside one:
+     VIP does exterior work across the whole county, not "exterior work in
+     Irvine". They link DOWN to the city hubs from their Where We Work module. */
+  for (const svc of SERVICES) {
+    const sdir = path.join(ROOT, svc.slug);
+    fs.mkdirSync(sdir, { recursive: true });
+    const shtml = buildServicePage(svc);
+    auditOutput(shtml, `${svc.slug} (service)`);
+    fs.writeFileSync(path.join(sdir, 'index.html'), shtml, 'utf8');
+    console.log(`  ✓ ${svc.slug}/index.html  [SERVICE: ${(svc.layout.module_order || []).length} modules]`);
+  }
+
   for (const pillar of BLOG.pillars) {
     const pdir = path.join(ROOT, pillar.city_slug, pillar.slug);
     fs.mkdirSync(pdir, { recursive: true });

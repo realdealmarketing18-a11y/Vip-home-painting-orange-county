@@ -26,6 +26,7 @@ const CITIES = JSON.parse(fs.readFileSync(path.join(__dirname, 'cities.json'), '
 const BLOGP = path.join(__dirname, 'blog.json');
 const BLOG = fs.existsSync(BLOGP) ? JSON.parse(fs.readFileSync(BLOGP, 'utf8')) : { pillars: [] };
 const CFG = JSON.parse(fs.readFileSync(path.join(__dirname, 'communities.json'), 'utf8')).config;
+const SERVICES = (() => { try { return JSON.parse(fs.readFileSync(path.join(__dirname, 'services.json'), 'utf8')).services || []; } catch (e) { return []; } })();
 
 const only = process.argv[2];
 let fails = 0, checks = 0;
@@ -50,6 +51,13 @@ for (const c of CITIES.cities) {
     add(`${c.slug}/${p.slug}`, 'pillar');
     for (const a of (p.cluster || [])) add(`${c.slug}/${p.slug}/${a.slug}`, 'article');
   }
+}
+
+/* Service pages are county-level: no city, so they sit outside the loop
+   above. They still get every check that follows. */
+for (const s of SERVICES) {
+  const f = path.join(ROOT, s.slug, 'index.html');
+  if (fs.existsSync(f)) pages.push({ file: f, rel: s.slug, type: 'service', city: null });
 }
 
 if (!pages.length) {
@@ -156,6 +164,10 @@ const citySlugs = CITIES.cities.map(c => c.slug);
 let siloBad = 0;
 for (const p of pages) {
   const html = read(p);
+  /* County-level pages (services) sit ABOVE the cities and link down to all
+     of them by design — same as the front page. The silo rule is about one
+     city's page reaching into another city's children, which needs a city. */
+  if (!p.city) continue;
   for (const other of citySlugs.filter(s => s !== p.city)) {
     const child = new RegExp(`href="[^"]*${other}/[a-z0-9-]+/`, 'g');
     const hits = (html.match(child) || []).filter(h => !/(guide|hoa-painting)\/"?$/.test(h));
@@ -176,7 +188,11 @@ for (const p of pages) {
   const nav = (html.match(/<nav class="top-nav">([\s\S]*?)<\/nav>/) || [])[1] || '';
   const cats = (nav.match(/<summary>([^<]*)<\/summary>/g) || []).map(s => s.replace(/<[^>]*>/g, ''));
   const hasPillar = (BLOG.pillars || []).some(x => x.city_slug === p.city);
-  const want = hasPillar ? ['Cities', 'Neighborhoods', 'Guides', 'Services'] : ALWAYS;
+  /* A service page belongs to the county, not a city, so 'Neighborhoods' —
+     which means THIS city's neighbourhoods — has no meaning on it. Same
+     reasoning as the front page. */
+  const want = !p.city ? ['Cities', 'Services']
+    : hasPillar ? ['Cities', 'Neighborhoods', 'Guides', 'Services'] : ALWAYS;
   if (JSON.stringify(cats) !== JSON.stringify(want)) {
     bad(`${p.rel}: nav is ${JSON.stringify(cats)}, expected ${JSON.stringify(want)}`);
     navBad++;
