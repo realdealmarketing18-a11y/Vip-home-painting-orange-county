@@ -254,6 +254,19 @@ function buildFooter(ctx) {
           <span>${esc(ctx.bottomLine || `Serving every village of ${ctx.cityName}, CA`)}</span>
           <a href="${CFG.phoneHref}">${CFG.phone}</a>
         </div>
+        <!-- NAP in readable text, not only in JSON-LD. Crawlers, AI answer
+             engines and citation scrapers all read the rendered page, and
+             name/locality/phone agreeing across the page, the schema and the
+             GBP is what makes a service-area business look like one business.
+             Locality only — VIP has no storefront, and publishing a street
+             address in a city it does not operate from is a suspension risk. -->
+        <div class="f-nap">
+          <span class="nap-name">${esc(CFG.businessName)}</span>
+          <span class="nap-sep">·</span>
+          <span class="nap-loc">Anaheim, CA</span>
+          <span class="nap-sep">·</span>
+          <a class="nap-tel" href="${CFG.phoneHref}">${CFG.phone}</a>
+        </div>
         <div class="f-copy">© ${new Date().getFullYear()} VIP Home Painting. Licensed, Bonded &amp; Insured · 2-Year Warranty on Labor &amp; Materials.</div>
       </div>
     </div>

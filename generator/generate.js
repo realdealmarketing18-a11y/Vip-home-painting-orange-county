@@ -438,7 +438,7 @@ const MODULE_BUILDERS = {
 
 function jsonLd(c, url) {
   const business = {
-    '@type': 'HomeAndConstructionBusiness',
+    '@type': 'HousePainter',
     '@id': `${CFG.siteBase}/#business`,
     name: CFG.businessName,
     alternateName: 'VIP Premier Painting',
@@ -778,7 +778,7 @@ const cityAssets = (html) => html.split('../../orange-county-sales-page').join('
 function cityJsonLd(c, url) {
   const base = CFG.siteBase;
   const business = {
-    '@type': 'HomeAndConstructionBusiness',
+    '@type': 'HousePainter',
     '@id': `${base}/#business`,
     name: CFG.businessName,
     description: `VIP Home Painting is the luxury residential painting company serving ${c.name}, CA — exterior painting, interior painting, and factory-finish kitchen cabinet refinishing, backed by a ${CFG.warranty}.`,
@@ -1108,7 +1108,7 @@ const HOA_CSS = fs.readFileSync(path.join(__dirname, 'hoa-page.css'), 'utf8');
 function hoaJsonLd(h, city, url) {
   const base = CFG.siteBase;
   const graph = [{
-    '@type': 'HomeAndConstructionBusiness',
+    '@type': 'HousePainter',
     '@id': `${base}/#business`,
     name: CFG.businessName,
     description: `VIP Home Painting provides common-area painting for homeowners associations and property managers in ${city.name}, CA — clubhouses, pool buildings, perimeter walls, monuments and guard structures.`,
@@ -1370,7 +1370,7 @@ function pillarJsonLd(p, url) {
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     about: (p.villages || []).map(v => ({ '@type': 'Place', name: `${v.name}, ${p.city_name}, CA` }))
   }, {
-    '@type': 'HomeAndConstructionBusiness',
+    '@type': 'HousePainter',
     '@id': `${base}/#business`,
     name: CFG.businessName,
     url: `${base}/`,
@@ -1542,7 +1542,7 @@ function articleJsonLd(a, url) {
     /* speakable points at the answer block — the chunk built to be quoted */
     speakable: { '@type': 'SpeakableSpecification', cssSelector: ['.ar-answer', '.pl-lead'] }
   }, {
-    '@type': 'HomeAndConstructionBusiness',
+    '@type': 'HousePainter',
     '@id': base + '/#business',
     name: CFG.businessName,
     url: base + '/',

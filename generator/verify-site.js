@@ -243,7 +243,43 @@ if (fs.existsSync(ocFile)) {
    pointing at the build site, and a "Where We Work" section of dead
    divs that linked to none of the pages below it.
    --------------------------------------------------------------- */
-console.log('\n8. county page (front page, hand-maintained)');
+/* ---------------------------------------------------------------
+   Local-SEO invariants. Dedicated service pages are the #1 local
+   organic factor and the #2 AI-visibility factor, and the specific
+   schema subtype plus a readable NAP are what make a service-area
+   business parse as one business across Google, Bing and the answer
+   engines. All three are easy to lose in a refactor and invisible
+   when you do.
+   --------------------------------------------------------------- */
+console.log('\n8. local SEO');
+let seoBad = 0;
+for (const p of pages) {
+  const h = read(p);
+  const probs = [];
+
+  /* HousePainter is the schema.org subtype for a painting business.
+     HomeAndConstructionBusiness is its generic parent — valid, but it tells
+     Google less about what the business actually does. */
+  if (/"@type":\s*"HomeAndConstructionBusiness"/.test(h)) probs.push('generic HomeAndConstructionBusiness instead of HousePainter');
+  if (!/"@type":\s*"HousePainter"/.test(h)) probs.push('no HousePainter schema');
+
+  /* Name, locality and phone have to be readable on the page, not only
+     inside JSON-LD — crawlers and answer engines read the rendered text. */
+  const visible = h.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '');
+  if (!/Anaheim, CA/.test(visible)) probs.push('base locality not visible in page text (NAP)');
+  if (!new RegExp(CFG.phone.replace(/[()]/g, '\\$&')).test(visible)) probs.push('phone not visible in page text (NAP)');
+
+  /* An address in a city VIP does not operate from is a fabricated location:
+     a GBP suspension risk, and the reason this check exists at all. */
+  const badLocality = (h.match(/"addressLocality":\s*"([^"]+)"/g) || [])
+    .filter(m => !/Anaheim/.test(m));
+  if (badLocality.length) probs.push(`addressLocality is not Anaheim: ${badLocality.join(', ')}`);
+
+  if (probs.length) { bad(`${p.rel}: ${probs.join(' · ')}`); seoBad++; }
+}
+if (!seoBad) ok(`HousePainter schema, visible NAP and Anaheim-only address on all ${pages.length} pages`);
+
+console.log('\n9. county page (front page, hand-maintained)');
 if (!fs.existsSync(ocFile)) {
   bad('orange-county-sales-page/index.html is missing');
 } else {
@@ -315,7 +351,7 @@ if (!fs.existsSync(ocFile)) {
     : ok(`canonical is ${canon || 'MISSING'}`);
 }
 
-console.log('\n9. doorway-page guard');
+console.log('\n10. doorway-page guard');
 const seen = new Map();
 let dupe = 0;
 for (const c of CITIES.cities) {

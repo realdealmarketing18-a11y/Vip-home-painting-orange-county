@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- ============ PRIMARY SEO META — Orange County ============ -->
-<title>Exterior House Painting Orange County CA | VIP Home Painting — Irvine, Anaheim, Newport Beach</title>
-<meta name="description" content="VIP Home Painting — Orange County's luxury residential exterior &amp; interior painting company, based in Anaheim. Serving Irvine, Anaheim, Newport Beach, Coto de Caza &amp; all OC communities. See your own home in every color before you commit, plus a 2-Year Warranty. Call (909) 312-5400.">
+<title>Orange County House Painters, CA | VIP Home Painting</title>
+<meta name="description" content="Orange County house painters serving Irvine, Anaheim and every OC community. See your home in every color before we paint — complimentary visualization.">
 <link rel="canonical" href="https://viphomepainting.com/">
 
 <!-- Open Graph / AI crawlers -->
@@ -35,7 +35,7 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "HomeAndConstructionBusiness",
+      "@type": "HousePainter",
       "@id": "https://viphomepainting.com/#business",
       "name": "VIP Home Painting",
       "alternateName": "VIP Premier Painting",
@@ -708,6 +708,21 @@
 
 
   /* ===== Editorial magazine refinements ===== */
+  /* NAP line — name, locality, phone in readable text under the footer
+     contact row. Quiet by design: it exists so crawlers and answer engines
+     can read it, not to compete with the CTA above it. */
+  .f-nap {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+    margin-top: 14px; padding-top: 14px;
+    border-top: 1px solid rgba(245,239,226,0.10);
+    font-family: var(--font-sans); font-size: 12.5px;
+    color: rgba(245,239,226,0.62); letter-spacing: 0.02em;
+  }
+  .f-nap .nap-name { font-weight: 600; color: rgba(245,239,226,0.80); }
+  .f-nap .nap-sep  { color: rgba(201,169,97,0.55); }
+  .f-nap .nap-tel  { color: rgba(245,239,226,0.78); text-decoration: none; }
+  .f-nap .nap-tel:hover { color: var(--gold-bright); }
+
   /* Skip link — the first thing in the tab order. Without it a keyboard or
      screen-reader user tabs through the whole nav on every page before
      reaching content. Visually hidden until focused. */
@@ -2748,6 +2763,16 @@
           <a href="mailto:Contact@VIPHomePainting.com">Contact@VIPHomePainting.com</a>
           <span>Licensed · Bonded · Insured</span>
           <span>Proudly Serving Orange County, CA</span>
+        </div>
+        <!-- NAP in readable text, not only in JSON-LD. Locality only — VIP has
+             no storefront, and an address in a city it does not operate from is
+             a suspension risk. Must stay identical to the GBP listing. -->
+        <div class="f-nap">
+          <span class="nap-name">VIP Home Painting</span>
+          <span class="nap-sep">·</span>
+          <span class="nap-loc">Anaheim, CA</span>
+          <span class="nap-sep">·</span>
+          <a class="nap-tel" href="tel:9093125400">(909) 312-5400</a>
         </div>
         <div class="f-social">
           <a href="https://g.page/viphomepainting" aria-label="VIP Home Painting on Google" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z"/></svg></a>
