@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700;800&display=swap">
 
 <!-- ============ PRIMARY SEO META — Peralta Hills, Irvine ============ -->
 <title>Peralta Hills Estate Painters, Anaheim | VIP Home Painting</title>
@@ -274,8 +277,8 @@
     transition: color 220ms; white-space: nowrap;
   }
   .top-nav > a:hover { color: var(--gold-deep); }
-  .top-nav > a::after { content: ''; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: var(--gold); transition: width 280ms cubic-bezier(.22,1,.36,1); }
-  .top-nav > a:hover::after { width: 100%; }
+  .top-nav > a::after { content: ''; position: absolute; left: 0; bottom: -2px; height: 2px; width: 100%; transform: scaleX(0); transform-origin: left; background: var(--gold); transition: transform 280ms cubic-bezier(.22,1,.36,1); }
+  .top-nav > a:hover::after { transform: scaleX(1); }
 
   .nav-item { position: relative; }
   .nav-item > summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
@@ -552,6 +555,30 @@
 
 
   /* ===== Editorial magazine refinements ===== */
+  /* Skip link — the first thing in the tab order. Without it a keyboard or
+     screen-reader user tabs through the whole nav on every page before
+     reaching content. Visually hidden until focused. */
+  .skip-link {
+    position: absolute; left: 12px; top: -60px; z-index: 200;
+    background: var(--navy); color: var(--cream);
+    font-family: var(--font-sans); font-size: 14px; font-weight: 600;
+    padding: 12px 20px; border-radius: 0 0 4px 4px;
+    text-decoration: none; border: 1px solid var(--gold);
+    transition: top 160ms cubic-bezier(.22,1,.36,1);
+  }
+  .skip-link:focus { top: 0; }
+
+  /* Removes the ~300ms tap delay mobile browsers hold in case of a
+     double-tap-to-zoom. Scoped to controls, so pinch-zoom still works. */
+  a, button, summary, .viz-tab, .elv-opt, .scheme, .faq-q {
+    touch-action: manipulation;
+  }
+
+  /* URLs, emails and long unbroken strings must reflow rather than force a
+     horizontal scrollbar on the whole page. */
+  body { overflow-wrap: anywhere; }
+  p, li, dd, .body, .lead { overflow-wrap: break-word; }
+
   /* ---- header lockup: brush image + live text ----
      The brush is cropped straight out of the navy/gold lockup artwork — its
      form, gradients and shading are the original pixels, only the surrounding
@@ -904,7 +931,7 @@
   /* Timeline */
   .viz-timeline { position: relative; padding-left: 66px; padding-bottom: 42vh; }
   .tl-rail { position: absolute; left: 20px; top: 14px; bottom: 14px; width: 1px; background: rgba(168,138,71,0.28); }
-  .tl-fill { position: absolute; left: 0; top: 0; width: 100%; height: 0; background: var(--gold-shine); transition: height 140ms linear; }
+  .tl-fill { position: absolute; left: 0; top: 0; width: 100%; height: 0; background: var(--gold-shine); transition: height 140ms linear;   /* absolutely positioned, so this repaints without reflowing the document; the JS writes height and the progress bead is a child that scaleY would squash */ }
   /* progress bead — the one deliberate touch of brand orange */
   .tl-fill::after {
     content: ''; position: absolute; left: 50%; bottom: -3px; transform: translateX(-50%);
@@ -1859,7 +1886,9 @@
    Inlined into every generated page by generator/generate.js.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* Fonts load via <link rel="preconnect"> + <link rel="stylesheet"> in each
+   page head. @import here would be discovered only after this sheet parses,
+   which delays the request and blocks first paint. */
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; background: #FFFFFF; color: #1A1F4E; -webkit-font-smoothing: antialiased; }
@@ -2334,6 +2363,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 </head>
 <body>
 <div class="page">
+<a class="skip-link" href="#hero">Skip to content</a>
 
   <!-- ============ TOP BAR ============ -->
   <header class="topbar">
@@ -2485,7 +2515,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
             <div class="tl-num-label">Step One</div>
             <h3 class="tl-title">Choose Your <em>Color Scheme</em></h3>
             <p class="tl-desc">Pick a style direction, then a palette — your home re-paints itself in real time.</p>
-            <div class="style-banner" id="styleBanner"><img id="styleBannerImg" alt="Style collection flat-lay"/></div>
+            <div class="style-banner" id="styleBanner"><img id="styleBannerImg" alt="Style collection flat-lay" width="1400" height="594" loading="lazy" decoding="async"/></div>
             <div class="viz-tabs" id="vizTabs"></div>
             <div class="viz-style-desc" id="vizStyleDesc"></div>
             <div class="scheme-grid" id="schemeGrid"></div>

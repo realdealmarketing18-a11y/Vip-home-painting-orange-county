@@ -547,6 +547,9 @@ function buildPage(c) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700;800&display=swap">
 
 <!-- ============ PRIMARY SEO META — ${c.name}, Irvine ============ -->
 <title>${c.title}</title>
@@ -586,6 +589,7 @@ ${FILM_CSS}
 </head>
 <body>
 <div class="page">
+<a class="skip-link" href="#hero">Skip to content</a>
 
   <!-- ============ TOP BAR ============ -->
   <header class="topbar">
@@ -921,6 +925,9 @@ function buildCityPage(c) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700;800&display=swap">
 
 <title>${esc(c.seo.meta_title)}</title>
 <meta name="description" content="${esc(c.seo.meta_desc)}">
@@ -953,6 +960,7 @@ ${FILM_CSS}
 </head>
 <body>
 <div class="page">
+<a class="skip-link" href="#hero">Skip to content</a>
 
   <header class="topbar">
     <a class="top-logo" href="#hero">
@@ -1186,6 +1194,9 @@ function buildHoaPage(h, city) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700;800&display=swap">
 
 <title>${esc(h.seo.meta_title)}</title>
 <meta name="description" content="${esc(h.seo.meta_desc)}">
@@ -1219,6 +1230,7 @@ ${FILM_CSS}
 </head>
 <body>
 <div class="page">
+<a class="skip-link" href="#hero">Skip to content</a>
 
   <header class="topbar">
     <a class="top-logo" href="#hero">
@@ -1419,6 +1431,9 @@ function buildPillarPage(p) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700;800&display=swap">
 
 <title>${esc(p.seo.meta_title)}</title>
 <meta name="description" content="${esc(p.seo.meta_desc)}">
@@ -1447,6 +1462,7 @@ ${FILM_CSS}
 </head>
 <body>
 <div class="page">
+<a class="skip-link" href="#intro">Skip to content</a>
 
   <header class="topbar">
     <a class="top-logo" href="../">
@@ -1597,6 +1613,9 @@ function buildArticlePage(a, pillar) {
 '<head>\n' +
 '<meta charset="UTF-8">\n' +
 '<meta name="viewport" content="width=device-width, initial-scale=1">\n' +
+'<link rel="preconnect" href="https://fonts.googleapis.com">\n' +
+'<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' +
+'<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700;800&display=swap">\n' +
 '\n' +
 '<title>' + esc(a.seo.meta_title) + '</title>\n' +
 '<meta name="description" content="' + esc(a.seo.meta_desc) + '">\n' +
@@ -1625,6 +1644,7 @@ FILM_CSS + '\n' +
 '</head>\n' +
 '<body>\n' +
 '<div class="page">\n' +
+'<a class="skip-link" href="#intro">Skip to content</a>\n' +
 '\n' +
 '  <header class="topbar">\n' +
 '    <a class="top-logo" href="../../">\n' +

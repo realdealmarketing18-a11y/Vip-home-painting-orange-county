@@ -285,6 +285,23 @@ if (!fs.existsSync(ocFile)) {
     ? absDead.forEach(u => bad(`county page has an absolute link to a page that does not exist: ${u}`))
     : ok('no absolute links to missing pages');
 
+  /* href="#" is a link that looks clickable and does nothing. There were eight
+     on this page, including the final "Get My Complimentary Quote Now" button —
+     the last thing a visitor sees, going nowhere. Nothing above catches it:
+     it is not dead (it resolves to the page) and not absolute. */
+  const hashOnly = (oc.match(/href="#"/g) || []).length;
+  hashOnly
+    ? bad(`county page has ${hashOnly} link(s) with href="#" — clickable, does nothing`)
+    : ok('no href="#" dead links');
+
+  /* A skip link is the first thing a keyboard user hits; if its target does not
+     exist it is worse than absent, because focus goes nowhere. */
+  const skip = (oc.match(/<a class="skip-link" href="#([^"]+)"/) || [])[1];
+  if (!skip) bad('county page has no skip link');
+  else new RegExp(`id="${skip}"`).test(oc)
+    ? ok(`skip link resolves to #${skip}`)
+    : bad(`skip link points at #${skip}, which does not exist on the page`);
+
   /* the same copy rules the 18 generated pages get */
   const ocProbs = copyProblems(bodyOf(oc));
   ocProbs.length

@@ -4,7 +4,9 @@
    Inlined into every generated page by generator/generate.js.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* Fonts load via <link rel="preconnect"> + <link rel="stylesheet"> in each
+   page head. @import here would be discovered only after this sheet parses,
+   which delays the request and blocks first paint. */
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; background: #FFFFFF; color: #1A1F4E; -webkit-font-smoothing: antialiased; }

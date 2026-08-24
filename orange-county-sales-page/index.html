@@ -94,6 +94,13 @@
 }
 </script>
 
+<!-- Font delivery. preconnect opens the TLS handshake to both hosts before the
+     stylesheet is even requested; the stylesheet then carries display=swap so
+     text paints in a fallback immediately instead of staying invisible. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700;800&display=swap">
+
 <style>
 /* === design-system/colors_and_type.css (inlined for portability) === */
 /* ============================================================
@@ -101,7 +108,11 @@
    Luxury cream / navy / gold system. Mobile-first.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* Fonts are loaded by <link> in the head, not @import.
+   @import inside a stylesheet is the slowest option available: the browser
+   cannot discover the font CSS until it has downloaded and started parsing
+   this sheet, so the request starts late and blocks first paint. The <link>
+   plus preconnect above starts both the connection and the fetch immediately. */
 
 :root {
   /* ---------- BRAND COLORS ---------- */
@@ -419,8 +430,8 @@
     transition: color 220ms; white-space: nowrap;
   }
   .top-nav > a:hover { color: var(--gold-deep); }
-  .top-nav > a::after { content: ''; position: absolute; left: 0; bottom: -2px; height: 2px; width: 0; background: var(--gold); transition: width 280ms cubic-bezier(.22,1,.36,1); }
-  .top-nav > a:hover::after { width: 100%; }
+  .top-nav > a::after { content: ''; position: absolute; left: 0; bottom: -2px; height: 2px; width: 100%; transform: scaleX(0); transform-origin: left; background: var(--gold); transition: transform 280ms cubic-bezier(.22,1,.36,1); }
+  .top-nav > a:hover::after { transform: scaleX(1); }
 
   .nav-item { position: relative; }
   .nav-item > summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
@@ -697,6 +708,30 @@
 
 
   /* ===== Editorial magazine refinements ===== */
+  /* Skip link — the first thing in the tab order. Without it a keyboard or
+     screen-reader user tabs through the whole nav on every page before
+     reaching content. Visually hidden until focused. */
+  .skip-link {
+    position: absolute; left: 12px; top: -60px; z-index: 200;
+    background: var(--navy); color: var(--cream);
+    font-family: var(--font-sans); font-size: 14px; font-weight: 600;
+    padding: 12px 20px; border-radius: 0 0 4px 4px;
+    text-decoration: none; border: 1px solid var(--gold);
+    transition: top 160ms cubic-bezier(.22,1,.36,1);
+  }
+  .skip-link:focus { top: 0; }
+
+  /* Removes the ~300ms tap delay mobile browsers hold in case of a
+     double-tap-to-zoom. Scoped to controls, so pinch-zoom still works. */
+  a, button, summary, .viz-tab, .elv-opt, .scheme, .faq-q {
+    touch-action: manipulation;
+  }
+
+  /* URLs, emails and long unbroken strings must reflow rather than force a
+     horizontal scrollbar on the whole page. */
+  body { overflow-wrap: anywhere; }
+  p, li, dd, .body, .lead { overflow-wrap: break-word; }
+
   /* ---- header lockup: brush image + live text ----
      The brush is cropped straight out of the navy/gold lockup artwork — its
      form, gradients and shading are the original pixels, only the surrounding
@@ -1049,7 +1084,7 @@
   /* Timeline */
   .viz-timeline { position: relative; padding-left: 66px; padding-bottom: 42vh; }
   .tl-rail { position: absolute; left: 20px; top: 14px; bottom: 14px; width: 1px; background: rgba(168,138,71,0.28); }
-  .tl-fill { position: absolute; left: 0; top: 0; width: 100%; height: 0; background: var(--gold-shine); transition: height 140ms linear; }
+  .tl-fill { position: absolute; left: 0; top: 0; width: 100%; height: 0; background: var(--gold-shine); transition: height 140ms linear;   /* absolutely positioned, so this repaints without reflowing the document; the JS writes height and the progress bead is a child that scaleY would squash */ }
   /* progress bead — the one deliberate touch of brand orange */
   .tl-fill::after {
     content: ''; position: absolute; left: 50%; bottom: -3px; transform: translateX(-50%);
@@ -1901,6 +1936,8 @@
 <body>
 <div class="page" data-screen-label="VIP Sales Page · Desktop">
 
+  <a class="skip-link" href="#hero">Skip to content</a>
+
   <!-- ============ TOP BAR ============ -->
   <header class="topbar">
     <!-- LOGO:START — the brush is the image; the words are real text.
@@ -1963,6 +2000,7 @@
 
   <!-- ============ 1. HERO ============ -->
   <!-- CINEMATIC VIDEO HERO -->
+  <main id="main">
   <section class="hero hero-cinema" id="hero">
     <video class="hero-video" id="heroVideo"
            autoplay muted loop playsinline preload="metadata"
@@ -1982,7 +2020,7 @@
            their story — you see who they are, then what happened to their
            house. Below the headline it read as an afterthought. -->
       <div class="pill-wrap pill-wrap-lede">
-        <div class="avatar-pill"><div class="ph"><img src="assets/avatar-gallagher.jpg" alt="The Gallagher Family" width="480" height="480"/></div>
+        <div class="avatar-pill"><div class="ph"><img src="assets/avatar-gallagher.jpg" alt="The Gallagher Family" width="480" height="480" loading="lazy" decoding="async"/></div>
           <div><div class="name">The Gallagher Family</div>
           <div class="sub-line">Pelican Hill, Newport Beach</div></div></div>
       </div>
@@ -2014,11 +2052,11 @@
 
     <div class="hero-strip" id="heroStrip">
       <div class="cell">
-        <img class="strip-badge" src="assets/badges/badge-color-schemes.png" alt="VIP Home Painting custom color schemes badge" width="447" height="410"/>
+        <img class="strip-badge" src="assets/badges/badge-color-schemes.png" alt="VIP Home Painting custom color schemes badge" width="447" height="410" loading="lazy" decoding="async"/>
         <div class="lb">Custom Visualization</div>
         <div class="sb">See it before we paint</div></div>
       <div class="cell">
-        <img class="strip-badge" src="assets/badges/badge-warranty.png" alt="VIP Home Painting 2-year warranty badge" width="447" height="366"/>
+        <img class="strip-badge" src="assets/badges/badge-warranty.png" alt="VIP Home Painting 2-year warranty badge" width="447" height="366" loading="lazy" decoding="async"/>
         <div class="lb">2-Year Warranty</div>
         <div class="sb">No questions asked</div></div>
       <div class="cell">
@@ -2095,7 +2133,7 @@
             <div class="tl-num-label">Step One</div>
             <h3 class="tl-title">Choose Your <em>Color Scheme</em></h3>
             <p class="tl-desc">Pick a style direction, then a palette — your home re-paints itself in real time.</p>
-            <div class="style-banner" id="styleBanner"><img id="styleBannerImg" alt="Style collection flat-lay"/></div>
+            <div class="style-banner" id="styleBanner"><img id="styleBannerImg" alt="Style collection flat-lay" width="1400" height="594" loading="lazy" decoding="async"/></div>
             <div class="viz-tabs" id="vizTabs"></div>
             <div class="viz-style-desc" id="vizStyleDesc"></div>
             <div class="scheme-grid" id="schemeGrid"></div>
@@ -2379,15 +2417,15 @@
     <div class="services-grid">
       <div class="service">
         <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&auto=format&fit=crop&q=80')"></div>
-        <div class="service-body"><h3>Exterior House Painting — Orange County</h3><p>Tired of an outdated exterior? With our expertise and attention to detail, we transform your Newport Beach, Irvine, or Coto de Caza home into a jaw-dropping masterpiece — and your neighbors will notice.</p><a class="svc-link" href="#">Learn More</a></div>
+        <div class="service-body"><h3>Exterior House Painting — Orange County</h3><p>Tired of an outdated exterior? With our expertise and attention to detail, we transform your Newport Beach, Irvine, or Coto de Caza home into a jaw-dropping masterpiece — and your neighbors will notice.</p></div>
       </div>
       <div class="service">
         <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900&auto=format&fit=crop&q=80')"></div>
-        <div class="service-body"><h3>Interior House Painting — Orange County</h3><p>Transform your dull interior into a vibrant, welcoming space with our professional Orange County interior painting services.</p><a class="svc-link" href="#">Learn More</a></div>
+        <div class="service-body"><h3>Interior House Painting — Orange County</h3><p>Transform your dull interior into a vibrant, welcoming space with our professional Orange County interior painting services.</p></div>
       </div>
       <div class="service">
         <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&auto=format&fit=crop&q=80')"></div>
-        <div class="service-body"><h3>Kitchen Cabinet Painting — Orange County</h3><p>Transform your outdated kitchen into a stunning, modern space with VIP Orange County Kitchen Cabinet Painting Services.</p><a class="svc-link" href="#">Learn More</a></div>
+        <div class="service-body"><h3>Kitchen Cabinet Painting — Orange County</h3><p>Transform your outdated kitchen into a stunning, modern space with VIP Orange County Kitchen Cabinet Painting Services.</p></div>
       </div>
     </div>
   </section>
@@ -2635,9 +2673,11 @@
       <div class="sec-no">No. 10</div>
       <div class="ck">Ready To Transform Your Home?</div>
       <h2 class="ttl">Let's Make Your Home the <em>Envy of the Neighborhood</em></h2>
-      <a href="#" class="btn-gold"><span class="col-2"><span>Get My Complimentary Quote Now</span><span class="sub">No Pressure · No Obligation · Always Complimentary</span></span></a>
+      <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Get My Complimentary Quote Now</span><span class="sub">No Pressure · No Obligation · Always Complimentary</span></span></a>
     </div>
   </section>
+
+  </main>
 
   <!-- ============ FOOTER ============ -->
   <footer>
@@ -2710,10 +2750,7 @@
           <span>Proudly Serving Orange County, CA</span>
         </div>
         <div class="f-social">
-          <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35C.59 0 0 .59 0 1.325v21.351C0 23.41.59 24 1.325 24H12.82V14.706h-3.13v-3.622h3.13V8.413c0-3.1 1.893-4.788 4.66-4.788 1.325 0 2.464.099 2.796.143v3.24h-1.918c-1.504 0-1.796.715-1.796 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.41 24 24 23.41 24 22.676V1.325C24 .59 23.41 0 22.675 0z"/></svg></a>
-          <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
-          <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z"/></svg></a>
-          <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          <a href="https://g.page/viphomepainting" aria-label="VIP Home Painting on Google" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.24 10.285V14.4h6.806c-.275 1.765-2.056 5.174-6.806 5.174-4.095 0-7.439-3.389-7.439-7.574s3.345-7.574 7.439-7.574c2.33 0 3.891.989 4.785 1.849l3.254-3.138C18.189 1.186 15.479 0 12.24 0c-6.635 0-12 5.365-12 12s5.365 12 12 12c6.926 0 11.52-4.869 11.52-11.726 0-.788-.085-1.39-.189-1.989H12.24z"/></svg></a>
         </div>
         <div class="f-copy">© 2026 VIP Home Painting · CA Licensed &amp; Bonded · Serving Newport Beach · Irvine · Coto de Caza · Newport Coast · Laguna Beach · Mission Viejo · Dana Point · Ladera Ranch · all Orange County</div>
       </div>
