@@ -17,6 +17,9 @@
    validation gate is what enforces completeness.
    ============================================================ */
 
+/* 'a Irvine Project' reads as a typo. */
+const AN = (s) => (/^[aeiou]/i.test(String(s)) ? 'an ' : 'a ') + s;
+
 const M = {};
 
 /* ---- 1 · THE COST OF GETTING IT WRONG — the emotional core ---- */
@@ -291,7 +294,7 @@ M.process = (c, no, bg, H) => {
     <div class="sec-head">
       <div class="sec-no">${H.secNo(no)}</div>
       <div class="eyebrow">The White-Glove Process</div>
-      <h2 class="ttl">How a ${c.name} Project <span class="accent">Actually Runs</span></h2>
+      <h2 class="ttl">How ${AN(c.name)} Project <span class="accent">Actually Runs</span></h2>
     </div>
     <div class="glove-steps">${rows}
     </div>

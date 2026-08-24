@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* ============================================================
-   VIP Home Painting — Irvine community landing page generator
+   VIP Home Painting — community landing page generator
    Usage:  node generator/generate.js
    Reads:  generator/communities.json + generator/page.css
    Writes: irvine/<slug>/index.html  (one per community)
@@ -85,9 +85,9 @@ const MODULE_KEYS = ['portfolio', 'specs', 'colorGuide', 'process', 'problemSolu
    on-screen approximations of the official colors). */
 const CORE_COLORS = [
   { name: 'Alabaster', code: 'SW 7008', hex: '#EDEAE0',
-    note: 'The definitive luxury white — soft, warm, and the most-requested estate body color across Irvine’s villages.' },
+    note: 'The definitive luxury white — soft, warm, and the most-requested estate body color across Orange County.' },
   { name: 'Chatura Gray', code: 'SW 9169', hex: '#8A857D',
-    note: 'A grounded warm gray for bodies and garage doors that holds its color in bright Irvine light.' },
+    note: 'A grounded warm gray for bodies and garage doors that holds its color in bright Southern California light.' },
   { name: 'Iron Ore', code: 'SW 7069', hex: '#434341',
     note: 'The modern deep charcoal — front doors, shutters, ironwork, and full accent volumes.' }
 ];
@@ -118,6 +118,19 @@ const MODULE_META = {
 const POSITION_BG = ['cream-deep', '', 'cream', '', 'navy'];
 
 const secNo = (i) => `No. ${String(i).padStart(2, '0')}`;
+
+/* A community belongs to whichever city its record names. This used to be
+   the literal string 'Irvine' in a dozen places, which is how four Anaheim
+   pages ended up claiming they were in Irvine — in the visible copy, the
+   geo meta, the schema areaServed and the breadcrumb. */
+/* "a Irvine Project" / "a Altair Project" read as typos. */
+const AN = (s) => (/^[aeiou]/i.test(String(s)) ? 'an ' : 'a ') + s;
+
+const cityOf = (c) => {
+  const slug = c.city || CFG.outputDir;
+  const rec = (CITIES.cities || []).find(x => x.slug === slug) || {};
+  return { slug, name: rec.name || slug.replace(/\b\w/g, s => s.toUpperCase()) };
+};
 
 function ctaButton(label, sub) {
   return `<a href="${CFG.phoneHref}" class="btn-gold"><span class="col-2"><span>${label}</span><span class="sub">${sub}</span></span></a>`;
@@ -236,15 +249,19 @@ function modCaseStudy(c, no, bg) {
 
 
 function modPortfolio(c, no, bg) {
+  /* Irvine records carry {eyebrow, title, body}; Anaheim carries {intro}.
+     Rendering the missing keys printed the literal word "undefined" on all
+     four Anaheim community pages — including as an <h2>. */
+  const p = c.portfolio || {};
   const imgs = PORTFOLIO_IMGS.map(u => `<div style="background-image:url('${u}')"></div>`).join('\n          ');
   return `
   <section class="${bg}" id="portfolio">
     <div class="split-grid">
       <div>
         <div class="sec-no" style="text-align:left;">${secNo(no)}</div>
-        <div class="eyebrow">${c.portfolio.eyebrow}</div>
-        <h2 class="ttl">${c.portfolio.title}</h2>
-        <p class="body">${c.portfolio.body}</p>
+        ${p.eyebrow ? `<div class="eyebrow">${p.eyebrow}</div>` : ''}
+        <h2 class="ttl">${p.title || `Our Work in <span class="accent">${c.name}</span>`}</h2>
+        ${p.body || p.intro ? `<p class="body">${p.body || p.intro}</p>` : ''}
         <ul class="checks-row">
           <li>Graco &amp; Titan professional airless spray application</li>
           <li>Sherwin-Williams Emerald &amp; Duration coating systems</li>
@@ -270,11 +287,11 @@ function modSpecs(c, no, bg) {
       <p class="lead">No mystery products, no shortcuts. This is the exact system we bring to every ${c.name} project — in writing, on every itemized estimate.</p>
     </div>
     <div class="spec-table">
-      <div class="st-head"><span class="t">Estate Painting Specification</span><span class="n">Prepared for ${c.name}, Irvine</span></div>
+      <div class="st-head"><span class="t">Estate Painting Specification</span><span class="n">Prepared for ${c.name}, ${cityOf(c).name}</span></div>
       <div class="st-row"><span class="st-k">Surface Preparation</span><span class="st-v">Pressure wash, scrape and sand failing edges, <b>stucco crack and patch repair floated to match the existing texture</b>, and spot-priming with bonding primer — the finish is only as good as what's under it.</span></div>
       <div class="st-row"><span class="st-k">Coating System</span><span class="st-v"><b>Sherwin-Williams Emerald and Duration</b> exterior acrylics for bodies and fascias; Emerald urethane trim enamel for doors, trim, and cabinetry. Two coats at full wet-mil thickness, never over-thinned.</span></div>
       <div class="st-row"><span class="st-k">Application</span><span class="st-v"><b>Graco and Titan professional airless spray rigs</b>, back-rolled on stucco to drive coating into the texture, with hand-cut lines at every color transition.</span></div>
-      <div class="st-row"><span class="st-k">Site Protection</span><span class="st-v">Full masking and containment for ${c.context.settingNote} — landscaping wrapped, hardscape covered, wind-checked spray scheduling, clean site every evening.</span></div>
+      <div class="st-row"><span class="st-k">Site Protection</span><span class="st-v">Full masking and containment for ${c.context.settingNote || c.name} — landscaping wrapped, hardscape covered, wind-checked spray scheduling, clean site every evening.</span></div>
       <div class="st-row"><span class="st-k">Transparency</span><span class="st-v">Every proposal is <b>itemized line by line</b> — prep, primer, coating, trim, and accents priced separately. No lump sums, no hidden charges.</span></div>
       <div class="st-row"><span class="st-k">Warranty</span><span class="st-v"><b>${CFG.warranty} on labor and materials</b>, no questions asked. Licensed, Bonded &amp; Insured in the State of California.</span></div>
     </div>
@@ -297,7 +314,7 @@ function modColorGuide(c, no, bg) {
       <div class="sec-no">${secNo(no)}</div>
       <div class="eyebrow">The Designer Color Guide</div>
       <h2 class="ttl">A Palette Built For <span class="accent">${c.name}</span></h2>
-      <p class="lead">${c.context.archNote}</p>
+      ${c.context.archNote ? `<p class="lead">${c.context.archNote}</p>` : ''}
     </div>
     <div class="swatch-grid">${cards}
     </div>
@@ -328,7 +345,7 @@ function modProcess(c, no, bg) {
     <div class="sec-head">
       <div class="sec-no">${secNo(no)}</div>
       <div class="eyebrow">The White-Glove Process</div>
-      <h2 class="ttl">How a ${c.name} Project <span class="accent">Actually Runs</span></h2>
+      <h2 class="ttl">How ${AN(c.name)} Project <span class="accent">Actually Runs</span></h2>
     </div>
     <div class="glove-steps">${rows}
     </div>
@@ -336,7 +353,14 @@ function modProcess(c, no, bg) {
 }
 
 function modProblemSolution(c, no, bg) {
-  const cards = c.problems.map(ps => `
+  /* Two data shapes reached production: Irvine records use {p, s} and Anaheim
+     records use {problem, solution}. Reading only {p, s} printed the literal
+     word "undefined" into six cards on every Anaheim community page. Accept
+     both, and drop any pair that is missing a half rather than render it. */
+  const cards = (c.problems || [])
+    .map(ps => ({ p: ps.p || ps.problem, s: ps.s || ps.solution }))
+    .filter(ps => ps.p && ps.s)
+    .map(ps => `
       <div class="ps-card">
         <div class="ps-lbl problem">The Problem</div>
         <p class="ps-p">${ps.p}</p>
@@ -376,30 +400,30 @@ function vizSection(c) {
 /* Google Maps / local-pack section: embedded community map + NAP block
    + links to the Google Business Profile. */
 function mapSection(c, no) {
-  const q = encodeURIComponent(`${c.name}, Irvine, CA`);
+  const q = encodeURIComponent(`${c.name}, ${cityOf(c).name}, CA`);
   const allNames = DATA.communities.map(o => o.name).join(' · ');
   return `
   <section id="map">
     <div class="sec-head">
       <div class="sec-no">${secNo(no)}</div>
       <div class="eyebrow">Service Area · Find Us On Google</div>
-      <h2 class="ttl">Proudly Serving <span class="accent">${c.name}</span>, Irvine</h2>
-      <p class="lead">VIP Home Painting is a service-area painting company covering every village of Irvine. Save our Google profile, read our reviews, and see recent project photos before your consultation.</p>
+      <h2 class="ttl">Proudly Serving <span class="accent">${c.name}</span>, ${cityOf(c).name}</h2>
+      <p class="lead">VIP Home Painting is a service-area painting company covering every village of ${cityOf(c).name}. Save our Google profile, read our reviews, and see recent project photos before your consultation.</p>
     </div>
     <div class="map-grid">
       <div class="map-embed">
-        <iframe title="Map of ${c.name}, Irvine, CA — VIP Home Painting service area" src="https://www.google.com/maps?q=${q}&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <iframe title="Map of ${c.name}, ${cityOf(c).name}, CA — VIP Home Painting service area" src="https://www.google.com/maps?q=${q}&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       </div>
       <div class="nap-card">
         <div class="nap-name">VIP Home Painting</div>
-        <div class="nap-line" style="font-family:var(--font-serif); font-style:italic; color:var(--gold-deep);">Luxury Residential Painting · ${c.name}, Irvine, CA</div>
+        <div class="nap-line" style="font-family:var(--font-serif); font-style:italic; color:var(--gold-deep);">Luxury Residential Painting · ${c.name}, ${cityOf(c).name}, CA</div>
         <div class="nap-line"><b>Phone:</b> <a href="${CFG.phoneHref}">${CFG.phone}</a></div>
         <div class="nap-line"><b>Email:</b> <a href="mailto:${CFG.email}">${CFG.email}</a></div>
         <div class="nap-line"><b>Hours:</b> Mon–Fri 8am–6pm · Sat 9am–3pm</div>
-        <div class="nap-line"><b>Service Area:</b> ${allNames} &amp; all Irvine villages</div>
+        <div class="nap-line"><b>Service Area:</b> ${allNames} &amp; all ${cityOf(c).name} villages</div>
         <div class="nap-btns">
           <a class="btn-gold" href="${CFG.gbpUrl}" target="_blank" rel="noopener">See Us On Google</a>
-          <a class="nap-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent('VIP Home Painting Irvine CA')}" target="_blank" rel="noopener">Open Google Maps</a>
+          <a class="nap-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent(`VIP Home Painting ${cityOf(c).name} CA`)}" target="_blank" rel="noopener">Open Google Maps</a>
         </div>
       </div>
     </div>
@@ -442,7 +466,7 @@ function jsonLd(c, url) {
     '@id': `${CFG.siteBase}/#business`,
     name: CFG.businessName,
     alternateName: 'VIP Premier Painting',
-    description: `VIP Home Painting is the luxury residential painting company serving ${c.name} and the villages of Irvine, CA — exterior painting, interior painting, and factory-finish kitchen cabinet refinishing using Sherwin-Williams coating systems and professional Graco and Titan airless spray application, backed by a ${CFG.warranty}.`,
+    description: `VIP Home Painting is the luxury residential painting company serving ${c.name} and the villages of ${cityOf(c).name}, CA — exterior painting, interior painting, and factory-finish kitchen cabinet refinishing using Sherwin-Williams coating systems and professional Graco and Titan airless spray application, backed by a ${CFG.warranty}.`,
     url: `${CFG.siteBase}/`,
     telephone: CFG.phoneE164,
     email: CFG.email,
@@ -465,11 +489,11 @@ function jsonLd(c, url) {
     areaServed: [
       {
         '@type': 'Place',
-        name: `${c.name}, Irvine, CA`,
+        name: `${c.name}, ${cityOf(c).name}, CA`,
         geo: { '@type': 'GeoCoordinates', latitude: c.geo.lat, longitude: c.geo.lng },
-        containedInPlace: { '@type': 'City', name: 'Irvine', sameAs: 'https://en.wikipedia.org/wiki/Irvine,_California' }
+        containedInPlace: { '@type': 'City', name: cityOf(c).name, sameAs: `https://en.wikipedia.org/wiki/${cityOf(c).name.replace(/ /g, '_')},_California` }
       },
-      { '@type': 'City', name: 'Irvine', sameAs: 'https://en.wikipedia.org/wiki/Irvine,_California' }
+      { '@type': 'City', name: cityOf(c).name, sameAs: `https://en.wikipedia.org/wiki/${cityOf(c).name.replace(/ /g, '_')},_California` }
     ],
     serviceType: ['Exterior House Painting', 'Interior House Painting', 'Luxury Home Painting', 'Kitchen Cabinet Painting', 'Custom Color Consultation'],
     openingHoursSpecification: [
@@ -481,11 +505,11 @@ function jsonLd(c, url) {
   const service = {
     '@type': 'Service',
     '@id': `${url}#service`,
-    name: `Luxury House Painting in ${c.name}, Irvine CA`,
+    name: `Luxury House Painting in ${c.name}, ${cityOf(c).name} CA`,
     serviceType: 'Residential Painting',
     description: c.metaDescription,
     provider: { '@id': `${CFG.siteBase}/#business` },
-    areaServed: { '@type': 'Place', name: `${c.name}, Irvine, CA` }
+    areaServed: { '@type': 'Place', name: `${c.name}, ${cityOf(c).name}, CA` }
   };
   const webPage = {
     '@type': 'WebPage',
@@ -510,7 +534,7 @@ function jsonLd(c, url) {
     '@id': `${url}#breadcrumbs`,
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'VIP Home Painting — Orange County', item: `${CFG.siteBase}/orange-county-sales-page/` },
-      { '@type': 'ListItem', position: 2, name: 'Irvine', item: `${CFG.siteBase}/irvine/` },
+      { '@type': 'ListItem', position: 2, name: cityOf(c).name, item: `${CFG.siteBase}/${cityOf(c).slug}/` },
       { '@type': 'ListItem', position: 3, name: c.name, item: url }
     ]
   };
@@ -551,7 +575,7 @@ function buildPage(c) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700;800&display=swap">
 
-<!-- ============ PRIMARY SEO META — ${c.name}, Irvine ============ -->
+<!-- ============ PRIMARY SEO META — ${c.name}, ${cityOf(c).name} ============ -->
 <title>${c.title}</title>
 <meta name="description" content="${c.metaDescription}">
 <link rel="canonical" href="${url}">
@@ -569,7 +593,7 @@ function buildPage(c) {
 
 <!-- Geo / Local -->
 <meta name="geo.region" content="US-CA">
-<meta name="geo.placename" content="${c.name}, Irvine, California">
+<meta name="geo.placename" content="${c.name}, ${cityOf(c).name}, California">
 <meta name="robots" content="${ROBOTS_META}">
 
 <!-- ============ STRUCTURED DATA — LocalBusiness + Service + WebPage ============ -->
@@ -690,7 +714,7 @@ ${VIZ_JS}
 <script>
 /* "Watch the Film" — opens a lightbox over the page. Nothing loads until
    the button is clicked, so an unwatched film costs nothing. Handles both a
-   YouTube id (once the Irvine commercials exist) and a local mp4 (today). */
+   YouTube id (once the city commercials exist) and a local mp4 (today). */
 (function () {
   var btns = document.querySelectorAll(".film-play, .yt-facade, .yt-short");
   if (!btns.length) return;
@@ -1040,7 +1064,7 @@ ${VIZ_JS}
 <script>
 /* "Watch the Film" — opens a lightbox over the page. Nothing loads until
    the button is clicked, so an unwatched film costs nothing. Handles both a
-   YouTube id (once the Irvine commercials exist) and a local mp4 (today). */
+   YouTube id (once the city commercials exist) and a local mp4 (today). */
 (function () {
   var btns = document.querySelectorAll(".film-play, .yt-facade, .yt-short");
   if (!btns.length) return;
@@ -1293,7 +1317,7 @@ ${buildFooter(navCtx(`/${city.slug}/${h.slug}/`, city.slug, A, `Serving associat
 <script>
 /* "Watch the Film" — opens a lightbox over the page. Nothing loads until
    the button is clicked, so an unwatched film costs nothing. Handles both a
-   YouTube id (once the Irvine commercials exist) and a local mp4 (today). */
+   YouTube id (once the city commercials exist) and a local mp4 (today). */
 (function () {
   var btns = document.querySelectorAll(".film-play, .yt-facade, .yt-short");
   if (!btns.length) return;

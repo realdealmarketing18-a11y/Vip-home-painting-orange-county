@@ -120,6 +120,11 @@ function copyProblems(body) {
   const wrongWarranty = (body.match(/\b\d+-Year Warranty\b/g) || []).filter(w => w !== CFG.warranty);
   if (wrongWarranty.length) probs.push(`warranty says "${[...new Set(wrongWarranty)].join('", "')}" but config says "${CFG.warranty}"`);
   if (/\$\{[A-Za-z.]+\}/.test(body)) probs.push('an unrendered ${...} placeholder is visible on the page');
+  /* A missing template field renders as the literal word "undefined". Six of
+     them shipped onto every Anaheim community page — one as an <h2> — because
+     the two clusters use different key names for the same data ({p,s} versus
+     {problem,solution}) and nothing was checking the rendered output. */
+  if (/\bundefined\b/.test(body)) probs.push('the literal word "undefined" is on the page — a template field is missing');
   return probs;
 }
 
@@ -283,6 +288,32 @@ for (const p of pages) {
      inside JSON-LD — crawlers and answer engines read the rendered text. */
   const visible = h.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '');
   if (!/Anaheim, CA/.test(visible)) probs.push('base locality not visible in page text (NAP)');
+
+  /* A community page must name ITS OWN city, not another one. Every Anaheim
+     community page used to say Irvine 25 times — in the visible copy, the geo
+     meta, the schema containedInPlace and areaServed, and a breadcrumb that
+     linked to /irvine/. Nothing caught it because nothing was looking. */
+  if (p.city) {
+    const cityRec = (CITIES.cities || []).find(x => x.slug === p.city) || {};
+    const mine = cityRec.name;
+    const others = (CITIES.cities || []).filter(x => x.slug !== p.city).map(x => x.name);
+
+    const geo = (h.match(/name="geo\.placename" content="([^"]*)"/) || [])[1] || '';
+    if (mine && geo && !geo.includes(mine)) {
+      probs.push(`geo.placename says "${geo}" on a ${mine} page`);
+    }
+
+    /* Schema is the most machine-readable way to tell Google the wrong thing,
+       so it is checked separately from the visible copy. Nav and footer links
+       to other cities are correct — cities link across — so only the JSON-LD
+       block is inspected here. */
+    const ld = (h.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/) || [])[1] || '';
+    for (const other of others) {
+      if (new RegExp(`"name":\\s*"(?:[^"]*,\\s*)?${other}(?:,\\s*CA)?"`).test(ld)) {
+        probs.push(`schema names ${other} on a ${mine} page`);
+      }
+    }
+  }
   if (!new RegExp(CFG.phone.replace(/[()]/g, '\\$&')).test(visible)) probs.push('phone not visible in page text (NAP)');
 
   /* An address in a city VIP does not operate from is a fabricated location:
