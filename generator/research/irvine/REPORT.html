@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Irvine — Research Findings | VIP Home Painting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+
+:root{
+  --ink:#0D1130;--ink-2:#11163A;--surface:#161B40;--edge:#272D5C;
+  --gold:#C9A961;--gold-bright:#E0C078;--gold-deep:#A88A47;
+  --cream:#F5EFE2;--muted:#8B90B4;--ok:#5FBF8F;--warn:#D9A441;--stop:#D2715F;
+  --serif:'Fraunces','Cormorant Garamond',Georgia,serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--cream);font-family:var(--sans);
+  font-size:15.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+h1,h2{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0}
+p{margin:0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;
+  color:var(--gold-bright);background:rgba(201,169,97,.10);
+  border:1px solid rgba(201,169,97,.24);border-radius:3px;padding:2px 7px}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px}
+
+.wrap{display:grid;grid-template-columns:274px 1fr;max-width:1280px;margin:0 auto;gap:0}
+
+/* rail */
+.rail{border-right:1px solid var(--edge);background:var(--ink-2)}
+.rail-in{position:sticky;top:0;padding:30px 24px 40px}
+.brand{display:flex;flex-direction:column;line-height:1;margin-bottom:34px}
+.bvip{font-family:var(--serif);font-weight:700;font-size:15px;color:var(--gold-bright)}
+.btag{font-size:9px;font-weight:600;color:var(--muted);margin-top:5px}
+.btag b{color:var(--gold);font-weight:700}
+.rail-k{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:14px}
+.toc{list-style:none;margin:0;padding:0;display:grid;gap:1px}
+.toc a{display:grid;grid-template-columns:26px 1fr;gap:8px;align-items:baseline;
+  text-decoration:none;color:var(--muted);font-size:13.5px;padding:6px 8px;
+  border-radius:3px;border-left:2px solid transparent}
+.toc a span{font-variant-numeric:tabular-nums;font-size:11px;color:var(--gold-deep);font-weight:700}
+.toc a:hover{color:var(--cream);background:rgba(201,169,97,.07);border-left-color:var(--gold)}
+.rail-f{margin-top:28px;font-size:11.5px;color:var(--muted);line-height:1.5}
+.rail-f code{font-size:11px;padding:1px 5px}
+
+/* main */
+.main{padding:30px 44px 70px;min-width:0}
+.mast{padding-bottom:34px;border-bottom:1px solid var(--edge);margin-bottom:12px}
+.eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px}
+.mast h1{font-size:clamp(32px,4.6vw,52px);line-height:1.05;letter-spacing:-.02em;margin-bottom:16px}
+.mast h1 em{font-style:italic;color:var(--gold-bright)}
+.lede{color:var(--muted);font-size:16px;max-width:66ch}
+.lede b{color:var(--cream);font-weight:600}
+.stats{display:flex;flex-wrap:wrap;gap:34px;margin-top:26px}
+.sv{font-family:var(--serif);font-weight:700;font-size:29px;color:var(--gold-bright);
+  line-height:1;font-variant-numeric:tabular-nums}
+.sl{font-size:10.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);margin-top:7px}
+
+/* sections */
+.sec{padding:36px 0;border-bottom:1px solid var(--edge)}
+.sec:last-of-type{border-bottom:none}
+.sec h2{font-size:25px;display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+.sn{font-family:var(--sans);font-size:12px;font-weight:700;color:var(--gold-deep);
+  font-variant-numeric:tabular-nums}
+.sec-lede{color:var(--muted);font-size:15px;max-width:66ch;margin:8px 0 20px}
+.after{color:var(--muted);font-size:14.5px;margin-top:16px;max-width:70ch}
+.after b{color:var(--cream);font-weight:600}
+
+.answer{background:var(--surface);border:1px solid var(--edge);border-left:3px solid var(--gold);
+  border-radius:4px;padding:20px 22px;display:grid;gap:12px}
+.answer-tag{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.answer p{color:var(--muted);font-size:15px}
+.answer b{color:var(--cream);font-weight:600}
+
+.pull{font-family:var(--serif);font-size:20px;line-height:1.44;color:var(--cream);
+  border-left:3px solid var(--gold);padding:4px 0 4px 20px}
+
+/* chart */
+.chart{background:var(--surface);border:1px solid var(--edge);border-radius:4px;padding:20px 22px}
+.chart-head{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:16px}
+.br{display:grid;grid-template-columns:1fr 2.1fr 52px;gap:14px;align-items:center;padding:5px 0}
+.br-l{font-size:13.5px;color:var(--cream);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.br-l em{color:var(--muted);font-style:normal}
+.br-t{height:9px;background:rgba(139,144,180,.14);border-radius:2px;overflow:hidden}
+.br-f{height:100%;background:linear-gradient(90deg,var(--gold-deep),var(--gold-bright));border-radius:2px}
+.br-v{font-size:13px;font-variant-numeric:tabular-nums;color:var(--muted);text-align:right}
+.br.is-own{margin-top:8px;padding-top:12px;border-top:1px dashed rgba(201,169,97,.34)}
+.br.is-own .br-l{color:var(--gold-bright);font-weight:600}
+.br.is-own .br-f{background:var(--stop)}
+.br.is-own .br-v{color:var(--stop);font-weight:700}
+.chart-note{margin-top:16px;font-size:14px;color:var(--muted)}
+.chart-note b{color:var(--cream)}
+
+/* table */
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:560px}
+th{text-align:left;font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);padding:0 12px 10px;border-bottom:1px solid var(--edge)}
+td{padding:12px;border-bottom:1px solid rgba(39,45,92,.6);font-size:14px;color:var(--muted)}
+td b{color:var(--cream);font-weight:600}
+th.r,td.r{text-align:right;font-variant-numeric:tabular-nums}
+.sub{display:block;font-size:11.5px;color:var(--muted);margin-top:2px}
+.yes{color:var(--ok);font-weight:600}
+.no{color:var(--muted)}
+
+/* kv */
+.kv{display:grid;gap:1px;background:var(--edge);border:1px solid var(--edge);border-radius:4px;
+  overflow:hidden;margin:0}
+.kv>div{display:grid;grid-template-columns:210px 1fr;gap:16px;background:var(--surface);padding:11px 16px}
+.kv dt{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.kv dd{margin:0;font-size:14px;color:var(--muted);word-break:break-word}
+
+/* chips + questions */
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-size:13px;color:var(--cream);background:rgba(201,169,97,.09);
+  border:1px solid rgba(201,169,97,.26);border-radius:999px;padding:5px 13px}
+.qs{list-style:none;margin:0;padding:0;display:grid;gap:1px;background:var(--edge);
+  border:1px solid var(--edge);border-radius:4px;overflow:hidden}
+.qs li{background:var(--surface);padding:11px 16px;display:flex;justify-content:space-between;
+  gap:16px;align-items:baseline}
+.qs .q{font-size:14.5px;color:var(--cream)}
+.qs .src{font-size:11px;color:var(--muted);white-space:nowrap;letter-spacing:.06em;text-transform:uppercase}
+
+/* gaps */
+.gap{background:rgba(210,113,95,.08);border:1px solid rgba(210,113,95,.32);
+  border-radius:4px;padding:15px 18px;margin-top:14px}
+.gap-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--stop);margin-bottom:6px}
+.gap p{font-size:14.5px;color:var(--muted)}
+.gap b{color:var(--cream);font-weight:600}
+.gaps{margin:14px 0 0;padding-left:20px;display:grid;gap:8px}
+.gaps li{font-size:14.5px;color:var(--muted)}
+.gaps li::marker{color:var(--stop);font-weight:700}
+.conf{text-transform:capitalize}
+.conf-high{color:var(--ok)}.conf-medium{color:var(--warn)}.conf-low{color:var(--stop)}
+
+.foot{margin-top:36px;padding-top:22px;border-top:1px solid var(--edge);color:var(--muted);
+  font-size:13.5px;display:grid;gap:10px}
+.foot b{color:var(--cream)}
+
+a:focus-visible,.toc a:focus-visible{outline:2px solid var(--gold-bright);outline-offset:2px}
+
+@media (max-width:940px){
+  .wrap{grid-template-columns:1fr}
+  .rail{border-right:none;border-bottom:1px solid var(--edge)}
+  .rail-in{position:static;padding:22px}
+  .toc{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:2px}
+  .main{padding:26px 22px 56px}
+  .kv>div{grid-template-columns:1fr;gap:3px}
+}
+@media print{
+  body{background:#fff;color:#111}
+  .rail{display:none}
+  .wrap{grid-template-columns:1fr}
+}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <aside class="rail">
+    <div class="rail-in">
+      <div class="brand">
+        <span class="bvip">VIP HOME PAINTING</span>
+        <span class="btag">Visualize it. <b>See it.</b> Paint it.</span>
+      </div>
+      <p class="rail-k">Research report</p>
+      <ol class="toc"><li><a href="#s01"><span>01</span>Executive summary</a></li><li><a href="#s02"><span>02</span>What it takes to compete</a></li><li><a href="#s03"><span>03</span>The competitive set</a></li><li><a href="#s04"><span>04</span>The uncontested gap</a></li><li><a href="#s05"><span>05</span>Market and pricing</a></li><li><a href="#s06"><span>06</span>The communities</a></li><li><a href="#s07"><span>07</span>HOA landscape</a></li><li><a href="#s08"><span>08</span>Questions real buyers asked</a></li><li><a href="#s09"><span>09</span>Confidence and open gaps</a></li><li><a href="#s10"><span>10</span>Sources and method</a></li></ol>
+      <p class="rail-f">Generated 2026-08-23<br>from <code>briefs/irvine.json</code></p>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="mast">
+      <p class="eyebrow">Local SEO research · Irvine, Orange</p>
+      <h1>What it takes to win <em>Irvine</em>.</h1>
+      <p class="lede">A measured read of the Irvine market: who is actually ranking, what it costs to be credible, and the one thing none of them offer. The bar is <b>60 reviews</b>. VIP is at <b>9</b>. The gap is a programme, not a rebuild.</p>
+      <div class="stats"><div class="stat"><div class="sv">5</div><div class="sl">competitors profiled</div></div><div class="stat"><div class="sv">60</div><div class="sl">reviews to compete</div></div><div class="stat"><div class="sv">9</div><div class="sl">VIP has today</div></div><div class="stat"><div class="sv">6</div><div class="sl">communities mapped</div></div></div>
+    </header>
+    <section class="sec" id="s01">
+  <h2><span class="sn">01</span>Executive summary</h2>
+  
+  
+    <div class="answer">
+      <div class="answer-tag">The one-paragraph answer</div>
+      <p>The bar in Irvine is <b>60 reviews</b>, not the hundreds usually assumed —
+      the strongest profiled competitor sits at <b>57</b>.</p><p>VIP is at <b>9</b>. That is a gap of <b>51</b>, closeable with a
+      review programme rather than a rebuild.</p><p><b>The uncontested angle:</b> No painter in Anaheim or Irvine carries a single review tag about color visualization, color consultation, or seeing the result before painting. The entire market competes on price, speed, tidiness and professionalism. Pre-paint color confidence is uncontested.</p><p>Not one of the <b>5</b> profiled competitors offers pre-paint
+      visualization. That is measured, not assumed.</p>
+    </div>
+</section>
+<section class="sec" id="s02">
+  <h2><span class="sn">02</span>What it takes to compete</h2>
+  <p class="sec-lede">Measure the bar before deciding it is out of reach. This is the number that decides whether the local pack is winnable at all.</p>
+  <div class="chart">
+    <div class="chart-head">Google reviews — the competitive set</div>
+    
+    <div class="br">
+      <div class="br-l">Ron Romero &amp; Son Painting</div>
+      <div class="br-t"><div class="br-f" style="width:95.0%"></div></div>
+      <div class="br-v">57</div>
+    </div>
+    <div class="br">
+      <div class="br-l">OC Integrity Painting</div>
+      <div class="br-t"><div class="br-f" style="width:88.3%"></div></div>
+      <div class="br-v">53</div>
+    </div>
+    <div class="br">
+      <div class="br-l">Ultimate Home Painters</div>
+      <div class="br-t"><div class="br-f" style="width:85.0%"></div></div>
+      <div class="br-v">51</div>
+    </div>
+    <div class="br">
+      <div class="br-l">Right Choice Painting Co</div>
+      <div class="br-t"><div class="br-f" style="width:48.3%"></div></div>
+      <div class="br-v">29</div>
+    </div>
+    <div class="br">
+      <div class="br-l">The Painting Guys</div>
+      <div class="br-t"><div class="br-f" style="width:48.3%"></div></div>
+      <div class="br-v">29</div>
+    </div>
+    <div class="br is-own">
+      <div class="br-l">VIP Home Painting <em>— today</em></div>
+      <div class="br-t"><div class="br-f" style="width:15.0%"></div></div>
+      <div class="br-v">9</div>
+    </div>
+    
+    <p class="chart-note"><b>60</b> is the number to be credible in the Irvine pack.
+    VIP is at <b>9</b> — a gap of <b>51</b>, which is a review programme, not a rebuild.</p>
+  </div>
+</section>
+<section class="sec" id="s03">
+  <h2><span class="sn">03</span>The competitive set</h2>
+  
+  <div class="tw"><table>
+    <thead><tr><th>Competitor</th><th class="r">Rating</th><th class="r">Reviews</th><th class="r">Photos</th><th>Visualization</th></tr></thead>
+    <tbody><tr>
+      <td><b>Ron Romero &amp; Son Painting</b><span class="sub">Painter</span></td>
+      <td class="r">4.6</td>
+      <td class="r"><b>57</b></td>
+      <td class="r">622</td>
+      <td><span class="no">None</span></td>
+    </tr><tr>
+      <td><b>OC Integrity Painting</b><span class="sub">Painting</span></td>
+      <td class="r">5</td>
+      <td class="r"><b>53</b></td>
+      <td class="r">12</td>
+      <td><span class="no">None</span></td>
+    </tr><tr>
+      <td><b>Ultimate Home Painters</b><span class="sub">Painter</span></td>
+      <td class="r">4.8</td>
+      <td class="r"><b>51</b></td>
+      <td class="r">128</td>
+      <td><span class="no">None</span></td>
+    </tr><tr>
+      <td><b>Right Choice Painting Co</b><span class="sub">Painter</span></td>
+      <td class="r">4.9</td>
+      <td class="r"><b>29</b></td>
+      <td class="r">119</td>
+      <td><span class="no">None</span></td>
+    </tr><tr>
+      <td><b>The Painting Guys</b><span class="sub">Painter</span></td>
+      <td class="r">4.9</td>
+      <td class="r"><b>29</b></td>
+      <td class="r">21</td>
+      <td><span class="no">None</span></td>
+    </tr></tbody></table></div>
+    <p class="after">Category consensus — what the pack shares and VIP's GBP must carry:
+      <code>Painter</code> <code>Painting contractor</code></p><p class="after"><b>GBP posting gap:</b> Only 20% of competitors post owner updates at all</p>
+</section>
+<section class="sec" id="s04">
+  <h2><span class="sn">04</span>The uncontested gap</h2>
+  
+  
+    <div class="pull">No painter in Anaheim or Irvine carries a single review tag about color visualization, color consultation, or seeing the result before painting. The entire market competes on price, speed, tidiness and professionalism. Pre-paint color confidence is uncontested.</div>
+    <p class="after">This is the highest-value output of the study: a positioning claim with a
+      count behind it. It is why every page in this cluster leads with visualization.</p>
+</section>
+<section class="sec" id="s05">
+  <h2><span class="sn">05</span>Market and pricing</h2>
+  
+  <dl class="kv">
+    <div><dt>Median home value</dt><dd>$1,650,000</dd></div><div><dt>Home value range</dt><dd>$1,200,000 – $6,500,000</dd></div><div><dt>Median household income</dt><dd>$129,000</dd></div><div><dt>Homes built</dt><dd>1998-2020</dd></div><div><dt>HOA prevalence</dt><dd>near-universal — nearly every village has an association with design review</dd></div><div><dt>Local market rate</dt><dd>$2.74 – $4.89 / sq ft</dd></div><div><dt>VIP exterior rate</dt><dd>$4.75 / sq ft — premium</dd></div>
+    </dl>
+    <div class="gap"><span class="gap-tag">Open</span><p>Typical project totals are
+      <b>still null</b> — awaiting real VIP job data. Until they land, pricing copy says
+      <em>starts at</em> and never quotes a project range.</p></div>
+</section>
+<section class="sec" id="s06">
+  <h2><span class="sn">06</span>The communities</h2>
+  <p class="sec-lede">6 communities researched. Each one's problem/solution pairs are what the page copy is built from — the problems are real failure modes in that community, not generic painting complaints.</p>
+  
+    <p class="after" style="margin-top:0">Community pages are the wedge because <b>no competitor has
+      them</b>, and those SERPs are starved rather than merely competitive. Community terms report
+      <b>zero volume</b> in every keyword tool — a measurement floor, not absent demand.
+      <b>Never kill a community page on zero-volume data.</b></p>
+    <div class="cards"><article class="cc">
+      <header>
+        <h3>Orchard Hills</h3>
+        <span class="tag warn">Association unconfirmed</span>
+      </header>
+      <ol class="ps"><li>
+          <p class="p"><b>Problem</b> South-facing stucco fades unevenly on hillside lots, leaving chalky, blotchy elevations within a few seasons.</p>
+          <p class="s"><b>How we answer it</b> We spec Sherwin-Williams Emerald exterior — a self-priming, UV-stable acrylic — and apply a full wet-mil coating by airless spray so every elevation weathers evenly.</p>
+        </li><li>
+          <p class="p"><b>Problem</b> Design review paperwork stalls the project before it starts.</p>
+          <p class="s"><b>How we answer it</b> We prepare your color submission package — swatches, product data sheets, and elevation notes — formatted for your association's design review, so approval is a formality, not a delay.</p>
+        </li><li>
+          <p class="p"><b>Problem</b> Estimates from other painters arrive as one vague lump sum.</p>
+          <p class="s"><b>How we answer it</b> Every VIP proposal is itemized — prep, primer, coating system, trim, and accents priced line by line — so you know exactly what you're paying for.</p>
+        </li><li>
+          <p class="p"><b>Problem</b> Crews that treat a luxury estate like a tract repaint.</p>
+          <p class="s"><b>How we answer it</b> White-glove protocols on every Orchard Hills project: full masking of stone, landscape and hardscape protection, daily clean-up, and a final walkthrough with the founder's checklist.</p>
+        </li></ol>
+    </article><article class="cc">
+      <header>
+        <h3>Altair</h3>
+        <span class="tag ok">Altair Irvine Master Association</span>
+      </header>
+      <ol class="ps"><li>
+          <p class="p"><b>Problem</b> Roller stipple and lap marks ruin the flat, monolithic look modern stucco is designed for.</p>
+          <p class="s"><b>How we answer it</b> We spray every large plane with Graco and Titan airless rigs at a consistent tip and pressure, then back-roll where the substrate calls for it — a uniform film, edge to edge.</p>
+        </li><li>
+          <p class="p"><b>Problem</b> Dark modern colors like Iron Ore can fail fast in full sun if the wrong product is used.</p>
+          <p class="s"><b>How we answer it</b> We spec Sherwin-Williams Emerald with modern, fade-resistant colorants rated for dark exterior use, so deep charcoals stay deep.</p>
+        </li><li>
+          <p class="p"><b>Problem</b> Crisp two-tone schemes live or die on the cut lines.</p>
+          <p class="s"><b>How we answer it</b> Laser-checked masking and hand-cut transitions where volumes meet — the detail work that separates an estate finish from a production repaint.</p>
+        </li><li>
+          <p class="p"><b>Problem</b> You can't picture a charcoal-and-white scheme on your own elevation.</p>
+          <p class="s"><b>How we answer it</b> Our complimentary custom color visualization shows your actual home in each candidate palette before you commit to a single gallon.</p>
+        </li></ol>
+    </article><article class="cc">
+      <header>
+        <h3>Portola Springs</h3>
+        <span class="tag warn">Association unconfirmed</span>
+      </header>
+      <ol class="ps"><li>
+          <p class="p"><b>Problem</b> The original builder palette now reads dated against newer phases of the village.</p>
+          <p class="s"><b>How we answer it</b> A complimentary 30-minute color visualization shows your home in current designer schemes — warm whites, greiges, and deep accents — before you decide anything.</p>
+        </li><li>
+          <p class="p"><b>Problem</b> Sun-baked foothill elevations chalk and fade within a few years.</p>
+          <p class="s"><b>How we answer it</b> Sherwin-Williams Emerald and Duration exterior systems, applied at full wet-mil by airless spray, are engineered for exactly this exposure.</p>
+        </li><li>
+          <p class="p"><b>Problem</b> Design review requirements make color changes feel like a bureaucratic project.</p>
+          <p class="s"><b>How we answer it</b> We assemble the color submission package for your association's review — swatches, spec sheets, elevation notes — as part of the job.</p>
+        </li><li>
+          <p class="p"><b>Problem</b> Cabinet painting that leaves brush marks and starts peeling at the hinges.</p>
+          <p class="s"><b>How we answer it</b> Factory-finish cabinet refinishing: doors sprayed off-site in urethane enamel, boxes sprayed in place, hardware re-hung square.</p>
+        </li></ol>
+    </article><article class="cc">
+      <header>
+        <h3>Hidden Canyon</h3>
+        <span class="tag warn">Association unconfirmed</span>
+      </header>
+      <ol class="ps"><li>
+          <p class="p"><b>Problem</b> Most painting crews aren't set up for guard-gated estate work — access, scheduling, and site conduct included.</p>
+          <p class="s"><b>How we answer it</b> We run concierge scheduling: gate clearance handled in advance, crews badged and briefed, work hours coordinated with your household staff and neighbors.</p>
+        </li><li>
+          <p class="p"><b>Problem</b> Smooth-trowel stucco shows every patch, pinhole, and lap line.</p>
+          <p class="s"><b>How we answer it</b> Estate-grade prep — skim repairs floated to match, elastomeric patching, full prime — then airless spray application for a glass-even film.</p>
+        </li><li>
+          <p class="p"><b>Problem</b> A repaint that disrupts the household for weeks.</p>
+          <p class="s"><b>How we answer it</b> Most Hidden Canyon exteriors are completed in five working days, sequenced elevation by elevation so the house stays livable throughout.</p>
+        </li><li>
+          <p class="p"><b>Problem</b> Committing to a palette on a multi-million-dollar elevation, sight unseen.</p>
+          <p class="s"><b>How we answer it</b> Our complimentary custom color visualization renders your estate in each candidate scheme first — you approve what you've already seen.</p>
+        </li></ol>
+    </article><article class="cc">
+      <header>
+        <h3>Woodbury</h3>
+        <span class="tag warn">Association unconfirmed</span>
+      </header>
+      <ol class="ps"><li>
+          <p class="p"><b>Problem</b> A 2005-era kitchen with solid cabinets but a tired, orange-toned finish.</p>
+          <p class="s"><b>How we answer it</b> Factory-finish cabinet refinishing: doors and drawers sprayed off-site in urethane enamel, boxes sprayed in place — a true furniture-grade result at a fraction of replacement cost.</p>
+        </li><li>
+          <p class="p"><b>Problem</b> Brush-painted cabinets that chip at the corners within a year.</p>
+          <p class="s"><b>How we answer it</b> We use catalyzed-hardness urethane enamel systems, proper degrease-sand-prime sequence, and cure time before re-hanging — that's what makes the finish last.</p>
+        </li><li>
+          <p class="p"><b>Problem</b> Exterior colors that have quietly faded a shade lighter than the neighbors'.</p>
+          <p class="s"><b>How we answer it</b> Sherwin-Williams Emerald exterior at full wet-mil by airless spray restores depth and holds it — with a 2-Year Warranty behind it.</p>
+        </li><li>
+          <p class="p"><b>Problem</b> Painters who overspray garden walls, paseos, and your neighbor's roses.</p>
+          <p class="s"><b>How we answer it</b> White-glove masking and containment on every Woodbury job — landscaping wrapped, hardscape covered, and a clean site every evening.</p>
+        </li></ol>
+    </article><article class="cc">
+      <header>
+        <h3>Stonegate</h3>
+        <span class="tag warn">Association unconfirmed</span>
+      </header>
+      <ol class="ps"><li>
+          <p class="p"><b>Problem</b> You want a color change, but the design review process feels opaque.</p>
+          <p class="s"><b>How we answer it</b> We prepare the complete submission — approved-range swatches, product data, elevation callouts — for your association's review, and we've formatted these packages many times.</p>
+        </li><li>
+          <p class="p"><b>Problem</b> Flat builder-grade paint has gone chalky after a decade of full sun.</p>
+          <p class="s"><b>How we answer it</b> Sherwin-Williams Emerald exterior, self-priming and UV-stable, applied at full wet-mil with Graco and Titan airless equipment.</p>
+        </li><li>
+          <p class="p"><b>Problem</b> Tight lot lines mean overspray risk on your neighbor's car, wall, and roses.</p>
+          <p class="s"><b>How we answer it</b> Containment-first spraying: wind-checked scheduling, full masking, and shielded application on zero-setback elevations.</p>
+        </li><li>
+          <p class="p"><b>Problem</b> Choosing between three whites that all look identical on a paper swatch.</p>
+          <p class="s"><b>How we answer it</b> Our complimentary custom color visualization puts each one on your actual elevation in real light — the difference becomes obvious in minutes.</p>
+        </li></ol>
+    </article></div>
+</section>
+<section class="sec" id="s07">
+  <h2><span class="sn">07</span>HOA landscape</h2>
+  
+  
+    <div class="mgmt">
+      <div class="mgmt-h"><b>Keystone Pacific Property Management</b><span class="mono">(949) 833-2600</span></div>
+      <p class="after" style="margin-top:8px">Manages:
+        <span class="chip sm">Woodbury Community Association</span> <span class="chip sm">Groves at Orchard Hills</span> <span class="chip sm">Orchard Hills Village II</span> <span class="chip sm">Portola Springs Association</span> <span class="chip sm">Stonegate Village Owners Association (SVOA)</span></p>
+      <p class="after"><span class="tag warn">Vendor portal not located</span>
+        — the route onto the approved-contractor list is still unknown.</p>
+    </div>
+    <div class="tw"><table>
+      <thead><tr><th>Association</th><th>Community</th><th class="r">Units</th><th>Manager</th></tr></thead>
+      <tbody><tr>
+        <td><b>Woodbury Community Association</b></td>
+        <td>woodbury</td>
+        <td class="r">4,067</td>
+        <td>Keystone Pacific</td>
+      </tr><tr>
+        <td><b>The Groves / The Reserve / The Summit (three separate HOAs)</b></td>
+        <td>orchard-hills</td>
+        <td class="r">—</td>
+        <td>Keystone Pacific</td>
+      </tr><tr>
+        <td><b>Portola Springs Association</b></td>
+        <td>portola-springs</td>
+        <td class="r">—</td>
+        <td>Keystone Pacific</td>
+      </tr><tr>
+        <td><b>Stonegate Village Owners Association (SVOA)</b></td>
+        <td>stonegate</td>
+        <td class="r">—</td>
+        <td>Keystone Pacific</td>
+      </tr><tr>
+        <td><b>Altair Irvine Master Association</b></td>
+        <td>altair</td>
+        <td class="r">—</td>
+        <td>—</td>
+      </tr><tr>
+        <td><b>—</b></td>
+        <td>hidden-canyon</td>
+        <td class="r">—</td>
+        <td>—</td>
+      </tr></tbody></table></div>
+    <p class="after">This is the B2B half. One management company holding five associations is a
+      single relationship worth more than any individual homeowner page.</p>
+</section>
+<section class="sec" id="s08">
+  <h2><span class="sn">08</span>Questions real buyers asked</h2>
+  
+  
+    <ul class="qs"><li><span class="q">How do you ensure a high-quality finish on my cabinets?</span><span class="src">gbp q&amp;a irvine</span></li><li><span class="q">Is cabinet refinishing a cost-effective way to update my kitchen?</span><span class="src">gbp q&amp;a irvine</span></li><li><span class="q">Do you repaint the ceilings?</span><span class="src">gbp q&amp;a irvine</span></li><li><span class="q">How do your prices compare to other contractors?</span><span class="src">gbp q&amp;a irvine</span></li><li><span class="q">How much does it cost to paint a house in Irvine?</span><span class="src">websearch</span></li></ul>
+    <p class="after">Verbatim, from Google Business Q&amp;A and search. These go straight into the
+      FAQ accordion and FAQPage schema — the visible text and the schema must match exactly,
+      and the output gate checks that.</p>
+</section>
+<section class="sec" id="s09">
+  <h2><span class="sn">09</span>Confidence and open gaps</h2>
+  
+  
+    <p class="after">Brief confidence: <b class="conf conf-medium">medium</b>
+      · researched 2026-07-27 by marcus</p>
+    <ol class="gaps"><li>pricing.typical_project_low/high — awaiting real VIP job data from Fabian</li><li>keywords volume/difficulty — awaiting Semrush API units</li><li>VERIFY: OC page schema claims aggregateRating 5.0 from 120 reviews — if real, VIP already leads both markets; if not, remove it</li><li>Management companies unconfirmed for Altair and Hidden Canyon</li><li>Keystone Pacific vendor/contractor portal not located</li></ol>
+    <p class="after"><b>Nothing above the line is published as fact unless it is verified.</b>
+      A gap listed here is a reason to write around it, not to guess.</p>
+</section>
+<section class="sec" id="s10">
+  <h2><span class="sn">10</span>Sources and method</h2>
+  
+  
+    <dl class="kv"><div><dt>market</dt><dd class="mono">https://bestpaintingestimates.com/find-a-location/irvine-ca/</dd></div><div><dt>local_pack</dt><dd class="mono">apify compass/crawler-google-places run 2026-07-27 (datasets pw6djQiOl1uh6hDsq, Jd1VPtysGNBzUztT1)</dd></div><div><dt>questions</dt><dd class="mono">websearch 2026-07-26 (interim; pending Apify social scrape)</dd></div><div><dt>keywords</dt><dd class="mono">PENDING semrush — API units exhausted</dd></div><div><dt>organic</dt><dd class="mono">firecrawl geo-located search + site maps 2026-07-27</dd></div><div><dt>communities</dt><dd class="mono">firecrawl real-estate listing scrapes 2026-07-27 (redfin, zillow, rubyhome, homes.com, realtor.com)</dd></div><div><dt>hoa</dt><dd class="mono">firecrawl 2026-07-27: kppm.com, portolasprings.org, socalhomefix.com, livinghiddencanyon.com, cityofirvine.gov</dd></div></dl>
+    <p class="after">Persistent Apify dataset — <b>re-pull free, do not re-scrape</b>:
+      <code>Jd1VPtysGNBzUztT1</code> · scraped 2026-07-27</p>
+    <p class="after">Working notes: <code>research/irvine/00-SUMMARY.md</code> <code>research/irvine/02-local-pack.md</code> <code>research/irvine/03-organic-competitors.md</code> <code>research/irvine/05-communities.md</code> <code>research/irvine/06-hoa.md</code></p>
+    <p class="after">Method: <code>research/_global/COMPETITOR-RESEARCH-PLAYBOOK.md</code> ·
+      Findings register: <code>research/_global/MEMORY.md</code></p>
+</section>
+    <footer class="foot">
+      <p><b>How to read this.</b> Every number comes from the brief; nothing here is estimated.
+      Where research has not been done, the section says so rather than going quiet — a gap that
+      disappears from a report is a gap nobody closes.</p>
+      <p class="mono">node generator/research-report.js irvine</p>
+    </footer>
+  </main>
+
+</div>
+</body>
+</html>
