@@ -1,6 +1,6 @@
 # WordPress-side fixes — required for generated pages to render
 
-These three PHP files live **on the server**, not in this repo's build. They are kept
+These four PHP files live **on the server**, not in this repo's build. They are kept
 here so they are not lost if the site is rebuilt, migrated, or restored from a backup.
 
 **Installed at:** `wp-content/novamira-sandbox/` on viphomepainting.com
@@ -12,6 +12,7 @@ if you have file access.)*
 | `vip-rankmath-rest-meta.php` | Rank Math silently overriding the SEO head |
 | `vip-generated-pages.php` | WordPress and the theme silently breaking the CSS |
 | `vip-rankmath-head.php` | Two competing JSON-LD graphs, and a missing `og:image` |
+| `vip-fonts.php` | Fraunces and Inter not loading at all on WordPress |
 
 **Without these, the pages publish and render — badly.** Every one of these problems was
 invisible to a status-code check and only showed up on the live page.
@@ -101,6 +102,36 @@ front page because of it:
 had its **display name set to the email address**. It is now "VIP Home Painting". The
 login is unchanged — `user_login` and the password were not touched. If a new admin user
 is ever created, set its display name before publishing anything.
+
+## 4 · `vip-fonts.php`
+
+**`publish-wp.js` sends the body, styles, scripts and JSON-LD — never the source
+file's `<head>`.** Anything that has to be in the head reaches github.io and not
+WordPress, and nothing warns you.
+
+The generated pages used to carry an `@import` for Fraunces and Inter inside their
+`<style>` block, which travelled with the content and worked. That `@import` was
+removed for a real reason — it is the slowest way to load a font, because the
+browser cannot discover it until the sheet has downloaded and parsed — and replaced
+with a `<link>` in the head. Which never arrived.
+
+Result, confirmed live on all 19 pages: **zero requests for either family.** The CSS
+still named them, so they fell back to the theme's Cormorant Garamond and a system
+sans — close enough to the real thing to miss at a glance.
+
+This enqueues them properly, in the head, with preconnect, on `_vip_generated`
+pages only.
+
+**The general lesson:** if a change belongs in `<head>`, it needs a WordPress hook.
+Putting it in the source file's head only ships it to the build site.
+
+```
+node -e "fetch('https://viphomepainting.com/').then(r=>r.text()).then(h=>{
+  const f=[...h.matchAll(/fonts\.googleapis\.com\/css2\?[^'\"]+/g)].map(m=>m[0]);
+  console.log('Fraunces:', f.some(x=>/Fraunces/.test(x)));
+  console.log('Inter   :', f.some(x=>/Inter:wght/.test(x)));
+})"
+```
 
 ## Re-registering the assets in the Media library
 
