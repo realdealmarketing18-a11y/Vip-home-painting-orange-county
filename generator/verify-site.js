@@ -74,6 +74,22 @@ const bodyOf = h => h
   .replace(/<style[\s\S]*?<\/style>/g, '')
   .replace(/<!--[\s\S]*?-->/g, '');
 
+/* What a READER sees: tags removed and whitespace collapsed.
+   The copy checks used to run against markup, so any claim split across
+   elements was invisible to them. That is how "<div>5</div><span>★</span>
+   <div>Star Reviews</div>" and "<div>1<em>yr</em></div><b>Insane Warranty</b>"
+   both sat on the front page — a banned rating claim and a warranty
+   contradicting every other line on the same page. Read it as prose.
+
+   A client's own words are exempt from the voice rules — you do not edit a
+   testimonial to remove "amazing" — so quotes come out before the copy checks. */
+const proseOf = h => bodyOf(h)
+  .replace(/<(blockquote|p|div)[^>]*class="[^"]*testi-quote[^"]*"[\s\S]*?<\/\1>/g, ' ')
+  .replace(/<blockquote[\s\S]*?<\/blockquote>/g, ' ')
+  .replace(/<[^>]+>/g, ' ')
+  .replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').replace(/&#\d+;/g, ' ')
+  .replace(/\s+/g, ' ');
+
 console.log(`\nVERIFY SITE — ${pages.length} page(s)${only ? `, city "${only}"` : ''}\n`);
 
 /* ---------- 1. links resolve, and none are absolute ---------- */
@@ -109,15 +125,40 @@ function copyProblems(body) {
   if (hit(/\bfree\b/gi)) probs.push('"free" (use complimentary)');
   if (hit(/\bAI\b/g)) probs.push('"AI" (use "our design team")');
   if (hit(/\bcolour/gi)) probs.push('British "colour"');
-  if (/aggregateRating|5-Star Rated|\b\d+(\.\d+)?\s*stars?\b/i.test(body)) probs.push('rating/review claim');
+  /* VIP has 9 reviews and the rating is unconfirmed, so no star claim of any
+     kind ships. The old pattern wanted the digit touching the word; the front
+     page wrote it as "5" then "★" then "Star Reviews" in three sibling divs,
+     which reads as a 5-star claim and matched nothing. Allow the symbol, the
+     separator, and the word order the page actually used. */
+  if (/aggregateRating|5-Star Rated|\b\d+(\.\d+)?\s*[★⭐]?\s*stars?\b|[★⭐]\s*stars?\b/i.test(body)) probs.push('rating/review claim');
+  /* Registry items 5 and 7 in context/ABOUT-VIP.md: the true project count and
+     the real rating are both unknown. "120+ Projects Done" and "100% Clients
+     Satisfied" were sitting on the front page as hard numbers anyway. */
+  if (/\b\d+\+?\s*Projects\s+(Done|Completed)\b/i.test(body)) probs.push('unverified project-count claim (ABOUT-VIP item 7)');
+  if (/\b100%\s*Clients?\s*Satisf/i.test(body)) probs.push('unverifiable "100% satisfied" claim');
   if (/\baverages?\b[^.]{0,40}\$/i.test(body)) probs.push('market-average price claim');
+  /* BRAND-VOICE "ALSO AVOID": hype adjectives. Six sat on the front page —
+     "Insane 2-Year Warranty", "jaw-dropping masterpiece" — which is the wrong
+     register entirely for a five-figure repaint sold to a regret-averse buyer.
+     Nothing was checking, because this list was advice rather than a gate. */
+  const hype = [...new Set((body.match(/\b(amazing|incredible|stunning|jaw-dropping|insane|unbeatable|world-class|cutting-edge|revolutionary|game-chang\w+)\b/gi) || [])
+    .map(w => w.toLowerCase()))];
+  if (hype.length) probs.push(`hype adjective(s) BRAND-VOICE bans: ${hype.join(', ')}`);
   for (const ph of [...new Set(body.match(/\(\d{3}\)\s*\d{3}-\d{4}/g) || [])]) {
     if (ph !== CFG.phone) probs.push(`wrong phone "${ph}"`);
   }
   /* The warranty length was hardcoded in generator source in 14 places and went
      stale the moment Fabian changed it. It lives in config now; this asserts the
-     pages actually agree, and that no ${CFG...} placeholder leaked out unrendered. */
-  const wrongWarranty = (body.match(/\b\d+-Year Warranty\b/g) || []).filter(w => w !== CFG.warranty);
+     pages actually agree, and that no ${CFG...} placeholder leaked out unrendered.
+
+     Matching only "N-Year Warranty" was too literal: the front page's stat card
+     said "1" then "yr" then "Insane Warranty", contradicting the 2-Year promise
+     made four times elsewhere on the same page. Read the number and the unit
+     wherever they sit within a few words of "Warranty". */
+  const cfgYears = parseInt(CFG.warranty, 10);
+  const wrongWarranty = [...body.matchAll(/\b(\d+)\s*-?\s*(?:year|yr)s?\b[^.<]{0,24}?warranty\b/gi)]
+    .filter(m => parseInt(m[1], 10) !== cfgYears)
+    .map(m => m[0].trim());
   if (wrongWarranty.length) probs.push(`warranty says "${[...new Set(wrongWarranty)].join('", "')}" but config says "${CFG.warranty}"`);
   if (/\$\{[A-Za-z.]+\}/.test(body)) probs.push('an unrendered ${...} placeholder is visible on the page');
   /* A missing template field renders as the literal word "undefined". Six of
@@ -131,7 +172,7 @@ function copyProblems(body) {
 console.log('\n2. copy rules (rendered text, not source)');
 let copyBad = 0;
 for (const p of pages) {
-  const probs = copyProblems(bodyOf(read(p)));
+  const probs = copyProblems(proseOf(read(p)));
   if (probs.length) { bad(`${p.rel}: ${probs.join(' · ')}`); copyBad++; }
 }
 if (!copyBad) ok(`no banned copy; warranty reads "${CFG.warranty}" on every page`);
@@ -386,7 +427,7 @@ if (!fs.existsSync(ocFile)) {
     : bad(`skip link points at #${skip}, which does not exist on the page`);
 
   /* the same copy rules the 18 generated pages get */
-  const ocProbs = copyProblems(bodyOf(oc));
+  const ocProbs = copyProblems(proseOf(oc));
   ocProbs.length
     ? ocProbs.forEach(p => bad(`county page: ${p}`))
     : ok('no banned copy on the county page');

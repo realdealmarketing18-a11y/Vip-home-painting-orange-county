@@ -47,7 +47,7 @@ the interactive visualizer appears on every page, and no headline buries it belo
 - Palette guidance matched to your community's architecture and light
 - **Itemized estimate** — prep, primer, coating, trim, accents priced line by line
 - HOA / design-review submission package prepared as part of the project
-- 1-Year Warranty on labor and materials
+- 2-Year Warranty on labor and materials
 
 **Always "complimentary," never "free."**
 
@@ -80,7 +80,7 @@ Order matters. Visualization first, always.
    full wet-mil, back-rolled on stucco
 4. **Factory-finish cabinets** — doors sprayed off-site in urethane enamel
 5. **White-glove site protocol** — masking, containment, daily clean-up, founder's walkthrough
-6. **1-Year Warranty** · Licensed, Bonded & Insured
+6. **2-Year Warranty** · Licensed, Bonded & Insured
 
 ---
 
@@ -91,8 +91,9 @@ Order matters. Visualization first, always.
 - **Reviews or ratings.** VIP has **9** and the rating is unconfirmed. Competitors have 55+.
   Never imply review dominance. Never publish `aggregateRating`.
 - **Years in business / crew size.** Unverified.
-- **The warranty as a headline.** CertaPro advertises 2 years against our 1. Don't invite the
-  comparison in a headline; carry it in the proof stack.
+- **The warranty as a headline.** Resolved 2026-07-31: VIP is at 2 years. CertaPro also
+  advertises 2, so it is parity, not an edge — never write "longer than the competition."
+  Carry it in the proof stack, not in a headline.
 
 ---
 
