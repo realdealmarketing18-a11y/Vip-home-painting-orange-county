@@ -1626,6 +1626,7 @@
   .s5-send .s { font-size: 9.5px; font-weight: 600; letter-spacing: .05em;
     text-transform: none; opacity: .8; }
   .s5-handoff { text-align: center; margin: 10px 0 0; }
+  .s5-err.s5-handoff { color: #B4472F; }
   .s5-phone { text-align: center; margin: 14px 0 0; font-size: 12.5px; color: #767B99; }
   .s5-phone a { color: var(--navy); font-weight: 700; text-decoration: none;
     border-bottom: 1px solid rgba(168,138,71,.5); }
@@ -3607,12 +3608,50 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       'Photo of the front elevation is attached.';
   }
 
-  form.addEventListener('submit', function (e) {
-    if (!hasFile) { e.preventDefault(); return; }
-    if (!validate()) { e.preventDefault(); return; }
-    if (endpoint) return;               /* let it post to the handler */
+  function showDone(title, sub) {
+    document.getElementById('s5DoneTitle').textContent = title;
+    document.getElementById('s5DoneSub').innerHTML = sub;
+    form.classList.add('sent');
+    document.getElementById('s5Done').classList.add('on');
+  }
 
-    e.preventDefault();
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();                 /* the endpoint answers in JSON; a
+                                           native POST would navigate the
+                                           visitor to the raw response */
+    if (!hasFile || !validate()) return;
+    var errEl = document.getElementById('s5SubmitErr');
+    errEl.classList.remove('on');
+
+    if (endpoint) {
+      var fd = new FormData();
+      fd.append('photo', file.files[0]);
+      fd.append('name', nameI.value.trim());
+      fd.append('place', placeI.value.trim());
+      fd.append('contact', contI.value.trim());
+      fd.append('website', document.getElementById('s5Website').value);
+      ['scheme', 'lighting', 'siding', 'premium'].forEach(function (k) {
+        var v = form.getAttribute('data-' + k);
+        if (v) fd.append(k, v);
+      });
+      send.disabled = true;
+      label.textContent = 'Sending your elevation…';
+      fetch(endpoint, { method: 'POST', body: fd })
+        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+        .then(function (res) {
+          if (!res.ok) throw new Error((res.j && res.j.message) || 'That did not go through.');
+          showDone('Your elevation is with the design team',
+                   'We will be in touch at the contact you gave us.');
+        })
+        .catch(function (err) {
+          send.disabled = false;
+          label.textContent = 'Send my elevation';
+          errEl.textContent = err.message + ' You can also text the photo to (909) 312-5400.';
+          errEl.classList.add('on');
+        });
+      return;
+    }
+
     var body = encodeURIComponent(message());
     window.location.href = canText
       ? 'sms:' + PHONE + '?&body=' + body
@@ -3620,13 +3659,10 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
         encodeURIComponent('Custom Visualization request — ' + nameI.value.trim()) +
         '&body=' + body;
 
-    document.getElementById('s5DoneTitle').textContent =
-      canText ? 'Your message is ready' : 'Your email is ready';
-    document.getElementById('s5DoneSub').innerHTML = canText
-      ? 'Attach the photo you picked and hit send. If nothing opened, text it to <b>(909)&nbsp;312&#8209;5400</b>.'
-      : 'Attach the photo you picked and hit send. If nothing opened, email it to <b>' + EMAIL + '</b>.';
-    form.classList.add('sent');
-    document.getElementById('s5Done').classList.add('on');
+    showDone(canText ? 'Your message is ready' : 'Your email is ready',
+      canText
+        ? 'Attach the photo you picked and hit send. If nothing opened, text it to <b>(909)&nbsp;312&#8209;5400</b>.'
+        : 'Attach the photo you picked and hit send. If nothing opened, email it to <b>' + EMAIL + '</b>.');
   });
 })();
 </script>

@@ -1,6 +1,6 @@
-# WordPress-side fixes — required for generated pages to render
+# WordPress-side files — required for generated pages to render and convert
 
-These four PHP files live **on the server**, not in this repo's build. They are kept
+These five PHP files live **on the server**, not in this repo's build. They are kept
 here so they are not lost if the site is rebuilt, migrated, or restored from a backup.
 
 **Installed at:** `wp-content/novamira-sandbox/` on viphomepainting.com
@@ -13,11 +13,12 @@ if you have file access.)*
 | `vip-generated-pages.php` | WordPress and the theme silently breaking the CSS |
 | `vip-rankmath-head.php` | Two competing JSON-LD graphs, and a missing `og:image` |
 | `vip-fonts.php` | Fraunces and Inter not loading at all on WordPress |
+| `vip-elevation-intake.php` | Step Five had nowhere to send a photo — **adds a feature, does not fix a bug** |
 
 **Without these, the pages publish and render — badly.** Every one of these problems was
 invisible to a status-code check and only showed up on the live page.
 
-All three apply **only** to pages carrying `_vip_generated = 1`. Anything Fabian builds
+All of them apply **only** to pages carrying `_vip_generated = 1`. Anything Fabian builds
 in Elementor — home, about, contact, gallery — is untouched.
 
 ---
@@ -161,3 +162,60 @@ In order of likelihood:
 2. A sandbox file got disabled or the sandbox was cleared
 3. LiteSpeed served a cached copy from before a fix — purge, then re-check. Verifying
    before purging reports phantom bugs.
+
+
+---
+
+## 5 · `vip-elevation-intake.php`
+
+The only one here that adds something rather than repairing something.
+
+Step Five asks a homeowner for a photo of their house. Without this file there
+is nowhere on the server to put it, so the section falls back to pre-filling a
+text message or an email and asking them to attach the photo themselves. That
+works, and it is honest, but it loses people at the last step.
+
+Installing this file is what turns the real upload on. Nothing to configure:
+it prints `window.VIP_UPLOAD_ENDPOINT` into every page carrying
+`_vip_generated = 1`, and Step Five switches over on its own. On the github.io
+build there is no WordPress, the variable never appears, and the text-message
+handoff keeps working — which is correct, because that copy is the build site
+and not the destination (**D-02**).
+
+**What it does with a submission**
+
+1. Files the photo in the media library — `media_handle_sideload` picks the
+   filename, never the visitor.
+2. Creates a private `vip_elevation` post so leads are searchable in wp-admin
+   six months later, with the photo as its featured image. An inbox alone is
+   not a record.
+3. Emails the admin address. Override the recipient with the
+   `vip_intake_notify` filter.
+4. Answers in JSON. The page reads it and shows the confirmation without
+   navigating — a native form POST would drop the visitor onto raw JSON.
+
+**Why the defences are what they are**
+
+This is the one public unauthenticated endpoint on the site, and a cached
+static page cannot carry a useful nonce. So instead:
+
+- the file is validated **by its bytes** (`getimagesize`), not its name or the
+  declared MIME — JPG, PNG, WEBP and HEIC only
+- 12MB cap, which is a phone photo and not a RAW
+- a honeypot field no human ever sees or fills
+- five submissions per IP per hour
+- every text field sanitised on the way in
+
+**After installing, check three things**
+
+1. `POST /wp-json/vip/v1/elevation` returns 400 with no photo attached — if it
+   404s, the file is not loading.
+2. A real submission appears under **Elevation Requests** in wp-admin with the
+   photo attached.
+3. The notification email arrives. If WordPress cannot send mail, the lead is
+   still recorded — that is the reason step 2 exists.
+
+**Do not turn this on and walk away.** The moment it works, a homeowner can
+send you their house, and `generator/viz-render/VIZ-RENDER.md` is the promise
+on the other end of it — including the turnaround, which test T4 still has not
+measured.
