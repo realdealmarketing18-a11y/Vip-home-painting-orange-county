@@ -165,61 +165,67 @@ h1 .gold{color:var(--gold-bright);font-style:italic}
   color:rgba(245,239,226,.6)}
 
 /* ══════════ THE CANDIDATE CAROUSEL — its own band below the hero ══════════ */
-.reel{background:var(--navy);padding:64px 24px 72px;position:relative;
-  overflow:hidden}
-.reel::before{content:'DELIBERATION';position:absolute;left:50%;top:22px;
-  transform:translateX(-50%);font-family:var(--serif);font-size:clamp(80px,15vw,190px);
-  font-weight:400;letter-spacing:.06em;color:rgba(201,169,97,.045);
-  pointer-events:none;white-space:nowrap;line-height:1}
+.reel{position:relative;overflow:hidden;padding:72px 24px 80px;
+  color:var(--slate);
+  background:linear-gradient(180deg,#FDFBF6 0%,#F5EFE2 46%,#EFE7D6 100%)}
+/* hairlines at the seams so the band reads as a mounted plate, not a gap */
+.reel::after{content:'';position:absolute;left:0;right:0;top:0;height:3px;
+  background:linear-gradient(90deg,transparent,rgba(201,169,97,.55),transparent)}
+.ghost{position:absolute;left:50%;top:26px;transform:translateX(-50%);
+  font-family:var(--serif);font-weight:400;font-size:clamp(78px,14.5vw,186px);
+  letter-spacing:.06em;color:rgba(26,31,78,.055);pointer-events:none;
+  white-space:nowrap;line-height:1;user-select:none}
 .reel-head{max-width:720px;margin:0 auto 40px;text-align:center;position:relative;
   z-index:2}
-.reel-head .eyebrow{color:var(--gold)}
-.reel-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(25px,3.3vw,36px);
-  line-height:1.2;color:var(--cream);margin:16px 0 0;text-wrap:balance}
-.reel-head p{font-family:var(--serif);font-style:italic;font-size:16px;
-  line-height:1.6;color:rgba(245,239,226,.72);margin:14px 0 0}
+.reel-head .eyebrow{color:var(--gold-deep)}
+.reel-head .eyebrow::before,.reel-head .eyebrow::after{
+  background:rgba(168,138,71,.5)}
+.reel-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.4vw,38px);
+  line-height:1.18;color:var(--navy);margin:16px 0 0;text-wrap:balance}
+.reel-head p{font-family:var(--serif);font-style:italic;font-size:16.5px;
+  line-height:1.62;color:var(--slate);margin:15px 0 0}
 .track{display:flex;gap:22px;justify-content:center;align-items:flex-start;
   perspective:1600px;position:relative;z-index:2;padding:10px 0 4px;
   overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
 .track::-webkit-scrollbar{display:none}
-.card{flex:0 0 236px;scroll-snap-align:center;cursor:pointer;padding:0;
-  background:rgba(245,239,226,.05);border:1px solid rgba(201,169,97,.22);
+.card{flex:0 0 252px;scroll-snap-align:center;cursor:pointer;padding:0;
+  background:#FFFDF8;border:1px solid rgba(168,138,71,.28);
   border-radius:3px;overflow:hidden;text-align:left;color:inherit;
-  backdrop-filter:blur(8px);transform-style:preserve-3d;
-  box-shadow:0 18px 44px rgba(0,0,0,.38);
+  transform-style:preserve-3d;
+  box-shadow:0 16px 38px rgba(26,31,78,.14),0 3px 8px rgba(26,31,78,.07);
   transition:transform 620ms cubic-bezier(.22,1,.36,1),
     border-color 420ms,box-shadow 620ms cubic-bezier(.22,1,.36,1),
     opacity 420ms}
 .card:nth-child(odd){transform:rotateY(7deg) translateZ(-30px)}
 .card:nth-child(even){transform:rotateY(-7deg) translateZ(-30px)}
-.card:hover,.card:focus-visible{transform:rotateY(0) translateZ(40px) translateY(-8px);
-  border-color:rgba(224,192,120,.62);box-shadow:0 30px 70px rgba(0,0,0,.5);
+.card:hover,.card:focus-visible{transform:rotateY(0) translateZ(40px) translateY(-10px);
+  border-color:rgba(168,138,71,.65);box-shadow:0 34px 70px rgba(26,31,78,.22);
   outline:none}
-.card[aria-current="true"]{transform:rotateY(0) translateZ(40px) translateY(-8px);
-  border-color:var(--gold-bright);
-  box-shadow:0 0 0 1px var(--gold-bright),0 30px 70px rgba(0,0,0,.5)}
+.card[aria-current="true"]{transform:rotateY(0) translateZ(40px) translateY(-10px);
+  border-color:var(--gold-deep);
+  box-shadow:0 0 0 1px var(--gold-deep),0 34px 70px rgba(26,31,78,.24)}
 .card .pic{display:block;width:100%;aspect-ratio:16/10;
   background-size:cover;background-position:center}
-.card .meta{padding:15px 16px 17px;display:flex;align-items:center;gap:11px}
-.card .sw{width:26px;height:26px;flex:none;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.card .meta{padding:14px 14px 16px;display:flex;align-items:center;gap:10px}
+.card .sw{width:24px;height:24px;flex:none;
+  box-shadow:inset 0 0 0 1px rgba(26,31,78,.16)}
 .card .t{min-width:0}
 .card .h{display:block;font-family:var(--serif);font-weight:400;font-size:16px;
-  line-height:1.2;color:var(--cream)}
-.card .c{display:block;font-size:8.5px;font-weight:700;letter-spacing:.15em;
-  text-transform:uppercase;color:rgba(224,192,120,.86);margin-top:5px;
+  line-height:1.2;color:var(--navy)}
+.card .c{display:block;font-size:8px;font-weight:700;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--gold-deep);margin-top:5px;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.card .flag{display:inline-block;margin-top:7px;font-size:8px;font-weight:800;
+.card .flag{display:inline-block;margin-top:8px;font-size:8px;font-weight:800;
   letter-spacing:.2em;text-transform:uppercase;color:var(--navy);
-  background:linear-gradient(180deg,#F1D998,#C9A961);padding:3px 8px}
+  background:linear-gradient(180deg,#F1D998,#C9A961);padding:4px 9px}
 .reel-foot{text-align:center;margin-top:34px;position:relative;z-index:2}
-.reel-foot p{font-family:var(--serif);font-style:italic;font-size:15px;
-  color:rgba(245,239,226,.72);margin:0 0 20px}
+.reel-foot p{font-family:var(--serif);font-style:italic;font-size:15.5px;
+  color:var(--slate);margin:0 0 20px}
 .reel-foot a{display:inline-flex;flex-direction:column;gap:4px;align-items:center;
   color:var(--navy);text-decoration:none;font-weight:800;font-size:12px;
   letter-spacing:.13em;text-transform:uppercase;padding:16px 30px;border-radius:2px;
   background:linear-gradient(180deg,#F1D998 0%,#D4AF6A 50%,#B5904F 100%);
-  box-shadow:0 14px 34px rgba(0,0,0,.4);
+  box-shadow:0 12px 30px rgba(168,138,71,.38);
   transition:transform 240ms cubic-bezier(.22,1,.36,1)}
 .reel-foot a:hover{transform:translateY(-2px)}
 .reel-foot a .sub{font-size:9.5px;font-weight:600;letter-spacing:.06em;
@@ -259,14 +265,11 @@ h1 .gold{color:var(--gold-bright);font-style:italic}
 .flagbox p{margin:0;font-size:14.5px}
 
 
-/* ══════════ MODE A "gallery" vs MODE B "atelier" ══════════
-   Only one presentation of the candidates is visible at a time; the
-   window and the reel are identical in both. */
-.mode-gallery .tray{display:none}
-.mode-atelier .chips{display:none}
-.mode-atelier .reel{display:none}
+/* The hero carries the tray only; the carousel gets its own band below.
+   The chips are gone — the tray replaced them. */
+.chips{display:none}
 
-/* MODE B — the Cucinelli tray: one translucent shelf, nothing else */
+/* THE TRAY — one translucent shelf under the window, nothing else */
 .tray{margin-top:14px;width:100%;display:flex;align-items:center;gap:9px;
   padding:9px 9px 9px 13px;border-radius:16px;
   background:rgba(24,22,20,.42);backdrop-filter:blur(18px) saturate(1.2);
@@ -302,12 +305,12 @@ h1 .gold{color:var(--gold-bright);font-style:italic}
   .tray-label{width:100%;text-align:center;padding:2px 0 0}
   .tray-cta{width:100%;text-align:center}
 }
-/* the A/B switch itself */
+/* the ghost-word cycler — a preview control, not part of the design */
 .ab{display:inline-flex;border:1px solid var(--rule);border-radius:2px;
   overflow:hidden}
 .ab button{background:transparent;color:rgba(245,239,226,.62);border:0;
   font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-  padding:11px 18px;cursor:pointer;transition:background 220ms,color 220ms}
+  padding:11px 16px;cursor:pointer;transition:background 220ms,color 220ms}
 .ab button[aria-pressed="true"]{background:var(--gold-bright);color:var(--navy)}
 .ab button:focus-visible{outline:2px solid var(--cream);outline-offset:-2px}
 
@@ -399,16 +402,19 @@ h1 .gold{color:var(--gold-bright);font-style:italic}
 
 <div class="bench">
   <div class="bench-in">
-    <span class="tag">Presentation</span>
-    <span class="ab">
-      <button id="modeA" type="button" aria-pressed="true">A &middot; Gallery carousel</button>
-      <button id="modeB" type="button" aria-pressed="false">B &middot; Minimal tray</button>
+    <span class="tag">Background word</span>
+    <span class="ab" id="ghostPick">
+      <button type="button" data-w="VISUALIZED" aria-pressed="true">Visualized</button>
+      <button type="button" data-w="DELIBERATION" aria-pressed="false">Deliberation</button>
+      <button type="button" data-w="VIP" aria-pressed="false">VIP</button>
+      <button type="button" data-w="VIP HOME PAINTING" aria-pressed="false">VIP Home Painting</button>
     </span>
     <button id="replay" type="button">Play the reel</button>
   </div>
 </div>
 
 <section class="reel" id="candidates">
+  <span class="ghost" id="ghost" aria-hidden="true">VISUALIZED</span>
   <div class="reel-head">
     <p class="eyebrow">The Custom Visualization Service</p>
     <h2>Nobody should pick a five-figure colour off a two-inch card</h2>
@@ -651,18 +657,17 @@ h1 .gold{color:var(--gold-bright);font-style:italic}
   }
   document.getElementById('replay').addEventListener('click', play);
 
-  /* A/B switch — same window, same reel, two ways to present the candidates */
-  var mA = document.getElementById('modeA'), mB = document.getElementById('modeB');
-  function setMode(m){
-    document.body.classList.toggle('mode-gallery', m === 'gallery');
-    document.body.classList.toggle('mode-atelier', m === 'atelier');
-    mA.setAttribute('aria-pressed', m === 'gallery');
-    mB.setAttribute('aria-pressed', m === 'atelier');
-    play();
-  }
-  mA.addEventListener('click', function(){ setMode('gallery'); });
-  mB.addEventListener('click', function(){ setMode('atelier'); });
-  document.body.classList.add('mode-gallery');
+  /* ghost-word cycler — preview only, so the call can be made by eye */
+  var ghost = document.getElementById('ghost');
+  var pick = document.getElementById('ghostPick');
+  [].forEach.call(pick.children, function(b){
+    b.addEventListener('click', function(){
+      ghost.textContent = b.dataset.w;
+      [].forEach.call(pick.children, function(o){
+        o.setAttribute('aria-pressed', o === b);
+      });
+    });
+  });
 })();
 </script>
 
