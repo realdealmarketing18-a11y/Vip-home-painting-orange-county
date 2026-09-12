@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>VIP — Step 5 Elevation Upload (design demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --navy-deep:#14183A; --navy:#1A1F4E; --cream:#F5EFE2; --paper:#FBF8F1;
+  --gold:#C9A961; --gold-bright:#E0C078; --gold-deep:#A88A47;
+  --slate:#4A4F70; --slate-soft:#767B99; --line:rgba(26,31,78,.14);
+  --ok:#2E7D5B; --warn:#B4472F;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--slate);font-family:var(--sans);
+  -webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+
+.wrap{max-width:1140px;margin:0 auto;padding-block:56px;padding-inline:24px}
+
+/* ── section head ── */
+.head{max-width:680px;margin:0 auto 40px;text-align:center}
+.no{font-family:var(--sans);font-size:9.5px;font-weight:800;letter-spacing:.30em;
+  text-transform:uppercase;color:var(--gold-deep)}
+.eyebrow{display:inline-flex;align-items:center;gap:13px;margin-top:12px;
+  font-size:10.5px;font-weight:800;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold-deep)}
+.eyebrow::before,.eyebrow::after{content:'';width:30px;height:1px;
+  background:rgba(168,138,71,.5);flex:none}
+h1{font-family:var(--serif);font-weight:400;color:var(--navy);
+  font-size:clamp(28px,3.8vw,42px);line-height:1.15;margin:14px 0 0;
+  text-wrap:balance}
+h1 em{font-style:italic;color:var(--gold-deep)}
+.lede{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.6;
+  margin:14px 0 0}
+
+/* ── the two columns: their house on the left, the ask on the right ── */
+.cols{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:start}
+
+/* the stage — the same gold plate the demo house sat in, which is the
+   whole trick: their photo lands where the estate was */
+.stage{position:relative}
+.plate{position:relative;aspect-ratio:16/10;border-radius:2px;overflow:hidden;
+  background:var(--navy-deep);border:1px solid rgba(201,169,97,.55);
+  box-shadow:0 0 0 8px #fff,0 0 0 9px rgba(201,169,97,.45),
+    0 26px 60px rgba(26,31,78,.18)}
+.plate .shot{position:absolute;inset:0;background-size:cover;
+  background-position:center;transition:opacity 600ms cubic-bezier(.22,1,.36,1)}
+.plate .shot.demo{filter:saturate(.9)}
+.plate.has-file .shot.demo{opacity:0}
+
+/* the dropzone lives inside the plate */
+.drop{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:12px;text-align:center;
+  padding:24px;cursor:pointer;border:0;width:100%;font-family:inherit;
+  background:linear-gradient(180deg,rgba(20,24,58,.62),rgba(20,24,58,.82));
+  color:var(--cream);transition:background 300ms}
+.drop:hover,.drop.over{background:linear-gradient(180deg,rgba(20,24,58,.52),rgba(20,24,58,.74))}
+.drop.over{box-shadow:inset 0 0 0 2px var(--gold-bright)}
+.plate.has-file .drop{background:linear-gradient(180deg,rgba(20,24,58,0) 55%,rgba(20,24,58,.72));
+  justify-content:flex-end;gap:6px}
+.drop svg{width:30px;height:30px;stroke:var(--gold-bright);fill:none;
+  stroke-width:1.3;transition:transform 320ms cubic-bezier(.22,1,.36,1)}
+.drop:hover svg{transform:translateY(-3px)}
+.plate.has-file .drop svg{display:none}
+.drop .big{font-family:var(--serif);font-size:19px;line-height:1.3;
+  color:var(--cream)}
+.plate.has-file .drop .big{font-size:13px;font-family:var(--sans);font-weight:600;
+  letter-spacing:.02em}
+.drop .small{font-size:11.5px;line-height:1.55;color:rgba(245,239,226,.72);
+  max-width:34ch}
+.plate.has-file .drop .small{font-size:10.5px}
+.drop .rule{font-size:10px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold-bright);margin-top:2px}
+.plate.has-file .drop .rule{display:none}
+input[type=file]{position:absolute;width:1px;height:1px;opacity:0;
+  overflow:hidden;clip:rect(0 0 0 0)}
+
+/* what the intake rules mean, said where it helps rather than in a SOP */
+.shotlist{margin:16px 0 0;padding:0;list-style:none;display:grid;
+  grid-template-columns:1fr 1fr;gap:7px 18px}
+.shotlist li{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;
+  line-height:1.5;color:var(--slate-soft)}
+.shotlist svg{width:13px;height:13px;flex:none;margin-top:3px;stroke:var(--ok);
+  fill:none;stroke-width:2.2}
+
+/* the receipt — proof this is step five, not a fresh form */
+.receipt{margin-top:26px;border:1px solid var(--line);border-radius:2px;
+  background:#fff;padding:16px 18px}
+.receipt .rh{font-size:9.5px;font-weight:800;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--slate-soft)}
+.picks{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
+.pick{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);
+  border-radius:999px;padding:6px 12px 6px 7px;font-size:11.5px;color:var(--navy)}
+.pick i{width:15px;height:15px;border-radius:50%;flex:none;
+  box-shadow:inset 0 0 0 1px rgba(26,31,78,.18)}
+.pick b{font-weight:600}
+.pick span{color:var(--slate-soft);font-size:10px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase}
+
+/* ── the form ── */
+.form{background:#fff;border:1px solid var(--line);border-radius:3px;
+  padding:26px 26px 24px;box-shadow:0 14px 34px rgba(26,31,78,.07)}
+.form h2{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.25;
+  color:var(--navy);margin:0}
+.form .sub{font-size:13.5px;line-height:1.6;margin:8px 0 0}
+.fields{display:flex;flex-direction:column;gap:15px;margin-top:20px}
+.field label{display:block;font-size:9.5px;font-weight:800;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--slate-soft);margin-bottom:6px}
+.field input{width:100%;font-family:var(--sans);font-size:15px;color:var(--navy);
+  background:var(--paper);border:1px solid var(--line);border-radius:2px;
+  padding:13px 14px;transition:border-color 200ms,box-shadow 200ms,background 200ms}
+.field input::placeholder{color:#A9AEC4}
+.field input:focus{outline:none;background:#fff;border-color:var(--gold-deep);
+  box-shadow:0 0 0 3px rgba(201,169,97,.18)}
+.field input[aria-invalid="true"]{border-color:var(--warn);
+  box-shadow:0 0 0 3px rgba(180,71,47,.12)}
+.err{display:none;font-size:12px;color:var(--warn);margin-top:6px;line-height:1.45}
+.err.on{display:block}
+.hint{font-size:11.5px;color:var(--slate-soft);margin-top:6px;line-height:1.5}
+
+/* the contact block only appears once there is a photo — the fun part
+   first, the paperwork after they are already committed */
+.gate{max-height:0;opacity:0;overflow:hidden;
+  transition:max-height 620ms cubic-bezier(.22,1,.36,1),opacity 420ms ease}
+.gate.open{max-height:560px;opacity:1}
+
+.send{width:100%;margin-top:20px;display:flex;flex-direction:column;gap:5px;
+  align-items:center;font-family:var(--sans);font-weight:800;font-size:12.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--navy);border:0;
+  background:linear-gradient(180deg,#F1D998 0%,#D4AF6A 50%,#B5904F 100%);
+  border-radius:2px;padding:17px 22px;cursor:pointer;
+  box-shadow:0 12px 28px rgba(168,138,71,.34);
+  transition:transform 220ms cubic-bezier(.22,1,.36,1),box-shadow 220ms,filter 220ms}
+.send:hover{transform:translateY(-2px)}
+.send:disabled{filter:grayscale(.55) opacity(.55);cursor:not-allowed;
+  transform:none;box-shadow:none}
+.send .s{font-size:9.5px;font-weight:600;letter-spacing:.05em;text-transform:none;
+  opacity:.8}
+.tbd{background:rgba(26,31,78,.14);border-radius:2px;padding:1px 6px;
+  font-style:italic}
+.phone{text-align:center;margin:15px 0 0;font-size:12.5px;color:var(--slate-soft)}
+.phone a{color:var(--navy);font-weight:700;text-decoration:none;
+  border-bottom:1px solid rgba(168,138,71,.5)}
+.phone a:hover{color:var(--gold-deep)}
+
+/* ── the confirmation ── */
+.done{display:none;text-align:center;padding:8px 4px 4px}
+.done.on{display:block}
+.form.sent .live{display:none}
+.done .tick{width:52px;height:52px;margin:0 auto 16px;border-radius:50%;
+  background:rgba(46,125,91,.10);display:flex;align-items:center;
+  justify-content:center}
+.done .tick svg{width:24px;height:24px;stroke:var(--ok);fill:none;stroke-width:2.4}
+.done h2{margin-bottom:8px}
+.next{list-style:none;margin:18px 0 0;padding:0;text-align:left;
+  counter-reset:n;border-top:1px solid var(--line)}
+.next li{counter-increment:n;display:grid;grid-template-columns:auto 1fr;gap:13px;
+  padding:13px 0;border-bottom:1px solid var(--line);font-size:13.5px;
+  line-height:1.55}
+.next li::before{content:counter(n);font-size:10px;font-weight:800;
+  color:var(--gold-deep);font-variant-numeric:tabular-nums;
+  border:1px solid rgba(168,138,71,.4);border-radius:50%;width:21px;height:21px;
+  display:flex;align-items:center;justify-content:center}
+
+/* ── reviewer notes ── */
+.notes{background:var(--navy);color:rgba(245,239,226,.82);margin-top:56px;
+  padding-block:48px;padding-inline:24px}
+.notes-in{max-width:680px;margin:0 auto}
+.notes h3{font-family:var(--sans);font-size:10px;font-weight:800;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
+  margin:30px 0 10px;padding-bottom:8px;border-bottom:1px solid rgba(201,169,97,.28)}
+.notes h3:first-child{margin-top:0}
+.notes h2{font-family:var(--serif);font-weight:400;font-size:clamp(23px,3vw,31px);
+  color:var(--cream);margin:0 0 4px;line-height:1.2}
+.notes p{font-size:15px;line-height:1.72;margin:0 0 11px;max-width:65ch}
+.notes b{color:var(--cream);font-weight:600}
+.notes em{font-family:var(--serif);font-style:italic}
+
+@media (max-width:900px){
+  .cols{grid-template-columns:1fr;gap:28px}
+  .shotlist{grid-template-columns:1fr}
+  .wrap{padding-inline:20px}
+  .notes{padding-inline:20px}
+  .form{padding:22px 20px 20px}
+}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="head">
+    <div class="no">Step Five of Five</div>
+    <p class="eyebrow">The Custom Visualization Service</p>
+    <h1>You've just repainted a Newport Beach estate.<br><em>Now do it on yours.</em></h1>
+    <p class="lede">Send us the front of your house. Our design team renders it
+      in your three closest palettes &mdash; the same way you just saw.</p>
+  </div>
+
+  <div class="cols">
+    <div class="stage">
+      <div class="plate" id="plate">
+        <div class="shot demo" id="demoShot" style="background-image:url('../orange-county-sales-page/viz-photos/scheme-spanish.jpg')"></div>
+        <div class="shot mine" id="myShot"></div>
+        <button class="drop" id="drop" type="button" aria-describedby="dropHelp">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 16V4"/><polyline points="7 9 12 4 17 9"/>
+            <path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/>
+          </svg>
+          <span class="big" id="dropBig">Add a photo of your home</span>
+          <span class="small" id="dropHelp">Drag it here, or tap to choose &mdash;
+            your phone camera works fine</span>
+          <span class="rule">Front elevation &middot; daylight</span>
+        </button>
+        <input type="file" id="file" accept="image/*" aria-label="Photo of your home's front elevation">
+      </div>
+
+      <ul class="shotlist">
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Whole front of the house in frame</li>
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Daylight, not evening</li>
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Stand square to the facade</li>
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Nothing parked in front</li>
+      </ul>
+
+      <div class="receipt">
+        <div class="rh">Carried over from your session</div>
+        <div class="picks">
+          <span class="pick"><i style="background:#F1EDE2"></i><b>Santa Barbara Luxe</b><span>Palette</span></span>
+          <span class="pick"><i style="background:#2F2F30"></i><b>Iron Scroll Lantern</b><span>Lighting</span></span>
+          <span class="pick"><i style="background:#C8B59B"></i><b>Stacked Stone</b><span>Texture</span></span>
+          <span class="pick"><i style="background:#B5714A"></i><b>Walnut Garage</b><span>Finish</span></span>
+        </div>
+      </div>
+    </div>
+
+    <form class="form" id="form" novalidate>
+      <div class="live">
+        <h2>Where should we send them?</h2>
+        <p class="sub">Three renders, your palette names, and the
+          Sherwin&#8209;Williams pairing for each. No obligation, and we
+          don&rsquo;t call unless you ask us to.</p>
+
+        <div class="fields">
+          <div class="field">
+            <label for="place">Address or community</label>
+            <input id="place" name="place" type="text" autocomplete="address-line1"
+                   placeholder="Orchard Hills, Irvine">
+            <p class="hint">Community is enough &mdash; it tells us the design-review
+              rules you&rsquo;re working inside.</p>
+          </div>
+
+          <div class="gate" id="gate">
+            <div class="fields">
+              <div class="field">
+                <label for="name">Your name</label>
+                <input id="name" name="name" type="text" autocomplete="name" placeholder="Jane Gallagher">
+                <p class="err" id="nameErr"></p>
+              </div>
+              <div class="field">
+                <label for="contact">Mobile or email &mdash; whichever you prefer</label>
+                <input id="contact" name="contact" type="text" autocomplete="email" placeholder="jane@example.com">
+                <p class="err" id="contactErr"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="send" id="send" type="submit" disabled>
+          <span id="sendLabel">Add a photo to continue</span>
+          <span class="s" id="sendSub">Your three renders back within
+            <span class="tbd">[turnaround]</span> business days</span>
+        </button>
+        <p class="phone">Ready to talk instead?
+          <a href="tel:9093125400">(909)&nbsp;312&#8209;5400</a></p>
+      </div>
+
+      <div class="done" id="done">
+        <div class="tick">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+        <h2>Your elevation is with the design team</h2>
+        <p class="sub" id="doneSub">We&rsquo;ll be in touch at the address you gave us.</p>
+        <ol class="next">
+          <li>A designer checks your photo is workable &mdash; if it isn&rsquo;t,
+            we&rsquo;ll ask for one more before we render anything.</li>
+          <li>Your house is rendered in your three closest palettes, each with
+            its Sherwin&#8209;Williams pairing.</li>
+          <li>The renders reach you first. The itemized estimate follows
+            separately &mdash; prep, primer, coating, trim and accents, line
+            by line.</li>
+        </ol>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="notes">
+  <div class="notes-in">
+    <h2>Notes on this screen</h2>
+
+    <h3>Why the photo comes before the contact fields</h3>
+    <p>The name and contact block is hidden until a photo is attached. Adding a
+      photo is the interesting part and costs nothing emotionally; typing your
+      number into a painter&rsquo;s website does. Doing it in that order means
+      the ask lands on someone who has <b>already started</b>, not on someone
+      deciding whether to.</p>
+
+    <h3>Why their photo lands in the gold plate</h3>
+    <p>It is the same frame the estate sat in through Steps One to Four. The
+      moment their own house appears there, the service stops being a claim
+      about what we do and becomes a picture of it. That swap is the entire
+      point of the screen.</p>
+
+    <h3>The shot rules are UX, not fine print</h3>
+    <p>Daylight, square to the facade, whole front in frame, nothing parked in
+      the way &mdash; those are the intake rejection rules out of
+      <em>VIZ&#8209;RENDER.md</em>, said where they prevent the problem instead
+      of in a document nobody on the site will read. A bad source photo cannot
+      be rescued by a good prompt.</p>
+
+    <h3>What is deliberately missing</h3>
+    <p>No phone field forced alongside email, no &ldquo;project budget&rdquo;
+      dropdown, no &ldquo;how did you hear about us&rdquo;. Every extra field
+      costs completions, and none of those answers changes what gets rendered.
+      The phone number stays visible for the few who are ready to talk now
+      &mdash; they should never have to use a form to reach you.</p>
+
+    <h3>Two things still unset</h3>
+    <p><b>The turnaround.</b> The button reads
+      <span class="tbd">[turnaround]</span> on purpose. That number comes out of
+      test T4 &mdash; running one house end to end and timing it &mdash; not out
+      of a guess. It is a promise printed on a button, and the moment it slips
+      it damages the one position no competitor can copy.</p>
+    <p><b>The endpoint.</b> Submitting is mocked here so the screen can be
+      judged. Wiring it to WordPress or a hosted endpoint is a one-line change
+      to the form&rsquo;s action; nothing about this layout depends on which.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var plate = document.getElementById('plate');
+  var drop  = document.getElementById('drop');
+  var file  = document.getElementById('file');
+  var mine  = document.getElementById('myShot');
+  var gate  = document.getElementById('gate');
+  var send  = document.getElementById('send');
+  var label = document.getElementById('sendLabel');
+  var big   = document.getElementById('dropBig');
+  var help  = document.getElementById('dropHelp');
+  var form  = document.getElementById('form');
+  var nameI = document.getElementById('name');
+  var contI = document.getElementById('contact');
+  var url = null, hasFile = false;
+
+  function accept(f){
+    if (!f || !/^image\//.test(f.type)) {
+      big.textContent = 'That file is not an image';
+      help.textContent = 'A photo from your phone is perfect — JPG, PNG or HEIC.';
+      return;
+    }
+    if (url) URL.revokeObjectURL(url);
+    url = URL.createObjectURL(f);
+    mine.style.backgroundImage = "url('" + url + "')";
+    plate.classList.add('has-file');
+    hasFile = true;
+    big.textContent = f.name.length > 34 ? f.name.slice(0, 31) + '…' : f.name;
+    help.textContent = 'Tap to choose a different photo';
+    gate.classList.add('open');
+    send.disabled = false;
+    label.textContent = 'Send my elevation';
+    nameI.focus({ preventScroll: true });
+  }
+
+  drop.addEventListener('click', function(){ file.click(); });
+  file.addEventListener('change', function(){ accept(file.files[0]); });
+  ['dragenter','dragover'].forEach(function(e){
+    drop.addEventListener(e, function(ev){ ev.preventDefault(); drop.classList.add('over'); });
+  });
+  ['dragleave','drop'].forEach(function(e){
+    drop.addEventListener(e, function(ev){ ev.preventDefault(); drop.classList.remove('over'); });
+  });
+  drop.addEventListener('drop', function(ev){
+    if (ev.dataTransfer && ev.dataTransfer.files) accept(ev.dataTransfer.files[0]);
+  });
+
+  function fail(input, errId, msg){
+    var el = document.getElementById(errId);
+    input.setAttribute('aria-invalid', 'true');
+    el.textContent = msg; el.classList.add('on');
+  }
+  function clear(input, errId){
+    input.removeAttribute('aria-invalid');
+    document.getElementById(errId).classList.remove('on');
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!hasFile) return;
+    var ok = true;
+    clear(nameI,'nameErr'); clear(contI,'contactErr');
+
+    if (!nameI.value.trim()) { fail(nameI,'nameErr','We need a name to put on the renders.'); ok = false; }
+    var c = contI.value.trim();
+    var looksEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(c);
+    var looksPhone = /^[\d\s()+.-]{10,}$/.test(c);
+    if (!c) { fail(contI,'contactErr','We need somewhere to send the renders.'); ok = false; }
+    else if (!looksEmail && !looksPhone) {
+      fail(contI,'contactErr','That does not look like an email address or a phone number — check it over.');
+      ok = false;
+    }
+    if (!ok) { (nameI.getAttribute('aria-invalid') ? nameI : contI).focus(); return; }
+
+    /* Mocked. The real form posts to WordPress or a hosted endpoint. */
+    document.getElementById('doneSub').textContent =
+      'We will send them to ' + c + '.';
+    form.classList.add('sent');
+    document.getElementById('done').classList.add('on');
+    form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+})();
+</script>
+
+</body>
+</html>
