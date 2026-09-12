@@ -71,6 +71,14 @@ const VIZ_JS = (() => {
 })();
 
 
+/* The hero reel + Step Five script. Lifted separately from VIZ_JS because
+   HOA, service and article pages carry the hero reel but no visualizer —
+   and reel markup without its script renders as an empty navy box. */
+const REEL_JS = rewriteAssetPaths(
+  sliceBetween(BASE_PAGE, '<!-- REEL:START', '<!-- REEL:END -->', 'reel script', true)
+    .replace(/^[\s\S]*?-->\s*/, '')
+);
+
 /* Staging builds must not be indexed — see communities.json config.staging.
    Crawlable but noindex on purpose: blocking in robots.txt would stop Google
    reading the noindex, and a URL linked from elsewhere could still land in
@@ -136,6 +144,57 @@ function ctaButton(label, sub) {
   return `<a href="${CFG.phoneHref}" class="btn-gold"><span class="col-2"><span>${label}</span><span class="sub">${sub}</span></span></a>`;
 }
 
+/* The selection reel that sits in the middle of every hero, where the play
+   button used to be. The commercial's job was to prove the deliberation —
+   that the client saw the house in every color and only then chose — and a
+   two-state before/after cannot carry that. This dissolves through four
+   candidate palettes and wipes to the fifth.
+
+   The palettes, their names and their Sherwin-Williams pairings are the same
+   five the county page shows, kept in one place so the hero and the county
+   band can never drift apart. Paths take the page's asset base, so articles
+   three levels deep resolve correctly. */
+const REEL_PALETTES = [
+  ['pebblebeach', 'Pebble Beach Manor',  'SW Accessible Beige &middot; Dover White',   '#D1C7B8', 0],
+  ['ibiza',       'Ibiza Luxury Villa',  'SW Balanced Beige &middot; Aesthetic White', '#D1C7B8', 0],
+  ['pacificsage', 'Pacific Sage Estate', 'SW Evergreen Fog &middot; Shoji White',      '#95978A', 0],
+  ['obsidian',    'Obsidian Monolith',   'SW Iron Ore &middot; Tricorn Black',         '#434341', 0],
+  ['spanish',     'Santa Barbara Luxe',  'SW Alabaster &middot; Tricorn Black',        '#F1EDE2', 1]
+];
+
+function heroReel(A) {
+  const layers = REEL_PALETTES.map(([id, nm, co, sw, chosen]) =>
+    `          <div class="hr-cand${chosen ? ' final' : ''}" data-nm="${nm}" data-co="${co}" data-sw="${sw}"${chosen ? ' data-chosen="1"' : ''} style="background-image:url('${A}/viz-photos/scheme-${id}.jpg')"></div>`
+  ).join('\n');
+  return `
+      <figure class="hr-inset">
+        <div class="hr-plate" id="hrPlate" data-hold="1100" data-dur="2600">
+${layers}
+          <div class="hr-grab" id="hrGrab"></div>
+          <div class="hr-seam" id="hrSeam">
+            <span class="hr-knob">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="15 18 9 12 15 6"/>
+                <polyline points="9 18 15 12 9 6" transform="translate(12 0)"/>
+              </svg>
+            </span>
+          </div>
+          <span class="hr-stamp">The direction chosen</span>
+          <div class="hr-nameplate">
+            <span class="sw" id="hrSw"></span>
+            <span class="txt"><span class="nm" id="hrNm"></span><span class="co" id="hrCo"></span></span>
+          </div>
+          <span class="hr-counter" id="hrCt"></span>
+        </div>
+        <div class="hr-tray">
+          <span class="hr-tray-label">They saw</span>
+          <span class="hr-thumbs" id="hrThumbs"></span>
+          <button class="hr-tray-cta" type="button" id="hrReplay">Discover</button>
+        </div>
+      </figure>`;
+}
+
 /* ---------------- STORY HERO ----------------
    The cinematic hero from the OC page: film background, storytelling
    headline, avatar pill, play gate. Renders only when a story AND a
@@ -174,14 +233,7 @@ function heroStory(story, name, A) {
           <div class="sub-line">${esc(story.client_location || '')}</div></div></div>
       </div>` : ''}
 
-      <div class="play-wrap">
-        <button class="play-btn film-play"
-                ${story.youtube_id ? `data-yt="${story.youtube_id}"` : `data-film="${A}/video/gallagher-ambient.mp4"`}
-                aria-label="Watch the film: ${esc(story.headline.replace(/<[^>]+>/g, ''))}">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-        </button>
-        <div class="play-label">${esc(story.play_label || 'Watch the Film')}</div>
-      </div>
+${heroReel(A)}
 
       <div class="hero-cta-wrap">
         ${ctaButton('Claim Complimentary Color Consultation', 'Irresistible Painting Estimates Included')}
@@ -385,7 +437,7 @@ function modProblemSolution(c, no, bg) {
 /* Interactive Custom Visualization — the highlight, lifted from the OC
    page and localized: same copy, community name in the headline. */
 function vizSection(c) {
-  const BASE_SUB = 'Choose a style direction, then tap any palette. Watch your home transform in real time — exactly what we deliver in our 30-minute consultation.';
+  const BASE_SUB = 'Choose a style direction, then tap any palette. Watch this Newport Beach estate transform in real time &mdash; then send us yours.';
   let html = VIZ_HTML.replace(
     'See Your Orange County Home In <span class="accent">Every Color</span> Before A Single Brushstroke',
     `See Your ${c.name} Home In <span class="accent">Every Color</span> Before A Single Brushstroke`
@@ -644,6 +696,7 @@ ${FILM_CSS}
       <div class="eyebrow-ruled">${c.heroEyebrow}</div>
       <h1 class="ttl-hero">${c.h1}</h1>
       <div class="hero-kicker eyebrow-ruled">${c.heroKicker}</div>
+${heroReel(A)}
 
       <div class="hero-cta-wrap">
         ${ctaButton('Claim Complimentary Color Consultation', 'Irresistible Painting Estimates Included')}
@@ -765,6 +818,7 @@ ${VIZ_JS}
   });
 })();
 </script>
+${REEL_JS}
 </body>
 </html>
 `;
@@ -1012,6 +1066,7 @@ ${FILM_CSS}
       <div class="eyebrow-ruled">${esc(c.seo.hero_eyebrow || `${c.name} Luxury Home Painting`)}</div>
       <h1 class="ttl-hero">${c.seo.h1}</h1>
       <div class="hero-kicker eyebrow-ruled">Complimentary Custom Color Visualization Included</div>
+${heroReel(A)}
       <div class="hero-cta-wrap">
         ${ctaButton('Claim Complimentary Color Consultation', 'Irresistible Painting Estimates Included')}
         <p class="hero-note">See your ${esc(c.name)} home in its new palette before a single brushstroke.</p>
@@ -1115,6 +1170,7 @@ ${VIZ_JS}
   });
 })();
 </script>
+${REEL_JS}
 </body>
 </html>
 `);
@@ -1285,6 +1341,7 @@ ${FILM_CSS}
       <div class="eyebrow-ruled">${esc(city.name)} · HOA &amp; Common-Area Painting</div>
       <h1 class="ttl-hero">${h.seo.h1}</h1>
       <div class="hero-kicker eyebrow-ruled">Itemized Bids · Certificates On File · ${CFG.warranty}</div>
+${heroReel(A)}
       <div class="hero-cta-wrap">
         <a href="${CFG.phoneHref}" class="btn-gold">
           <span class="col-2"><span>Request a Bid</span><span class="sub">Itemized by structure · no obligation</span></span>
@@ -1368,6 +1425,7 @@ ${buildFooter(navCtx(`/${city.slug}/${h.slug}/`, city.slug, A, `Serving associat
   });
 })();
 </script>
+${REEL_JS}
 </body>
 </html>
 `;
@@ -1629,6 +1687,7 @@ ${SERVICE_CSS}
       <div class="eyebrow-ruled">Orange County · ${esc(s.name)}</div>
       <h1 class="ttl-hero">${s.h1}</h1>
       <div class="hero-kicker eyebrow-ruled">${esc(s.hero_kicker)}</div>
+${heroReel(A)}
       <div class="hero-cta-wrap">
         <a href="${CFG.phoneHref}" class="btn-gold">
           <span class="col-2"><span>Claim Complimentary Color Consultation</span><span class="sub">Itemized estimate included</span></span>
@@ -1659,6 +1718,7 @@ ${faqSec}
 ${buildCountyFooter(nav)}
 
 </div>
+${REEL_JS}
 </body>
 </html>`;
   return cityAssets(html);
@@ -1771,6 +1831,7 @@ ${buildFooter(navCtx(`/${p.city_slug}/${p.slug}/`, p.city_slug, A))}
 
 </div>
 ${NAV_SCRIPT}
+${REEL_JS}
 </body>
 </html>
 `;

@@ -601,7 +601,7 @@
      in as one image the wordmark rendered 9.6px and the tagline 4.6px, because
      the full-height brush sets the scale and everything beside it pays.
 
-     Colours are the site tokens, which the artwork already matches almost
+     Colors are the site tokens, which the artwork already matches almost
      exactly — sampled #C89E62 gold against --gold #C9A961, and #0F1F4A navy
      against --navy #1A1F4E. */
   .top-logo { text-decoration: none; }
@@ -1230,7 +1230,7 @@
 
   /* ============ 11. STATS (white) ============ */
   .stats-head { text-align: center; margin-bottom: 36px; }
-  .nums-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; max-width: 1180px; margin: 0 auto; }
+  .nums-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; max-width: 1180px; margin: 0 auto; }
   .num-card {
     position: relative; padding: 32px 18px 26px; border-radius: 14px; text-align: center;
     border: 1.5px solid transparent;
@@ -1358,6 +1358,327 @@
   .f-social a:hover { background: var(--gold-deep); border-color: var(--gold-deep); }
   .f-social svg { width: 14px; height: 14px; }
   .f-copy { flex-basis: 100%; font-family: var(--font-sans); font-size: 10.5px; color: rgba(255,255,255,0.45); margin-top: 8px; letter-spacing: 0.04em; line-height: 1.7; }
+
+
+  /* ============================================================
+     HERO SELECTION REEL  ·  CANDIDATE BAND  ·  STEP FIVE
+     ------------------------------------------------------------
+     The hero used to hang off an ambient film and a play gate. It
+     now hangs off two photographs and a moving seam of light, which
+     is a bar we can actually clear: a film needs a hundred
+     consistent frames, this needs two.
+
+     Everything here is namespaced hr- / cand- / s5- because this
+     block is lifted wholesale onto all 21 generated pages and the
+     bare names (.card, .plate, .track) are already taken.
+     ============================================================ */
+
+  /* ---- the plate the reel plays in ---- */
+  .hr-plate { position: relative; overflow: hidden; background: var(--navy-deep);
+    user-select: none; -webkit-user-select: none; }
+  .hr-cand { position: absolute; inset: 0; background-size: cover;
+    background-position: center; opacity: 0; z-index: 1;
+    transition: opacity 720ms cubic-bezier(.4,0,.2,1); }
+  .hr-cand.on { opacity: 1; }
+  /* The chosen scheme is the only one that arrives by wipe, not dissolve.
+     It sits UNCLIPPED by default on purpose: if the script never runs the
+     plate still shows the finished house instead of an empty navy box.
+     The script clips it the moment it takes over. */
+  .hr-cand.final { z-index: 3; opacity: 1; clip-path: inset(0 0 0 0); }
+
+  .hr-seam { position: absolute; top: 0; bottom: 0; left: 100%; width: 1px;
+    z-index: 6; transform: translateX(-50%); pointer-events: none; opacity: 0;
+    transition: opacity 300ms ease;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%,
+      rgba(255,248,230,.95) 10%, #fff 50%, rgba(255,248,230,.95) 90%,
+      rgba(255,255,255,0) 100%); }
+  .hr-plate.wiping .hr-seam, .hr-plate.live .hr-seam { opacity: 1; }
+  .hr-seam::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%;
+    width: 110px; transform: translateX(-50%); opacity: 0;
+    transition: opacity 450ms ease;
+    background: linear-gradient(90deg, rgba(201,169,97,0) 0%,
+      rgba(224,192,120,.32) 45%, rgba(255,245,220,.46) 50%,
+      rgba(224,192,120,.32) 55%, rgba(201,169,97,0) 100%); }
+  .hr-plate.wiping .hr-seam::before { opacity: 1; }
+  .hr-plate.wiping .hr-seam { box-shadow: 0 0 38px 5px rgba(224,192,120,.55); }
+
+  .hr-knob { position: absolute; top: 50%; left: 50%; z-index: 7; width: 42px;
+    height: 42px; border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; background: var(--gold-shine-b);
+    transform: translate(-50%,-50%) scale(.55); opacity: 0; pointer-events: none;
+    box-shadow: 0 0 0 4px rgba(201,169,97,.20), 0 10px 24px rgba(0,0,0,.5),
+      inset 0 1px 0 rgba(255,255,255,.45);
+    transition: opacity 600ms cubic-bezier(.22,1,.36,1),
+      transform 600ms cubic-bezier(.22,1,.36,1); }
+  .hr-plate.live .hr-knob { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+  .hr-knob svg { width: 17px; height: 17px; color: #fff; }
+  .hr-grab { position: absolute; inset: 0; z-index: 5; touch-action: none;
+    cursor: default; }
+  .hr-plate.live .hr-grab { cursor: ew-resize; }
+  .hr-grab:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: -3px; }
+
+  /* the running label — a spec card, not a caption */
+  .hr-nameplate { position: absolute; left: 11px; bottom: 11px; z-index: 8;
+    display: flex; align-items: center; gap: 10px; max-width: calc(100% - 100px);
+    padding: 7px 13px 7px 9px; background: rgba(10,12,30,.80);
+    backdrop-filter: blur(6px); border: 1px solid rgba(201,169,97,.34); }
+  .hr-nameplate .sw { width: 20px; height: 20px; flex: none;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.30); }
+  .hr-nameplate .txt { text-align: left; min-width: 0; }
+  .hr-nameplate .nm { display: block; font-family: var(--font-serif);
+    font-size: 13px; color: var(--cream); line-height: 1.15; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis; }
+  .hr-nameplate .co { display: block; font-size: 8px; font-weight: 700;
+    letter-spacing: .15em; text-transform: uppercase; color: rgba(224,192,120,.92);
+    margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hr-counter { position: absolute; right: 11px; bottom: 11px; z-index: 8;
+    font-size: 9px; font-weight: 800; letter-spacing: .18em;
+    color: rgba(245,239,226,.74); font-variant-numeric: tabular-nums;
+    padding: 6px 9px; background: rgba(10,12,30,.66);
+    border: 1px solid rgba(201,169,97,.26); }
+  .hr-stamp { position: absolute; top: 11px; right: 11px; z-index: 8;
+    font-size: 8.5px; font-weight: 800; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--navy); background: var(--gold-shine);
+    padding: 6px 11px; opacity: 0; transform: translateY(-6px);
+    transition: opacity 520ms cubic-bezier(.22,1,.36,1),
+      transform 520ms cubic-bezier(.22,1,.36,1); }
+  .hr-plate.live .hr-stamp { opacity: 1; transform: none; }
+
+  /* ---- the inset: sits exactly where the play button used to ---- */
+  .hr-inset { margin: 20px 0 0; width: min(500px, 100%); display: flex;
+    flex-direction: column; align-items: center; }
+  .hr-inset .hr-plate { width: 100%; aspect-ratio: 16/9; border-radius: 2px;
+    border: 1px solid rgba(201,169,97,.55);
+    box-shadow: 0 0 0 7px rgba(20,24,58,.80), 0 0 0 8px rgba(201,169,97,.42),
+      0 26px 64px rgba(0,0,0,.55); }
+
+  /* ---- the tray: one translucent shelf, nothing else ---- */
+  .hr-tray { margin-top: 14px; width: 100%; display: flex; align-items: center;
+    gap: 9px; padding: 9px 9px 9px 13px; border-radius: 16px;
+    background: rgba(24,22,20,.42); backdrop-filter: blur(18px) saturate(1.2);
+    border: 1px solid rgba(245,239,226,.14);
+    box-shadow: 0 18px 44px rgba(0,0,0,.34); }
+  .hr-tray-label { font-size: 9.5px; font-weight: 700; letter-spacing: .18em;
+    text-transform: uppercase; color: rgba(245,239,226,.72); white-space: nowrap; }
+  .hr-thumbs { display: flex; gap: 7px; flex: 1; min-width: 0;
+    justify-content: center; overflow-x: auto; scrollbar-width: none; }
+  .hr-thumbs::-webkit-scrollbar { display: none; }
+  .hr-thumbs button { position: relative; flex: 0 0 46px; height: 46px; padding: 0;
+    cursor: pointer; border: 0; border-radius: 11px; overflow: hidden;
+    background: none; box-shadow: inset 0 0 0 1px rgba(245,239,226,.18);
+    transition: transform 300ms cubic-bezier(.22,1,.36,1), box-shadow 300ms; }
+  .hr-thumbs i { position: absolute; inset: 0; background-size: cover;
+    background-position: center 42%; }
+  .hr-thumbs button:hover { transform: translateY(-3px); }
+  .hr-thumbs button[aria-current="true"] {
+    box-shadow: inset 0 0 0 2px var(--gold-bright), 0 6px 18px rgba(0,0,0,.4); }
+  .hr-thumbs button:focus-visible { outline: 2px solid var(--gold-bright);
+    outline-offset: 2px; }
+  .hr-tray-cta { flex: none; font-family: var(--font-sans); font-size: 9.5px;
+    font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--cream); background: rgba(245,239,226,.10);
+    border: 1px solid rgba(245,239,226,.20); border-radius: 999px;
+    padding: 12px 15px; cursor: pointer; white-space: nowrap;
+    transition: background 260ms, color 260ms, border-color 260ms; }
+  .hr-tray-cta:hover { background: var(--gold-bright); color: var(--navy);
+    border-color: var(--gold-bright); }
+
+  /* the hero plate is a still now; the film file stays in the repo for the
+     day the commercial is real, and this becomes its poster frame */
+  .hero-photo { position: absolute; inset: 0; background-size: cover;
+    background-position: center 32%; }
+  .hero-cinema .hero-kicker-lede { margin: 12px auto 0; font-family: var(--font-serif);
+    font-style: italic; font-size: 15.5px; line-height: 1.5; letter-spacing: 0;
+    text-transform: none; color: rgba(245,239,226,.88);
+    text-shadow: 0 1px 14px rgba(0,0,0,.7); max-width: 42ch; text-wrap: balance; }
+
+  /* ============================================================
+     THE CANDIDATE BAND — the deliberation, on a pale gallery wall
+     ============================================================ */
+  .cand-band { position: relative; overflow: hidden; padding: 72px 24px 80px;
+    color: #4A4F70;
+    background: linear-gradient(180deg, #FDFBF6 0%, #F5EFE2 46%, #EFE7D6 100%); }
+  .cand-band::after { content: ''; position: absolute; left: 0; right: 0; top: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(201,169,97,.55), transparent); }
+  .cand-ghost { position: absolute; left: 50%; top: 26px; transform: translateX(-50%);
+    font-family: var(--font-serif); font-weight: 400;
+    font-size: clamp(78px, 14.5vw, 186px); letter-spacing: .06em;
+    color: rgba(26,31,78,.055); pointer-events: none; white-space: nowrap;
+    line-height: 1; user-select: none; }
+  .cand-head { max-width: 720px; margin: 0 auto 40px; text-align: center;
+    position: relative; z-index: 2; }
+  .cand-head .eyebrow { color: var(--gold-deep); }
+  .cand-head h2 { font-family: var(--font-serif); font-weight: 400;
+    font-size: clamp(26px, 3.4vw, 38px); line-height: 1.18; color: var(--navy);
+    margin: 16px 0 0; text-wrap: balance; }
+  .cand-head p { font-family: var(--font-serif); font-style: italic;
+    font-size: 16.5px; line-height: 1.62; color: #4A4F70; margin: 15px 0 0; }
+  .cand-track { display: flex; gap: 22px; justify-content: center;
+    align-items: flex-start; perspective: 1600px; position: relative; z-index: 2;
+    padding: 10px 0 4px; overflow-x: auto; scroll-snap-type: x mandatory;
+    scrollbar-width: none; }
+  .cand-track::-webkit-scrollbar { display: none; }
+  .cand-card { flex: 0 0 252px; scroll-snap-align: center; cursor: pointer;
+    padding: 0; background: #FFFDF8; border: 1px solid rgba(168,138,71,.28);
+    border-radius: 3px; overflow: hidden; text-align: left; color: inherit;
+    transform-style: preserve-3d;
+    box-shadow: 0 16px 38px rgba(26,31,78,.14), 0 3px 8px rgba(26,31,78,.07);
+    transition: transform 620ms cubic-bezier(.22,1,.36,1), border-color 420ms,
+      box-shadow 620ms cubic-bezier(.22,1,.36,1); }
+  .cand-card:nth-child(odd)  { transform: rotateY(7deg) translateZ(-30px); }
+  .cand-card:nth-child(even) { transform: rotateY(-7deg) translateZ(-30px); }
+  .cand-card:hover, .cand-card:focus-visible {
+    transform: rotateY(0) translateZ(40px) translateY(-10px);
+    border-color: rgba(168,138,71,.65); box-shadow: 0 34px 70px rgba(26,31,78,.22);
+    outline: none; }
+  .cand-card[aria-current="true"] {
+    transform: rotateY(0) translateZ(40px) translateY(-10px);
+    border-color: var(--gold-deep);
+    box-shadow: 0 0 0 1px var(--gold-deep), 0 34px 70px rgba(26,31,78,.24); }
+  .cand-card .pic { display: block; width: 100%; aspect-ratio: 16/10;
+    background-size: cover; background-position: center; }
+  .cand-card .meta { padding: 14px 14px 16px; display: flex; align-items: center;
+    gap: 10px; }
+  .cand-card .sw { width: 24px; height: 24px; flex: none;
+    box-shadow: inset 0 0 0 1px rgba(26,31,78,.16); }
+  .cand-card .t { min-width: 0; }
+  .cand-card .h { display: block; font-family: var(--font-serif); font-weight: 400;
+    font-size: 16px; line-height: 1.2; color: var(--navy); }
+  .cand-card .c { display: block; font-size: 8px; font-weight: 700;
+    letter-spacing: .11em; text-transform: uppercase; color: var(--gold-deep);
+    margin-top: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cand-card .flag { display: inline-block; margin-top: 8px; font-size: 8px;
+    font-weight: 800; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--navy); background: var(--gold-shine); padding: 4px 9px; }
+  .cand-foot { text-align: center; margin-top: 34px; position: relative; z-index: 2; }
+  .cand-foot p { font-family: var(--font-serif); font-style: italic;
+    font-size: 15.5px; color: #4A4F70; margin: 0 0 20px; }
+
+  /* ============================================================
+     STEP FIVE — the elevation upload
+     ============================================================ */
+  .s5 { display: grid; grid-template-columns: 1.05fr .95fr; gap: 30px;
+    align-items: start; margin-top: 14px; }
+  .s5-stage { position: relative; }
+  .s5-plate { position: relative; aspect-ratio: 16/10; border-radius: 2px;
+    overflow: hidden; background: var(--navy-deep);
+    border: 1px solid rgba(201,169,97,.55);
+    box-shadow: 0 0 0 7px #fff, 0 0 0 8px rgba(201,169,97,.45),
+      0 22px 50px rgba(26,31,78,.16); }
+  .s5-shot { position: absolute; inset: 0; background-size: cover;
+    background-position: center; transition: opacity 600ms cubic-bezier(.22,1,.36,1); }
+  .s5-plate.has-file .s5-shot.demo { opacity: 0; }
+  .s5-drop { position: absolute; inset: 0; z-index: 3; display: flex;
+    flex-direction: column; align-items: center; justify-content: center; gap: 11px;
+    text-align: center; padding: 22px; cursor: pointer; border: 0; width: 100%;
+    font-family: inherit;
+    background: linear-gradient(180deg, rgba(20,24,58,.62), rgba(20,24,58,.82));
+    color: var(--cream); transition: background 300ms; }
+  .s5-drop:hover, .s5-drop.over {
+    background: linear-gradient(180deg, rgba(20,24,58,.52), rgba(20,24,58,.74)); }
+  .s5-drop.over { box-shadow: inset 0 0 0 2px var(--gold-bright); }
+  .s5-plate.has-file .s5-drop {
+    background: linear-gradient(180deg, rgba(20,24,58,0) 55%, rgba(20,24,58,.72));
+    justify-content: flex-end; gap: 5px; }
+  .s5-drop svg { width: 28px; height: 28px; stroke: var(--gold-bright); fill: none;
+    stroke-width: 1.3; transition: transform 320ms cubic-bezier(.22,1,.36,1); }
+  .s5-drop:hover svg { transform: translateY(-3px); }
+  .s5-plate.has-file .s5-drop svg { display: none; }
+  .s5-drop .big { font-family: var(--font-serif); font-size: 18px; line-height: 1.3;
+    color: var(--cream); }
+  .s5-plate.has-file .s5-drop .big { font-size: 12.5px; font-family: var(--font-sans);
+    font-weight: 600; }
+  .s5-drop .small { font-size: 11.5px; line-height: 1.55;
+    color: rgba(245,239,226,.72); max-width: 34ch; }
+  .s5-drop .rule { font-size: 10px; font-weight: 700; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--gold-bright); }
+  .s5-plate.has-file .s5-drop .rule { display: none; }
+  .s5 input[type=file] { position: absolute; width: 1px; height: 1px; opacity: 0;
+    overflow: hidden; clip: rect(0 0 0 0); }
+  .s5-shotlist { margin: 15px 0 0; padding: 0; list-style: none; display: grid;
+    grid-template-columns: 1fr 1fr; gap: 7px 18px; }
+  .s5-shotlist li { display: flex; gap: 8px; align-items: flex-start;
+    font-size: 12.5px; line-height: 1.5; color: #767B99; }
+  .s5-shotlist svg { width: 13px; height: 13px; flex: none; margin-top: 3px;
+    stroke: #2E7D5B; fill: none; stroke-width: 2.2; }
+  .s5-form { background: #fff; border: 1px solid rgba(26,31,78,.14);
+    border-radius: 3px; padding: 24px 24px 22px;
+    box-shadow: 0 14px 34px rgba(26,31,78,.07); }
+  .s5-form h3 { font-family: var(--font-serif); font-weight: 400; font-size: 21px;
+    line-height: 1.25; color: var(--navy); margin: 0; }
+  .s5-form .sub { font-size: 13.5px; line-height: 1.6; margin: 8px 0 0; color: #4A4F70; }
+  .s5-fields { display: flex; flex-direction: column; gap: 14px; margin-top: 18px; }
+  .s5-field label { display: block; font-size: 9.5px; font-weight: 800;
+    letter-spacing: .18em; text-transform: uppercase; color: #767B99;
+    margin-bottom: 6px; }
+  .s5-field input { width: 100%; font-family: var(--font-sans); font-size: 15px;
+    color: var(--navy); background: #FBF8F1; border: 1px solid rgba(26,31,78,.14);
+    border-radius: 2px; padding: 12px 14px;
+    transition: border-color 200ms, box-shadow 200ms, background 200ms; }
+  .s5-field input::placeholder { color: #A9AEC4; }
+  .s5-field input:focus { outline: none; background: #fff;
+    border-color: var(--gold-deep); box-shadow: 0 0 0 3px rgba(201,169,97,.18); }
+  .s5-field input[aria-invalid="true"] { border-color: #B4472F;
+    box-shadow: 0 0 0 3px rgba(180,71,47,.12); }
+  .s5-err { display: none; font-size: 12px; color: #B4472F; margin: 6px 0 0;
+    line-height: 1.45; }
+  .s5-err.on { display: block; }
+  .s5-hint { font-size: 11.5px; color: #767B99; margin: 6px 0 0; line-height: 1.5; }
+  /* the contact block opens only once a photo is attached — the interesting
+     part first, the paperwork after they have already started */
+  .s5-gate { max-height: 0; opacity: 0; overflow: hidden;
+    transition: max-height 620ms cubic-bezier(.22,1,.36,1), opacity 420ms ease; }
+  .s5-gate.open { max-height: 560px; opacity: 1; }
+  .s5-send { width: 100%; margin-top: 18px; display: flex; flex-direction: column;
+    gap: 5px; align-items: center; font-family: var(--font-sans); font-weight: 800;
+    font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--navy); border: 0; background: var(--gold-shine-b);
+    border-radius: 2px; padding: 16px 20px; cursor: pointer;
+    box-shadow: 0 12px 28px rgba(168,138,71,.34);
+    transition: transform 220ms cubic-bezier(.22,1,.36,1), box-shadow 220ms,
+      filter 220ms; }
+  .s5-send:hover { transform: translateY(-2px); }
+  .s5-send:disabled { filter: grayscale(.55) opacity(.55); cursor: not-allowed;
+    transform: none; box-shadow: none; }
+  .s5-send .s { font-size: 9.5px; font-weight: 600; letter-spacing: .05em;
+    text-transform: none; opacity: .8; }
+  .s5-phone { text-align: center; margin: 14px 0 0; font-size: 12.5px; color: #767B99; }
+  .s5-phone a { color: var(--navy); font-weight: 700; text-decoration: none;
+    border-bottom: 1px solid rgba(168,138,71,.5); }
+  .s5-phone a:hover { color: var(--gold-deep); }
+  .s5-done { display: none; text-align: center; padding: 6px 2px 2px; }
+  .s5-done.on { display: block; }
+  .s5-form.sent .s5-live { display: none; }
+  .s5-done .tick { width: 50px; height: 50px; margin: 0 auto 14px;
+    border-radius: 50%; background: rgba(46,125,91,.10); display: flex;
+    align-items: center; justify-content: center; }
+  .s5-done .tick svg { width: 23px; height: 23px; stroke: #2E7D5B; fill: none;
+    stroke-width: 2.4; }
+  .s5-next { list-style: none; margin: 16px 0 0; padding: 0; text-align: left;
+    counter-reset: n; border-top: 1px solid rgba(26,31,78,.14); }
+  .s5-next li { counter-increment: n; display: grid; grid-template-columns: auto 1fr;
+    gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(26,31,78,.14);
+    font-size: 13.5px; line-height: 1.55; color: #4A4F70; }
+  .s5-next li::before { content: counter(n); font-size: 10px; font-weight: 800;
+    color: var(--gold-deep); font-variant-numeric: tabular-nums;
+    border: 1px solid rgba(168,138,71,.4); border-radius: 50%; width: 21px;
+    height: 21px; display: flex; align-items: center; justify-content: center; }
+
+  @media (max-width: 860px) {
+    .hr-inset { margin-top: 16px; }
+    .hr-tray { flex-wrap: wrap; border-radius: 14px; }
+    .hr-tray-label { width: 100%; text-align: center; padding-top: 2px; }
+    .hr-tray-cta { width: 100%; text-align: center; }
+    .hr-knob { width: 36px; height: 36px; }
+    .cand-band { padding: 56px 20px 62px; }
+    .cand-track { justify-content: flex-start; }
+    .cand-card { flex-basis: 206px; }
+    .cand-card:nth-child(odd), .cand-card:nth-child(even) { transform: none; }
+    .s5 { grid-template-columns: 1fr; gap: 24px; }
+    .s5-shotlist { grid-template-columns: 1fr; }
+    .s5-form { padding: 20px 18px 18px; }
+  }
 
   /* ===================================================================
      RESPONSIVE — Desktop · Tablet · Mobile
@@ -2440,14 +2761,37 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
       
 
-      <div class="play-wrap">
-        <button class="play-btn film-play"
-                data-film="../../orange-county-sales-page/video/gallagher-ambient.mp4"
-                aria-label="Watch the film: The Road Has No Streetlights. That Changes How You Choose a Color.">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-        </button>
-        <div class="play-label">Watch the Film</div>
-      </div>
+
+      <figure class="hr-inset">
+        <div class="hr-plate" id="hrPlate" data-hold="1100" data-dur="2600">
+          <div class="hr-cand" data-nm="Pebble Beach Manor" data-co="SW Accessible Beige &middot; Dover White" data-sw="#D1C7B8" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg')"></div>
+          <div class="hr-cand" data-nm="Ibiza Luxury Villa" data-co="SW Balanced Beige &middot; Aesthetic White" data-sw="#D1C7B8" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-ibiza.jpg')"></div>
+          <div class="hr-cand" data-nm="Pacific Sage Estate" data-co="SW Evergreen Fog &middot; Shoji White" data-sw="#95978A" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg')"></div>
+          <div class="hr-cand" data-nm="Obsidian Monolith" data-co="SW Iron Ore &middot; Tricorn Black" data-sw="#434341" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg')"></div>
+          <div class="hr-cand final" data-nm="Santa Barbara Luxe" data-co="SW Alabaster &middot; Tricorn Black" data-sw="#F1EDE2" data-chosen="1" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-spanish.jpg')"></div>
+          <div class="hr-grab" id="hrGrab"></div>
+          <div class="hr-seam" id="hrSeam">
+            <span class="hr-knob">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="15 18 9 12 15 6"/>
+                <polyline points="9 18 15 12 9 6" transform="translate(12 0)"/>
+              </svg>
+            </span>
+          </div>
+          <span class="hr-stamp">The direction chosen</span>
+          <div class="hr-nameplate">
+            <span class="sw" id="hrSw"></span>
+            <span class="txt"><span class="nm" id="hrNm"></span><span class="co" id="hrCo"></span></span>
+          </div>
+          <span class="hr-counter" id="hrCt"></span>
+        </div>
+        <div class="hr-tray">
+          <span class="hr-tray-label">They saw</span>
+          <span class="hr-thumbs" id="hrThumbs"></span>
+          <button class="hr-tray-cta" type="button" id="hrReplay">Discover</button>
+        </div>
+      </figure>
 
       <div class="hero-cta-wrap">
         <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Claim Complimentary Color Consultation</span><span class="sub">Irresistible Painting Estimates Included</span></span></a>
@@ -2483,7 +2827,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <div class="eyebrow">Custom Visualization Service</div>
       <h2 class="ttl">See Your Peralta Hills Home In <span class="accent">Every Color</span> Before A Single Brushstroke</h2>
       <p class="sub" style="text-align:center; font-size: 18px; max-width: 620px; margin: 0 auto 28px;">Pick a direction and tap through the palettes — the home below repaints itself in real time. Our design team does exactly this with your own elevation, at no cost, before anything is scheduled.</p>
-      <p class="viz-lede-cta">Choose a style direction, then tap any palette. Watch your home transform in real time — exactly what we deliver in our 30-minute consultation.</p>
+      <p class="viz-lede-cta">Choose a style direction, then tap any palette. Watch this Newport Beach estate transform in real time &mdash; then send us yours.</p>
     </div>
 
     <div class="viz-flow">
@@ -2605,6 +2949,122 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
                 <div class="elv-thumb photo" style="background-image:url('../../orange-county-sales-page/viz-photos/thumb-premium-limestone-pillars.jpg')"></div>
                 <div class="elv-label">Limestone Pillars</div>
               </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ STEP FIVE — YOUR HOME ============
+             The terminal step. Everything above happens on our house; this
+             is where it happens on theirs, which is the only reason the
+             demo earns its space on the page.
+
+             TWO MODES, and the honest one is the default.
+
+             There is no upload endpoint yet, and this page is the live
+             front page — so an upload box that posts nowhere is not an
+             option. Until an endpoint exists, the section asks for the
+             photo by text message, which needs no backend, works on every
+             phone, and is a real conversion path today.
+
+             To switch on the upload: set window.VIP_UPLOAD_ENDPOINT to the
+             form handler URL before this script runs. The reel script then
+             reveals the upload block and hides the text-message one. Read
+             generator/viz-render/VIZ-RENDER.md before turning it on — the
+             turnaround printed on the button is a promise, and test T4 is
+             what measures it. -->
+        <div class="tl-step" data-step="5">
+          <div class="tl-dot">5</div>
+          <div class="tl-body">
+            <div class="tl-num-label">Step Five &middot; Your Home</div>
+            <h3 class="tl-title">Now Do It On <em>Your House</em></h3>
+            <p class="tl-desc">You have just repainted a Newport Beach estate. Send us the front of your home and our design team renders it in your three closest palettes &mdash; the same way you just saw.</p>
+
+            <div class="s5">
+              <div class="s5-stage">
+                <div class="s5-plate" id="s5Plate">
+                  <div class="s5-shot demo" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-spanish.jpg')"></div>
+                  <div class="s5-shot mine" id="s5Mine"></div>
+                  <button class="s5-drop" id="s5Drop" type="button" hidden>
+                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M12 16V4"/><polyline points="7 9 12 4 17 9"/>
+                      <path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/>
+                    </svg>
+                    <span class="big" id="s5Big">Add a photo of your home</span>
+                    <span class="small" id="s5Help">Drag it here, or tap to choose &mdash; your phone camera works fine</span>
+                    <span class="rule">Front elevation &middot; daylight</span>
+                  </button>
+                  <input type="file" id="s5File" accept="image/*" aria-label="Photo of your home's front elevation">
+                </div>
+
+                <ul class="s5-shotlist">
+                  <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Whole front of the house in frame</li>
+                  <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Daylight, not evening</li>
+                  <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Stand square to the facade</li>
+                  <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Nothing parked in front</li>
+                </ul>
+              </div>
+
+              <div class="s5-form" id="s5Form">
+                <!-- default: no endpoint, so we ask for the photo the way
+                     that actually works today -->
+                <div id="s5Sms">
+                  <h3>Text us the photo</h3>
+                  <p class="sub">Send it to <b>(909)&nbsp;312&#8209;5400</b> with your community name. Our design team renders your elevation in your three closest palettes and sends them back. The itemized estimate follows separately &mdash; renders first, always.</p>
+                  <a class="s5-send" href="sms:9093125400" style="text-decoration:none;">
+                    <span>Text My Photo To VIP</span>
+                    <span class="s">Or call &mdash; complimentary, no obligation</span>
+                  </a>
+                  <p class="s5-phone">Prefer to talk it through?
+                    <a href="tel:9093125400">(909)&nbsp;312&#8209;5400</a></p>
+                </div>
+
+                <!-- revealed only when an upload endpoint is configured -->
+                <form id="s5Upload" hidden novalidate>
+                  <div class="s5-live">
+                    <h3>Where should we send them?</h3>
+                    <p class="sub">Three renders, your palette names, and the Sherwin&#8209;Williams pairing for each. No obligation, and we don't call unless you ask us to.</p>
+                    <div class="s5-fields">
+                      <div class="s5-field">
+                        <label for="s5Place">Address or community</label>
+                        <input id="s5Place" name="place" type="text" autocomplete="address-line1" placeholder="Orchard Hills, Irvine">
+                        <p class="s5-hint">Community is enough &mdash; it tells us the design-review rules you are working inside.</p>
+                      </div>
+                      <div class="s5-gate" id="s5Gate">
+                        <div class="s5-fields">
+                          <div class="s5-field">
+                            <label for="s5Name">Your name</label>
+                            <input id="s5Name" name="name" type="text" autocomplete="name" placeholder="Jane Gallagher">
+                            <p class="s5-err" id="s5NameErr"></p>
+                          </div>
+                          <div class="s5-field">
+                            <label for="s5Contact">Mobile or email &mdash; whichever you prefer</label>
+                            <input id="s5Contact" name="contact" type="text" autocomplete="email" placeholder="jane@example.com">
+                            <p class="s5-err" id="s5ContactErr"></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="s5-send" id="s5Send" type="submit" disabled>
+                      <span id="s5SendLabel">Add a photo to continue</span>
+                      <span class="s">Renders first, itemized estimate after &mdash; no obligation</span>
+                    </button>
+                    <p class="s5-phone">Ready to talk instead?
+                      <a href="tel:9093125400">(909)&nbsp;312&#8209;5400</a></p>
+                  </div>
+                  <div class="s5-done" id="s5Done">
+                    <div class="tick">
+                      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    </div>
+                    <h3>Your elevation is with the design team</h3>
+                    <p class="sub" id="s5DoneSub">We will be in touch at the address you gave us.</p>
+                    <ol class="s5-next">
+                      <li>A designer checks your photo is workable &mdash; if it is not, we ask for one more before rendering anything.</li>
+                      <li>Your house is rendered in your three closest palettes, each with its Sherwin&#8209;Williams pairing.</li>
+                      <li>The renders reach you first. The itemized estimate follows separately &mdash; prep, primer, coating, trim and accents, line by line.</li>
+                    </ol>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -3333,59 +3793,6 @@ setTimeout(() => {
   }, 1400);
 }, 1200);
 
-/* ===== Cinematic hero: ambient loop + sound gate ===== */
-(function () {
-  const hero  = document.getElementById('hero');
-  const video = document.getElementById('heroVideo');
-  if (!hero || !video) return;
-  const playBtn = document.getElementById('heroPlayBtn');
-  const closeB  = document.getElementById('pbClose');
-  const muteB   = document.getElementById('pbMute');
-  const fill    = document.getElementById('pbFill');
-  const track   = document.getElementById('pbTrack');
-  const cur     = document.getElementById('pbCur');
-  const dur     = document.getElementById('pbDur');
-  const fmt = s => Math.floor(s/60) + ':' + String(Math.floor(s%60)).padStart(2,'0');
-
-  // If autoplay is rejected, sit quietly on the poster.
-  video.play().catch(() => {});
-
-  playBtn.addEventListener('click', () => {
-    hero.classList.add('playing');
-    video.currentTime = 0;
-    video.loop = false;
-    video.muted = false;
-    video.play().catch(() => { video.muted = true; video.play(); });
-  });
-
-  function backToAmbient() {
-    hero.classList.remove('playing');
-    video.muted = true;
-    video.loop = true;
-    video.play().catch(() => {});
-  }
-  closeB.addEventListener('click', backToAmbient);
-  video.addEventListener('ended', backToAmbient);
-
-  muteB.addEventListener('click', () => {
-    video.muted = !video.muted;
-    muteB.textContent = video.muted ? 'Unmute' : 'Mute';
-  });
-
-  video.addEventListener('loadedmetadata', () => {
-    dur.textContent = fmt(video.duration);
-  });
-  video.addEventListener('timeupdate', () => {
-    if (!hero.classList.contains('playing')) return;
-    fill.style.width = (video.currentTime / video.duration * 100) + '%';
-    cur.textContent = fmt(video.currentTime);
-  });
-  track.addEventListener('click', e => {
-    const r = track.getBoundingClientRect();
-    video.currentTime = ((e.clientX - r.left) / r.width) * video.duration;
-  });
-})();
-
 /* ---- Nav menus: close the others when one opens, and on outside click or
    Escape. The menus are <details>, so they still work without this. ---- */
 (function(){
@@ -3460,5 +3867,282 @@ setTimeout(() => {
   });
 })();
 </script>
+<script>
+/* ===== Hero selection reel · candidate band · Step Five =====
+   One script for all three, because they share one source of truth: the
+   .hr-cand layers in the hero plate. The thumbnails and the carousel
+   cards are built from those layers rather than from a second list, so
+   the palettes shown in the hero and the palettes shown in the band can
+   never drift apart.
+
+   Image paths live in the markup, never here — generate.js rewrites
+   url('../../orange-county-sales-page/viz-photos/ globally, so reading backgroundImage off a layer
+   gives the correct path on every one of the 21 pages.
+
+   Everything is guarded: pages without a hero plate no-op. */
+(function () {
+  var plate = document.getElementById('hrPlate');
+  if (!plate) return;
+
+  var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var layers = [].slice.call(plate.querySelectorAll('.hr-cand'));
+  if (layers.length < 2) return;
+  var LAST = layers.length - 1;
+
+  var seam   = document.getElementById('hrSeam');
+  var grab   = document.getElementById('hrGrab');
+  var swEl   = document.getElementById('hrSw');
+  var nmEl   = document.getElementById('hrNm');
+  var coEl   = document.getElementById('hrCo');
+  var ctEl   = document.getElementById('hrCt');
+  var thumbs = document.getElementById('hrThumbs');
+  var track  = document.getElementById('candTrack');
+
+  var hold = parseInt(plate.getAttribute('data-hold') || '1100', 10);
+  var dur  = parseInt(plate.getAttribute('data-dur')  || '2600', 10);
+
+  var raf = null, timer = null, dragging = false, cut = 100;
+  function ease(t) { return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2; }
+
+  function setCut(v) {
+    cut = Math.max(0, Math.min(100, v));
+    layers[LAST].style.clipPath = 'inset(0 0 0 ' + cut + '%)';
+    seam.style.left = cut + '%';
+  }
+
+  function label(i) {
+    var l = layers[i];
+    if (swEl) swEl.style.background = l.getAttribute('data-sw') || '';
+    if (nmEl) nmEl.innerHTML = l.getAttribute('data-nm') || '';
+    if (coEl) coEl.innerHTML = l.getAttribute('data-co') || '';
+    if (ctEl) ctEl.textContent = pad(i + 1) + ' / ' + pad(layers.length);
+    mark(thumbs, i);
+    mark(track, i);
+  }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function mark(host, i) {
+    if (!host) return;
+    [].forEach.call(host.children, function (b, n) {
+      b.setAttribute('aria-current', n === i ? 'true' : 'false');
+    });
+  }
+
+  function show(i) {
+    layers.forEach(function (l, n) {
+      if (n !== LAST) l.classList.toggle('on', n === i);
+    });
+    if (i === LAST) { setCut(0); plate.classList.add('live'); }
+    else { setCut(100); plate.classList.remove('live'); }
+    label(i);
+  }
+
+  function stop() {
+    if (raf)   { cancelAnimationFrame(raf); raf = null; }
+    if (timer) { clearTimeout(timer); timer = null; }
+    plate.classList.remove('wiping');
+  }
+
+  /* the reel: dissolve through the candidates, then wipe to the chosen one */
+  function play() {
+    stop();
+    plate.classList.remove('live');
+    var i = 0;
+    show(0);
+    (function step() {
+      timer = setTimeout(function () {
+        i++;
+        if (i < LAST) { show(i); step(); return; }
+        /* keep the runner-up underneath so the wipe has something to
+           reveal against — a wipe onto nothing reads as a fade */
+        layers.forEach(function (l, n) {
+          if (n !== LAST) l.classList.toggle('on', n === LAST - 1);
+        });
+        label(LAST);
+        plate.classList.add('wiping');
+        var t0 = performance.now();
+        (function tick(now) {
+          var t = Math.min(1, (now - t0) / dur);
+          setCut(100 - 100 * ease(t));
+          if (t < 1) { raf = requestAnimationFrame(tick); }
+          else { raf = null; plate.classList.remove('wiping'); plate.classList.add('live'); }
+        })(performance.now());
+      }, hold + 400);
+    })();
+  }
+
+  /* drag compares the chosen palette against the runner-up — the exact
+     moment the real client was in */
+  function move(x) {
+    if (!plate.classList.contains('live')) return;
+    var r = plate.getBoundingClientRect();
+    setCut(((x - r.left) / r.width) * 100);
+  }
+  grab.addEventListener('mousedown', function (e) { stop(); dragging = true; move(e.clientX); e.preventDefault(); });
+  window.addEventListener('mousemove', function (e) { if (dragging) move(e.clientX); });
+  window.addEventListener('mouseup', function () { dragging = false; });
+  grab.addEventListener('touchstart', function (e) { stop(); dragging = true; move(e.touches[0].clientX); }, { passive: true });
+  window.addEventListener('touchmove', function (e) { if (dragging) move(e.touches[0].clientX); }, { passive: true });
+  window.addEventListener('touchend', function () { dragging = false; });
+  grab.tabIndex = 0;
+  grab.setAttribute('role', 'slider');
+  grab.setAttribute('aria-label', 'Compare the final two palettes');
+  grab.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft')  { stop(); if (plate.classList.contains('live')) setCut(cut - 5); e.preventDefault(); }
+    if (e.key === 'ArrowRight') { stop(); if (plate.classList.contains('live')) setCut(cut + 5); e.preventDefault(); }
+  });
+
+  /* thumbnails and cards, built from the layers so there is one list */
+  layers.forEach(function (l, i) {
+    var bg = l.style.backgroundImage;
+    var nm = l.getAttribute('data-nm') || '';
+    var co = l.getAttribute('data-co') || '';
+    var sw = l.getAttribute('data-sw') || '';
+
+    if (thumbs) {
+      var t = document.createElement('button');
+      t.type = 'button';
+      t.setAttribute('aria-label', 'Show ' + nm.replace(/&[^;]+;/g, ' '));
+      var ti = document.createElement('i');
+      ti.style.backgroundImage = bg;
+      t.appendChild(ti);
+      t.addEventListener('click', function () { stop(); show(i); });
+      thumbs.appendChild(t);
+    }
+
+    if (track) {
+      var c = document.createElement('button');
+      c.type = 'button';
+      c.className = 'cand-card';
+      var pic = document.createElement('span');
+      pic.className = 'pic';
+      pic.style.backgroundImage = bg;
+      var meta = document.createElement('span');
+      meta.className = 'meta';
+      meta.innerHTML = '<span class="sw" style="background:' + sw + '"></span>' +
+        '<span class="t"><span class="h">' + nm + '</span><span class="c">' + co + '</span>' +
+        (l.getAttribute('data-chosen') ? '<span class="flag">The direction chosen</span>' : '') +
+        '</span>';
+      c.appendChild(pic);
+      c.appendChild(meta);
+      c.addEventListener('click', function () {
+        stop(); show(i);
+        var h = document.getElementById('hero');
+        if (h) h.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      track.appendChild(c);
+    }
+  });
+
+  show(LAST);                       /* at rest the plate shows the finished house */
+  var replay = document.getElementById('hrReplay');
+  if (replay) replay.addEventListener('click', play);
+
+  if (!REDUCED && 'IntersectionObserver' in window) {
+    var fired = false;
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (en.isIntersecting && !fired) { fired = true; play(); io.disconnect(); }
+      });
+    }, { threshold: .3 });
+    io.observe(plate);
+  }
+})();
+
+/* ===== Step Five — elevation intake =====
+   Ships in text-message mode. The upload block only appears when an
+   endpoint is configured, because an upload box that posts nowhere on a
+   live page is worse than no upload box at all. See the markup comment
+   and generator/viz-render/VIZ-RENDER.md. */
+(function () {
+  var form = document.getElementById('s5Upload');
+  var sms  = document.getElementById('s5Sms');
+  if (!form || !sms) return;
+
+  var endpoint = window.VIP_UPLOAD_ENDPOINT || '';
+  if (!endpoint) return;             /* stay in text-message mode */
+
+  form.hidden = false;
+  sms.hidden = true;
+  form.setAttribute('action', endpoint);
+  form.setAttribute('method', 'post');
+  form.setAttribute('enctype', 'multipart/form-data');
+
+  var plate = document.getElementById('s5Plate');
+  var drop  = document.getElementById('s5Drop');
+  var file  = document.getElementById('s5File');
+  var mine  = document.getElementById('s5Mine');
+  var gate  = document.getElementById('s5Gate');
+  var send  = document.getElementById('s5Send');
+  var label = document.getElementById('s5SendLabel');
+  var big   = document.getElementById('s5Big');
+  var help  = document.getElementById('s5Help');
+  var nameI = document.getElementById('s5Name');
+  var contI = document.getElementById('s5Contact');
+  var url = null, hasFile = false;
+
+  drop.hidden = false;
+
+  function accept(f) {
+    if (!f || !/^image\//.test(f.type)) {
+      big.textContent = 'That file is not an image';
+      help.textContent = 'A photo from your phone is perfect — JPG, PNG or HEIC.';
+      return;
+    }
+    if (url) URL.revokeObjectURL(url);
+    url = URL.createObjectURL(f);
+    mine.style.backgroundImage = "url('" + url + "')";
+    plate.classList.add('has-file');
+    hasFile = true;
+    big.textContent = f.name.length > 34 ? f.name.slice(0, 31) + '…' : f.name;
+    help.textContent = 'Tap to choose a different photo';
+    gate.classList.add('open');
+    send.disabled = false;
+    label.textContent = 'Send my elevation';
+  }
+
+  drop.addEventListener('click', function () { file.click(); });
+  file.addEventListener('change', function () { accept(file.files[0]); });
+  ['dragenter', 'dragover'].forEach(function (e) {
+    drop.addEventListener(e, function (ev) { ev.preventDefault(); drop.classList.add('over'); });
+  });
+  ['dragleave', 'drop'].forEach(function (e) {
+    drop.addEventListener(e, function (ev) { ev.preventDefault(); drop.classList.remove('over'); });
+  });
+  drop.addEventListener('drop', function (ev) {
+    if (ev.dataTransfer && ev.dataTransfer.files) accept(ev.dataTransfer.files[0]);
+  });
+
+  function fail(input, errId, msg) {
+    var el = document.getElementById(errId);
+    input.setAttribute('aria-invalid', 'true');
+    el.textContent = msg; el.classList.add('on');
+  }
+  function clear(input, errId) {
+    input.removeAttribute('aria-invalid');
+    document.getElementById(errId).classList.remove('on');
+  }
+
+  form.addEventListener('submit', function (e) {
+    if (!hasFile) { e.preventDefault(); return; }
+    var ok = true;
+    clear(nameI, 's5NameErr'); clear(contI, 's5ContactErr');
+    if (!nameI.value.trim()) { fail(nameI, 's5NameErr', 'We need a name to put on the renders.'); ok = false; }
+    var c = contI.value.trim();
+    var looksEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(c);
+    var looksPhone = /^[\d\s()+.-]{10,}$/.test(c);
+    if (!c) { fail(contI, 's5ContactErr', 'We need somewhere to send the renders.'); ok = false; }
+    else if (!looksEmail && !looksPhone) {
+      fail(contI, 's5ContactErr', 'That does not look like an email address or a phone number — check it over.');
+      ok = false;
+    }
+    if (!ok) {
+      e.preventDefault();
+      (nameI.getAttribute('aria-invalid') ? nameI : contI).focus();
+    }
+    /* valid: let it post to the configured endpoint */
+  });
+})();
+</script>
+<!-- REEL:END -->
 </body>
 </html>

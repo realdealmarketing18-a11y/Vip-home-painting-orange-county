@@ -100,7 +100,7 @@ for (const p of pages) {
   const dir = path.dirname(p.file);
   const hrefs = [...new Set((html.match(/(?:href|src)="([^"]+)"/g) || [])
     .map(s => s.replace(/^(?:href|src)="/, '').replace(/"$/, ''))
-    .filter(h => !/^(https?:|tel:|mailto:|data:|#)/.test(h)))];
+    .filter(h => !/^(https?:|tel:|sms:|mailto:|data:|#)/.test(h)))];
 
   const abs = hrefs.filter(h => h.startsWith('/'));
   if (abs.length) { bad(`${p.rel}: ABSOLUTE link(s) — these 404 on the GitHub Pages subpath: ${abs.join(', ')}`); absTotal += abs.length; }
@@ -376,7 +376,7 @@ if (!fs.existsSync(ocFile)) {
 
   // every local asset it references must exist on disk
   const missing = [];
-  for (const m of oc.matchAll(/(?:src|href)="((?!https?:|tel:|mailto:|#|data:)[^"]+)"/g)) {
+  for (const m of oc.matchAll(/(?:src|href)="((?!https?:|tel:|sms:|mailto:|#|data:)[^"]+)"/g)) {
     const ref = m[1].split(/[?#]/)[0];
     if (!ref || ref.endsWith('/')) continue;              // directory links handled below
     if (!fs.existsSync(path.resolve(ocDir, ref))) missing.push(ref);
