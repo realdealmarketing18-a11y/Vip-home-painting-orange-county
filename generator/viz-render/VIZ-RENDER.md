@@ -121,6 +121,21 @@ Source `orange-county-sales-page/viz-photos/base.webp`, scheme
 `spanish`. The correct output is something very close to the existing
 `scheme-spanish.jpg`. If the template cannot re-make a render we already
 own, it will not survive a stranger's phone photo.
+**Ran 2026-09-12 — submitted and completed, not yet graded. See
+`T1-RESULT.md` for the job id, the gate to run against it, and what each
+kind of failure means.**
+
+> **Grading cannot happen in the build environment.** Its egress policy
+> blocks the Higgsfield result CDN, so renders cannot be pulled back for
+> inspection here. Grade in the Higgsfield UI or on a machine that can
+> reach the CDN. Settle this before the pipeline carries client work: an
+> ungraded render reaching a homeowner is the exact failure this whole
+> document exists to prevent.
+
+> **Pin the model deliberately.** T1 requested `nano_banana_pro` and the
+> job reported `nano_banana_2`. Both are in family per
+> `COLOR-SCHEMES.md`, but a control test that is meant to reproduce an
+> existing render cannot accept whatever the router returns.
 
 **T2 · Daylight — the real risk.**
 Every render in `viz-photos/` came off one professionally-shot dusk
