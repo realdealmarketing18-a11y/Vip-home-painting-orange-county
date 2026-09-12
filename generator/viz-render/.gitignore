@@ -1,0 +1,5 @@
+# Client photos and their derived packs are private. The pipeline is the
+# deliverable here; homeowners' houses are not.
+intake/
+packs/
+renders/

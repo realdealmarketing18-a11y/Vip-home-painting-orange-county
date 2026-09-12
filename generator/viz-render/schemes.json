@@ -1,0 +1,89 @@
+{
+  "_source": "orange-county-sales-page/COLOR-SCHEMES.md — the master reference. If a scheme changes there, change it here in the same commit.",
+  "_engine": "Higgsfield Nano Banana Pro / Nano Banana 2, image-to-image, architecture locked.",
+  "styles": {
+    "bold": "Bold & Modern",
+    "earthy": "Warm & Earthy",
+    "subtle": "Subtle & Elegant",
+    "spanish": "Spanish Revival",
+    "resort": "Ultra-Luxury Resort"
+  },
+  "schemes": [
+    { "id": "obsidian", "swatch": "#434341", "name": "Obsidian Monolith", "style": "bold",
+      "body": "SW Iron Ore 7069",
+      "trim": "SW Tricorn Black 6258",
+      "accent": "Smoked glass-panel garage doors with matte-black frames; charcoal Silver Quartzite ledger stone pillars; columns monolithic in Iron Ore",
+      "lighting": "48-inch matte-black vertical LED slot sconces",
+      "texture": "Ultra-smooth level-5 matte stucco" },
+
+    { "id": "riviera", "swatch": "#EDEAE0", "name": "Riviera Tuxedo", "style": "bold",
+      "body": "SW Snowbound 7004",
+      "trim": "SW Black Magic 6991",
+      "accent": "Mirror-black glass garage doors; deep black split-face slate pillars; Black Magic column caps",
+      "lighting": "Square-profile matte-black aluminum sconces",
+      "texture": "Fine-grain sand-finish stucco" },
+
+    { "id": "euro", "swatch": "#585A5C", "name": "Euro-Industrial Estate", "style": "bold",
+      "body": "SW Peppercorn 7674",
+      "trim": "SW Cityscape 7067",
+      "accent": "Frosted glass garage doors with silver aluminum frames; gray architectural concrete pillars; Cityscape stepped columns",
+      "lighting": "Brushed gunmetal cylinder up/down lights",
+      "texture": "Smooth-coat stucco with horizontal reveals" },
+
+    { "id": "organic", "swatch": "#EDEAE0", "name": "Coastal Organic Compound", "style": "earthy",
+      "body": "SW Alabaster 7008",
+      "trim": "SW Urbane Bronze 7048",
+      "accent": "Western Red Cedar plank garage doors; cream limestone split-face pillars; cedar-slat-wrapped columns",
+      "lighting": "Oil-rubbed bronze geometric coach pendants",
+      "texture": "Smooth organic lime-wash stucco" },
+
+    { "id": "pacificsage", "swatch": "#95978A", "name": "Pacific Sage Estate", "style": "earthy",
+      "body": "SW Evergreen Fog 9130",
+      "trim": "SW Shoji White 7042",
+      "accent": "White-oak-look steel garage doors; dry-stack golden sandstone pillars; Shoji White columns",
+      "lighting": "Hand-rubbed antique brass transitional lanterns",
+      "texture": "Roman-clay hand-troweled stucco" },
+
+    { "id": "ibiza", "swatch": "#D1C7B8", "name": "Ibiza Luxury Villa", "style": "earthy",
+      "body": "SW Balanced Beige 7037",
+      "trim": "SW Aesthetic White 7035",
+      "accent": "Walnut-toned wood garage doors; cross-cut ivory travertine pillars; Balanced Beige columns",
+      "lighting": "Hammered copper oversized lanterns",
+      "texture": "Coarse Mediterranean pitted stucco" },
+
+    { "id": "admiral", "swatch": "#CCC9C0", "name": "Newport Admiral", "style": "subtle",
+      "body": "SW Repose Gray 7015",
+      "trim": "SW Pure White 7005",
+      "accent": "SW Naval 6244 front door and shutters; satin-etched white glass garage doors; light-gray New England fieldstone pillars",
+      "lighting": "Heavy-cast matte-black gas-look lanterns",
+      "texture": "Smooth sand-finish stucco" },
+
+    { "id": "marinelayer", "swatch": "#CDD2CA", "name": "Marine Layer", "style": "subtle",
+      "body": "SW Sea Salt 6204",
+      "trim": "SW High Reflective White 7757",
+      "accent": "SW Oyster Bay 6206 shutters; white carriage garage doors with top windows; ice-gray split granite pillars",
+      "lighting": "Polished stainless steel coach pendants",
+      "texture": "Ultra-clean modern smooth stucco" },
+
+    { "id": "pebblebeach", "swatch": "#D1C7B8", "name": "Pebble Beach Manor", "style": "subtle",
+      "body": "SW Accessible Beige 7036",
+      "trim": "SW Dover White 6385",
+      "accent": "SW Garret Gray 6075 painted-wood garage doors; multi-color bluestone pillars; Dover White columns",
+      "lighting": "Dark antique bronze scrolling wall sconces",
+      "texture": "Fine English-cotta-texture stucco" },
+
+    { "id": "spanish", "swatch": "#F1EDE2", "name": "Santa Barbara Luxe", "style": "spanish",
+      "body": "SW Alabaster 7008",
+      "trim": "SW Tricorn Black 6258 as a thin roofline trim only",
+      "accent": "Espresso-stained arched wood garage doors; Santa Barbara sandstone pillars; Alabaster columns; existing clay-tile roof kept exactly as-is",
+      "lighting": "Large black wrought-iron scroll lanterns",
+      "texture": "Hand-troweled smooth white stucco" },
+
+    { "id": "resort", "swatch": "#D6D2C9", "name": "Beverly Hills Resort", "style": "resort",
+      "body": "SW City Loft 7631 — monochrome across body, trim and columns",
+      "trim": "SW City Loft 7631",
+      "accent": "Seamless glass garage doors with bronze frames; honed Portuguese limestone pillars",
+      "lighting": "Flush-mounted bronze recessed downlights",
+      "texture": "Flawless level-5 smooth stucco" }
+  ]
+}
