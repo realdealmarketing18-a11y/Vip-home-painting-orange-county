@@ -1542,8 +1542,43 @@
   /* ============================================================
      STEP FIVE — the elevation upload
      ============================================================ */
-  .s5 { display: grid; grid-template-columns: 1.05fr .95fr; gap: 30px;
-    align-items: start; margin-top: 14px; }
+  /* Step Five is a full-width block BELOW the two-column flow, not a step
+     inside the timeline. Nested in that column it had roughly 420px to
+     work with and then split itself in two again, which crushed both
+     halves — the upload plate and the contact card ended up about 200px
+     wide each. It is also the conversion moment of the whole section, so
+     it earns the full measure. */
+  .s5-block { position: relative; max-width: 1180px; margin: 0 auto;
+    padding-top: 78px; }
+  /* the timeline rail continues down into this section and lands on the
+     fifth dot, so Step Five reads as the last beat arriving rather than a
+     detached block bolted underneath */
+  .s5-block::before { content: ''; position: absolute; left: 50%; top: 0;
+    width: 1px; height: 42px; transform: translateX(-50%);
+    background: linear-gradient(180deg, rgba(168,138,71,0), rgba(168,138,71,.6)); }
+  .s5-dot { position: absolute; left: 50%; top: 36px; transform: translateX(-50%);
+    width: 38px; height: 38px; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; background: var(--gold-shine);
+    color: var(--navy); font-family: var(--font-sans); font-size: 15px;
+    font-weight: 800; box-shadow: 0 0 0 6px var(--cream), 0 8px 20px rgba(26,31,78,.2); }
+  .s5-head { max-width: 660px; margin: 28px auto 28px; text-align: center; }
+  .s5-title { font-family: var(--font-serif); font-weight: 400;
+    font-size: clamp(26px, 3.2vw, 36px); line-height: 1.2; color: var(--navy);
+    margin: 12px 0 0; text-wrap: balance; }
+  .s5-title em { font-style: italic; color: var(--gold-deep); }
+  .s5-lede { font-family: var(--font-serif); font-style: italic;
+    font-size: 16.5px; line-height: 1.6; color: #4A4F70; margin: 13px 0 0; }
+  .s5-head .tl-num-label { text-align: center; }
+
+  /* centred, not top-aligned: the contact card is roughly a third the
+     height of the plate, and starting both at the top left it stranded
+     against a column of empty cream */
+  .s5 { display: grid; grid-template-columns: 1.08fr .92fr; gap: 36px;
+    align-items: center; }
+
+  /* [hidden] must beat the layout rules below it, or the text-message card
+     and the upload plate both render and Step Five reads as a pile. */
+  .s5 [hidden], .s5-drop[hidden] { display: none !important; }
   .s5-stage { position: relative; }
   .s5-plate { position: relative; aspect-ratio: 16/10; border-radius: 2px;
     overflow: hidden; background: var(--navy-deep);
@@ -1659,6 +1694,8 @@
     .cand-track { justify-content: flex-start; }
     .cand-card { flex-basis: 206px; }
     .cand-card:nth-child(odd), .cand-card:nth-child(even) { transform: none; }
+    .s5-block { padding-top: 32px; }
+    .s5-head { margin-bottom: 22px; }
     .s5 { grid-template-columns: 1fr; gap: 24px; }
     .s5-shotlist { grid-template-columns: 1fr; }
     .s5-form { padding: 20px 18px 18px; }
@@ -2950,123 +2987,125 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           </div>
         </div>
 
-        <!-- ============ STEP FIVE — YOUR HOME ============
-             The terminal step. Everything above happens on our house; this
-             is where it happens on theirs, which is the only reason the
-             demo earns its space on the page.
-
-             TWO MODES, and the honest one is the default.
-
-             There is no upload endpoint yet, and this page is the live
-             front page — so an upload box that posts nowhere is not an
-             option. Until an endpoint exists, the section asks for the
-             photo by text message, which needs no backend, works on every
-             phone, and is a real conversion path today.
-
-             To switch on the upload: set window.VIP_UPLOAD_ENDPOINT to the
-             form handler URL before this script runs. The reel script then
-             reveals the upload block and hides the text-message one. Read
-             generator/viz-render/VIZ-RENDER.md before turning it on — the
-             turnaround printed on the button is a promise, and test T4 is
-             what measures it. -->
-        <div class="tl-step" data-step="5">
-          <div class="tl-dot">5</div>
-          <div class="tl-body">
-            <div class="tl-num-label">Step Five &middot; Your Home</div>
-            <h3 class="tl-title">Now Do It On <em>Your House</em></h3>
-            <p class="tl-desc">You have just repainted a Newport Beach estate. Send us the front of your home and our design team renders it in your three closest palettes &mdash; the same way you just saw.</p>
-
-            <div class="s5">
-              <div class="s5-stage">
-                <div class="s5-plate" id="s5Plate">
-                  <div class="s5-shot demo" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-spanish.jpg')"></div>
-                  <div class="s5-shot mine" id="s5Mine"></div>
-                  <button class="s5-drop" id="s5Drop" type="button" hidden>
-                    <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <path d="M12 16V4"/><polyline points="7 9 12 4 17 9"/>
-                      <path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/>
-                    </svg>
-                    <span class="big" id="s5Big">Add a photo of your home</span>
-                    <span class="small" id="s5Help">Drag it here, or tap to choose &mdash; your phone camera works fine</span>
-                    <span class="rule">Front elevation &middot; daylight</span>
-                  </button>
-                  <input type="file" id="s5File" accept="image/*" aria-label="Photo of your home's front elevation">
-                </div>
-
-                <ul class="s5-shotlist">
-                  <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Whole front of the house in frame</li>
-                  <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Daylight, not evening</li>
-                  <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Stand square to the facade</li>
-                  <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Nothing parked in front</li>
-                </ul>
-              </div>
-
-              <div class="s5-form" id="s5Form">
-                <!-- default: no endpoint, so we ask for the photo the way
-                     that actually works today -->
-                <div id="s5Sms">
-                  <h3>Text us the photo</h3>
-                  <p class="sub">Send it to <b>(909)&nbsp;312&#8209;5400</b> with your community name. Our design team renders your elevation in your three closest palettes and sends them back. The itemized estimate follows separately &mdash; renders first, always.</p>
-                  <a class="s5-send" href="sms:9093125400" style="text-decoration:none;">
-                    <span>Text My Photo To VIP</span>
-                    <span class="s">Or call &mdash; complimentary, no obligation</span>
-                  </a>
-                  <p class="s5-phone">Prefer to talk it through?
-                    <a href="tel:9093125400">(909)&nbsp;312&#8209;5400</a></p>
-                </div>
-
-                <!-- revealed only when an upload endpoint is configured -->
-                <form id="s5Upload" hidden novalidate>
-                  <div class="s5-live">
-                    <h3>Where should we send them?</h3>
-                    <p class="sub">Three renders, your palette names, and the Sherwin&#8209;Williams pairing for each. No obligation, and we don't call unless you ask us to.</p>
-                    <div class="s5-fields">
-                      <div class="s5-field">
-                        <label for="s5Place">Address or community</label>
-                        <input id="s5Place" name="place" type="text" autocomplete="address-line1" placeholder="Orchard Hills, Irvine">
-                        <p class="s5-hint">Community is enough &mdash; it tells us the design-review rules you are working inside.</p>
-                      </div>
-                      <div class="s5-gate" id="s5Gate">
-                        <div class="s5-fields">
-                          <div class="s5-field">
-                            <label for="s5Name">Your name</label>
-                            <input id="s5Name" name="name" type="text" autocomplete="name" placeholder="Jane Gallagher">
-                            <p class="s5-err" id="s5NameErr"></p>
-                          </div>
-                          <div class="s5-field">
-                            <label for="s5Contact">Mobile or email &mdash; whichever you prefer</label>
-                            <input id="s5Contact" name="contact" type="text" autocomplete="email" placeholder="jane@example.com">
-                            <p class="s5-err" id="s5ContactErr"></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <button class="s5-send" id="s5Send" type="submit" disabled>
-                      <span id="s5SendLabel">Add a photo to continue</span>
-                      <span class="s">Renders first, itemized estimate after &mdash; no obligation</span>
-                    </button>
-                    <p class="s5-phone">Ready to talk instead?
-                      <a href="tel:9093125400">(909)&nbsp;312&#8209;5400</a></p>
-                  </div>
-                  <div class="s5-done" id="s5Done">
-                    <div class="tick">
-                      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    </div>
-                    <h3>Your elevation is with the design team</h3>
-                    <p class="sub" id="s5DoneSub">We will be in touch at the address you gave us.</p>
-                    <ol class="s5-next">
-                      <li>A designer checks your photo is workable &mdash; if it is not, we ask for one more before rendering anything.</li>
-                      <li>Your house is rendered in your three closest palettes, each with its Sherwin&#8209;Williams pairing.</li>
-                      <li>The renders reach you first. The itemized estimate follows separately &mdash; prep, primer, coating, trim and accents, line by line.</li>
-                    </ol>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
+
+    <!-- ============ STEP FIVE — YOUR HOME ============
+         The terminal step. Everything above happens on our house; this
+         is where it happens on theirs, which is the only reason the
+         demo earns its space on the page.
+
+         TWO MODES, and the honest one is the default.
+
+         There is no upload endpoint yet, and this page is the live
+         front page — so an upload box that posts nowhere is not an
+         option. Until an endpoint exists, the section asks for the
+         photo by text message, which needs no backend, works on every
+         phone, and is a real conversion path today.
+
+         To switch on the upload: set window.VIP_UPLOAD_ENDPOINT to the
+         form handler URL before this script runs. The reel script then
+         reveals the upload block and hides the text-message one. Read
+         generator/viz-render/VIZ-RENDER.md before turning it on — the
+         turnaround printed on the button is a promise, and test T4 is
+         what measures it. -->
+    <div class="s5-block" data-step="5">
+      <span class="s5-dot" aria-hidden="true">5</span>
+      <div class="s5-head">
+    <div class="tl-num-label">Step Five &middot; Your Home</div>
+    <h3 class="s5-title">Now Do It On <em>Your House</em></h3>
+    <p class="s5-lede">You have just repainted a Newport Beach estate. Send us the front of your home and our design team renders it in your three closest palettes &mdash; the same way you just saw.</p>
+      </div>
+
+        <div class="s5">
+          <div class="s5-stage">
+            <div class="s5-plate" id="s5Plate">
+              <div class="s5-shot demo" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-spanish.jpg')"></div>
+              <div class="s5-shot mine" id="s5Mine"></div>
+              <button class="s5-drop" id="s5Drop" type="button">
+                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 16V4"/><polyline points="7 9 12 4 17 9"/>
+                  <path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/>
+                </svg>
+                <span class="big" id="s5Big">Add a photo of your home</span>
+                <span class="small" id="s5Help">Drag it here, or tap to choose &mdash; your phone camera works fine</span>
+                <span class="rule">Front elevation &middot; daylight</span>
+              </button>
+              <input type="file" id="s5File" accept="image/*" aria-label="Photo of your home's front elevation">
+            </div>
+
+            <ul class="s5-shotlist">
+              <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Whole front of the house in frame</li>
+              <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Daylight, not evening</li>
+              <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Stand square to the facade</li>
+              <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Nothing parked in front</li>
+            </ul>
+          </div>
+
+          <div class="s5-form" id="s5Form">
+            <!-- default: no endpoint, so we ask for the photo the way
+                 that actually works today -->
+            <div id="s5Sms">
+              <h3 id="s5SmsTitle">Then send it to us</h3>
+              <p class="sub" id="s5SmsBody">Pick a photo on the left to see your own home in the frame. Then text it to <b>(909)&nbsp;312&#8209;5400</b> with your community name &mdash; our design team renders your elevation in your three closest palettes and sends them back. The itemized estimate follows separately; renders first, always.</p>
+              <a class="s5-send" href="sms:9093125400" style="text-decoration:none;">
+                <span id="s5SmsCta">Text My Photo To VIP</span>
+                <span class="s">Complimentary &middot; no obligation</span>
+              </a>
+              <p class="s5-phone">Prefer to talk it through?
+                <a href="tel:9093125400">(909)&nbsp;312&#8209;5400</a></p>
+            </div>
+
+            <!-- revealed only when an upload endpoint is configured -->
+            <form id="s5Upload" hidden novalidate>
+              <div class="s5-live">
+                <h3>Where should we send them?</h3>
+                <p class="sub">Three renders, your palette names, and the Sherwin&#8209;Williams pairing for each. No obligation, and we don't call unless you ask us to.</p>
+                <div class="s5-fields">
+                  <div class="s5-field">
+                    <label for="s5Place">Address or community</label>
+                    <input id="s5Place" name="place" type="text" autocomplete="address-line1" placeholder="Orchard Hills, Irvine">
+                    <p class="s5-hint">Community is enough &mdash; it tells us the design-review rules you are working inside.</p>
+                  </div>
+                  <div class="s5-gate" id="s5Gate">
+                    <div class="s5-fields">
+                      <div class="s5-field">
+                        <label for="s5Name">Your name</label>
+                        <input id="s5Name" name="name" type="text" autocomplete="name" placeholder="Jane Gallagher">
+                        <p class="s5-err" id="s5NameErr"></p>
+                      </div>
+                      <div class="s5-field">
+                        <label for="s5Contact">Mobile or email &mdash; whichever you prefer</label>
+                        <input id="s5Contact" name="contact" type="text" autocomplete="email" placeholder="jane@example.com">
+                        <p class="s5-err" id="s5ContactErr"></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button class="s5-send" id="s5Send" type="submit" disabled>
+                  <span id="s5SendLabel">Add a photo to continue</span>
+                  <span class="s">Renders first, itemized estimate after &mdash; no obligation</span>
+                </button>
+                <p class="s5-phone">Ready to talk instead?
+                  <a href="tel:9093125400">(909)&nbsp;312&#8209;5400</a></p>
+              </div>
+              <div class="s5-done" id="s5Done">
+                <div class="tick">
+                  <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <h3>Your elevation is with the design team</h3>
+                <p class="sub" id="s5DoneSub">We will be in touch at the address you gave us.</p>
+                <ol class="s5-next">
+                  <li>A designer checks your photo is workable &mdash; if it is not, we ask for one more before rendering anything.</li>
+                  <li>Your house is rendered in your three closest palettes, each with its Sherwin&#8209;Williams pairing.</li>
+                  <li>The renders reach you first. The itemized estimate follows separately &mdash; prep, primer, coating, trim and accents, line by line.</li>
+                </ol>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+
   </section>
 
   <section class="cream-deep" id="process">
@@ -4067,13 +4106,21 @@ setTimeout(() => {
   if (!form || !sms) return;
 
   var endpoint = window.VIP_UPLOAD_ENDPOINT || '';
-  if (!endpoint) return;             /* stay in text-message mode */
 
-  form.hidden = false;
-  sms.hidden = true;
-  form.setAttribute('action', endpoint);
-  form.setAttribute('method', 'post');
-  form.setAttribute('enctype', 'multipart/form-data');
+  /* The photo preview runs in BOTH modes. Seeing your own house land in
+     the gold plate the estate occupied is the whole emotional beat of
+     this step — withholding it until a backend exists wastes the section
+     and leaves a demo photo sitting there doing nothing.
+
+     What changes with the endpoint is only where the photo goes: posted
+     to the handler, or texted to the shop. Neither is a dead end. */
+  if (endpoint) {
+    form.hidden = false;
+    sms.hidden = true;
+    form.setAttribute('action', endpoint);
+    form.setAttribute('method', 'post');
+    form.setAttribute('enctype', 'multipart/form-data');
+  }
 
   var plate = document.getElementById('s5Plate');
   var drop  = document.getElementById('s5Drop');
@@ -4082,13 +4129,12 @@ setTimeout(() => {
   var gate  = document.getElementById('s5Gate');
   var send  = document.getElementById('s5Send');
   var label = document.getElementById('s5SendLabel');
+  if (!plate || !drop || !file) return;
   var big   = document.getElementById('s5Big');
   var help  = document.getElementById('s5Help');
   var nameI = document.getElementById('s5Name');
   var contI = document.getElementById('s5Contact');
   var url = null, hasFile = false;
-
-  drop.hidden = false;
 
   function accept(f) {
     if (!f || !/^image\//.test(f.type)) {
@@ -4103,9 +4149,23 @@ setTimeout(() => {
     hasFile = true;
     big.textContent = f.name.length > 34 ? f.name.slice(0, 31) + '…' : f.name;
     help.textContent = 'Tap to choose a different photo';
-    gate.classList.add('open');
-    send.disabled = false;
-    label.textContent = 'Send my elevation';
+    if (endpoint) {
+      gate.classList.add('open');
+      send.disabled = false;
+      label.textContent = 'Send my elevation';
+      return;
+    }
+    /* no endpoint: their house is in the frame, now hand them the action
+       they can actually finish from the phone already in their hand */
+    var t = document.getElementById('s5SmsTitle');
+    var bdy = document.getElementById('s5SmsBody');
+    var cta = document.getElementById('s5SmsCta');
+    if (t) t.textContent = 'That is the one. Now send it.';
+    if (bdy) bdy.innerHTML = 'Text this photo to <b>(909)&nbsp;312&#8209;5400</b> ' +
+      'with your community name. Our design team renders it in your three ' +
+      'closest palettes and sends them back, with the Sherwin&#8209;Williams ' +
+      'pairing for each. The itemized estimate follows separately.';
+    if (cta) cta.textContent = 'Text This Photo To VIP';
   }
 
   drop.addEventListener('click', function () { file.click(); });

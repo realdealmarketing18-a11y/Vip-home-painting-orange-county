@@ -1475,8 +1475,43 @@
   /* ============================================================
      STEP FIVE — the elevation upload
      ============================================================ */
-  .s5 { display: grid; grid-template-columns: 1.05fr .95fr; gap: 30px;
-    align-items: start; margin-top: 14px; }
+  /* Step Five is a full-width block BELOW the two-column flow, not a step
+     inside the timeline. Nested in that column it had roughly 420px to
+     work with and then split itself in two again, which crushed both
+     halves — the upload plate and the contact card ended up about 200px
+     wide each. It is also the conversion moment of the whole section, so
+     it earns the full measure. */
+  .s5-block { position: relative; max-width: 1180px; margin: 0 auto;
+    padding-top: 78px; }
+  /* the timeline rail continues down into this section and lands on the
+     fifth dot, so Step Five reads as the last beat arriving rather than a
+     detached block bolted underneath */
+  .s5-block::before { content: ''; position: absolute; left: 50%; top: 0;
+    width: 1px; height: 42px; transform: translateX(-50%);
+    background: linear-gradient(180deg, rgba(168,138,71,0), rgba(168,138,71,.6)); }
+  .s5-dot { position: absolute; left: 50%; top: 36px; transform: translateX(-50%);
+    width: 38px; height: 38px; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; background: var(--gold-shine);
+    color: var(--navy); font-family: var(--font-sans); font-size: 15px;
+    font-weight: 800; box-shadow: 0 0 0 6px var(--cream), 0 8px 20px rgba(26,31,78,.2); }
+  .s5-head { max-width: 660px; margin: 28px auto 28px; text-align: center; }
+  .s5-title { font-family: var(--font-serif); font-weight: 400;
+    font-size: clamp(26px, 3.2vw, 36px); line-height: 1.2; color: var(--navy);
+    margin: 12px 0 0; text-wrap: balance; }
+  .s5-title em { font-style: italic; color: var(--gold-deep); }
+  .s5-lede { font-family: var(--font-serif); font-style: italic;
+    font-size: 16.5px; line-height: 1.6; color: #4A4F70; margin: 13px 0 0; }
+  .s5-head .tl-num-label { text-align: center; }
+
+  /* centred, not top-aligned: the contact card is roughly a third the
+     height of the plate, and starting both at the top left it stranded
+     against a column of empty cream */
+  .s5 { display: grid; grid-template-columns: 1.08fr .92fr; gap: 36px;
+    align-items: center; }
+
+  /* [hidden] must beat the layout rules below it, or the text-message card
+     and the upload plate both render and Step Five reads as a pile. */
+  .s5 [hidden], .s5-drop[hidden] { display: none !important; }
   .s5-stage { position: relative; }
   .s5-plate { position: relative; aspect-ratio: 16/10; border-radius: 2px;
     overflow: hidden; background: var(--navy-deep);
@@ -1592,6 +1627,8 @@
     .cand-track { justify-content: flex-start; }
     .cand-card { flex-basis: 206px; }
     .cand-card:nth-child(odd), .cand-card:nth-child(even) { transform: none; }
+    .s5-block { padding-top: 32px; }
+    .s5-head { margin-bottom: 22px; }
     .s5 { grid-template-columns: 1fr; gap: 24px; }
     .s5-shotlist { grid-template-columns: 1fr; }
     .s5-form { padding: 20px 18px 18px; }
