@@ -1662,6 +1662,7 @@
     transform: none; box-shadow: none; }
   .s5-send .s { font-size: 9.5px; font-weight: 600; letter-spacing: .05em;
     text-transform: none; opacity: .8; }
+  .s5-handoff { text-align: center; margin: 10px 0 0; }
   .s5-phone { text-align: center; margin: 14px 0 0; font-size: 12.5px; color: #767B99; }
   .s5-phone a { color: var(--navy); font-weight: 700; text-decoration: none;
     border-bottom: 1px solid rgba(168,138,71,.5); }
@@ -3043,58 +3044,54 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           </div>
 
           <div class="s5-form" id="s5Form">
-            <!-- default: no endpoint, so we ask for the photo the way
-                 that actually works today -->
-            <div id="s5Sms">
-              <h3 id="s5SmsTitle">Then send it to us</h3>
-              <p class="sub" id="s5SmsBody">Pick a photo on the left to see your own home in the frame. Then text it to <b>(909)&nbsp;312&#8209;5400</b> with your community name &mdash; our design team renders your elevation in your three closest palettes and sends them back. The itemized estimate follows separately; renders first, always.</p>
-              <a class="s5-send" href="sms:9093125400" style="text-decoration:none;">
-                <span id="s5SmsCta">Text My Photo To VIP</span>
-                <span class="s">Complimentary &middot; no obligation</span>
-              </a>
-              <p class="s5-phone">Prefer to talk it through?
-                <a href="tel:9093125400">(909)&nbsp;312&#8209;5400</a></p>
-            </div>
-
-            <!-- revealed only when an upload endpoint is configured -->
-            <form id="s5Upload" hidden novalidate>
+            <!-- ONE form, both modes. The fields are collected whether or not
+                 an upload endpoint exists: with one they POST, without one
+                 they pre-fill the text message or the email so the visitor
+                 only has to attach the photo and hit send. Asking for a photo
+                 and then telling someone to go start a text from scratch
+                 threw away everything they had just done. -->
+            <form id="s5Upload" novalidate>
               <div class="s5-live">
-                <h3>Where should we send them?</h3>
-                <p class="sub">Three renders, your palette names, and the Sherwin&#8209;Williams pairing for each. No obligation, and we don't call unless you ask us to.</p>
-                <div class="s5-fields">
-                  <div class="s5-field">
-                    <label for="s5Place">Address or community</label>
-                    <input id="s5Place" name="place" type="text" autocomplete="address-line1" placeholder="Orchard Hills, Irvine">
-                    <p class="s5-hint">Community is enough &mdash; it tells us the design-review rules you are working inside.</p>
-                  </div>
-                  <div class="s5-gate" id="s5Gate">
-                    <div class="s5-fields">
-                      <div class="s5-field">
-                        <label for="s5Name">Your name</label>
-                        <input id="s5Name" name="name" type="text" autocomplete="name" placeholder="Jane Gallagher">
-                        <p class="s5-err" id="s5NameErr"></p>
-                      </div>
-                      <div class="s5-field">
-                        <label for="s5Contact">Mobile or email &mdash; whichever you prefer</label>
-                        <input id="s5Contact" name="contact" type="text" autocomplete="email" placeholder="jane@example.com">
-                        <p class="s5-err" id="s5ContactErr"></p>
-                      </div>
+                <h3 id="s5Title">Where should we send them?</h3>
+                <p class="sub" id="s5Sub">Pick a photo on the left first &mdash; you will see your own home in the frame. Then tell us where to send the renders.</p>
+
+                <div class="s5-gate" id="s5Gate">
+                  <div class="s5-fields">
+                    <div class="s5-field">
+                      <label for="s5Place">Address or community</label>
+                      <input id="s5Place" name="place" type="text" autocomplete="address-line1" placeholder="Orchard Hills, Irvine">
+                      <p class="s5-err" id="s5PlaceErr"></p>
+                      <p class="s5-hint">Community is enough &mdash; it tells us the design-review rules you are working inside.</p>
+                    </div>
+                    <div class="s5-field">
+                      <label for="s5Name">Full name</label>
+                      <input id="s5Name" name="name" type="text" autocomplete="name" placeholder="Jane Gallagher">
+                      <p class="s5-err" id="s5NameErr"></p>
+                    </div>
+                    <div class="s5-field">
+                      <label for="s5Contact">Cell phone</label>
+                      <input id="s5Contact" name="contact" type="tel" autocomplete="tel" placeholder="Your mobile number">
+                      <p class="s5-err" id="s5ContactErr"></p>
+                      <p class="s5-hint">An email address works too, if you would rather have them in writing.</p>
                     </div>
                   </div>
                 </div>
+
                 <button class="s5-send" id="s5Send" type="submit" disabled>
                   <span id="s5SendLabel">Add a photo to continue</span>
-                  <span class="s">Renders first, itemized estimate after &mdash; no obligation</span>
+                  <span class="s" id="s5SendSub">Renders first, itemized estimate after &mdash; no obligation</span>
                 </button>
-                <p class="s5-phone">Ready to talk instead?
+                <p class="s5-hint s5-handoff" id="s5Handoff" hidden></p>
+                <p class="s5-phone">Prefer to talk it through?
                   <a href="tel:9093125400">(909)&nbsp;312&#8209;5400</a></p>
               </div>
+
               <div class="s5-done" id="s5Done">
                 <div class="tick">
                   <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
                 </div>
-                <h3>Your elevation is with the design team</h3>
-                <p class="sub" id="s5DoneSub">We will be in touch at the address you gave us.</p>
+                <h3 id="s5DoneTitle">Your elevation is on its way</h3>
+                <p class="sub" id="s5DoneSub">We will be in touch at the number you gave us.</p>
                 <ol class="s5-next">
                   <li>A designer checks your photo is workable &mdash; if it is not, we ask for one more before rendering anything.</li>
                   <li>Your house is rendered in your three closest palettes, each with its Sherwin&#8209;Williams pairing.</li>
@@ -4096,45 +4093,44 @@ setTimeout(() => {
 })();
 
 /* ===== Step Five — elevation intake =====
-   Ships in text-message mode. The upload block only appears when an
-   endpoint is configured, because an upload box that posts nowhere on a
-   live page is worse than no upload box at all. See the markup comment
-   and generator/viz-render/VIZ-RENDER.md. */
+   One flow, two destinations. The three fields are collected either way:
+   with window.VIP_UPLOAD_ENDPOINT set they POST to the handler; without
+   one they pre-fill a text message (phone) or an email (desktop) so the
+   visitor only has to attach the photo they already picked and hit send.
+
+   The earlier build hid the fields when no endpoint existed, which meant
+   someone chose a photo of their house and was then told to go start a
+   text from scratch — throwing away everything they had just done. */
 (function () {
-  var form = document.getElementById('s5Upload');
-  var sms  = document.getElementById('s5Sms');
-  if (!form || !sms) return;
-
-  var endpoint = window.VIP_UPLOAD_ENDPOINT || '';
-
-  /* The photo preview runs in BOTH modes. Seeing your own house land in
-     the gold plate the estate occupied is the whole emotional beat of
-     this step — withholding it until a backend exists wastes the section
-     and leaves a demo photo sitting there doing nothing.
-
-     What changes with the endpoint is only where the photo goes: posted
-     to the handler, or texted to the shop. Neither is a dead end. */
-  if (endpoint) {
-    form.hidden = false;
-    sms.hidden = true;
-    form.setAttribute('action', endpoint);
-    form.setAttribute('method', 'post');
-    form.setAttribute('enctype', 'multipart/form-data');
-  }
-
+  var form  = document.getElementById('s5Upload');
   var plate = document.getElementById('s5Plate');
   var drop  = document.getElementById('s5Drop');
   var file  = document.getElementById('s5File');
+  if (!form || !plate || !drop || !file) return;
+
   var mine  = document.getElementById('s5Mine');
   var gate  = document.getElementById('s5Gate');
   var send  = document.getElementById('s5Send');
   var label = document.getElementById('s5SendLabel');
-  if (!plate || !drop || !file) return;
+  var sendSub = document.getElementById('s5SendSub');
+  var handoff = document.getElementById('s5Handoff');
   var big   = document.getElementById('s5Big');
   var help  = document.getElementById('s5Help');
-  var nameI = document.getElementById('s5Name');
-  var contI = document.getElementById('s5Contact');
+  var placeI = document.getElementById('s5Place');
+  var nameI  = document.getElementById('s5Name');
+  var contI  = document.getElementById('s5Contact');
+
+  var PHONE = '9093125400';
+  var EMAIL = 'Contact@VIPHomePainting.com';
+  var endpoint = window.VIP_UPLOAD_ENDPOINT || '';
+  var canText = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
   var url = null, hasFile = false;
+
+  if (endpoint) {
+    form.setAttribute('action', endpoint);
+    form.setAttribute('method', 'post');
+    form.setAttribute('enctype', 'multipart/form-data');
+  }
 
   function accept(f) {
     if (!f || !/^image\//.test(f.type)) {
@@ -4149,23 +4145,19 @@ setTimeout(() => {
     hasFile = true;
     big.textContent = f.name.length > 34 ? f.name.slice(0, 31) + '…' : f.name;
     help.textContent = 'Tap to choose a different photo';
-    if (endpoint) {
-      gate.classList.add('open');
-      send.disabled = false;
-      label.textContent = 'Send my elevation';
-      return;
+    gate.classList.add('open');
+    send.disabled = false;
+    label.textContent = endpoint ? 'Send my elevation'
+                      : canText  ? 'Text my photo and details'
+                                 : 'Email my photo and details';
+    if (!endpoint) {
+      handoff.hidden = false;
+      handoff.textContent = canText
+        ? 'Your message opens already written — just attach this photo and hit send.'
+        : 'Your email opens already written — just attach this photo and hit send.';
     }
-    /* no endpoint: their house is in the frame, now hand them the action
-       they can actually finish from the phone already in their hand */
-    var t = document.getElementById('s5SmsTitle');
-    var bdy = document.getElementById('s5SmsBody');
-    var cta = document.getElementById('s5SmsCta');
-    if (t) t.textContent = 'That is the one. Now send it.';
-    if (bdy) bdy.innerHTML = 'Text this photo to <b>(909)&nbsp;312&#8209;5400</b> ' +
-      'with your community name. Our design team renders it in your three ' +
-      'closest palettes and sends them back, with the Sherwin&#8209;Williams ' +
-      'pairing for each. The itemized estimate follows separately.';
-    if (cta) cta.textContent = 'Text This Photo To VIP';
+    document.getElementById('s5Title').textContent = 'That is the one. Where do we send them?';
+    placeI.focus({ preventScroll: true });
   }
 
   drop.addEventListener('click', function () { file.click(); });
@@ -4190,24 +4182,61 @@ setTimeout(() => {
     document.getElementById(errId).classList.remove('on');
   }
 
-  form.addEventListener('submit', function (e) {
-    if (!hasFile) { e.preventDefault(); return; }
-    var ok = true;
-    clear(nameI, 's5NameErr'); clear(contI, 's5ContactErr');
-    if (!nameI.value.trim()) { fail(nameI, 's5NameErr', 'We need a name to put on the renders.'); ok = false; }
+  function validate() {
+    var ok = true, first = null;
+    [[placeI, 's5PlaceErr'], [nameI, 's5NameErr'], [contI, 's5ContactErr']]
+      .forEach(function (pair) { clear(pair[0], pair[1]); });
+
+    if (!placeI.value.trim()) {
+      fail(placeI, 's5PlaceErr', 'Your community or address — it tells us the design-review rules.');
+      ok = false; first = first || placeI;
+    }
+    if (!nameI.value.trim()) {
+      fail(nameI, 's5NameErr', 'We need a name to put on the renders.');
+      ok = false; first = first || nameI;
+    }
     var c = contI.value.trim();
     var looksEmail = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(c);
-    var looksPhone = /^[\d\s()+.-]{10,}$/.test(c);
-    if (!c) { fail(contI, 's5ContactErr', 'We need somewhere to send the renders.'); ok = false; }
-    else if (!looksEmail && !looksPhone) {
-      fail(contI, 's5ContactErr', 'That does not look like an email address or a phone number — check it over.');
-      ok = false;
+    var looksPhone = (c.replace(/\D/g, '').length >= 10);
+    if (!c) {
+      fail(contI, 's5ContactErr', 'We need somewhere to send the renders.');
+      ok = false; first = first || contI;
+    } else if (!looksEmail && !looksPhone) {
+      fail(contI, 's5ContactErr', 'That does not look like a cell number or an email address — check it over.');
+      ok = false; first = first || contI;
     }
-    if (!ok) {
-      e.preventDefault();
-      (nameI.getAttribute('aria-invalid') ? nameI : contI).focus();
-    }
-    /* valid: let it post to the configured endpoint */
+    if (first) first.focus();
+    return ok;
+  }
+
+  function message() {
+    return 'Hi VIP — I would like my home visualized.\n\n' +
+      'Name: ' + nameI.value.trim() + '\n' +
+      'Community or address: ' + placeI.value.trim() + '\n' +
+      'Best contact: ' + contI.value.trim() + '\n\n' +
+      'Photo of the front elevation is attached.';
+  }
+
+  form.addEventListener('submit', function (e) {
+    if (!hasFile) { e.preventDefault(); return; }
+    if (!validate()) { e.preventDefault(); return; }
+    if (endpoint) return;               /* let it post to the handler */
+
+    e.preventDefault();
+    var body = encodeURIComponent(message());
+    window.location.href = canText
+      ? 'sms:' + PHONE + '?&body=' + body
+      : 'mailto:' + EMAIL + '?subject=' +
+        encodeURIComponent('Custom Visualization request — ' + nameI.value.trim()) +
+        '&body=' + body;
+
+    document.getElementById('s5DoneTitle').textContent =
+      canText ? 'Your message is ready' : 'Your email is ready';
+    document.getElementById('s5DoneSub').innerHTML = canText
+      ? 'Attach the photo you picked and hit send. If nothing opened, text it to <b>(909)&nbsp;312&#8209;5400</b>.'
+      : 'Attach the photo you picked and hit send. If nothing opened, email it to <b>' + EMAIL + '</b>.';
+    form.classList.add('sent');
+    document.getElementById('s5Done').classList.add('on');
   });
 })();
 </script>
