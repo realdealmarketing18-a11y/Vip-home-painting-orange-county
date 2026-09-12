@@ -28,11 +28,16 @@ body{margin:0;font-family:var(--font-sans);background:var(--navy-deep);color:var
 .sweep-plate.before{z-index:1}
 .sweep-plate.after{z-index:2;clip-path:inset(0 0 0 50%)}
 
-/* PLACEHOLDER ONLY — stands in for Fabian's generated BEFORE frame.
-   Same photo, aged: chalky, sun-bleached, low contrast. Delete the
-   filter the moment the real before image lands. */
+/* PLACEHOLDER ONLY — stands in for the generated BEFORE frame.
+   Same photo pushed to dated beige-and-brown: sepia flattens the whole
+   elevation to one tired tan, brightness drops it into weathering.
+   Delete .is-placeholder the moment the real before image lands. */
 .sweep-plate.before.is-placeholder{
-  filter:saturate(.38) brightness(.80) contrast(.90) sepia(.22)}
+  filter:sepia(.62) hue-rotate(-14deg) saturate(.72) brightness(.74) contrast(.92)}
+.sweep-plate.before.is-placeholder::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(170deg,#6e6347 0%,#5c5642 60%,#474437 100%);
+  mix-blend-mode:multiply;opacity:.34}
 
 /* ---- the seam: a filament of light, not a slider ---- */
 .sweep-seam{position:absolute;top:0;bottom:0;left:50%;width:1px;z-index:6;
