@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>VIP — Hero Before/After Sweep (design demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1A1F4E; --navy-deep:#14183A; --cream:#F5EFE2;
+  --gold:#C9A961; --gold-bright:#E0C078; --gold-deep:#A88A47;
+  --gold-shine-b:linear-gradient(180deg,#F1D998 0%,#D4AF6A 50%,#B5904F 100%);
+  --font-serif:'Fraunces',Georgia,serif; --font-sans:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font-sans);background:var(--navy-deep);color:var(--cream)}
+
+/* ============================================================
+   THE SWEEP PLATE — shared skin, used by hero + case studies
+   ============================================================ */
+.sweep{position:relative;overflow:hidden;background:var(--navy-deep);
+  user-select:none;-webkit-user-select:none}
+.sweep-plate{position:absolute;inset:0;background-size:cover;
+  background-position:var(--focal,center 38%)}
+.sweep-plate.before{z-index:1}
+.sweep-plate.after{z-index:2;clip-path:inset(0 0 0 50%)}
+
+/* PLACEHOLDER ONLY — stands in for Fabian's generated BEFORE frame.
+   Same photo, aged: chalky, sun-bleached, low contrast. Delete the
+   filter the moment the real before image lands. */
+.sweep-plate.before.is-placeholder{
+  filter:saturate(.38) brightness(.80) contrast(.90) sepia(.22)}
+
+/* ---- the seam: a filament of light, not a slider ---- */
+.sweep-seam{position:absolute;top:0;bottom:0;left:50%;width:1px;z-index:6;
+  transform:translateX(-50%);pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,0) 0%,
+    rgba(255,248,230,.95) 12%,rgba(255,255,255,1) 50%,
+    rgba(255,248,230,.95) 88%,rgba(255,255,255,0) 100%)}
+.sweep-seam::before{content:'';position:absolute;top:0;bottom:0;left:50%;
+  width:120px;transform:translateX(-50%);opacity:0;
+  transition:opacity 500ms ease;
+  background:linear-gradient(90deg,rgba(201,169,97,0) 0%,
+    rgba(224,192,120,.30) 45%,rgba(255,245,220,.42) 50%,
+    rgba(224,192,120,.30) 55%,rgba(201,169,97,0) 100%)}
+.sweep.is-sweeping .sweep-seam::before{opacity:1}
+.sweep.is-sweeping .sweep-seam{box-shadow:0 0 40px 5px rgba(224,192,120,.55)}
+/* drag turned off (hero): the plate performs, it isn't operated */
+.sweep.no-drag .sweep-knob,.sweep.no-drag .sweep-rail{display:none}
+
+/* ---- the knob: hidden during the pass, offered afterwards ---- */
+.sweep-knob{position:absolute;top:50%;left:50%;z-index:7;
+  transform:translate(-50%,-50%) scale(.6);opacity:0;pointer-events:none;
+  width:56px;height:56px;border-radius:50%;background:var(--gold-shine-b);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 0 5px rgba(201,169,97,.18),0 12px 28px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.4);
+  transition:opacity 620ms cubic-bezier(.22,1,.36,1),
+    transform 620ms cubic-bezier(.22,1,.36,1)}
+.sweep.is-live .sweep-knob{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.sweep-knob svg{width:22px;height:22px;color:#fff}
+.sweep-rail{position:absolute;inset:0;z-index:5;cursor:ew-resize;touch-action:none;
+  outline:none}
+.sweep.is-sweeping .sweep-rail{cursor:default}
+.sweep-rail:focus-visible{box-shadow:inset 0 0 0 2px var(--gold-bright)}
+
+/* ---- magazine caption plate ---- */
+.sweep-fig{position:absolute;left:0;right:0;bottom:0;z-index:8;
+  display:flex;align-items:baseline;justify-content:center;gap:12px;
+  padding:0 0 26px;pointer-events:none;text-align:center}
+.sweep-fig .no{font-family:var(--font-sans);font-size:9.5px;font-weight:800;
+  letter-spacing:.30em;text-transform:uppercase;color:var(--gold-bright);
+  text-shadow:0 1px 10px rgba(10,12,30,.85),0 0 24px rgba(10,12,30,.6)}
+.sweep-fig .cap{font-family:var(--font-serif);font-style:italic;
+  font-size:15px;color:rgba(245,239,226,.94);
+  text-shadow:0 1px 12px rgba(10,12,30,.9),0 0 30px rgba(10,12,30,.7)}
+
+/* ============================================================
+   HERO — same bones as the live page, video plate swapped out
+   ============================================================ */
+.hero-cinema{position:relative;min-height:100svh;overflow:hidden;
+  background:var(--navy-deep);display:flex;flex-direction:column}
+.hero-sweep{position:absolute;inset:0;z-index:0}
+/* In the hero the folio sits top-left inside the gold frame — the trust
+   strip owns the bottom edge, so a bottom caption gets buried. */
+.hero-sweep .sweep-fig{top:44px;bottom:auto;left:46px;right:auto;
+  justify-content:flex-start;flex-direction:column;align-items:flex-start;
+  gap:5px;padding:0;text-align:left;z-index:12;max-width:min(46%,420px)}
+.hero-sweep .sweep-fig .cap{font-size:14px;line-height:1.45;
+  transition:opacity 380ms ease}
+/* the house dims the lights for the reveal, then comes back up */
+.hero-cinema:has(.sweep.is-sweeping) .hero-scrim{opacity:.70}
+.hero-scrim{transition:opacity 900ms cubic-bezier(.22,1,.36,1)}
+.hero-scrim{position:absolute;inset:0;z-index:9;pointer-events:none;
+  background:linear-gradient(180deg,rgba(20,24,56,.80) 0%,
+    rgba(26,31,78,.34) 42%,rgba(20,24,56,.88) 100%)}
+.hero-goldframe{position:absolute;inset:20px;pointer-events:none;z-index:10;
+  border:1px solid rgba(201,169,97,.45)}
+.hero-stack{position:relative;z-index:11;flex:1;display:flex;
+  flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:96px 24px 32px;max-width:1000px;margin:0 auto}
+.hero-fleuron{color:var(--gold);font-size:20px;margin-bottom:18px}
+.eyebrow{font-family:var(--font-sans);font-size:10.5px;font-weight:800;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--gold);
+  display:inline-flex;align-items:center;gap:14px}
+.eyebrow::before,.eyebrow::after{content:'';width:34px;height:1px;
+  background:rgba(201,169,97,.55)}
+.pill-wrap{display:flex;justify-content:center;margin:20px 0 0}
+.avatar-pill{display:inline-flex;align-items:center;gap:12px;
+  border:1px solid rgba(201,169,97,.4);background:rgba(20,24,56,.42);
+  backdrop-filter:blur(6px);border-radius:999px;padding:7px 20px 7px 7px}
+.avatar-pill .ph{width:44px;height:44px;border-radius:50%;overflow:hidden;
+  flex-shrink:0;background:rgba(245,239,226,.12)}
+.avatar-pill .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.avatar-pill .name{font-family:var(--font-serif);font-size:17px;font-weight:600;
+  color:var(--cream);line-height:1.1;text-align:left}
+.avatar-pill .sub-line{font-size:10.5px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(245,239,226,.65);margin-top:3px;text-align:left}
+.ttl-hero{font-family:var(--font-serif);font-weight:400;color:var(--cream);
+  font-size:clamp(32px,4.6vw,62px);line-height:1.1;letter-spacing:-.01em;
+  margin:22px 0 0;text-shadow:0 2px 30px rgba(0,0,0,.45)}
+.ttl-hero .gold{color:var(--gold-bright);font-style:italic}
+.hero-kicker{margin-top:14px}
+.hero-cta-wrap{display:flex;flex-direction:column;align-items:center;
+  margin-top:30px;gap:14px}
+.btn-gold{display:inline-flex;align-items:center;justify-content:center;
+  background:var(--gold-shine-b);color:var(--navy);text-decoration:none;
+  font-family:var(--font-sans);font-weight:800;font-size:13px;
+  letter-spacing:.14em;text-transform:uppercase;padding:20px 32px;
+  min-width:380px;max-width:100%;border-radius:2px;
+  box-shadow:0 14px 34px rgba(0,0,0,.38);
+  transition:transform 240ms cubic-bezier(.22,1,.36,1)}
+.btn-gold:hover{transform:translateY(-2px)}
+.btn-gold .col-2{display:flex;flex-direction:column;gap:5px}
+.btn-gold .sub{font-size:10px;font-weight:600;letter-spacing:.10em;
+  text-transform:none;opacity:.78}
+.hero-note{font-family:var(--font-serif);font-style:italic;font-size:13px;
+  color:rgba(245,239,226,.65);margin:0;max-width:440px}
+.film-link{font-family:var(--font-sans);font-size:10.5px;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:rgba(245,239,226,.68);
+  text-decoration:none;border-bottom:1px solid rgba(201,169,97,.45);
+  padding-bottom:3px;display:inline-flex;align-items:center;gap:9px;
+  transition:color 240ms,border-color 240ms}
+.film-link:hover{color:var(--gold-bright);border-color:var(--gold-bright)}
+.film-link svg{width:11px;height:11px;fill:currentColor}
+.replay{background:none;border:0;cursor:pointer;font-family:var(--font-serif);
+  font-style:italic;font-size:13px;color:rgba(245,239,226,.55);
+  text-decoration:underline;text-underline-offset:4px;
+  text-decoration-color:rgba(201,169,97,.5)}
+.replay:hover{color:var(--gold-bright)}
+
+.hero-strip{position:relative;z-index:11;display:grid;
+  grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(201,169,97,.3);
+  padding:22px 40px 30px;max-width:1180px;margin:0 auto;width:100%}
+.hero-strip .cell{display:flex;flex-direction:column;align-items:center;
+  text-align:center;gap:7px;padding:0 18px}
+.hero-strip .cell+.cell{border-left:1px solid rgba(201,169,97,.3)}
+.hero-strip .lb{color:var(--cream);font-weight:600;font-size:12.5px;
+  letter-spacing:.08em}
+.hero-strip .sb{font-family:var(--font-serif);font-style:italic;font-size:12px;
+  color:rgba(245,239,226,.6)}
+.hero-strip svg{width:26px;height:26px;stroke:var(--gold);fill:none;stroke-width:1.4}
+.hero-strip .strip-badge{width:66px;height:66px;object-fit:contain}
+
+/* ============================================================
+   DEMO CHROME — everything below is scaffolding, not the design
+   ============================================================ */
+.note{background:var(--cream);color:var(--navy);padding:56px 24px}
+.note .in{max-width:820px;margin:0 auto}
+.note h2{font-family:var(--font-serif);font-weight:400;font-size:34px;margin:0 0 6px}
+.note h3{font-family:var(--font-sans);font-size:10.5px;font-weight:800;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--gold-deep);
+  margin:34px 0 10px}
+.note p,.note li{font-size:15.5px;line-height:1.72}
+.note p,.note li{color:#3a3f5e;margin:0 0 10px}
+.note li{margin-bottom:8px}
+.note code{background:rgba(26,31,78,.07);padding:2px 6px;border-radius:2px;
+  font-size:13px}
+.case{background:var(--cream);padding:0 24px 72px}
+.case .in{max-width:820px;margin:0 auto}
+.case .sweep{aspect-ratio:4/3;border-radius:2px;
+  border:1px solid rgba(201,169,97,.5);
+  box-shadow:0 0 0 8px #fff,0 0 0 9px rgba(201,169,97,.5),
+    0 30px 70px rgba(26,31,78,.22)}
+.case .sweep-fig .cap{color:#fff}
+
+@media (max-width:860px){
+  .hero-goldframe{inset:12px}
+  /* Portrait crops in tight on the people. Pull the focal point up so the
+     house — the thing being compared — stays in frame. */
+  .hero-sweep .sweep-plate{--focal:center 26%}
+  .hero-sweep .sweep-fig{top:26px;left:26px;max-width:70%}
+  .hero-sweep .sweep-fig .no{display:none}
+  .hero-sweep .sweep-fig .cap{font-size:12.5px}
+  .hero-strip{grid-template-columns:repeat(2,1fr);gap:22px 0}
+  .hero-strip .cell:nth-child(3){border-left:none}
+  .btn-gold{min-width:0;width:100%}
+  .sweep-knob{width:46px;height:46px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ THE REDESIGNED HERO ============ -->
+<section class="hero-cinema" id="hero">
+
+  <!-- The plate. Two stills of one house, one camera, clients in both. -->
+  <div class="sweep hero-sweep no-drag" id="heroSweep"
+       data-sweep data-sweep-auto="once" data-sweep-drag="off"
+       data-sweep-hold="1200" data-sweep-dur="2800"
+       data-cap-before="The Gallaghers, the morning we arrived."
+       data-cap-after="The same doorstep, five days later.">
+    <div class="sweep-plate before is-placeholder"
+         style="background-image:url('../orange-county-sales-page/video/hero-poster.jpg')"></div>
+    <div class="sweep-plate after" data-sweep-after
+         style="background-image:url('../orange-county-sales-page/video/hero-poster.jpg')"></div>
+    <div class="sweep-seam" data-sweep-seam></div>
+    <div class="sweep-fig">
+      <span class="no">Fig. 01 &mdash; Pelican Hill</span>
+      <span class="cap" data-sweep-cap></span>
+    </div>
+  </div>
+
+  <div class="hero-scrim"></div>
+  <div class="hero-goldframe" aria-hidden="true"></div>
+
+  <div class="hero-stack">
+    <div class="hero-fleuron" aria-hidden="true">&#10087;</div>
+    <div class="eyebrow">Orange County Luxury Home Painting</div>
+
+    <div class="pill-wrap">
+      <div class="avatar-pill">
+        <div class="ph"><img src="../orange-county-sales-page/assets/avatar-gallagher.jpg"
+             alt="The Gallagher Family" width="480" height="480"></div>
+        <div>
+          <div class="name">The Gallagher Family</div>
+          <div class="sub-line">Pelican Hill, Newport Beach</div>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="ttl-hero">Discover How VIP Home Painting
+      <span class="gold">Transformed the Gallagher Family&rsquo;s
+      Newport&nbsp;Beach Estate</span> in Just 5 Days</h1>
+    <div class="hero-kicker eyebrow">With Custom Color Consultation</div>
+
+    <div class="hero-cta-wrap">
+      <a href="#quote" class="btn-gold">
+        <span class="col-2">
+          <span>Claim Complimentary Color Consultation</span>
+          <span class="sub">Irresistible Painting Estimates Included</span>
+        </span>
+      </a>
+      <p class="hero-note">Save $1,000&rsquo;s on expensive consultants and avoid
+        common home painting mistakes.</p>
+      <button class="replay" id="replayBtn">See the transformation again</button>
+      <!-- The film doesn't die, it demotes. Promote it back to a play
+           gate the day the commercial is real. -->
+      <a class="film-link" href="#film">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>Watch the Film</a>
+    </div>
+  </div>
+
+  <div class="hero-strip">
+    <div class="cell">
+      <img class="strip-badge" src="../orange-county-sales-page/assets/badges/badge-color-schemes.png" alt="Custom color schemes badge">
+      <div class="lb">Custom Visualization</div><div class="sb">See it before we paint</div>
+    </div>
+    <div class="cell">
+      <img class="strip-badge" src="../orange-county-sales-page/assets/badges/badge-warranty.png" alt="2-year warranty badge">
+      <div class="lb">2-Year Warranty</div><div class="sb">No questions asked</div>
+    </div>
+    <div class="cell">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.4 9-8 10-4.6-1-8-5-8-10V6l8-4z"/><polyline points="9 12 11 14 15 10"/></svg>
+      <div class="lb">Licensed &amp; Insured</div><div class="sb">Every crew, every job</div>
+    </div>
+    <div class="cell">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <div class="lb">5-Day Transformations</div><div class="sb">Concierge scheduling</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SAME ENGINE, CASE-STUDY SIZE ============ -->
+<div class="note"><div class="in">
+  <h2>The same plate, one size down</h2>
+  <p>Scroll it into view. It waits, performs once, then hands you the handle &mdash;
+     identical behaviour to the hero, so every before/after on the site reads as
+     one system.</p>
+</div></div>
+<div class="case"><div class="in">
+  <div class="sweep" data-sweep data-sweep-auto="once" data-sweep-hold="700" data-sweep-dur="2400"
+       data-cap-before="As we found it" data-cap-after="As we left it">
+    <div class="sweep-plate before is-placeholder"
+         style="background-image:url('../orange-county-sales-page/video/hero-poster.jpg')"></div>
+    <div class="sweep-plate after" data-sweep-after
+         style="background-image:url('../orange-county-sales-page/video/hero-poster.jpg')"></div>
+    <div class="sweep-rail" data-sweep-rail></div>
+    <div class="sweep-seam" data-sweep-seam>
+      <div class="sweep-knob">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+          <polyline points="9 18 15 12 9 6" transform="translate(12 0)"/>
+        </svg>
+      </div>
+    </div>
+    <div class="sweep-fig"><span class="no">Fig. 02</span>
+      <span class="cap" data-sweep-cap></span></div>
+  </div>
+</div></div>
+
+<div class="note"><div class="in">
+  <h3>What you are looking at</h3>
+  <p><strong>Both plates are the same photo right now.</strong> The left-hand one
+     runs through a chalky, sun-bleached filter so you can judge the
+     <em>movement</em> without waiting on Higgsfield. Drop your real pair in and
+     delete <code>is-placeholder</code> &mdash; nothing else changes.</p>
+  <h3>The one rule that makes or breaks it</h3>
+  <p>The two frames must line up <strong>pixel for pixel</strong>. Same camera, same
+     lens, same sun, the family standing in the same spot. Generate the
+     <em>before</em> first, then make the <em>after</em> by editing that exact frame
+     &mdash; never from a fresh prompt. A shadow that jumps is the tell that kills
+     the illusion.</p>
+</div></div>
+
+<script src="sweep-engine.js"></script>
+<script>
+  document.getElementById('replayBtn').addEventListener('click', function () {
+    var h = document.getElementById('heroSweep');
+    if (h.sweepPlay) h.sweepPlay();
+  });
+</script>
+</body>
+</html>
