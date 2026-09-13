@@ -304,6 +304,30 @@ gap we have** — educational posts are the only thing earning AI citations in t
   clickstream; "orchard hills house painters" is below the measurement floor of every tool
   that exists. Judge community pages on Search Console impressions, never on a keyword tool.
 
+### F-17 · A CSS override that "should win" and doesn't, twice in one hour
+Tightening the hero's fold budget, two rules were written, shipped and measured — and
+neither did anything. Both were the same mistake in different clothes.
+
+**a) Later beats earlier, so put the override last.** A `@media (max-height: 900px)` block
+was inserted *above* the `.hero-beats` rules. The later `@media (max-width: 600px)` block
+set the same properties at equal specificity and silently cancelled it. This is the
+`page.css` gotcha in `CLAUDE.md` happening inside one file. **An override block goes last
+in the sheet, and says in a comment that it must stay there.**
+
+**b) `.a .b + .c` is three selectors, not two.** `.hero-cinema .ttl-hero { margin-top: 6px }`
+lost to `.hero-cinema .pill-wrap-lede + .ttl-hero { margin-top: 12px }` — an adjacent-sibling
+combinator adds nothing to specificity but the extra class does. The measured margin was
+neither value in either rule, which is the tell. **When a computed value matches no rule you
+wrote, grep every selector ending in that class before touching numbers.**
+
+**The rule that catches both:** never claim a spacing change works because the CSS looks
+right. Read the computed box back out of a real browser at every target width. Six widths
+(1440x900, 1280x800, 834x1112, 768x1024, 390x844, 360x780) took one script and found four
+regressions that reading the diff did not.
+
+**Also learned, and unrelated to cascade:** `transform: scale()` does not shrink a layout
+box. It was used to buy back pill height on phones and bought back exactly zero.
+
 ## OPEN QUESTIONS — need Fabian, block on these if they matter
 
 1. ~~Is the 120-review claim real?~~ **ANSWERED 2026-07-27: NO.** VIP has 9 Google reviews,

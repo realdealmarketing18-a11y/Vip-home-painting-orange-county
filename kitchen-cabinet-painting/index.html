@@ -1682,9 +1682,13 @@
 
   @media (max-width: 860px) {
     .hr-inset { margin-top: 16px; }
-    .hr-tray { flex-wrap: wrap; border-radius: 14px; }
-    .hr-tray-label { width: 100%; text-align: center; padding-top: 2px; }
-    .hr-tray-cta { width: 100%; text-align: center; }
+    /* One row, never three. A wrapped tray costs ~68px of hero height on a
+       768 portrait tablet and that is the whole margin the CTA has. */
+    .hero-cinema .hero-stack, .hr-inset, .hr-tray { min-width: 0; }
+    .hr-tray { flex-wrap: nowrap; border-radius: 14px; padding: 8px 9px; }
+    .hr-tray-label { display: none; }
+    .hr-tray-cta { width: auto; }
+    .hr-thumbs { justify-content: flex-start; }
     .hr-knob { width: 36px; height: 36px; }
     .cand-band { padding: 56px 20px 62px; }
     .cand-track { justify-content: flex-start; }
@@ -2241,10 +2245,91 @@
     justify-content: center; width: 22px; height: 22px; border-radius: 50%;
     background: var(--gold-shine); color: var(--navy);
     font-size: 11px; font-weight: 800; letter-spacing: 0; flex: none; }
+  /* On a phone the three beats cannot sit on one line — "THEY VISUALIZED IT"
+     alone runs ~105px at the smallest size the type stays legible at, so a
+     wrapping row orphans the third beat on its own centred line and reads
+     as a broken list. Stacked, they read as what they are: a tracker the
+     reel walks down. Costs ~14px against the fold versus the wrap. */
   @media (max-width: 600px) {
-    .hero-beats { gap: 8px 14px; margin-top: 11px; }
-    .hero-beats li { font-size: 9.5px; letter-spacing: .12em; gap: 7px; }
+    .hero-beats { flex-direction: column; align-items: flex-start;
+      gap: 5px; margin-top: 11px; width: max-content;
+      margin-left: auto; margin-right: auto; }
+    .hero-beats li { font-size: 10px; letter-spacing: .12em; gap: 8px; }
     .hero-beats .n { width: 19px; height: 19px; font-size: 10px; }
+  }
+
+  /* The beats stop being a second numbered list and become the reel's own
+     progress track: the reel script adds .is-tracked when it takes control,
+     and each beat lights as the sweep reaches it. Without JS, or with
+     reduced motion, .is-tracked is never added and all three read finished
+     exactly as they do now — the rules below are additive on purpose. */
+  .hero-beats li { transition: opacity .45s ease, color .45s ease; }
+  .hero-beats .n { transition: transform .45s cubic-bezier(.2,.9,.25,1),
+    box-shadow .45s ease, background .45s ease; }
+  .hero-beats.is-tracked li { opacity: .38; }
+  .hero-beats.is-tracked li.done { opacity: .72; }
+  .hero-beats.is-tracked li.now  { opacity: 1; }
+  .hero-beats.is-tracked li.now .n { transform: scale(1.18);
+    box-shadow: 0 0 0 4px rgba(201,169,97,.22), 0 0 22px 3px rgba(224,192,120,.5); }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-beats li, .hero-beats .n { transition: none; }
+  }
+
+  /* SHORT-VIEWPORT FOLD BUDGET — must stay the LAST hero block in this
+     sheet. It overrides equal-specificity media rules above it (the phone
+     .hero-beats gaps, the tray padding), and a plain later rule wins, so
+     moving it up silently cancels half of it.
+
+     Measured, not guessed. Before: the CTA sat 94px under the fold at
+     1280x800 and 70px under at 360x780. Spacing and plate size only — no
+     copy and no type-scale changes, so the hero reads the same, tighter. */
+  @media (max-height: 900px) {
+    .hero-cinema .hero-stack { padding-top: 14px; padding-bottom: 8px; }
+    /* .pill-wrap-lede + .ttl-hero is three classes deep and set everywhere
+       above; a two-class rule here loses to it silently. */
+    .hero-cinema .ttl-hero,
+    .hero-cinema .pill-wrap-lede + .ttl-hero { margin-top: 6px; }
+    .hero-kicker-lede { margin-top: 6px; }
+    .hero-beats { margin-top: 8px; }
+    .hr-inset { margin-top: 8px; width: min(370px, 100%); }
+    .hr-tray { margin-top: 7px; padding: 6px 8px; }
+    .hr-thumbs button { flex: 0 0 38px; height: 38px; }
+    .hero-cinema .hero-cta-wrap { margin-top: 8px; }
+    .hero-cinema .hero-note { margin-top: 5px; }
+  }
+  @media (max-height: 820px) and (min-width: 601px) {
+    .hr-inset { width: min(348px, 100%); }
+  }
+  @media (max-height: 900px) and (max-width: 600px) {
+    .hero-cinema .hero-stack { padding-top: 8px; }
+    .hero-cinema .ttl-hero,
+    .hero-cinema .pill-wrap-lede + .ttl-hero { margin-top: 4px; }
+    .hero-kicker-lede { margin-top: 5px; }
+    .hero-beats { gap: 3px; margin-top: 7px; }
+    .hero-beats .n { width: 17px; height: 17px; font-size: 9.5px; }
+    .hr-inset { margin-top: 7px; width: 100%; }
+    .hr-tray { margin-top: 6px; padding: 5px 7px; }
+    .hr-thumbs button { flex: 0 0 34px; height: 34px; }
+    .hero-cinema .hero-cta-wrap { margin-top: 7px; }
+    .hero-cinema .hero-cta-wrap .btn-gold { padding-top: 12px; padding-bottom: 12px; }
+  }
+
+  /* The tightest real device we target: 360x780 (Galaxy-class). Same content,
+     last 13px of air removed. Anything narrower or shorter than this and the
+     CTA goes under — that is the floor, and it is recorded here so the next
+     person does not rediscover it. */
+  @media (max-height: 800px) and (max-width: 380px) {
+    .hero-cinema .hero-stack { padding-top: 4px; }
+    .hero-cinema .ttl-hero,
+    .hero-cinema .pill-wrap-lede + .ttl-hero { margin-top: 2px; }
+    .hero-kicker-lede { margin-top: 3px; }
+    .hero-beats { gap: 2px; margin-top: 5px; }
+    .hero-beats .n { width: 16px; height: 16px; font-size: 9px; }
+    .hr-inset { margin-top: 5px; }
+    .hr-tray { margin-top: 4px; padding: 4px 6px; }
+    .hr-thumbs button { flex: 0 0 30px; height: 30px; }
+    .hero-cinema .hero-cta-wrap { margin-top: 5px; }
+    .hero-cinema .hero-cta-wrap .btn-gold { padding-top: 10px; padding-bottom: 10px; }
   }
 
   
@@ -3418,6 +3503,23 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
   var thumbs = document.getElementById('hrThumbs');
   var track  = document.getElementById('candTrack');
 
+  /* The three hero beats double as the reel's progress track, so the page
+     carries one numbered sequence instead of two sitting 500px apart.
+     .is-tracked is added only when the reel actually takes control — with
+     no JS, or with the reel stopped, all three read finished, which is the
+     truth at rest: the house in the plate is already painted.
+     Guarded: generated pages carry the plate but no beats. */
+  var beatsEl = document.querySelector('.hero-beats');
+  var beats   = beatsEl ? [].slice.call(beatsEl.children) : [];
+  function beat(n) {                     /* n = 1..3 */
+    if (!beats.length) return;
+    beats.forEach(function (li, i) {
+      li.classList.toggle('now',  i === n - 1);
+      li.classList.toggle('done', i <  n - 1);
+    });
+  }
+  function untrack() { if (beatsEl) beatsEl.classList.remove('is-tracked'); }
+
   var hold = parseInt(plate.getAttribute('data-hold') || '1100', 10);
   var dur  = parseInt(plate.getAttribute('data-dur')  || '2600', 10);
 
@@ -3481,6 +3583,8 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
   function play() {
     stop();
     plate.classList.remove('live');
+    if (beatsEl) beatsEl.classList.add('is-tracked');
+    beat(1);                             /* they visualized it */
     var i = 0;
     show(0);
     (function step() {
@@ -3495,6 +3599,7 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
         label(LAST);
         plate.classList.add('wiping');
         sweeping = true;
+        beat(2);                         /* they loved it */
 
         /* The final beat is a pass, not a wipe. One continuous glide right to
            left and back, so both sides are actually seen — the previous color
@@ -3522,6 +3627,7 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
             raf = null; sweeping = false;
             plate.classList.remove('wiping'); plate.classList.add('live');
             nameFor(LAST);
+            beat(3);                     /* we painted it */
           }
         })(performance.now());
       }, hold + 400);
@@ -3535,10 +3641,10 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
     var r = plate.getBoundingClientRect();
     setCut(((x - r.left) / r.width) * 100);
   }
-  grab.addEventListener('mousedown', function (e) { stop(); dragging = true; move(e.clientX); e.preventDefault(); });
+  grab.addEventListener('mousedown', function (e) { stop(); untrack(); dragging = true; move(e.clientX); e.preventDefault(); });
   window.addEventListener('mousemove', function (e) { if (dragging) move(e.clientX); });
   window.addEventListener('mouseup', function () { dragging = false; });
-  grab.addEventListener('touchstart', function (e) { stop(); dragging = true; move(e.touches[0].clientX); }, { passive: true });
+  grab.addEventListener('touchstart', function (e) { stop(); untrack(); dragging = true; move(e.touches[0].clientX); }, { passive: true });
   window.addEventListener('touchmove', function (e) { if (dragging) move(e.touches[0].clientX); }, { passive: true });
   window.addEventListener('touchend', function () { dragging = false; });
   grab.tabIndex = 0;
@@ -3563,7 +3669,7 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
       var ti = document.createElement('i');
       ti.style.backgroundImage = bg;
       t.appendChild(ti);
-      t.addEventListener('click', function () { stop(); show(i); });
+      t.addEventListener('click', function () { stop(); untrack(); show(i); });
       thumbs.appendChild(t);
     }
 
@@ -3583,7 +3689,7 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
       c.appendChild(pic);
       c.appendChild(meta);
       c.addEventListener('click', function () {
-        stop(); show(i);
+        stop(); untrack(); show(i);
         var h = document.getElementById('hero');
         if (h) h.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });

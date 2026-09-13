@@ -1625,9 +1625,13 @@
 
   @media (max-width: 860px) {
     .hr-inset { margin-top: 16px; }
-    .hr-tray { flex-wrap: wrap; border-radius: 14px; }
-    .hr-tray-label { width: 100%; text-align: center; padding-top: 2px; }
-    .hr-tray-cta { width: 100%; text-align: center; }
+    /* One row, never three. A wrapped tray costs ~68px of hero height on a
+       768 portrait tablet and that is the whole margin the CTA has. */
+    .hero-cinema .hero-stack, .hr-inset, .hr-tray { min-width: 0; }
+    .hr-tray { flex-wrap: nowrap; border-radius: 14px; padding: 8px 9px; }
+    .hr-tray-label { display: none; }
+    .hr-tray-cta { width: auto; }
+    .hr-thumbs { justify-content: flex-start; }
     .hr-knob { width: 36px; height: 36px; }
     .cand-band { padding: 56px 20px 62px; }
     .cand-track { justify-content: flex-start; }
@@ -2184,10 +2188,91 @@
     justify-content: center; width: 22px; height: 22px; border-radius: 50%;
     background: var(--gold-shine); color: var(--navy);
     font-size: 11px; font-weight: 800; letter-spacing: 0; flex: none; }
+  /* On a phone the three beats cannot sit on one line — "THEY VISUALIZED IT"
+     alone runs ~105px at the smallest size the type stays legible at, so a
+     wrapping row orphans the third beat on its own centred line and reads
+     as a broken list. Stacked, they read as what they are: a tracker the
+     reel walks down. Costs ~14px against the fold versus the wrap. */
   @media (max-width: 600px) {
-    .hero-beats { gap: 8px 14px; margin-top: 11px; }
-    .hero-beats li { font-size: 9.5px; letter-spacing: .12em; gap: 7px; }
+    .hero-beats { flex-direction: column; align-items: flex-start;
+      gap: 5px; margin-top: 11px; width: max-content;
+      margin-left: auto; margin-right: auto; }
+    .hero-beats li { font-size: 10px; letter-spacing: .12em; gap: 8px; }
     .hero-beats .n { width: 19px; height: 19px; font-size: 10px; }
+  }
+
+  /* The beats stop being a second numbered list and become the reel's own
+     progress track: the reel script adds .is-tracked when it takes control,
+     and each beat lights as the sweep reaches it. Without JS, or with
+     reduced motion, .is-tracked is never added and all three read finished
+     exactly as they do now — the rules below are additive on purpose. */
+  .hero-beats li { transition: opacity .45s ease, color .45s ease; }
+  .hero-beats .n { transition: transform .45s cubic-bezier(.2,.9,.25,1),
+    box-shadow .45s ease, background .45s ease; }
+  .hero-beats.is-tracked li { opacity: .38; }
+  .hero-beats.is-tracked li.done { opacity: .72; }
+  .hero-beats.is-tracked li.now  { opacity: 1; }
+  .hero-beats.is-tracked li.now .n { transform: scale(1.18);
+    box-shadow: 0 0 0 4px rgba(201,169,97,.22), 0 0 22px 3px rgba(224,192,120,.5); }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-beats li, .hero-beats .n { transition: none; }
+  }
+
+  /* SHORT-VIEWPORT FOLD BUDGET — must stay the LAST hero block in this
+     sheet. It overrides equal-specificity media rules above it (the phone
+     .hero-beats gaps, the tray padding), and a plain later rule wins, so
+     moving it up silently cancels half of it.
+
+     Measured, not guessed. Before: the CTA sat 94px under the fold at
+     1280x800 and 70px under at 360x780. Spacing and plate size only — no
+     copy and no type-scale changes, so the hero reads the same, tighter. */
+  @media (max-height: 900px) {
+    .hero-cinema .hero-stack { padding-top: 14px; padding-bottom: 8px; }
+    /* .pill-wrap-lede + .ttl-hero is three classes deep and set everywhere
+       above; a two-class rule here loses to it silently. */
+    .hero-cinema .ttl-hero,
+    .hero-cinema .pill-wrap-lede + .ttl-hero { margin-top: 6px; }
+    .hero-kicker-lede { margin-top: 6px; }
+    .hero-beats { margin-top: 8px; }
+    .hr-inset { margin-top: 8px; width: min(370px, 100%); }
+    .hr-tray { margin-top: 7px; padding: 6px 8px; }
+    .hr-thumbs button { flex: 0 0 38px; height: 38px; }
+    .hero-cinema .hero-cta-wrap { margin-top: 8px; }
+    .hero-cinema .hero-note { margin-top: 5px; }
+  }
+  @media (max-height: 820px) and (min-width: 601px) {
+    .hr-inset { width: min(348px, 100%); }
+  }
+  @media (max-height: 900px) and (max-width: 600px) {
+    .hero-cinema .hero-stack { padding-top: 8px; }
+    .hero-cinema .ttl-hero,
+    .hero-cinema .pill-wrap-lede + .ttl-hero { margin-top: 4px; }
+    .hero-kicker-lede { margin-top: 5px; }
+    .hero-beats { gap: 3px; margin-top: 7px; }
+    .hero-beats .n { width: 17px; height: 17px; font-size: 9.5px; }
+    .hr-inset { margin-top: 7px; width: 100%; }
+    .hr-tray { margin-top: 6px; padding: 5px 7px; }
+    .hr-thumbs button { flex: 0 0 34px; height: 34px; }
+    .hero-cinema .hero-cta-wrap { margin-top: 7px; }
+    .hero-cinema .hero-cta-wrap .btn-gold { padding-top: 12px; padding-bottom: 12px; }
+  }
+
+  /* The tightest real device we target: 360x780 (Galaxy-class). Same content,
+     last 13px of air removed. Anything narrower or shorter than this and the
+     CTA goes under — that is the floor, and it is recorded here so the next
+     person does not rediscover it. */
+  @media (max-height: 800px) and (max-width: 380px) {
+    .hero-cinema .hero-stack { padding-top: 4px; }
+    .hero-cinema .ttl-hero,
+    .hero-cinema .pill-wrap-lede + .ttl-hero { margin-top: 2px; }
+    .hero-kicker-lede { margin-top: 3px; }
+    .hero-beats { gap: 2px; margin-top: 5px; }
+    .hero-beats .n { width: 16px; height: 16px; font-size: 9px; }
+    .hr-inset { margin-top: 5px; }
+    .hr-tray { margin-top: 4px; padding: 4px 6px; }
+    .hr-thumbs button { flex: 0 0 30px; height: 30px; }
+    .hero-cinema .hero-cta-wrap { margin-top: 5px; }
+    .hero-cinema .hero-cta-wrap .btn-gold { padding-top: 10px; padding-bottom: 10px; }
   }
 
   
