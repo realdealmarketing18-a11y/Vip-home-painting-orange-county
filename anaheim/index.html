@@ -3261,9 +3261,9 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
                 </svg>
                 <span class="big" id="s5Big">Add a photo of your home</span>
                 <span class="small" id="s5Help">Drag it here, or tap to choose &mdash; your phone camera works fine</span>
-                <span class="rule">Front elevation &middot; daylight</span>
+                <span class="rule">Front of the house &middot; daylight</span>
               </button>
-              <input type="file" id="s5File" name="photo" accept="image/*" aria-label="Photo of your home's front elevation">
+              <input type="file" id="s5File" name="photo" accept="image/*" aria-label="Photo of the front of your home">
             </div>
 
             <ul class="s5-shotlist">
@@ -3329,7 +3329,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
                 <div class="tick">
                   <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
                 </div>
-                <h3 id="s5DoneTitle">Your elevation is on its way</h3>
+                <h3 id="s5DoneTitle">Your photo is on its way</h3>
                 <p class="sub" id="s5DoneSub">We will be in touch at the number you gave us.</p>
                 <ol class="s5-next">
                   <li>A designer checks your photo is workable &mdash; if it is not, we ask for one more before rendering anything.</li>
@@ -4415,7 +4415,7 @@ setTimeout(() => {
     help.textContent = 'Tap to choose a different photo';
     gate.classList.add('open');
     send.disabled = false;
-    label.textContent = endpoint ? 'Send my elevation'
+    label.textContent = endpoint ? 'Send my photo'
                       : canText  ? 'Text my photo and details'
                                  : 'Email my photo and details';
     if (!endpoint) {
@@ -4482,7 +4482,7 @@ setTimeout(() => {
       'Name: ' + nameI.value.trim() + '\n' +
       'Community or address: ' + placeI.value.trim() + '\n' +
       'Best contact: ' + contI.value.trim() + '\n\n' +
-      'Photo of the front elevation is attached.';
+      'Photo of the front of my home is attached.';
   }
 
   function showDone(title, sub) {
@@ -4512,17 +4512,17 @@ setTimeout(() => {
         if (v) fd.append(k, v);
       });
       send.disabled = true;
-      label.textContent = 'Sending your elevation…';
+      label.textContent = 'Sending your photo…';
       fetch(endpoint, { method: 'POST', body: fd })
         .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
         .then(function (res) {
           if (!res.ok) throw new Error((res.j && res.j.message) || 'That did not go through.');
-          showDone('Your elevation is with the design team',
+          showDone('Your photo is with the design team',
                    'We will be in touch at the contact you gave us.');
         })
         .catch(function (err) {
           send.disabled = false;
-          label.textContent = 'Send my elevation';
+          label.textContent = 'Send my photo';
           errEl.textContent = err.message + ' You can also text the photo to (909) 312-5400.';
           errEl.classList.add('on');
         });

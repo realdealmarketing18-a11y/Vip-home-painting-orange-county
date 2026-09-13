@@ -3603,7 +3603,7 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
     help.textContent = 'Tap to choose a different photo';
     gate.classList.add('open');
     send.disabled = false;
-    label.textContent = endpoint ? 'Send my elevation'
+    label.textContent = endpoint ? 'Send my photo'
                       : canText  ? 'Text my photo and details'
                                  : 'Email my photo and details';
     if (!endpoint) {
@@ -3670,7 +3670,7 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
       'Name: ' + nameI.value.trim() + '\n' +
       'Community or address: ' + placeI.value.trim() + '\n' +
       'Best contact: ' + contI.value.trim() + '\n\n' +
-      'Photo of the front elevation is attached.';
+      'Photo of the front of my home is attached.';
   }
 
   function showDone(title, sub) {
@@ -3700,17 +3700,17 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
         if (v) fd.append(k, v);
       });
       send.disabled = true;
-      label.textContent = 'Sending your elevation…';
+      label.textContent = 'Sending your photo…';
       fetch(endpoint, { method: 'POST', body: fd })
         .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
         .then(function (res) {
           if (!res.ok) throw new Error((res.j && res.j.message) || 'That did not go through.');
-          showDone('Your elevation is with the design team',
+          showDone('Your photo is with the design team',
                    'We will be in touch at the contact you gave us.');
         })
         .catch(function (err) {
           send.disabled = false;
-          label.textContent = 'Send my elevation';
+          label.textContent = 'Send my photo';
           errEl.textContent = err.message + ' You can also text the photo to (909) 312-5400.';
           errEl.classList.add('on');
         });
