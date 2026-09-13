@@ -34,6 +34,29 @@ fails on duplicate H1s.
 > ⚠️ The original "500 Southern California Estates" formula is **removed** — no verified
 > project count exists. A6 replaces it and is provably true.
 
+### The number rule — apply to every formula above
+
+Part A shipped without numbers in it, and that was the gap. A number forces attention,
+implies precision, and is checkable — which is also the catch, so only these are
+available:
+
+**30 minutes** (consultation) · **2 years** (warranty) · **11** (schemes) · **3**
+(renders returned) · **5 days** (Gallagher, where the story is real) · **60/30/10**
+(palette ratio) · **twice** (what a wrong color costs)
+
+**Twice is the strongest of them.** No citation needed, true at $25,000 or $250,000,
+and unarguable. A6 with the number reads:
+
+> "A Wrong Color Costs the Whole Job Twice. See Yours First — in 30 Minutes."
+
+Never usable: project counts, review counts, star ratings, or any percentage without a
+citation. `verify-site.js` fails the build on all of them.
+
+Full strategic context — the HALO drivers this ladders to, and the fascination bullets —
+is in `COPY-FRAMEWORK.md` in this folder.
+
+---
+
 **Subheadline formula:** `[specific benefit] + [proof element]`
 > "Your home rendered in every candidate palette — matched to Orchard Hills' hillside light,
 > before a single gallon is tinted."

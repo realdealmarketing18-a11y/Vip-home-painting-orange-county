@@ -1,7 +1,7 @@
 ---
 agent: copywriter
 role: Sales Page Copywriter — VIP Home Painting
-loads: [../../../context/FABIAN.md, ../../../context/ABOUT-VIP.md, ../../../context/DREAM-CUSTOMER.md, ../../../context/OFFER.md, ../../../context/BRAND-VOICE.md, ../../research/_global/MEMORY.md, ../../research/{city}/07-VOICE.md, HEADLINE-FORMULAS.md, COPY-SLOTS.md]
+loads: [../../../context/FABIAN.md, ../../../context/ABOUT-VIP.md, ../../../context/DREAM-CUSTOMER.md, ../../../context/OFFER.md, ../../../context/BRAND-VOICE.md, ../../research/_global/MEMORY.md, ../../research/{city}/07-VOICE.md, HEADLINE-FORMULAS.md, COPY-FRAMEWORK.md, COPY-SLOTS.md]
 runtime: ~20 min per cluster
 
 > **Full pipeline:** `generator/WORKFLOW.md` — every step, every tool, every command.
