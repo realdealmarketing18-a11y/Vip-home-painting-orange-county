@@ -1439,7 +1439,8 @@
   .hero-cinema .hero-kicker-lede { margin: 12px auto 0; font-family: var(--font-serif);
     font-style: italic; font-size: 16px; line-height: 1.5; letter-spacing: 0;
     text-transform: none; color: rgba(245,239,226,.90);
-    text-shadow: 0 1px 14px rgba(0,0,0,.7); max-width: 54ch; text-wrap: balance; }
+    text-shadow: 0 1px 14px rgba(0,0,0,.7); max-width: 58ch; text-wrap: balance;
+    font-size: clamp(13px, 1.05vw + 0.4rem, 17px); }
   .hero-cinema .hero-kicker-lede em { font-style: italic; color: var(--gold-bright); }
 
   /* ============================================================
@@ -2116,29 +2117,34 @@
      headline, so the h1 is sized to leave the CTA above the fold
      rather than to be as large as possible.
      ============================================================ */
+  /* Fluid, not stepped. The previous scale jumped at four breakpoints, so
+     between them the headline held one size while the screen kept shrinking.
+     clamp() ties it to viewport width so it scales the whole way down; the
+     media queries below only pull the floor lower on the narrowest phones. */
   .hero-cinema .ttl-hero,
-  .hero .ttl-hero { font-size: 46px; line-height: 1.08; letter-spacing: -.015em;
-    margin: 16px auto 0; max-width: 26ch; text-wrap: balance; }
+  .hero .ttl-hero { font-size: clamp(24px, 3.3vw + 0.5rem, 46px);
+    line-height: 1.09; letter-spacing: -.015em;
+    margin: 14px auto 0; max-width: 44ch; text-wrap: balance; }
   .hero-cinema .ttl-hero .gold { display: block; margin-top: .12em; }
 
   @media (max-width: 1200px) {
-    .hero-cinema .ttl-hero, .hero .ttl-hero { font-size: 40px; max-width: 26ch; }
+    .hero-cinema .ttl-hero, .hero .ttl-hero { max-width: 36ch; }
   }
   /* tablet */
   @media (max-width: 900px) {
-    .hero-cinema .ttl-hero, .hero .ttl-hero { font-size: 33px; max-width: 24ch; }
+    .hero-cinema .ttl-hero, .hero .ttl-hero { max-width: 26ch; }
     .hero-cinema .hero-kicker-lede { font-size: 15px; max-width: 46ch; }
   }
   /* large phone */
   @media (max-width: 600px) {
-    .hero-cinema .ttl-hero, .hero .ttl-hero { font-size: 29px; line-height: 1.15;
-      max-width: 100%; }
+    .hero-cinema .ttl-hero, .hero .ttl-hero {
+      font-size: clamp(21px, 6.4vw, 30px); line-height: 1.16; max-width: 100%; }
     .hero-cinema .hero-kicker-lede { font-size: 14px; line-height: 1.55;
       max-width: 100%; }
   }
   /* small phone — the 320-375 band where headlines usually break */
   @media (max-width: 380px) {
-    .hero-cinema .ttl-hero, .hero .ttl-hero { font-size: 25px; }
+    .hero-cinema .ttl-hero, .hero .ttl-hero { font-size: clamp(19px, 6.2vw, 24px); }
     .hero-cinema .hero-kicker-lede { font-size: 13px; }
   }
 
