@@ -65,6 +65,34 @@ is in `COPY-FRAMEWORK.md` in this folder.
 
 ## PART B — HVCO FORMULAS (ads, video hooks, blog, lead magnets)
 
+### Which driver each formula is actually pulling on
+
+The formulas were here; what was missing is *why* each one works. Every formula below
+answers a specific HALO driver from `COPY-FRAMEWORK.md`. Pick the formula by the fear you
+are trying to remove, not by which example reads nicest.
+
+| | Formula | Speaks to | HALO driver |
+|---|---|---|---|
+| **B1** | X Ways to [Outcome] Without [Pain] | Overwhelm by choice · fear of wasting time and money | Barrier 🥇 *"I'm overwhelmed by too many color choices"* |
+| **B2** | How to [Solve] in [Timeframe] Without [Negative] | Wants it fast · fear of choosing wrong | Fear 🥇 *"What if I pick the wrong color and regret it?"* |
+| **B3** | X Costly Things Before [Action] | Past mistakes · wants insider knowledge | Fear 🥇 + Barrier 🥈 *"I don't know who to trust"* |
+| **B4** | The [Identity]'s Guide to [Desire] Without [Fear] | Time-poor · wants it stress-free · identity fit | Hope 🥇 *"elegant, and feels like me"* |
+| **B5** | Avoid [Mistake] — Get [Outcome] With This Complimentary [Service] | Regret and redo · needs the risk removed | Fear 🥇 + Pain 🥉 *"I hate unclear estimates"* |
+
+> **Every one of them traces back to the same 🥇 fear: picking wrong and regretting it.**
+> That fear *is* the offer. A headline not touching it is decoration.
+
+### One calibration before using B3
+
+"(#3 Might Shock You)" earns its place on a reel or a cold Facebook ad. It does **not**
+belong on a page for a Hidden Canyon owner — `BRAND-VOICE.md` is "quiet authority,
+editorial not salesy, no urgency theater, no shouting."
+
+Scale the intensity by tier, per Part D: full curiosity gap on social, plain statement of
+the cost on the page. Same formula, different register. The kill test still applies to
+both.
+
+
 ### B1 · X Ways to [Outcome] Without [Pain]
 `NUMBER + MECHANISM + BENEFIT + PAIN AVOIDANCE`
 
@@ -133,6 +161,9 @@ is in `COPY-FRAMEWORK.md` in this folder.
 
 ### Transformation & value
 - A repaint done wrong costs $4,000–$7,000 all over again.
+- Which schemes lift a facade and which fall flat — on *your* elevation, not a swatch.
+  *(Softened from "boost curb appeal": that is a value claim we cannot measure. What we
+  can show is the comparison, which is the stronger proof anyway.)*
 - Almost nobody who regrets their color ever saw it on their own house first.
 - Your community association's design review package, prepared for you.
 
