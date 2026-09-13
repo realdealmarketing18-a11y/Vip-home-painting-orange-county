@@ -163,19 +163,35 @@ Pages serves them as-is.
 
 ## 6. NEXT STEPS (in order)
 
-1. **Human visual QA + mobile pass** on
-   https://realdealmarketing18-a11y.github.io/Vip-home-painting-orange-county/orange-county-sales-page/
-   — hero (desktop 1440 + 390px), palette cans, style banners, byline. Fix any spacing
-   nits directly in `orange-county-sales-page/index.html` (search anchors: `.scheme .dot`,
-   `.style-banner`, `.byline`, `.hero-strip`), commit to `main`, Pages auto-deploys.
-2. **Produce the full hero film** (the 8-scene Douglas & Sheri / Gallagher episode).
-   Assets + prompts staged: `orange-county-sales-page/commercial-prompts.md` (8K scheme +
-   addition prompts), storyboard HTML at `C:\Users\Owner\Downloads\visual-storyboard-episode1.html`,
-   Higgsfield skill library at `C:\Users\Owner\VIP-Lead-Machine\.claude\skills\higgsfield\`
-   (Soul ID "Fabian-Hero-Locked" + "Gallaghers-Newport-Beach" elements already exist in the
-   user's Higgsfield account). Deliver as `video/gallagher-ambient.{webm,mp4}` (replace) —
-   markup/JS need no changes; re-extract `video/hero-poster.jpg` from the new first frame.
-3. **Pre-launch hygiene:** swap `viz-photos/base.webp` + derived renders to an owned/licensed
-   home photo (or a real completed VIP project), prune duplicate badge PNGs, run a Lighthouse
-   pass (30MB of combo images are lazy-loaded on demand by the photo engine, but confirm),
-   and re-verify the JSON-LD with Google's Rich Results test.
+> **Work continues locally, not in the cloud.** Novamira, the WordPress
+> credentials and the Higgsfield result CDN are all unreachable from a Claude
+> Code web session — every remaining step below needs at least one of them.
+> **`docs/LOCAL-SETUP.md` is the runbook**: how to get running in your clone at
+> `C:\Users\Owner\oc-site\`, what to configure, and this queue in full.
+
+1. **Install `generator/wp-mu-plugins/vip-elevation-intake.php`** into
+   `wp-content/novamira-sandbox/`, the same way the other four went in. That is
+   what switches Step Five from the text-message handoff to a real upload —
+   there is nothing else to configure.
+2. **Grade the T1 control render** — job `4f7a4854-832a-487f-aa04-d3a02c83555e`
+   in the Higgsfield account. `generator/viz-render/T1-RESULT.md` has the gate
+   and maps each failure to its fix. It is not a pass yet; nobody has seen it.
+3. **Upload `viz-photos/` to WP media before publishing.** The hero reel needs
+   `scheme-pebblebeach`, `-ibiza`, `-pacificsage`, `-obsidian` and `-spanish`
+   at `ASSET_BASE`. This is F-16 waiting to happen again.
+4. **Publish to WordPress** — `publish-wp.js --only=county`, then `--live`.
+   Rank Math Page schema off first.
+5. **Run T4** — one house end to end, timed. That number is the turnaround on
+   the Step Five button, and it must be measured rather than guessed.
+6. **Human visual QA + mobile pass** on the build site, hero at 1440 and 390.
+
+### Retired from this list
+
+- ~~Produce the full hero film (the 8-scene Gallagher episode).~~ The hero no
+  longer depends on it. The play gate is gone and a selection reel of five
+  candidate palettes stands in its place, which is a bar we can clear today:
+  a film needs a hundred consistent frames, this needs five stills that
+  already exist. When the footage is usable the reel window becomes its poster
+  frame and nothing else on the page has to move. Prompts and storyboard are
+  still staged in `commercial-prompts.md`.
+
