@@ -1,6 +1,6 @@
 # VIP Home Painting — Design System
 
-> **Visualize It. See It. Paint It.**
+> **Visualize It. Love It. Paint It.**
 > The premium $10,000 sales-page aesthetic for VIP Home Painting — a luxury residential painting company serving Southern California's affluent homeowners ($2M–$20M homes) across the Inland Empire, Orange County, and Los Angeles.
 
 This design system is the source of truth for every VIP Home Painting touchpoint: mobile-first sales pages, community-specific landing pages, and any future marketing surface. It encodes the **paintbrush-crown** brand mark, the gold/navy/beige palette, the Fraunces + Inter type pairing, and the 3D-pop card vocabulary that separates VIP from cheap-contractor competitors.
@@ -43,7 +43,7 @@ The system was built from these inputs (paths are read-only mounts from the user
 
 - **Company:** VIP Home Painting — luxury residential painting, SoCal.
 - **Differentiator:** Custom Visualization Service — photorealistic renders of a homeowner's house in multiple color schemes before painting begins.
-- **Tagline:** "Visualize it. See it. Paint it."
+- **Tagline:** "Visualize it. Love it. Paint it."
 - **Logo:** Paintbrush whose bristles form a crown — navy ferrule with gold accents and a black handle.
 - **Persona:** Affluent SoCal homeowners ($2M–$20M homes) who value sophistication, low-friction concierge service, and zero risk of repaint regret.
 - **Phone:** (909) 312-5400 · **Web:** viphomepainting.com
@@ -86,7 +86,7 @@ VIP copy reads like a sophisticated direct-response sales page wearing a luxury 
 - **Specific dollar signs** ("$1,000's," "$2M–$20M homes") used as concrete proof, never as discount.
 
 ### Specific phrasing — copy-paste ready
-- "Visualize It. See It. Paint It."
+- "Visualize It. Love It. Paint It."
 - "Custom Visualization Service" / "VIP Concierge" / "design team" *(never "AI")*
 - "OUR INSANE 1-YEAR WARRANTY"
 - "FREE 30-Minute Personalized Color Consultation"
@@ -232,7 +232,7 @@ VIP Home Painting uses **two parallel icon systems** that should never be mixed 
 - **No SVG recreation of the warranty laurel** — keep it as the photoreal PNG.
 
 ### Logo
-- **Primary (color, on white):** `assets/logos/vip-logo-primary.png` — the paintbrush-crown above "VIP HOME PAINTING / Visualize it. See it. Paint it."
+- **Primary (color, on white):** `assets/logos/vip-logo-primary.png` — the paintbrush-crown above "VIP HOME PAINTING / Visualize it. Love it. Paint it."
 - **Stacked split:** `assets/logos/vip-logo-stacked.png` — "VIP [brush-crown icon] PAINTING" + "HOME PAINTING SERVICES" subline.
 - **Clear-space rule:** minimum margin = the height of the "V" in VIP on all sides.
 - **Never** stretch, recolor, or place on conflicting (orange, beige, busy photo) backgrounds. On dark surfaces, use the stacked split with white wordmark (currently flag — the white-knockout version isn't supplied; ask the user for it before using on navy).

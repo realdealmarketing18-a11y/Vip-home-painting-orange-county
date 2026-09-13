@@ -22,7 +22,7 @@ renders of a real estate transform live.
 - **BRAND RULE (hard):** never say "AI" in customer-facing copy — always "Custom Visualization
   Service" / "our design team". Brand: Orange #E8833A · Navy #1A1F4E · Gold #C9A961 ·
   Cream #F5EFE2 · Fonts Fraunces (serif) + Inter (sans) · Phone (909) 312-5400 ·
-  Tagline "See It. Love It. Paint It."
+  Tagline "Visualize It. Love It. Paint It."
 - There is an OLDER repo `realdealmarketing18-a11y/vip-lead-machine` (private, the whole
   business system, local at `C:\Users\Owner\VIP-Lead-Machine\`). The sales page was
   migrated OUT of it. Its `SALES-PAGE-DESIGN\github-sales-page\` and

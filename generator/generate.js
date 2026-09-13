@@ -673,7 +673,7 @@ ${FILM_CSS}
       <img class="logo-brush" src="${A}/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" fetchpriority="high"/>
       <span class="wm">
         <span class="vip"><span>VIP</span> <span>HOME PAINTING</span></span>
-        <span class="tag">Visualize it. <b>See it.</b> Paint it.</span>
+        <span class="tag">Visualize it. <b>Love it.</b> Paint it.</span>
       </span>
     </a>
     <nav class="top-nav">
@@ -1045,7 +1045,7 @@ ${FILM_CSS}
       <img class="logo-brush" src="${A}/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" fetchpriority="high"/>
       <span class="wm">
         <span class="vip"><span>VIP</span> <span>HOME PAINTING</span></span>
-        <span class="tag">Visualize it. <b>See it.</b> Paint it.</span>
+        <span class="tag">Visualize it. <b>Love it.</b> Paint it.</span>
       </span>
     </a>
     <nav class="top-nav">
@@ -1320,7 +1320,7 @@ ${FILM_CSS}
       <img class="logo-brush" src="${A}/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" fetchpriority="high"/>
       <span class="wm">
         <span class="vip"><span>VIP</span> <span>HOME PAINTING</span></span>
-        <span class="tag">Visualize it. <b>See it.</b> Paint it.</span>
+        <span class="tag">Visualize it. <b>Love it.</b> Paint it.</span>
       </span>
     </a>
     <nav class="top-nav">
@@ -1666,7 +1666,7 @@ ${SERVICE_CSS}
       <img class="logo-brush" src="${A}/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" fetchpriority="high"/>
       <span class="wm">
         <span class="vip"><span>VIP</span> <span>HOME PAINTING</span></span>
-        <span class="tag">Visualize it. <b>See it.</b> Paint it.</span>
+        <span class="tag">Visualize it. <b>Love it.</b> Paint it.</span>
       </span>
     </a>
     <nav class="top-nav">
@@ -1797,7 +1797,7 @@ ${FILM_CSS}
       <img class="logo-brush" src="${A}/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" fetchpriority="high"/>
       <span class="wm">
         <span class="vip"><span>VIP</span> <span>HOME PAINTING</span></span>
-        <span class="tag">Visualize it. <b>See it.</b> Paint it.</span>
+        <span class="tag">Visualize it. <b>Love it.</b> Paint it.</span>
       </span>
     </a>
     <nav class="top-nav">${topNav(navCtx(`/${p.city_slug}/${p.slug}/`, p.city_slug, A))}
@@ -1980,7 +1980,7 @@ FILM_CSS + '\n' +
 '      <img class="logo-brush" src="' + A + '/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" fetchpriority="high"/>\n' +
 '      <span class="wm">\n' +
 '        <span class="vip"><span>VIP</span> <span>HOME PAINTING</span></span>\n' +
-'        <span class="tag">Visualize it. <b>See it.</b> Paint it.</span>\n' +
+'        <span class="tag">Visualize it. <b>Love it.</b> Paint it.</span>\n' +
 '      </span>\n' +
 '    </a>\n' +
 '    <nav class="top-nav">\n' +

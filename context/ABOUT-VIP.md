@@ -8,7 +8,7 @@ When something changes, change it here — other files reference this, they don'
 ## WHO WE ARE
 
 VIP Home Painting — luxury residential painting, Orange County and the Inland Empire.
-Founder: **Fabian**. Tagline: *See It. Love It. Paint It.*
+Founder: **Fabian**. Tagline: *Visualize It. Love It. Paint It.*
 
 **Base: Anaheim, CA.** Service-area business — no public street address. Previously operated
 from Fontana, which is where the existing reviews were earned.

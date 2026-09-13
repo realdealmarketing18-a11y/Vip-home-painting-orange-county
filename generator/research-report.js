@@ -342,7 +342,7 @@ ${STYLE}
     <div class="rail-in">
       <div class="brand">
         <span class="bvip">VIP HOME PAINTING</span>
-        <span class="btag">Visualize it. <b>See it.</b> Paint it.</span>
+        <span class="btag">Visualize it. <b>Love it.</b> Paint it.</span>
       </div>
       <p class="rail-k">Research report</p>
       <ol class="toc">${toc}</ol>

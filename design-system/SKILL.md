@@ -3,7 +3,7 @@
 > Activate this skill when designing any customer-facing surface for **VIP Home Painting** — sales pages, community landing pages, email, print collateral.
 
 ## When to use
-- User mentions VIP Home Painting, the paintbrush-crown logo, "Visualize it. See it. Paint it.", or asks for a sales page in the SoCal luxury painting space.
+- User mentions VIP Home Painting, the paintbrush-crown logo, "Visualize it. Love it. Paint it.", or asks for a sales page in the SoCal luxury painting space.
 - Any task that touches the brand's gold (#FF8210) + navy (#262362) + beige + cream palette.
 
 ## Read these in order

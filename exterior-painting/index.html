@@ -2228,6 +2228,26 @@
   }
 
   
+  /* the slogan as three beats under the subhead — VISUALIZE IT. LOVE IT.
+     PAINT IT., in the past tense because it already happened to them */
+  .hero-beats { list-style: none; display: flex; flex-wrap: wrap;
+    justify-content: center; align-items: center; gap: 10px 26px;
+    margin: 14px 0 0; padding: 0; }
+  .hero-beats li { display: inline-flex; align-items: center; gap: 9px;
+    font-family: var(--font-sans); font-size: clamp(10px, .55vw + 6px, 12px);
+    font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+    color: rgba(245,239,226,.92); text-shadow: 0 1px 12px rgba(0,0,0,.7); }
+  .hero-beats .n { display: inline-flex; align-items: center;
+    justify-content: center; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--gold-shine); color: var(--navy);
+    font-size: 11px; font-weight: 800; letter-spacing: 0; flex: none; }
+  @media (max-width: 600px) {
+    .hero-beats { gap: 8px 14px; margin-top: 11px; }
+    .hero-beats li { font-size: 9.5px; letter-spacing: .12em; gap: 7px; }
+    .hero-beats .n { width: 19px; height: 19px; font-size: 10px; }
+  }
+
+  
     .areas-head { text-align: center; max-width: 760px; margin: 0 auto 40px; }
     .areas-head .lead { font-family: var(--font-sans); font-size: 15.5px; color: #4A4F70; line-height: 1.6; max-width: 640px; margin: 0 auto; }
     .areas-head .lead a { color: var(--gold-deep); font-weight: 700; text-decoration: none; }
@@ -3060,7 +3080,7 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
       <img class="logo-brush" src="../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" fetchpriority="high"/>
       <span class="wm">
         <span class="vip"><span>VIP</span> <span>HOME PAINTING</span></span>
-        <span class="tag">Visualize it. <b>See it.</b> Paint it.</span>
+        <span class="tag">Visualize it. <b>Love it.</b> Paint it.</span>
       </span>
     </a>
     <nav class="top-nav">
@@ -3443,10 +3463,25 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
   var raf = null, timer = null, dragging = false, cut = 100;
   function ease(t) { return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2; }
 
+  var sweeping = false;
+
+  /* just the name card — label() also moves the counter and the chip marks,
+     which must not flicker while the seam is mid-pass */
+  function nameFor(i) {
+    var l = layers[i];
+    if (swEl) swEl.style.background = l.getAttribute('data-sw') || '';
+    if (nmEl) nmEl.innerHTML = l.getAttribute('data-nm') || '';
+    if (coEl) coEl.innerHTML = l.getAttribute('data-co') || '';
+  }
+
   function setCut(v) {
     cut = Math.max(0, Math.min(100, v));
     layers[LAST].style.clipPath = 'inset(0 0 0 ' + cut + '%)';
     seam.style.left = cut + '%';
+    /* name whichever scheme is holding the larger share of the frame */
+    if (sweeping || plate.classList.contains('live')) {
+      nameFor(cut > 50 ? LAST - 1 : LAST);
+    }
   }
 
   function label(i) {
@@ -3498,12 +3533,35 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
         });
         label(LAST);
         plate.classList.add('wiping');
+        sweeping = true;
+
+        /* The final beat is a pass, not a wipe. One continuous glide right to
+           left and back, so both sides are actually seen — the previous color
+           holds the left, the chosen scheme holds the right — then it settles
+           near the middle, which is also what makes the handle look grabbable.
+           A single 100-to-0 wipe ended on the after and the before was never
+           really shown at all. */
+        var PATH = [
+          { v: 100, at: 0    },   /* all previous color */
+          { v: 4,   at: 0.40 },   /* across to the chosen scheme */
+          { v: 92,  at: 0.76 },   /* and back, so the before reads properly */
+          { v: 52,  at: 1    }    /* settle just past centre */
+        ];
+        var total = dur * 1.7;
         var t0 = performance.now();
         (function tick(now) {
-          var t = Math.min(1, (now - t0) / dur);
-          setCut(100 - 100 * ease(t));
+          var t = Math.min(1, (now - t0) / total);
+          var i = 1;
+          while (i < PATH.length - 1 && t > PATH[i].at) i++;
+          var a = PATH[i - 1], b = PATH[i];
+          var seg = (t - a.at) / (b.at - a.at || 1);
+          setCut(a.v + (b.v - a.v) * ease(Math.max(0, Math.min(1, seg))));
           if (t < 1) { raf = requestAnimationFrame(tick); }
-          else { raf = null; plate.classList.remove('wiping'); plate.classList.add('live'); }
+          else {
+            raf = null; sweeping = false;
+            plate.classList.remove('wiping'); plate.classList.add('live');
+            nameFor(LAST);
+          }
         })(performance.now());
       }, hold + 400);
     })();

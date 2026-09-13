@@ -31,11 +31,11 @@ estate owners — Hidden Canyon $9.15M, Altair $4.59M, Orchard Hills $3.51M. Tie
 Stonegate $1.82M, Portola Springs, Woodbury — are affluent but not estate-scale. **The
 quality of the voice never drops between tiers**; what changes is what we assume about the
 reader. Never write to a Stonegate owner as though they employ a household staff. See the
-tier table in Rule 4.
+tier table in Rule 5.
 
 ---
 
-## THE FOUR RULES
+## THE FIVE RULES
 
 ### 1. Specific beats superlative
 
@@ -57,7 +57,32 @@ pretend the decision is easy.
 > ✅ "Three approved whites look nearly identical in your hand and completely different
 > across a facade in afternoon sun."
 
-### 3. Never oversell what we haven't earned
+### 3. Never a word the homeowner wouldn't use about their own house
+
+Trade vocabulary is precise, and precision is not the job here. A word only
+painters use tells the reader the page was written for the trade, not for them —
+and it burns a slot that a term they'd actually search could have had.
+
+> ❌ "Every candidate palette rendered on the actual **elevation**."
+> ✅ "Their **Newport Beach home**, in every **color scheme**."
+
+*Elevation* was live in ten places before Fabian caught it — including the
+pre-filled text message a homeowner sends from their own phone, which had them
+saying it too.
+
+The same test kills **substrate**, **mil thickness**, **cut line**, **fascia**,
+**friable**, **efflorescence** and **punch list** in customer copy. All of them
+are correct. None of them are hers.
+
+> **The test:** would she say this word to a neighbour over the fence?
+> If not, it belongs in the estimate, not on the page.
+
+Two exceptions, because they are the proof rather than the jargon: a
+**Sherwin-Williams colour name and number**, and the **60/30/10** ratio. She
+will not have used either, but both are checkable, and checkable is what this
+buyer is short of.
+
+### 4. Never oversell what we haven't earned
 
 We have 9 reviews. Competitors have 55+. Write around the gap honestly — lead with the
 visualization, not with social proof we don't have.
@@ -66,7 +91,7 @@ visualization, not with social proof we don't have.
 > ❌ "5-Star Rated" *(rating unconfirmed)*
 > ✅ "See your home in every color before a single brushstroke."
 
-### 4. Write to the tier
+### 5. Write to the tier
 
 | Tier | Register |
 |---|---|
