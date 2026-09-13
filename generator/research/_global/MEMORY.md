@@ -304,7 +304,7 @@ gap we have** — educational posts are the only thing earning AI citations in t
   clickstream; "orchard hills house painters" is below the measurement floor of every tool
   that exists. Judge community pages on Search Console impressions, never on a keyword tool.
 
-### F-17 · A CSS override that "should win" and doesn't, twice in one hour
+### F-17 · A CSS override that "should win" and doesn't — three times
 Tightening the hero's fold budget, two rules were written, shipped and measured — and
 neither did anything. Both were the same mistake in different clothes.
 
@@ -320,7 +320,13 @@ combinator adds nothing to specificity but the extra class does. The measured ma
 neither value in either rule, which is the tell. **When a computed value matches no rule you
 wrote, grep every selector ending in that class before touching numbers.**
 
-**The rule that catches both:** never claim a spacing change works because the CSS looks
+**c) It happened a third time, one commit later.** `.hero-kicker-lede { margin-top: ... }`
+lost to `.hero-cinema .hero-kicker-lede { margin-top: 10px }` — the headline-to-subhead gap
+Fabian had just reported as too tight. Three times in two commits on the same page.
+**Standing rule for this sheet: the hero override block lives last and every selector in it
+carries the `.hero-cinema` prefix, whether or not it currently needs it.**
+
+**The rule that catches all three:** never claim a spacing change works because the CSS looks
 right. Read the computed box back out of a real browser at every target width. Six widths
 (1440x900, 1280x800, 834x1112, 768x1024, 390x844, 360x780) took one script and found four
 regressions that reading the diff did not.
