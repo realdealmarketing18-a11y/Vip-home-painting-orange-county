@@ -2508,14 +2508,23 @@
   .hr-inset { display: flex; flex-direction: column; align-items: center; }
   .hr-inset > .hr-plate, .hr-inset > .hr-tray { align-self: stretch; }
   .hero-cinema .hr-caption { margin: clamp(14px, 2.2vh, 22px) 0 0;
-    width: max-content; max-width: 94vw; text-align: center; }
+    display: flex; align-items: center; justify-content: center;
+    gap: clamp(10px, 1.1vw, 16px); width: max-content; max-width: 94vw;
+    text-align: left; }
+  /* the second appearance of their face — smaller than the chip up top,
+     because here it is a marker rather than an introduction */
+  .hr-cap-face { flex: none; width: clamp(27px, 2.2vw, 33px);
+    height: clamp(27px, 2.2vw, 33px); border-radius: 50%; object-fit: cover;
+    border: 1px solid rgba(201,169,97,.55);
+    box-shadow: 0 6px 20px rgba(0,0,0,.42); }
   .hr-cap-line { font-family: var(--font-serif); font-style: italic;
     font-size: clamp(12px, 1.3vw, 16px); line-height: 1.4;
     color: rgba(245,239,226,.9); text-shadow: 0 1px 14px rgba(0,0,0,.7); }
   .hr-cap-line b { font-style: normal; font-weight: 600;
     color: var(--gold-bright); }
   @media (max-width: 700px) {
-    .hero-cinema .hr-caption { width: 100%; max-width: 100%; }
+    .hero-cinema .hr-caption { width: 100%; max-width: 100%;
+      align-items: flex-start; gap: 10px; }
     .hr-cap-line { font-size: 12.5px; line-height: 1.45; }
   }
 
