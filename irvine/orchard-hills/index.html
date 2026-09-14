@@ -2699,6 +2699,15 @@
     .hero-beats.is-tracked li.now .n { animation: none; }
   }
 
+  /* The decorative gold frame is inset 20px from the hero, which put its
+     top edge at y=99 — inside the eyebrow's text box (95-107 on desktop),
+     so the rule ran straight through the words. Measured, not eyeballed.
+     Tablet and phone were already clear; only wide screens need the room,
+     and the plate is width-driven so paying for it costs nothing. */
+  @media (min-width: 901px) {
+    .hero-cinema .hero-stack { padding-top: clamp(30px, 3.4vh, 46px); }
+  }
+
   
 /* === FAQ styles (extracted from the OC page) === */
     .areas-head { text-align: center; max-width: 760px; margin: 0 auto 40px; }
@@ -4625,54 +4634,91 @@ setTimeout(() => {
     plate.classList.remove('wiping');
   }
 
-  /* THE PASS. One sweep, and it always opens on the before.
+  /* One tween, reused by everything below. */
+  function animate(from, to, ms, done) {
+    var t0 = performance.now();
+    (function tick(now) {
+      var t = Math.min(1, (now - t0) / ms);
+      setCut(from + (to - from) * ease(t));
+      if (t < 1) { raf = requestAnimationFrame(tick); }
+      else { raf = null; if (done) done(); }
+    })(performance.now());
+  }
 
-     The old version dissolved through four candidate renders first and only
-     then wiped — which meant the reveal, the part that actually persuades,
-     landed ~6 seconds in and was usually over before anyone looked at it.
-     Now: hold on the untouched house, sweep across to the repaint, come
-     back far enough that the before reads properly, and settle near the
-     middle where the handle looks grabbable. */
+  /* Timings derived from data-dur so the whole sequence stays tunable from
+     one attribute in the markup. */
+  var REVEAL = dur * 0.32, DWELL = dur * 0.16,
+      RETURN = dur * 0.23, SETTLE = dur * 0.34;
+
+  /* A SINGLE PASS — used when the visitor picks one scheme from the tray or
+     the band. Opens on the before, crosses to the repaint, comes back far
+     enough that the before reads, settles on the seam. */
   function pass(from) {
     stop();
     plate.classList.add('wiping');
     sweeping = true;
-    var PATH = [
-      { v: (from === undefined ? 100 : from), at: 0 },
-      { v: 100, at: 0.16 },   /* hold on the before */
-      { v: 3,   at: 0.56 },   /* across to the new colour, in full */
-      { v: 88,  at: 0.82 },   /* and back, so the before reads properly */
-      { v: 50,  at: 1    }    /* settle on the seam */
-    ];
-    var total = dur * 1.8;
-    var t0 = performance.now();
-    (function tick(now) {
-      var t = Math.min(1, (now - t0) / total);
-      var i = 1;
-      while (i < PATH.length - 1 && t > PATH[i].at) i++;
-      var a = PATH[i - 1], b = PATH[i];
-      var seg = (t - a.at) / (b.at - a.at || 1);
-      setCut(a.v + (b.v - a.v) * ease(Math.max(0, Math.min(1, seg))));
-      if (t < 1) { raf = requestAnimationFrame(tick); }
-      else {
-        raf = null; sweeping = false;
-        plate.classList.remove('wiping'); plate.classList.add('live');
-      }
-    })(performance.now());
+    animate(from === undefined ? 100 : from, 100, RETURN * 0.5, function () {
+      animate(100, 3, REVEAL, function () {
+        timer = setTimeout(function () {
+          animate(3, 88, RETURN, function () {
+            animate(88, 50, SETTLE, function () {
+              sweeping = false;
+              plate.classList.remove('wiping');
+              plate.classList.add('live');
+            });
+          });
+        }, DWELL);
+      });
+    });
   }
 
+  /* THE REEL — every scheme gets its own swipe, not just the last one.
+
+     It used to dissolve through the candidates invisibly and wipe once at
+     the end, so three of the four repaints were never actually revealed.
+     Now the seam crosses the house once per scheme: reveal, dwell on the
+     full repaint, slide back to the before, swap the after underneath while
+     it is hidden, and go again. Four schemes, four swipes.
+
+     Step 1 stays lit and pulsing for all four, because all four ARE the
+     visualizing. Step 2 lands when the last one settles, step 3 on the
+     finished state. */
   function play() {
     stop();
     plate.classList.remove('live');
     if (beatsEl) beatsEl.classList.add('is-tracked');
     beat(1);
-    show(LAST);
-    setCut(100);                       /* start on the before, always */
-    timer = setTimeout(function () {
-      beat(2);
-      pass();
-      timer = setTimeout(function () { beat(3); }, dur * 1.8);
-    }, hold);
+    plate.classList.add('wiping');
+    sweeping = true;
+
+    var i = 0;
+    show(0);
+    setCut(100);
+    timer = setTimeout(swipe, hold);
+
+    function swipe() {
+      animate(100, 3, REVEAL, function () {
+        timer = setTimeout(function () {
+          if (i < LAST) {
+            animate(3, 100, RETURN, function () {
+              i++;
+              show(i);                 /* invisible: the after is fully clipped here */
+              timer = setTimeout(swipe, 140);
+            });
+          } else {
+            beat(2);
+            animate(3, 88, RETURN, function () {
+              animate(88, 50, SETTLE, function () {
+                sweeping = false;
+                plate.classList.remove('wiping');
+                plate.classList.add('live');
+                beat(3);
+              });
+            });
+          }
+        }, DWELL);
+      });
+    }
   }
 
   /* drag compares the untouched house against whichever scheme is showing */
