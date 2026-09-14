@@ -2868,10 +2868,6 @@
     .hero-beats.is-tracked li.now .n { animation: none; }
   }
 
-  /* the beats now live under the plate, so they get their own spacing */
-  .hr-inset > .hero-beats { margin: clamp(14px, 2.2vh, 22px) 0 0;
-    align-self: stretch; }
-
   </style>
 </head>
 <body>
@@ -2988,6 +2984,17 @@
            Loved it" reads as a list jammed into prose, and the rhythm is the
            whole point of the line. -->
 
+      <!-- The beats sit under the headline, which is where Fabian wants
+           them. They were moved below the plate to buy ~60px of height for
+           it; the plate is sized by width now, so that trade no longer
+           exists and the hero simply runs a little taller. They still light
+           and pulse in step with the reel below them. -->
+      <ol class="hero-beats">
+        <li><span class="n">1</span><span class="t"><span class="w">They</span> visualized it</span></li>
+        <li><span class="n">2</span><span class="t"><span class="w">They</span> loved it</span></li>
+        <li><span class="n">3</span><span class="t"><span class="w">We</span> painted it</span></li>
+      </ol>
+
       <!-- THE SELECTION REEL — sits exactly where the play button used to.
            The commercial's job was to prove the deliberation: that they saw
            the house in every color and only then chose. A two-state
@@ -3047,16 +3054,6 @@
              are. -->
         <p class="hero-kicker-lede hr-caption">The Gallaghers saw their Newport
           Beach home in every color scheme.</p>
-
-        <!-- The beats sit BELOW the plate now. Above it they described
-             what the reel was about to show, and cost ~60px between the
-             headline and the thing that actually persuades. Here they read
-             as what just happened. -->
-        <ol class="hero-beats">
-          <li><span class="n">1</span><span class="t"><span class="w">They</span> visualized it</span></li>
-          <li><span class="n">2</span><span class="t"><span class="w">They</span> loved it</span></li>
-          <li><span class="n">3</span><span class="t"><span class="w">We</span> painted it</span></li>
-        </ol>
 
         <div class="hr-tray">
           <span class="hr-tray-label">They saw</span>
