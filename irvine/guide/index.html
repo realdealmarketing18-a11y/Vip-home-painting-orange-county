@@ -2464,7 +2464,6 @@
      the same content and 200px less to put it in, so the chrome above the
      plate gives way rather than the plate. */
   @media (max-height: 720px) and (min-width: 901px) {
-    .hero-cinema .eyebrow-ruled { display: none; }
     .hero-cinema .pill-wrap-lede .avatar-pill { margin-top: 4px;
       transform: scale(.88); transform-origin: top center; }
     .hero-cinema .hero-stack { padding-top: 6px; }
@@ -2506,18 +2505,20 @@
       max-width: 100%; font-size: 12.5px; line-height: 1.45; }
   }
 
-  /* ============ RECLAIMING HEIGHT FOR THE PLATE ============
-     Measured at 1440x900: the plate had 19px of slack, so it could not
-     grow. Everything above it was the problem, not the plate's own rule.
+  /* ============ HERO PROPORTIONS ============
+     The eyebrow is BACK. It was removed one commit ago to buy height for
+     the plate — and then the plate stopped being sized by height at all,
+     so the trade it was making no longer exists. It costs the plate
+     nothing now: the hero just runs ~36px taller.
 
-     The eyebrow goes. "ORANGE COUNTY LUXURY HOME PAINTING" sat directly
-     above a headline that now opens "Discover How Orange County
-     Homeowners" — it was saying the same words twice, and it cost ~36px
-     right where the plate needed them. The h1 comes down 40 -> 37px, worth
-     another ~12px across three lines.
+     Keeping it is also the right call on its own terms. It is the first
+     text in the hero and it carries the exact-match phrase, and while the
+     H1 is the stronger signal, a second on-page placement costs nothing.
+     The one place it must NOT go is the sticky CTA bar: that is built by
+     script, so the phrase would depend on JS execution to be indexed at
+     all — strictly worse than the plain markup it already has.
 
-     That is ~48px reclaimed, which is ~85px of plate width. */
-  .hero-cinema .eyebrow-ruled { display: none; }
+     The h1 stays at 37px. */
   .hero-cinema .ttl-hero,
   .hero-cinema.hero .ttl-hero { font-size: clamp(20px, 2.4vw + 0.4rem, 37px); }
   .hero-cinema .pill-wrap-lede + .ttl-hero { margin-top: clamp(14px, 2.6vh, 24px); }
@@ -2558,8 +2559,10 @@
      screen and the visitor scrolls, which is what a hero is allowed to do.
      The reel still autoplays when it scrolls into view. */
   .hero-cinema .hero-stack { max-width: min(1120px, 100%); }
-  .hr-inset { width: min(94%, 940px); }
-  @media (max-width: 700px) { .hr-inset { width: 100%; } }
+  .hr-inset { width: min(80%, 790px); }
+  @media (min-width: 1700px) { .hr-inset { width: min(80%, 870px); } }
+  @media (max-width: 900px)  { .hr-inset { width: min(92%, 700px); } }
+  @media (max-width: 700px)  { .hr-inset { width: 100%; } }
 
   /* The band is scrolled to, not competing for the fold, so it can simply
      be bigger. It snaps, and cards peek at the edges — that reads as a
