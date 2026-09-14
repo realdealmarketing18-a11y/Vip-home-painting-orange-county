@@ -169,6 +169,7 @@ function heroReel(A) {
   return `
       <figure class="hr-inset">
         <div class="hr-plate" id="hrPlate" data-hold="1100" data-dur="2600">
+          <div class="hr-before" id="hrBefore" style="background-image:url('${A}/viz-photos/base.webp')"></div>
 ${layers}
           <div class="hr-grab" id="hrGrab"></div>
           <div class="hr-seam" id="hrSeam">
@@ -180,6 +181,8 @@ ${layers}
               </svg>
             </span>
           </div>
+          <span class="hr-side hr-side-b">Before</span>
+          <span class="hr-side hr-side-a">After</span>
           <span class="hr-stamp">The direction chosen</span>
           <div class="hr-nameplate">
             <span class="sw" id="hrSw"></span>

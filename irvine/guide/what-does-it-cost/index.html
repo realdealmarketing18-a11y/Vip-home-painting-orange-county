@@ -2582,6 +2582,61 @@
     .cand-card { flex-basis: clamp(290px, 22vw, 420px); }
   }
 
+  /* ============ BEFORE / AFTER ============
+     The before sits underneath everything at z-index 1 and is never
+     clipped, so the left of the seam is always the Gallaghers' actual
+     house. Every scheme layer above it is clipped from the left, so what
+     the seam reveals on the right is always a repaint of the same frame.
+     Only ONE scheme layer is visible at a time; changing scheme
+     cross-fades it, and the before never moves. */
+  .hr-before { position: absolute; inset: 0; z-index: 1;
+    background-size: cover; background-position: center 42%; }
+  .hr-plate .hr-cand { z-index: 2; opacity: 0;
+    transition: opacity 900ms cubic-bezier(.4,0,.2,1); }
+  .hr-plate .hr-cand.on, .hr-plate .hr-cand.final.on { opacity: 1; }
+  /* no-JS / reduced motion: the chosen scheme shows, unclipped */
+  .hr-plate .hr-cand.final { opacity: 1; }
+  .hr-plate.js-on .hr-cand.final { opacity: 0; }
+  .hr-plate.js-on .hr-cand.final.on { opacity: 1; }
+
+  .hr-side { position: absolute; top: 14px; z-index: 5;
+    font-family: var(--font-sans); font-size: clamp(8.5px, .62vw, 10.5px);
+    font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+    color: rgba(245,239,226,.92); padding: 6px 12px; border-radius: 999px;
+    background: rgba(16,19,44,.52); backdrop-filter: blur(10px);
+    border: 1px solid rgba(245,239,226,.18);
+    opacity: 0; transition: opacity 500ms ease; pointer-events: none; }
+  .hr-side-b { left: 14px; }
+  .hr-side-a { right: 14px; }
+  .hr-plate.wiping .hr-side, .hr-plate.live .hr-side { opacity: 1; }
+  /* the After tag has nothing to label until the seam has moved off the
+     right edge, so it waits for the pass to begin */
+  .hr-plate .hr-side-a { opacity: 0; }
+  .hr-plate.revealed .hr-side-a { opacity: 1; }
+  @media (max-width: 600px) {
+    .hr-side { top: 9px; padding: 5px 9px; letter-spacing: .14em; }
+    .hr-side-b { left: 9px; } .hr-side-a { right: 9px; }
+  }
+
+  /* AFTER owns the top-right corner; the gold "direction chosen" stamp
+     drops below it and only appears on the scheme the Gallaghers actually
+     picked. It was showing on every scheme, which made the one real claim
+     on the plate meaningless. */
+  .hr-plate .hr-stamp { top: auto; bottom: 46px; right: 14px;
+    opacity: 0 !important; transition: opacity 520ms ease; }
+  .hr-plate.live.chosen .hr-stamp { opacity: 1 !important; transform: none; }
+  @media (max-width: 600px) {
+    /* On a phone the plate is too narrow for the stamp and the nameplate to
+       share the bottom edge — the stamp ran under it. The nameplate and the
+       counter already identify the scheme, and the band below flags the
+       chosen one on its card, so the stamp is the one to drop. */
+    .hr-plate .hr-stamp { display: none; }
+  }
+
+  /* the beats now live under the plate, so they get their own spacing */
+  .hr-inset > .hero-beats { margin: clamp(14px, 2.2vh, 22px) 0 0;
+    align-self: stretch; }
+
   
     .areas-head { text-align: center; max-width: 760px; margin: 0 auto 40px; }
     .areas-head .lead { font-family: var(--font-sans); font-size: 15.5px; color: #4A4F70; line-height: 1.6; max-width: 640px; margin: 0 auto; }
