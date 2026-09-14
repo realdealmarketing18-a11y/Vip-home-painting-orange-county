@@ -2699,6 +2699,28 @@
     .hr-side-b { left: 9px; } .hr-side-a { right: 9px; }
   }
 
+  /* THE STEPS PULSE IN ORDER as the reel walks them: 1 while it holds on
+     the before, 2 as the seam crosses to the repaint, 3 once it settles.
+     The pulse is on the numeral only — the ring breathes, the text just
+     brightens — so a row of three does not turn into three things jumping.
+
+     Sized in em so it scales with whatever the numeral is at that
+     breakpoint, which is how it works at every screen size without a
+     per-breakpoint copy of the keyframes. */
+  @keyframes beatPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(201,169,97,.55),
+                           0 0 18px 2px rgba(224,192,120,.38); }
+    50%      { box-shadow: 0 0 0 .34em rgba(201,169,97,0),
+                           0 0 26px 5px rgba(224,192,120,.62); }
+  }
+  .hero-beats.is-tracked li.now .n {
+    animation: beatPulse 1.5s cubic-bezier(.4,0,.6,1) infinite; }
+  /* a completed step stops pulsing but stays lit */
+  .hero-beats.is-tracked li.done .n { animation: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-beats.is-tracked li.now .n { animation: none; }
+  }
+
   /* the beats now live under the plate, so they get their own spacing */
   .hr-inset > .hero-beats { margin: clamp(14px, 2.2vh, 22px) 0 0;
     align-self: stretch; }
@@ -4694,23 +4716,44 @@ setTimeout(() => {
     /* every scheme layer is clipped identically — only one is ever visible,
        so this is cheap and keeps the seam honest if the scheme changes
        mid-pass */
-    layers.forEach(function (l) { l.style.clipPath = 'inset(0 0 0 ' + cut + '%)'; });
+    allLayers().forEach(function (l) { l.style.clipPath = 'inset(0 0 0 ' + cut + '%)'; });
     seam.style.left = cut + '%';
     plate.classList.toggle('revealed', cut < 96);
   }
+
+  /* A band card is a scheme the hero tray does not carry, so it needs
+     somewhere to land. One reusable guest layer does it: the band swaps its
+     background rather than adding a layer per click, and the before
+     underneath never moves either way. */
+  var guest = null;
+  function ensureGuest() {
+    if (!guest) {
+      guest = document.createElement('div');
+      guest.className = 'hr-cand';
+      plate.insertBefore(guest, grab);
+      guest.style.clipPath = 'inset(0 0 0 ' + cut + '%)';
+    }
+    return guest;
+  }
+  function allLayers() { return guest ? layers.concat([guest]) : layers; }
+
+  /* the counter spans both sets — four in the tray, seven in the band */
+  var BAND = document.getElementById('bandSchemes');
+  var bandItems = BAND ? [].slice.call(BAND.content.querySelectorAll('i')) : [];
+  var TOTAL = layers.length + bandItems.length;
 
   function label(i) {
     var l = layers[i];
     if (swEl) swEl.style.background = l.getAttribute('data-sw') || '';
     if (nmEl) nmEl.innerHTML = l.getAttribute('data-nm') || '';
     if (coEl) coEl.innerHTML = l.getAttribute('data-co') || '';
-    if (ctEl) ctEl.textContent = pad(i + 1) + ' / ' + pad(layers.length);
+    if (ctEl) ctEl.textContent = pad(i + 1) + ' / ' + pad(TOTAL);
     mark(thumbs, i);
     mark(track, i);
   }
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function mark(host, i) {
-    if (!host) return;
+    if (!host) return;   /* i === -1 clears every marker in that list */
     [].forEach.call(host.children, function (b, n) {
       b.setAttribute('aria-current', n === i ? 'true' : 'false');
     });
@@ -4721,7 +4764,22 @@ setTimeout(() => {
   function show(i) {
     current = i;
     layers.forEach(function (l, n) { l.classList.toggle('on', n === i); });
+    if (guest) guest.classList.remove('on');
     label(i);
+  }
+
+  /* a band scheme: same plate, same before, same pass */
+  function showBand(el, idx) {
+    var g = ensureGuest();
+    g.style.backgroundImage = el.style.backgroundImage;
+    layers.forEach(function (l) { l.classList.remove('on'); });
+    g.classList.add('on');
+    if (swEl) swEl.style.background = el.getAttribute('data-sw') || '';
+    if (nmEl) nmEl.innerHTML = el.getAttribute('data-nm') || '';
+    if (coEl) coEl.innerHTML = el.getAttribute('data-co') || '';
+    if (ctEl) ctEl.textContent = pad(layers.length + idx + 1) + ' / ' + pad(TOTAL);
+    mark(thumbs, -1);
+    mark(track, idx);
   }
 
   function stop() {
@@ -4828,29 +4886,38 @@ setTimeout(() => {
       thumbs.appendChild(t);
     }
 
-    if (track) {
+  });
+
+  /* THE BAND — its own seven schemes, not a second copy of the tray's four.
+     Clicking one loads it into the hero plate against the same before and
+     runs the same pass, so the band is a way of continuing through the set
+     rather than a gallery that goes nowhere. */
+  if (track && bandItems.length) {
+    bandItems.forEach(function (el, j) {
       var c = document.createElement('button');
       c.type = 'button';
       c.className = 'cand-card';
       var pic = document.createElement('span');
       pic.className = 'pic';
-      pic.style.backgroundImage = bg;
+      pic.style.backgroundImage = el.style.backgroundImage;
       var meta = document.createElement('span');
       meta.className = 'meta';
-      meta.innerHTML = '<span class="sw" style="background:' + sw + '"></span>' +
-        '<span class="t"><span class="h">' + nm + '</span><span class="c">' + co + '</span>' +
-        (l.getAttribute('data-chosen') ? '<span class="flag">The direction chosen</span>' : '') +
-        '</span>';
+      meta.innerHTML = '<span class="sw" style="background:' +
+        (el.getAttribute('data-sw') || '') + '"></span>' +
+        '<span class="t"><span class="h">' + (el.getAttribute('data-nm') || '') +
+        '</span><span class="c">' + (el.getAttribute('data-co') || '') + '</span></span>';
       c.appendChild(pic);
       c.appendChild(meta);
       c.addEventListener('click', function () {
         var h = document.getElementById('hero');
         if (h) h.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        pick(i);
+        stop(); untrack();
+        showBand(el, j);
+        pass(cut);
       });
       track.appendChild(c);
-    }
-  });
+    });
+  }
 
   plate.classList.add('js-on');
   show(LAST);

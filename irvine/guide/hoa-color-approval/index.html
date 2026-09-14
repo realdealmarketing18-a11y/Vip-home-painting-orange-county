@@ -2618,6 +2618,28 @@
     .hr-side-b { left: 9px; } .hr-side-a { right: 9px; }
   }
 
+  /* THE STEPS PULSE IN ORDER as the reel walks them: 1 while it holds on
+     the before, 2 as the seam crosses to the repaint, 3 once it settles.
+     The pulse is on the numeral only — the ring breathes, the text just
+     brightens — so a row of three does not turn into three things jumping.
+
+     Sized in em so it scales with whatever the numeral is at that
+     breakpoint, which is how it works at every screen size without a
+     per-breakpoint copy of the keyframes. */
+  @keyframes beatPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(201,169,97,.55),
+                           0 0 18px 2px rgba(224,192,120,.38); }
+    50%      { box-shadow: 0 0 0 .34em rgba(201,169,97,0),
+                           0 0 26px 5px rgba(224,192,120,.62); }
+  }
+  .hero-beats.is-tracked li.now .n {
+    animation: beatPulse 1.5s cubic-bezier(.4,0,.6,1) infinite; }
+  /* a completed step stops pulsing but stays lit */
+  .hero-beats.is-tracked li.done .n { animation: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-beats.is-tracked li.now .n { animation: none; }
+  }
+
   /* the beats now live under the plate, so they get their own spacing */
   .hr-inset > .hero-beats { margin: clamp(14px, 2.2vh, 22px) 0 0;
     align-self: stretch; }
