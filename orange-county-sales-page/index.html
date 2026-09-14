@@ -2926,6 +2926,70 @@
   #candidates { scroll-margin-top: 92px; }
   @media (max-width: 600px) { #candidates { scroll-margin-top: 76px; } }
 
+  /* ============ BAND CARDS AS BEFORE/AFTERS ============
+     Same language as the hero plate, in miniature. At rest each card sits
+     half before / half after so the comparison reads without any
+     interaction — which matters, because most visitors will not hover.
+     Hover or keyboard focus sweeps it to the full repaint. */
+  .cand-card .pic { position: relative; overflow: hidden; display: block; }
+  /* base.webp carries a CRMLS watermark in its bottom-left corner. The hero
+     plate is 16:9 and crops it away; these cards are 4:3 and showed it on
+     every one of the seven. Cropping by background-size rather than a
+     transform is deliberate: a transform would scale the after layer's
+     clip-path too and the seam would stop lining up with the divider.
+     Both layers take the identical crop, so registration holds. */
+  .cand-card .pic-before, .cand-card .pic-after { position: absolute; inset: 0;
+    background-size: auto 124%; background-position: 50% 24%; }
+  .cand-card .pic-before { z-index: 1; }
+  .cand-card .pic-after  { z-index: 2; clip-path: inset(0 0 0 50%);
+    transition: clip-path 820ms cubic-bezier(.22,1,.36,1); }
+  .cand-card .pic-seam { position: absolute; z-index: 3; top: 0; bottom: 0;
+    left: 50%; width: 1px; background: rgba(245,239,226,.9);
+    box-shadow: 0 0 10px 1px rgba(0,0,0,.35);
+    transition: left 820ms cubic-bezier(.22,1,.36,1); }
+  .cand-card:hover .pic-after, .cand-card:focus-visible .pic-after {
+    clip-path: inset(0 0 0 4%); }
+  .cand-card:hover .pic-seam, .cand-card:focus-visible .pic-seam { left: 4%; }
+
+  .cand-card .pic-tag { position: absolute; z-index: 4; top: 8px;
+    font-family: var(--font-sans); font-size: 7.5px; font-weight: 700;
+    letter-spacing: .16em; text-transform: uppercase;
+    color: rgba(245,239,226,.94); padding: 3px 7px; border-radius: 999px;
+    background: rgba(16,19,44,.58); backdrop-filter: blur(8px);
+    transition: opacity 420ms ease; }
+  .cand-card .pic-tag-b { left: 8px; }
+  .cand-card .pic-tag-a { right: 8px; }
+  .cand-card:hover .pic-tag-a, .cand-card:focus-visible .pic-tag-a { opacity: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    .cand-card .pic-after, .cand-card .pic-seam { transition: none; }
+  }
+
+  /* ============ THE THREE REASONS, UNDER THE PROOF ============ */
+  .cand-reasons { list-style: none; margin: clamp(34px, 4.6vw, 62px) auto 0;
+    padding: 0 24px; max-width: 1180px; display: grid; gap: clamp(20px, 2.4vw, 40px);
+    grid-template-columns: repeat(3, 1fr); }
+  .cand-reasons li { display: flex; align-items: flex-start;
+    gap: clamp(12px, 1.2vw, 18px); text-align: left; }
+  .cand-reasons .cr-n { flex: none; display: inline-flex; align-items: center;
+    justify-content: center; width: clamp(40px, 3.4vw, 52px);
+    height: clamp(40px, 3.4vw, 52px); border-radius: 50%;
+    background: var(--navy); color: var(--gold-bright);
+    font-family: var(--font-serif); font-weight: 600;
+    font-size: clamp(14px, 1.2vw, 18px); line-height: 1;
+    border: 1px solid rgba(201,169,97,.5); }
+  .cand-reasons .cr-n small { font-size: .58em; margin-left: 1px; }
+  .cand-reasons b { display: block; font-family: var(--font-serif);
+    font-weight: 600; font-style: italic; color: var(--navy);
+    font-size: clamp(14px, 1.15vw, 18px); line-height: 1.25;
+    margin-bottom: 6px; }
+  .cand-reasons div { font-family: var(--font-sans);
+    font-size: clamp(12.5px, .88vw, 14.5px); line-height: 1.6;
+    color: rgba(26,31,78,.78); }
+  @media (max-width: 860px) {
+    .cand-reasons { grid-template-columns: 1fr; max-width: 560px;
+      gap: 20px; margin-top: 34px; }
+  }
+
   </style>
 </head>
 <body>
@@ -3181,11 +3245,12 @@
   <section class="cand-band" id="candidates">
     <span class="cand-ghost" aria-hidden="true">VISUALIZED</span>
     <div class="cand-head">
-      <div class="eyebrow">The Custom Visualization Service</div>
-      <h2>Nobody should pick a five-figure color off a two-inch card</h2>
-      <p>Every color scheme, rendered on the actual home, in the actual light,
-        before anything is scheduled. These are the directions that went on
-        the table.</p>
+      <div class="eyebrow">Why Get A Complimentary Custom Color Consultation</div>
+      <h2>Avoid Costly <span class="accent">Mistakes</span> &mdash; See Your Orange
+        County Home in Every Color First</h2>
+      <p>Nobody should pick a five-figure color off a two-inch card. Every scheme
+        below is the Gallaghers' actual home, in its actual light, before a single
+        brushstroke. Tap any one to see it full size.</p>
     </div>
     <!-- THE BAND'S OWN SEVEN. The hero tray shows four; these are the
          other seven, so scrolling into this section is new material rather
@@ -3204,6 +3269,38 @@
       <i data-id="spanish"     data-nm="Santa Barbara Luxe"        data-co="SW Alabaster &middot; Tricorn Black"       data-sw="#F1EDE2" style="background-image:url('viz-photos/scheme-spanish.jpg')"></i>
     </template>
     <div class="cand-track" id="candTrack"></div>
+    <!-- The three reasons used to be their own section further down, saying
+         the same thing in other words against a stock photo of somebody
+         else's house. Here they sit under the proof instead of arguing for
+         it, and every number in them is checkable: 11 schemes rendered, 30
+         minutes from OFFER.md, the 2-year warranty from communities.json.
+
+         The old copy claimed "$1,000 value" and "save thousands". Neither is
+         verifiable and COPY-FRAMEWORK already retired that exact claim —
+         "twice" is the number that needs no citation and holds whether the
+         job is $25,000 or $250,000. -->
+    <ul class="cand-reasons">
+      <li>
+        <span class="cr-n">11</span>
+        <div><b>Eleven schemes, one decision, 30 minutes</b>
+          The Gallaghers saw their own facade in every one of them before
+          anything was scheduled. No sample jars, no squinting at a card in
+          the driveway.</div>
+      </li>
+      <li>
+        <span class="cr-n">2&times;</span>
+        <div><b>A color you regret costs the whole job twice</b>
+          The second repaint costs exactly what the first one did. Seeing it
+          on your own walls first is what makes that impossible.</div>
+      </li>
+      <li>
+        <span class="cr-n">2<small>yr</small></span>
+        <div><b>You approve the render, then we paint it</b>
+          What you signed off is what goes on the house, backed by our 2-year
+          warranty on labor and materials.</div>
+      </li>
+    </ul>
+
     <div class="cand-foot">
       <p>Your home, rendered the same way, in a complimentary 30-minute consultation.</p>
       <a href="#viz" class="btn-gold"><span class="col-2"><span>See Your Home In Every Color</span><span class="sub">Complimentary &middot; Itemized estimate included</span></span></a>
@@ -3467,25 +3564,14 @@
 
   </section>
 
-  <!-- ============ 3. WHY COMPLIMENTARY CONSULT (cream-deep) ============ -->
-  <section class="cream-deep">
-    <div class="why-grid">
-      <div>
-        <div class="q-icon">?</div>
-        <div class="eyebrow">Why Get A COMPLIMENTARY Custom Color Consultation</div>
-        <h2 class="ttl">Avoid Costly <span class="accent">Mistakes</span>—Our Complimentary Consultation Ensures Your Orange County Home Stands Out For The Right Reasons</h2>
-        <ul class="checks">
-          <li><div><b>Unlock $1,000 Value in 30 Minutes</b>Discover how our complimentary consultation can save you thousands in costly repainting by getting it right the first time.</div></li>
-          <li><div><b>Fast-Track Your Home Transformation</b>Get expert color advice in just 30 minutes, designed to fit your busy schedule.</div></li>
-          <li><div><b>Why Waste Money on Guesswork?</b>Our complimentary color consultation ensures you avoid expensive mistakes and achieve a timeless look.</div></li>
-        </ul>
-      </div>
-      <div class="ba-frame" style="aspect-ratio: 4/3;">
-        <div class="ba-cap">Home Painting Project · 1:21</div>
-        <div class="ba-img before" style="background-image: linear-gradient(135deg, #2a2f5a, #1A1F4E), url('https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?w=900&auto=format&fit=crop&q=80'); background-blend-mode: overlay; background-size: cover; background-position: center;"></div>
-      </div>
-    </div>
-  </section>
+  <!-- The "Why Get A Complimentary Custom Color Consultation" section stood
+       here. It has been merged into the candidate band above: its headline
+       and its three reasons now sit under the renders that prove them,
+       instead of arguing the same case a second time in other words.
+
+       Its before/after frame was a stock Unsplash photo of a house that is
+       not the Gallaghers' and not a VIP project — the band's cards use the
+       real base photo instead. -->
 
   <!-- ============ 4. PROCESS (white) ============ -->
   <section id="process">
@@ -4717,13 +4803,30 @@ setTimeout(() => {
      runs the same pass, so the band is a way of continuing through the set
      rather than a gallery that goes nowhere. */
   if (track && bandItems.length) {
+    var beforeEl = document.getElementById('hrBefore');
+    var beforeBg = beforeEl ? beforeEl.style.backgroundImage : '';
     bandItems.forEach(function (el, j) {
       var c = document.createElement('button');
       c.type = 'button';
       c.className = 'cand-card';
+      /* Each card is a before/after in miniature, using the same base.webp
+         the hero plate uses — so the section reads as more of the same
+         story rather than a gallery of unrelated renders. At rest it sits
+         half and half; hover or focus sweeps it to the full repaint. */
       var pic = document.createElement('span');
       pic.className = 'pic';
-      pic.style.backgroundImage = el.style.backgroundImage;
+      var picB = document.createElement('span');
+      picB.className = 'pic-before';
+      picB.style.backgroundImage = beforeBg;
+      var picA = document.createElement('span');
+      picA.className = 'pic-after';
+      picA.style.backgroundImage = el.style.backgroundImage;
+      var picS = document.createElement('span');
+      picS.className = 'pic-seam';
+      pic.appendChild(picB); pic.appendChild(picA); pic.appendChild(picS);
+      pic.insertAdjacentHTML('beforeend',
+        '<span class="pic-tag pic-tag-b">Before</span>' +
+        '<span class="pic-tag pic-tag-a">After</span>');
       var meta = document.createElement('span');
       meta.className = 'meta';
       meta.innerHTML = '<span class="sw" style="background:' +
