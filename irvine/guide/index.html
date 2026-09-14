@@ -2504,6 +2504,68 @@
       max-width: 100%; font-size: 12.5px; line-height: 1.45; }
   }
 
+  /* ============ RECLAIMING HEIGHT FOR THE PLATE ============
+     Measured at 1440x900: the plate had 19px of slack, so it could not
+     grow. Everything above it was the problem, not the plate's own rule.
+
+     The eyebrow goes. "ORANGE COUNTY LUXURY HOME PAINTING" sat directly
+     above a headline that now opens "Discover How Orange County
+     Homeowners" — it was saying the same words twice, and it cost ~36px
+     right where the plate needed them. The h1 comes down 40 -> 37px, worth
+     another ~12px across three lines.
+
+     That is ~48px reclaimed, which is ~85px of plate width. */
+  .hero-cinema .eyebrow-ruled { display: none; }
+  .hero-cinema .ttl-hero,
+  .hero-cinema.hero .ttl-hero { font-size: clamp(20px, 2.4vw + 0.4rem, 37px); }
+  .hero-cinema .pill-wrap-lede + .ttl-hero { margin-top: clamp(14px, 2.6vh, 24px); }
+  /* EVERY plate-width rule lives here, in order, because a rule for one
+     screen class placed anywhere above gets cancelled by the base rule
+     here (F-17, and it happened again writing this). 60vh is the measured
+     ceiling that keeps plate + caption + tray above the fold at 1440x900
+     and 1024x768; the other two classes have their own ceilings. */
+  /* PLATE FIRST. Fabian: "this is the main thing that is gonna get
+     attention and persuade" — so every other element in the hero gives up
+     height to it, and the plate takes whatever is left.
+
+     Reclaimed, measured at 1440x900: stack padding -15, the Gallagher chip
+     -20 (smaller avatar and tighter padding, same chip), the beats gap -12
+     (still ~2x what it was before Fabian asked for more air), the caption
+     gap -6, the tray padding -14. ~67px, which is ~120px of plate width. */
+  .hero-cinema .hero-stack { padding-top: clamp(10px, 1.8vh, 20px); }
+  .hero-cinema .pill-wrap-lede .avatar-pill { padding: 4px 18px 4px 4px; }
+  .hero-stack .avatar-pill .ph { width: 38px; height: 38px; }
+  .hero-stack .avatar-pill img { width: 38px; height: 38px; }
+  .hero-beats { margin-top: clamp(16px, 2.7vh, 27px); }
+  .hero-cinema .hr-caption { margin-top: clamp(10px, 1.6vh, 16px); }
+  .hr-tray { padding: clamp(7px, 1vh, 10px); }
+
+  /* The vh ceiling is not one number: a wider screen fits the headline in
+     fewer lines, so it has more height left for the plate. Banded, each
+     band measured rather than interpolated. Order matters — the max-width
+     bands must come after the min-width ones. */
+  .hr-inset { width: min(90%, 900px, 60vh); }
+  @media (min-width: 1150px) { .hr-inset { width: min(90%, 900px, 66vh); } }
+  @media (min-width: 1400px) { .hr-inset { width: min(92%, 940px, 68vh); } }
+  @media (min-width: 1700px) { .hr-inset { width: min(92%, 980px, 72vh); } }
+  @media (max-width: 900px)  { .hr-inset { width: min(96%, 900px, 74vh); } }
+  @media (max-width: 700px)  { .hr-inset { width: min(100%, 74vh); } }
+  @media (max-height: 720px) and (min-width: 901px) {
+    .hr-inset { width: min(90%, 800px, 58vh); }
+  }
+  @media (max-width: 700px) { .hr-inset { width: min(100%, 62vh); } }
+  @media (max-height: 720px) and (min-width: 901px) {
+    .hr-inset { width: min(88%, 760px, 50vh); }
+  }
+
+  /* The band is scrolled to, not competing for the fold, so it can simply
+     be bigger. It snaps, and cards peek at the edges — that reads as a
+     carousel rather than as clipping, which is what it is. */
+  .cand-card { flex-basis: clamp(290px, 22vw, 420px); }
+  @media (min-width: 1150px) {
+    .cand-card { flex-basis: clamp(290px, 22vw, 420px); }
+  }
+
   
     .areas-head { text-align: center; max-width: 760px; margin: 0 auto 40px; }
     .areas-head .lead { font-family: var(--font-sans); font-size: 15.5px; color: #4A4F70; line-height: 1.6; max-width: 640px; margin: 0 auto; }
