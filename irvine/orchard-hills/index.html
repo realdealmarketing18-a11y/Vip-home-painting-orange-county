@@ -2311,10 +2311,35 @@
      At a flat 430px the plate was small on a 27" monitor and the thumbs
      under it were barely readable. Height is the right input: it is what
      decides how much room the hero actually has. */
+  /* Sized against ITS OWN CONTAINER, not the viewport. Both earlier
+     attempts failed on one class of screen each: 58vh gave only 464px on a
+     1280x800 laptop, and 48vw then clamped tablets DOWN to 460 from 645,
+     because vw shrinks while the container stays nearly full width. 92% of
+     the stack is right everywhere; 880px and 78vh are only ceilings.
+
+     THE FOLD RULE CHANGED with this: the plate stays fully above the fold,
+     the thumbnail tray may sit just below it on a 900px-tall screen. That
+     is the deliberate trade for a plate that reads as the main event. */
   .hr-inset { margin-top: clamp(15px, 3vh, 28px);
-    width: min(clamp(430px, 58vh, 660px), 100%); }
-  .hr-thumbs button { flex: 0 0 clamp(46px, 7vh, 74px);
-    height: clamp(46px, 7vh, 74px); border-radius: clamp(11px, 1.6vh, 15px); }
+    width: min(92%, 880px, 78vh); }
+  @media (max-width: 700px) {
+    /* a phone has no width to give away — 92% cost it 25px */
+    .hr-inset { width: min(100%, 78vh); }
+  }
+  @media (max-width: 900px) {
+    /* "Orange County" is eight characters longer than "OC" and pushed the
+       headline to five lines on a tablet; the wider measure takes it back
+       to four, which is cheaper than the line. */
+    .hero-cinema .ttl-hero, .hero-cinema.hero .ttl-hero { max-width: 34ch; }
+  }
+
+  /* the Gallagher line, now sitting between the plate and the thumbnails */
+  .hero-cinema .hr-caption { margin: clamp(11px, 1.7vh, 18px) auto 0;
+    max-width: 100%; text-align: center; }
+  /* sized against the tray they sit in — with a 620px plate above them,
+     56px squares left the tray mostly empty and still read as tiny */
+  .hr-thumbs button { flex: 0 0 clamp(52px, 9vh, 88px);
+    height: clamp(52px, 9vh, 88px); border-radius: clamp(11px, 1.7vh, 16px); }
   .hr-tray { padding: clamp(9px, 1.4vh, 13px); gap: clamp(9px, 1.3vh, 13px); }
   .hr-tray-label { font-size: clamp(9.5px, 1.1vh, 11px); }
   .hr-tray-cta { font-size: clamp(9.5px, 1.1vh, 11.5px); }
@@ -2417,10 +2442,14 @@
   /* Below 1150px five cards cannot fit at a readable size, so it is a
      snap rail; above it, the width is solved rather than guessed so the
      row lands exactly one viewport wide and no end card is sliced. */
-  .cand-card { flex-basis: 246px; scroll-snap-align: center; }
+  .cand-card { flex-basis: 268px; scroll-snap-align: center; }
+  /* max() is load-bearing: between 1150 and ~1480 the solved width comes
+     out BELOW the rail default, so a bare calc() made the cards smaller
+     than they started. Now the solve can only ever enlarge them, and below
+     its threshold the rail simply scrolls. */
   @media (min-width: 1150px) {
-    .cand-card { flex-basis: calc(
-      (min(100vw - 104px, 1840px) - 4 * clamp(18px, 1.9vw, 30px)) / 5); }
+    .cand-card { flex-basis: max(268px, calc(
+      (min(100vw - 104px, 1840px) - 4 * clamp(18px, 1.9vw, 30px)) / 5)); }
   }
   .cand-card .h { font-size: clamp(13px, 1.05vw, 17px); }
   .cand-card .c { font-size: clamp(8px, .62vw, 9.5px); }
