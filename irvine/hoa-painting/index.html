@@ -2504,7 +2504,9 @@
     .hero-cinema.hero .ttl-hero { font-size: clamp(22px, 1.9vw + 0.3rem, 30px); }
     .hero-cinema .pill-wrap-lede + .ttl-hero { margin-top: 8px; }
     .hero-beats { margin-top: clamp(10px, 1.8vh, 18px); }
-    .hr-inset { margin-top: clamp(10px, 1.8vh, 18px); width: min(88%, 760px, 52vh); }
+    /* no width cap here any more — a short window makes the hero taller,
+       it does not make the plate smaller */
+    .hr-inset { margin-top: clamp(10px, 1.8vh, 18px); }
     .hero-cinema .hr-caption { margin-top: clamp(8px, 1.4vh, 14px); }
   }
 
@@ -2572,23 +2574,24 @@
   .hero-cinema .hr-caption { margin-top: clamp(10px, 1.6vh, 16px); }
   .hr-tray { padding: clamp(7px, 1vh, 10px); }
 
-  /* The vh ceiling is not one number: a wider screen fits the headline in
-     fewer lines, so it has more height left for the plate. Banded, each
-     band measured rather than interpolated. Order matters — the max-width
-     bands must come after the min-width ones. */
-  .hr-inset { width: min(90%, 900px, 60vh); }
-  @media (min-width: 1150px) { .hr-inset { width: min(90%, 900px, 66vh); } }
-  @media (min-width: 1400px) { .hr-inset { width: min(92%, 940px, 68vh); } }
-  @media (min-width: 1700px) { .hr-inset { width: min(92%, 980px, 72vh); } }
-  @media (max-width: 900px)  { .hr-inset { width: min(96%, 900px, 74vh); } }
-  @media (max-width: 700px)  { .hr-inset { width: min(100%, 74vh); } }
-  @media (max-height: 720px) and (min-width: 901px) {
-    .hr-inset { width: min(90%, 800px, 58vh); }
-  }
-  @media (max-width: 700px) { .hr-inset { width: min(100%, 62vh); } }
-  @media (max-height: 720px) and (min-width: 901px) {
-    .hr-inset { width: min(88%, 760px, 50vh); }
-  }
+  /* NO HEIGHT CAP ON THE PLATE ANY MORE, and this is the whole story of why
+     it kept looking small.
+
+     Every earlier version capped the plate with a vh term so the tray would
+     stay above the fold. On a browser window ~620px tall — a window not
+     dragged to full height, which is how Fabian works — 58vh is 360px, and
+     that is the small plate in his screenshot. The cap, not the plate rule,
+     was the ceiling. Every measurement I reported was taken at full-height
+     viewports, so it never showed up.
+
+     Fabian: "make the hero section length longer if you need to." That
+     removes the constraint the caps existed to serve. The plate is sized by
+     WIDTH only now; on a short window the hero simply runs taller than the
+     screen and the visitor scrolls, which is what a hero is allowed to do.
+     The reel still autoplays when it scrolls into view. */
+  .hero-cinema .hero-stack { max-width: min(1120px, 100%); }
+  .hr-inset { width: min(94%, 940px); }
+  @media (max-width: 700px) { .hr-inset { width: 100%; } }
 
   /* The band is scrolled to, not competing for the fold, so it can simply
      be bigger. It snaps, and cards peek at the edges — that reads as a

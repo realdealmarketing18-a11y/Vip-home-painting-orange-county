@@ -334,6 +334,35 @@ regressions that reading the diff did not.
 **Also learned, and unrelated to cascade:** `transform: scale()` does not shrink a layout
 box. It was used to buy back pill height on phones and bought back exactly zero.
 
+### F-18 · Measuring at one viewport height is measuring nothing
+Fabian asked four times for the hero's before/after plate to be bigger. Each time the
+change was made, measured across nine sizes, reported with a table — and each time he
+replied that it was still small. The table was not wrong. It was taken at full-height
+viewports only (1440x900, 1280x800, 390x844), and he works in a browser window about
+584px tall.
+
+The plate carried a `vh` cap so its tray would stay above the fold. At 58vh a 584px
+window gives a 339px plate — while the same rule gives 528px at 800px tall. **The cap
+was the ceiling, and no measurement taken at full height could see it.**
+
+Three rules out of this:
+
+**Test the window, not the screen.** Device presets are all full-height. A real desktop
+user has a window that is shorter than their screen, often much shorter. Every
+responsive sweep now includes at least one short-and-wide viewport.
+
+**A vh cap is a silent ceiling.** Anything sized with vh has a different maximum for
+every visitor, and the people hitting the small end are invisible unless you test for
+them. If a design needs a height cap, say out loud what the smallest result is.
+
+**When someone reports the same problem more than twice, the model of the problem is
+wrong, not the value.** Three rounds were spent tuning coefficients that could not have
+fixed it. The fourth round asked what he was actually looking at, and the answer took
+one measurement.
+
+**What resolved it:** the plate is sized by width only. On a short window the hero runs
+taller than the viewport and the visitor scrolls, which is what a hero is allowed to do.
+
 ## OPEN QUESTIONS — need Fabian, block on these if they matter
 
 1. ~~Is the 120-review claim real?~~ **ANSWERED 2026-07-27: NO.** VIP has 9 Google reviews,
