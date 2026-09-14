@@ -2812,7 +2812,16 @@
     background-size: cover; background-position: center 42%; }
   .lb-before { z-index: 1; }
   .lb-after { z-index: 2; clip-path: inset(0 0 0 100%); }
-  .lb-grab { position: absolute; inset: 0; z-index: 6; cursor: ew-resize; }
+  /* The grab layer sits ABOVE every decoration, and every decoration is
+     pointer-transparent. The knob is the one thing that looks draggable,
+     and as a sibling of the seam it was swallowing the mousedown — so
+     grabbing the handle, the obvious target, did nothing while dragging
+     anywhere else worked. (The hero plate does not have this bug only
+     because its knob is nested inside its seam and inherits the property.)
+     touch-action keeps a drag from being read as a page gesture. */
+  .lb-grab { position: absolute; inset: 0; z-index: 9; cursor: ew-resize;
+    touch-action: none; }
+  .lb-seam, .lb-knob, .lb-side, .lb-name, .lb-count { pointer-events: none; }
   .lb-seam { position: absolute; z-index: 5; top: 0; bottom: 0; left: 100%;
     width: 2px; margin-left: -1px; background: rgba(245,239,226,.92);
     box-shadow: 0 0 26px 3px rgba(0,0,0,.45); }
@@ -4469,7 +4478,8 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
         lbCt = q('.lb-count');
     lbBefore.style.backgroundImage = beforeBg2;
 
-    var idx = 0, lbCut = 100, lbRaf = null, lbDrag = false, opener = null;
+    var idx = 0, lbCut = 100, lbRaf = null, lbDrag = false, opener = null,
+        lbT1 = null, lbT2 = null;
 
     function lbSet(v) {
       lbCut = Math.max(0, Math.min(100, v));
@@ -4478,7 +4488,14 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       lbKnob.style.left = lbCut + '%';
       lb.classList.toggle('revealed', lbCut < 96);
     }
-    function lbStop() { if (lbRaf) { cancelAnimationFrame(lbRaf); lbRaf = null; } }
+    /* clears the queued steps of the opening sweep as well as the frame
+       loop — cancelling only the raf leaves a setTimeout alive that will
+       fire mid-drag and override the visitor */
+    function lbStop() {
+      if (lbRaf) { cancelAnimationFrame(lbRaf); lbRaf = null; }
+      if (lbT1) { clearTimeout(lbT1); lbT1 = null; }
+      if (lbT2) { clearTimeout(lbT2); lbT2 = null; }
+    }
     function lbAnim(from, to, ms, done) {
       var t0 = performance.now();
       (function tick(now) {
@@ -4501,9 +4518,9 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       lbSet(100);                       /* always opens on the before */
       if (animate === false || REDUCED) { lbSet(50); return; }
       /* one sweep, then it is theirs to drag */
-      setTimeout(function () {
+      lbT1 = setTimeout(function () {
         lbAnim(100, 3, dur * 0.34, function () {
-          setTimeout(function () { lbAnim(3, 50, dur * 0.36); }, dur * 0.18);
+          lbT2 = setTimeout(function () { lbAnim(3, 50, dur * 0.36); }, dur * 0.18);
         });
       }, 260);
     }
