@@ -2239,7 +2239,7 @@
      so a bare .hero-kicker-lede here loses. This is the headline-to-
      subhead gap, the one that read tightest. */
   .hero-cinema .hero-kicker-lede { margin-top: clamp(16px, 3.1vh, 28px); }
-  .hero-beats { margin-top: clamp(15px, 2.9vh, 26px); }
+  .hero-beats { margin-top: clamp(22px, 4vh, 40px); }
   /* THE REEL AND ITS TRAY — sized off viewport HEIGHT, not a fixed width.
      At a flat 430px the plate was small on a 27" monitor and the thumbs
      under it were barely readable. Height is the right input: it is what
@@ -2250,14 +2250,15 @@
      because vw shrinks while the container stays nearly full width. 92% of
      the stack is right everywhere; 880px and 78vh are only ceilings.
 
-     THE FOLD RULE CHANGED with this: the plate stays fully above the fold,
-     the thumbnail tray may sit just below it on a 900px-tall screen. That
-     is the deliberate trade for a plate that reads as the main event. */
-  .hr-inset { margin-top: clamp(15px, 3vh, 28px);
-    width: min(92%, 880px, 78vh); }
+     THE WHOLE REEL IS ABOVE THE FOLD AGAIN — plate, caption and tray. The
+     50vh term is the binding one and it is what enforces that; 88% and
+     760px only stop it dominating a wide or a short-and-wide screen.
+     Measured at nine sizes, not assumed. */
+  .hr-inset { margin-top: clamp(22px, 4.2vh, 42px);
+    width: min(88%, 760px, 54vh); }
   @media (max-width: 700px) {
-    /* a phone has no width to give away — 92% cost it 25px */
-    .hr-inset { width: min(100%, 78vh); }
+    /* a phone has no width to give away */
+    .hr-inset { width: min(100%, 62vh); }
   }
   @media (max-width: 900px) {
     /* "Orange County" is eight characters longer than "OC" and pushed the
@@ -2267,12 +2268,33 @@
   }
 
   /* the Gallagher line, now sitting between the plate and the thumbnails */
-  .hero-cinema .hr-caption { margin: clamp(11px, 1.7vh, 18px) auto 0;
-    max-width: 100%; text-align: center; }
-  /* sized against the tray they sit in — with a 620px plate above them,
-     56px squares left the tray mostly empty and still read as tiny */
-  .hr-thumbs button { flex: 0 0 clamp(52px, 9vh, 88px);
-    height: clamp(52px, 9vh, 88px); border-radius: clamp(11px, 1.7vh, 16px); }
+
+  /* All five, always. Fixed squares meant only three fitted in the tray
+     once they were made bigger — and "they saw five" is the whole point of
+     the row. Flexing them to fill makes five visible at every width and as
+     large as that width allows, with no scrolling to discover the rest.
+     The "They saw" label goes: the caption directly above now says it. */
+  .hr-thumbs { overflow: visible; gap: clamp(5px, .8vw, 10px); }
+  .hr-thumbs button { flex: 1 1 0; min-width: 0; height: auto;
+    aspect-ratio: 1; border-radius: clamp(9px, 1.5vh, 16px); }
+  .hr-tray-label { display: none; }
+  @media (max-width: 640px) {
+    /* On a phone the Discover button was taking a third of the tray and
+       squeezing five thumbnails into 29px each. Its own row costs ~40px of
+       height, which the phone has, and gives the thumbs the full width. */
+    .hr-tray { flex-wrap: wrap; row-gap: 9px; }
+    .hr-thumbs { flex: 1 0 100%; }
+    .hr-tray-cta { flex: 1 0 100%; width: 100%; text-align: center; }
+  }
+  /* 320px-class phones: the extra tray row put the Discover button 18px
+     under the fold, so the gaps give it back. */
+  @media (max-width: 340px) {
+    .hero-cinema .hero-stack { padding-top: 4px; }
+    .hero-beats { margin-top: 12px; }
+    .hr-inset { margin-top: 12px; }
+    .hero-cinema .hr-caption { margin-top: 8px; }
+    .hr-tray { row-gap: 6px; padding: 5px 6px; }
+  }
   .hr-tray { padding: clamp(9px, 1.4vh, 13px); gap: clamp(9px, 1.3vh, 13px); }
   .hr-tray-label { font-size: clamp(9.5px, 1.1vh, 11px); }
   .hr-tray-cta { font-size: clamp(9.5px, 1.1vh, 11.5px); }
@@ -2324,12 +2346,12 @@
 
   @media (max-width: 600px) {
     .hero-cinema .ttl-hero,
-    .hero-cinema.hero .ttl-hero { font-size: clamp(18px, 5.4vw, 25px); }
+    .hero-cinema.hero .ttl-hero { font-size: clamp(16px, 4.6vw, 22px); }
     .hero-cinema .hero-kicker-lede { font-size: clamp(11.5px, 3.3vw, 14px); }
   }
   @media (max-width: 380px) {
     .hero-cinema .ttl-hero,
-    .hero-cinema.hero .ttl-hero { font-size: clamp(16.5px, 5.2vw, 20px); }
+    .hero-cinema.hero .ttl-hero { font-size: clamp(15px, 4.5vw, 17.5px); }
     .hero-cinema .hero-kicker-lede { font-size: 12px; }
   }
 
@@ -2437,6 +2459,51 @@
   @media (prefers-reduced-motion: reduce) {
     .cta-dock { transition: opacity .2s ease; transform: none; }
     .cta-dock:not(.on) { transform: translateY(115%); }
+  }
+
+  /* A short browser window — not a small screen, a tall screen with the
+     window dragged down, which is how Fabian actually works. The hero has
+     the same content and 200px less to put it in, so the chrome above the
+     plate gives way rather than the plate. */
+  @media (max-height: 720px) and (min-width: 901px) {
+    .hero-cinema .eyebrow-ruled { display: none; }
+    .hero-cinema .pill-wrap-lede .avatar-pill { margin-top: 4px;
+      transform: scale(.88); transform-origin: top center; }
+    .hero-cinema .hero-stack { padding-top: 6px; }
+    .hero-cinema .ttl-hero,
+    .hero-cinema.hero .ttl-hero { font-size: clamp(22px, 1.9vw + 0.3rem, 30px); }
+    .hero-cinema .pill-wrap-lede + .ttl-hero { margin-top: 8px; }
+    .hero-beats { margin-top: clamp(10px, 1.8vh, 18px); }
+    .hr-inset { margin-top: clamp(10px, 1.8vh, 18px); width: min(88%, 760px, 52vh); }
+    .hero-cinema .hr-caption { margin-top: clamp(8px, 1.4vh, 14px); }
+  }
+
+  /* THE GALLAGHER CAPTION — between the plate and the thumbnails.
+     Last in the sheet on purpose: .hero-cinema .hero-kicker-lede is set at
+     three later breakpoints and was overriding the size set anywhere above
+     (F-17, fourth occurrence).
+
+     One line from 601px up. It lives inside the figure, which is narrower
+     than the sentence on a short screen, so it is allowed to run wider
+     than its parent and is centred explicitly rather than by auto margin.
+
+     On a phone one line would mean ~9px type for 66 characters, which is
+     not readable — so below 601px it wraps to two centred lines instead
+     and keeps its size. */
+  /* margin-left:50% + translateX resolves the percentage against the
+     FIGURE, not the page, so the caption landed left of centre. A flex
+     column centres an over-wide child symmetrically with no arithmetic,
+     which is what this needs. The plate and tray are stretched back to
+     full width because align-items:center would otherwise shrink them
+     to their content. */
+  .hr-inset { display: flex; flex-direction: column; align-items: center; }
+  .hr-inset > .hr-plate, .hr-inset > .hr-tray { align-self: stretch; }
+  .hero-cinema .hr-caption { margin: clamp(14px, 2.2vh, 22px) 0 0;
+    width: max-content; max-width: 94vw; white-space: nowrap;
+    text-align: center; font-size: clamp(12px, 1.45vw, 17px); }
+  @media (max-width: 600px) {
+    .hero-cinema .hr-caption { white-space: normal; width: auto;
+      max-width: 100%; font-size: 12.5px; line-height: 1.45; }
   }
 
   
