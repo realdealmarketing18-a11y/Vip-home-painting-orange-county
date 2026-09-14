@@ -3100,6 +3100,25 @@
   /* the page does not scroll behind an open lightbox */
   body.lb-open { overflow: hidden; }
 
+  /* ============ THE FIRST CARD WAS UNREACHABLE ============
+     justify-content: center on a horizontally scrolling flex row is a trap:
+     when the content overflows, the overflow is split evenly on both sides,
+     and the left half cannot be scrolled to because scrollLeft has no
+     negative range. Measured on the county page at 1440: the first card was
+     cut off by 525px with scrollLeft already pinned at 0.
+
+     Flexible spacers do the same centring without the trap — they grow to
+     fill the leftover space while everything fits, and collapse to zero the
+     moment it does not, which leaves the row flush-left and fully
+     scrollable. Chosen over `justify-content: safe center` because it works
+     the same way everywhere rather than only in newer browsers.
+
+     The row gap survives on both sides of the collapsed spacers, so the
+     ends of the scroll keep their breathing room. */
+  .cand-track { justify-content: flex-start; }
+  .cand-track::before, .cand-track::after {
+    content: ''; flex: 1 1 0; min-width: 0; }
+
   </style>
 </head>
 <body>
