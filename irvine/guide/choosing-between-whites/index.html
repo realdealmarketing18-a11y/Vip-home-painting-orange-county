@@ -2618,21 +2618,6 @@
     .hr-side-b { left: 9px; } .hr-side-a { right: 9px; }
   }
 
-  /* AFTER owns the top-right corner; the gold "direction chosen" stamp
-     drops below it and only appears on the scheme the Gallaghers actually
-     picked. It was showing on every scheme, which made the one real claim
-     on the plate meaningless. */
-  .hr-plate .hr-stamp { top: auto; bottom: 46px; right: 14px;
-    opacity: 0 !important; transition: opacity 520ms ease; }
-  .hr-plate.live.chosen .hr-stamp { opacity: 1 !important; transform: none; }
-  @media (max-width: 600px) {
-    /* On a phone the plate is too narrow for the stamp and the nameplate to
-       share the bottom edge — the stamp ran under it. The nameplate and the
-       counter already identify the scheme, and the band below flags the
-       chosen one on its card, so the stamp is the one to drop. */
-    .hr-plate .hr-stamp { display: none; }
-  }
-
   /* the beats now live under the plate, so they get their own spacing */
   .hr-inset > .hero-beats { margin: clamp(14px, 2.2vh, 22px) 0 0;
     align-self: stretch; }

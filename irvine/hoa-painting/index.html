@@ -2640,21 +2640,6 @@
     .hr-side-b { left: 9px; } .hr-side-a { right: 9px; }
   }
 
-  /* AFTER owns the top-right corner; the gold "direction chosen" stamp
-     drops below it and only appears on the scheme the Gallaghers actually
-     picked. It was showing on every scheme, which made the one real claim
-     on the plate meaningless. */
-  .hr-plate .hr-stamp { top: auto; bottom: 46px; right: 14px;
-    opacity: 0 !important; transition: opacity 520ms ease; }
-  .hr-plate.live.chosen .hr-stamp { opacity: 1 !important; transform: none; }
-  @media (max-width: 600px) {
-    /* On a phone the plate is too narrow for the stamp and the nameplate to
-       share the bottom edge — the stamp ran under it. The nameplate and the
-       counter already identify the scheme, and the band below flags the
-       chosen one on its card, so the stamp is the one to drop. */
-    .hr-plate .hr-stamp { display: none; }
-  }
-
   /* the beats now live under the plate, so they get their own spacing */
   .hr-inset > .hero-beats { margin: clamp(14px, 2.2vh, 22px) 0 0;
     align-self: stretch; }
@@ -3513,8 +3498,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           <div class="hr-cand" data-nm="Pebble Beach Manor" data-co="SW Accessible Beige &middot; Dover White" data-sw="#D1C7B8" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg')"></div>
           <div class="hr-cand" data-nm="Ibiza Luxury Villa" data-co="SW Balanced Beige &middot; Aesthetic White" data-sw="#D1C7B8" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-ibiza.jpg')"></div>
           <div class="hr-cand" data-nm="Pacific Sage Estate" data-co="SW Evergreen Fog &middot; Shoji White" data-sw="#95978A" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg')"></div>
-          <div class="hr-cand" data-nm="Obsidian Monolith" data-co="SW Iron Ore &middot; Tricorn Black" data-sw="#434341" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg')"></div>
-          <div class="hr-cand final" data-nm="Santa Barbara Luxe" data-co="SW Alabaster &middot; Tricorn Black" data-sw="#F1EDE2" data-chosen="1" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-spanish.jpg')"></div>
+          <div class="hr-cand final" data-nm="Obsidian Monolith" data-co="SW Iron Ore &middot; Tricorn Black" data-sw="#434341" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg')"></div>
           <div class="hr-grab" id="hrGrab"></div>
           <div class="hr-seam" id="hrSeam">
             <span class="hr-knob">
@@ -3527,7 +3511,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           </div>
           <span class="hr-side hr-side-b">Before</span>
           <span class="hr-side hr-side-a">After</span>
-          <span class="hr-stamp">The direction chosen</span>
           <div class="hr-nameplate">
             <span class="sw" id="hrSw"></span>
             <span class="txt"><span class="nm" id="hrNm"></span><span class="co" id="hrCo"></span></span>
@@ -3961,7 +3944,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   function show(i) {
     current = i;
     layers.forEach(function (l, n) { l.classList.toggle('on', n === i); });
-    plate.classList.toggle('chosen', !!layers[i].getAttribute('data-chosen'));
     label(i);
   }
 
