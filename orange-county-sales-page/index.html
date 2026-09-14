@@ -2736,51 +2736,46 @@
   .hr-inset { display: flex; flex-direction: column; align-items: center; }
   .hr-inset > .hr-plate, .hr-inset > .hr-tray { align-self: stretch; }
   .hero-cinema .hr-caption { margin: clamp(14px, 2.2vh, 22px) 0 0;
-    display: flex; align-items: center; justify-content: center;
-    gap: clamp(10px, 1.1vw, 16px); width: max-content; max-width: 94vw;
-    text-align: left; }
-  /* the photo, doing what the whole chip used to do at the top */
-  .hr-cap-face { flex: none; width: clamp(38px, 3.4vw, 54px);
-    height: clamp(38px, 3.4vw, 54px); border-radius: 50%; object-fit: cover;
-    border: 1px solid rgba(201,169,97,.55);
-    box-shadow: 0 6px 20px rgba(0,0,0,.42); }
-  .hr-cap-txt { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+    width: max-content; max-width: 94vw; text-align: center; }
   .hr-cap-line { font-family: var(--font-serif); font-style: italic;
     font-size: clamp(12px, 1.3vw, 16px); line-height: 1.4;
     color: rgba(245,239,226,.9); text-shadow: 0 1px 14px rgba(0,0,0,.7); }
   .hr-cap-line b { font-style: normal; font-weight: 600;
     color: var(--gold-bright); }
-  /* the invitation. A real link, so "scroll down" is something the page
-     does rather than an instruction the visitor has to follow. */
-  .hr-cap-more { display: inline-flex; align-items: center; gap: 7px;
-    font-family: var(--font-sans); font-size: clamp(9.5px, .78vw, 11.5px);
-    font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-    color: var(--gold-bright); text-decoration: none; width: max-content;
-    border-bottom: 1px solid rgba(201,169,97,.35); padding-bottom: 3px;
-    transition: color 260ms ease, border-color 260ms ease; }
-  .hr-cap-more b { font-weight: 800; }
-  /* the full invitation does not fit a phone — it ran off the right edge —
-     so a short form carries the number instead of dropping it */
-  .hr-cap-more .cap-short { display: none; }
-  .hr-cap-more:hover { color: var(--cream);
-    border-color: rgba(245,239,226,.55); }
-  .hr-cap-arrow { display: inline-block; font-size: 1.15em; line-height: 1;
+  @media (max-width: 700px) {
+    .hero-cinema .hr-caption { width: 100%; max-width: 100%; }
+    .hr-cap-line { font-size: 12.5px; line-height: 1.45; }
+  }
+
+  /* THE BRIDGE — below the slideshow, at the hero's bottom edge. The rule
+     above it reads as the hero closing; the gold text and the nudging arrow
+     read as the next thing opening. */
+  .hero-continue { display: flex; flex-direction: column; align-items: center;
+    gap: 10px; margin: clamp(20px, 3.4vh, 40px) auto 0; width: max-content;
+    max-width: 94vw; text-decoration: none; padding-bottom: 4px;
+    transition: opacity 260ms ease; }
+  .hero-continue .hc-rule { display: block; width: clamp(48px, 7vw, 92px);
+    height: 1px; background: linear-gradient(90deg,
+      rgba(201,169,97,0), rgba(201,169,97,.75), rgba(201,169,97,0)); }
+  .hero-continue .hc-txt { font-family: var(--font-sans);
+    font-size: clamp(9.5px, .8vw, 11.5px); font-weight: 700;
+    letter-spacing: .2em; text-transform: uppercase; text-align: center;
+    color: var(--gold-bright); text-shadow: 0 1px 12px rgba(0,0,0,.6); }
+  .hero-continue .hc-arrow { font-size: clamp(13px, 1.1vw, 17px); line-height: 1;
+    color: var(--gold-bright);
     animation: capNudge 2.1s cubic-bezier(.4,0,.6,1) infinite; }
+  .hero-continue:hover .hc-txt { color: var(--cream); }
   @keyframes capNudge {
-    0%, 100% { transform: translateY(0);   opacity: .75; }
-    50%      { transform: translateY(3px); opacity: 1; }
+    0%, 100% { transform: translateY(0);   opacity: .7; }
+    50%      { transform: translateY(4px); opacity: 1; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .hr-cap-arrow { animation: none; }
+    .hero-continue .hc-arrow { animation: none; }
   }
-  @media (max-width: 700px) {
-    .hero-cinema .hr-caption { width: 100%; max-width: 100%;
-      gap: 10px; align-items: flex-start; }
-    .hr-cap-line { font-size: 12.5px; line-height: 1.45; }
-    .hr-cap-more { font-size: 9.5px; letter-spacing: .1em; gap: 5px;
-      max-width: 100%; }
-    .hr-cap-more .cap-long  { display: none; }
-    .hr-cap-more .cap-short { display: inline; }
+  @media (max-width: 600px) {
+    .hero-continue { gap: 8px; margin-top: clamp(16px, 2.6vh, 26px); }
+    .hero-continue .hc-txt { font-size: 9.5px; letter-spacing: .13em;
+      line-height: 1.5; }
   }
 
   /* ============ HERO PROPORTIONS ============
@@ -3005,6 +3000,15 @@
            Gallaghers first turns the h1 from a claim into the next line of
            their story — you see who they are, then what happened to their
            house. Below the headline it read as an afterthought. -->
+      <!-- The Gallagher chip opens the hero: it is what starts the story,
+           and everything below it — the headline, the reel, the caption —
+           is that story continuing. -->
+      <div class="pill-wrap pill-wrap-lede">
+        <div class="avatar-pill"><div class="ph"><img src="assets/avatar-gallagher.jpg" alt="The Gallagher Family" width="480" height="480" loading="lazy" decoding="async"/></div>
+          <div><div class="name">The Gallagher Family</div>
+          <div class="sub-line">Pelican Hill, Newport Beach</div></div></div>
+      </div>
+
       <!-- Formula B2 — How to [solve] in [timeframe] without [negative] —
            opened with "Discover". Past tense ("Visualized") because it
            already happened; the caption under the plate is where the
@@ -3104,17 +3108,8 @@
              invitation to keep going, and it is a real link into the band,
              so "scroll down" is something the page will do for you. -->
         <figcaption class="hr-caption">
-          <img class="hr-cap-face" src="assets/avatar-gallagher.jpg"
-               alt="The Gallagher family, Pelican Hill, Newport Beach"
-               width="480" height="480" loading="lazy" decoding="async"/>
-          <span class="hr-cap-txt">
-            <span class="hr-cap-line">The Gallaghers saw their Newport Beach home
-              in all <b>11</b> color schemes. These <b>4</b> are a quick preview.</span>
-            <a class="hr-cap-more" href="#candidates"><span class="cap-long">Continue
-              their journey &mdash; the other <b>7</b> are below</span><span
-              class="cap-short">See the other <b>7</b></span><span
-              class="hr-cap-arrow" aria-hidden="true">&#8595;</span></a>
-          </span>
+          <span class="hr-cap-line">The Gallaghers saw their Newport Beach home
+            in all <b>11</b> color schemes. These <b>4</b> are a quick preview.</span>
         </figcaption>
 
         <div class="hr-tray">
@@ -3123,6 +3118,19 @@
           <button class="hr-tray-cta" type="button" id="hrReplay">Discover</button>
         </div>
       </figure>
+
+      <!-- THE BRIDGE INTO SECTION TWO. It sits below the slideshow, at the
+           bottom edge of the hero, so the last thing read before the navy
+           gives way to the pale band is an invitation to keep going. A real
+           link, so the page carries the visitor there rather than telling
+           them to scroll. "home painting visualizations" is the phrase the
+           section below is actually about. -->
+      <a class="hero-continue" href="#candidates">
+        <span class="hc-rule" aria-hidden="true"></span>
+        <span class="hc-txt">Continue their journey with home painting
+          visualizations</span>
+        <span class="hc-arrow" aria-hidden="true">&#8595;</span>
+      </a>
 
       <!-- The hero CTA moved to the sticky bar. It was costing ~150px of the
            fold and forcing the whole hero to be squeezed to fit it; out of
