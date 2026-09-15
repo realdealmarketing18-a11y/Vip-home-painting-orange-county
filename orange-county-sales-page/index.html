@@ -3106,6 +3106,37 @@
      read as facts rather than as words in a sentence */
   .cand-head p b { font-weight: 600; color: var(--gold-deep); }
 
+  /* ============ THE ONE THEY CHOSE ============
+     The chosen scheme is marked in all three places it can appear — the
+     hero plate, its band card, and the lightbox — so a visitor who only
+     sees one of them still learns which direction went on the house. */
+  .hr-plate .hr-stamp { top: auto; bottom: 46px; right: 14px;
+    opacity: 0 !important; transition: opacity 520ms ease; }
+  .hr-plate.live.chosen .hr-stamp { opacity: 1 !important; transform: none; }
+  @media (max-width: 600px) {
+    /* the phone plate is too narrow for the stamp and the nameplate to share
+       the bottom edge, and the tray below already carries the story */
+    .hr-plate .hr-stamp { display: none; }
+  }
+
+  .lb-stamp { position: absolute; z-index: 8; left: 50%; bottom: 14px;
+    transform: translateX(-50%); pointer-events: none; opacity: 0;
+    transition: opacity 420ms ease;
+    font-family: var(--font-sans); font-size: clamp(8px, .62vw, 10px);
+    font-weight: 800; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--navy); background: var(--gold-shine);
+    padding: 7px 14px; border-radius: 2px; }
+  .lb.chosen .lb-stamp { opacity: 1; }
+  @media (max-width: 700px) { .lb-stamp { display: none; } }
+
+  /* the band card's flag, on the payoff card at the end of the row */
+  .cand-card .flag { display: inline-block; margin-top: 8px;
+    font-family: var(--font-sans); font-size: 8px; font-weight: 800;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--navy);
+    background: var(--gold-shine); padding: 4px 9px; border-radius: 2px; }
+  .cand-card:has(.flag) { border-color: rgba(168,138,71,.75);
+    box-shadow: 0 20px 46px rgba(26,31,78,.2), 0 0 0 1px rgba(201,169,97,.45); }
+
   </style>
 </head>
 <body>
@@ -3254,18 +3285,14 @@
                being repainted rather than two photos cross-fading. -->
           <div class="hr-before" id="hrBefore" style="background-image:url('viz-photos/base.webp')"></div>
 
-          <div class="hr-cand" data-nm="Pebble Beach Manor" data-co="SW Accessible Beige &middot; Dover White" data-sw="#D1C7B8" style="background-image:url('viz-photos/scheme-pebblebeach.jpg')"></div>
-          <div class="hr-cand" data-nm="Ibiza Luxury Villa" data-co="SW Balanced Beige &middot; Aesthetic White" data-sw="#D1C7B8" style="background-image:url('viz-photos/scheme-ibiza.jpg')"></div>
-          <div class="hr-cand" data-nm="Pacific Sage Estate" data-co="SW Evergreen Fog &middot; Shoji White" data-sw="#95978A" style="background-image:url('viz-photos/scheme-pacificsage.jpg')"></div>
-          <!-- Obsidian rests, and Santa Barbara Luxe is deliberately absent.
-               It is the scheme the Gallaghers actually chose and it is SW
-               Alabaster — cream on a house that is already cream — so the
-               before/after read as almost identical and the hero's proof
-               landed as a whisper. Near-black against the cream original is
-               the comparison that stops a scroll. Nothing in the reel now
-               claims to be "the direction chosen"; the visualizer below is
-               where the visitor picks for themselves. -->
-          <div class="hr-cand final" data-nm="Obsidian Monolith" data-co="SW Iron Ore &middot; Tricorn Black" data-sw="#434341" style="background-image:url('viz-photos/scheme-obsidian.jpg')"></div>
+          <!-- The four Fabian picked, ending on the one the Gallaghers
+               actually chose. The reel walks the candidates and lands on the
+               decision, so beat 2 fires as the chosen scheme arrives and the
+               plate rests on the house as it was masked and painted. -->
+          <div class="hr-cand" data-nm="Riviera Tuxedo" data-co="SW Snowbound &middot; Black Magic" data-sw="#EDEAE4" style="background-image:url('viz-photos/scheme-riviera.jpg')"></div>
+          <div class="hr-cand" data-nm="Euro-Industrial Estate" data-co="SW Peppercorn &middot; Cityscape" data-sw="#5E5A57" style="background-image:url('viz-photos/scheme-euro.jpg')"></div>
+          <div class="hr-cand" data-nm="Newport Admiral" data-co="SW Repose Gray &middot; Pure White" data-sw="#C9C6C0" style="background-image:url('viz-photos/scheme-admiral.jpg')"></div>
+          <div class="hr-cand final" data-nm="Coastal Organic Compound" data-co="SW Alabaster &middot; Urbane Bronze" data-sw="#EDE8DC" data-chosen="1" style="background-image:url('viz-photos/scheme-organic.jpg')"></div>
 
           <div class="hr-grab" id="hrGrab"></div>
           <div class="hr-seam" id="hrSeam">
@@ -3279,6 +3306,7 @@
           </div>
           <span class="hr-side hr-side-b">Before</span>
           <span class="hr-side hr-side-a">After</span>
+          <span class="hr-stamp">The direction they chose</span>
           <div class="hr-nameplate">
             <span class="sw" id="hrSw"></span>
             <span class="txt"><span class="nm" id="hrNm"></span><span class="co" id="hrCo"></span></span>
@@ -3382,7 +3410,8 @@
       <p>A paint chip in a store tells you almost nothing about how that color
         will look on your own house, in your own light. So the Gallaghers saw
         all <b>11</b> on theirs first &mdash; before a single brushstroke.
-        These are the other <b>7</b>. Tap any one to see it full size.</p>
+        These are the other <b>7</b> &mdash; and the one they chose. Tap any
+        one to see it full size.</p>
     </div>
     <!-- THE BAND'S OWN SEVEN. The hero tray shows four; these are the
          other seven, so scrolling into this section is new material rather
@@ -3392,14 +3421,19 @@
          Paths stay in markup so generate.js's url('viz-photos/ rewrite
          still applies if this section is ever lifted onto another page. -->
     <template id="bandSchemes">
-      <i data-id="riviera"     data-nm="Riviera Tuxedo"            data-co="SW Snowbound &middot; Black Magic"        data-sw="#EDEAE4" style="background-image:url('viz-photos/scheme-riviera.jpg')"></i>
-      <i data-id="euro"        data-nm="Euro-Industrial Estate"    data-co="SW Peppercorn &middot; Cityscape"          data-sw="#5E5A57" style="background-image:url('viz-photos/scheme-euro.jpg')"></i>
-      <i data-id="organic"     data-nm="Coastal Organic Compound"  data-co="SW Alabaster &middot; Urbane Bronze"       data-sw="#EDE8DC" style="background-image:url('viz-photos/scheme-organic.jpg')"></i>
-      <i data-id="admiral"     data-nm="Newport Admiral"           data-co="SW Repose Gray &middot; Pure White"        data-sw="#C9C6C0" style="background-image:url('viz-photos/scheme-admiral.jpg')"></i>
+      <i data-id="pebblebeach" data-nm="Pebble Beach Manor"        data-co="SW Accessible Beige &middot; Dover White"   data-sw="#D1C7B8" style="background-image:url('viz-photos/scheme-pebblebeach.jpg')"></i>
+      <i data-id="ibiza"       data-nm="Ibiza Luxury Villa"        data-co="SW Balanced Beige &middot; Aesthetic White" data-sw="#D1C7B8" style="background-image:url('viz-photos/scheme-ibiza.jpg')"></i>
+      <i data-id="pacificsage" data-nm="Pacific Sage Estate"       data-co="SW Evergreen Fog &middot; Shoji White"      data-sw="#95978A" style="background-image:url('viz-photos/scheme-pacificsage.jpg')"></i>
+      <i data-id="obsidian"    data-nm="Obsidian Monolith"         data-co="SW Iron Ore &middot; Tricorn Black"        data-sw="#434341" style="background-image:url('viz-photos/scheme-obsidian.jpg')"></i>
       <i data-id="marinelayer" data-nm="Marine Layer"              data-co="SW Sea Salt &middot; High Reflective White" data-sw="#CBD6D0" style="background-image:url('viz-photos/scheme-marinelayer.jpg')"></i>
       <i data-id="resort"      data-nm="Beverly Hills Resort"      data-co="SW City Loft, monochrome"                 data-sw="#B9B2A7" style="background-image:url('viz-photos/scheme-resort.jpg')"></i>
       <i data-id="spanish"     data-nm="Santa Barbara Luxe"        data-co="SW Alabaster &middot; Tricorn Black"       data-sw="#F1EDE2" style="background-image:url('viz-photos/scheme-spanish.jpg')"></i>
-    </template>
+      <!-- The payoff card. Coastal Organic Compound also leads the hero, and
+           it is here again on purpose: the band walks the seven they passed
+           on and ends on the one that went on the house, so section two
+           finishes the decision rather than trailing off. -->
+      <i data-id="organic"     data-nm="Coastal Organic Compound"  data-co="SW Alabaster &middot; Urbane Bronze"       data-sw="#EDE8DC" data-chosen="1" style="background-image:url('viz-photos/scheme-organic.jpg')"></i>
+</template>
     <div class="cand-track" id="candTrack"></div>
     <!-- The three reasons used to be their own section further down, saying
          the same thing in other words against a stock photo of somebody
@@ -4745,7 +4779,14 @@ setTimeout(() => {
   /* the counter spans both sets — four in the tray, seven in the band */
   var BAND = document.getElementById('bandSchemes');
   var bandItems = BAND ? [].slice.call(BAND.content.querySelectorAll('i')) : [];
-  var TOTAL = layers.length + bandItems.length;
+  /* The chosen scheme deliberately appears in both the hero and the band, so
+     counting cards would say 12 when there are 11 schemes. Count distinct
+     images instead — that is what "all 11" in the copy refers to. */
+  var heroBgs = layers.map(function (l) { return l.style.backgroundImage; });
+  var bandNew = bandItems.filter(function (el) {
+    return heroBgs.indexOf(el.style.backgroundImage) === -1;
+  });
+  var TOTAL = layers.length + bandNew.length;
 
   function label(i) {
     var l = layers[i];
@@ -4770,6 +4811,7 @@ setTimeout(() => {
     current = i;
     layers.forEach(function (l, n) { l.classList.toggle('on', n === i); });
     if (guest) guest.classList.remove('on');
+    plate.classList.toggle('chosen', !!layers[i].getAttribute('data-chosen'));
     label(i);
   }
 
@@ -4779,10 +4821,15 @@ setTimeout(() => {
     g.style.backgroundImage = el.style.backgroundImage;
     layers.forEach(function (l) { l.classList.remove('on'); });
     g.classList.add('on');
+    plate.classList.toggle('chosen', !!el.getAttribute('data-chosen'));
     if (swEl) swEl.style.background = el.getAttribute('data-sw') || '';
     if (nmEl) nmEl.innerHTML = el.getAttribute('data-nm') || '';
     if (coEl) coEl.innerHTML = el.getAttribute('data-co') || '';
-    if (ctEl) ctEl.textContent = pad(layers.length + idx + 1) + ' / ' + pad(TOTAL);
+    if (ctEl) {
+      var u = bandNew.indexOf(el);
+      ctEl.textContent = pad(u === -1 ? layers.length : layers.length + u + 1) +
+        ' / ' + pad(TOTAL);
+    }
     mark(thumbs, -1);
     mark(track, idx);
   }
@@ -4964,12 +5011,16 @@ setTimeout(() => {
       meta.innerHTML = '<span class="sw" style="background:' +
         (el.getAttribute('data-sw') || '') + '"></span>' +
         '<span class="t"><span class="h">' + (el.getAttribute('data-nm') || '') +
-        '</span><span class="c">' + (el.getAttribute('data-co') || '') + '</span></span>';
+        '</span><span class="c">' + (el.getAttribute('data-co') || '') + '</span>' +
+        (el.getAttribute('data-chosen') ? '<span class="flag">The direction they chose</span>' : '') +
+        '</span>';
       c.appendChild(pic);
       c.appendChild(meta);
       /* the band's schemes are indexes 4..10 of the combined eleven */
       c.addEventListener('click', function () {
-        if (lightbox) { lightbox.open(layers.length + j, c); return; }
+        /* by image, not by position: the chosen card exists in both sets and
+           must open its own entry rather than one index further along */
+        if (lightbox) { lightbox.open(lightbox.indexOf(el.style.backgroundImage), c); return; }
         var h = document.getElementById('hero');
         if (h) h.scrollIntoView({ behavior: 'smooth', block: 'start' });
         stop(); untrack(); showBand(el, j); pass(cut);
@@ -4992,10 +5043,12 @@ setTimeout(() => {
 
     var ALL = layers.map(function (l) {
       return { bg: l.style.backgroundImage, nm: l.getAttribute('data-nm') || '',
-               co: l.getAttribute('data-co') || '', sw: l.getAttribute('data-sw') || '' };
-    }).concat(bandItems.map(function (el) {
+               co: l.getAttribute('data-co') || '', sw: l.getAttribute('data-sw') || '',
+               chosen: !!l.getAttribute('data-chosen') };
+    }).concat(bandNew.map(function (el) {
       return { bg: el.style.backgroundImage, nm: el.getAttribute('data-nm') || '',
-               co: el.getAttribute('data-co') || '', sw: el.getAttribute('data-sw') || '' };
+               co: el.getAttribute('data-co') || '', sw: el.getAttribute('data-sw') || '',
+               chosen: !!el.getAttribute('data-chosen') };
     }));
 
     var beforeEl2 = document.getElementById('hrBefore');
@@ -5014,6 +5067,7 @@ setTimeout(() => {
           '<span class="lb-knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></span>' +
           '<span class="lb-side lb-side-b">Before</span>' +
           '<span class="lb-side lb-side-a">After</span>' +
+          '<span class="lb-stamp">The direction they chose</span>' +
           '<div class="lb-name"><span class="sw"></span><span><b></b><i></i></span></div>' +
           '<span class="lb-count"></span>' +
         '</div>' +
@@ -5068,6 +5122,7 @@ setTimeout(() => {
       lbNm.innerHTML = d.nm;
       lbCo.innerHTML = d.co;
       lbCt.textContent = pad(idx + 1) + ' / ' + pad(ALL.length);
+      lb.classList.toggle('chosen', !!d.chosen);
       lbStop();
       lbSet(100);                       /* always opens on the before */
       if (animate === false || REDUCED) { lbSet(50); return; }
@@ -5122,7 +5177,14 @@ setTimeout(() => {
       if (e.key === 'ArrowUp')   { lbStop(); lbSet(lbCut + 5); e.preventDefault(); }
     });
 
-    return { open: open, count: ALL.length };
+    return {
+      open: open,
+      count: ALL.length,
+      indexOf: function (bg) {
+        for (var i = 0; i < ALL.length; i++) if (ALL[i].bg === bg) return i;
+        return 0;
+      }
+    };
   }
 
   var lightbox = buildLightbox();

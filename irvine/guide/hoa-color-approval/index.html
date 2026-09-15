@@ -2878,6 +2878,37 @@
      read as facts rather than as words in a sentence */
   .cand-head p b { font-weight: 600; color: var(--gold-deep); }
 
+  /* ============ THE ONE THEY CHOSE ============
+     The chosen scheme is marked in all three places it can appear — the
+     hero plate, its band card, and the lightbox — so a visitor who only
+     sees one of them still learns which direction went on the house. */
+  .hr-plate .hr-stamp { top: auto; bottom: 46px; right: 14px;
+    opacity: 0 !important; transition: opacity 520ms ease; }
+  .hr-plate.live.chosen .hr-stamp { opacity: 1 !important; transform: none; }
+  @media (max-width: 600px) {
+    /* the phone plate is too narrow for the stamp and the nameplate to share
+       the bottom edge, and the tray below already carries the story */
+    .hr-plate .hr-stamp { display: none; }
+  }
+
+  .lb-stamp { position: absolute; z-index: 8; left: 50%; bottom: 14px;
+    transform: translateX(-50%); pointer-events: none; opacity: 0;
+    transition: opacity 420ms ease;
+    font-family: var(--font-sans); font-size: clamp(8px, .62vw, 10px);
+    font-weight: 800; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--navy); background: var(--gold-shine);
+    padding: 7px 14px; border-radius: 2px; }
+  .lb.chosen .lb-stamp { opacity: 1; }
+  @media (max-width: 700px) { .lb-stamp { display: none; } }
+
+  /* the band card's flag, on the payoff card at the end of the row */
+  .cand-card .flag { display: inline-block; margin-top: 8px;
+    font-family: var(--font-sans); font-size: 8px; font-weight: 800;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--navy);
+    background: var(--gold-shine); padding: 4px 9px; border-radius: 2px; }
+  .cand-card:has(.flag) { border-color: rgba(168,138,71,.75);
+    box-shadow: 0 20px 46px rgba(26,31,78,.2), 0 0 0 1px rgba(201,169,97,.45); }
+
   
     .areas-head { text-align: center; max-width: 760px; margin: 0 auto 40px; }
     .areas-head .lead { font-family: var(--font-sans); font-size: 15.5px; color: #4A4F70; line-height: 1.6; max-width: 640px; margin: 0 auto; }

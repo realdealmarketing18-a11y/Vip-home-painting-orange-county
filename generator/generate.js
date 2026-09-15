@@ -155,24 +155,24 @@ function ctaButton(label, sub) {
    band can never drift apart. Paths take the page's asset base, so articles
    three levels deep resolve correctly. */
 const REEL_PALETTES = [
-  ['pebblebeach', 'Pebble Beach Manor',  'SW Accessible Beige &middot; Dover White',   '#D1C7B8', 0],
-  ['ibiza',       'Ibiza Luxury Villa',  'SW Balanced Beige &middot; Aesthetic White', '#D1C7B8', 0],
-  ['pacificsage', 'Pacific Sage Estate', 'SW Evergreen Fog &middot; Shoji White',      '#95978A', 0],
-  ['obsidian',    'Obsidian Monolith',   'SW Iron Ore &middot; Tricorn Black',         '#434341', 1]
+  ['riviera', 'Riviera Tuxedo',           'SW Snowbound &middot; Black Magic',   '#EDEAE4', 0],
+  ['euro',    'Euro-Industrial Estate',   'SW Peppercorn &middot; Cityscape',    '#5E5A57', 0],
+  ['admiral', 'Newport Admiral',          'SW Repose Gray &middot; Pure White',  '#C9C6C0', 0],
+  ['organic', 'Coastal Organic Compound', 'SW Alabaster &middot; Urbane Bronze', '#EDE8DC', 1]
 ];
-/* Santa Barbara Luxe is deliberately NOT in this list. It is the scheme the
-   Gallaghers actually chose, and it is SW Alabaster — cream on a house that
-   is already cream, so the before/after read as almost identical and the
-   hero's whole proof landed as a whisper. Obsidian rests instead, because
-   near-black against the cream original is the comparison that stops a
-   scroll. The last flag is now "rests here", not "the client chose this":
-   no scheme in the reel claims to be the direction chosen, and the stamp
-   that used to make that claim is gone with it. The scheme itself still
-   lives in the visualizer, where the visitor picks for themselves. */
+/* The four Fabian picked for the hero, and they end on the one the
+   Gallaghers actually chose — Coastal Organic Compound. The reel walks the
+   candidates and lands on the decision, so beat 2 ("they loved it") fires
+   exactly as the chosen scheme arrives, and the plate rests on the house as
+   it was masked and painted.
+
+   NOTE: the repo previously flagged Santa Barbara Luxe as the chosen
+   direction. Fabian corrected that — this is the one that went on the
+   house. Changed on his word as the owner, not inferred. */
 
 function heroReel(A) {
   const layers = REEL_PALETTES.map(([id, nm, co, sw, chosen]) =>
-    `          <div class="hr-cand${chosen ? ' final' : ''}" data-nm="${nm}" data-co="${co}" data-sw="${sw}" style="background-image:url('${A}/viz-photos/scheme-${id}.jpg')"></div>`
+    `          <div class="hr-cand${chosen ? ' final' : ''}" data-nm="${nm}" data-co="${co}" data-sw="${sw}"${chosen ? ' data-chosen="1"' : ''} style="background-image:url('${A}/viz-photos/scheme-${id}.jpg')"></div>`
   ).join('\n');
   return `
       <figure class="hr-inset">
@@ -191,6 +191,7 @@ ${layers}
           </div>
           <span class="hr-side hr-side-b">Before</span>
           <span class="hr-side hr-side-a">After</span>
+          <span class="hr-stamp">The direction they chose</span>
           <div class="hr-nameplate">
             <span class="sw" id="hrSw"></span>
             <span class="txt"><span class="nm" id="hrNm"></span><span class="co" id="hrCo"></span></span>
