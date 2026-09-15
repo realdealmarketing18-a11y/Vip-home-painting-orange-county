@@ -27,5 +27,5 @@ node serve-oc.js      # then open http://localhost:5460/
 
 ## Brand
 Colors: Orange #E8833A · Navy #1A1F4E · Gold #C9A961. Fonts: Fraunces + Inter.
-Phone (909) 312-5400 · viphomepainting.com · "See It. Love It. Paint It."
+Phone (909) 312-5400 · viphomepainting.com · "Visualize It. Love It. Paint It."
 Never use the word "AI" in customer-facing copy — always "Custom Visualization Service."
