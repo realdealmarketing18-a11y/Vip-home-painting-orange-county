@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<!-- REFERENCE TEMPLATE — not a live page and not built by the generator.
+     Read docs/reference-templates/README.md before reusing anything here. -->
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIP Premier Painting — Custom Visualization & Exterior Estate Refinishing</title>
+  <meta name="description" content="Anaheim-based luxury exterior estate painting serving Orange County. Experience our Custom Visualization Service with a 2-Year Craftsmanship Guarantee.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --vip-navy: #141838;
+      --vip-navy-deep: #1A1F4E;
+      --vip-gold: #A88A47;
+      --vip-cream: #F5EFE2;
+      --vip-cream-light: #F7F4EE;
+      --vip-border-gold: #DCD0B5;
+      --vip-border-soft: #E8E1CF;
+      --vip-slate: #4A4F70;
+      --vip-white: #FFFFFF;
+      --vip-gold-glow: rgba(168, 138, 71, 0.30);
+      --font-heading: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--vip-white);
+      color: var(--vip-navy);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header & Navigation */
+    header {
+      background-color: var(--vip-white);
+      border-bottom: 1px solid var(--vip-border-soft);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .brand-logo img {
+      height: 42px;
+      width: auto;
+    }
+
+    .brand-wordmark {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--vip-navy);
+      letter-spacing: -0.02em;
+    }
+
+    .brand-tagline {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 13px;
+      color: var(--vip-gold);
+      margin-top: -2px;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background-color: var(--vip-navy);
+      color: var(--vip-white);
+      border: 1px solid var(--vip-border-gold);
+      border-radius: 4px;
+      padding: 14px 28px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      box-shadow: 0 6px 20px var(--vip-gold-glow);
+      display: inline-block;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--vip-navy-deep);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(168, 138, 71, 0.42);
+    }
+
+    .btn-secondary {
+      background-color: var(--vip-cream);
+      color: var(--vip-navy);
+      border: 1px solid var(--vip-border-gold);
+      border-radius: 999px;
+      padding: 14px 28px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--vip-cream-light);
+      border-color: var(--vip-gold);
+    }
+
+    /* Typography */
+    h1 {
+      font-family: var(--font-heading);
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--vip-navy);
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-family: var(--font-heading);
+      font-size: 44px;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--vip-navy);
+      letter-spacing: -0.01em;
+    }
+
+    p.lead {
+      font-size: 18px;
+      color: var(--vip-slate);
+      line-height: 1.6;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 90px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background-color: var(--vip-cream);
+      border: 1px solid var(--vip-border-gold);
+      color: var(--vip-gold);
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 14px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      margin-top: 32px;
+      align-items: center;
+    }
+
+    /* Feature Grid / What We Do */
+    .features-section {
+      background-color: var(--vip-cream-light);
+      border-top: 1px solid var(--vip-border-soft);
+      border-bottom: 1px solid var(--vip-border-soft);
+      padding: 80px 40px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background-color: var(--vip-white);
+      border: 1px solid var(--vip-border-gold);
+      border-radius: 8px;
+      padding: 36px;
+      transition: all 0.2s ease;
+    }
+
+    .card h3 {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      color: var(--vip-navy);
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--vip-slate);
+      font-size: 15px;
+    }
+
+    /* By The Numbers Section */
+    .stats-section {
+      padding: 80px 40px;
+      background-color: var(--vip-white);
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--vip-gold);
+    }
+
+    .stat-label {
+      font-size: 15px;
+      color: var(--vip-slate);
+      margin-top: 4px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--vip-navy);
+      color: var(--vip-white);
+      padding: 60px 40px;
+      border-top: 2px solid var(--vip-gold);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-motto {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 18px;
+      color: var(--vip-border-gold);
+    }
+
+    .footer-location {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="#" class="brand-logo">
+      <img src="../assets/logos/logo-brush-navy.png" alt="VIP Premier Painting Logo">
+      <div>
+        <div class="brand-wordmark">VIP Premier Painting</div>
+        <div class="brand-tagline">Visualize it. See it. Paint it.</div>
+      </div>
+    </a>
+    <a href="#consultation" class="btn-primary">Request Custom Visualization</a>
+  </header>
+
+  <section class="hero">
+    <div>
+      <span class="hero-badge">Orange County Luxury Residential</span>
+      <h1>Architectural Integrity for High-End Estates</h1>
+      <p class="lead" style="margin-top: 20px;">
+        Anaheim-based concierge exterior refinishing tailored specifically for prestigious luxury communities. Preview your home's complete aesthetic transformation through our Custom Visualization Service before paint touches stucco.
+      </p>
+      <div class="hero-ctas">
+        <a href="#consultation" class="btn-primary">Schedule Consultation</a>
+        <a href="#portfolio" class="btn-secondary">View Estate Portfolio</a>
+      </div>
+    </div>
+    <div style="background-color: var(--vip-cream); border: 1px solid var(--vip-border-gold); border-radius: 8px; padding: 40px; text-align: center;">
+      <h3 style="font-family: var(--font-heading); font-size: 28px; color: var(--vip-navy); margin-bottom: 12px;">Complimentary Color Preview</h3>
+      <p style="color: var(--vip-slate); font-size: 15px; margin-bottom: 24px;">Our design team crafts photorealistic Sherwin-Williams premium color renderings for your estate's facade.</p>
+      <a href="#consultation" class="btn-primary" style="width: 100%;">Claim Concierge Preview</a>
+    </div>
+  </section>
+
+  <section class="features-section">
+    <div class="container">
+      <h2 style="text-align: center;">What We Do</h2>
+      <p class="lead" style="text-align: center; margin-top: 10px;">Delivering an uncompromising standard of service for Orange County business owners and executives.</p>
+      
+      <div class="grid-3">
+        <div class="card">
+          <h3>Custom Visualization Service</h3>
+          <p>Our design team models exact Sherwin-Williams premium color palettes directly onto digital captures of your property to ensure absolute decision certainty.</p>
+        </div>
+        <div class="card">
+          <h3>Stress-Free Concierge Experience</h3>
+          <p>Dedicated project management handles all HOA documentation, architectural board approvals, and daily site updates so your executive schedule remains undisturbed.</p>
+        </div>
+        <div class="card">
+          <h3>Flawless Execution</h3>
+          <p>Master craftsmanship using high-durability coatings backed by our non-negotiable 2-Year Craftsmanship Guarantee.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="container">
+      <h2>By The Numbers</h2>
+      <div class="stats-grid">
+        <div>
+          <div class="stat-number">2-Year</div>
+          <div class="stat-label">Craftsmanship Guarantee</div>
+        </div>
+        <div>
+          <div class="stat-number">$25K+</div>
+          <div class="stat-label">Estate Investment Level</div>
+        </div>
+        <div>
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Sherwin-Williams Premium Coatings</div>
+        </div>
+        <div>
+          <div class="stat-number">1-on-1</div>
+          <div class="stat-label">VIP Concierge Oversight</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div>
+        <div style="font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--vip-white);">VIP Premier Painting</div>
+        <div class="footer-motto" style="margin-top: 4px;">"We don't just paint homes, we transform lives."</div>
+      </div>
+      <div class="footer-location">
+        Anaheim-Based | Serving Newport Beach, Irvine, Rancho Cucamonga, & Orange County Luxury Estates
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

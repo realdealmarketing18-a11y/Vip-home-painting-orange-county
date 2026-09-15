@@ -78,3 +78,14 @@ Both retired variants were swept from both repos the same day.
 **Why it's here:** a script in vip-lead-machine was actively rewriting pages *to* a retired
 variant. The line reads naturally in every version, so a wrong one is easy to "correct" into
 a page without noticing. If a script, template or agent rewrites the tagline, that's a bug.
+
+## D-13 · "Concierge Experience" — never "Stress-Free", never "Stress-Complimentary"
+Fabian's call, 2026-09-15. The HARD RULE here bans "free" (use "complimentary"); vip-lead-machine
+said "Stress-Free Concierge Experience". A blind swap of one word for the other produced
+**"Stress-Complimentary Experience"**, which is not English, and it is live in
+`orange-county-sales-page/index.html` ("2-Year Warranty & Stress-Complimentary Experience").
+**The rule:** "complimentary" stays canonical for anything offered (consultation, estimate).
+Idioms that contain "free" get **reworded**, not swapped. This one becomes
+**"2-Year Warranty & Concierge Experience."**
+**Pending:** the one line in `index.html`, deliberately left for the hero-redesign session
+that's editing that file. It's on the pre-publish checklist in `docs/LEAD-INTAKE-GUIDE.md`.
