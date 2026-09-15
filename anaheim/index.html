@@ -2503,53 +2503,6 @@
     .cand-card { flex-basis: clamp(228px, 58vw, 290px); }
   }
 
-  /* ============ STICKY CTA BAR ============
-     The hero CTA used to sit in the flow and cost ~150px of the fold, which
-     is what forced every spacing value in the hero to be squeezed. Out here
-     it is available from section two onward instead of only at the top.
-
-     It shows only when the hero has left the screen AND no other gold CTA is
-     on screen, so it never doubles up with the case-card buttons, Step Five
-     or the final CTA — one ask visible at a time.
-
-     Built by script, so all 21 pages get it from one place. */
-  .cta-dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
-    display: flex; align-items: center; justify-content: center; gap: 18px;
-    padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px));
-    background: rgba(16,19,44,.88);
-    backdrop-filter: blur(20px) saturate(1.25);
-    -webkit-backdrop-filter: blur(20px) saturate(1.25);
-    border-top: 1px solid rgba(201,169,97,.34);
-    box-shadow: 0 -18px 48px rgba(0,0,0,.42);
-    transform: translateY(115%); opacity: 0; pointer-events: none;
-    transition: transform .5s cubic-bezier(.22,1,.36,1), opacity .4s ease; }
-  .cta-dock.on { transform: none; opacity: 1; pointer-events: auto; }
-  .cta-dock .dock-note { font-family: var(--font-sans); font-size: 12px;
-    line-height: 1.4; color: rgba(245,239,226,.72); font-style: italic;
-    max-width: 34ch; text-align: right; }
-  .cta-dock .btn-gold { min-width: 0; padding: 14px 26px; font-size: 12px; }
-  .cta-dock .dock-tel { font-family: var(--font-sans); font-size: 11px;
-    font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-    color: rgba(245,239,226,.82); text-decoration: none; white-space: nowrap;
-    padding: 13px 16px; border-radius: 999px;
-    border: 1px solid rgba(245,239,226,.22); }
-  .cta-dock .dock-tel:hover { color: var(--gold-bright);
-    border-color: rgba(201,169,97,.5); }
-
-  @media (max-width: 900px) {
-    .cta-dock .dock-note { display: none; }
-  }
-  @media (max-width: 600px) {
-    /* thumb zone: the button takes the width, the phone stays reachable */
-    .cta-dock { gap: 10px; padding: 9px 12px calc(9px + env(safe-area-inset-bottom, 0px)); }
-    .cta-dock .btn-gold { flex: 1; min-width: 0; padding: 13px 14px; font-size: 11px; }
-    .cta-dock .dock-tel { padding: 12px 13px; font-size: 10px; letter-spacing: .1em; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .cta-dock { transition: opacity .2s ease; transform: none; }
-    .cta-dock:not(.on) { transform: translateY(115%); }
-  }
-
   /* A short browser window — not a small screen, a tall screen with the
      window dragged down, which is how Fabian actually works. The hero has
      the same content and 200px less to put it in, so the chrome above the
@@ -2971,6 +2924,34 @@
   .cand-track { justify-content: flex-start; }
   .cand-track::before, .cand-track::after {
     content: ''; flex: 1 1 0; min-width: 0; }
+
+  /* ============ SECTION TWO OPENS THE WAY THE HERO DID ============
+     Same chip, on the pale ground. The hero's version is navy glass on a
+     photograph; this one has to sit on paper, so it takes the section's
+     own palette rather than the hero's. */
+  .cand-pill { margin-bottom: clamp(16px, 2vw, 26px); }
+  .cand-pill .avatar-pill { background: rgba(255,253,248,.92);
+    border: 1px solid rgba(168,138,71,.34);
+    box-shadow: 0 10px 30px rgba(26,31,78,.1); margin: 0; }
+  .cand-pill .avatar-pill .name { color: var(--navy); }
+  .cand-pill .avatar-pill .sub-line { color: rgba(26,31,78,.6); }
+
+  /* ============ THE HERO'S EDGE ============
+     The gold frame drew a hard rectangle across the bottom of the hero, so
+     the navy stopped dead against the pale band underneath — the story hit
+     a wall exactly where it was meant to carry on. The frame now fades out
+     over its lower third, and the hero's last 160px dissolve into the band
+     colour, so the two sections meet instead of abutting. */
+  .hero-goldframe {
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 62%, transparent 97%);
+            mask-image: linear-gradient(180deg, #000 0%, #000 62%, transparent 97%); }
+  .hero-cinema::after { content: ''; position: absolute; left: 0; right: 0;
+    bottom: 0; height: clamp(90px, 14vh, 190px); z-index: 5;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(245,239,226,0) 0%,
+      rgba(245,239,226,.35) 55%, var(--cream) 100%); }
+  /* the bridge has to sit above that wash, not inside it */
+  .hero-continue { position: relative; z-index: 6; }
 
   
     .areas-head { text-align: center; max-width: 760px; margin: 0 auto 40px; }
@@ -5585,76 +5566,11 @@ setTimeout(() => {
   });
 })();
 </script>
-<script>
-/* ===== Sticky CTA dock =====
-   Its own IIFE, not folded into the reel: article pages carry no reel and
-   the reel script returns early on any page without a plate, which would
-   have silently taken the dock with it.
-
-   Source of the offer, in order: a #ctaSrc template (the county page, where
-   the hero CTA was removed) or the page's own hero CTA (every generated
-   page type, so each keeps its correct link — #quote does not exist on HOA,
-   service or article pages). No source, no dock. */
-(function () {
-  var src   = document.getElementById('ctaSrc');
-  var inline = document.querySelector('.hero-cta-wrap .btn-gold');
-  var hero  = document.getElementById('hero');
-  if (!hero || (!src && !inline)) return;
-  if (!('IntersectionObserver' in window)) return;
-
-  var href  = src ? (src.getAttribute('data-href') || '#quote') : inline.getAttribute('href');
-  var inner = src ? src.innerHTML : inline.innerHTML;
-  var note  = src ? (src.getAttribute('data-note') || '')
-                  : (document.querySelector('.hero-note') || {}).textContent || '';
-
-  var dock = document.createElement('div');
-  dock.className = 'cta-dock';
-  var btn = document.createElement('a');
-  btn.className = 'btn-gold';
-  btn.href = href;
-  btn.innerHTML = inner;
-  if (note) {
-    var n = document.createElement('p');
-    n.className = 'dock-note';
-    n.textContent = note.replace(/\s+/g, ' ').trim();
-    dock.appendChild(n);
-  }
-  dock.appendChild(btn);
-  var tel = document.createElement('a');
-  tel.className = 'dock-tel';
-  tel.href = 'tel:+19093125400';
-  tel.textContent = '(909) 312-5400';
-  dock.appendChild(tel);
-  document.body.appendChild(dock);
-
-  /* two conditions, one switch */
-  var heroOut = false, rivals = 0;
-  function sync() { dock.classList.toggle('on', heroOut && rivals === 0); }
-
-  new IntersectionObserver(function (es) {
-    es.forEach(function (e) { heroOut = !e.isIntersecting; });
-    sync();
-  }, { threshold: 0 }).observe(hero);
-
-  /* any other gold CTA on screen means the page is already asking — the
-     dock stands down rather than stacking a second ask on top of it */
-  var others = [].slice.call(document.querySelectorAll('.btn-gold, .s5-send'))
-    .filter(function (b) { return !dock.contains(b); });
-  if (others.length) {
-    var seen = new WeakSet();
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        var was = seen.has(e.target);
-        if (e.isIntersecting && !was) { seen.add(e.target); rivals++; }
-        else if (!e.isIntersecting && was) { seen.delete(e.target); rivals--; }
-      });
-      if (rivals < 0) rivals = 0;
-      sync();
-    }, { threshold: 0 });
-    others.forEach(function (b) { io.observe(b); });
-  }
-})();
-</script>
+<!-- The sticky CTA dock was removed at Fabian's call: it covered parts of
+     the page visitors were trying to read as they scrolled. The header is
+     already sticky and carries both the phone number and Complimentary
+     Quote, so the page keeps a persistent ask without a second bar sitting
+     over the content. -->
 <!-- REEL:END -->
 </body>
 </html>
