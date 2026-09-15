@@ -1655,9 +1655,11 @@
   .cand-band { position: relative; overflow: hidden; padding: 72px 24px 80px;
     color: #4A4F70;
     background: linear-gradient(180deg, #FDFBF6 0%, #F5EFE2 46%, #EFE7D6 100%); }
-  .cand-band::after { content: ''; position: absolute; left: 0; right: 0; top: 0;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, rgba(201,169,97,.55), transparent); }
+  /* The 3px gold rule that used to sit here is gone. It was drawn back when
+     this was a separate section, and it read as a divider — a line across
+     the page saying "that story is over, here is a new one" at exactly the
+     point the story is meant to carry on. The hero's wash now runs straight
+     into the band's own gradient with nothing between them. */
   .cand-ghost { position: absolute; left: 50%; top: 26px; transform: translateX(-50%);
     font-family: var(--font-serif); font-weight: 400;
     font-size: clamp(78px, 14.5vw, 186px); letter-spacing: .06em;
