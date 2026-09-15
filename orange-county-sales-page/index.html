@@ -3102,6 +3102,10 @@
   /* the bridge has to sit above that wash, not inside it */
   .hero-continue { position: relative; z-index: 6; }
 
+  /* the lede's numbers pick up the same gold the reasons use, so 11 and 7
+     read as facts rather than as words in a sentence */
+  .cand-head p b { font-weight: 600; color: var(--gold-deep); }
+
   </style>
 </head>
 <body>
@@ -3366,9 +3370,19 @@
       <div class="eyebrow">Why Get A Complimentary Custom Color Consultation</div>
       <h2>Avoid Costly <span class="accent">Mistakes</span> &mdash; See Your Orange
         County Home in Every Color First</h2>
-      <p>Nobody should pick a five-figure color off a two-inch card. These are the
-        other seven the Gallaghers looked at &mdash; their actual home, in its
-        actual light, before a single brushstroke. Tap any one to see it full size.</p>
+      <!-- Rewritten because it made the reader decode two metaphors before
+           reaching the point: "five-figure color" and "two-inch card". Clever
+           on a page, but it costs a beat of thought exactly where the visitor
+           should be feeling something. BRAND-VOICE rule 3 covers it too — a
+           homeowner says "paint chip", never "two-inch card".
+
+           The idea underneath is the offer itself, and it is worth saying
+           plainly: a small sample under store lights predicts nothing about
+           a whole facade in real light. -->
+      <p>A paint chip in a store tells you almost nothing about how that color
+        will look on your own house, in your own light. So the Gallaghers saw
+        all <b>11</b> on theirs first &mdash; before a single brushstroke.
+        These are the other <b>7</b>. Tap any one to see it full size.</p>
     </div>
     <!-- THE BAND'S OWN SEVEN. The hero tray shows four; these are the
          other seven, so scrolling into this section is new material rather
