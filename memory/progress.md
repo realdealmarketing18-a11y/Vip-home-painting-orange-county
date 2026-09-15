@@ -130,9 +130,21 @@ shimmed before it can be measured.
   noticeably brighter than base.webp, which breaks the "same house, same moment" illusion the
   plate depends on. Exactly what the QA gate in `VIZ-RENDER.md` exists to catch. An audit pass
   over all eleven is owed.
-- **No county-level research exists.** `research/` has `irvine/` and `anaheim/` only. The
-  county page's copy is Irvine research applied to Orange County — reasonable, but an
-  assumption rather than a finding.
-- **`07-VOICE.md` does not exist for any city.** Marcus's competitive half ran; the buyer half
-  never did. Every headline on the county page, mine included, is invented rather than drawn
-  from a language bank of what real Orange County homeowners said.
+- **The county copy has not yet been rewritten against the voice research.** Both gaps I
+  recorded here closed the same day: `research/orange-county/00-SUMMARY.md` and `07-VOICE.md`
+  landed on 2026-09-15, from a parallel session, while the hero work was in flight. So the
+  research now exists and the copy still predates it.
+
+  The hero lede I wrote independently — "a paint chip in a store tells you almost nothing
+  about how that color will look on your own house, in your own light" — turns out to match
+  the research's central finding, which is reassuring but is not the same as using it. The
+  verbatim language is far stronger than anything invented, and none of it is on the page:
+
+  > "Frankly I've been feeling sick about it, because it is so permanent and I tried so hard
+  > to get this right." *(heat 10)*
+  > "I painted 2x2' swatches on the west, south, and East facing sides — now I know I should
+  > have painted even bigger swatches?" *(heat 9)*
+
+  And the reframe worth acting on: the aspiration is **competence, not beauty**. She is not
+  dreaming about the house, she is dreaming about not having failed at it — a different
+  emotional target than every competitor is aiming at.

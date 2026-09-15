@@ -54,12 +54,19 @@ Every city runs the same five gates. `pipeline.js status` is the board.
 
    Full runbook: `docs/LOCAL-SETUP.md`.
 
-1. **Run the buyer half of the research — this is the biggest content gap on the project.**
-   `07-VOICE.md` exists for no city. The constitution says both copywriters pull headlines
-   from its language bank; without it every headline on the site is invented. Start with
-   Orange County, which has no research folder of its own at all. Tool: the
-   **vip-research-agent** skill against `research/_global/HALO-WORKSHEET.md`. It demands
-   verbatim quotes with source URLs — no invented quotes.
+1. **Rewrite the county copy against the voice research, which now exists.**
+   `research/orange-county/00-SUMMARY.md` and `07-VOICE.md` landed 2026-09-15 from a parallel
+   session. The hero and section-two copy predates them and is invented rather than drawn
+   from the language bank — it happens to agree with the research's central finding, which is
+   luck, not method.
+
+   What the copy is not yet using: the verbatim fear quotes (heat 10 and 9), and the reframe
+   that the aspiration is **competence, not beauty** — "not having failed at the house". Note
+   `07-VOICE.md` marks its $12,000–$15,000 figure `[VERIFY]` and says explicitly to replace it
+   with a real closed job before any page or ad uses it. Do not put it on a page yet.
+
+   Still owed for the other cities: `07-VOICE.md` exists for Orange County only, not for
+   Irvine or Anaheim.
 
 2. **Audit the eleven scheme renders against the QA gate in `VIZ-RENDER.md`.** At least one
    (`scheme-spanish.jpg`) has drifted off the source's dusk light, which breaks the one-house

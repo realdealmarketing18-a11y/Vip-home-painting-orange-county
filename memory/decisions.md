@@ -87,5 +87,6 @@ said "Stress-Free Concierge Experience". A blind swap of one word for the other 
 **The rule:** "complimentary" stays canonical for anything offered (consultation, estimate).
 Idioms that contain "free" get **reworded**, not swapped. This one becomes
 **"2-Year Warranty & Concierge Experience."**
-**Pending:** the one line in `index.html`, deliberately left for the hero-redesign session
-that's editing that file. It's on the pre-publish checklist in `docs/LEAD-INTAKE-GUIDE.md`.
+~~**Pending:** the one line in `index.html`~~ **Done 2026-09-15** by the hero-redesign
+session it was left for — `orange-county-sales-page/index.html` now reads "2-Year Warranty &
+Concierge Experience". No other file carried the phrase.
