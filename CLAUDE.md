@@ -17,7 +17,7 @@ Project memory is live at `/memory/` — read it before planning anything:
 | `memory/task_plan.md` | Phases, the per-cluster checklist, ranked next actions, what's blocked on Fabian |
 | `memory/findings.md` | The findings that changed the plan (M-05, M-06, M-07) + constraints |
 | `memory/progress.md` | What shipped, every error that reached a live page, what's still open |
-| `memory/decisions.md` | D-01…D-11 — architectural choices and the reason behind each |
+| `memory/decisions.md` | D-01…D-12 — architectural choices and the reason behind each |
 
 > ### ⚠️ `context/FABIAN.md` — read before any task. It wins when anything conflicts.
 > **Short plan before building anything bigger than a quick fix · never say it's done without

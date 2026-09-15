@@ -36,8 +36,9 @@ competitor is aiming at, and it is precisely what a visualizer sells.
 **Dominant feeling underneath:** **Public, permanent, self-inflicted failure.** Not "I dislike
 the color" — "I did this to myself, in front of everyone, and I cannot undo it."
 
-**Dollar cost of the fear coming true:** **$12,000–$15,000** — a full second exterior on a
-typical OC estate at VIP's own published rate. (The Irvine brief used $4,000–$7,000; that was a
+**Dollar cost of the fear coming true:** **$12,000–$15,000** `[VERIFY]` — a full second
+exterior on a typical OC estate, *illustratively* worked from VIP's published $4.75 rate. Not
+job data: replace with a real closed Newport/Coast job before any page or ad uses it. (The Irvine brief used $4,000–$7,000; that was a
 mid-market home. At the OC luxury tier the number roughly doubles, which makes the fear
 proportionally larger for exactly the customer VIP wants.)
 

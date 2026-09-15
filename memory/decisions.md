@@ -70,3 +70,11 @@ connector. It was offline when the navy brush was added, so that one file went i
 the WordPress media library and sits at `/uploads/2026/08/`. `publish-wp.js` carries a
 one-entry override map.
 **Undo:** copy the file into `vip-assets/assets/logos/`, delete the entry.
+
+## D-12 · The tagline is "Visualize It. Love It. Paint It." — nothing else
+Fabian's call, 2026-09-15. Three variants had been in circulation across this repo and
+vip-lead-machine: this one, "Visualize it. See it. Paint it." and "See It. Love It. Paint It."
+Both retired variants were swept from both repos the same day.
+**Why it's here:** a script in vip-lead-machine was actively rewriting pages *to* a retired
+variant. The line reads naturally in every version, so a wrong one is easy to "correct" into
+a page without noticing. If a script, template or agent rewrites the tagline, that's a bug.

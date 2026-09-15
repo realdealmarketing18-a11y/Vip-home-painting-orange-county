@@ -43,7 +43,7 @@ The system was built from these inputs (paths are read-only mounts from the user
 
 - **Company:** VIP Home Painting — luxury residential painting, SoCal.
 - **Differentiator:** Custom Visualization Service — photorealistic renders of a homeowner's house in multiple color schemes before painting begins.
-- **Tagline:** "Visualize it. Love it. Paint it."
+- **Tagline:** "Visualize It. Love It. Paint It."
 - **Logo:** Paintbrush whose bristles form a crown — navy ferrule with gold accents and a black handle.
 - **Persona:** Affluent SoCal homeowners ($2M–$20M homes) who value sophistication, low-friction concierge service, and zero risk of repaint regret.
 - **Phone:** (909) 312-5400 · **Web:** viphomepainting.com

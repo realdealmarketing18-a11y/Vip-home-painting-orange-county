@@ -63,6 +63,12 @@ the engine has a comparable number to quote. Something the crawler can lift verb
 > Newport Beach two-story, paintable surface runs about 2,600–3,000 sq ft, which puts a complete
 > exterior at roughly $12,000–$15,000 including prep, primer, two finish coats and trim."*
 
+> ⚠️ **[VERIFY] before this goes on a page.** The square-footage ratio and the dollar range in
+> that paragraph are *illustrative*, worked from the $4.75 rate — they are not VIP job data.
+> `context/ABOUT-VIP.md` rules that an unverified claim does not go on a page. Replace both
+> figures with numbers from Fabian's real closed jobs. The *structure* of the paragraph —
+> define the unit, show a worked example, give the all-in range — is the recommendation.
+
 That paragraph is the single highest-value piece of copy you could add to this page. It is what
 an AI engine needs in order to quote you, and it converts the pricing transparency from a
 liability back into the wedge the Irvine research said it was.
@@ -110,6 +116,11 @@ winning the citation with a blog post**, not with their service page.
 **"Best painter" queries** → answered from **directories** (Houzz, Angi, Yelp) plus company
 pages with dense descriptive text.
 
+This independently re-confirms **M-06** in `memory/findings.md`, which found the same thing
+first and adds the part that matters for prioritizing: the engines that count here are
+**Copilot (50%)** and **Google AI Mode (36%)**, and Copilot runs on Bing — so **Bing Places
+beats any ChatGPT tactic.** Treat this finding as a second-city confirmation of M-06, not as new.
+
 **VIP appears in neither.** The implication is structural: *the sales page by itself cannot win
 the cost citation.* It is a conversion page; engines cite reference pages. You need all three
 layers — the page (converts), a cost guide article (earns the citation), and directory presence
@@ -126,7 +137,7 @@ Measured live on 2026-09-15 at the GitHub Pages URL.
 |---|---|---|
 | `<title>` | "Orange County House Painters, CA \| VIP Home Painting" (52 ch) | ✅ good length, good head term |
 | Meta description | 152 ch, leads with OC + visualization | ✅ |
-| **Canonical** | **`https://viphomepainting.com/`** | ⚠️ **see below** |
+| **Canonical** | **`https://viphomepainting.com/`** | ✅ **by design** — D-02 / D-03 |
 | Schema types | `HousePainter`, `FAQPage`, `WebPage` | ⚠️ thin — see below |
 | H1 | "Discover How Orange County Homeowners Visualized Their Dream Home in 30 Minutes" | ⚠️ no service term |
 | H2 count | 13 | ✅ |
@@ -134,11 +145,11 @@ Measured live on 2026-09-15 at the GitHub Pages URL.
 | Images missing `alt` | **4 of 11** | ❌ these are the before/afters |
 | FAQ entries | 6 | ⚠️ expand |
 
-**Canonical.** The page declares itself a copy of `viphomepainting.com/`. If that is deliberate
-staging, fine — but as long as it stands, this URL will never rank or be cited on its own, and
-the equity of everything here routes to the WordPress home page. Decide explicitly: is this page
-*becoming* viphomepainting.com's OC page (then canonical to its final live URL), or is it a
-demo (then leave it and do the SEO work on the WordPress copy)?
+**Canonical — correct as is.** github.io is the build site, not the destination (**D-02**);
+this page is live as viphomepainting.com's front page (WP id 4046) and only the WordPress copy
+is indexable (**D-03**). So every SEO recommendation in this brief applies to the **WordPress
+copy**, reached by editing the generator source and republishing. *(Corrected 2026-09-15 — the
+first draft flagged this as an open question; it was already decided.)*
 
 **Schema gaps.** `HousePainter` + `FAQPage` + `WebPage` is a decent base. Missing, in priority order:
 - `areaServed` as an array of **City entities** (Newport Beach, Irvine, Anaheim, Coto de Caza,
@@ -147,8 +158,9 @@ demo (then leave it and do the SEO work on the WordPress copy)?
 - `Service` entities for Exterior / Interior / Cabinet, each with `areaServed` and an
   `Offer` carrying the price and **`unitText: "square foot of paintable surface"`** — this is
   where Finding 1 becomes machine-readable
-- `AggregateRating` + `Review` — three real Google reviews are already on the page as text and
-  are not marked up
+- ~~`AggregateRating` + `Review`~~ **— do NOT add.** Banned by the HARD RULES in `CLAUDE.md`:
+  VIP has 9 reviews and the rating is unconfirmed, and a false rating has already reached a
+  live page once. *(Corrected 2026-09-15 — the first draft of this brief recommended it.)*
 - `ImageObject` on the before/after pairs with captions naming the SW colors
 - `BreadcrumbList`
 - `speakable` on the FAQ answers
@@ -197,13 +209,14 @@ brand demand in this market; you do not yet. Comparison content is legitimate he
    `unitText`. Highest value, lowest effort, and it protects a number you already publish.
 2. **Add the coastal/elastomeric band** (Finding 2) — the only defensible premium argument
    nobody else in the county is making.
-3. **Resolve the canonical** (Finding 4) — decide what this URL is before doing more SEO on it.
-4. **Alt text on all renders + the missing schema** (Finding 4) — an afternoon, and it is the
+3. **Alt text on all renders + the missing schema** (Finding 4) — an afternoon, and it is the
    difference between AI engines seeing 11 unlabeled images and seeing 11 named color schemes.
-5. **Commission the cost guide article** via `vip-blog-writer` (Finding 3) — the cost citation
+   Make both changes in the generator source, not the built HTML (**D-01**).
+4. **Commission the cost guide article** via `vip-blog-writer` (Finding 3) — the cost citation
    is winnable and is currently going to two competitors' blog posts.
-6. **Restore the volume layer** — renew DataForSEO or swap to the Ahrefs actor already
-   evaluated in `_global/TOOL-EVAL-AHREFS-ACTOR.md`. Needed before any paid media.
+5. **Search volumes** — both DataForSEO and Ahrefs paid endpoints are already known to refuse
+   (**M-09 / M-10**, "free tools only"). Volumes need a paid key Fabian decides on; they are
+   not needed for anything above, only before paid media.
 
 ---
 
