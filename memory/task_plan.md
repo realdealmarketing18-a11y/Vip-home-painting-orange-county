@@ -127,4 +127,10 @@ Every city runs the same five gates. `pipeline.js status` is the board.
   carries no words of theirs, because inventing one is forbidden. One real sentence would be
   the strongest thing on the page.
 - **A clean original of the base photo**, without the CRMLS watermark.
+- **Which bronze is Beverly Hills Resort's accent?** The scheme data said "SW City Loft ·
+  Bronze", but Sherwin-Williams has no color called plain "Bronze" — the candidates are
+  **Status Bronze SW 7034**, **Brainstorm Bronze SW 7033** and **Enduring Bronze SW 7055**,
+  and the row's accent hex is `#8C6E4C`. Rather than invent a code, that scheme now reads
+  "City Loft SW 7631, monochrome", matching what its band card already said. It is the one
+  scheme of eleven without a full `Name SW 0000` citation.
 - Migrate fully to viphomepainting.com and flip `config.staging`?
