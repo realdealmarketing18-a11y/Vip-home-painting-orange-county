@@ -229,8 +229,9 @@
         "plate": {
           "still": "base"
         },
-        "eyebrow": "How the Custom Visualization Service works",
-        "vo": "Most painters hand you a fan deck. We start with your house."
+        "vo": "Most painters hand you a fan deck. We start with your house.",
+        "title": "We start with",
+        "titleGold": "your house."
       },
       {
         "at": 5.0,
@@ -254,8 +255,9 @@
           ],
           "each": 0.68
         },
-        "eyebrow": "Eleven schemes · one house",
-        "vo": "Every colour you are considering, rendered on your actual elevation, in your actual light."
+        "vo": "Every colour you are considering, rendered on your actual elevation, in your actual light.",
+        "title": "Eleven colors.",
+        "titleGold": "One house."
       },
       {
         "at": 12.0,
@@ -271,8 +273,9 @@
           "each": 0.68,
           "stamp": "The direction they chose"
         },
-        "eyebrow": "The decision",
-        "vo": "Then you choose the one you have already seen on your own house. That is the whole difference."
+        "vo": "Then you choose the one you have already seen on your own house. That is the whole difference.",
+        "title": "You choose what",
+        "titleGold": "you've already seen."
       },
       {
         "at": 16.5,

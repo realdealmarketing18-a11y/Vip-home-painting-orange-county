@@ -83,7 +83,7 @@ body{display:flex;align-items:center;justify-content:center;min-height:100vh}
 .safe.is-end{justify-content:flex-start}
 [data-format="reel"] .safe.is-end{top:300px}
 .safe.is-pres{justify-content:flex-start}
-[data-format="reel"]   .safe.is-pres{top:812px;bottom:170px}
+[data-format="reel"]   .safe.is-pres{top:676px;bottom:250px}
 [data-format="square"] .safe.is-pres{top:486px;bottom:50px}
 [data-format="wide"]   .safe.is-pres{top:66px;bottom:80px;left:850px;right:70px}
 [data-format="reel"]   .safe{top:150px;bottom:300px;left:40px;right:40px}
@@ -306,7 +306,7 @@ body{display:flex;align-items:center;justify-content:center;min-height:100vh}
              0 30px 70px rgba(0,0,0,.60)}
 .presenter.on{display:block}
 .presenter video{width:100%;height:100%;object-fit:cover;display:block}
-[data-format="reel"]   .presenter{left:60px;top:150px;width:960px;height:620px}
+[data-format="reel"]   .presenter{left:60px;top:128px;width:960px;height:520px}
 [data-format="square"] .presenter{left:70px;top:64px;width:940px;height:390px}
 [data-format="wide"]   .presenter{left:110px;top:66px;width:700px;height:440px}
 /* the founder's name strip, bottom-left of the panel */
@@ -651,17 +651,19 @@ async function renderFrame(t){
              <div class="endband-tint"></div>`;
   } else {
     const parts=[];
-    parts.push(`<div class="fleuron" style="${sty(entrance(localT,0,0.45))}"></div>`);
-    parts.push('<div style="height:20px"></div>');
+    if(!sc.presenter){
+      parts.push(`<div class="fleuron" style="${sty(entrance(localT,0,0.45))}"></div>`);
+      parts.push('<div style="height:20px"></div>');
+    }
     if(sc.eyebrow) parts.push(`<div class="eyebrow" style="${sty(entrance(localT,0.06,0.5))}">${esc(sc.eyebrow)}</div>`);
     if(sc.title){
-      parts.push('<div style="height:30px"></div>');
+      parts.push(`<div style="height:${sc.presenter?4:30}px"></div>`);
       const chars=(sc.title||'').length+(sc.titleGold||'').length;
       const fs = chars<=34 ? 78 : chars<=52 ? 68 : chars<=70 ? 58 : 50;
       parts.push(`<div class="title" style="--title-fs:${fs}px;${sty(entrance(localT,0.14,0.55))}">${esc(sc.title)}
         ${sc.titleGold?`<span class="gold">${esc(sc.titleGold)}</span>`:''}</div>`);
     }
-    if(st){ parts.push('<div style="height:40px"></div>'); parts.push(Plate(st,localT)); }
+    if(st){ parts.push(`<div style="height:${sc.presenter?26:40}px"></div>`); parts.push(Plate(st,localT)); }
     if(sc.paletteStrip){ parts.push('<div style="height:34px"></div>');
       parts.push(PaletteStrip(st,localT)); }
     if(sc.estimateCard){ parts.push('<div style="height:34px"></div>'); parts.push(EstimateCard(localT)); }
@@ -669,7 +671,7 @@ async function renderFrame(t){
       parts.push(`<div class="caption" style="${sty(entrance(localT,0.3,0.55))}">${esc(sc.caption)}</div>`); }
     if(sc.beats){ parts.push('<div style="height:36px"></div>'); parts.push(Beats(localT));
       parts.push('<div style="height:32px"></div>'); parts.push(ClientPill(localT)); }
-    if(sc.steps){ parts.push('<div style="height:30px"></div>'); parts.push(Steps(sc,t,localT)); }
+    if(sc.steps){ parts.push('<div style="height:22px"></div>'); parts.push(Steps(sc,t,localT)); }
     if(sc.softCta){ parts.push('<div style="height:36px"></div>');
       parts.push(`<div class="soft-cta" style="${sty(entrance(localT,0.5,0.5))}">${esc(sc.softCta)}</div>`); }
     body=parts.join('');
