@@ -1783,7 +1783,8 @@
     /* Pinned photo — small, on top of everything */
     .viz-stage {
       position: sticky; top: 62px; z-index: 20;
-      background: var(--cream); padding: 6px 0 10px; margin: 0;
+      /* white, because section 3 is white -- this used to match a cream section */
+      background: #FFFFFF; padding: 6px 0 10px; margin: 0;
     }
     .viz-stage .stage-spec,
     .viz-stage .vp-controls { display: none; }
@@ -1803,15 +1804,29 @@
     .tl-link-mark { position: static; margin: 0 auto 12px; width: 22px; }
     .tl-link-sub { max-width: none; }
     .viz-timeline .tl-rail { display: none; }
-    .tl-dot { display: none; }
+    /* The coins come back. They were hidden alongside the rail in the original
+       build, but the two are not the same thing: the rail was scenery, the
+       coin is the only thing telling a phone user which of four steps they
+       are on. It pins directly above the step panel -- same sticky offset
+       family, 46px higher -- so it travels with the panel instead of
+       scrolling away above it. */
+    .tl-dot {
+      display: flex; position: sticky;
+      top: calc(90px + (100vw - 40px) * 0.5625);
+      /* BELOW .tl-body's z-index 10 on purpose: the next step's panel rises
+         and covers the previous one, and the coin has to be covered with
+         it. At 11 the spent step's number floated over the live panel. */
+      left: auto; margin: 0 auto; z-index: 9;
+      width: 36px; height: 36px; font-size: 15px;
+    }
     .tl-step { min-height: 92vh; padding: 0; }
     .tl-step .tl-body {
       position: sticky;
-      /* sit just below the pinned photo: header(62) + photo height(9/16 of
-         the content width = 100vw - 40px side padding) + a little gap */
-      top: calc(90px + (100vw - 40px) * 0.5625);
+      /* just below the pinned photo AND the coin: header(62) + photo height
+         (9/16 of the content width = 100vw - 40px side padding) + the coin */
+      top: calc(90px + (100vw - 40px) * 0.5625 + 46px);
       z-index: 10;
-      background: var(--cream);
+      background: #FFFFFF;
       padding: 10px 2px 20px;
       opacity: 1 !important;            /* override desktop's inactive dim */
     }
