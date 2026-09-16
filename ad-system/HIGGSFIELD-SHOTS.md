@@ -160,3 +160,98 @@ learned:
 - **Lock the architecture in words**, not just by passing a reference — list the rooflines,
   the garage wings, the pillars. The model will otherwise redesign the house.
 - **Never generate a face you intend to present as a client.** See D-14.
+
+---
+
+# CREW AT WORK — the masking and painting plates
+
+Fabian's direction: **his estate, crew in front working, white painter's trousers and plain
+white t-shirts.** These fill the two job-site slots in `funnel-3-build`.
+
+**Status: written, not generated.** Higgsfield refused on 2026-09-16 with
+*"You've reached the daily generation limit for your grace period"* — hit on `soul_2` and
+`gpt_image_2_5` alike, so it is account-wide, not model-specific. Nothing was charged.
+Fire these unchanged when the cap resets.
+
+**Settings for all three:** `gpt_image_2_5` · `aspect_ratio: 9:16` · `quality: high` ·
+`resolution: 2k` · reference `media_id eda7664a-a47d-425c-aeee-f52d72b18437` (the estate).
+
+**Wardrobe, every shot:** clean white painter's trousers, plain white t-shirt. No logos on
+the clothing — a generated logo never matches the real one, and a wrong crest on a crew
+shirt is worse than none.
+
+**Faces turned away or in profile, every shot.** These are not portraits, and a
+recognisable generated face implies a specific employee who does not exist.
+
+---
+
+## CREW 1 · MASKING — `assets/masking.mp4` slot
+
+```text
+Vertical 9:16 documentary photograph of a professional painting crew at work on the exact
+estate in the reference image. Preserve the architecture exactly: same rooflines, same
+terracotta tile roof, same two flanking garage wings, same central recessed entry with
+columns and double front door, same stacked-stone driveway pillars with carved stone urns,
+same clipped boxwood hedging, same wide concrete motor court. Two painters in clean white
+painter's trousers and plain white t-shirts are masking the house: one kneels at the base of
+an entry column running blue painter's tape along a crisp trim edge, the other stands on a
+low ladder taping the edge of a window casing. Rolls of tape and folded drop cloths sit
+neatly on the motor court beside them. Their work is precise and unhurried, no mess, no
+clutter, no spilled paint. Bright clear midday sun, deep blue California sky, hard clean
+shadows, the beige stucco facade brightly lit. Full-frame camera, 35mm lens, f/5.6,
+verticals perfectly corrected. Editorial documentary photography, photorealistic skin and
+fabric texture, natural physics, no motion blur. Absolutely no text, no captions, no logos,
+no brand marks, no watermarks, no MLS marks, faces turned away from camera or in profile.
+```
+
+## CREW 2 · PAINTING — `assets/painting.mp4` slot
+
+```text
+Vertical 9:16 documentary photograph of a painter laying the first coat on the exact estate
+in the reference image. Preserve the architecture exactly: same rooflines, terracotta tile
+roof, flanking garage wings, recessed columned entry, stacked-stone driveway pillars,
+boxwood hedging, wide concrete motor court. A single painter in clean white painter's
+trousers and a plain white t-shirt works a wide roller on an extension pole across a broad
+stucco wall, seen from behind and slightly to one side. Behind him the wall divides cleanly:
+the section he has covered is a warm off-white lime-wash, the section ahead of him is still
+the old flat beige, with a crisp wet edge between them. Blue tape lines the trim; a folded
+drop cloth and a roller tray sit neatly at his feet. Bright clear midday sun, deep blue sky,
+hard clean shadows. Full-frame camera, 50mm lens, f/4, verticals corrected. Editorial
+documentary photography, photorealistic fabric and wet-paint sheen, natural physics.
+Absolutely no text, no captions, no logos, no brand marks, no watermarks, face turned away
+from camera.
+```
+
+> The divided wall is the shot. It is the same before/after argument the whole funnel makes,
+> happening in one frame, in real life. If only one of these three gets made, make this one.
+
+## CREW 3 · WIDE ESTABLISHING — optional
+
+```text
+Vertical 9:16 documentary photograph of a painting crew working on the exact estate in the
+reference image. Preserve the architecture exactly: same rooflines, terracotta tile roof,
+two flanking garage wings, central recessed columned entry with double front door,
+stacked-stone driveway pillars with carved stone urns, clipped boxwood hedging, wide
+concrete motor court. Three painters in clean white painter's trousers and plain white
+t-shirts work across the facade: one on an extension ladder at the eave line, one masking a
+window casing, one carrying a folded drop cloth across the motor court. Equipment is staged
+neatly — no clutter, no scaffolding towers, no vans in frame. The full facade fills the
+upper two thirds, the motor court runs out of the bottom of the frame. Bright clear midday
+sun, deep blue California sky, hard clean shadows. Full-frame camera, 35mm lens, f/5.6,
+one-point perspective, verticals perfectly corrected. Editorial documentary photography,
+photorealistic, natural physics. Absolutely no text, no captions, no logos, no brand marks,
+no watermarks, no MLS marks, faces turned away or in profile.
+```
+
+---
+
+## THE UNBLOCKED PATH
+
+Every one of these is a thing **VIP crews do every working day**. Ten seconds of a real crew
+taping a real trim line is free, needs no cap to reset, carries no likeness question, and is
+the single thing a competitor cannot fake. It also sidesteps the other constraint entirely:
+this session's network policy blocks Higgsfield's CDN, so generated assets cannot be pulled
+into the repo from here — they have to be downloaded by hand either way.
+
+Generated crew shots are the fallback for when there is no job on the calendar, not the
+first choice.
