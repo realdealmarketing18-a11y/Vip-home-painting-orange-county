@@ -137,7 +137,9 @@ ready to buy; **the copy targets the 97% who are stalling** (M-07).
 | Goal | rank and get cited | stop the scroll, drive one call or DM |
 
 Shared: `HEADLINE-FORMULAS.md` — Part F is the campaign set, plus the **kill test**
-(*could a competitor put their logo on this unchanged?*).
+(*could a competitor put their logo on this unchanged?*). The campaign surface runs Part F
+in a fixed order: `FUNNEL-3-STEP-ADS.md` — name the problem, prove the fix, ask for the 30
+minutes — and carries the list of what fails an ad, since no gate checks ads.
 
 ### T — Tools · deterministic, atomic, testable
 `generator/*.js`. Credentials in env vars, never in the repo. Scratch work in `/.tmp/`.

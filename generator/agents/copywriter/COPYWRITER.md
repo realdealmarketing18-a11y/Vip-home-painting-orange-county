@@ -27,7 +27,8 @@ runtime: ~20 min per cluster
 > Do not apply its rules to your work, or the citation blocks stop working.
 >
 > Shared between you: `HEADLINE-FORMULAS.md` — Part F holds the campaign formulas, the
-> intensifiers, and the kill test. **The kill test applies to your headlines too:** could
+> intensifiers, and the kill test. Its running order for ads is `FUNNEL-3-STEP-ADS.md`,
+> which is the other copywriter's document — read it for the argument, not for the rules. **The kill test applies to your headlines too:** could
 > a competitor put their logo on this unchanged? Then rewrite it.
 
 ---

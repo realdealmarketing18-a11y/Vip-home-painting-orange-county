@@ -83,6 +83,80 @@ at seam 50 on all five page types with no 404s and no script errors.
 **This is on the build site only.** Nothing has been published since, so the WordPress live
 count is unchanged. `publish-wp.js --live` has still never run for this work.
 
+### The copy rewrite, 2026-09-16
+
+`research/orange-county/00-SUMMARY.md` and `07-VOICE.md` landed from a parallel session while
+the hero work was in flight — the same day this file recorded them as missing. The hero and
+section-two copy was rewritten against them.
+
+**The research named the previous lede as the thing to replace**, which makes this a
+correction rather than a polish. Its criticism, verbatim: *"a paint chip in a store tells you
+almost nothing" aims at the **lazy** buyer — the one who grabbed a chip at the store. The real
+customer is the opposite of lazy.* The documented case did weeks of research, samples on three
+exposures, and asked Sherwin-Williams staff — and still ended up with a house she felt sick
+about.
+
+| | Before | After |
+|---|---|---|
+| H1 | "…Visualized Their Dream Home in 30 Minutes" | "…**Get Exterior House Painting Right the First Time**" |
+| Band lede | "A paint chip in a store tells you almost nothing…" | "Weeks of samples on three different walls, and the color still **read** wrong once it was up… the only thing that predicts your whole house is your whole house." |
+| Reason 1 | "No sample jars, no squinting at a card in the driveway" | "Not swatches on three walls — the whole facade, in **your light**…" |
+
+**Two findings drove the H1.** Theme 1 of the voice research: the aspiration is **competence,
+not beauty** — *"I really determined not to make a rookie mistake on this."* She is not
+dreaming about the house, she is dreaming about not having failed at it, which is a target no
+competitor is aiming at; "Dream Home" was selling the beauty she is not shopping for. And
+`00-SUMMARY.md`'s on-page audit flagged the old H1 as carrying **no service term** against a
+transactional cluster of `house painters orange county` / `exterior painting orange county`.
+
+**The claim moved from "shortcuts fail" to "doing it carefully fails too."** That is the
+research's "most valuable single finding" — it turns the visualizer from a convenience into a
+category correction, which is a position rather than a feature.
+
+**Her vocabulary is on the page; her words are not.** "reads", "swatches", "your light",
+"permanent" all come from the glossary. No quote is reproduced: the source is a homeowner on a
+public forum, not a VIP client, and attributing her sentences on a sales page would read as a
+testimonial she never gave.
+
+**Found while measuring, not by reading:** the hero tray had grown to 179px. Thumbs flex to
+fill, and with four of them under a 790px plate instead of five under a 430px one, each had
+ballooned to ~150px. Capped at 88px — 72px back.
+
+**Still not applied from the research:** the `[VERIFY]`-marked $12,000–$15,000 second-repaint
+figure (needs a real closed job first, per the worksheet's own instruction), the schema
+additions in Finding 4 (`areaServed` city entities, `Service` + `Offer` with
+`unitText: "square foot of paintable surface"`, `ImageObject`, `BreadcrumbList`), and alt text
+on the before/after renders naming their SW colors.
+
+### The ad funnel, 2026-09-16
+
+`generator/agents/copywriter/FUNNEL-3-STEP-ADS.md` — new, the first campaign SOP in the repo.
+Part F of `HEADLINE-FORMULAS.md` had the formulas but nothing said in what **order** they run,
+so every ad started from a blank page.
+
+Three steps: **name the problem** (cold — the method she was going to use is broken), **prove
+the fix** (warm — the hero reel, one house, four schemes, the chosen one), **ask for the 30
+minutes** (hot — B5/B2, the itemized estimate, the phone). Step 3 never runs to cold traffic:
+until she agrees her method is broken, an offer to fix it reads as an ad for a painter, and
+there are fifty of those.
+
+**The hook is arithmetic, not opinion.** A 2×2 swatch is 4 square feet; an OC exterior is
+about 3,000 — 750× larger, in a light the swatch never sat in. Nobody can argue with it and no
+citation is needed, which makes it the strongest line the research produced. Part F's "draft
+10, kill 9" is done inside the document rather than left as an instruction, with the verdict
+on each of the ten written down.
+
+**Ads have no gate.** `verify-site.js` checks pages; nothing checks a Facebook ad, so the
+document carries the check itself as a pre-flight list — the banned words, and four traps
+specific to this surface: the `[VERIFY]` $12k–$15k figure stays out until a closed job backs
+it, the Houzz poster's sentences are never quoted or attributed (her vocabulary is fair, her
+words are not), the **Gallagher family is unverified** and must not be called clients in an
+ad, and no invented homeowner stands in for one.
+
+Pointers added in `CLAUDE.md` and `COPYWRITER.md` in the same commit, per the golden rule.
+**Nothing here has run.** No ad account is connected; every line is a hypothesis with a named
+source.
+
 ### What broke during it
 
 | What broke | Root cause | Rule now |
@@ -130,21 +204,5 @@ shimmed before it can be measured.
   noticeably brighter than base.webp, which breaks the "same house, same moment" illusion the
   plate depends on. Exactly what the QA gate in `VIZ-RENDER.md` exists to catch. An audit pass
   over all eleven is owed.
-- **The county copy has not yet been rewritten against the voice research.** Both gaps I
-  recorded here closed the same day: `research/orange-county/00-SUMMARY.md` and `07-VOICE.md`
-  landed on 2026-09-15, from a parallel session, while the hero work was in flight. So the
-  research now exists and the copy still predates it.
-
-  The hero lede I wrote independently — "a paint chip in a store tells you almost nothing
-  about how that color will look on your own house, in your own light" — turns out to match
-  the research's central finding, which is reassuring but is not the same as using it. The
-  verbatim language is far stronger than anything invented, and none of it is on the page:
-
-  > "Frankly I've been feeling sick about it, because it is so permanent and I tried so hard
-  > to get this right." *(heat 10)*
-  > "I painted 2x2' swatches on the west, south, and East facing sides — now I know I should
-  > have painted even bigger swatches?" *(heat 9)*
-
-  And the reframe worth acting on: the aspiration is **competence, not beauty**. She is not
-  dreaming about the house, she is dreaming about not having failed at it — a different
-  emotional target than every competitor is aiming at.
+- ~~The county copy has not been rewritten against the voice research.~~ **Done 2026-09-16.**
+  See the copy-rewrite entry below.

@@ -54,19 +54,28 @@ Every city runs the same five gates. `pipeline.js status` is the board.
 
    Full runbook: `docs/LOCAL-SETUP.md`.
 
-1. **Rewrite the county copy against the voice research, which now exists.**
-   `research/orange-county/00-SUMMARY.md` and `07-VOICE.md` landed 2026-09-15 from a parallel
-   session. The hero and section-two copy predates them and is invented rather than drawn
-   from the language bank — it happens to agree with the research's central finding, which is
-   luck, not method.
+1. **Finish applying the OC research — the copy half is done, the technical half is not.**
+   Hero and section-two copy were rewritten against `07-VOICE.md` on 2026-09-16. What
+   `00-SUMMARY.md` Finding 4 still asks for, none of it written yet:
 
-   What the copy is not yet using: the verbatim fear quotes (heat 10 and 9), and the reframe
-   that the aspiration is **competence, not beauty** — "not having failed at the house". Note
-   `07-VOICE.md` marks its $12,000–$15,000 figure `[VERIFY]` and says explicitly to replace it
-   with a real closed job before any page or ad uses it. Do not put it on a page yet.
+   - **Alt text on the before/after renders.** 4 of 11 images have none, on a page whose
+     entire differentiator is imagery. Each should name its scheme and SW colors — *"Newport
+     Beach estate exterior rendered in Riviera Tuxedo — Sherwin-Williams Snowbound with Black
+     Magic trim."* Accessibility and an honest keyword surface in one edit.
+   - **Schema.** `areaServed` as City entities, `Service` entities for Exterior/Interior/
+     Cabinet each carrying an `Offer` with `unitText: "square foot of paintable surface"`,
+     `ImageObject` on the before/after pairs, `BreadcrumbList`, `speakable` on the FAQ.
+     **Do NOT add `AggregateRating`** — banned by the hard rules, and the brief's own first
+     draft was corrected on this.
+   - **Word count 2,258 is thin for cost authority**, against a commercial-investigation
+     cluster (`exterior painting cost per square foot`, `how much to paint a house exterior in
+     california`). The FAQ is the cheapest place to fix it.
 
-   Still owed for the other cities: `07-VOICE.md` exists for Orange County only, not for
-   Irvine or Anaheim.
+   Two things must NOT go on a page yet: the `[VERIFY]` $12,000–$15,000 second-repaint figure
+   (needs a real closed job), and any quote from the Houzz source — she is a forum poster, not
+   a VIP client.
+
+   Still owed for the other cities: `07-VOICE.md` exists for Orange County only.
 
 2. **Audit the eleven scheme renders against the QA gate in `VIZ-RENDER.md`.** At least one
    (`scheme-spanish.jpg`) has drifted off the source's dusk light, which breaks the one-house
@@ -83,12 +92,26 @@ Every city runs the same five gates. `pipeline.js status` is the board.
 6. **Submit to Bing Webmaster Tools.** Copilot is 50% of AI citations and runs on Bing —
    the cheapest unclaimed win (M-06).
 7. **Run Marcus on Anaheim's pillar guide + articles.** The winnable Maps pack.
+8. **Run the 3-step ad funnel — written, cannot launch.**
+   `generator/agents/copywriter/FUNNEL-3-STEP-ADS.md` holds the sequence, the scripts and the
+   pre-flight check. Step 2's creative already exists: the hero reel is the ad, filmed or
+   exported, no re-staging. What is missing is an ad account — none is connected, so nothing
+   here is measurable yet. Ranked last for that reason, not on merit.
+   Two blockers carried in the document: the `[VERIFY]` $12,000–$15,000 figure stays out of
+   every ad until a closed job backs it, and the **Gallagher family is unverified** — they
+   cannot be described as clients in an ad until that is confirmed.
+   Not written yet: the **Sherwin-Williams store-staff referral play.** `07-VOICE.md` confirms
+   it by primary evidence — she went to them first and they could not answer her question, and
+   their staff field that question daily with no answer to give. That is a relationship rather
+   than an ad, and it needs its own document.
 
 ---
 
 ## Open with Fabian — blocking, needs a human answer
 
 - CSLB licence number *(Fabian working on it)*
+- **Which ad account do we run on, and who owns it?** Meta, Google, or both. Nothing in
+  `FUNNEL-3-STEP-ADS.md` can launch or be measured until one exists.
 - EPA Lead Certified? *(Fabian working on it)*
 - Real project totals, so pricing ranges can be verified rather than estimated
 - Actual Google rating — a directory shows 4.6, the site said 5, **9 reviews confirmed**

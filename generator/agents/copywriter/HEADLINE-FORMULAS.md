@@ -209,6 +209,10 @@ language bank** (`research/{city}/07-VOICE.md`) — never from imagination.
 
 **Odd numbers pull harder than even. Always draft 10, kill 9.**
 
+> **The sequence these formulas run in is `FUNNEL-3-STEP-ADS.md`** in this folder —
+> which formula belongs at which step, the scripts, and the list of things that fail an
+> ad. Pick the formula there, write it here.
+
 | # | Formula | Example |
 |---|---|---|
 | F1 | `[Number] [Trigger] Things You Must Know Before [Action]` | 7 Alarming Things You Must Know Before Hiring an Irvine Painter |
