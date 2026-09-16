@@ -33,6 +33,13 @@ runtime: ~20 min per cluster
 
 ---
 
+> ### ⚠️ Every headline passes the contract first
+> `generator/agents/copywriter/HEADLINE-FORMULAS.md` **Part 0** — three rules
+> (timeless formula · burning issue · keep it simple) and four essentials (force the
+> read · use a number · create intrigue · what's in it for **her**). Same contract for
+> pages, ads and articles. `verify-site.js` check 12 enforces the checkable half.
+
+
 # VIVIENNE — Sales Page Copy
 
 **Start every run:** `node generator/pipeline.js next vivienne`

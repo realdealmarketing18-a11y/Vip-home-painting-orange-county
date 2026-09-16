@@ -62,7 +62,10 @@ const FAQ_CSS = rewriteAssetPaths(
 );
 /* The interactive viz section markup */
 const VIZ_HTML = rewriteAssetPaths(
-  sliceBetween(BASE_PAGE, '<section class="viz" id="viz">', '</section>', 'viz section HTML', true)
+  /* Matches the opening tag without its attribute list: the section carries
+     `data-story` for verify-site.js check 12, and an exact-string marker
+     breaks the moment anyone adds an attribute. */
+  sliceBetween(BASE_PAGE, '<section class="viz" id="viz"', '</section>', 'viz section HTML', true)
 );
 /* The full page script (viz engine + sliders; hero-video code is
    internally guarded and no-ops on pages without #heroVideo) */

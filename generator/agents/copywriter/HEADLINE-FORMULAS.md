@@ -8,33 +8,106 @@ what's in it for them · brands **VIP Home Painting**, never the technology.
 
 ---
 
-## PART 0 — THE THREE RULES (Fabian, 2026-09-16)
+## PART 0 — THE HEADLINE CONTRACT (Fabian, 2026-09-16)
 
-**These govern every headline on the site.** Section headings, page H1s and H2s, blog
-titles, ad hooks, lead-magnet names, email subject lines. Not a style preference — a
-gate you pass before the headline ships.
+**This governs every headline VIP publishes.** Page H1s and H2s, section headings inside
+story copy, blog titles, ad hooks, lead-magnet names, email subject lines. Every copy
+surface reads this file: `vip-copywriter` (pages), `vip-copywriter-agent` (ads, reels,
+DMs), `vip-blog-writer` (articles, pillars). One contract, three writers, no local
+variants.
 
-**Rule 1 — Use a Timeless Headline Formula.** Every headline comes off the HVCO set in
-Part B (B1–B5) or the hero set in Part A. **Never invent a shape.** If a draft matches no
-formula, it is not a headline yet, it is a sentence sitting where a headline goes.
+**Scope — read this before applying it.** The contract governs **headlines inside story
+copy**: anything persuading, narrating or selling. It does **not** govern navigational
+labels — "Frequently Asked Questions", "Where We Work", "What Our Clients Are Saying".
+Those are signposts, and several of them earn their keep as keyword and AI-citation
+surfaces (M-06). Forcing a formula onto a signpost costs more in search than it gains in
+persuasion. If a heading's job is *to be found*, leave it; if its job is *to be read*,
+the contract applies.
+
+---
+
+### THE THREE RULES — the gate a headline passes
+
+**Rule 1 — Use a Timeless Headline Formula.** Off the HVCO set in Part B (B1–B5) or the
+hero set in Part A (A1–A6). **Never invent a shape.** A draft matching no formula is not
+a headline yet; it is a sentence sitting where a headline goes.
 
 **Rule 2 — Every point touches a burning issue.** Each headline, subheadline and bullet
-lands on a ranked pain from `research/{city}/07-VOICE.md`, not on a feature. For Orange
-County the 🥇 fear is one line: **picking the wrong colour and having to live with it
-in public.** A headline that does not touch it is decoration. The test is not "is this
-nice" — it is "does this hurt in the right place."
+lands on a ranked pain from `research/{city}/07-VOICE.md`, never on a feature. For Orange
+County the 🥇 fear is one line: **picking the wrong colour and having to live with it in
+public.** A headline that does not touch it is decoration. The test is not "is this nice"
+— it is "does this hurt in the right place."
 
-**Rule 3 — Keep it simple.** One idea. Plain words. A homeowner reads it once, at a
-glance, and does not re-read. If it needs a second pass, cut it, not the point. Fabian's
-standard from `context/FABIAN.md` applies to headlines hardest: plain English, he is not
-a developer, and neither is she.
+**Rule 3 — Keep it simple.** One idea. Plain words. Read once, at a glance, no second
+pass. If it needs re-reading, cut the words, not the point.
 
-**Order of operations:** pick the burning issue first (Rule 2), choose the formula that
-carries it (Rule 1), then cut until it reads once (Rule 3). Drafting the clever line
-first and hunting for a fear to justify it is how decoration gets written.
+---
+
+### THE FOUR ESSENTIALS — what the headline has to DO
+
+The rules say whether a headline is allowed to ship. The essentials say whether it works.
+
+**Essential 1 — Force the read.** The headline's only job is to make the next line
+unavoidable. On this site that means three things at once: **the story** (the Gallaghers
+carry across sections, so each headline advances a narrative already running), **the
+formula**, and **the search term**. All three, in one line. A headline that grabs but
+carries no service term is a wasted ranking; one that ranks but does not grab is a
+wasted reader.
+
+**Essential 2 — Use a number.** A number gives the reader something tangible to hold and
+signals a structure they can follow. It also makes the copy easier to write, because the
+number decides the shape.
+
+> Only these are available, and the gate fails the build on anything else:
+> **30 minutes** · **2 years** · **11** schemes · **3** renders · **5 days** · **60/30/10**
+> · **twice** · **8–15 years** (the repaint window, from `07-VOICE.md`)
+> · **$4.75 per square foot of paintable surface** — always "starts at", never an average.
+>
+> Never usable: project counts, review counts, star ratings, or any percentage without a
+> citation.
+
+**Essential 3 — Create irresistible intrigue.** Attention and benefit are not enough; the
+reader has to be *curious*. Open a gap the next line closes. Scale the intensity by tier
+(Part D): full curiosity gap on social, plain statement of the cost on a Hidden Canyon
+page. `BRAND-VOICE.md` is quiet authority — intrigue here is withheld information, never
+shouting.
+
+**Essential 4 — Show them what's in it for them.** Write about **her**, not about us.
+"We paint to transform lives" is about the company; "See your house in every colour
+before anything is permanent" is about her. Name her desired outcome, then show the path
+to it. Every "We/Our" opening is a signal the headline is pointed the wrong way.
+
+---
+
+### ORDER OF OPERATIONS
+
+The order is the part that gets lost:
+
+1. **Burning issue first** (Rule 2) — which ranked fear is this headline for?
+2. **Point it at her** (Essential 4) — whose outcome is in the sentence?
+3. **Pick the formula that carries it** (Rule 1).
+4. **Find the number** (Essential 2) — from the allowed list, or none at all.
+5. **Open the gap** (Essential 3).
+6. **Cut until it reads once** (Rule 3).
+
+Drafting the clever line first and hunting for a fear to justify it is how decoration
+gets written.
+
+---
+
+### THE CHECK — what is enforced, and what is not
+
+**Machine-checked** by `verify-site.js` check 12, on sections marked `data-story`:
+a number from the allowed list, a headline length ceiling, no banned or hype words,
+no "We/Our" opening. A build fails on these.
+
+**Not machine-checkable, and the writer owns them:** whether it forces the read, whether
+the intrigue is real, whether the burning issue is the right one. No gate can score
+those. What the gate can do is refuse the ones that are provably wrong, which is most of
+them.
 
 Then the kill test in Part F: **could a competitor put their logo on this unchanged?**
-If yes, it fails regardless of the three rules.
+If yes it fails, regardless of everything above.
 
 ---
 

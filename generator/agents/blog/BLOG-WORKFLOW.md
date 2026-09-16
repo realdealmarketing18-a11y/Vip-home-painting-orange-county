@@ -1,5 +1,12 @@
 # BLOG WORKFLOW — from research to a cited article
 
+> ### ⚠️ Every headline passes the contract first
+> `generator/agents/copywriter/HEADLINE-FORMULAS.md` **Part 0** — three rules
+> (timeless formula · burning issue · keep it simple) and four essentials (force the
+> read · use a number · create intrigue · what's in it for **her**). Same contract for
+> pages, ads and articles. `verify-site.js` check 12 enforces the checkable half.
+
+
 **Answering the ownership question directly:**
 
 > **Marcus does the research — but he does not do a separate research pass for the blog.**

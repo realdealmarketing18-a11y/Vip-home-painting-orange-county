@@ -495,6 +495,69 @@ console.log('\n11. paint-can rule');
   if (!broken) ok('can-top.jpg resolves from every page that uses it');
 }
 
+console.log('\n12. headline contract');
+/* HEADLINE-FORMULAS.md Part 0. Scoped to sections marked `data-story` --
+   headlines whose job is to be READ. Signposts (FAQ, testimonials, service
+   areas) are deliberately out of scope: several earn their keep as keyword
+   and AI-citation surfaces, and a formula there costs more in search than it
+   gains in persuasion.
+   Only the provable half is enforced. Whether a headline forces the read or
+   opens real intrigue is the writer's job -- no gate can score that. */
+{
+  const ALLOWED_NUMS = ['30', '2', '11', '3', '5', '60/30/10', '8', '15', '4.75'];
+  const HYPE = ['amazing', 'incredible', 'stunning', 'jaw-dropping', 'exceptional', 'irresistible'];
+  let bad12 = 0, withNum = 0, total = 0;
+  const perPageCount = [];
+  for (const pg of pages.concat([{ file: ocFile, rel: '/' }])) {
+    const html = fs.readFileSync(pg.file, 'utf8');
+    let pgTotal = 0, pgNum = 0;
+    const secs = html.match(/<section[^>]*data-story[^>]*>[\s\S]*?<\/section>/g) || [];
+    for (const sec of secs) {
+      const hs = sec.match(/<h[12][^>]*>[\s\S]*?<\/h[12]>/g) || [];
+      for (const raw of hs) {
+        const t = raw.replace(/<[^>]*>/g, ' ').replace(/&[a-z]+;/g, ' ')
+                     .replace(/\s+/g, ' ').trim();
+        if (!t) continue;
+        total++;
+        const nums = t.match(/\d+(?:\.\d+)?/g) || [];
+        if (nums.length) withNum++;
+        pgTotal++; if (nums.length) pgNum++;
+        for (const n of nums) {
+          if (!ALLOWED_NUMS.includes(n)) {
+            bad12++; bad(`${pg.rel}: headline uses an unapproved number "${n}" -- ${t.slice(0, 54)}`);
+          }
+        }
+        if (/^(we|our)\b/i.test(t)) {
+          bad12++; bad(`${pg.rel}: story headline opens with We/Our, not about her -- ${t.slice(0, 54)}`);
+        }
+        const hit = HYPE.find(w => new RegExp('\\b' + w + '\\b', 'i').test(t));
+        if (hit) {
+          bad12++; bad(`${pg.rel}: hype adjective "${hit}" in a headline -- ${t.slice(0, 54)}`);
+        }
+        if (t.split(' ').length > 15) {
+          bad12++; bad(`${pg.rel}: headline runs ${t.split(' ').length} words, ceiling is 15 -- ${t.slice(0, 54)}`);
+        }
+      }
+    }
+    if (pgTotal) perPageCount.push({ rel: pg.rel, total: pgTotal, num: pgNum });
+  }
+  if (!bad12) ok(`${total} story headlines: approved numbers only, none open We/Our, none over 15 words`);
+  /* Essential 2 -- numbers are structural. Measured PER PAGE, and only where
+     the sample can carry a ratio: the syndicated pages hold a single story
+     headline each, and "a third of one headline" means nothing. Site-wide
+     averaging just let 12 copies of one shared headline outvote the page
+     where the story copy actually lives. */
+  let thin = 0;
+  for (const r of perPageCount) {
+    if (r.total < 3) continue;
+    if (r.num * 3 < r.total) {
+      thin++; bad(`${r.rel}: only ${r.num} of ${r.total} story headlines carry a number (Essential 2 wants a third)`);
+    }
+  }
+  const graded = perPageCount.filter(r => r.total >= 3).length;
+  if (!thin) ok(`Essential 2 holds on all ${graded} page(s) with enough story headlines to grade`);
+}
+
 console.log('');
 if (fails) {
   console.log(`✗ FAILED — ${fails} problem(s). Do not publish until these are clear.\n`);

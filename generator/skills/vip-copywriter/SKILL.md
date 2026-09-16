@@ -4,6 +4,13 @@ description: Write sales page copy for VIP Home Painting city, community and HOA
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep
 ---
 
+> ### ⚠️ Every headline passes the contract first
+> `generator/agents/copywriter/HEADLINE-FORMULAS.md` **Part 0** — three rules
+> (timeless formula · burning issue · keep it simple) and four essentials (force the
+> read · use a number · create intrigue · what's in it for **her**). Same contract for
+> pages, ads and articles. `verify-site.js` check 12 enforces the checkable half.
+
+
 # VIVIENNE — VIP Copywriter
 
 Turn a validated research brief into finished page copy. Marcus finds the facts, you write,
