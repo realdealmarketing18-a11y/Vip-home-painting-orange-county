@@ -1402,9 +1402,11 @@
   .hr-nameplate .nm { display: block; font-family: var(--font-serif);
     font-size: 13px; color: var(--cream); line-height: 1.15; white-space: nowrap;
     overflow: hidden; text-overflow: ellipsis; }
+  /* Wraps rather than truncating: "Name SW 0000 · Name SW 0000" clips inside the
+     plate at phone widths, and the SW number is the whole point of the line. */
   .hr-nameplate .co { display: block; font-size: 8px; font-weight: 700;
-    letter-spacing: .15em; text-transform: uppercase; color: rgba(224,192,120,.92);
-    margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    letter-spacing: .12em; text-transform: uppercase; color: rgba(224,192,120,.92);
+    margin-top: 3px; white-space: normal; overflow: hidden; line-height: 1.4; }
   .hr-counter { position: absolute; right: 11px; bottom: 11px; z-index: 8;
     font-size: 9px; font-weight: 800; letter-spacing: .18em;
     color: rgba(245,239,226,.74); font-variant-numeric: tabular-nums;
@@ -1525,9 +1527,11 @@
   .cand-card .t { min-width: 0; }
   .cand-card .h { display: block; font-family: var(--font-serif); font-weight: 400;
     font-size: 16px; line-height: 1.2; color: var(--navy); }
+  /* Wraps rather than truncating: the SW number is the point of the line, and
+     "Name SW 0000 · Name SW 0000" no longer fits a card on one row. */
   .cand-card .c { display: block; font-size: 8px; font-weight: 700;
-    letter-spacing: .11em; text-transform: uppercase; color: var(--gold-deep);
-    margin-top: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    letter-spacing: .09em; text-transform: uppercase; color: var(--gold-deep);
+    margin-top: 5px; white-space: normal; overflow: hidden; line-height: 1.45; }
   .cand-card .flag { display: inline-block; margin-top: 8px; font-size: 8px;
     font-weight: 800; letter-spacing: .2em; text-transform: uppercase;
     color: var(--navy); background: var(--gold-shine); padding: 4px 9px; }

@@ -1434,9 +1434,11 @@
   .hr-nameplate .nm { display: block; font-family: var(--font-serif);
     font-size: 13px; color: var(--cream); line-height: 1.15; white-space: nowrap;
     overflow: hidden; text-overflow: ellipsis; }
+  /* Wraps rather than truncating: "Name SW 0000 · Name SW 0000" clips inside the
+     plate at phone widths, and the SW number is the whole point of the line. */
   .hr-nameplate .co { display: block; font-size: 8px; font-weight: 700;
-    letter-spacing: .15em; text-transform: uppercase; color: rgba(224,192,120,.92);
-    margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    letter-spacing: .12em; text-transform: uppercase; color: rgba(224,192,120,.92);
+    margin-top: 3px; white-space: normal; overflow: hidden; line-height: 1.4; }
   .hr-counter { position: absolute; right: 11px; bottom: 11px; z-index: 8;
     font-size: 9px; font-weight: 800; letter-spacing: .18em;
     color: rgba(245,239,226,.74); font-variant-numeric: tabular-nums;
@@ -1557,9 +1559,11 @@
   .cand-card .t { min-width: 0; }
   .cand-card .h { display: block; font-family: var(--font-serif); font-weight: 400;
     font-size: 16px; line-height: 1.2; color: var(--navy); }
+  /* Wraps rather than truncating: the SW number is the point of the line, and
+     "Name SW 0000 · Name SW 0000" no longer fits a card on one row. */
   .cand-card .c { display: block; font-size: 8px; font-weight: 700;
-    letter-spacing: .11em; text-transform: uppercase; color: var(--gold-deep);
-    margin-top: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    letter-spacing: .09em; text-transform: uppercase; color: var(--gold-deep);
+    margin-top: 5px; white-space: normal; overflow: hidden; line-height: 1.45; }
   .cand-card .flag { display: inline-block; margin-top: 8px; font-size: 8px;
     font-weight: 800; letter-spacing: .2em; text-transform: uppercase;
     color: var(--navy); background: var(--gold-shine); padding: 4px 9px; }
@@ -4494,17 +4498,17 @@ const STYLES = [
    lighting + stucco texture + glass/wood garage doors + stone pillars —
    rendered photorealistically on the client's own home photo. */
 const SCHEMES = [
-  { id: 'obsidian',    name: 'Obsidian Monolith',        sw: 'SW Iron Ore · Tricorn Black',          style: 'bold',    main: '#434341', trim: '#2F2F30', accent: '#5B5E62' },
-  { id: 'riviera',     name: 'Riviera Tuxedo',           sw: 'SW Snowbound · Black Magic',           style: 'bold',    main: '#EDEAE0', trim: '#2A2A2C', accent: '#3B3B3E' },
-  { id: 'euro',        name: 'Euro-Industrial Estate',   sw: 'SW Peppercorn · Cityscape',            style: 'bold',    main: '#585A5C', trim: '#9A9C98', accent: '#7E8285' },
-  { id: 'organic',     name: 'Coastal Organic Compound', sw: 'SW Alabaster · Urbane Bronze',         style: 'earthy',  main: '#EDEAE0', trim: '#54504A', accent: '#9C7B53' },
-  { id: 'pacificsage', name: 'Pacific Sage Estate',      sw: 'SW Evergreen Fog · Shoji White',       style: 'earthy',  main: '#95978A', trim: '#E6DFD3', accent: '#A98D4B' },
-  { id: 'ibiza',       name: 'Ibiza Luxury Villa',       sw: 'SW Balanced Beige · Aesthetic White',  style: 'earthy',  main: '#D1C7B8', trim: '#E8E3DA', accent: '#C8B59B' },
-  { id: 'admiral',     name: 'Newport Admiral',          sw: 'SW Repose Gray · Pure White',          style: 'subtle',  main: '#CCC9C0', trim: '#F0EFE9', accent: '#2F2F30' },
-  { id: 'marinelayer', name: 'Marine Layer',             sw: 'SW Sea Salt · Hi-Reflective White',    style: 'subtle',  main: '#CDD2CA', trim: '#F7F7F1', accent: '#BFC7C5' },
-  { id: 'pebblebeach', name: 'Pebble Beach Manor',       sw: 'SW Accessible Beige · Dover White',    style: 'subtle',  main: '#D1C7B8', trim: '#EFE8D8', accent: '#95948C' },
-  { id: 'spanish',     name: 'Santa Barbara Luxe',       sw: 'SW Alabaster · Tricorn Black',         style: 'spanish', main: '#F1EDE2', trim: '#2F2F30', accent: '#B5714A' },
-  { id: 'resort',      name: 'Beverly Hills Resort',     sw: 'SW City Loft · Bronze',                style: 'resort',  main: '#D6D2C9', trim: '#D6D2C9', accent: '#8C6E4C' }
+  { id: 'obsidian',    name: 'Obsidian Monolith',        sw: 'Iron Ore SW 7069 · Tricorn Black SW 6258',            style: 'bold',    main: '#434341', trim: '#2F2F30', accent: '#5B5E62' },
+  { id: 'riviera',     name: 'Riviera Tuxedo',           sw: 'Snowbound SW 7004 · Black Magic SW 6991',            style: 'bold',    main: '#EDEAE0', trim: '#2A2A2C', accent: '#3B3B3E' },
+  { id: 'euro',        name: 'Euro-Industrial Estate',   sw: 'Peppercorn SW 7674 · Cityscape SW 7067',             style: 'bold',    main: '#585A5C', trim: '#9A9C98', accent: '#7E8285' },
+  { id: 'organic',     name: 'Coastal Organic Compound', sw: 'Alabaster SW 7008 · Urbane Bronze SW 7048',          style: 'earthy',  main: '#EDEAE0', trim: '#54504A', accent: '#9C7B53' },
+  { id: 'pacificsage', name: 'Pacific Sage Estate',      sw: 'Evergreen Fog SW 9130 · Shoji White SW 7042',        style: 'earthy',  main: '#95978A', trim: '#E6DFD3', accent: '#A98D4B' },
+  { id: 'ibiza',       name: 'Ibiza Luxury Villa',       sw: 'Balanced Beige SW 7037 · Aesthetic White SW 7035',   style: 'earthy',  main: '#D1C7B8', trim: '#E8E3DA', accent: '#C8B59B' },
+  { id: 'admiral',     name: 'Newport Admiral',          sw: 'Repose Gray SW 7015 · Pure White SW 7005',           style: 'subtle',  main: '#CCC9C0', trim: '#F0EFE9', accent: '#2F2F30' },
+  { id: 'marinelayer', name: 'Marine Layer',             sw: 'Sea Salt SW 6204 · High Reflective White SW 7757',   style: 'subtle',  main: '#CDD2CA', trim: '#F7F7F1', accent: '#BFC7C5' },
+  { id: 'pebblebeach', name: 'Pebble Beach Manor',       sw: 'Accessible Beige SW 7036 · Dover White SW 6385',     style: 'subtle',  main: '#D1C7B8', trim: '#EFE8D8', accent: '#95948C' },
+  { id: 'spanish',     name: 'Santa Barbara Luxe',       sw: 'Alabaster SW 7008 · Tricorn Black SW 6258',          style: 'spanish', main: '#F1EDE2', trim: '#2F2F30', accent: '#B5714A' },
+  { id: 'resort',      name: 'Beverly Hills Resort',     sw: 'City Loft SW 7631, monochrome',                  style: 'resort',  main: '#D6D2C9', trim: '#D6D2C9', accent: '#8C6E4C' }
 ];
 
 const $tabs = document.getElementById('vizTabs');

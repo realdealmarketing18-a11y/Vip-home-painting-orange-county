@@ -1345,9 +1345,11 @@
   .hr-nameplate .nm { display: block; font-family: var(--font-serif);
     font-size: 13px; color: var(--cream); line-height: 1.15; white-space: nowrap;
     overflow: hidden; text-overflow: ellipsis; }
+  /* Wraps rather than truncating: "Name SW 0000 · Name SW 0000" clips inside the
+     plate at phone widths, and the SW number is the whole point of the line. */
   .hr-nameplate .co { display: block; font-size: 8px; font-weight: 700;
-    letter-spacing: .15em; text-transform: uppercase; color: rgba(224,192,120,.92);
-    margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    letter-spacing: .12em; text-transform: uppercase; color: rgba(224,192,120,.92);
+    margin-top: 3px; white-space: normal; overflow: hidden; line-height: 1.4; }
   .hr-counter { position: absolute; right: 11px; bottom: 11px; z-index: 8;
     font-size: 9px; font-weight: 800; letter-spacing: .18em;
     color: rgba(245,239,226,.74); font-variant-numeric: tabular-nums;
@@ -1468,9 +1470,11 @@
   .cand-card .t { min-width: 0; }
   .cand-card .h { display: block; font-family: var(--font-serif); font-weight: 400;
     font-size: 16px; line-height: 1.2; color: var(--navy); }
+  /* Wraps rather than truncating: the SW number is the point of the line, and
+     "Name SW 0000 · Name SW 0000" no longer fits a card on one row. */
   .cand-card .c { display: block; font-size: 8px; font-weight: 700;
-    letter-spacing: .11em; text-transform: uppercase; color: var(--gold-deep);
-    margin-top: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    letter-spacing: .09em; text-transform: uppercase; color: var(--gold-deep);
+    margin-top: 5px; white-space: normal; overflow: hidden; line-height: 1.45; }
   .cand-card .flag { display: inline-block; margin-top: 8px; font-size: 8px;
     font-weight: 800; letter-spacing: .2em; text-transform: uppercase;
     color: var(--navy); background: var(--gold-shine); padding: 4px 9px; }
@@ -3973,7 +3977,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <div class="vj-grid">
         <figure class="vj-card">
           <div class="vj-shot">
-            <img src="../../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg" alt="The same home rendered in Obsidian Monolith — SW Iron Ore · Tricorn Black"
+            <img src="../../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg" alt="The same home rendered in Obsidian Monolith — Iron Ore SW 7069 · Tricorn Black SW 6258"
                  loading="lazy" decoding="async" width="1600" height="893"/>
           </div>
           <figcaption>
@@ -3981,13 +3985,13 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
               <i style="background:#434341"></i><i style="background:#2F2F30"></i><i style="background:#5B5E62"></i>
             </div>
             <b>Obsidian Monolith</b>
-            <span>SW Iron Ore · Tricorn Black</span>
+            <span>Iron Ore SW 7069 · Tricorn Black SW 6258</span>
             <em>Bold &amp; Modern</em>
           </figcaption>
         </figure>
         <figure class="vj-card">
           <div class="vj-shot">
-            <img src="../../../orange-county-sales-page/viz-photos/scheme-organic.jpg" alt="The same home rendered in Coastal Organic Compound — SW Alabaster · Urbane Bronze"
+            <img src="../../../orange-county-sales-page/viz-photos/scheme-organic.jpg" alt="The same home rendered in Coastal Organic Compound — Alabaster SW 7008 · Urbane Bronze SW 7048"
                  loading="lazy" decoding="async" width="1600" height="893"/>
           </div>
           <figcaption>
@@ -3995,13 +3999,13 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
               <i style="background:#EDEAE0"></i><i style="background:#54504A"></i><i style="background:#9C7B53"></i>
             </div>
             <b>Coastal Organic Compound</b>
-            <span>SW Alabaster · Urbane Bronze</span>
+            <span>Alabaster SW 7008 · Urbane Bronze SW 7048</span>
             <em>Warm &amp; Earthy</em>
           </figcaption>
         </figure>
         <figure class="vj-card">
           <div class="vj-shot">
-            <img src="../../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg" alt="The same home rendered in Pacific Sage Estate — SW Evergreen Fog · Shoji White"
+            <img src="../../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg" alt="The same home rendered in Pacific Sage Estate — Evergreen Fog SW 9130 · Shoji White SW 7042"
                  loading="lazy" decoding="async" width="1600" height="893"/>
           </div>
           <figcaption>
@@ -4009,7 +4013,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
               <i style="background:#95978A"></i><i style="background:#E6DFD3"></i><i style="background:#A98D4B"></i>
             </div>
             <b>Pacific Sage Estate</b>
-            <span>SW Evergreen Fog · Shoji White</span>
+            <span>Evergreen Fog SW 9130 · Shoji White SW 7042</span>
             <em>Warm &amp; Earthy</em>
           </figcaption>
         </figure>
