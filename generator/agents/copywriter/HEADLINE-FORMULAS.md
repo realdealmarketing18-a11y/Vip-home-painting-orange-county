@@ -362,8 +362,16 @@ sales surface for the small slice who are ready today, and it must not be wasted
 
 ### WHERE SUBY AND THE VIP HARD RULES CONFLICT
 
-**"FREE" is in nearly every Suby example. It is banned here** — "complimentary", always, and
-idioms containing "free" get reworded rather than swapped (**D-13**).
+**"FREE" — not a conflict. This is the one place VIP already runs the framework.** The
+**complimentary Custom Visualization Service IS the HVCO.** It costs her nothing, it is
+worth real money, it answers the top question in the market ("what will this actually look
+like on my house?"), and it makes her raise her hand — which is the entire job of a
+high-value content offer. Suby's examples give away a PDF; VIP gives away the render of her
+own home, which is a materially better offer because it cannot be got anywhere else.
+
+The only thing that changes is the **word**: "complimentary", never "free", and idioms
+containing "free" get reworded rather than swapped (**D-13**). Treat that as vocabulary,
+not as a limit on the strategy. **Do not soften the offer to avoid the word.**
 
 **"Collect just name and email — the less you ask, the higher the conversion."** VIP's Step
 Five deliberately asks for more: address/community, full name, cell phone. That is a

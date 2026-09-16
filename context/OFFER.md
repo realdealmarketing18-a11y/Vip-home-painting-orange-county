@@ -12,6 +12,23 @@ have already seen on your own house.**
 
 ---
 
+## IT IS THE HVCO — the framework's name for it
+
+*Fabian, 2026-09-16.* In Sabri Suby's terms the complimentary Custom Visualization Service
+is the **High-Value Content Offer**: given away, worth real money, answers the market's top
+question, and exists to make her raise her hand. Every HVCO rule applies to it — the opt-in
+anatomy, the fascination bullets, show-don't-tell, and the follow-up where most sales are
+actually made. See `generator/agents/copywriter/HEADLINE-FORMULAS.md` **Part G**.
+
+**It is a stronger HVCO than the book's own examples.** They give away a PDF anyone could
+write. VIP gives away a render of *her house*, which no competitor in this market offers at
+all — so the offer is both the lead magnet and the proof of the service in one asset.
+
+**This is the conversion strategy, not a feature of it.** Do not dilute it, do not bury it,
+and do not soften it to avoid saying "complimentary".
+
+---
+
 ## WHY IT WORKS: THE MATH OF REGRET
 
 A wrong-color repaint costs **the entire project again** — $4,000–$7,000 for a typical
