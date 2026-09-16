@@ -82,6 +82,10 @@ body{display:flex;align-items:center;justify-content:center;min-height:100vh}
   align-items:center;justify-content:center;text-align:center}
 .safe.is-end{justify-content:flex-start}
 [data-format="reel"] .safe.is-end{top:300px}
+.safe.is-pres{justify-content:flex-start}
+[data-format="reel"]   .safe.is-pres{top:812px;bottom:170px}
+[data-format="square"] .safe.is-pres{top:486px;bottom:50px}
+[data-format="wide"]   .safe.is-pres{top:66px;bottom:80px;left:850px;right:70px}
 [data-format="reel"]   .safe{top:150px;bottom:300px;left:40px;right:40px}
 [data-format="square"] .safe{top:64px;bottom:64px;left:70px;right:70px}
 [data-format="wide"]   .safe{top:66px;bottom:92px;left:110px;right:110px}
@@ -292,6 +296,60 @@ body{display:flex;align-items:center;justify-content:center;min-height:100vh}
 [data-format="wide"]   .endband-tint{height:420px}
 
 /* ============================================================
+   10b. OVERLAY - THE PRESENTER PANEL  (founder on camera)
+   The <video> lives OUTSIDE #root. #root's innerHTML is rewritten every frame;
+   a video inside it would be destroyed and re-fetched 450 times and never seek.
+   ============================================================ */
+.presenter{position:absolute;overflow:hidden;display:none;
+  border:1px solid rgba(201,169,97,.55);
+  box-shadow:0 0 0 9px rgba(20,24,58,.80),0 0 0 10px rgba(201,169,97,.40),
+             0 30px 70px rgba(0,0,0,.60)}
+.presenter.on{display:block}
+.presenter video{width:100%;height:100%;object-fit:cover;display:block}
+[data-format="reel"]   .presenter{left:60px;top:150px;width:960px;height:620px}
+[data-format="square"] .presenter{left:70px;top:64px;width:940px;height:390px}
+[data-format="wide"]   .presenter{left:110px;top:66px;width:700px;height:440px}
+/* the founder's name strip, bottom-left of the panel */
+.pres-tag{position:absolute;left:16px;bottom:16px;display:flex;align-items:center;gap:12px;
+  padding:10px 20px;background:rgba(10,12,30,.82);border:1px solid rgba(201,169,97,.34)}
+.pres-tag .nm{font-family:var(--serif);font-size:22px;color:var(--cream);white-space:nowrap}
+.pres-tag .rl{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(224,192,120,.92);white-space:nowrap}
+.pres-tag .dot{width:7px;height:7px;background:var(--gold-bright);transform:rotate(45deg);flex:none}
+/* placeholder shown when no footage has been dropped in yet */
+.pres-holder{position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:16px;text-align:center;
+  background:linear-gradient(150deg,#232a5e 0%,#141838 62%,#0d1028 100%)}
+.pres-holder .ic{width:70px;height:70px;border:1px solid rgba(201,169,97,.6);
+  display:flex;align-items:center;justify-content:center}
+.pres-holder .ic::after{content:'';width:0;height:0;margin-left:5px;
+  border-left:22px solid var(--gold-bright);border-top:14px solid transparent;
+  border-bottom:14px solid transparent}
+.pres-holder .h{font-family:var(--serif);font-size:30px;color:var(--cream)}
+.pres-holder .s{font-size:15px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(224,192,120,.80);max-width:76%;line-height:1.9}
+
+/* ============================================================
+   10c. OVERLAY - THE STEP TRACKER  (the process, made explicit)
+   ============================================================ */
+.steps{display:flex;align-items:stretch;gap:0;width:100%;
+  border:1px solid rgba(201,169,97,.26);background:rgba(10,12,30,.62)}
+.step{flex:1;padding:20px 18px;display:flex;flex-direction:column;gap:10px;
+  align-items:center;justify-content:flex-start;position:relative;opacity:.34}
+.step + .step{border-left:1px solid rgba(201,169,97,.20)}
+.step.on{opacity:1;background:rgba(201,169,97,.10)}
+.step.done{opacity:.66}
+.step .n{width:40px;height:40px;flex:none;display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:20px;color:var(--gold-bright);
+  border:1px solid rgba(201,169,97,.55)}
+.step.on .n{background:var(--gold-shine);color:var(--navy);border-color:transparent}
+.step .lb{font-size:17px;line-height:1.35;color:var(--cream);text-align:center}
+.step.on .lb{color:#fff}
+/* the progress hairline under the tracker */
+.steps-bar{position:relative;width:100%;height:2px;background:rgba(201,169,97,.18)}
+.steps-bar i{position:absolute;left:0;top:0;bottom:0;background:var(--gold-shine)}
+
+/* ============================================================
    11. DEV - safe-area guides
    ============================================================ */
 .guides{position:absolute;inset:0;pointer-events:none;display:none}
@@ -304,7 +362,14 @@ body{display:flex;align-items:center;justify-content:center;min-height:100vh}
 </style>
 </head>
 <body>
-<div class="stage" id="stage"><div id="root"></div></div>
+<div class="stage" id="stage">
+  <div id="root"></div>
+  <div class="presenter" id="presenterLayer">
+    <video id="pv" muted playsinline preload="auto"></video>
+    <div class="pres-tag"><span class="dot"></span>
+      <span class="nm">Fabian</span><span class="rl">Founder &middot; VIP Home Painting</span></div>
+  </div>
+</div>
 
 <script>
 /* =========================================================================
@@ -316,6 +381,8 @@ const FORMAT = Q.get('format') || 'reel';
 const MODE   = Q.get('mode')   || 'method';
 const GRID   = Q.get('grid')   === '1';
 const T      = parseFloat(Q.get('t') || '0');
+/* render.js hands us a WebM it transcoded - Chromium here cannot decode H.264. */
+const PRESENTER_URL = Q.get('presenter') || null;
 
 /* ---- maths. No easing library, no transitions: everything is a pure f(t). ---- */
 const clamp=(v,a,b)=>v<a?a:v>b?b:v;
@@ -436,6 +503,25 @@ function PaletteStrip(state,localT){
     <div class="pstrip-cap">All ${BRAND.facts.schemeCount} on the same house</div></div>`;
 }
 
+/* THE STEP TRACKER - the process named as three steps, not just demonstrated.
+   The active step is driven by t, so the tracker and the plate always agree. */
+function Steps(sc,t,localT){
+  const list=AD.steps||[]; if(!list.length) return '';
+  const cur=sc.step||1;
+  const en=entrance(localT,0.2,0.5);
+  const cells=list.map((st,i)=>{
+    const n=i+1;
+    const cls = n===cur ? 'on' : (n<cur ? 'done' : '');
+    return `<div class="step ${cls}"><span class="n">${n}</span>
+      <span class="lb">${esc(st)}</span></div>`;
+  }).join('');
+  /* the hairline fills across the whole ad, not per step - it reads as one process */
+  const prog=clamp(t/ (AD.stepsEnd||AD.duration), 0, 1);
+  return `<div style="width:100%;${sty(en)}">
+    <div class="steps">${cells}</div>
+    <div class="steps-bar"><i style="width:${(prog*100).toFixed(2)}%"></i></div></div>`;
+}
+
 function Beats(localT){
   const rows=[['1','They','visualized it'],['2','They','loved it'],['3','We','painted it']];
   return `<div class="beats">${rows.map((r,i)=>{
@@ -503,6 +589,31 @@ function EndCard(sc,localT){
   <div class="warranty" style="opacity:${easeOut((localT-0.85)/0.5)}">${esc(f.warranty)}</div>`;
 }
 
+/* Seek the founder clip to this frame and WAIT for the seek to land. This is the
+   only asynchronous thing in a frame: screenshot before `seeked` fires and you get
+   the previous frame's video, silently, on maybe one frame in five. */
+let PRESENTER_OK=false;
+function syncPresenter(sc,t){
+  const layer=document.getElementById('presenterLayer');
+  const v=document.getElementById('pv');
+  if(!sc.presenter){ layer.classList.remove('on'); return Promise.resolve(); }
+  layer.classList.add('on');
+  if(!PRESENTER_OK) return Promise.resolve();          // placeholder is drawn in #root
+  const start=AD.presenterStart||0;
+  const dur=v.duration||0;
+  if(!dur) return Promise.resolve();
+  const want=clamp(t-start,0,Math.max(0,dur-0.05));
+  if(Math.abs(v.currentTime-want)<0.008) return Promise.resolve();
+  return new Promise(res=>{
+    let settled=false;
+    const done=()=>{ if(settled) return; settled=true;
+      v.removeEventListener('seeked',done); res(); };
+    v.addEventListener('seeked',done);
+    v.currentTime=want;
+    setTimeout(done,500);   // a bad seek must never hang the whole render
+  });
+}
+
 function Guides(){
   const sa=BRAND.safeAreas[FORMAT]||BRAND.safeAreas.reel;
   return `<div class="guides">
@@ -516,7 +627,7 @@ function Guides(){
 /* -------------------------------------------------------------------------
    THE FRAME
    ------------------------------------------------------------------------- */
-function renderFrame(t){
+async function renderFrame(t){
   const scenes=AD.scenes;
   let sc=scenes[0];
   for(const s of scenes){ if(t>=s.at-1e-6) sc=s; }
@@ -530,6 +641,7 @@ function renderFrame(t){
   const bgImg = st ? vizURL(st.seg.to||st.seg.from) : (BRAND.paths.viz+'scheme-organic.jpg');
 
   let body='',endBand='',safeCls='';
+  if(sc.presenter) safeCls=' is-pres';
   if(sc.endCard){
     body = EndCard(sc,localT);
     safeCls=' is-end';
@@ -557,6 +669,7 @@ function renderFrame(t){
       parts.push(`<div class="caption" style="${sty(entrance(localT,0.3,0.55))}">${esc(sc.caption)}</div>`); }
     if(sc.beats){ parts.push('<div style="height:36px"></div>'); parts.push(Beats(localT));
       parts.push('<div style="height:32px"></div>'); parts.push(ClientPill(localT)); }
+    if(sc.steps){ parts.push('<div style="height:30px"></div>'); parts.push(Steps(sc,t,localT)); }
     if(sc.softCta){ parts.push('<div style="height:36px"></div>');
       parts.push(`<div class="soft-cta" style="${sty(entrance(localT,0.5,0.5))}">${esc(sc.softCta)}</div>`); }
     body=parts.join('');
@@ -571,6 +684,16 @@ function renderFrame(t){
     ${endBand}
     <div class="safe${safeCls}" style="opacity:${outP}">${body}</div>
     ${GRID?Guides():''}`;
+
+  /* No footage dropped in yet: draw the slot so the layout is still judgeable. */
+  const ph=document.querySelector('#presenterLayer .pres-holder');
+  if(sc.presenter && !PRESENTER_OK && !ph){
+    document.getElementById('presenterLayer').insertAdjacentHTML('afterbegin',
+      `<div class="pres-holder"><div class="ic"></div>
+       <div class="h">Founder on camera</div>
+       <div class="s">Drop a vertical clip at<br/>ad-system/assets/fabian-presenter.mp4</div></div>`);
+  }
+  await syncPresenter(sc,t);
 }
 
 /* -------------------------------------------------------------------------
@@ -594,7 +717,18 @@ let PLATE_SEGS=[];
   }
   /* wait for fonts AND every image the frame references, then mark ready.
      render.js polls window.__adReady - no screenshot happens before this. */
-  renderFrame(T);
+  /* Attach the founder clip if one exists. A missing file is not an error -
+     the panel falls back to the drop-in placeholder. */
+  if(PRESENTER_URL||AD.presenterSrc){
+    const v=document.getElementById('pv');
+    PRESENTER_OK = await new Promise(res=>{
+      v.addEventListener('loadeddata',()=>res(true),{once:true});
+      v.addEventListener('error',()=>res(false),{once:true});
+      v.src=PRESENTER_URL||AD.presenterSrc;
+      setTimeout(()=>res(false),6000);
+    });
+  }
+  await renderFrame(T);
   await document.fonts.ready;
   const urls=[...document.querySelectorAll('[style*="background-image"]')]
     .map(e=>(e.style.backgroundImage.match(/url\("?(.*?)"?\)/)||[])[1])
@@ -605,7 +739,7 @@ let PLATE_SEGS=[];
   await new Promise(r=>setTimeout(r,30));
   window.__adReady=true;
   /* expose for render.js */
-  window.__renderFrame=t=>{renderFrame(t);};
+  window.__renderFrame=t=>renderFrame(t);   // returns a promise - render.js awaits it
   window.__duration=AD.duration;
 })();
 </script>

@@ -202,5 +202,88 @@
     ],
     "priceLine": "VIP starts at $4.75 per square foot of paintable surface",
     "captionCopy": "Prep, primer, coating, trim — itemised, line by line, before you commit. VIP starts at $4.75 per square foot of paintable surface. Complimentary 30-minute consultation: your home rendered in every colour you are considering, plus the itemised estimate. (909) 312-5400"
+  },
+  "stage2-process": {
+    "title": "Stage 2b — The Process (founder on camera, vertical-first)",
+    "audience": "Retarget + warm. The cut for people who want to know how it actually works.",
+    "objective": "Landing page views. Demonstrates the method AND puts a face to it.",
+    "episodeScene": "NB-002 Scenes 4–7 — Discovery through the chosen palette",
+    "duration": 20.0,
+    "_presenterNote": "presenterSrc is a stand-in cut from the reference template so the video slot is provably working. REPLACE with real footage of Fabian: film vertical, 1080x1920, good light, 16-20s, and save it as assets/fabian-presenter.mp4, then point presenterSrc at it and re-render. A real founder on a real phone beats any generated presenter, and costs nothing.",
+    "presenterSrc": "assets/presenter-standin.mp4",
+    "presenterStart": 0.0,
+    "stepsEnd": 16.5,
+    "steps": [
+      "We photograph your home",
+      "Our design team renders every colour on it",
+      "You choose the one you have already seen"
+    ],
+    "scenes": [
+      {
+        "at": 0.0,
+        "until": 5.0,
+        "key": "step1",
+        "presenter": true,
+        "step": 1,
+        "steps": true,
+        "plate": {
+          "still": "base"
+        },
+        "eyebrow": "How the Custom Visualization Service works",
+        "vo": "Most painters hand you a fan deck. We start with your house."
+      },
+      {
+        "at": 5.0,
+        "until": 12.0,
+        "key": "step2",
+        "presenter": true,
+        "step": 2,
+        "steps": true,
+        "plate": {
+          "sweep": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "each": 0.68
+        },
+        "eyebrow": "Eleven schemes · one house",
+        "vo": "Every colour you are considering, rendered on your actual elevation, in your actual light."
+      },
+      {
+        "at": 12.0,
+        "until": 16.5,
+        "key": "step3",
+        "presenter": true,
+        "step": 3,
+        "steps": true,
+        "plate": {
+          "sweep": [
+            11
+          ],
+          "each": 0.68,
+          "stamp": "The direction they chose"
+        },
+        "eyebrow": "The decision",
+        "vo": "Then you choose the one you have already seen on your own house. That is the whole difference."
+      },
+      {
+        "at": 16.5,
+        "until": 20.0,
+        "key": "cta",
+        "endCard": true,
+        "endTitle": "See your home in every color",
+        "endTitleGold": "before anything is scheduled.",
+        "endCta": "Complimentary 30-minute consultation"
+      }
+    ],
+    "captionCopy": "Most painters hand you a fan deck. We start with your house — photographed, then rendered in every colour you are considering, on your actual elevation in your actual light. You choose the one you have already seen. Complimentary 30-minute consultation, itemised estimate included. (909) 312-5400"
   }
 }

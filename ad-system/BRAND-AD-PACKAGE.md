@@ -240,3 +240,54 @@ ad-system/
 The eleven scheme renders are **not** copied here — they are read from
 `../orange-county-sales-page/viz-photos/`. One house, one set of renders, used by both
 the page and the ads.
+
+---
+
+## THE FOUNDER PANEL (Stage 2b · `stage2-process`)
+
+A fourth cut, vertical-first: **the process named as three steps, with Fabian on camera above it.**
+The other three ads demonstrate the method; this one explains it and puts a face to it.
+
+```
+┌──────────────────────┐
+│  FOUNDER ON CAMERA   │  ← video slot, 960x620
+├──────────────────────┤
+│   eyebrow            │
+│   [ the plate ]      │  ← the house, sweeping
+│   1  ·  2  ·  3      │  ← step tracker, active step lit
+└──────────────────────┘
+```
+
+The three steps, in `ads.json → stage2-process.steps`:
+1. We photograph your home
+2. Our design team renders every colour on it
+3. You choose the one you have already seen
+
+### Dropping your footage in
+
+Film **vertical, 16–20 seconds, in good light** — a phone is fine and is genuinely better
+than anything generated. Then:
+
+```bash
+cp ~/your-clip.mov ad-system/assets/fabian-presenter.mp4
+# point ads.json -> stage2-process.presenterSrc at it
+node render.js --ad=stage2-process --format=reel
+```
+
+Your audio is laid under the finished picture automatically.
+
+**It currently ships with a stand-in clip** (`assets/presenter-standin.mp4`, cut from the
+reference template) purely so the video slot is provably working. Replace it. If the file
+is missing the panel falls back to a drop-in placeholder and the render still succeeds.
+
+### One thing that will bite you
+
+**The bundled Chromium has no H.264 decoder.** `canPlayType('video/mp4; codecs="avc1…"')`
+returns an empty string and a phone mp4 fails with `MEDIA_ERR_SRC_NOT_SUPPORTED` — silently,
+as a frozen first frame. So `render.js` transcodes whatever you give it to **WebM/VP8** once
+(cached in `out/_presenter/`, rebuilt only when your source is newer) and the page loads
+that. The original is still the audio source. You don't have to do anything; just know that
+is why a `.webm` appears.
+
+The dev server also answers **HTTP range requests**. Without `206 + Content-Range` Chromium
+refuses to seek a `<video>`, and every frame of the composite would show the same moment.

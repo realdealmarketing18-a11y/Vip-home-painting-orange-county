@@ -52,7 +52,8 @@ const KEEP_FRAMES = process.argv.includes('--keep-frames');
 
 const MIME = { '.html':'text/html', '.json':'application/json', '.css':'text/css',
   '.js':'text/javascript', '.png':'image/png', '.jpg':'image/jpeg', '.jpeg':'image/jpeg',
-  '.webp':'image/webp', '.woff2':'font/woff2', '.svg':'image/svg+xml' };
+  '.webp':'image/webp', '.woff2':'font/woff2', '.svg':'image/svg+xml',
+  '.mp4':'video/mp4', '.webm':'video/webm', '.mov':'video/quicktime' };
 
 function serve() {
   return new Promise(resolve => {
@@ -62,7 +63,26 @@ function serve() {
       if (!file.startsWith(ROOT) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) {
         res.writeHead(404); return res.end('not found');
       }
-      res.writeHead(200, { 'Content-Type': MIME[path.extname(file).toLowerCase()] || 'application/octet-stream' });
+      const type = MIME[path.extname(file).toLowerCase()] || 'application/octet-stream';
+      const size = fs.statSync(file).size;
+
+      // Byte ranges, for the founder clip. Chromium will not seek a <video> that
+      // the server answers with a flat 200 - it needs 206 + Content-Range, and
+      // without seeking every frame of the composite shows the same video frame.
+      const range = req.headers.range;
+      if (range && /^bytes=/.test(range)) {
+        const [s0, s1] = range.replace(/^bytes=/, '').split('-');
+        const start = parseInt(s0, 10) || 0;
+        const end = s1 ? Math.min(parseInt(s1, 10), size - 1) : size - 1;
+        res.writeHead(206, {
+          'Content-Type': type,
+          'Content-Range': `bytes ${start}-${end}/${size}`,
+          'Accept-Ranges': 'bytes',
+          'Content-Length': end - start + 1,
+        });
+        return fs.createReadStream(file, { start, end }).pipe(res);
+      }
+      res.writeHead(200, { 'Content-Type': type, 'Content-Length': size, 'Accept-Ranges': 'bytes' });
       fs.createReadStream(file).pipe(res);
     });
     srv.listen(0, '127.0.0.1', () => resolve(srv));
@@ -92,6 +112,59 @@ function ffmpegBin() {
   try { return require('ffmpeg-static'); } catch { return null; }
 }
 
+/**
+ * Prepare the founder clip for the browser.
+ * The bundled Chromium has NO H.264 decoder - canPlayType('avc1...') returns ''
+ * and a phone mp4 fails with MEDIA_ERR_SRC_NOT_SUPPORTED. VP8/WebM does work.
+ * So whatever Fabian drops in (phone mp4, mov, anything ffmpeg reads) is
+ * transcoded once to WebM for rendering. The original is still used for audio.
+ */
+function preparePresenter(adId) {
+  const ad = ADS[adId];
+  if (!ad || !ad.presenterSrc) return null;
+  const src = path.join(HERE, ad.presenterSrc);
+  if (!fs.existsSync(src)) {
+    console.log(`  ! presenterSrc not found (${ad.presenterSrc}) - drawing the drop-in placeholder`);
+    return null;
+  }
+  const ff = ffmpegBin();
+  if (!ff) return null;
+  const dir = path.join(OUT, '_presenter');
+  fs.mkdirSync(dir, { recursive: true });
+  const webm = path.join(dir, `${adId}.webm`);
+  const stale = !fs.existsSync(webm) || fs.statSync(src).mtimeMs > fs.statSync(webm).mtimeMs;
+  if (stale) {
+    process.stdout.write('  transcoding founder clip for the renderer ... ');
+    execFileSync(ff, ['-y', '-i', src, '-an', '-c:v', 'libvpx', '-b:v', '4M',
+                      '-deadline', 'good', '-cpu-used', '3', webm],
+                 { stdio: ['ignore', 'ignore', 'pipe'] });
+    console.log('done');
+  }
+  return `ad-system/out/_presenter/${adId}.webm`;
+}
+
+/** Lay the founder clip's own audio under the finished picture. */
+function muxPresenterAudio(ff, adId, mp4) {
+  const ad = ADS[adId];
+  if (!ad || !ad.presenterSrc) return false;
+  const src = path.join(HERE, ad.presenterSrc);
+  if (!fs.existsSync(src)) return false;
+  let hasAudio = false;
+  try {
+    const probe = execFileSync(ff, ['-hide_banner', '-i', src], { stdio: ['ignore', 'pipe', 'pipe'] });
+  } catch (e) { hasAudio = /Stream .*Audio:/.test(String(e.stderr || '')); }
+  if (!hasAudio) return false;
+  const tmp = mp4.replace(/\.mp4$/, '.a.mp4');
+  try {
+    execFileSync(ff, ['-y', '-i', mp4, '-ss', String(ad.presenterStart || 0), '-i', src,
+                      '-map', '0:v:0', '-map', '1:a:0', '-c:v', 'copy', '-c:a', 'aac',
+                      '-b:a', '160k', '-shortest', '-movflags', '+faststart', tmp],
+                 { stdio: ['ignore', 'ignore', 'pipe'] });
+    fs.renameSync(tmp, mp4);
+    return true;
+  } catch { fs.rmSync(tmp, { force: true }); return false; }
+}
+
 async function renderOne(browser, base, adId, format) {
   const ad  = ADS[adId];
   const dim = BRAND.formats[format];
@@ -105,8 +178,10 @@ async function renderOne(browser, base, adId, format) {
     viewport: { width: dim.w, height: dim.h },
     deviceScaleFactor: 1,
   });
+  const pres = preparePresenter(adId);
   const url = `${base}/ad-system/ad.html?ad=${adId}&format=${format}&mode=${OPT.mode}` +
-              `&grid=${OPT.grid ? 1 : 0}&t=0`;
+              `&grid=${OPT.grid ? 1 : 0}&t=0` +
+              (pres ? `&presenter=${encodeURIComponent('/' + pres)}` : '');
   await page.goto(url, { waitUntil: 'load' });
   await page.waitForFunction('window.__adReady === true', { timeout: 30000 });
 
@@ -137,8 +212,9 @@ async function renderOne(browser, base, adId, format) {
     '-c:v', 'libx264', '-preset', 'slow', '-crf', '18',
     '-pix_fmt', 'yuv420p', '-movflags', '+faststart', mp4,
   ], { stdio: ['ignore', 'ignore', 'pipe'] });
+  const withAudio = muxPresenterAudio(ff, adId, mp4);
   const kb = Math.round(fs.statSync(mp4).size / 1024);
-  console.log(`  -> ${path.relative(ROOT, mp4)}  (${kb} KB)`);
+  console.log(`  -> ${path.relative(ROOT, mp4)}  (${kb} KB)${withAudio ? '  + founder audio' : ''}`);
 
   // A poster frame for Meta's thumbnail picker: the chosen-scheme beat.
   const poster = path.join(OUT, `vip-${adId}-${format}-poster.jpg`);
@@ -171,8 +247,10 @@ async function renderOne(browser, base, adId, format) {
   if (OPT.still !== null && OPT.still !== true) {
     const dim = BRAND.formats[OPT.format];
     const page = await browser.newPage({ viewport: { width: dim.w, height: dim.h }, deviceScaleFactor: 1 });
+    const presS = preparePresenter(OPT.ad);
     await page.goto(`${base}/ad-system/ad.html?ad=${OPT.ad}&format=${OPT.format}` +
-                    `&mode=${OPT.mode}&grid=${OPT.grid ? 1 : 0}&t=${OPT.still}`, { waitUntil: 'load' });
+                    `&mode=${OPT.mode}&grid=${OPT.grid ? 1 : 0}&t=${OPT.still}` +
+                    (presS ? `&presenter=${encodeURIComponent('/' + presS)}` : ''), { waitUntil: 'load' });
     await page.waitForFunction('window.__adReady === true', { timeout: 30000 });
     const out = path.join(OUT, `still-${OPT.ad}-${OPT.format}-t${OPT.still}.png`);
     fs.mkdirSync(OUT, { recursive: true });
