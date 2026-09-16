@@ -2512,8 +2512,14 @@
      the row. Flexing them to fill makes five visible at every width and as
      large as that width allows, with no scrolling to discover the rest.
      The "They saw" label goes: the caption directly above now says it. */
-  .hr-thumbs { overflow: visible; gap: clamp(5px, .8vw, 10px); }
+  /* Flex-to-fill needs a ceiling. With five thumbs under a 430px plate they
+     landed around 60px; with four under a 790px plate the same rule gave
+     them ~150px each and a 179px tray, which pushed the reel 200px below
+     the fold. They still fill the row — they just stop growing. */
+  .hr-thumbs { overflow: visible; gap: clamp(5px, .8vw, 10px);
+    justify-content: center; }
   .hr-thumbs button { flex: 1 1 0; min-width: 0; height: auto;
+    max-width: clamp(52px, 6vw, 88px);
     aspect-ratio: 1; border-radius: clamp(9px, 1.5vh, 16px); }
   .hr-tray-label { display: none; }
   @media (max-width: 640px) {
@@ -3235,19 +3241,26 @@
            Gallaghers are named, and their photo sits beside it. The
            30-minute number is from OFFER.md.
 
-           SHORTENED from 93 characters to 77 — it was running four lines on
-           a phone and eating the fold. Everything the formula needs stays:
-           the "Discover" opener, the Newport Beach handoff, the 30-minute
-           number, and the gold payoff line.
+           REWRITTEN AGAINST research/orange-county/07-VOICE.md.
 
-           SEO: "Orange County" comes out of the H1 and is carried by the
-           eyebrow directly above it (ORANGE COUNTY LUXURY HOME PAINTING),
-           the title tag ("Orange County House Painters, CA") and the H2s
-           below — so the term is still above the fold, just not in the H1.
-           To put it back, "Their Orange County Dream Home" restores it at
-           the cost of one line on a phone. -->
-      <h1 class="ttl-hero">Discover How Orange County Homeowners Visualized
-        Their Dream Home in 30 Minutes
+           "Right the first time" is the competence frame the voice research
+           found. Theme 1: the aspiration is not beauty, it is competence —
+           "I really determined not to make a rookie mistake on this". She is
+           not dreaming about the house, she is dreaming about not having
+           failed at it, which is a different target than every competitor
+           is aiming at. "Dream Home" was aimed at the beauty she is not
+           actually shopping for.
+
+           "Exterior house painting" answers 00-SUMMARY's on-page audit,
+           which flagged the old H1 "no service term" — the transactional
+           cluster is `house painters orange county` and `exterior painting
+           orange county`.
+
+           The 30-minute number moves to the steps and the band, where it
+           still does its job; the headline could not carry both it and the
+           service term inside three lines on a phone. -->
+      <h1 class="ttl-hero">Discover How Orange County Homeowners Get Exterior
+        House Painting Right the First Time
         <span class="gold">Before a Single Brushstroke</span></h1>
       <!-- The slogan, told as what actually happened to them. Set as three
            beats rather than run into the sentence: "1. They Visualized 2. They
@@ -3398,20 +3411,30 @@
       <div class="eyebrow">Why Get A Complimentary Custom Color Consultation</div>
       <h2>Avoid Costly <span class="accent">Mistakes</span> &mdash; See Your Orange
         County Home in Every Color First</h2>
-      <!-- Rewritten because it made the reader decode two metaphors before
-           reaching the point: "five-figure color" and "two-inch card". Clever
-           on a page, but it costs a beat of thought exactly where the visitor
-           should be feeling something. BRAND-VOICE rule 3 covers it too — a
-           homeowner says "paint chip", never "two-inch card".
+      <!-- THE SWATCH-SCALE ARGUMENT — 07-VOICE.md calls this "the most
+           valuable single finding" and names the previous line here as the
+           thing to replace. Its criticism: "a paint chip in a store tells
+           you almost nothing" aims at the LAZY buyer, the one who grabbed a
+           chip at the store. The real customer is the opposite of lazy. The
+           documented case did everything the industry recommends — weeks of
+           research, samples on three exposures, advice from the paint store
+           — and still ended up with a house she felt sick about.
 
-           The idea underneath is the offer itself, and it is worth saying
-           plainly: a small sample under store lights predicts nothing about
-           a whole facade in real light. -->
-      <p>A paint chip in a store tells you almost nothing about how that color
-        will look on your own house, in your own light. So the Gallaghers saw
-        all <b>11</b> on theirs first &mdash; before a single brushstroke.
-        These are the other <b>7</b> &mdash; and the one they chose. Tap any
-        one to see it full size.</p>
+           So the claim is not "shortcuts fail". It is "doing it carefully
+           fails too, because small samples cannot predict large surfaces".
+           That moves the visualizer from a convenience to a category
+           correction, which is a position rather than a feature.
+
+           Her vocabulary, from the glossary: "reads", "swatches", "my
+           lighting". No quote is reproduced — the source is a homeowner on a
+           public forum, not a VIP client, and attributing her words here
+           would read as a testimonial she never gave. -->
+      <p>Weeks of samples on three different walls, and the color still read
+        wrong once it was up. A two-foot patch and three thousand square feet
+        of the same paint do not behave the same in your light &mdash; the only
+        thing that predicts your whole house is your whole house. So the
+        Gallaghers saw all <b>11</b> on theirs first. These are the other
+        <b>7</b>, and the one they chose. Tap any one to see it full size.</p>
     </div>
     <!-- THE BAND'S OWN SEVEN. The hero tray shows four; these are the
          other seven, so scrolling into this section is new material rather
@@ -3449,15 +3472,15 @@
       <li>
         <img class="cr-brush" src="assets/logos/logo-brush-navy.png" alt="" width="128" height="294" loading="lazy" decoding="async"/>
         <div><b>Eleven schemes, one decision, 30 minutes</b>
-          The Gallaghers saw their own facade in every one of them before
-          anything was scheduled. No sample jars, no squinting at a card in
-          the driveway.</div>
+          Not swatches on three walls &mdash; the whole facade, in your light,
+          in every color you are considering, before anything is scheduled.</div>
       </li>
       <li>
         <img class="cr-brush" src="assets/logos/logo-brush-navy.png" alt="" width="128" height="294" loading="lazy" decoding="async"/>
         <div><b>A color you regret costs the whole job twice</b>
-          The second repaint costs exactly what the first one did. Seeing it
-          on your own walls first is what makes that impossible.</div>
+          Exterior paint is permanent in a way few decisions are, and the
+          second repaint costs exactly what the first one did. Seeing it on
+          your own walls first is what makes that impossible.</div>
       </li>
       <li>
         <img class="cr-brush" src="assets/logos/logo-brush-navy.png" alt="" width="128" height="294" loading="lazy" decoding="async"/>

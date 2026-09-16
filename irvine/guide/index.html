@@ -2274,8 +2274,14 @@
      the row. Flexing them to fill makes five visible at every width and as
      large as that width allows, with no scrolling to discover the rest.
      The "They saw" label goes: the caption directly above now says it. */
-  .hr-thumbs { overflow: visible; gap: clamp(5px, .8vw, 10px); }
+  /* Flex-to-fill needs a ceiling. With five thumbs under a 430px plate they
+     landed around 60px; with four under a 790px plate the same rule gave
+     them ~150px each and a 179px tray, which pushed the reel 200px below
+     the fold. They still fill the row — they just stop growing. */
+  .hr-thumbs { overflow: visible; gap: clamp(5px, .8vw, 10px);
+    justify-content: center; }
   .hr-thumbs button { flex: 1 1 0; min-width: 0; height: auto;
+    max-width: clamp(52px, 6vw, 88px);
     aspect-ratio: 1; border-radius: clamp(9px, 1.5vh, 16px); }
   .hr-tray-label { display: none; }
   @media (max-width: 640px) {
