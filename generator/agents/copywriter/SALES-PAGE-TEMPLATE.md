@@ -37,18 +37,57 @@ one story instead of a stack of modules.
 ### 0 · PRE-HERO HOOK
 **Story:** cold open. The fear, stated as something that happened to someone.
 **Conversion:** she recognises herself in two sentences and keeps reading.
-**Search:** nothing. This is above the H1 and carries no SEO weight — do not put keywords here.
 **Headline:** no headline. Two sentences maximum, plain.
 **Rule:** it names a *documented* pain from `07-VOICE.md`. Never an invented anecdote.
 
+**Search: this is one of the highest-value blocks on the page, not a warm-up.**
+
+An earlier draft of this document said the hook carried no SEO weight. That was wrong, and
+it would have cost us the thing we are actually optimising for. Three reasons it matters:
+
+1. **It is crawled like any other body copy.** Sitting above the H1 does not exempt it.
+   It is the first body text a crawler reaches, which makes it a strong topical signal for
+   the whole page.
+2. **It is the most citable block we have.** AI engines retrieve at *passage* level, and a
+   self-contained narrative opening is the exact shape they quote. Copilot is 50% of
+   citations and Google AI Mode 36% (**M-06**) — a hook that names the problem, the place
+   and the company in plain sentences is built to be lifted whole.
+3. **It often becomes the snippet**, when the engine prefers opening body text to the meta
+   description.
+
+**How to integrate search without killing the cold open — the resolution is that you do
+not have to choose.** Her verbatim language *is* the long-tail. `07-VOICE.md`'s glossary
+and `00-SUMMARY.md` Finding 5's informational cluster are the same words:
+
+| She says | People search |
+|---|---|
+| "the color still **read** wrong" | `home exterior color mistakes` |
+| "**swatches** on three walls" | `how to choose exterior paint colors for your house` |
+| "**leaning** pink in **my lighting**" | `how to choose exterior paint color combinations` |
+| "it is so **permanent**" | `how often to paint house exterior in california` |
+
+So: write her sentence, and the search term arrives with it. What is banned is the
+reverse — reaching for a term and bending a sentence around it.
+
+**Requirements:**
+- Name **the place** once, naturally (Orange County, or the community on a community page).
+- Use **her documented phrasing**, not industry phrasing.
+- One passage, self-contained — readable with no context above or below it.
+- It lives inside the page's **main content**, never in a decorative wrapper a parser skips.
+- Feeds `speakable` alongside the FAQ.
+- **No service term jammed in**, no keyword stacking, no second sentence that exists only
+  to carry a phrase. If it stops sounding like one person talking, it has failed both jobs.
+
 > "Weeks of samples on three different walls, and the color still read wrong once it was
-> up." — the shape to aim at. Specific, ordinary, and true of a real person.
+> up." — the shape to aim at. Specific, ordinary, true of a real person, and carrying
+> `home exterior color mistakes` without having tried to.
 
 ### 1 · HERO
 **Story:** who this happened to, and that it ended well.
 **Conversion:** the promise — she can see it before she commits to it.
-**Search:** the H1. Primary transactional term (`exterior painting orange county`,
-`house painters orange county`). Finding 4 flagged an H1 with no service term.
+**Search:** the H1, and it carries real weight — the primary transactional term goes
+here (`exterior painting orange county`, `house painters orange county`). Finding 4
+flagged the old H1 precisely for having no service term in it.
 **Headline:** Part A formula + an approved number. ≤15 words.
 **Carries:** subhead (transformation promise), one CTA, trust strip (licensed · bonded ·
 insured — **never** a rating or review count).
