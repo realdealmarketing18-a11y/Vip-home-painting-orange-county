@@ -23,6 +23,18 @@
   },
   "clusters": [
     {
+      "slug": "orange-county",
+      "name": "Orange County (master sales page)",
+      "stage": "building",
+      "priority": 0,
+      "communities": [],
+      "communities_live": false,
+      "city_page_live": true,
+      "approved": false,
+      "hand_maintained": true,
+      "notes": "The master sales page and the front page of viphomepainting.com (WP id 4046). HAND-MAINTAINED: orange-county-sales-page/index.html is edited directly, there is no briefs/orange-county.json, so validate-brief does not apply and `claim` must not be run against it with a gate stage. It is in the queue so the one-at-a-time rule can see it. Live copy is stale: the hero redesign, section 3 rewrite, paint cans and headline contract are all on the build site only until publish-wp.js --live runs. Open: task_plan action 0 (publish) and action 1 (Finding 4 technical half)."
+    },
+    {
       "slug": "irvine",
       "name": "Irvine",
       "stage": "copy_complete",

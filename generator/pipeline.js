@@ -58,7 +58,11 @@ const JOBS = {
 /* Vivienne is the copywriter. Both names work. */
 JOBS.vivienne = JOBS.copywriter;
 
-const byPriority = (a, b) => (a.priority || 99) - (b.priority || 99);
+/* `|| 99` turned priority 0 into 99, so the highest-priority cluster sorted
+   LAST and `next` would hand it out last. Explicit null check: 0 is a real
+   priority, not a missing one. */
+const prio = (c) => (c.priority === undefined || c.priority === null) ? 99 : c.priority;
+const byPriority = (a, b) => prio(a) - prio(b);
 const find = (slug) => q.clusters.find(c => c.slug === slug);
 
 function briefExists(slug) {

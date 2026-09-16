@@ -33,6 +33,12 @@ runtime: ~20 min per cluster
 
 ---
 
+> ### 📐 Page structure is locked
+> `generator/agents/copywriter/SALES-PAGE-TEMPLATE.md` — the section order every sales
+> page runs, with the story beat, conversion job, headline formula and schema for each.
+> Sections may be omitted on smaller pages; they may never be reordered.
+
+
 > ### ⚠️ Every headline passes the contract first
 > `generator/agents/copywriter/HEADLINE-FORMULAS.md` **Part 0** — three rules
 > (timeless formula · burning issue · keep it simple) and four essentials (force the
