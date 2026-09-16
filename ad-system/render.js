@@ -156,9 +156,14 @@ function muxPresenterAudio(ff, adId, mp4) {
   if (!hasAudio) return false;
   const tmp = mp4.replace(/\.mp4$/, '.a.mp4');
   try {
+    // apad + an explicit -t, NOT -shortest. If the founder's clip is shorter than
+    // the ad, -shortest silently truncates the PICTURE to the audio: film 16s for a
+    // 20s ad and the ad quietly becomes 16s. Pad the audio with silence instead and
+    // let the ad's own duration decide the length.
     execFileSync(ff, ['-y', '-i', mp4, '-ss', String(ad.presenterStart || 0), '-i', src,
-                      '-map', '0:v:0', '-map', '1:a:0', '-c:v', 'copy', '-c:a', 'aac',
-                      '-b:a', '160k', '-shortest', '-movflags', '+faststart', tmp],
+                      '-map', '0:v:0', '-map', '1:a:0', '-c:v', 'copy',
+                      '-af', 'apad', '-c:a', 'aac', '-b:a', '160k',
+                      '-t', String(ad.duration), '-movflags', '+faststart', tmp],
                  { stdio: ['ignore', 'ignore', 'pipe'] });
     fs.renameSync(tmp, mp4);
     return true;
