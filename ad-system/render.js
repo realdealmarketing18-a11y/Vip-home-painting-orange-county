@@ -121,33 +121,42 @@ function ffmpegBin() {
  */
 function preparePresenter(adId) {
   const ad = ADS[adId];
-  if (!ad || !ad.presenterSrc) return null;
-  const src = path.join(HERE, ad.presenterSrc);
-  if (!fs.existsSync(src)) {
-    console.log(`  ! presenterSrc not found (${ad.presenterSrc}) - drawing the drop-in placeholder`);
-    return null;
-  }
+  if (!ad) return null;
+  const clips = ad.clips || (ad.presenterSrc ? { presenter: ad.presenterSrc } : null);
+  if (!clips) return null;
   const ff = ffmpegBin();
   if (!ff) return null;
   const dir = path.join(OUT, '_presenter');
   fs.mkdirSync(dir, { recursive: true });
-  const webm = path.join(dir, `${adId}.webm`);
-  const stale = !fs.existsSync(webm) || fs.statSync(src).mtimeMs > fs.statSync(webm).mtimeMs;
-  if (stale) {
-    process.stdout.write('  transcoding founder clip for the renderer ... ');
-    execFileSync(ff, ['-y', '-i', src, '-an', '-c:v', 'libvpx', '-b:v', '4M',
-                      '-deadline', 'good', '-cpu-used', '3', webm],
-                 { stdio: ['ignore', 'ignore', 'pipe'] });
-    console.log('done');
+
+  const out = {};
+  for (const [key, rel] of Object.entries(clips)) {
+    const src = path.join(HERE, rel);
+    if (!fs.existsSync(src)) {
+      console.log(`  ! clip "${key}" not found (${rel}) - drawing its drop-in placeholder`);
+      continue;
+    }
+    const webm = path.join(dir, `${adId}.${key}.webm`);
+    const stale = !fs.existsSync(webm) || fs.statSync(src).mtimeMs > fs.statSync(webm).mtimeMs;
+    if (stale) {
+      process.stdout.write(`  transcoding "${key}" for the renderer ... `);
+      execFileSync(ff, ['-y', '-i', src, '-an', '-c:v', 'libvpx', '-b:v', '4M',
+                        '-deadline', 'good', '-cpu-used', '3', webm],
+                   { stdio: ['ignore', 'ignore', 'pipe'] });
+      console.log('done');
+    }
+    out[key] = `/ad-system/out/_presenter/${adId}.${key}.webm`;
   }
-  return `ad-system/out/_presenter/${adId}.webm`;
+  return Object.keys(out).length ? out : null;
 }
 
 /** Lay the founder clip's own audio under the finished picture. */
 function muxPresenterAudio(ff, adId, mp4) {
   const ad = ADS[adId];
-  if (!ad || !ad.presenterSrc) return false;
-  const src = path.join(HERE, ad.presenterSrc);
+  const rel = ad && (ad.audioFrom || ad.presenterSrc ||
+                     (ad.clips && (ad.clips.presenter || Object.values(ad.clips)[0])));
+  if (!rel) return false;
+  const src = path.join(HERE, rel);
   if (!fs.existsSync(src)) return false;
   let hasAudio = false;
   try {
@@ -160,7 +169,7 @@ function muxPresenterAudio(ff, adId, mp4) {
     // the ad, -shortest silently truncates the PICTURE to the audio: film 16s for a
     // 20s ad and the ad quietly becomes 16s. Pad the audio with silence instead and
     // let the ad's own duration decide the length.
-    execFileSync(ff, ['-y', '-i', mp4, '-ss', String(ad.presenterStart || 0), '-i', src,
+    execFileSync(ff, ['-y', '-i', mp4, '-ss', String(ad.audioStart || ad.presenterStart || 0), '-i', src,
                       '-map', '0:v:0', '-map', '1:a:0', '-c:v', 'copy',
                       '-af', 'apad', '-c:a', 'aac', '-b:a', '160k',
                       '-t', String(ad.duration), '-movflags', '+faststart', tmp],
@@ -186,7 +195,7 @@ async function renderOne(browser, base, adId, format) {
   const pres = preparePresenter(adId);
   const url = `${base}/ad-system/ad.html?ad=${adId}&format=${format}&mode=${OPT.mode}` +
               `&grid=${OPT.grid ? 1 : 0}&t=0` +
-              (pres ? `&presenter=${encodeURIComponent('/' + pres)}` : '');
+              (pres ? `&presenter=${encodeURIComponent(JSON.stringify(pres))}` : '');
   await page.goto(url, { waitUntil: 'load' });
   await page.waitForFunction('window.__adReady === true', { timeout: 30000 });
 
@@ -255,7 +264,7 @@ async function renderOne(browser, base, adId, format) {
     const presS = preparePresenter(OPT.ad);
     await page.goto(`${base}/ad-system/ad.html?ad=${OPT.ad}&format=${OPT.format}` +
                     `&mode=${OPT.mode}&grid=${OPT.grid ? 1 : 0}&t=${OPT.still}` +
-                    (presS ? `&presenter=${encodeURIComponent('/' + presS)}` : ''), { waitUntil: 'load' });
+                    (presS ? `&presenter=${encodeURIComponent(JSON.stringify(presS))}` : ''), { waitUntil: 'load' });
     await page.waitForFunction('window.__adReady === true', { timeout: 30000 });
     const out = path.join(OUT, `still-${OPT.ad}-${OPT.format}-t${OPT.still}.png`);
     fs.mkdirSync(OUT, { recursive: true });

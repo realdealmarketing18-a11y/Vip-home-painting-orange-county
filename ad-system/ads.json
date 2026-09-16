@@ -288,5 +288,285 @@
       }
     ],
     "captionCopy": "Most painters hand you a fan deck. We start with your house — photographed, then rendered in every colour you are considering, on your actual elevation in your actual light. You choose the one you have already seen. Complimentary 30-minute consultation, itemised estimate included. (909) 312-5400"
+  },
+  "funnel-1-color": {
+    "title": "Funnel 1 · Colour — Step One on the page",
+    "audience": "Cold to warm. The hook: eleven colours on one real house.",
+    "objective": "Video views + landing page views.",
+    "pageSection": "Step One · Choose Your Color Scheme",
+    "duration": 16.0,
+    "clips": {
+      "presenter": "assets/presenter-standin.mp4"
+    },
+    "clipLabels": {
+      "presenter": {
+        "h": "Founder on camera",
+        "s": "Drop a vertical clip at<br/>ad-system/assets/fabian-presenter.mp4"
+      }
+    },
+    "clipStarts": {
+      "presenter": 0.0
+    },
+    "stepsEnd": 12.5,
+    "steps": [
+      "Choose your colour scheme",
+      "Lighting, texture and doors",
+      "We mask it, then we paint it"
+    ],
+    "scenes": [
+      {
+        "at": 0.0,
+        "until": 3.0,
+        "key": "open",
+        "presenter": true,
+        "step": 1,
+        "steps": true,
+        "plate": {
+          "still": "base"
+        },
+        "title": "We start with",
+        "titleGold": "your house.",
+        "vo": "Most painters hand you a fan deck. We start with your house."
+      },
+      {
+        "at": 3.0,
+        "until": 12.5,
+        "key": "colour",
+        "presenter": true,
+        "step": 1,
+        "steps": true,
+        "plate": {
+          "sweep": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "each": 0.78,
+          "stamp": "The direction they chose"
+        },
+        "paletteStrip": true,
+        "title": "Eleven colors.",
+        "titleGold": "One house.",
+        "vo": "Every colour you are considering, rendered on your actual elevation, in your actual light."
+      },
+      {
+        "at": 12.5,
+        "until": 16.0,
+        "key": "cta",
+        "endCard": true,
+        "endTitle": "See your home in every color",
+        "endTitleGold": "before anything is scheduled.",
+        "endCta": "Complimentary 30-minute consultation"
+      }
+    ],
+    "captionCopy": "Eleven colour schemes, rendered on one real Newport Beach home, before a gallon was tinted. Choose a direction and watch it repaint itself. Complimentary 30-minute consultation — your home, every colour, plus an itemised estimate. (909) 312-5400"
+  },
+  "funnel-2-upgrades": {
+    "title": "Funnel 2 · The Upgrades — Steps Two, Three and Four on the page",
+    "audience": "Watched 50%+ of Funnel 1, or used the visualizer.",
+    "objective": "Landing page views. Raises order value: lighting, texture, doors.",
+    "pageSection": "Step Two · Lighting · Step Three · Texture & Material · Step Four · Premium Additions",
+    "duration": 22.0,
+    "clips": {
+      "presenter": "assets/presenter-standin.mp4"
+    },
+    "clipLabels": {
+      "presenter": {
+        "h": "Founder on camera",
+        "s": "Drop a vertical clip at<br/>ad-system/assets/fabian-presenter.mp4"
+      }
+    },
+    "clipStarts": {
+      "presenter": 0.0
+    },
+    "stepsEnd": 18.5,
+    "steps": [
+      "Choose your colour scheme",
+      "Lighting, texture and doors",
+      "We mask it, then we paint it"
+    ],
+    "scenes": [
+      {
+        "at": 0.0,
+        "until": 2.6,
+        "key": "open",
+        "presenter": true,
+        "step": 2,
+        "steps": true,
+        "plate": {
+          "still": "chosen"
+        },
+        "title": "The colour is",
+        "titleGold": "only the start.",
+        "vo": "Colour is the first decision. It is not the only one."
+      },
+      {
+        "at": 2.6,
+        "until": 8.6,
+        "key": "lighting",
+        "presenter": true,
+        "step": 2,
+        "steps": true,
+        "plate": {
+          "additions": "light",
+          "on": "organic",
+          "each": 2.0
+        },
+        "paletteStrip": true,
+        "title": "The right",
+        "titleGold": "lighting.",
+        "vo": "Tap each fixture and see it glowing on your home."
+      },
+      {
+        "at": 8.6,
+        "until": 14.6,
+        "key": "texture",
+        "presenter": true,
+        "step": 2,
+        "steps": true,
+        "plate": {
+          "additions": "siding",
+          "on": "organic",
+          "each": 2.0
+        },
+        "paletteStrip": true,
+        "title": "Texture",
+        "titleGold": "and material.",
+        "vo": "Cedar shake, board and batten, or stacked stone, layered onto your elevation."
+      },
+      {
+        "at": 14.6,
+        "until": 18.5,
+        "key": "premium",
+        "presenter": true,
+        "step": 2,
+        "steps": true,
+        "plate": {
+          "additions": "premium",
+          "on": "organic",
+          "each": 1.3,
+          "stamp": "The finishing touches"
+        },
+        "paletteStrip": true,
+        "title": "The finishing",
+        "titleGold": "touches.",
+        "vo": "Glass-panel garage doors and natural stone."
+      },
+      {
+        "at": 18.5,
+        "until": 22.0,
+        "key": "cta",
+        "endCard": true,
+        "endTitle": "Build the whole elevation",
+        "endTitleGold": "before you commit to any of it.",
+        "endCta": "Complimentary 30-minute consultation"
+      }
+    ],
+    "captionCopy": "Colour is the first decision, not the only one. Lighting, texture and doors are all rendered on your own elevation before anything is ordered — LED slot sconces or iron lanterns, cedar shake or stacked stone, glass-panel or walnut garage doors. Complimentary 30-minute consultation. (909) 312-5400"
+  },
+  "funnel-3-build": {
+    "title": "Funnel 3 · The Build — chosen, masked, painted, booked",
+    "audience": "Site visitors, 30 days. Engaged with Funnel 1 or 2.",
+    "objective": "Leads. Closes the loop: the render becomes the real house.",
+    "_clipNote": "masking and painting are the two clips to film on a live job - a crew taping a trim line, then a sprayer or roller laying the first coat. Real job-site footage is free, you have crews doing it today, and it is the one thing a competitor cannot fake. Film vertical, 8-12s each, then drop them in and re-render.",
+    "duration": 20.0,
+    "clips": {
+      "presenter": "assets/presenter-standin.mp4",
+      "masking": "assets/masking.mp4",
+      "painting": "assets/painting.mp4"
+    },
+    "clipLabels": {
+      "presenter": {
+        "h": "Founder on camera",
+        "s": "Drop a vertical clip at<br/>ad-system/assets/fabian-presenter.mp4"
+      },
+      "masking": {
+        "h": "Masking — real job site",
+        "s": "Film a crew taping a trim line, 8–12s vertical<br/>ad-system/assets/masking.mp4"
+      },
+      "painting": {
+        "h": "Painting — first coat",
+        "s": "Film the sprayer or roller laying colour, 8–12s vertical<br/>ad-system/assets/painting.mp4"
+      }
+    },
+    "clipStarts": {
+      "presenter": 0.0,
+      "masking": 5.0,
+      "painting": 10.5
+    },
+    "audioFrom": "assets/presenter-standin.mp4",
+    "stepsEnd": 16.0,
+    "steps": [
+      "Choose your colour scheme",
+      "Lighting, texture and doors",
+      "We mask it, then we paint it"
+    ],
+    "scenes": [
+      {
+        "at": 0.0,
+        "until": 5.0,
+        "key": "chosen",
+        "presenter": true,
+        "step": 3,
+        "steps": true,
+        "plate": {
+          "sweep": [
+            11
+          ],
+          "each": 0.9,
+          "stamp": "The one they chose"
+        },
+        "paletteStrip": true,
+        "title": "You choose what",
+        "titleGold": "you've already seen.",
+        "vo": "You approve a colour you have already seen on your own house."
+      },
+      {
+        "at": 5.0,
+        "until": 10.5,
+        "key": "masking",
+        "presenter": "masking",
+        "step": 3,
+        "steps": true,
+        "plate": {
+          "still": "chosen"
+        },
+        "title": "Then we",
+        "titleGold": "mask it.",
+        "vo": "Then the part nobody photographs. Preparation is the finish."
+      },
+      {
+        "at": 10.5,
+        "until": 16.0,
+        "key": "painting",
+        "presenter": "painting",
+        "step": 3,
+        "steps": true,
+        "plate": {
+          "still": "chosen"
+        },
+        "title": "Then we",
+        "titleGold": "paint it.",
+        "vo": "Sherwin-Williams premium, two coats, trim cut and finished separately."
+      },
+      {
+        "at": 16.0,
+        "until": 20.0,
+        "key": "cta",
+        "endCard": true,
+        "endTitle": "Your home rendered in every color,",
+        "endTitleGold": "then painted exactly that way.",
+        "endCta": "Complimentary 30-minute consultation"
+      }
+    ],
+    "captionCopy": "You approve a colour you have already seen on your own house — then we mask it and paint it exactly that way. Sherwin-Williams premium, two coats, trim cut separately, 2-Year Craftsmanship Guarantee. Complimentary 30-minute consultation with an itemised estimate. (909) 312-5400"
   }
 }

@@ -212,5 +212,80 @@
       "right": 80
     }
   },
-  "fps": 30
+  "fps": 30,
+  "additions": {
+    "_doc": "The nine additions from the sales-page visualizer, Steps Two to Four. Each option has an on-house render per scheme at viz/<id>--<schemeId>.jpg, same 1600x893 framing as the scheme renders, so they wipe against each other with no jump. Labels here match the section headings on the page word for word - the ad and the page have to agree.",
+    "light": {
+      "step": "Step Two · Lighting Fixtures",
+      "heading": "The Right Lighting",
+      "options": [
+        {
+          "id": "light-led-slot-sconce",
+          "name": "LED Slot Sconce",
+          "sub": "48\" matte-black vertical slot",
+          "swatch": "#2F2F30"
+        },
+        {
+          "id": "light-iron-scroll-lantern",
+          "name": "Iron Scroll Lantern",
+          "sub": "Wrought iron · seeded amber glass",
+          "swatch": "#1F1E1C"
+        },
+        {
+          "id": "light-bronze-coach-pendant",
+          "name": "Bronze Coach Pendant",
+          "sub": "Oil-rubbed bronze · geometric",
+          "swatch": "#6B4E32"
+        }
+      ]
+    },
+    "siding": {
+      "step": "Step Three · Siding Options",
+      "heading": "Texture & Material",
+      "options": [
+        {
+          "id": "siding-cedar-shake",
+          "name": "Cedar Shake",
+          "sub": "Honey-toned · tower and gables",
+          "swatch": "#B07A48"
+        },
+        {
+          "id": "siding-board-batten",
+          "name": "Board & Batten",
+          "sub": "Vertical · body colour",
+          "swatch": "#EDE8DC"
+        },
+        {
+          "id": "siding-stacked-stone-veneer",
+          "name": "Stacked Stone Veneer",
+          "sub": "Cream dry-stack ledgestone",
+          "swatch": "#C7BBA6"
+        }
+      ]
+    },
+    "premium": {
+      "step": "Step Four · Premium Additions",
+      "heading": "The Finishing Touches",
+      "options": [
+        {
+          "id": "premium-smoked-glass-garage",
+          "name": "Smoked Glass Garage",
+          "sub": "Matte-black aluminium frames",
+          "swatch": "#3A3B3F"
+        },
+        {
+          "id": "premium-walnut-wood-garage",
+          "name": "Walnut Wood Garage",
+          "sub": "Horizontal plank · walnut tone",
+          "swatch": "#6B4526"
+        },
+        {
+          "id": "premium-limestone-pillars",
+          "name": "Limestone Pillars",
+          "sub": "Honed Portuguese limestone",
+          "swatch": "#D8CFBE"
+        }
+      ]
+    }
+  }
 }

@@ -9,7 +9,42 @@ command, every ad updates.
 
 ---
 
-## THE THREE ADS
+## THE FUNNEL (matches the visualizer on the page)
+
+Three cuts, and together they walk the **same four steps the sales page walks**, in the
+same order and the same words. Someone who sees the ad and then lands on the page should
+recognise it immediately.
+
+| Cut | Page section | What the house does |
+|---|---|---|
+| **Funnel 1 · Colour** | Step One · Choose Your Color Scheme | all 11 schemes sweep |
+| **Funnel 2 · The Upgrades** | Steps Two, Three, Four | lighting -> texture -> garage doors |
+| **Funnel 3 · The Build** | the chosen one, then the work | chosen, masked, painted, booked |
+
+Every frame of the house is a real render that already exists in
+`orange-county-sales-page/viz-photos/` - eleven schemes plus nine additions rendered on
+each of them, all 1600x893, all registered to the same camera. Nothing is generated.
+
+### The clips you need to film
+
+`funnel-3-build` has two slots that job-site footage fills better than anything else could:
+
+| Clip | What to film | Where it goes |
+|---|---|---|
+| `masking` | a crew taping a trim line, 8-12s vertical | `assets/masking.mp4` |
+| `painting` | the sprayer or roller laying the first coat, 8-12s vertical | `assets/painting.mp4` |
+
+You have crews doing both today. Real footage of your own people masking a real house is
+free, immediate, and the one thing a competitor physically cannot fake. Until they exist
+each slot renders a labelled placeholder telling you what belongs there, and the render
+still succeeds.
+
+`clips` is a map of name -> file, so a scene says `"presenter": "masking"` to show that one.
+Each clip gets its own `<video>`; swapping `.src` mid-render re-buffers and races the seek.
+
+---
+
+## THE EARLIER THREE ADS (kept as alternates)
 
 The funnel is the Gallagher episode (`NB-002`) compressed. The episode is 8 scenes and
 five minutes; nobody watches five minutes of a painting ad cold. So it is split by how

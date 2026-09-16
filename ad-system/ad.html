@@ -365,7 +365,7 @@ body{display:flex;align-items:center;justify-content:center;min-height:100vh}
 <div class="stage" id="stage">
   <div id="root"></div>
   <div class="presenter" id="presenterLayer">
-    <video id="pv" muted playsinline preload="auto"></video>
+    <video class="pvid" data-clip="presenter" muted playsinline preload="auto"></video>
     <div class="pres-tag"><span class="dot"></span>
       <span class="nm">Fabian</span><span class="rl">Founder &middot; VIP Home Painting</span></div>
   </div>
@@ -410,27 +410,59 @@ function buildPlateTimeline(){
   const segs=[]; let last=null;
   const byN = n => BRAND.schemes.find(s=>s.n===n);
   const chosen = BRAND.schemes.find(s=>s.chosen);
+  const N = BRAND.facts.schemeCount;
+  /* one shape for both kinds of entry, so Plate and PaletteStrip never branch */
+  const schemeSet = BRAND.schemes.map(sc=>Object.assign({},sc,{
+    ctr:`${String(sc.n).padStart(2,'0')} / ${N}`, url:BRAND.paths.viz+sc.file }));
+  const asScheme = n => schemeSet.find(x=>x.n===n);
+  function additionSet(cat,onId){
+    const c=(BRAND.additions||{})[cat]; if(!c) return [];
+    const on = onId||(chosen&&chosen.id);
+    return c.options.map((o,i)=>({
+      name:o.name, sw:o.sub, swatch:o.swatch,
+      ctr:`${String(i+1).padStart(2,'0')} / ${c.options.length}`,
+      url:`${BRAND.paths.viz}${o.id}--${on}.jpg`, step:c.step, heading:c.heading }));
+  }
+
   for(const sc of AD.scenes){
     const p=sc.plate; if(!p) continue;
+
     if(p.still){
-      const img = p.still==='base' ? {base:true} : (p.still==='chosen'?chosen:byN(+p.still));
+      const img = p.still==='base' ? {base:true,url:BRAND.paths.base}
+                : p.still==='chosen' ? asScheme(chosen.n) : asScheme(+p.still);
       segs.push({start:sc.at,dur:sc.until-sc.at,from:img,to:null,
-                 dim:!!p.dim,chips:!!p.swatchProof,scene:sc});
+                 dim:!!p.dim,chips:!!p.swatchProof,set:schemeSet,scene:sc});
       last=img;
+
     } else if(p.sweep){
       const each=p.each||0.62;
       p.sweep.forEach((n,i)=>{
-        const to=byN(n);
+        const to=asScheme(n);
         segs.push({start:sc.at+i*each,
                    dur:(i===p.sweep.length-1)?(sc.until-(sc.at+i*each)):each,
-                   from:last||{base:true},to,stamp:i===p.sweep.length-1?p.stamp:null,
-                   idx:i,scene:sc});
+                   from:last||{base:true,url:BRAND.paths.base},to,
+                   stamp:i===p.sweep.length-1?p.stamp:null,
+                   idx:i,set:schemeSet,scene:sc});
         last=to;
+      });
+
+    } else if(p.additions){
+      /* Steps Two to Four: the same wipe, over lighting / texture / premium. */
+      const set=additionSet(p.additions,p.on);
+      const each=p.each||1.1;
+      set.forEach((o,i)=>{
+        segs.push({start:sc.at+i*each,
+                   dur:(i===set.length-1)?(sc.until-(sc.at+i*each)):each,
+                   from:last||asScheme(chosen.n),to:o,
+                   stamp:i===set.length-1?p.stamp:null,
+                   idx:i,set,scene:sc});
+        last=o;
       });
     }
   }
   return segs;
 }
+
 function plateAt(t,segs){
   let seg=null;
   for(const s of segs){ if(t>=s.start-1e-6){ seg=s; } }
@@ -444,7 +476,7 @@ function plateAt(t,segs){
 }
 
 /* ---- image url helpers ---- */
-const vizURL = s => s.base ? BRAND.paths.base : BRAND.paths.viz + s.file;
+const vizURL = s => s.url || (s.base ? BRAND.paths.base : BRAND.paths.viz + s.file);
 
 /* -------------------------------------------------------------------------
    COMPONENT RENDERERS - the brand overlay kit
@@ -483,7 +515,7 @@ function Plate(state,localT){
         <span class="sw" style="background:${cur.swatch}"></span>
         <span class="txt"><span class="nm">${esc(cur.name)}</span>
         <span class="co">${esc(cur.sw)}</span></span></div>`}
-    ${cur.base?'':`<span class="counter">${String(cur.n).padStart(2,'0')} / ${BRAND.facts.schemeCount}</span>`}
+    ${cur.base?'':`<span class="counter">${esc(cur.ctr||'')}</span>`}
     ${seg.stamp&&p>0.75?`<span class="stamp" style="opacity:${easeOut((p-0.75)/0.25)}">${esc(seg.stamp)}</span>`:''}
   </div>`;
 }
@@ -492,19 +524,23 @@ function PaletteStrip(state,localT){
   if(!state) return '';
   const cur=state.seg.to||state.seg.from;
   if(cur.base) return '';
+  const set=state.seg.set||[];
+  if(!set.length) return '';
+  const here=set.findIndex(x=>x.name===cur.name);
   const en=entrance(localT,0.22,0.5);
-  const chips=BRAND.schemes.map(sc=>{
-    const cls = sc.n===cur.n ? 'on' : (sc.n<cur.n ? 'done' : '');
-    return `<span class="pchip ${cls}" style="background:${sc.swatch}"></span>`;
+  const chips=set.map((o,i)=>{
+    const cls = i===here ? 'on' : (i<here ? 'done' : '');
+    return `<span class="pchip ${cls}" style="background:${o.swatch}"></span>`;
   }).join('');
+  const cap = cur.heading
+    ? `${set.length} ways to finish it`
+    : `All ${BRAND.facts.schemeCount} on the same house`;
   return `<div style="${sty(en)}">
     <div class="pstrip">${chips}</div>
     <div style="height:16px"></div>
-    <div class="pstrip-cap">All ${BRAND.facts.schemeCount} on the same house</div></div>`;
+    <div class="pstrip-cap">${esc(cap)}</div></div>`;
 }
 
-/* THE STEP TRACKER - the process named as three steps, not just demonstrated.
-   The active step is driven by t, so the tracker and the plate always agree. */
 function Steps(sc,t,localT){
   const list=AD.steps||[]; if(!list.length) return '';
   const cur=sc.step||1;
@@ -592,14 +628,23 @@ function EndCard(sc,localT){
 /* Seek the founder clip to this frame and WAIT for the seek to land. This is the
    only asynchronous thing in a frame: screenshot before `seeked` fires and you get
    the previous frame's video, silently, on maybe one frame in five. */
-let PRESENTER_OK=false;
+let CLIP_OK={};            /* clip key -> did it load */
+function clipEl(key){ return document.querySelector(`.pvid[data-clip="${key}"]`); }
+
 function syncPresenter(sc,t){
   const layer=document.getElementById('presenterLayer');
-  const v=document.getElementById('pv');
-  if(!sc.presenter){ layer.classList.remove('on'); return Promise.resolve(); }
+  const key = sc.presenter===true ? 'presenter' : sc.presenter;
+  document.querySelectorAll('.pvid').forEach(v=>{ v.style.display='none'; });
+  if(!key){ layer.classList.remove('on'); return Promise.resolve(); }
   layer.classList.add('on');
-  if(!PRESENTER_OK) return Promise.resolve();          // placeholder is drawn in #root
-  const start=AD.presenterStart||0;
+  /* the founder's name strip belongs to the founder's clip only - not to job-site B-roll */
+  const tag=layer.querySelector('.pres-tag');
+  if(tag) tag.style.display = (key==='presenter') ? '' : 'none';
+  const v=clipEl(key);
+  if(!v || !CLIP_OK[key]) return Promise.resolve();   // placeholder is drawn in #root
+  v.style.display='block';
+  const start=(AD.clipStarts&&AD.clipStarts[key]!=null)?AD.clipStarts[key]
+            : (sc.clipStart!=null?sc.clipStart:sc.at);
   const dur=v.duration||0;
   if(!dur) return Promise.resolve();
   const want=clamp(t-start,0,Math.max(0,dur-0.05));
@@ -688,12 +733,15 @@ async function renderFrame(t){
     ${GRID?Guides():''}`;
 
   /* No footage dropped in yet: draw the slot so the layout is still judgeable. */
-  const ph=document.querySelector('#presenterLayer .pres-holder');
-  if(sc.presenter && !PRESENTER_OK && !ph){
-    document.getElementById('presenterLayer').insertAdjacentHTML('afterbegin',
+  const key = sc.presenter===true ? 'presenter' : sc.presenter;
+  const layer=document.getElementById('presenterLayer');
+  const old=layer.querySelector('.pres-holder');
+  if(old) old.remove();
+  if(key && !CLIP_OK[key]){
+    const L=(AD.clipLabels&&AD.clipLabels[key])||{h:'Footage',s:key};
+    layer.insertAdjacentHTML('afterbegin',
       `<div class="pres-holder"><div class="ic"></div>
-       <div class="h">Founder on camera</div>
-       <div class="s">Drop a vertical clip at<br/>ad-system/assets/fabian-presenter.mp4</div></div>`);
+       <div class="h">${esc(L.h)}</div><div class="s">${L.s}</div></div>`);
   }
   await syncPresenter(sc,t);
 }
@@ -721,13 +769,21 @@ let PLATE_SEGS=[];
      render.js polls window.__adReady - no screenshot happens before this. */
   /* Attach the founder clip if one exists. A missing file is not an error -
      the panel falls back to the drop-in placeholder. */
-  if(PRESENTER_URL||AD.presenterSrc){
-    const v=document.getElementById('pv');
-    PRESENTER_OK = await new Promise(res=>{
+  /* render.js transcodes each declared clip and hands back a map of ready URLs,
+     because this Chromium has no H.264 decoder. */
+  const clipUrls = PRESENTER_URL ? JSON.parse(decodeURIComponent(PRESENTER_URL))
+             : (AD.clips || (AD.presenterSrc ? {presenter:AD.presenterSrc} : {}));
+  const host=document.getElementById('presenterLayer');
+  for(const key of Object.keys(clipUrls)){
+    let v=clipEl(key);
+    if(!v){ v=document.createElement('video'); v.className='pvid';
+      v.dataset.clip=key; v.muted=true; v.playsInline=true; v.preload='auto';
+      host.appendChild(v); }
+    CLIP_OK[key] = await new Promise(res=>{
       v.addEventListener('loadeddata',()=>res(true),{once:true});
       v.addEventListener('error',()=>res(false),{once:true});
-      v.src=PRESENTER_URL||AD.presenterSrc;
-      setTimeout(()=>res(false),6000);
+      v.src=clipUrls[key];
+      setTimeout(()=>res(false),8000);
     });
   }
   await renderFrame(T);
