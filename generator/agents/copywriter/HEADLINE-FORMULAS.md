@@ -95,11 +95,35 @@ gets written.
 
 ---
 
+### PRECEDENCE — whose line wins
+
+**Fabian's copy outranks any threshold derived from these rules.** If he supplies a
+headline, it ships. The rules exist to generate and improve headlines, never to
+overwrite the owner's.
+
+This is written down because it already went wrong twice. A pass invented a **15-word
+ceiling** as a stand-in for Rule 3 and then used it to replace his H1 — a headline that
+was long, simple, correct, and a clean B2. The ceiling is gone. "Keep it simple" means
+**one idea in plain words, read once**; it does not mean short, and length is a bad
+proxy for it.
+
+The general rule, for anyone adding to this file or to a gate:
+
+- A rule may be **derived** from what Fabian said. It may not be **invented** and then
+  enforced as though he said it.
+- If a check would reject his own copy, the **check** is wrong until he says otherwise.
+- Thresholds with a number in them are the usual offenders. Prefer a check that is
+  provably wrong (an unapproved statistic, a We/Our opening) over one that is merely
+  someone's taste expressed as arithmetic.
+
+---
+
 ### THE CHECK — what is enforced, and what is not
 
 **Machine-checked** by `verify-site.js` check 12, on sections marked `data-story`:
-a number from the allowed list, a headline length ceiling, no banned or hype words,
-no "We/Our" opening. A build fails on these.
+a number from the allowed list, no banned or hype words, no "We/Our" opening, and
+Essential 2's ratio per page. A build fails on these, because each one is provably
+wrong rather than a matter of taste. **Length is reported, never failed.**
 
 **Not machine-checkable, and the writer owns them:** whether it forces the read, whether
 the intrigue is real, whether the burning issue is the right one. No gate can score

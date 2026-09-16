@@ -507,6 +507,7 @@ console.log('\n12. headline contract');
   const ALLOWED_NUMS = ['30', '2', '11', '3', '5', '60/30/10', '8', '15', '4.75'];
   const HYPE = ['amazing', 'incredible', 'stunning', 'jaw-dropping', 'exceptional', 'irresistible'];
   let bad12 = 0, withNum = 0, total = 0;
+  const longOnes = [];
   const perPageCount = [];
   for (const pg of pages.concat([{ file: ocFile, rel: '/' }])) {
     const html = fs.readFileSync(pg.file, 'utf8');
@@ -534,14 +535,19 @@ console.log('\n12. headline contract');
         if (hit) {
           bad12++; bad(`${pg.rel}: hype adjective "${hit}" in a headline -- ${t.slice(0, 54)}`);
         }
-        if (t.split(' ').length > 15) {
-          bad12++; bad(`${pg.rel}: headline runs ${t.split(' ').length} words, ceiling is 15 -- ${t.slice(0, 54)}`);
-        }
+        /* NO WORD-COUNT FAIL. A previous pass invented a 15-word ceiling as a
+           proxy for Rule 3 and then used it to overwrite Fabian's own H1 --
+           which was long, and simple, and correct. "Keep it simple" is one
+           idea in plain words; length is a bad proxy for it and this gate has
+           no business scoring it. Same class as intrigue and forces-the-read:
+           the writer owns it. Reported, never failed. */
+        if (t.split(' ').length > 20) longOnes.push(`${pg.rel}: ${t.split(' ').length}w`);
       }
     }
     if (pgTotal) perPageCount.push({ rel: pg.rel, total: pgTotal, num: pgNum });
   }
-  if (!bad12) ok(`${total} story headlines: approved numbers only, none open We/Our, none over 15 words`);
+  if (!bad12) ok(`${total} story headlines: approved numbers only, none open We/Our, no hype`);
+  if (longOnes.length) console.log(`   note  ${longOnes.length} headline(s) over 20 words — a length note, not a failure: ${longOnes.slice(0,3).join(', ')}`);
   /* Essential 2 -- numbers are structural. Measured PER PAGE, and only where
      the sample can carry a ratio: the syndicated pages hold a single story
      headline each, and "a third of one headline" means nothing. Site-wide
