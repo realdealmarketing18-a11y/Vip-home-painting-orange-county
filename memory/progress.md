@@ -36,7 +36,7 @@ at every breakpoint, all 23 front-page internal links resolve.
 
 ---
 
-## Hero redesign — county page, 2026-09-13 → 09-15
+## Hero redesign — county page, 2026-09-13 → 09-16
 
 **Why it started:** Fabian was blocked on launching because the Higgsfield commercials did
 not look real. The hero's film block was replaced with something that needs no film.

@@ -28,7 +28,7 @@ Every city runs the same five gates. `pipeline.js status` is the board.
 
 | City | Stage | Notes |
 |---|---|---|
-| Orange County | **published**, but the live copy is stale | front page, `index,follow`, top of the silo. The hero redesign (2026-09-13→15) is on the build site only — `publish-wp.js --live` has not run for it |
+| Orange County | **published**, but the live copy is stale | front page, `index,follow`, top of the silo. The hero redesign (2026-09-13→16) is on the build site only — `publish-wp.js --live` has not run for it |
 | Irvine | **published** | 13 pages, gate green |
 | Anaheim | **published** | 5 pages; pillar guide + articles still to write |
 | Newport Beach | queued | |
