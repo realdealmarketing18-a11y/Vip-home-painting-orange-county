@@ -4510,6 +4510,14 @@ function apply(s) {
   $name.textContent = `${s.name} · ${s.sw}`;
   const stampCans = $preview.querySelector('#vizCans');
   if (stampCans) stampCans.innerHTML = vipPaintCans(s.main, s.trim, s.accent);
+  /* The stage's after-image changes with the scheme, so its accessible name
+     has to change with it. A static label would go stale on the first tap. */
+  const afterImg = $preview.querySelector('.vp-after');
+  if (afterImg) {
+    afterImg.setAttribute('role', 'img');
+    afterImg.setAttribute('aria-label',
+      'Newport Beach estate exterior rendered in ' + s.name + ' — ' + s.sw + '.');
+  }
   if ($heroAfter) {
     $heroAfter.classList.add('tinted');
     $heroAfter.style.setProperty('--tint', s.main);
@@ -5165,12 +5173,22 @@ setTimeout(() => {
          half and half; hover or focus sweeps it to the full repaint. */
       var pic = document.createElement('span');
       pic.className = 'pic';
+      /* These are background-image spans, so they cannot take alt. role="img"
+         plus aria-label is the equivalent: it gives screen readers and text
+         extraction the scheme and its SW colours, built from the data already
+         on the element rather than written out a second time. */
+      var nm = el.getAttribute('data-nm') || '';
+      var co = (el.getAttribute('data-co') || '').replace(/&middot;|·/g, 'with').replace(/\s+/g, ' ').trim();
       var picB = document.createElement('span');
       picB.className = 'pic-before';
       picB.style.backgroundImage = beforeBg;
+      picB.setAttribute('role', 'img');
+      picB.setAttribute('aria-label', 'The Gallaghers’ Newport Beach home before repainting, unpainted.');
       var picA = document.createElement('span');
       picA.className = 'pic-after';
       picA.style.backgroundImage = el.style.backgroundImage;
+      picA.setAttribute('role', 'img');
+      picA.setAttribute('aria-label', 'Newport Beach estate exterior rendered in ' + nm + (co ? ' — ' + co + '.' : '.'));
       var picS = document.createElement('span');
       picS.className = 'pic-seam';
       pic.appendChild(picB); pic.appendChild(picA); pic.appendChild(picS);

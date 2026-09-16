@@ -4678,12 +4678,22 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
          half and half; hover or focus sweeps it to the full repaint. */
       var pic = document.createElement('span');
       pic.className = 'pic';
+      /* These are background-image spans, so they cannot take alt. role="img"
+         plus aria-label is the equivalent: it gives screen readers and text
+         extraction the scheme and its SW colours, built from the data already
+         on the element rather than written out a second time. */
+      var nm = el.getAttribute('data-nm') || '';
+      var co = (el.getAttribute('data-co') || '').replace(/&middot;|·/g, 'with').replace(/\s+/g, ' ').trim();
       var picB = document.createElement('span');
       picB.className = 'pic-before';
       picB.style.backgroundImage = beforeBg;
+      picB.setAttribute('role', 'img');
+      picB.setAttribute('aria-label', 'The Gallaghers’ Newport Beach home before repainting, unpainted.');
       var picA = document.createElement('span');
       picA.className = 'pic-after';
       picA.style.backgroundImage = el.style.backgroundImage;
+      picA.setAttribute('role', 'img');
+      picA.setAttribute('aria-label', 'Newport Beach estate exterior rendered in ' + nm + (co ? ' — ' + co + '.' : '.'));
       var picS = document.createElement('span');
       picS.className = 'pic-seam';
       pic.appendChild(picB); pic.appendChild(picA); pic.appendChild(picS);
