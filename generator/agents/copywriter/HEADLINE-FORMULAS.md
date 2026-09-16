@@ -8,6 +8,36 @@ what's in it for them · brands **VIP Home Painting**, never the technology.
 
 ---
 
+## PART 0 — THE THREE RULES (Fabian, 2026-09-16)
+
+**These govern every headline on the site.** Section headings, page H1s and H2s, blog
+titles, ad hooks, lead-magnet names, email subject lines. Not a style preference — a
+gate you pass before the headline ships.
+
+**Rule 1 — Use a Timeless Headline Formula.** Every headline comes off the HVCO set in
+Part B (B1–B5) or the hero set in Part A. **Never invent a shape.** If a draft matches no
+formula, it is not a headline yet, it is a sentence sitting where a headline goes.
+
+**Rule 2 — Every point touches a burning issue.** Each headline, subheadline and bullet
+lands on a ranked pain from `research/{city}/07-VOICE.md`, not on a feature. For Orange
+County the 🥇 fear is one line: **picking the wrong colour and having to live with it
+in public.** A headline that does not touch it is decoration. The test is not "is this
+nice" — it is "does this hurt in the right place."
+
+**Rule 3 — Keep it simple.** One idea. Plain words. A homeowner reads it once, at a
+glance, and does not re-read. If it needs a second pass, cut it, not the point. Fabian's
+standard from `context/FABIAN.md` applies to headlines hardest: plain English, he is not
+a developer, and neither is she.
+
+**Order of operations:** pick the burning issue first (Rule 2), choose the formula that
+carries it (Rule 1), then cut until it reads once (Rule 3). Drafting the clever line
+first and hunting for a fear to justify it is how decoration gets written.
+
+Then the kill test in Part F: **could a competitor put their logo on this unchanged?**
+If yes, it fails regardless of the three rules.
+
+---
+
 ## PART A — HERO FORMULAS (page headlines, under 10 words)
 
 Pick **one** per page. Never repeat a formula across pages in the same cluster — the gate

@@ -744,10 +744,16 @@
   }
 
   /* ============ 2. COLOR VISUALIZATION SHOWCASE (cream) — the visualization narrative ============ */
+  /* SECTION RHYTHM: the band above ends on #EFE7D6, so this one is WHITE --
+     design-system/SKILL.md forbids two same-coloured sections back to back.
+     The top 240px fades out of the band's exact closing tone, so the colour
+     changes without a visible seam. Alternation and a soft handoff are not
+     in conflict; a hard edge is what the rule is actually against. */
   .viz {
     background:
-      radial-gradient(60% 80% at 50% 0%, rgba(201,169,97,0.10) 0%, rgba(201,169,97,0) 60%),
-      var(--cream);
+      radial-gradient(60% 80% at 50% 0%, rgba(201,169,97,0.09) 0%, rgba(201,169,97,0) 58%),
+      linear-gradient(180deg, #EFE7D6 0%, #FAF7F1 52%, #FFFFFF 100%) top / 100% 240px no-repeat,
+      #FFFFFF;
     position: relative;
   }
   .viz .head { text-align: center; max-width: 760px; margin: 0 auto 40px; }
@@ -866,10 +872,11 @@
     padding: 14px 14px 13px;
     border-radius: 2px;
     background: #FFFFFF;
-    border: 1px solid rgba(168,138,71,0.30);
+    border: 1px solid rgba(168,138,71,0.34);
     cursor: pointer;
     transition: transform 320ms cubic-bezier(.22,1,.36,1), box-shadow 320ms, border-color 320ms;
-    box-shadow: 0 6px 16px rgba(26,31,78,0.08);
+    /* a touch more lift: these are white cards and the section is now white too */
+    box-shadow: 0 6px 16px rgba(26,31,78,0.11);
   }
   .scheme:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(26,31,78,0.16); }
   .scheme.active {
@@ -1137,7 +1144,11 @@
   /* ============ 4. PROCESS (white) ============ */
   /* The bridge. Quiet, centred, one gold hairline -- it has to carry weight
      without competing with the section heading 60px below it. */
-  .stakes { max-width: 720px; margin: 0 auto; padding: 54px 20px 6px; text-align: center; }
+  /* The bridge does the return trip: section 3 is white, section 4 is cream,
+     and this fades between them so the alternation never shows a hard line. */
+  .stakes { max-width: none; padding: 54px 20px 34px; text-align: center;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FBF8F1 55%, var(--cream) 100%); }
+  .stakes > * { max-width: 720px; margin-inline: auto; }
   .stakes::before { content: ''; display: block; width: 54px; height: 1px;
     background: var(--gold); opacity: .55; margin: 0 auto 26px; }
   .stakes-line { font-family: var(--font-serif); font-weight: 600;
@@ -1151,6 +1162,8 @@
     .stakes-sub { font-size: 14px; }
   }
 
+  /* cream, because section 3 above it is white */
+  #process { background: var(--cream); padding-bottom: 4px; }
   .process-head { text-align: center; max-width: 760px; margin: 0 auto 56px; }
   .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1180px; margin: 0 auto; }
   .step { text-align: center; padding: 0 14px; }
@@ -3729,6 +3742,16 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   <!-- ============ No. 01 — INTERACTIVE CUSTOM VISUALIZATION (the highlight) ============ -->
   <section class="viz" id="viz">
     <div class="head">
+      <!-- Third appearance of the chip, and the sub-line moves the story on:
+           hero = who they are, band = the schemes they passed on, here = the
+           decisions that came after the colour. Same family, same photo, a
+           different sentence each time -- that is what makes it read as one
+           story instead of three sections that happen to share a name. -->
+      <div class="pill-wrap pill-wrap-lede">
+        <div class="avatar-pill"><div class="ph"><img src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="The Gallagher Family" width="480" height="480" loading="lazy" decoding="async"/></div>
+          <div><div class="name">The Gallagher Family</div>
+          <div class="sub-line">Everything they chose after the color</div></div></div>
+      </div>
       <div class="sec-no">No. 01</div>
       <div class="eyebrow">Custom Visualization Service</div>
       <h2 class="ttl">Every Exterior Decision the Gallaghers Made, <span class="accent">Now On Your Belsomet Home</span></h2>

@@ -159,6 +159,19 @@ Keep it short. Keep it a promise, not a pitch.
 
 ---
 
+## HEADLINES — THE THREE RULES
+
+Every headline on the site, in a blog title, or in an ad passes three rules before it
+ships. Full text and the order to apply them: `generator/agents/copywriter/HEADLINE-FORMULAS.md`,
+Part 0.
+
+1. **Use a Timeless Headline Formula** — off the B1–B5 / A1–A6 sets. Never invent a shape.
+2. **Every point touches a burning issue** — a ranked pain from `07-VOICE.md`, not a feature.
+   The 🥇 fear is picking the wrong colour and living with it in public.
+3. **Keep it simple** — one idea, plain words, read once at a glance.
+
+---
+
 ## THE TEST
 
 Read any sentence and ask: **could this appear on CertaPro's site?**

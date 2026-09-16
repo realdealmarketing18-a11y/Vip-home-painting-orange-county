@@ -136,8 +136,9 @@ ready to buy; **the copy targets the 97% who are stalling** (M-07).
 | Company name | **required** in answer capsules — they must survive being quoted (M-06) | **banned** from the opening — open with her |
 | Goal | rank and get cited | stop the scroll, drive one call or DM |
 
-Shared: `HEADLINE-FORMULAS.md` — Part F is the campaign set, plus the **kill test**
-(*could a competitor put their logo on this unchanged?*). The campaign surface runs Part F
+Shared: `HEADLINE-FORMULAS.md` — **Part 0 is the three rules every headline passes**
+(use a timeless formula · touch a burning issue · keep it simple), Part F is the campaign
+set, plus the **kill test** (*could a competitor put their logo on this unchanged?*). The campaign surface runs Part F
 in a fixed order: `FUNNEL-3-STEP-ADS.md` — name the problem, prove the fix, ask for the 30
 minutes — and carries the list of what fails an ad, since no gate checks ads.
 
