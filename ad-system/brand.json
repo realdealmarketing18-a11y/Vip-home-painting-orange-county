@@ -1,0 +1,216 @@
+{
+  "_doc": "Brand Ad Package — the single source of truth for every VIP paid-social cut. Tokens mirror design-system/colors_and_type.css; copy is pulled from context/OFFER.md, context/BRAND-VOICE.md and the OC sales page so the ad and the landing page open on the same sentence. Change a value here, re-run `node render.js`, and every ad updates.",
+  "tokens": {
+    "navy": "#1A1F4E",
+    "navyDeep": "#141838",
+    "navyInk": "#0A0C1E",
+    "gold": "#C9A961",
+    "goldBright": "#FFB200",
+    "goldDeep": "#A88A47",
+    "goldShine": "linear-gradient(180deg,#E8CC85 0%,#C9A961 50%,#A88A47 100%)",
+    "cream": "#F5EFE2",
+    "creamDeep": "#EDE4D2",
+    "champagne": "#DCD0B5",
+    "slate": "#4A4F70",
+    "serif": "'Fraunces',Georgia,serif",
+    "sans": "'Inter',-apple-system,'Segoe UI',sans-serif",
+    "trackingOverline": "0.32em",
+    "fleuron": "❧"
+  },
+  "facts": {
+    "_doc": "Build-enforced. Every one of these is checked by verify-ads.js before an ad is allowed out.",
+    "phone": "(909) 312-5400",
+    "phoneHref": "tel:9093125400",
+    "site": "viphomepainting.com",
+    "email": "Contact@VIPHomePainting.com",
+    "warranty": "2-Year Craftsmanship Guarantee",
+    "tagline": "Visualize It. Love It. Paint It.",
+    "startingPrice": "VIP starts at $4.75 per square foot of paintable surface",
+    "consultLength": "30-minute",
+    "schemeCount": 11,
+    "serviceName": "Custom Visualization Service",
+    "designTeamTerm": "our design team"
+  },
+  "bannedInAdCopy": [
+    "free",
+    "AI",
+    "artificial intelligence",
+    "automated",
+    "algorithm",
+    "machine learning",
+    "cheap",
+    "affordable",
+    "discount",
+    "sale",
+    "budget",
+    "save money",
+    "5-star",
+    "5 star",
+    "five-star",
+    "star rated",
+    "stress-free",
+    "averages $",
+    "longer than the competition",
+    "stunning",
+    "jaw-dropping"
+  ],
+  "clientGate": {
+    "_doc": "READ THIS BEFORE SPENDING A DOLLAR. generator/registry/client-stories.json marks gallagher-family verified:false — 'Higgsfield-rendered imagery, confirm real-client status before reuse'. The source photo for the property also carries a CRMLS listing watermark, which means it came from an MLS listing rather than a VIP job file. A paid ad naming a family as a VIP client is a different exposure from a page doing it. So every ad below renders in one of two modes.",
+    "mode": "method",
+    "modes": {
+      "method": "No client is named or shown. The house is presented as a visualization session, which is what the 11 renders provably are. Safe to run today.",
+      "client": "Names 'The Gallagher Family' and shows their portrait. DO NOT ENABLE until generator/registry/client-stories.json sets gallagher-family verified:true AND a signed likeness/testimonial release is on file."
+    },
+    "client": {
+      "name": "The Gallagher Family",
+      "place": "Pelican Hill, Newport Beach",
+      "avatar": "../orange-county-sales-page/assets/avatar-gallagher.jpg",
+      "verified": false
+    },
+    "methodLabel": {
+      "name": "A Newport Beach estate",
+      "place": "Custom Visualization Service session"
+    }
+  },
+  "schemes": [
+    {
+      "n": 1,
+      "id": "obsidian",
+      "name": "Obsidian Monolith",
+      "sw": "SW Iron Ore · Tricorn Black",
+      "swatch": "#46433E",
+      "file": "scheme-obsidian.jpg"
+    },
+    {
+      "n": 2,
+      "id": "riviera",
+      "name": "Riviera Tuxedo",
+      "sw": "SW Snowbound · Black Magic",
+      "swatch": "#EDEAE4",
+      "file": "scheme-riviera.jpg"
+    },
+    {
+      "n": 3,
+      "id": "euro",
+      "name": "Euro-Industrial Estate",
+      "sw": "SW Peppercorn · Cityscape",
+      "swatch": "#5E5A57",
+      "file": "scheme-euro.jpg"
+    },
+    {
+      "n": 4,
+      "id": "pacificsage",
+      "name": "Pacific Sage Estate",
+      "sw": "SW Evergreen Fog · Shoji White",
+      "swatch": "#95978A",
+      "file": "scheme-pacificsage.jpg"
+    },
+    {
+      "n": 5,
+      "id": "ibiza",
+      "name": "Ibiza Luxury Villa",
+      "sw": "SW Balanced Beige · Aesthetic White",
+      "swatch": "#D1C7B8",
+      "file": "scheme-ibiza.jpg"
+    },
+    {
+      "n": 6,
+      "id": "admiral",
+      "name": "Newport Admiral",
+      "sw": "SW Repose Gray · Pure White",
+      "swatch": "#CCC9C0",
+      "file": "scheme-admiral.jpg"
+    },
+    {
+      "n": 7,
+      "id": "marinelayer",
+      "name": "Marine Layer",
+      "sw": "SW Sea Salt · Hi-Reflective White",
+      "swatch": "#CDD2CA",
+      "file": "scheme-marinelayer.jpg"
+    },
+    {
+      "n": 8,
+      "id": "pebblebeach",
+      "name": "Pebble Beach Manor",
+      "sw": "SW Accessible Beige · Dover White",
+      "swatch": "#D1C7B8",
+      "file": "scheme-pebblebeach.jpg"
+    },
+    {
+      "n": 9,
+      "id": "spanish",
+      "name": "Santa Barbara Luxe",
+      "sw": "SW Alabaster · Tricorn Black",
+      "swatch": "#F1EDE2",
+      "file": "scheme-spanish.jpg"
+    },
+    {
+      "n": 10,
+      "id": "resort",
+      "name": "Beverly Hills Resort",
+      "sw": "SW City Loft · Bronze",
+      "swatch": "#D6D2C9",
+      "file": "scheme-resort.jpg"
+    },
+    {
+      "n": 11,
+      "id": "organic",
+      "name": "Coastal Organic Compound",
+      "sw": "SW Alabaster · Urbane Bronze",
+      "swatch": "#EDEAE0",
+      "file": "scheme-organic.jpg",
+      "chosen": true
+    }
+  ],
+  "paths": {
+    "viz": "../orange-county-sales-page/viz-photos/",
+    "base": "assets/base-16x9.jpg",
+    "logoMark": "../orange-county-sales-page/assets/logos/logo-mark.png",
+    "logoTagline": "../orange-county-sales-page/assets/logos/logo-tagline.png",
+    "hfBefore": "assets/hf-estate-before-9x16.png",
+    "hfAfter": "assets/hf-estate-after-9x16.png",
+    "hfSwatch": "assets/hf-swatch-macro-9x16.png",
+    "hfClients": "assets/hf-clients-estate-9x16.png",
+    "_baseNote": "base-16x9.jpg is base.webp centre-cropped to the scheme renders aspect (1600x893). Two reasons: (1) base.webp is 3:2 and the 11 scheme renders are 16:9, so they only register under a 16:9 crop - which is what the sales page gets for free from background cover; (2) the source is an MLS listing photo carrying a CRMLS watermark in the bottom band, and the crop removes it. Never point the plate at the raw base.webp."
+  },
+  "formats": {
+    "reel": {
+      "w": 1080,
+      "h": 1920,
+      "label": "9:16 — Reels, Stories, TikTok"
+    },
+    "square": {
+      "w": 1080,
+      "h": 1080,
+      "label": "1:1 — Feed"
+    },
+    "wide": {
+      "w": 1920,
+      "h": 1080,
+      "label": "16:9 — YouTube, site loop"
+    }
+  },
+  "safeAreas": {
+    "_doc": "Reels/Stories chrome. Nothing that must be read may sit inside these bands.",
+    "reel": {
+      "top": 220,
+      "bottom": 420,
+      "left": 60,
+      "right": 60
+    },
+    "square": {
+      "top": 60,
+      "bottom": 60,
+      "left": 60,
+      "right": 60
+    },
+    "wide": {
+      "top": 60,
+      "bottom": 120,
+      "left": 80,
+      "right": 80
+    }
+  },
+  "fps": 30
+}

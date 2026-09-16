@@ -1,0 +1,206 @@
+{
+  "_doc": "The three-stage funnel, one definition per ad. Each ad is a list of scenes; a scene owns a slice of the timeline and says which overlay components are on screen and what they say. render.js walks t from 0 to duration at brand.fps and screenshots each frame, so everything here is deterministic — no CSS transitions, no requestAnimationFrame (which never fires in a headless pane; see CLAUDE.md GOTCHAS).",
+  "_arc": "All three are the Gallagher episode arc (NB-002) compressed to paid-social length. Scene 1 hook -> Scene 3 struggle -> Scenes 4-7 the visualization steps -> Scene 8 result + CTA. Stage 1 is the struggle, Stage 2 is the steps, Stage 3 is the result and the ask.",
+  "stage1-hook": {
+    "title": "Stage 1 — Hook (cold)",
+    "audience": "Cold. Orange County homeowners, $2M+ home value, interest in architecture/interior design.",
+    "objective": "Video views / ThruPlay. No offer. Recognition, not conversion.",
+    "episodeScene": "NB-002 Scene 3 — The Struggle",
+    "duration": 15.0,
+    "scenes": [
+      {
+        "at": 0.0,
+        "until": 3.2,
+        "key": "hook",
+        "plate": {
+          "still": "base"
+        },
+        "eyebrow": "Orange County · Exterior Repaint",
+        "title": "You can do everything right",
+        "titleGold": "and still get it wrong.",
+        "vo": "Weeks of samples. Three different walls. She still hates it."
+      },
+      {
+        "at": 3.2,
+        "until": 9.8,
+        "key": "argument",
+        "plate": {
+          "still": "base",
+          "swatchProof": true
+        },
+        "eyebrow": "Why the swatch fails",
+        "title": "A two-foot swatch can't",
+        "titleGold": "predict a whole facade.",
+        "caption": "Same paint. Different wall, different light, different answer.",
+        "vo": "A two-foot patch and three thousand square feet of the same paint don't behave the same in your light."
+      },
+      {
+        "at": 9.8,
+        "until": 15.0,
+        "key": "soft-cta",
+        "plate": {
+          "sweep": [
+            2,
+            6,
+            11
+          ],
+          "each": 1.1
+        },
+        "eyebrow": "Custom Visualization Service",
+        "title": "The only thing that predicts your house",
+        "titleGold": "is your house.",
+        "softCta": "See how it works",
+        "vo": "There's one thing that predicts your whole house. Your whole house.",
+        "paletteStrip": true
+      }
+    ],
+    "captionCopy": "She did everything right — weeks of samples, three different walls — and still didn't trust the answer. A swatch cannot predict a facade. Ours renders your actual home in every colour you are considering, before anything is scheduled.",
+    "altHooks": [
+      "The swatch lied to her.",
+      "You can do everything right and still get it wrong.",
+      "Nobody warns you that a sample can't predict a house."
+    ]
+  },
+  "stage2-demonstration": {
+    "title": "Stage 2 — Demonstration (retarget)",
+    "audience": "Watched 50%+ of Stage 1, or engaged with the page.",
+    "objective": "Landing page views. The proof cut — the strongest asset VIP owns.",
+    "episodeScene": "NB-002 Scenes 5–7 — the three visualization steps",
+    "duration": 15.0,
+    "isHero": true,
+    "scenes": [
+      {
+        "at": 0.0,
+        "until": 2.2,
+        "key": "hook",
+        "plate": {
+          "still": "base"
+        },
+        "eyebrow": "Pelican Hill · Newport Beach",
+        "title": "Eleven colors.",
+        "titleGold": "One house.",
+        "vo": "Eleven colors. One house. Before anything was scheduled."
+      },
+      {
+        "at": 2.2,
+        "until": 8.4,
+        "key": "sweep",
+        "plate": {
+          "sweep": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "each": 0.62
+        },
+        "eyebrow": "Custom Visualization Service",
+        "caption": "Every scheme rendered on the actual home — before a gallon was tinted.",
+        "vo": null,
+        "paletteStrip": true,
+        "title": "Eleven colors.",
+        "titleGold": "One house."
+      },
+      {
+        "at": 8.4,
+        "until": 12.6,
+        "key": "chosen",
+        "plate": {
+          "sweep": [
+            11
+          ],
+          "each": 0.62,
+          "stamp": "The direction they chose"
+        },
+        "eyebrow": "The decision",
+        "beats": true,
+        "vo": "They chose the one they had already seen on their own house.",
+        "caption": "Eleven schemes on the actual house — they chose the one they had already seen on it.",
+        "paletteStrip": true
+      },
+      {
+        "at": 12.6,
+        "until": 15.0,
+        "key": "cta",
+        "endCard": true,
+        "endTitle": "See your home in every color",
+        "endTitleGold": "you're considering.",
+        "endCta": "Complimentary 30-minute consultation"
+      }
+    ],
+    "captionCopy": "Eleven colour schemes, rendered on the actual house, before anything was scheduled. That is the whole service. A complimentary 30-minute consultation gets you your own home in every colour you are considering, plus an itemised estimate. (909) 312-5400"
+  },
+  "stage3-cta": {
+    "title": "Stage 3 — CTA (convert)",
+    "audience": "Site visitors, 30-day. Engaged with Stage 2.",
+    "objective": "Leads. Removes the last objection — price opacity.",
+    "episodeScene": "NB-002 Scene 8 — The Result + CTA",
+    "duration": 15.0,
+    "scenes": [
+      {
+        "at": 0.0,
+        "until": 3.0,
+        "key": "hook",
+        "plate": {
+          "still": "chosen"
+        },
+        "eyebrow": "Exterior painting · Orange County",
+        "title": "Most painters won't put",
+        "titleGold": "a number on the page.",
+        "vo": "Most painters won't put a number on their website."
+      },
+      {
+        "at": 3.0,
+        "until": 10.2,
+        "key": "estimate",
+        "plate": {
+          "still": "chosen",
+          "dim": true
+        },
+        "estimateCard": true,
+        "eyebrow": "What the estimate itemises",
+        "vo": "Prep, primer, coating, trim — itemised, line by line."
+      },
+      {
+        "at": 10.2,
+        "until": 15.0,
+        "key": "cta",
+        "endCard": true,
+        "endTitle": "Your home rendered in every color,",
+        "endTitleGold": "and an itemised estimate.",
+        "endCta": "Complimentary 30-minute consultation",
+        "showPhone": true
+      }
+    ],
+    "estimateLines": [
+      {
+        "label": "Surface preparation",
+        "note": "Skim repairs, patching, full wash"
+      },
+      {
+        "label": "Primer",
+        "note": "Full prime, bare and repaired substrate"
+      },
+      {
+        "label": "Body coating",
+        "note": "Sherwin-Williams premium, two coats"
+      },
+      {
+        "label": "Trim, fascia and doors",
+        "note": "Cut and finished separately"
+      },
+      {
+        "label": "2-Year Craftsmanship Guarantee",
+        "note": "Included"
+      }
+    ],
+    "priceLine": "VIP starts at $4.75 per square foot of paintable surface",
+    "captionCopy": "Prep, primer, coating, trim — itemised, line by line, before you commit. VIP starts at $4.75 per square foot of paintable surface. Complimentary 30-minute consultation: your home rendered in every colour you are considering, plus the itemised estimate. (909) 312-5400"
+  }
+}

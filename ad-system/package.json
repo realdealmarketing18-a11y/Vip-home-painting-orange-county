@@ -1,0 +1,16 @@
+{
+  "name": "vip-ad-system",
+  "private": true,
+  "version": "1.0.0",
+  "description": "VIP Home Painting brand ad package - overlay kit + deterministic renderer for the 3-stage paid-social funnel.",
+  "scripts": {
+    "ad": "node render.js",
+    "all": "node render.js --all",
+    "preview": "node render.js --preview",
+    "verify": "node verify-ads.js"
+  },
+  "devDependencies": {
+    "ffmpeg-static": "^5.2.0",
+    "playwright": "^1.49.0"
+  }
+}

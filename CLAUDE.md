@@ -149,6 +149,8 @@ node generator/validate-brief.js irvine   # gate — checks the INPUT
 node generator/verify-site.js             # gate — checks the OUTPUT
 node generator/publish-wp.js irvine       # dry run; add --live to publish
 node generator/rank-check.js report       # ranking movement
+node ad-system/render.js --all            # build the 3 ad stages x 3 formats
+node ad-system/verify-ads.js              # gate — checks the ADS
 ```
 
 ### Page types — five per city
@@ -171,11 +173,15 @@ filtered as doorway pages.
 Design tokens and components: `design-system/`. Brand is navy `#1A1F4E`, gold `#C9A961`,
 cream `#F5EFE2`; Fraunces for display, Inter for text.
 
-**Two gates, and the output gate matters more.** `validate-brief.js` checks the brief;
+**Three gates, and the output gates matter more.** `validate-brief.js` checks the brief;
 `verify-site.js` checks rendered HTML — dead and absolute links, banned copy, schema, FAQ
 parity, the silo rule, warranty length, indexation posture, doorway guard. Every miss that
 reached a live page was invisible to input validation (**D-04**). The gates run on the county
 page too (**D-05**). **Never publish with either red.**
+
+Paid media has its own output gate: `node ad-system/verify-ads.js` — banned ad copy, the
+phone, the warranty, the starts-at price framing, rating claims, and the **client-name gate**
+(**D-14**). Ad copy is written fast and nobody re-reads it before it spends money.
 
 **If you can't verify it, don't ship it.** Every output ships with a test, a measurement, or a
 one-line verify command.
@@ -235,6 +241,7 @@ memory/                      Protocol 0 — task_plan · findings · progress ·
 context/                     Blueprint — who we are, who we serve, what we sell, how we sound
 generator/                   A + N + T — SOPs, router, tools, agents, research, briefs
 design-system/               Stylize — brand tokens, components, design SKILL.md
+ad-system/                   paid social — brand overlay kit, the 3-stage funnel, render + gate
 docs/                        HANDOFF.md and long-form docs
 irvine/ anaheim/             generated pages — DO NOT hand-edit (D-01)
 orange-county-sales-page/    the front page + all shared assets

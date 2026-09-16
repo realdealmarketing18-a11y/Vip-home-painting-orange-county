@@ -90,3 +90,36 @@ Idioms that contain "free" get **reworded**, not swapped. This one becomes
 ~~**Pending:** the one line in `index.html`~~ **Done 2026-09-15** by the hero-redesign
 session it was left for — `orange-county-sales-page/index.html` now reads "2-Year Warranty &
 Concierge Experience". No other file carried the phrase.
+
+## D-14 · Paid ads render in `method` mode — no client is named until the registry says so
+2026-09-16, building `ad-system/`. `generator/registry/client-stories.json` marks
+`gallagher-family` **`verified: false`** — "Higgsfield-rendered imagery, confirm real-client
+status before reuse". Separately, the source photograph of the property carries a **CRMLS
+watermark**, so it came from an MLS listing rather than a VIP job file.
+
+The sales page can carry the Gallaghers because it is VIP's own page. **A paid ad naming a
+family as a VIP client is a different exposure** — it is distribution, not publication, and
+it puts a likeness claim in front of a cold audience.
+
+**The rule:** every ad renders in one of two modes. `method` (default, cleared) says
+"A Newport Beach estate · Custom Visualization Service session" — no name, no portrait, and
+every claim provable, because eleven renders of one house demonstrably exist. `client` names
+the family and shows the portrait, and `verify-ads.js` **fails the build** while
+`clientGate.client.verified` is false or disagrees with the registry.
+
+**To open it:** the registry sets `verified: true` AND a signed likeness/testimonial release
+is on file. Then flip `brand.json → clientGate.client.verified` and render `--mode=client`.
+The same overlay slot fills with the pill instead of the location line; nothing else changes.
+
+**Left open:** the watermarked `base.webp` is also the "before" side of the live hero reel on
+the Orange County page. `ad-system/assets/base-16x9.jpg` crops around it for ads; the page
+still shows it. Worth a separate look.
+
+## D-15 · The ad plate is 16:9 and must stay 16:9
+2026-09-16. `base.webp` is 1024×683 (3:2); the eleven scheme renders are 1600×893 (16:9).
+They are *not* the same framing — they only line up because the sales page's
+`background-size: cover` crops both to the plate's 16:9. A 5:4 plate was tried for the reel
+(to fill more of a vertical frame) and the house visibly jumped between before and after,
+and the crop also exposed the CRMLS watermark that 16:9 happens to cut off.
+**The rule:** any surface showing base + a scheme together crops both to 16:9.
+`ad-system/assets/base-16x9.jpg` bakes that crop in so nothing has to remember.

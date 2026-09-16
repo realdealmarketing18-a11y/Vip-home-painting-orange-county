@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>VIP Ad Engine</title>
+<!--
+  VIP BRAND AD ENGINE
+  ==================
+  One deterministic renderer for every VIP paid-social cut.
+
+  URL contract (render.js drives this, and you can drive it by hand in a browser):
+    ?ad=stage2-demonstration   which ad from ads.json
+    &t=3.50                    time in seconds - the ONLY input that moves anything
+    &format=reel|square|wide   canvas size
+    &mode=method|client        the client-name gate (see brand.json clientGate)
+    &grid=1                    show safe-area guides
+    &fit=1                     scale the canvas to fit the browser window (preview only)
+
+  WHY IT IS TIME-PARAMETERISED RATHER THAN ANIMATED
+  CLAUDE.md GOTCHAS: in a headless pane requestAnimationFrame never fires and CSS
+  transitions never settle, so anything animated screenshots as a phantom. Every
+  value here is computed from t by hand. Frame 104 looks the same whether you
+  render it first, last, or on its own.
+-->
+<link rel="stylesheet" href="fonts/vip-fonts.css"/>
+<style>
+/* ============================================================
+   1. TOKENS - mirrored from design-system/colors_and_type.css
+   ============================================================ */
+:root{
+  --navy:#1A1F4E; --navy-deep:#141838; --navy-ink:#0A0C1E;
+  --gold:#C9A961; --gold-bright:#FFB200; --gold-deep:#A88A47;
+  --gold-shine:linear-gradient(180deg,#E8CC85 0%,#C9A961 50%,#A88A47 100%);
+  --cream:#F5EFE2; --cream-deep:#EDE4D2; --champagne:#DCD0B5; --slate:#4A4F70;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',-apple-system,'Segoe UI',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#0b0d16;overflow:hidden}
+body{display:flex;align-items:center;justify-content:center;min-height:100vh}
+
+/* ============================================================
+   2. THE CANVAS
+   ============================================================ */
+.stage{position:relative;overflow:hidden;background:var(--navy-deep);
+  font-family:var(--sans);color:var(--cream);
+  -webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+.stage[data-format="reel"]  {width:1080px;height:1920px}
+.stage[data-format="square"]{width:1080px;height:1080px}
+.stage[data-format="wide"]  {width:1920px;height:1080px}
+
+/* The backdrop: the live scheme, blown up, blurred and drowned in navy. It
+   keeps the frame alive and ties the field colour to whatever is on the plate. */
+.bg{position:absolute;inset:-8%;background-size:cover;background-position:center;
+  filter:blur(58px) saturate(.72) brightness(.42);transform:scale(1.12)}
+.bg-wash{position:absolute;inset:0;
+  background:radial-gradient(120% 85% at 50% 32%,rgba(26,31,78,.52) 0%,rgba(10,12,30,.93) 72%,#080A18 100%)}
+.bg-grain{position:absolute;inset:0;opacity:.055;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='.6'/></svg>")}
+
+/* ============================================================
+   3. OVERLAY - THE GOLD FRAME  (always on, the constant)
+   ============================================================ */
+.frame{position:absolute;border:1px solid rgba(201,169,97,.42);pointer-events:none}
+.frame-inner{position:absolute;border:1px solid rgba(201,169,97,.13);pointer-events:none}
+[data-format="reel"]   .frame{inset:30px}  [data-format="reel"]   .frame-inner{inset:44px}
+[data-format="square"] .frame{inset:26px}  [data-format="square"] .frame-inner{inset:38px}
+[data-format="wide"]   .frame{inset:28px}  [data-format="wide"]   .frame-inner{inset:41px}
+/* corner ticks - the detail that reads as "made", not "templated" */
+.tick{position:absolute;width:26px;height:26px;pointer-events:none}
+.tick::before,.tick::after{content:'';position:absolute;background:var(--gold);opacity:.85}
+.tick::before{width:100%;height:1.5px} .tick::after{width:1.5px;height:100%}
+.tick.tl{top:30px;left:30px} .tick.tr{top:30px;right:30px}
+.tick.bl{bottom:30px;left:30px} .tick.br{bottom:30px;right:30px}
+.tick.tr::before,.tick.tr::after{right:0} .tick.bl::before,.tick.bl::after{bottom:0}
+.tick.br::before,.tick.br::after{right:0;bottom:0}
+
+/* ============================================================
+   4. THE SAFE COLUMN - everything readable lives inside it
+   ============================================================ */
+.safe{position:absolute;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center}
+.safe.is-end{justify-content:flex-start}
+[data-format="reel"] .safe.is-end{top:300px}
+[data-format="reel"]   .safe{top:150px;bottom:300px;left:40px;right:40px}
+[data-format="square"] .safe{top:64px;bottom:64px;left:70px;right:70px}
+[data-format="wide"]   .safe{top:66px;bottom:92px;left:110px;right:110px}
+/* Text keeps a comfortable measure even though the column runs wide for the plate. */
+.safe > .title,.safe > .caption,.safe > .eyebrow{max-width:920px}
+
+/* ============================================================
+   5. OVERLAY - FLEURON + RULED EYEBROW
+   ============================================================ */
+/* The ornament is drawn, not typed. U+2767 renders as a bird-ish blob at small
+   sizes in Fraunces, and a font fallback would silently change it per machine. */
+.fleuron{width:46px;height:12px;position:relative}
+.fleuron::before{content:'';position:absolute;left:50%;top:50%;width:9px;height:9px;
+  margin:-4.5px 0 0 -4.5px;background:var(--gold-bright);transform:rotate(45deg)}
+.fleuron::after{content:'';position:absolute;top:50%;left:0;right:0;height:1px;
+  margin-top:-.5px;background:linear-gradient(90deg,transparent,rgba(201,169,97,.75) 26%,
+    transparent 42%,transparent 58%,rgba(201,169,97,.75) 74%,transparent)}
+.eyebrow{display:flex;align-items:center;gap:22px;color:var(--cream);
+  font-weight:500;font-size:19px;letter-spacing:.3em;text-transform:uppercase;
+  white-space:nowrap}
+.eyebrow::before,.eyebrow::after{content:'';width:84px;height:1px;
+  background:rgba(201,169,97,.7)}
+[data-format="square"] .fleuron{font-size:26px}
+[data-format="square"] .eyebrow{font-size:15px;gap:16px}
+[data-format="square"] .eyebrow::before,[data-format="square"] .eyebrow::after{width:56px}
+[data-format="wide"] .eyebrow{font-size:16px}
+
+/* ============================================================
+   6. OVERLAY - TITLE  (Fraunces, gold italic accent)
+   ============================================================ */
+.title{font-family:var(--serif);font-weight:400;color:var(--cream);
+  font-size:var(--title-fs,74px);line-height:1.12;letter-spacing:-.012em;max-width:100%}
+.title .gold{color:var(--gold-bright);font-style:italic;font-weight:500;
+  display:block}
+[data-format="square"] .title{font-size:50px}
+[data-format="wide"]   .title{font-size:58px}
+
+/* ============================================================
+   7. OVERLAY - THE PLATE  (the before/after instrument)
+   ============================================================ */
+/* THE PLATE IS 16:9 AND MUST STAY 16:9 (D-15).
+   base.webp is 3:2 and the eleven scheme renders are 16:9 - they only line up because
+   background-size:cover crops both to the plate. At any other plate aspect the two get
+   cropped differently and the house visibly jumps between before and after.
+   flex:none matters: a flex item shrinks by default, and a shrunk plate is not 16:9. */
+.plate{position:relative;width:100%;aspect-ratio:16/9;flex:none;overflow:hidden;
+  border:1px solid rgba(201,169,97,.55);
+  box-shadow:0 0 0 9px rgba(20,24,58,.80), 0 0 0 10px rgba(201,169,97,.40),
+             0 34px 80px rgba(0,0,0,.62)}
+.plate .layer{position:absolute;inset:0;background-size:cover;background-position:center}
+/* The wide canvas is short, so the plate is sized by height there rather than filling
+   the column - otherwise it would want to be 956px tall in a 922px safe area. */
+[data-format="wide"] .plate{width:900px}
+.plate .dim{position:absolute;inset:0;background:rgba(10,12,30,.62)}
+
+/* the seam - a lit gold edge, not a line */
+.seam{position:absolute;top:0;bottom:0;width:3px;margin-left:-1.5px;
+  background:linear-gradient(180deg,rgba(232,204,133,.35),#E8CC85 18%,#C9A961 50%,#E8CC85 82%,rgba(232,204,133,.35));
+  box-shadow:0 0 22px 5px rgba(201,169,97,.42)}
+.knob{position:absolute;top:50%;left:0;width:52px;height:52px;border-radius:50%;
+  transform:translate(-50%,-50%);background:var(--gold-shine);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 0 5px rgba(201,169,97,.20),0 10px 26px rgba(0,0,0,.55),
+             inset 0 1px 0 rgba(255,255,255,.45)}
+.knob svg{width:24px;height:24px;color:#fff}
+
+/* the spec card, bottom-left of the plate */
+.nameplate{position:absolute;left:18px;bottom:18px;display:flex;align-items:center;
+  gap:14px;padding:12px 22px 12px 14px;background:rgba(10,12,30,.82);
+  border:1px solid rgba(201,169,97,.34);max-width:calc(100% - 190px)}
+.nameplate .sw{width:34px;height:34px;flex:none;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.30)}
+.nameplate .txt{text-align:left;min-width:0}
+.nameplate .nm{display:block;font-family:var(--serif);font-size:23px;
+  color:var(--cream);line-height:1.15;white-space:nowrap}
+.nameplate .co{display:block;font-size:13px;font-weight:700;letter-spacing:.15em;
+  text-transform:uppercase;color:rgba(224,192,120,.92);margin-top:4px;white-space:nowrap}
+/* the counter, bottom-right */
+.counter{position:absolute;right:18px;bottom:18px;font-size:15px;font-weight:800;
+  letter-spacing:.18em;color:rgba(245,239,226,.80);font-variant-numeric:tabular-nums;
+  padding:11px 15px;background:rgba(10,12,30,.70);border:1px solid rgba(201,169,97,.26)}
+/* the stamp, top-right - only on the chosen scheme */
+.stamp{position:absolute;top:18px;right:18px;font-size:14px;font-weight:800;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--navy);
+  background:var(--gold-shine);padding:10px 18px}
+/* BEFORE / AFTER side labels */
+.side{position:absolute;top:18px;font-size:13px;font-weight:800;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(245,239,226,.92);padding:8px 14px;
+  background:rgba(10,12,30,.62);border:1px solid rgba(201,169,97,.22)}
+.side.b{left:18px}
+
+/* the swatch-scale proof: three chips held against the facade, at true scale */
+.chips{position:absolute;left:8.5%;bottom:13%;display:flex;gap:9px;
+  transform:rotate(-3.2deg);filter:drop-shadow(0 12px 22px rgba(0,0,0,.55))}
+.chip{width:62px;height:84px;border:1px solid rgba(255,255,255,.34);
+  display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:7px}
+.chip i{display:block;height:6px;width:26px;margin:0 auto;background:rgba(0,0,0,.20)}
+.chips-note{position:absolute;left:8.5%;bottom:6.2%;font-size:14px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:rgba(245,239,226,.86);
+  text-shadow:0 2px 10px rgba(0,0,0,.9)}
+
+/* ============================================================
+   8. OVERLAY - CAPTION, BEATS, CLIENT PILL
+   ============================================================ */
+.caption{font-size:25px;line-height:1.5;color:rgba(245,239,226,.90);max-width:88%}
+.caption b{color:var(--gold-bright);font-weight:600}
+[data-format="square"] .caption{font-size:19px}
+
+.beats{display:flex;gap:44px;align-items:center;justify-content:center}
+.beat{display:flex;align-items:center;gap:13px}
+.beat .n{width:38px;height:38px;flex:none;border:1px solid rgba(201,169,97,.62);
+  display:flex;align-items:center;justify-content:center;font-family:var(--serif);
+  font-size:19px;color:var(--gold-bright)}
+.beat .t{font-size:22px;letter-spacing:.02em;color:var(--cream);white-space:nowrap}
+.beat .t .w{color:rgba(245,239,226,.55)}
+[data-format="square"] .beats{gap:26px}
+[data-format="square"] .beat .t{font-size:16px}
+[data-format="square"] .beat .n{width:30px;height:30px;font-size:15px}
+
+.pill{display:flex;align-items:center;gap:18px;padding:12px 30px 12px 12px;
+  border:1px solid rgba(201,169,97,.40);background:rgba(20,24,56,.42)}
+.pill .ph{width:64px;height:64px;border-radius:50%;overflow:hidden;flex:none;
+  box-shadow:0 0 0 1px rgba(201,169,97,.5)}
+.pill .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.pill .name{font-family:var(--serif);font-size:25px;color:var(--cream);text-align:left}
+.pill .sub{font-size:15px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(224,192,120,.88);margin-top:4px;text-align:left}
+
+/* THE PALETTE STRIP - all eleven schemes as chips, the live one lit.
+   It makes the count visible instead of asking the viewer to take "eleven" on faith. */
+.pstrip{display:flex;align-items:center;justify-content:center;gap:11px}
+.pchip{width:44px;height:44px;position:relative;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.22);opacity:.42;
+  transform:scale(.86)}
+.pchip.on{opacity:1;transform:scale(1.18);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.4),0 0 0 2px var(--gold-bright),0 8px 20px rgba(0,0,0,.5)}
+.pchip.done{opacity:.74;transform:scale(.94)}
+.pstrip-cap{font-size:15px;letter-spacing:.24em;text-transform:uppercase;
+  color:rgba(224,192,120,.82)}
+[data-format="square"] .pchip{width:30px;height:30px;gap:7px}
+[data-format="wide"]   .pchip{width:36px;height:36px}
+
+.locline{display:flex;align-items:center;gap:16px;max-width:100%}
+.locline .lr{width:64px;height:1px;background:rgba(201,169,97,.55);flex:none}
+.locline .lt{font-family:var(--serif);font-size:25px;color:var(--cream);white-space:nowrap}
+.locline .ld{color:var(--gold);font-size:19px}
+.locline .lp{font-size:16px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(224,192,120,.88);white-space:nowrap}
+
+/* ============================================================
+   9. OVERLAY - THE ESTIMATE CARD  (Stage 3 - price transparency)
+   ============================================================ */
+.est{width:100%;background:rgba(10,12,30,.90);border:1px solid rgba(201,169,97,.42);
+  padding:34px 40px 30px;text-align:left;
+  box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.est-h{display:flex;align-items:baseline;justify-content:space-between;
+  padding-bottom:18px;border-bottom:1px solid rgba(201,169,97,.26)}
+.est-h .l{font-family:var(--serif);font-size:30px;color:var(--cream)}
+.est-h .r{font-size:14px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(224,192,120,.9)}
+.est-row{display:flex;align-items:center;gap:16px;padding:17px 0;
+  border-bottom:1px solid rgba(201,169,97,.13)}
+.est-row .tick2{width:20px;height:20px;flex:none;border:1px solid var(--gold);
+  position:relative}
+.est-row .tick2::after{content:'';position:absolute;left:5px;top:9px;width:9px;height:4px;
+  border-left:2px solid var(--gold-bright);border-bottom:2px solid var(--gold-bright);
+  transform:rotate(-45deg)}
+.est-row .lab{font-size:22px;color:var(--cream);flex:none}
+.est-row .note{font-size:16px;color:rgba(245,239,226,.55);margin-left:auto;text-align:right}
+.est-price{margin-top:22px;font-family:var(--serif);font-size:27px;color:var(--gold-bright);
+  font-style:italic;text-align:center;line-height:1.35}
+
+/* ============================================================
+   10. OVERLAY - CTA BAR + END CARD
+   ============================================================ */
+.cta{display:inline-flex;align-items:center;gap:16px;padding:22px 46px;
+  background:var(--gold-shine);color:var(--navy);font-weight:800;font-size:23px;
+  letter-spacing:.12em;text-transform:uppercase;
+  box-shadow:0 18px 44px rgba(0,0,0,.45)}
+.soft-cta{display:inline-flex;align-items:center;gap:14px;padding:18px 40px;
+  border:1px solid rgba(201,169,97,.62);color:var(--cream);font-weight:700;
+  font-size:20px;letter-spacing:.16em;text-transform:uppercase}
+.phone{font-family:var(--serif);font-size:46px;color:var(--cream);letter-spacing:.01em}
+.sub{font-size:19px;letter-spacing:.24em;text-transform:uppercase;
+  color:rgba(245,239,226,.70)}
+.tagline{font-family:var(--serif);font-style:italic;font-size:30px;
+  color:var(--gold-bright)}
+.rule{width:120px;height:1px;background:rgba(201,169,97,.55)}
+.warranty{font-size:16px;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(224,192,120,.82);border:1px solid rgba(201,169,97,.34);padding:11px 24px}
+.wordmark{font-family:var(--serif);font-size:40px;letter-spacing:.06em;color:var(--cream)}
+.wordmark .v{color:var(--gold-bright)}
+.logo-img{height:96px;object-fit:contain}
+
+/* The ad must finish on the product, not on an empty navy field. The chosen
+   scheme sits under the end card and dissolves upward into it. */
+.endband{position:absolute;left:0;right:0;bottom:0;background-size:cover;
+  background-position:center 62%;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.55) 34%,#000 78%);
+  mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.55) 34%,#000 78%)}
+[data-format="reel"]   .endband{height:760px}
+[data-format="square"] .endband{height:360px}
+[data-format="wide"]   .endband{height:420px}
+.endband-tint{position:absolute;left:0;right:0;bottom:0;
+  background:linear-gradient(180deg,transparent,rgba(10,12,30,.55))}
+[data-format="reel"]   .endband-tint{height:760px}
+[data-format="square"] .endband-tint{height:360px}
+[data-format="wide"]   .endband-tint{height:420px}
+
+/* ============================================================
+   11. DEV - safe-area guides
+   ============================================================ */
+.guides{position:absolute;inset:0;pointer-events:none;display:none}
+.stage[data-grid="1"] .guides{display:block}
+.guides .band{position:absolute;left:0;right:0;background:rgba(255,0,80,.16);
+  border-block:1px dashed rgba(255,0,80,.6)}
+.guides .col{position:absolute;top:0;bottom:0;background:rgba(0,180,255,.10)}
+.guides .lbl{position:absolute;font:700 13px/1 var(--sans);letter-spacing:.14em;
+  color:#ff5a86;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="stage" id="stage"><div id="root"></div></div>
+
+<script>
+/* =========================================================================
+   ENGINE
+   ========================================================================= */
+const Q = new URLSearchParams(location.search);
+const AD_ID  = Q.get('ad')     || 'stage2-demonstration';
+const FORMAT = Q.get('format') || 'reel';
+const MODE   = Q.get('mode')   || 'method';
+const GRID   = Q.get('grid')   === '1';
+const T      = parseFloat(Q.get('t') || '0');
+
+/* ---- maths. No easing library, no transitions: everything is a pure f(t). ---- */
+const clamp=(v,a,b)=>v<a?a:v>b?b:v;
+const lerp =(a,b,p)=>a+(b-a)*p;
+const easeOut =p=>1-Math.pow(1-clamp(p,0,1),3);
+const easeInOut=p=>{p=clamp(p,0,1);return p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2};
+/* a standard entrance: fade + lift, finished by `dur` */
+function entrance(localT,delay,dur){
+  const p=easeOut((localT-delay)/dur);
+  return {opacity:p, transform:`translateY(${lerp(26,0,p)}px)`};
+}
+function sty(o){return Object.entries(o).map(([k,v])=>`${k.replace(/[A-Z]/g,m=>'-'+m.toLowerCase())}:${v}`).join(';')}
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+let BRAND,ADS,AD;
+
+/* -------------------------------------------------------------------------
+   PLATE TIMELINE
+   Flattened once at load: every scene's plate spec becomes a list of segments
+   {start,dur,from,to,stamp}. A segment with `to` is a wipe; without, a hold.
+   `from` chains off the previous segment automatically, so the house keeps
+   being repainted from whatever it last was instead of snapping back to base.
+   ------------------------------------------------------------------------- */
+function buildPlateTimeline(){
+  const segs=[]; let last=null;
+  const byN = n => BRAND.schemes.find(s=>s.n===n);
+  const chosen = BRAND.schemes.find(s=>s.chosen);
+  for(const sc of AD.scenes){
+    const p=sc.plate; if(!p) continue;
+    if(p.still){
+      const img = p.still==='base' ? {base:true} : (p.still==='chosen'?chosen:byN(+p.still));
+      segs.push({start:sc.at,dur:sc.until-sc.at,from:img,to:null,
+                 dim:!!p.dim,chips:!!p.swatchProof,scene:sc});
+      last=img;
+    } else if(p.sweep){
+      const each=p.each||0.62;
+      p.sweep.forEach((n,i)=>{
+        const to=byN(n);
+        segs.push({start:sc.at+i*each,
+                   dur:(i===p.sweep.length-1)?(sc.until-(sc.at+i*each)):each,
+                   from:last||{base:true},to,stamp:i===p.sweep.length-1?p.stamp:null,
+                   idx:i,scene:sc});
+        last=to;
+      });
+    }
+  }
+  return segs;
+}
+function plateAt(t,segs){
+  let seg=null;
+  for(const s of segs){ if(t>=s.start-1e-6){ seg=s; } }
+  if(!seg) return null;
+  if(t > seg.start+seg.dur+1e-6 && seg!==segs[segs.length-1]) {/* held by later seg */}
+  const st=t-seg.start;
+  const wipeDur=Math.min(0.42,seg.dur*0.62);
+  const p = seg.to ? easeInOut(st/wipeDur) : 1;
+  const rtl = seg.to ? ((seg.idx||0)%2===1) : false;   /* alternate direction */
+  return {seg,p,rtl,wiping: seg.to && st<wipeDur};
+}
+
+/* ---- image url helpers ---- */
+const vizURL = s => s.base ? BRAND.paths.base : BRAND.paths.viz + s.file;
+
+/* -------------------------------------------------------------------------
+   COMPONENT RENDERERS - the brand overlay kit
+   ------------------------------------------------------------------------- */
+function Plate(state,localT){
+  if(!state) return '';
+  const {seg,p,rtl}=state;
+  const from=seg.from, to=seg.to;
+  const pct=(p*100).toFixed(3);
+  const clip = rtl ? `inset(0 0 0 ${(100-p*100).toFixed(3)}%)`
+                   : `inset(0 ${(100-p*100).toFixed(3)}% 0 0)`;
+  const seamX = rtl ? (100-p*100) : (p*100);
+  const showSeam = !!to && p>0.002 && p<0.998;
+  const cur = to || from;
+  const en = entrance(localT,0,0.5);
+
+  let chips='';
+  if(seg.chips){
+    const cols=['#EDEAE4','#CCC9C0','#54504A'];
+    chips = `<div class="chips">${cols.map(c=>`<div class="chip" style="background:${c}"><i></i></div>`).join('')}</div>
+             <div class="chips-note">Three swatches · 3,000 sq ft of wall</div>`;
+  }
+  return `
+  <div class="plate" style="${sty(en)}">
+    <div class="layer" style="background-image:url('${vizURL(from)}')"></div>
+    ${to?`<div class="layer" style="background-image:url('${vizURL(to)}');clip-path:${clip};-webkit-clip-path:${clip}"></div>`:''}
+    ${seg.dim?'<div class="dim"></div>':''}
+    ${chips}
+    ${showSeam?`<div class="seam" style="left:${seamX}%"><div class="knob">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/>
+        </svg></div></div>`:''}
+    ${from.base&&!to?`<span class="side b">Before</span>`:''}
+    ${cur.base?'':`<div class="nameplate" style="${sty(entrance(localT,0.12,0.45))}">
+        <span class="sw" style="background:${cur.swatch}"></span>
+        <span class="txt"><span class="nm">${esc(cur.name)}</span>
+        <span class="co">${esc(cur.sw)}</span></span></div>`}
+    ${cur.base?'':`<span class="counter">${String(cur.n).padStart(2,'0')} / ${BRAND.facts.schemeCount}</span>`}
+    ${seg.stamp&&p>0.75?`<span class="stamp" style="opacity:${easeOut((p-0.75)/0.25)}">${esc(seg.stamp)}</span>`:''}
+  </div>`;
+}
+
+function PaletteStrip(state,localT){
+  if(!state) return '';
+  const cur=state.seg.to||state.seg.from;
+  if(cur.base) return '';
+  const en=entrance(localT,0.22,0.5);
+  const chips=BRAND.schemes.map(sc=>{
+    const cls = sc.n===cur.n ? 'on' : (sc.n<cur.n ? 'done' : '');
+    return `<span class="pchip ${cls}" style="background:${sc.swatch}"></span>`;
+  }).join('');
+  return `<div style="${sty(en)}">
+    <div class="pstrip">${chips}</div>
+    <div style="height:16px"></div>
+    <div class="pstrip-cap">All ${BRAND.facts.schemeCount} on the same house</div></div>`;
+}
+
+function Beats(localT){
+  const rows=[['1','They','visualized it'],['2','They','loved it'],['3','We','painted it']];
+  return `<div class="beats">${rows.map((r,i)=>{
+    const en=entrance(localT,0.15+i*0.13,0.5);
+    return `<div class="beat" style="${sty(en)}"><span class="n">${r[0]}</span>
+      <span class="t"><span class="w">${r[1]}</span> ${r[2]}</span></div>`;
+  }).join('')}</div>`;
+}
+
+function ClientPill(localT){
+  const g=BRAND.clientGate;
+  const use = MODE==='client' && g.client.verified;
+  const d = use ? g.client : g.methodLabel;
+  const en=entrance(localT,0.2,0.5);
+  if(!use){
+    /* METHOD MODE. No person is claimed, so nothing is shown that implies one -
+       no portrait, no family name. Just the property and what the session was. */
+    return `<div class="locline" style="${sty(en)}">
+      <span class="lr"></span><span class="lt">${esc(d.name)}</span>
+      <span class="ld">&#183;</span><span class="lp">${esc(d.place)}</span>
+      <span class="lr"></span></div>`;
+  }
+  return `<div class="pill" style="${sty(en)}">
+    <div class="ph"><img src="${g.client.avatar}" alt=""/></div>
+    <div><div class="name">${esc(d.name)}</div><div class="sub">${esc(d.place)}</div></div></div>`;
+}
+
+function EstimateCard(localT){
+  const en=entrance(localT,0.1,0.55);
+  const rows=AD.estimateLines.map((r,i)=>{
+    const p=easeOut((localT-(0.35+i*0.17))/0.45);
+    return `<div class="est-row" style="opacity:${p};transform:translateY(${lerp(14,0,p)}px)">
+      <span class="tick2"></span><span class="lab">${esc(r.label)}</span>
+      <span class="note">${esc(r.note)}</span></div>`;
+  }).join('');
+  const pp=easeOut((localT-1.5)/0.6);
+  return `<div class="est" style="${sty(en)}">
+    <div class="est-h"><span class="l">Itemised estimate</span>
+      <span class="r">Every line, before you commit</span></div>
+    ${rows}
+    <div class="est-price" style="opacity:${pp}">${esc(AD.priceLine)}</div></div>`;
+}
+
+function EndCard(sc,localT){
+  const f=BRAND.facts;
+  return `
+  <div class="fleuron" style="${sty(entrance(localT,0,0.5))}"></div>
+  <div style="height:26px"></div>
+  <div class="wordmark" style="${sty(entrance(localT,0.08,0.5))}">
+    <span class="v">VIP</span> Home Painting</div>
+  <div style="height:22px"></div>
+  <div class="rule" style="opacity:${easeOut((localT-0.2)/0.5)}"></div>
+  <div style="height:34px"></div>
+  <div class="title" style="${sty(entrance(localT,0.26,0.55))}">${esc(sc.endTitle)}
+    <span class="gold">${esc(sc.endTitleGold)}</span></div>
+  <div style="height:38px"></div>
+  <div class="cta" style="${sty(entrance(localT,0.45,0.5))}">${esc(sc.endCta)}</div>
+  <div style="height:30px"></div>
+  <div class="phone" style="${sty(entrance(localT,0.58,0.5))}">${esc(f.phone)}</div>
+  <div style="height:14px"></div>
+  <div class="sub" style="opacity:${easeOut((localT-0.7)/0.5)}">${esc(f.site)}</div>
+  <div style="height:26px"></div>
+  <div class="tagline" style="${sty(entrance(localT,0.72,0.5))}">${esc(f.tagline)}</div>
+  <div style="height:22px"></div>
+  <div class="warranty" style="opacity:${easeOut((localT-0.85)/0.5)}">${esc(f.warranty)}</div>`;
+}
+
+function Guides(){
+  const sa=BRAND.safeAreas[FORMAT]||BRAND.safeAreas.reel;
+  return `<div class="guides">
+    <div class="band" style="top:0;height:${sa.top}px"></div>
+    <div class="band" style="bottom:0;height:${sa.bottom}px"></div>
+    <div class="col" style="left:0;width:${sa.left}px"></div>
+    <div class="col" style="right:0;width:${sa.right}px"></div>
+    <div class="lbl" style="top:${sa.top+10}px;left:${sa.left+10}px">safe</div></div>`;
+}
+
+/* -------------------------------------------------------------------------
+   THE FRAME
+   ------------------------------------------------------------------------- */
+function renderFrame(t){
+  const scenes=AD.scenes;
+  let sc=scenes[0];
+  for(const s of scenes){ if(t>=s.at-1e-6) sc=s; }
+  const localT=t-sc.at;
+  const dur=sc.until-sc.at;
+  /* whole-scene cross-fade: 0.28s out at the tail so cuts breathe */
+  const outP = clamp((dur-localT)/0.28,0,1);
+
+  const segs=PLATE_SEGS;
+  const st=plateAt(t,segs);
+  const bgImg = st ? vizURL(st.seg.to||st.seg.from) : (BRAND.paths.viz+'scheme-organic.jpg');
+
+  let body='',endBand='',safeCls='';
+  if(sc.endCard){
+    body = EndCard(sc,localT);
+    safeCls=' is-end';
+    const chosen=BRAND.schemes.find(s=>s.chosen);
+    const bp=easeOut(localT/0.9);
+    endBand=`<div class="endband" style="background-image:url('${BRAND.paths.viz+chosen.file}');opacity:${bp}"></div>
+             <div class="endband-tint"></div>`;
+  } else {
+    const parts=[];
+    parts.push(`<div class="fleuron" style="${sty(entrance(localT,0,0.45))}"></div>`);
+    parts.push('<div style="height:20px"></div>');
+    if(sc.eyebrow) parts.push(`<div class="eyebrow" style="${sty(entrance(localT,0.06,0.5))}">${esc(sc.eyebrow)}</div>`);
+    if(sc.title){
+      parts.push('<div style="height:30px"></div>');
+      const chars=(sc.title||'').length+(sc.titleGold||'').length;
+      const fs = chars<=34 ? 78 : chars<=52 ? 68 : chars<=70 ? 58 : 50;
+      parts.push(`<div class="title" style="--title-fs:${fs}px;${sty(entrance(localT,0.14,0.55))}">${esc(sc.title)}
+        ${sc.titleGold?`<span class="gold">${esc(sc.titleGold)}</span>`:''}</div>`);
+    }
+    if(st){ parts.push('<div style="height:40px"></div>'); parts.push(Plate(st,localT)); }
+    if(sc.paletteStrip){ parts.push('<div style="height:34px"></div>');
+      parts.push(PaletteStrip(st,localT)); }
+    if(sc.estimateCard){ parts.push('<div style="height:34px"></div>'); parts.push(EstimateCard(localT)); }
+    if(sc.caption){ parts.push('<div style="height:32px"></div>');
+      parts.push(`<div class="caption" style="${sty(entrance(localT,0.3,0.55))}">${esc(sc.caption)}</div>`); }
+    if(sc.beats){ parts.push('<div style="height:36px"></div>'); parts.push(Beats(localT));
+      parts.push('<div style="height:32px"></div>'); parts.push(ClientPill(localT)); }
+    if(sc.softCta){ parts.push('<div style="height:36px"></div>');
+      parts.push(`<div class="soft-cta" style="${sty(entrance(localT,0.5,0.5))}">${esc(sc.softCta)}</div>`); }
+    body=parts.join('');
+  }
+
+  document.getElementById('root').innerHTML = `
+    <div class="bg" style="background-image:url('${bgImg}')"></div>
+    <div class="bg-wash"></div><div class="bg-grain"></div>
+    <div class="frame"></div><div class="frame-inner"></div>
+    <span class="tick tl"></span><span class="tick tr"></span>
+    <span class="tick bl"></span><span class="tick br"></span>
+    ${endBand}
+    <div class="safe${safeCls}" style="opacity:${outP}">${body}</div>
+    ${GRID?Guides():''}`;
+}
+
+/* -------------------------------------------------------------------------
+   BOOT
+   ------------------------------------------------------------------------- */
+let PLATE_SEGS=[];
+(async function(){
+  BRAND = await (await fetch('brand.json')).json();
+  ADS   = await (await fetch('ads.json')).json();
+  AD    = ADS[AD_ID];
+  if(!AD) throw new Error('unknown ad: '+AD_ID);
+  const stage=document.getElementById('stage');
+  stage.dataset.format=FORMAT;
+  stage.dataset.grid=GRID?'1':'0';
+  PLATE_SEGS=buildPlateTimeline();
+
+  if(Q.get('fit')==='1'){
+    const f=BRAND.formats[FORMAT];
+    const s=Math.min(innerWidth/f.w,innerHeight/f.h)*0.94;
+    stage.style.transform=`scale(${s})`;
+  }
+  /* wait for fonts AND every image the frame references, then mark ready.
+     render.js polls window.__adReady - no screenshot happens before this. */
+  renderFrame(T);
+  await document.fonts.ready;
+  const urls=[...document.querySelectorAll('[style*="background-image"]')]
+    .map(e=>(e.style.backgroundImage.match(/url\("?(.*?)"?\)/)||[])[1])
+    .filter(u=>u&&!u.startsWith('data:'));
+  await Promise.all(urls.map(u=>new Promise(res=>{
+    const i=new Image(); i.onload=i.onerror=res; i.src=u;
+  })));
+  await new Promise(r=>setTimeout(r,30));
+  window.__adReady=true;
+  /* expose for render.js */
+  window.__renderFrame=t=>{renderFrame(t);};
+  window.__duration=AD.duration;
+})();
+</script>
+</body>
+</html>
