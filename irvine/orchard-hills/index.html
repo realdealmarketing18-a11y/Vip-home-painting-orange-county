@@ -1530,18 +1530,28 @@
     box-shadow: 0 0 0 1px var(--gold-deep), 0 34px 70px rgba(26,31,78,.24); }
   .cand-card .pic { display: block; width: 100%; aspect-ratio: 16/10;
     background-size: cover; background-position: center; }
-  .cand-card .meta { padding: 14px 14px 16px; display: flex; align-items: center;
-    gap: 10px; }
-  .cand-card .sw { width: 24px; height: 24px; flex: none;
-    box-shadow: inset 0 0 0 1px rgba(26,31,78,.16); }
-  .cand-card .t { min-width: 0; }
+  .cand-card .meta { padding: 18px 16px 20px; display: block; text-align: center; }
+  /* Same real can-top photograph and the same two-layer tint as
+     `.scheme .dot` in the visualiser. Kept as its own selector because the
+     band sizes them smaller; the technique must not diverge. */
+  .cand-card .cans { display: flex; justify-content: center; gap: 10px;
+    margin: 0 0 12px; }
+  .cand-card .can { width: 46px; height: 46px; position: relative;
+    background: url('../../orange-county-sales-page/assets/can-top.jpg') center / cover no-repeat; }
+  .cand-card .can::before, .cand-card .can::after {
+    content: ''; position: absolute;
+    left: 9.5%; right: 10.5%; top: 10%; bottom: 9%;
+    border-radius: 50%; background: var(--c, #ffffff); }
+  .cand-card .can::before { mix-blend-mode: multiply; opacity: .92; }
+  .cand-card .can::after  { mix-blend-mode: soft-light; opacity: .55; }
+  .cand-card .t { min-width: 0; display: block; }
   .cand-card .h { display: block; font-family: var(--font-serif); font-weight: 400;
     font-size: 16px; line-height: 1.2; color: var(--navy); }
-  /* Wraps rather than truncating: the SW number is the point of the line, and
-     "Name SW 0000 · Name SW 0000" no longer fits a card on one row. */
-  .cand-card .c { display: block; font-size: 8px; font-weight: 700;
-    letter-spacing: .09em; text-transform: uppercase; color: var(--gold-deep);
-    margin-top: 5px; white-space: normal; overflow: hidden; line-height: 1.45; }
+  /* One colour per line, never a broken name. See the split in the card builder. */
+  .cand-card .c { display: block; font-size: 9px; font-weight: 700;
+    letter-spacing: .085em; text-transform: uppercase; color: var(--gold-deep);
+    margin-top: 7px; white-space: normal; line-height: 1.5; }
+  .cand-card .c .c-line { display: block; }
   .cand-card .flag { display: inline-block; margin-top: 8px; font-size: 8px;
     font-weight: 800; letter-spacing: .2em; text-transform: uppercase;
     color: var(--navy); background: var(--gold-shine); padding: 4px 9px; }
@@ -2642,9 +2652,9 @@
   /* The band is scrolled to, not competing for the fold, so it can simply
      be bigger. It snaps, and cards peek at the edges — that reads as a
      carousel rather than as clipping, which is what it is. */
-  .cand-card { flex-basis: clamp(290px, 22vw, 420px); }
+  .cand-card { flex-basis: clamp(330px, 25vw, 470px); }
   @media (min-width: 1150px) {
-    .cand-card { flex-basis: clamp(290px, 22vw, 420px); }
+    .cand-card { flex-basis: clamp(330px, 25vw, 470px); }
   }
 
   /* ============ BEFORE / AFTER ============
@@ -5086,10 +5096,22 @@ setTimeout(() => {
         '<span class="pic-tag pic-tag-a">After</span>');
       var meta = document.createElement('span');
       meta.className = 'meta';
-      meta.innerHTML = '<span class="sw" style="background:' +
-        (el.getAttribute('data-sw') || '') + '"></span>' +
+      /* Three tinted cans, same can-top photo and blend the interactive uses,
+         so one page does not render a paint colour two different ways. */
+      var cans = ['data-sw', 'data-trim', 'data-accent']
+        .map(function (a) { return el.getAttribute(a); })
+        .filter(Boolean)
+        .map(function (hex) { return '<span class="can" style="--c:' + hex + '"></span>'; })
+        .join('');
+      /* Split on the separator rather than letting the line wrap wherever it
+         lands -- "Dover White SW / 6385" is what made these look bunched. */
+      var co = (el.getAttribute('data-co') || '');
+      var coLines = co.split('·').map(function (part) {
+        return '<span class="c-line">' + part.trim() + '</span>';
+      }).join('');
+      meta.innerHTML = '<span class="cans">' + cans + '</span>' +
         '<span class="t"><span class="h">' + (el.getAttribute('data-nm') || '') +
-        '</span><span class="c">' + (el.getAttribute('data-co') || '') + '</span>' +
+        '</span><span class="c">' + coLines + '</span>' +
         (el.getAttribute('data-chosen') ? '<span class="flag">The direction they chose</span>' : '') +
         '</span>';
       c.appendChild(pic);

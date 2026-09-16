@@ -1699,18 +1699,28 @@
     box-shadow: 0 0 0 1px var(--gold-deep), 0 34px 70px rgba(26,31,78,.24); }
   .cand-card .pic { display: block; width: 100%; aspect-ratio: 16/10;
     background-size: cover; background-position: center; }
-  .cand-card .meta { padding: 14px 14px 16px; display: flex; align-items: center;
-    gap: 10px; }
-  .cand-card .sw { width: 24px; height: 24px; flex: none;
-    box-shadow: inset 0 0 0 1px rgba(26,31,78,.16); }
-  .cand-card .t { min-width: 0; }
+  .cand-card .meta { padding: 18px 16px 20px; display: block; text-align: center; }
+  /* Same real can-top photograph and the same two-layer tint as
+     `.scheme .dot` in the visualiser. Kept as its own selector because the
+     band sizes them smaller; the technique must not diverge. */
+  .cand-card .cans { display: flex; justify-content: center; gap: 10px;
+    margin: 0 0 12px; }
+  .cand-card .can { width: 46px; height: 46px; position: relative;
+    background: url('assets/can-top.jpg') center / cover no-repeat; }
+  .cand-card .can::before, .cand-card .can::after {
+    content: ''; position: absolute;
+    left: 9.5%; right: 10.5%; top: 10%; bottom: 9%;
+    border-radius: 50%; background: var(--c, #ffffff); }
+  .cand-card .can::before { mix-blend-mode: multiply; opacity: .92; }
+  .cand-card .can::after  { mix-blend-mode: soft-light; opacity: .55; }
+  .cand-card .t { min-width: 0; display: block; }
   .cand-card .h { display: block; font-family: var(--font-serif); font-weight: 400;
     font-size: 16px; line-height: 1.2; color: var(--navy); }
-  /* Wraps rather than truncating: the SW number is the point of the line, and
-     "Name SW 0000 · Name SW 0000" no longer fits a card on one row. */
-  .cand-card .c { display: block; font-size: 8px; font-weight: 700;
-    letter-spacing: .09em; text-transform: uppercase; color: var(--gold-deep);
-    margin-top: 5px; white-space: normal; overflow: hidden; line-height: 1.45; }
+  /* One colour per line, never a broken name. See the split in the card builder. */
+  .cand-card .c { display: block; font-size: 9px; font-weight: 700;
+    letter-spacing: .085em; text-transform: uppercase; color: var(--gold-deep);
+    margin-top: 7px; white-space: normal; line-height: 1.5; }
+  .cand-card .c .c-line { display: block; }
   .cand-card .flag { display: inline-block; margin-top: 8px; font-size: 8px;
     font-weight: 800; letter-spacing: .2em; text-transform: uppercase;
     color: var(--navy); background: var(--gold-shine); padding: 4px 9px; }
@@ -2811,9 +2821,9 @@
   /* The band is scrolled to, not competing for the fold, so it can simply
      be bigger. It snaps, and cards peek at the edges — that reads as a
      carousel rather than as clipping, which is what it is. */
-  .cand-card { flex-basis: clamp(290px, 22vw, 420px); }
+  .cand-card { flex-basis: clamp(330px, 25vw, 470px); }
   @media (min-width: 1150px) {
-    .cand-card { flex-basis: clamp(290px, 22vw, 420px); }
+    .cand-card { flex-basis: clamp(330px, 25vw, 470px); }
   }
 
   /* ============ BEFORE / AFTER ============
@@ -3448,18 +3458,18 @@
          Paths stay in markup so generate.js's url('viz-photos/ rewrite
          still applies if this section is ever lifted onto another page. -->
     <template id="bandSchemes">
-      <i data-id="pebblebeach" data-nm="Pebble Beach Manor"        data-co="Accessible Beige SW 7036 &middot; Dover White SW 6385"   data-sw="#D1C7B8" style="background-image:url('viz-photos/scheme-pebblebeach.jpg')"></i>
-      <i data-id="ibiza"       data-nm="Ibiza Luxury Villa"        data-co="Balanced Beige SW 7037 &middot; Aesthetic White SW 7035" data-sw="#D1C7B8" style="background-image:url('viz-photos/scheme-ibiza.jpg')"></i>
-      <i data-id="pacificsage" data-nm="Pacific Sage Estate"       data-co="Evergreen Fog SW 9130 &middot; Shoji White SW 7042"      data-sw="#95978A" style="background-image:url('viz-photos/scheme-pacificsage.jpg')"></i>
-      <i data-id="obsidian"    data-nm="Obsidian Monolith"         data-co="Iron Ore SW 7069 &middot; Tricorn Black SW 6258"        data-sw="#434341" style="background-image:url('viz-photos/scheme-obsidian.jpg')"></i>
-      <i data-id="marinelayer" data-nm="Marine Layer"              data-co="Sea Salt SW 6204 &middot; High Reflective White SW 7757" data-sw="#CBD6D0" style="background-image:url('viz-photos/scheme-marinelayer.jpg')"></i>
-      <i data-id="resort"      data-nm="Beverly Hills Resort"      data-co="City Loft SW 7631, monochrome"                 data-sw="#B9B2A7" style="background-image:url('viz-photos/scheme-resort.jpg')"></i>
-      <i data-id="spanish"     data-nm="Santa Barbara Luxe"        data-co="Alabaster SW 7008 &middot; Tricorn Black SW 6258"       data-sw="#F1EDE2" style="background-image:url('viz-photos/scheme-spanish.jpg')"></i>
+      <i data-id="pebblebeach" data-nm="Pebble Beach Manor"        data-co="Accessible Beige SW 7036 &middot; Dover White SW 6385"   data-sw="#D1C7B8" data-trim="#EFE8D8" data-accent="#95948C" style="background-image:url('viz-photos/scheme-pebblebeach.jpg')"></i>
+      <i data-id="ibiza"       data-nm="Ibiza Luxury Villa"        data-co="Balanced Beige SW 7037 &middot; Aesthetic White SW 7035" data-sw="#D1C7B8" data-trim="#E8E3DA" data-accent="#C8B59B" style="background-image:url('viz-photos/scheme-ibiza.jpg')"></i>
+      <i data-id="pacificsage" data-nm="Pacific Sage Estate"       data-co="Evergreen Fog SW 9130 &middot; Shoji White SW 7042"      data-sw="#95978A" data-trim="#E6DFD3" data-accent="#A98D4B" style="background-image:url('viz-photos/scheme-pacificsage.jpg')"></i>
+      <i data-id="obsidian"    data-nm="Obsidian Monolith"         data-co="Iron Ore SW 7069 &middot; Tricorn Black SW 6258"        data-sw="#434341" data-trim="#2F2F30" data-accent="#5B5E62" style="background-image:url('viz-photos/scheme-obsidian.jpg')"></i>
+      <i data-id="marinelayer" data-nm="Marine Layer"              data-co="Sea Salt SW 6204 &middot; High Reflective White SW 7757" data-sw="#CBD6D0" data-trim="#F7F7F1" data-accent="#BFC7C5" style="background-image:url('viz-photos/scheme-marinelayer.jpg')"></i>
+      <i data-id="resort"      data-nm="Beverly Hills Resort"      data-co="City Loft SW 7631, monochrome"                 data-sw="#B9B2A7" data-trim="#D6D2C9" data-accent="#8C6E4C" style="background-image:url('viz-photos/scheme-resort.jpg')"></i>
+      <i data-id="spanish"     data-nm="Santa Barbara Luxe"        data-co="Alabaster SW 7008 &middot; Tricorn Black SW 6258"       data-sw="#F1EDE2" data-trim="#2F2F30" data-accent="#B5714A" style="background-image:url('viz-photos/scheme-spanish.jpg')"></i>
       <!-- The payoff card. Coastal Organic Compound also leads the hero, and
            it is here again on purpose: the band walks the seven they passed
            on and ends on the one that went on the house, so section two
            finishes the decision rather than trailing off. -->
-      <i data-id="organic"     data-nm="Coastal Organic Compound"  data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048"       data-sw="#EDE8DC" data-chosen="1" style="background-image:url('viz-photos/scheme-organic.jpg')"></i>
+      <i data-id="organic"     data-nm="Coastal Organic Compound"  data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048"       data-sw="#EDE8DC" data-trim="#54504A" data-accent="#9C7B53" data-chosen="1" style="background-image:url('viz-photos/scheme-organic.jpg')"></i>
 </template>
     <div class="cand-track" id="candTrack"></div>
     <!-- The three reasons used to be their own section further down, saying
@@ -5037,10 +5047,22 @@ setTimeout(() => {
         '<span class="pic-tag pic-tag-a">After</span>');
       var meta = document.createElement('span');
       meta.className = 'meta';
-      meta.innerHTML = '<span class="sw" style="background:' +
-        (el.getAttribute('data-sw') || '') + '"></span>' +
+      /* Three tinted cans, same can-top photo and blend the interactive uses,
+         so one page does not render a paint colour two different ways. */
+      var cans = ['data-sw', 'data-trim', 'data-accent']
+        .map(function (a) { return el.getAttribute(a); })
+        .filter(Boolean)
+        .map(function (hex) { return '<span class="can" style="--c:' + hex + '"></span>'; })
+        .join('');
+      /* Split on the separator rather than letting the line wrap wherever it
+         lands -- "Dover White SW / 6385" is what made these look bunched. */
+      var co = (el.getAttribute('data-co') || '');
+      var coLines = co.split('·').map(function (part) {
+        return '<span class="c-line">' + part.trim() + '</span>';
+      }).join('');
+      meta.innerHTML = '<span class="cans">' + cans + '</span>' +
         '<span class="t"><span class="h">' + (el.getAttribute('data-nm') || '') +
-        '</span><span class="c">' + (el.getAttribute('data-co') || '') + '</span>' +
+        '</span><span class="c">' + coLines + '</span>' +
         (el.getAttribute('data-chosen') ? '<span class="flag">The direction they chose</span>' : '') +
         '</span>';
       c.appendChild(pic);
