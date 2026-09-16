@@ -268,6 +268,120 @@ both.
 
 ---
 
+## PART G — SUBY FRAMEWORKS (source: *Sell Like Crazy*, pp. 138–150)
+
+Fabian's source material, transcribed 2026-09-16. Part B's B1–B5 are the *page* formulas;
+this is the underlying machinery they come from, plus the three things Suby tests every
+offer against. **Where these conflict with VIP's hard rules, the hard rules win** — the
+conflicts are named at the end rather than left for someone to trip over.
+
+---
+
+### G1 · THE TWO MASTER HEADLINE FORMULAS
+
+> **Finally! How to Get [DESIRED RESULT] Without [THING THEY FEAR MOST] in [SPECIFIC TIME
+> FRAME] — Guaranteed.**
+
+> **[PROBLEM]? Get My [SOLUTION] and [RESULT].**
+
+Every B-formula is a variation on the first. Note it demands all four parts — result, fear,
+timeframe, guarantee — which is why Essential 2's number is not optional decoration.
+
+*Worked for VIP:* "Finally! How to Choose Your Exterior Color Without Guessing in 30
+Minutes." The guarantee clause only goes on if there is a real one; the 2-year warranty
+covers the work, not the colour decision, so do not imply it does.
+
+### G2 · THE FIVE ELEMENTS OF AN OPT-IN / HVCO PAGE
+
+1. A headline that **grabs the reader by the throat**
+2. A **subheadline that restates the offer** and exactly what they are getting
+3. **Ultra-compelling fascination bullets** — short, punchy, oozing intrigue
+4. A **visual representation** of what they are getting
+5. A **basic form** to access it
+
+### G3 · THE OPT-IN SUBHEADLINE
+
+Restates the offer and names the deliverable in concrete units, then says **how it arrives**,
+leaving nothing to question. Suby's example counts pages and recipes and minutes.
+
+*For VIP:* "Three renders of your own house, each with its Sherwin-Williams pairing, back
+within [turnaround] business days." Concrete units: **3 renders**, **named colours**, a
+stated delivery. `[turnaround]` stays bracketed until test T4 measures it.
+
+### G4 · FASCINATION BULLET FORMULAS
+
+Six shapes. These are *formulas*; Part C's bullet bank is the VIP-specific stock written
+from them.
+
+| Shape | Suby's example |
+|---|---|
+| **How to X without Y** | "How to get washboard abs without doing a single sit-up" |
+| **You need X, right? WRONG!** | "Drinking 3 litres of water a day is healthy, right? WRONG!" |
+| **X ways to Y** | "Five ways to meet single women in Melbourne" |
+| **Where to find Y** | "Where to find the most ravenous hyperactive buyers online" |
+| **How to eliminate X** | "How to stop joint pain forever" |
+| **What you should never** | "What you should never say to a woman on your first date" |
+
+> **"Fear of loss (pain) is greater than fear of attainment (joy)."** That is why *What you
+> should never* outperforms — people are more compelled by what they must avoid. It maps
+> exactly onto this market's 🥇 fear, so it is the strongest of the six here.
+
+### G5 · SHOW, DON'T TELL — visualise the value
+
+"Get Your Free Report" as text **loses** to the same offer beside a rendered mock-up of the
+thing. A prospect will not hand over contact details without seeing what they get, the same
+way a shopper will not buy without photographs.
+
+**This is the rule behind the swipe demonstrations.** A thumbnail of a light fixture *tells*
+her the fixture exists. The fixture rendered on her own facade *shows* her the value. Every
+step that offers a choice should show that choice applied, not catalogued.
+
+### G6 · THE NOTICE TEST — run every offer through it
+
+Suby audits each real example on exactly three points. Use it as a checklist:
+
+1. **Is it crystal clear who this is aimed at?**
+2. **Does it use numbers?**
+3. **Does it answer the top questions in that market?**
+
+For Orange County the top questions are documented, not guessed — `00-SUMMARY.md` Finding 5:
+*how to choose exterior paint colors* · *home exterior color mistakes* · *exterior painting
+cost per square foot* · *what happens if you paint your house without HOA approval*.
+
+### G7 · FOLLOW-UP AND THE THANK-YOU PAGE
+
+The HVCO collects the contact details; **the majority of sales are made in the follow-up.**
+And once a prospect opts in they are redirected to a thank-you page, which is itself a
+landing page used to make the Godfather Offer to the hyper-active buyers who are ready now.
+
+**Direct consequence for this page:** the post-submit confirmation is not a receipt. It is a
+sales surface for the small slice who are ready today, and it must not be wasted on
+"thanks, we'll be in touch."
+
+---
+
+### WHERE SUBY AND THE VIP HARD RULES CONFLICT
+
+**"FREE" is in nearly every Suby example. It is banned here** — "complimentary", always, and
+idioms containing "free" get reworded rather than swapped (**D-13**).
+
+**"Collect just name and email — the less you ask, the higher the conversion."** VIP's Step
+Five deliberately asks for more: address/community, full name, cell phone. That is a
+considered deviation, not an oversight — this is not an opt-in for a PDF that costs nothing
+to deliver. Every submission triggers real render work, the community determines the
+design-review rules, and the photo is the deliverable's input. The mitigation is *sequence*,
+not field count: the contact block stays shut until a photo is attached, so the ask lands on
+someone already committed.
+
+**"#3 Might Shock You" and full curiosity-gap intensity** are tier-scoped — fine on a cold
+ad, wrong on a page for a Hidden Canyon owner. See Part D and the Part B calibration note.
+
+**No guarantee claim without a real guarantee.** G1's formula ends in "Guaranteed." VIP
+guarantees the work for 2 years; it does not guarantee the colour decision. Do not let the
+formula write a promise the business has not made.
+
+---
+
 ## PART C — BULLET BANK
 
 ### Speed & convenience
