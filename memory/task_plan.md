@@ -79,7 +79,13 @@ rule is enforced by the docs, not the tool, for this one page. **Fabian's call.*
 
    Full runbook: `docs/LOCAL-SETUP.md`.
 
-1. **Finish applying the OC research — the copy half is done, the technical half is not.**
+1. **The OC technical half — DO THIS LAST.** Fabian, 2026-09-16: the page is not finished,
+   and the schema / FAQ / standalone Investment section wait until the rest of it is.
+   They are additive and none of them changes what the page says, so they are the
+   cheapest things to defer and the easiest to do once the copy stops moving.
+   *(Alt text is done — 22 renders carry `role="img"` + `aria-label`; see progress.md.)*
+
+   **Finish applying the OC research — the copy half is done, the technical half is not.**
    Hero and section-two copy were rewritten against `07-VOICE.md` on 2026-09-16. What
    `00-SUMMARY.md` Finding 4 still asks for, none of it written yet:
 
