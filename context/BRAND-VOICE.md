@@ -134,6 +134,14 @@ visualization, not with social proof we don't have.
 - **Numbers:** spell out under ten in prose; use figures for prices, square footage, warranty
   terms, and SW color codes.
 - **Sherwin-Williams colors:** always `Name SW 0000` — "Alabaster SW 7008", never "SW Alabaster".
+- **Paint colors are shown as paint cans, never as a flat chip.** A scheme colour on any
+  page renders as `.paint-can` — a real 1-gallon can-top photograph with the colour
+  blended onto the paint surface — three of them per scheme: **body, trim, accent**.
+  A square, circle or dot filled with a hex is not acceptable anywhere, at any size.
+  **Why it is a brand rule and not a style preference:** this page sells the claim that
+  a small sample cannot predict a painted house. A flat swatch *is* the small sample,
+  and putting one on the page argues the competitor's case. Build-enforced by
+  `verify-site.js` check 11; the component lives in the OC page stylesheet.
 
 **Colors:** Navy `#1A1F4E` · Gold `#C9A961` · Cream `#F5EFE2` · Orange `#E8833A`
 

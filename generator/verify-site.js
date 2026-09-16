@@ -453,6 +453,48 @@ for (const c of CITIES.cities) {
 }
 if (!dupe) ok('no two pages in a city share a section order');
 
+console.log('\n11. paint-can rule');
+/* A scheme colour is never a flat chip. Every surface that shows one -- the
+   hero nameplate, the visualiser grid and its Now Showing stamp, the band
+   cards, the lightbox -- renders `.paint-can`: a real can-top photograph with
+   the colour blended onto the paint surface. Rule: context/BRAND-VOICE.md.
+   This is an OUTPUT check because the flat chips it replaced were invisible
+   to anything that only reads the brief (D-04). */
+{
+  const FLAT = [
+    ['.swatch-mini',    'class="swatch-mini"'],
+    ['.cand-card .sw',  'class="sw" style="background'],
+    ['.hr-nameplate .sw', 'class="sw" id="hrSw"'],
+  ];
+  let flat = 0, missing = 0;
+  for (const pg of pages.concat([{ file: ocFile, rel: '/' }])) {
+    const html = fs.readFileSync(pg.file, 'utf8');
+    /* Keyed to MARKUP, not to the stylesheet: the articles carry the hero
+       CSS without the hero itself, and matching rule text called that a
+       failure. `data-sw=` only ever appears on a real scheme element. */
+    const showsScheme = /data-sw="/.test(html);
+    const hasCans = /class="[^"]*\bpaint-cans?\b/.test(html);
+    if (showsScheme && !hasCans) {
+      bad(`${pg.rel} shows scheme colours but renders no .paint-can`);
+      missing++;
+    }
+    for (const [label, needle] of FLAT) {
+      if (html.includes(needle)) { bad(`${pg.rel} still renders a flat colour chip (${label})`); flat++; }
+    }
+  }
+  if (!flat && !missing) ok('every scheme colour renders as a paint can, no flat chips');
+  /* the can photo itself must resolve, at whatever depth the page sits */
+  let broken = 0;
+  for (const pg of pages.concat([{ file: ocFile, rel: '/' }])) {
+    const html = fs.readFileSync(pg.file, 'utf8');
+    const m = html.match(/url\('([^']*can-top\.jpg)'\)/);
+    if (!m) continue;
+    const abs = path.resolve(path.dirname(pg.file), m[1]);
+    if (!fs.existsSync(abs)) { bad(`${pg.rel} can-top.jpg does not resolve: ${m[1]}`); broken++; }
+  }
+  if (!broken) ok('can-top.jpg resolves from every page that uses it');
+}
+
 console.log('');
 if (fails) {
   console.log(`✗ FAILED — ${fails} problem(s). Do not publish until these are clear.\n`);

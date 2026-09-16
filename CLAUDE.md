@@ -175,7 +175,7 @@ cream `#F5EFE2`; Fraunces for display, Inter for text.
 
 **Two gates, and the output gate matters more.** `validate-brief.js` checks the brief;
 `verify-site.js` checks rendered HTML — dead and absolute links, banned copy, schema, FAQ
-parity, the silo rule, warranty length, indexation posture, doorway guard. Every miss that
+parity, the silo rule, warranty length, indexation posture, doorway guard, the paint-can rule. Every miss that
 reached a live page was invisible to input validation (**D-04**). The gates run on the county
 page too (**D-05**). **Never publish with either red.**
 
@@ -194,6 +194,9 @@ one-line verify command.
 - Phone in customer copy is **(909) 312-5400** and nothing else
 - Warranty is **2 years**, and it lives in `communities.json → config.warranty`. CertaPro also
   advertises 2, so **never write "longer than the competition."**
+- **A paint colour is never a flat chip** — it is three `.paint-can` cans (body, trim,
+  accent). A flat swatch is the small sample the whole page argues against. SW colours
+  are cited `Name SW 0000`. Both in `context/BRAND-VOICE.md`.
 
 ---
 
@@ -270,7 +273,7 @@ index.html robots.txt sitemap.xml    must sit at root
 generator-synced. Fabian's previous Elementor home page is **untouched** at
 `/luxury-home-painting-southern-california/` — only detached. To undo: `page_on_front` → **3605**.
 
-**Irvine 13** · **Anaheim 5** · both `noindex` pending launch. Gate green at 18 checks.
+**Irvine 13** · **Anaheim 5** · both `noindex` pending launch. Gate green at 23 checks.
 **Newport Beach, Coto de Caza** queued.
 
 **Ranked next actions and everything blocked on Fabian: `memory/task_plan.md`.**

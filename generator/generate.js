@@ -154,11 +154,15 @@ function ctaButton(label, sub) {
    five the county page shows, kept in one place so the hero and the county
    band can never drift apart. Paths take the page's asset base, so articles
    three levels deep resolve correctly. */
+/* [id, name, SW citation, body, trim, accent, chosen]
+   Colours are cited "Name SW 0000" per context/BRAND-VOICE.md, and every
+   scheme carries three hexes because a colour is shown as paint cans, never
+   as a flat chip. verify-site.js check 11 enforces both. */
 const REEL_PALETTES = [
-  ['riviera', 'Riviera Tuxedo',           'SW Snowbound &middot; Black Magic',   '#EDEAE4', 0],
-  ['euro',    'Euro-Industrial Estate',   'SW Peppercorn &middot; Cityscape',    '#5E5A57', 0],
-  ['admiral', 'Newport Admiral',          'SW Repose Gray &middot; Pure White',  '#C9C6C0', 0],
-  ['organic', 'Coastal Organic Compound', 'SW Alabaster &middot; Urbane Bronze', '#EDE8DC', 1]
+  ['riviera', 'Riviera Tuxedo',           'Snowbound SW 7004 &middot; Black Magic SW 6991',    '#EDEAE4', '#2A2A2C', '#3B3B3E', 0],
+  ['euro',    'Euro-Industrial Estate',   'Peppercorn SW 7674 &middot; Cityscape SW 7067',     '#5E5A57', '#9A9C98', '#7E8285', 0],
+  ['admiral', 'Newport Admiral',          'Repose Gray SW 7015 &middot; Pure White SW 7005',   '#C9C6C0', '#F0EFE9', '#2F2F30', 0],
+  ['organic', 'Coastal Organic Compound', 'Alabaster SW 7008 &middot; Urbane Bronze SW 7048',  '#EDE8DC', '#54504A', '#9C7B53', 1]
 ];
 /* The four Fabian picked for the hero, and they end on the one the
    Gallaghers actually chose — Coastal Organic Compound. The reel walks the
@@ -171,8 +175,8 @@ const REEL_PALETTES = [
    house. Changed on his word as the owner, not inferred. */
 
 function heroReel(A) {
-  const layers = REEL_PALETTES.map(([id, nm, co, sw, chosen]) =>
-    `          <div class="hr-cand${chosen ? ' final' : ''}" data-nm="${nm}" data-co="${co}" data-sw="${sw}"${chosen ? ' data-chosen="1"' : ''} style="background-image:url('${A}/viz-photos/scheme-${id}.jpg')"></div>`
+  const layers = REEL_PALETTES.map(([id, nm, co, sw, trim, accent, chosen]) =>
+    `          <div class="hr-cand${chosen ? ' final' : ''}" data-nm="${nm}" data-co="${co}" data-sw="${sw}" data-trim="${trim}" data-accent="${accent}"${chosen ? ' data-chosen="1"' : ''} style="background-image:url('${A}/viz-photos/scheme-${id}.jpg')"></div>`
   ).join('\n');
   return `
       <figure class="hr-inset">
@@ -193,7 +197,7 @@ ${layers}
           <span class="hr-side hr-side-a">After</span>
           <span class="hr-stamp">The direction they chose</span>
           <div class="hr-nameplate">
-            <span class="sw" id="hrSw"></span>
+            <span class="paint-cans" id="hrSw"></span>
             <span class="txt"><span class="nm" id="hrNm"></span><span class="co" id="hrCo"></span></span>
           </div>
           <span class="hr-counter" id="hrCt"></span>

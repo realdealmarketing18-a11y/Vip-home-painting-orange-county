@@ -851,10 +851,8 @@
     backdrop-filter: blur(8px);
   }
   .viz-preview .stamp em { font-family: var(--font-serif); font-style: italic; font-size: 13px; font-weight: 500; letter-spacing: 0.02em; text-transform: none; color: var(--gold-bright); }
-  .viz-preview .stamp .swatch-mini {
-    width: 18px; height: 18px; border-radius: 50%; background: var(--tint, #fff);
-    box-shadow: inset -3px -3px 6px rgba(0,0,0,0.30), inset 2px 2px 4px rgba(255,255,255,0.30), 0 2px 6px rgba(0,0,0,0.30);
-  }
+  .viz-preview .stamp .paint-cans { gap: 4px; }
+  .viz-preview .stamp .paint-cans .paint-can { width: 18px; height: 18px; }
 
   .viz-side .label-row { font-family: var(--font-sans); font-weight: 700; font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 14px; }
   .viz-side h3 { font-family: var(--font-serif); font-weight: 600; font-size: 30px; line-height: 1.15; color: var(--navy); margin: 0 0 14px; text-wrap: balance; }
@@ -890,29 +888,24 @@
   }
   .scheme .name { font-family: var(--font-serif); font-weight: 600; font-style: italic; font-size: 15px; color: var(--navy); margin-bottom: 2px; line-height: 1.2; }
   .scheme .sw { font-family: var(--font-sans); font-size: 9px; color: var(--gold-deep); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin-bottom: 11px; }
+  /* ============ THE PAINT CAN ============
+     A scheme colour is NEVER a flat chip anywhere on this site. It is this:
+     a real 1-gallon can-top photograph with the colour blended onto the
+     paint surface -- multiply carries the pigment, soft-light hands back the
+     highlight, so it reads as paint catching light rather than a disc.
+     Rule: context/BRAND-VOICE.md. Enforced: verify-site.js check 11. */
+  .paint-can { position: relative; flex: none;
+    background: url('../../orange-county-sales-page/assets/can-top.jpg') center / cover no-repeat; }
+  .paint-can::before, .paint-can::after {
+    content: ''; position: absolute;
+    left: 9.5%; right: 10.5%; top: 10%; bottom: 9%;
+    border-radius: 50%; background: var(--c, #ffffff); }
+  .paint-can::before { mix-blend-mode: multiply; opacity: .92; }
+  .paint-can::after  { mix-blend-mode: soft-light; opacity: .55; }
+  .paint-cans { display: inline-flex; align-items: center; gap: 6px; flex: none; }
+
   .scheme .dots { display: flex; gap: 8px; }
-  /* REAL 1-gallon can photo, paint surface tinted per scheme color */
-  .scheme .dot {
-    width: 66px; height: 66px;
-    position: relative;
-    background: url('../../orange-county-sales-page/assets/can-top.jpg') center / cover no-repeat;
-  }
-  .scheme .dot::before {
-    content: ''; position: absolute;
-    left: 9.5%; right: 10.5%; top: 10%; bottom: 9%;
-    border-radius: 50%;
-    background: var(--c, #ffffff);
-    mix-blend-mode: multiply;
-    opacity: 0.92;
-  }
-  .scheme .dot::after {
-    content: ''; position: absolute;
-    left: 9.5%; right: 10.5%; top: 10%; bottom: 9%;
-    border-radius: 50%;
-    background: var(--c, #ffffff);
-    mix-blend-mode: soft-light;
-    opacity: 0.55;
-  }
+  .scheme .dot { width: 66px; height: 66px; }
   .scheme { text-align: center; }
   .viz-timeline .scheme .dot { width: 44px; height: 44px; }
   .scheme .dots { justify-content: center; gap: 10px; }
@@ -1422,8 +1415,8 @@
     display: flex; align-items: center; gap: 10px; max-width: calc(100% - 100px);
     padding: 7px 13px 7px 9px; background: rgba(10,12,30,.80);
     backdrop-filter: blur(6px); border: 1px solid rgba(201,169,97,.34); }
-  .hr-nameplate .sw { width: 20px; height: 20px; flex: none;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.30); }
+  .hr-nameplate .paint-cans { gap: 4px; }
+  .hr-nameplate .paint-cans .paint-can { width: 20px; height: 20px; }
   .hr-nameplate .txt { text-align: left; min-width: 0; }
   .hr-nameplate .nm { display: block; font-family: var(--font-serif);
     font-size: 13px; color: var(--cream); line-height: 1.15; white-space: nowrap;
@@ -1552,14 +1545,7 @@
      band sizes them smaller; the technique must not diverge. */
   .cand-card .cans { display: flex; justify-content: center; gap: 10px;
     margin: 0 0 12px; }
-  .cand-card .can { width: 46px; height: 46px; position: relative;
-    background: url('../../orange-county-sales-page/assets/can-top.jpg') center / cover no-repeat; }
-  .cand-card .can::before, .cand-card .can::after {
-    content: ''; position: absolute;
-    left: 9.5%; right: 10.5%; top: 10%; bottom: 9%;
-    border-radius: 50%; background: var(--c, #ffffff); }
-  .cand-card .can::before { mix-blend-mode: multiply; opacity: .92; }
-  .cand-card .can::after  { mix-blend-mode: soft-light; opacity: .55; }
+  .cand-card .cans .paint-can { width: 46px; height: 46px; }
   .cand-card .t { min-width: 0; display: block; }
   .cand-card .h { display: block; font-family: var(--font-serif); font-weight: 400;
     font-size: 16px; line-height: 1.2; color: var(--navy); }
@@ -2513,7 +2499,6 @@
   }
   .cand-card .h { font-size: clamp(13px, 1.05vw, 17px); }
   .cand-card .c { font-size: clamp(8px, .62vw, 9.5px); }
-  .cand-card .sw { width: clamp(24px, 2vw, 30px); height: clamp(24px, 2vw, 30px); }
   .cand-track { gap: clamp(18px, 1.9vw, 30px); }
   @media (max-width: 860px) {
     .cand-card { flex-basis: clamp(228px, 58vw, 290px); }
@@ -2875,8 +2860,8 @@
     display: flex; align-items: center; gap: 11px; padding: 9px 16px 9px 10px;
     border-radius: 2px; background: rgba(16,19,44,.7);
     backdrop-filter: blur(12px); }
-  .lb-name .sw { width: 22px; height: 22px; flex: none;
-    border: 1px solid rgba(245,239,226,.3); }
+  .lb-name .paint-cans { gap: 4px; }
+  .lb-name .paint-cans .paint-can { width: 22px; height: 22px; }
   .lb-name b { display: block; font-family: var(--font-serif);
     font-weight: 400; font-size: clamp(13px, 1.05vw, 17px); color: var(--cream); }
   .lb-name i { display: block; font-style: normal; font-size: 9px;
@@ -3655,10 +3640,10 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <figure class="hr-inset">
         <div class="hr-plate" id="hrPlate" data-hold="1100" data-dur="2600">
           <div class="hr-before" id="hrBefore" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-          <div class="hr-cand" data-nm="Riviera Tuxedo" data-co="SW Snowbound &middot; Black Magic" data-sw="#EDEAE4" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-riviera.jpg')"></div>
-          <div class="hr-cand" data-nm="Euro-Industrial Estate" data-co="SW Peppercorn &middot; Cityscape" data-sw="#5E5A57" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-euro.jpg')"></div>
-          <div class="hr-cand" data-nm="Newport Admiral" data-co="SW Repose Gray &middot; Pure White" data-sw="#C9C6C0" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-admiral.jpg')"></div>
-          <div class="hr-cand final" data-nm="Coastal Organic Compound" data-co="SW Alabaster &middot; Urbane Bronze" data-sw="#EDE8DC" data-chosen="1" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-organic.jpg')"></div>
+          <div class="hr-cand" data-nm="Riviera Tuxedo" data-co="Snowbound SW 7004 &middot; Black Magic SW 6991" data-sw="#EDEAE4" data-trim="#2A2A2C" data-accent="#3B3B3E" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-riviera.jpg')"></div>
+          <div class="hr-cand" data-nm="Euro-Industrial Estate" data-co="Peppercorn SW 7674 &middot; Cityscape SW 7067" data-sw="#5E5A57" data-trim="#9A9C98" data-accent="#7E8285" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-euro.jpg')"></div>
+          <div class="hr-cand" data-nm="Newport Admiral" data-co="Repose Gray SW 7015 &middot; Pure White SW 7005" data-sw="#C9C6C0" data-trim="#F0EFE9" data-accent="#2F2F30" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-admiral.jpg')"></div>
+          <div class="hr-cand final" data-nm="Coastal Organic Compound" data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048" data-sw="#EDE8DC" data-trim="#54504A" data-accent="#9C7B53" data-chosen="1" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-organic.jpg')"></div>
           <div class="hr-grab" id="hrGrab"></div>
           <div class="hr-seam" id="hrSeam">
             <span class="hr-knob">
@@ -3673,7 +3658,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           <span class="hr-side hr-side-a">After</span>
           <span class="hr-stamp">The direction they chose</span>
           <div class="hr-nameplate">
-            <span class="sw" id="hrSw"></span>
+            <span class="paint-cans" id="hrSw"></span>
             <span class="txt"><span class="nm" id="hrNm"></span><span class="co" id="hrCo"></span></span>
           </div>
           <span class="hr-counter" id="hrCt"></span>
@@ -3740,7 +3725,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           </div>
           <div class="ba-label l">Before</div>
           <div class="ba-label r">After</div>
-          <div class="stamp"><span class="swatch-mini"></span><span>Now Showing</span><em id="vizName">Greige Estate</em></div>
+          <div class="stamp"><span class="paint-cans" id="vizCans"></span><span>Now Showing</span><em id="vizName">Greige Estate</em></div>
         </div>
         <div class="vp-controls">
           <button class="vp-sweep" id="vpSweep"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>Auto Sweep</button>
@@ -4327,6 +4312,15 @@ function initBA(frameEl) {
 }
 document.querySelectorAll('.ba-frame').forEach(initBA);
 
+/* Builds the paint cans. A scheme colour is never rendered as a flat chip --
+   see the .paint-can rule in the stylesheet. Missing values are skipped, so a
+   monochrome scheme simply shows fewer cans rather than a blank one. */
+function vipPaintCans() {
+  return [].slice.call(arguments).filter(Boolean).map(function (hex) {
+    return '<span class="paint-can" style="--c:' + hex + '"></span>';
+  }).join('');
+}
+
 /* ============ COLOR VISUALIZATION SCHEMES ============ */
 const STYLES = [
   { id: 'all',     label: 'All Options',          desc: 'Every curated direction — <b>browse the full palette library.</b>' },
@@ -4404,9 +4398,9 @@ function renderSchemes() {
       <div class="name">${s.name}</div>
       <div class="sw">${s.sw}</div>
       <div class="dots">
-        <div class="dot" style="--c:${s.main}"></div>
-        <div class="dot" style="--c:${s.trim}"></div>
-        <div class="dot" style="--c:${s.accent}"></div>
+        <div class="dot paint-can" style="--c:${s.main}"></div>
+        <div class="dot paint-can" style="--c:${s.trim}"></div>
+        <div class="dot paint-can" style="--c:${s.accent}"></div>
       </div>
     `;
     el.addEventListener('click', () => { active = s.id; apply(s); renderSchemes(); });
@@ -4417,8 +4411,8 @@ function renderSchemes() {
 function apply(s) {
   $preview.style.setProperty('--tint', s.main);
   $name.textContent = `${s.name} · ${s.sw}`;
-  const stamp = $preview.querySelector('.swatch-mini');
-  if (stamp) stamp.style.background = s.main;
+  const stampCans = $preview.querySelector('#vizCans');
+  if (stampCans) stampCans.innerHTML = vipPaintCans(s.main, s.trim, s.accent);
   if ($heroAfter) {
     $heroAfter.classList.add('tinted');
     $heroAfter.style.setProperty('--tint', s.main);
@@ -4825,7 +4819,7 @@ setTimeout(() => {
      which must not flicker while the seam is mid-pass */
   function nameFor(i) {
     var l = layers[i];
-    if (swEl) swEl.style.background = l.getAttribute('data-sw') || '';
+    if (swEl) swEl.innerHTML = vipPaintCans(l.getAttribute('data-sw'), l.getAttribute('data-trim'), l.getAttribute('data-accent'));
     if (nmEl) nmEl.innerHTML = l.getAttribute('data-nm') || '';
     if (coEl) coEl.innerHTML = l.getAttribute('data-co') || '';
   }
@@ -4870,7 +4864,7 @@ setTimeout(() => {
 
   function label(i) {
     var l = layers[i];
-    if (swEl) swEl.style.background = l.getAttribute('data-sw') || '';
+    if (swEl) swEl.innerHTML = vipPaintCans(l.getAttribute('data-sw'), l.getAttribute('data-trim'), l.getAttribute('data-accent'));
     if (nmEl) nmEl.innerHTML = l.getAttribute('data-nm') || '';
     if (coEl) coEl.innerHTML = l.getAttribute('data-co') || '';
     if (ctEl) ctEl.textContent = pad(i + 1) + ' / ' + pad(TOTAL);
@@ -4902,7 +4896,7 @@ setTimeout(() => {
     layers.forEach(function (l) { l.classList.remove('on'); });
     g.classList.add('on');
     plate.classList.toggle('chosen', !!el.getAttribute('data-chosen'));
-    if (swEl) swEl.style.background = el.getAttribute('data-sw') || '';
+    if (swEl) swEl.innerHTML = vipPaintCans(el.getAttribute('data-sw'), el.getAttribute('data-trim'), el.getAttribute('data-accent'));
     if (nmEl) nmEl.innerHTML = el.getAttribute('data-nm') || '';
     if (coEl) coEl.innerHTML = el.getAttribute('data-co') || '';
     if (ctEl) {
@@ -5093,7 +5087,7 @@ setTimeout(() => {
       var cans = ['data-sw', 'data-trim', 'data-accent']
         .map(function (a) { return el.getAttribute(a); })
         .filter(Boolean)
-        .map(function (hex) { return '<span class="can" style="--c:' + hex + '"></span>'; })
+        .map(function (hex) { return '<span class="paint-can" style="--c:' + hex + '"></span>'; })
         .join('');
       /* Split on the separator rather than letting the line wrap wherever it
          lands -- "Dover White SW / 6385" is what made these look bunched. */
@@ -5136,10 +5130,12 @@ setTimeout(() => {
     var ALL = layers.map(function (l) {
       return { bg: l.style.backgroundImage, nm: l.getAttribute('data-nm') || '',
                co: l.getAttribute('data-co') || '', sw: l.getAttribute('data-sw') || '',
+               trim: l.getAttribute('data-trim') || '', accent: l.getAttribute('data-accent') || '',
                chosen: !!l.getAttribute('data-chosen') };
     }).concat(bandNew.map(function (el) {
       return { bg: el.style.backgroundImage, nm: el.getAttribute('data-nm') || '',
                co: el.getAttribute('data-co') || '', sw: el.getAttribute('data-sw') || '',
+               trim: el.getAttribute('data-trim') || '', accent: el.getAttribute('data-accent') || '',
                chosen: !!el.getAttribute('data-chosen') };
     }));
 
@@ -5160,7 +5156,7 @@ setTimeout(() => {
           '<span class="lb-side lb-side-b">Before</span>' +
           '<span class="lb-side lb-side-a">After</span>' +
           '<span class="lb-stamp">The direction they chose</span>' +
-          '<div class="lb-name"><span class="sw"></span><span><b></b><i></i></span></div>' +
+          '<div class="lb-name"><span class="paint-cans"></span><span><b></b><i></i></span></div>' +
           '<span class="lb-count"></span>' +
         '</div>' +
         '<div class="lb-nav">' +
@@ -5174,7 +5170,7 @@ setTimeout(() => {
     var q = function (sel) { return lb.querySelector(sel); };
     var lbBefore = q('.lb-before'), lbAfter = q('.lb-after'), lbSeam = q('.lb-seam'),
         lbKnob = q('.lb-knob'), lbGrab = q('.lb-grab'),
-        lbSw = q('.lb-name .sw'), lbNm = q('.lb-name b'), lbCo = q('.lb-name i'),
+        lbSw = q('.lb-name .paint-cans'), lbNm = q('.lb-name b'), lbCo = q('.lb-name i'),
         lbCt = q('.lb-count');
     lbBefore.style.backgroundImage = beforeBg2;
 
@@ -5210,7 +5206,7 @@ setTimeout(() => {
       idx = (i + ALL.length) % ALL.length;
       var d = ALL[idx];
       lbAfter.style.backgroundImage = d.bg;
-      lbSw.style.background = d.sw;
+      lbSw.innerHTML = vipPaintCans(d.sw, d.trim, d.accent);
       lbNm.innerHTML = d.nm;
       lbCo.innerHTML = d.co;
       lbCt.textContent = pad(idx + 1) + ' / ' + pad(ALL.length);

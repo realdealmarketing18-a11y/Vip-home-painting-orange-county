@@ -23,6 +23,13 @@
 - **CTAs:** ALL CAPS, gold-gradient pill, italic small-caps sub-line, `--shadow-cta`.
 - **Drop caps** on case-study lead paragraphs only — Fraunces Bold, gold, 4.5em.
 - **Trust badges** are PNG (gold laurel). Do not recreate as SVG.
+- **A colour scheme is ALWAYS shown as 3D paint cans — never a flat chip, square,
+  circle or dot.** Use `.paint-can`: the real can-top photograph with the colour
+  blended onto the paint surface (`multiply` .92 under `soft-light` .55). Three cans
+  per scheme — body, trim, accent — wrapped in `.paint-cans`, at every size, in every
+  context: hero nameplate, palette grid, Now Showing stamp, cards, lightbox. Size it
+  per context; never reimplement the tint. `verify-site.js` check 11 fails the build
+  on a flat chip.
 
 ## Voice cheat sheet
 - "CLAIM FREE COLOR CONSULTATION"
