@@ -1595,12 +1595,13 @@
      it earns the full measure. */
   .s5-block { position: relative; max-width: 1180px; margin: 0 auto;
     padding-top: 78px; }
-  /* the timeline rail continues down into this section and lands on the
-     fifth dot, so Step Five reads as the last beat arriving rather than a
-     detached block bolted underneath */
-  .s5-block::before { content: ''; position: absolute; left: 50%; top: 0;
-    width: 1px; height: 42px; transform: translateX(-50%);
-    background: linear-gradient(180deg, rgba(168,138,71,0), rgba(168,138,71,.6)); }
+  /* NO CONNECTOR STUB. It used to draw a 42px rail at left:50% meant to
+     continue the timeline into this section -- but the timeline's rail sits
+     in the LEFT GUTTER of the right-hand column, and this block is centred
+     on the page. Two different coordinate systems, 27px apart at 1024px and
+     a different gap at every width, so the line pointed at nothing and read
+     as a misalignment rather than a connection. The coin carries the
+     sequence on its own: it says 5 and the label says STEP FIVE. */
   .s5-dot { position: absolute; left: 50%; top: 36px; transform: translateX(-50%);
     width: 38px; height: 38px; border-radius: 50%; display: flex;
     align-items: center; justify-content: center; background: var(--gold-shine);
@@ -1745,8 +1746,12 @@
     .cand-track { justify-content: flex-start; }
     .cand-card { flex-basis: 206px; }
     .cand-card:nth-child(odd), .cand-card:nth-child(even) { transform: none; }
-    .s5-block { padding-top: 32px; }
-    .s5-head { margin-bottom: 22px; }
+    /* In flow, not absolute. At padding-top:32px the absolutely-positioned
+       coin (top:36px, 38px tall) ran 14px into "STEP FIVE - YOUR HOME".
+       Static and centred matches what .tl-dot already does on mobile. */
+    .s5-block { padding-top: 34px; }
+    .s5-dot { position: static; transform: none; margin: 0 auto 16px; }
+    .s5-head { margin-top: 0; margin-bottom: 22px; }
     .s5 { grid-template-columns: 1fr; gap: 24px; }
     .s5-shotlist { grid-template-columns: 1fr; }
     .s5-form { padding: 20px 18px 18px; }
