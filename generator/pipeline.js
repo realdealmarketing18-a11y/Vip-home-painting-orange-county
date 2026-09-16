@@ -7,6 +7,13 @@
      node generator/pipeline.js next marcus     next job for one agent
      node generator/pipeline.js claim <slug> <stage>   move a cluster forward
      node generator/pipeline.js block <slug> "<reason>"
+     node generator/pipeline.js approve <slug>         Fabian signs a cluster off
+
+   ONE CLUSTER AT A TIME. Fabian's rule, 2026-09-16: a cluster is finished,
+   reviewed and approved before the next one starts. `claim` refuses to pull
+   a new cluster out of `queued` while another is still in flight or is
+   published but unapproved. Half-finished clusters across three cities is
+   how nothing ships.
 
    Each agent's scheduled run starts with `next <agent>`. If it prints
    NOTHING TO DO, the agent exits without burning tokens or credits.
@@ -80,7 +87,8 @@ if (cmd === 'status') {
     const pages = [c.city_page_live ? 'city live' : null,
                    c.communities_live ? `${c.communities.length} communities live` : null]
                    .filter(Boolean).join(' · ') || 'nothing live';
-    console.log(`  ${String(c.priority).padEnd(3)}${c.name.padEnd(w)}${c.stage.padEnd(15)}→ ${owner.padEnd(ow)}${brief.padEnd(10)}${pages}`);
+    const sign = c.stage === 'published' ? (c.approved ? `approved ${c.approved_on}` : 'AWAITING APPROVAL') : '';
+    console.log(`  ${String(c.priority).padEnd(3)}${c.name.padEnd(w)}${c.stage.padEnd(15)}→ ${owner.padEnd(ow)}${brief.padEnd(10)}${pages}${sign ? '  ' + sign : ''}`);
     for (const b of (c.blockers || [])) console.log(`      ⚠ ${b}`);
   }
   console.log('');
@@ -128,6 +136,25 @@ if (cmd === 'claim') {
       process.exit(1);
     }
   }
+  /* ONE AT A TIME. Starting a new cluster means moving it off `queued`;
+     that is refused while anything else is unfinished. Advancing a cluster
+     that is ALREADY in flight is always allowed -- the rule is about not
+     opening a second front, never about blocking the work in progress. */
+  const IN_FLIGHT = ['researching', 'researched', 'writing', 'copy_complete', 'building'];
+  if (c.stage === 'queued' && arg2 !== 'blocked') {
+    const busy = q.clusters.filter(x => x.slug !== c.slug && IN_FLIGHT.includes(x.stage));
+    const unapproved = q.clusters.filter(x => x.slug !== c.slug && x.stage === 'published' && !x.approved);
+    if (busy.length || unapproved.length) {
+      console.error(`
+✗ REFUSED — finish one cluster before starting another.`);
+      for (const x of busy) console.error(`  ${x.name} is still ${x.stage}.`);
+      for (const x of unapproved) console.error(`  ${x.name} is published but not approved — run: node generator/pipeline.js approve ${x.slug}`);
+      console.error(`
+  Fabian's rule: complete, review, approve, then move on.
+`);
+      process.exit(1);
+    }
+  }
   const prev = c.stage;
   c.stage = arg2;
   c.blockers = [];
@@ -135,6 +162,20 @@ if (cmd === 'claim') {
   if (arg2 === 'published') { c.published = new Date().toISOString().slice(0, 10); c.city_page_live = true; }
   save();
   console.log(`✓ ${c.name}: ${prev} → ${arg2}   (next owner: ${OWNER[arg2] || '-'})`);
+  process.exit(0);
+}
+
+if (cmd === 'approve') {
+  const c = find(arg1);
+  if (!c) { console.error(`no cluster "${arg1}"`); process.exit(1); }
+  if (c.stage !== 'published') {
+    console.error(`✗ ${c.name} is ${c.stage}, not published — there is nothing to approve yet.`);
+    process.exit(1);
+  }
+  c.approved = true;
+  c.approved_on = new Date().toISOString().slice(0, 10);
+  save();
+  console.log(`✓ ${c.name} approved ${c.approved_on}. The next cluster can start.`);
   process.exit(0);
 }
 
@@ -149,5 +190,5 @@ if (cmd === 'block') {
   process.exit(0);
 }
 
-console.error(`unknown command "${cmd}" — use: status | next [agent] | claim <slug> <stage> | block <slug> "<reason>"`);
+console.error(`unknown command "${cmd}" — use: status | next [agent] | claim <slug> <stage> | approve <slug> | block <slug> "<reason>"`);
 process.exit(1);

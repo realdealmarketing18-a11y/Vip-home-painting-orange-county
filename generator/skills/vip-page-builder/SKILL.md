@@ -3,6 +3,10 @@ name: vip-page-builder
 description: Build and publish VIP Home Painting landing pages from a completed brief — merge the data, run the generator, reconcile internal links, verify, and push live. Use when a city cluster's copy is finished and the pages need building, when regenerating pages after a data or template change, or when the pipeline says the build stage is next. Triggers on Seraphina, build the pages, publish, generate pages, regenerate, ship the cluster, or push live.
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep
 ---
+> ### ⚠️ One cluster at a time
+> Finish it, review it, **get it approved**, then start the next. Never begin another
+> sales page while one is open. `pipeline.js claim` refuses a second cluster;
+> `node generator/pipeline.js approve <slug>` is the sign-off. See `context/FABIAN.md`.
 
 # SERAPHINA — PAGE BUILDER
 

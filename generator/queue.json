@@ -1,4 +1,5 @@
 {
+  "_rule": "ONE CLUSTER AT A TIME (Fabian, 2026-09-16). A cluster is finished, reviewed and approved before the next starts. `pipeline.js claim` refuses to move a cluster off `queued` while another is in flight or published-but-unapproved. Sign-off: `pipeline.js approve <slug>`, which sets approved + approved_on.",
   "_doc": "THE PIPELINE QUEUE. Single source of truth for what each agent works on next. Marcus reads the first cluster with stage=queued. The copywriter reads the first with stage=researched. Seraphina reads the first with stage=copy_complete.",
   "_stages": [
     "queued",

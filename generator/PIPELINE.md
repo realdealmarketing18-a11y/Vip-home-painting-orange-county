@@ -50,6 +50,22 @@ re-scrape. IDs are recorded in each brief's `meta.sources`.
 
 ---
 
+## ONE CLUSTER AT A TIME — and it must be approved
+
+**ONE CLUSTER AT A TIME.** A page or cluster is finished, reviewed and **approved**
+before the next one starts. No jumping to another sales page while one is open.
+Enforced: `pipeline.js claim` refuses to pull a cluster out of `queued` while
+another is in flight or is published-but-unapproved. Sign-off is
+`node generator/pipeline.js approve <slug>`.
+
+Advancing a cluster that is **already** in flight is always allowed. The rule is about
+not opening a second front, never about blocking work in progress.
+
+A cluster is only truly closed at **published + approved**. `pipeline.js status` prints
+`AWAITING APPROVAL` against any published cluster Fabian has not signed off.
+
+---
+
 ## THE THREE STAGES
 
 | Stage | Owner | Produces | Gate |

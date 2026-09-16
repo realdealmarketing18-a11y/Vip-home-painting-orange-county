@@ -103,6 +103,23 @@ reversible with a push.
 
 ---
 
+## FINISH ONE THING BEFORE STARTING THE NEXT
+
+*My rule, 2026-09-16.*
+
+Complete the page I'm on. Then **I review it and approve it.** Only then do we move to
+the next city or the next sales page. Don't start Newport because Orange County got
+hard, and don't hand me three half-built pages and ask which one I like.
+
+I run on speed and momentum — that is exactly *why* this matters. Momentum is finishing
+things, not starting them. One page live and approved beats four in progress.
+
+This is enforced, not just written down: `pipeline.js claim` refuses to start a second
+cluster while one is unfinished or waiting on my approval, and
+`node generator/pipeline.js approve <slug>` is how I sign it off.
+
+---
+
 ## MEMORY — you get smarter every week
 
 Your memory lives in **@generator/research/_global/MEMORY.md**, loaded into every session

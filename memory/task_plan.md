@@ -24,6 +24,31 @@ Every city runs the same five gates. `pipeline.js status` is the board.
 
 ---
 
+## Working rule — one cluster at a time
+
+Fabian, 2026-09-16: **finish the page, review it, approve it, then start the next.**
+No jumping to another sales page with one still open. `pipeline.js claim` refuses to
+start a second cluster; `node generator/pipeline.js approve <slug>` is the sign-off, and
+`pipeline.js status` flags any published cluster as `AWAITING APPROVAL` until it lands.
+
+**Current focus: the Orange County master sales page.** It is not finished — open items
+are action 0 (publish) and action 1 (the technical half of Finding 4). Nothing on
+Newport Beach or Coto de Caza starts until OC is published, reviewed and approved.
+
+### ⚠️ The queue has drifted from reality — reconcile before trusting it
+
+`generator/queue.json` says **Irvine `copy_complete`** and **Anaheim `queued`**. This
+file and `progress.md` both say Irvine (13 pages) and Anaheim (5 pages) are published
+and live. The queue was not advanced when they shipped, so `pipeline.js next` will hand
+an agent work that is already done.
+
+Also: **`orange-county` is not in the queue at all.** The master page is hand-maintained
+rather than brief-driven, so it has no cluster row — which means the one-at-a-time guard
+cannot see the very page we are working on. Either add a row for it or accept that the
+rule is enforced by the docs, not the tool, for this one page. **Fabian's call.**
+
+---
+
 ## Cluster status
 
 | City | Stage | Notes |

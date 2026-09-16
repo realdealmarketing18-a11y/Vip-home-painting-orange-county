@@ -230,6 +230,10 @@ a finding is *Candidate* until it holds in a second city.
 3. **Simplicity first** — minimum logic, no speculative abstractions
 4. **Goal-driven** — every change measured against the North Star and a verify step
 5. **Per-task rhythm** — explore → plan → code → verify → commit. No skipping.
+6. **One cluster at a time** — finish it, review it, get it **approved**, then start the
+   next. Never jump to another sales page with one still open. Half-finished work across
+   three cities is how nothing ships. `pipeline.js claim` refuses to start a second
+   cluster; `pipeline.js approve <slug>` is the sign-off.
 
 ---
 
