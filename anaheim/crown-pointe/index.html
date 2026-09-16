@@ -947,6 +947,16 @@
     background: #E8833A; box-shadow: 0 0 10px rgba(232,131,58,0.75);
   }
   .tl-step { position: relative; padding-bottom: 46px; }
+  /* The link between steps. Purely additive -- nothing is replaced, the
+     numbered coins stay. The brush sits on the rail where the connector
+     runs, so the mark reads as part of the line rather than beside it. */
+  .tl-link { position: relative; padding: 0 0 46px; }
+  .tl-link-mark { position: absolute; left: -58px; top: 2px; width: 26px; height: auto;
+    display: block; filter: drop-shadow(0 3px 8px rgba(26,31,78,.20)); z-index: 3; }
+  .tl-link-lead { font-family: var(--font-serif); font-weight: 600; font-size: 17px;
+    line-height: 1.32; color: var(--navy); margin: 0 0 7px; }
+  .tl-link-sub { font-family: var(--font-sans); font-size: 14px; line-height: 1.62;
+    color: #4A4F70; margin: 0; max-width: 46ch; }
   .tl-step:last-child { padding-bottom: 0; }
   /* Un-struck coin: bone-white face inside a double gold ring */
   .tl-dot {
@@ -1829,6 +1839,9 @@
 
     /* Timeline becomes the step scroll-tracks (no rail/dots on mobile) */
     .viz-timeline { padding: 0; }
+    .tl-link { padding: 0 0 30px; text-align: center; }
+    .tl-link-mark { position: static; margin: 0 auto 12px; width: 22px; }
+    .tl-link-sub { max-width: none; }
     .viz-timeline .tl-rail { display: none; }
     .tl-dot { display: none; }
     .tl-step { min-height: 92vh; padding: 0; }
@@ -3718,9 +3731,9 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     <div class="head">
       <div class="sec-no">No. 01</div>
       <div class="eyebrow">Custom Visualization Service</div>
-      <h2 class="ttl">See Your Crown Pointe Home In <span class="accent">Every Color</span> Before A Single Brushstroke</h2>
+      <h2 class="ttl">Every Exterior Decision the Gallaghers Made, <span class="accent">Now On Your Crown Pointe Home</span></h2>
       <p class="sub" style="text-align:center; font-size: 18px; max-width: 620px; margin: 0 auto 28px;">Pick a direction and tap through the palettes. The home below repaints itself in real time — exactly what our design team does with your own elevation, at no cost, before anything is scheduled.</p>
-      <p class="viz-lede-cta">Choose a style direction, then tap any palette. Watch this Newport Beach estate transform in real time &mdash; then send us yours.</p>
+      <p class="viz-lede-cta">They saw color, lighting, texture and the garage door on their own house before anything was scheduled. Work the same four below &mdash; the house you are changing is theirs, and nothing you choose commits you to anything.</p>
     </div>
 
     <div class="viz-flow">
@@ -3774,6 +3787,16 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           </div>
         </div>
 
+
+        <!-- Between the steps: the brand mark on the rail, and the reason this
+             step leads to the next one. Not a .tl-step -- the timeline JS
+             selects .tl-step only, so the numbered coins are untouched. -->
+        <div class="tl-link">
+          <img class="tl-link-mark" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt=""
+               width="128" height="294" loading="lazy" decoding="async"/>
+          <p class="tl-link-lead">Color is only half of what the street sees after dark.</p>
+          <p class="tl-link-sub">Fixtures change how a facade reads at night, which is why lighting is the next decision here rather than an afterthought on the invoice.</p>
+        </div>
         <!-- STEP 2 — Lighting -->
         <div class="tl-step" data-step="2">
           <div class="tl-dot">2</div>
@@ -3798,6 +3821,16 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           </div>
         </div>
 
+
+        <!-- Between the steps: the brand mark on the rail, and the reason this
+             step leads to the next one. Not a .tl-step -- the timeline JS
+             selects .tl-step only, so the numbered coins are untouched. -->
+        <div class="tl-link">
+          <img class="tl-link-mark" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt=""
+               width="128" height="294" loading="lazy" decoding="async"/>
+          <p class="tl-link-lead">Texture decides how the color behaves.</p>
+          <p class="tl-link-sub">The same pigment on smooth stucco and on cedar shake is not the same color in your light. That is precisely what a sample board cannot tell you.</p>
+        </div>
         <!-- STEP 3 — Siding -->
         <div class="tl-step" data-step="3">
           <div class="tl-dot">3</div>
@@ -3822,6 +3855,16 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           </div>
         </div>
 
+
+        <!-- Between the steps: the brand mark on the rail, and the reason this
+             step leads to the next one. Not a .tl-step -- the timeline JS
+             selects .tl-step only, so the numbered coins are untouched. -->
+        <div class="tl-link">
+          <img class="tl-link-mark" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt=""
+               width="128" height="294" loading="lazy" decoding="async"/>
+          <p class="tl-link-lead">The last decisions are the ones the street sees first.</p>
+          <p class="tl-link-sub">A garage door faces the road more squarely than any wall does, and it is the piece most homeowners leave to chance.</p>
+        </div>
         <!-- STEP 4 — Premium -->
         <div class="tl-step" data-step="4">
           <div class="tl-dot">4</div>

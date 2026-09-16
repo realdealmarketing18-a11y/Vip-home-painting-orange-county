@@ -39,6 +39,11 @@ function sliceBetween(src, startMarker, endMarker, label, includeEnd = false) {
 function rewriteAssetPaths(text) {
   return text
     .replace(/url\('assets\//g, `url('${CFG.assetBase}/assets/`)
+    /* <img src> too, not just CSS url(). An extracted block can carry real
+       <img> tags -- the brush between the visualiser steps does -- and
+       without this they resolve against the city page and 404 on Pages
+       while looking perfect locally. verify-site.js caught exactly that. */
+    .replace(/src="assets\//g, `src="${CFG.assetBase}/assets/`)
     .replace(/url\('video\//g, `url('${CFG.assetBase}/video/`)
     .replace(/url\('viz-photos\//g, `url('${CFG.assetBase}/viz-photos/`)
     .replace(/const DIR = 'viz-photos\/';/, `const DIR = '${CFG.assetBase}/viz-photos/';`)
@@ -452,10 +457,14 @@ function modProblemSolution(c, no, bg) {
 /* Interactive Custom Visualization — the highlight, lifted from the OC
    page and localized: same copy, community name in the headline. */
 function vizSection(c) {
-  const BASE_SUB = 'Choose a style direction, then tap any palette. Watch this Newport Beach estate transform in real time &mdash; then send us yours.';
+  /* Must track the OC page verbatim. If the copy there changes, the throw below
+     fires rather than letting city pages silently lose their localized lede. */
+  const BASE_SUB = 'They saw color, lighting, texture and the garage door on their own house before anything was scheduled. Work the same four below &mdash; the house you are changing is theirs, and nothing you choose commits you to anything.';
+  const BASE_H2 = 'Every Exterior Decision the Gallaghers Made, <span class="accent">Now On Your Orange County Home</span>';
+  if (!VIZ_HTML.includes(BASE_H2)) throw new Error(`${c.slug}: viz headline marker not found — did the OC page copy change?`);
   let html = VIZ_HTML.replace(
-    'See Your Orange County Home In <span class="accent">Every Color</span> Before A Single Brushstroke',
-    `See Your ${c.name} Home In <span class="accent">Every Color</span> Before A Single Brushstroke`
+    BASE_H2,
+    `Every Exterior Decision the Gallaghers Made, <span class="accent">Now On Your ${c.name} Home</span>`
   );
   /* Unique localized lede above the shared tool, so even the boilerplate
      component sits inside text no other page has. */

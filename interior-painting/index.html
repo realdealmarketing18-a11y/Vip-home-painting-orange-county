@@ -921,6 +921,16 @@
     background: #E8833A; box-shadow: 0 0 10px rgba(232,131,58,0.75);
   }
   .tl-step { position: relative; padding-bottom: 46px; }
+  /* The link between steps. Purely additive -- nothing is replaced, the
+     numbered coins stay. The brush sits on the rail where the connector
+     runs, so the mark reads as part of the line rather than beside it. */
+  .tl-link { position: relative; padding: 0 0 46px; }
+  .tl-link-mark { position: absolute; left: -58px; top: 2px; width: 26px; height: auto;
+    display: block; filter: drop-shadow(0 3px 8px rgba(26,31,78,.20)); z-index: 3; }
+  .tl-link-lead { font-family: var(--font-serif); font-weight: 600; font-size: 17px;
+    line-height: 1.32; color: var(--navy); margin: 0 0 7px; }
+  .tl-link-sub { font-family: var(--font-sans); font-size: 14px; line-height: 1.62;
+    color: #4A4F70; margin: 0; max-width: 46ch; }
   .tl-step:last-child { padding-bottom: 0; }
   /* Un-struck coin: bone-white face inside a double gold ring */
   .tl-dot {
@@ -1803,6 +1813,9 @@
 
     /* Timeline becomes the step scroll-tracks (no rail/dots on mobile) */
     .viz-timeline { padding: 0; }
+    .tl-link { padding: 0 0 30px; text-align: center; }
+    .tl-link-mark { position: static; margin: 0 auto 12px; width: 22px; }
+    .tl-link-sub { max-width: none; }
     .viz-timeline .tl-rail { display: none; }
     .tl-dot { display: none; }
     .tl-step { min-height: 92vh; padding: 0; }
