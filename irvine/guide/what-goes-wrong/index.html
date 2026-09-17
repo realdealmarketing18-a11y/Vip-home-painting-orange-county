@@ -2754,8 +2754,33 @@
   .cand-reasons { list-style: none; margin: clamp(34px, 4.6vw, 62px) auto 0;
     padding: 0 24px; max-width: 1180px; display: grid; gap: clamp(20px, 2.4vw, 40px);
     grid-template-columns: repeat(3, 1fr); }
-  .cand-reasons li { display: flex; align-items: flex-start;
-    gap: clamp(12px, 1.2vw, 18px); text-align: left; }
+  /* Stacked, not a row: mark on top, demo, then the copy. A portrait demo
+     cannot sit beside the brush in a ~370px column, so the brush moves to
+     the head of the block and the reading order becomes logo -> video ->
+     subheadline, which is the order Fabian asked for. */
+  .cand-reasons li { display: flex; flex-direction: column;
+    align-items: flex-start; gap: clamp(12px, 1.2vw, 18px); text-align: left; }
+
+  /* ============ DEMO SWIPE ============
+     The step demonstration. Portrait on purpose: it fits a third-width
+     column, shows more facade, and is already the shape a reel or an ad
+     needs -- so one asset serves the page and social with no second export.
+     Mechanic is the page's existing .ba-frame, driven by initBA, rather
+     than a second slider written to do the same job. */
+  .demo-swipe { width: 100%; position: relative; }
+  .demo-swipe .ba-frame { aspect-ratio: 4/5; border-radius: 3px;
+    box-shadow: 0 0 0 1px rgba(201,169,97,.55), 0 0 0 5px #fff,
+      0 18px 38px rgba(26,31,78,.20); }
+  .demo-swipe .ba-handle .knob { width: 40px; height: 40px; }
+  .demo-swipe .ba-label { font-size: 8.5px; letter-spacing: .14em; padding: 4px 9px; }
+  /* Unmissable, and one line to delete when real footage lands. */
+  .demo-swipe::after { content: 'Placeholder 4 demo footage pending';
+    position: absolute; left: 0; right: 0; bottom: -19px;
+    font-family: var(--font-sans); font-size: 8.5px; font-weight: 700;
+    letter-spacing: .13em; text-transform: uppercase;
+    color: var(--gold-deep); text-align: center; }
+  .cand-reasons .demo-swipe, .step .demo-swipe { margin-bottom: 22px; }
+  .step .demo-swipe { max-width: 300px; margin-inline: auto; }
   /* The crown brush marks each reason instead of a number badge. The
      numbers have not gone anywhere — they are inside the bold lines
      ("Eleven schemes", "twice", "2-year warranty") — and the mark repeated
