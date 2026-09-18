@@ -176,6 +176,168 @@ while he sends, rather than after the page is built. **None of these are decided
 
 ---
 
+---
+
+# BATCH 2 - the Power Guarantee (pp. 174-187)
+
+Received **2026-09-17**. Still not a brief. Still not building.
+
+## ANTICIPATE AND OVERCOME OBJECTIONS (p174)
+
+After mapping the offer, ask what objections a **sceptical** prospect would have. Write down
+the main three, and how each is overcome. Then read the offer back and ask:
+**"What can I add to make this offer even more compelling?"**
+
+From the same page: injecting scarcity tells prospects they are being offered something
+unique **but they need to act fast**.
+
+## OFFER COPY (p175)
+
+Once the offer is as irresistible as possible, the copy must be **tightly written** - direct
+and to the point. No confusion about **what** they receive in exchange for money or time,
+**when** they receive it, and **why** it benefits them. **Edit offer copy more ruthlessly
+than normal.**
+
+---
+
+## THE POWER GUARANTEE
+
+### You already have one, whether you advertise it or not (p178)
+
+By law in most countries, if something is defective, does not perform as advertised, or could
+be perceived as not truthfully advertised, the consumer is **already** entitled to repair,
+replacement, resupply or compensation. **So you already have a guarantee.** If you have it
+anyway, why not advertise it?
+
+> **Jurisdiction warning.** Suby cites the **ACCC** - Australian consumer law. VIP is
+> California: the analogue is state consumer protection plus **CSLB** contractor obligations,
+> which are not the same thing. Do not transplant his framing. Any sentence on the page about
+> what the law already guarantees must be checked against California law first.
+
+### The numbers (p179, p182)
+
+**A powerful guarantee can triple sales, and it is called upon less than 5% of the time.**
+
+### The deeper psychology (p179-180)
+
+In any transaction there is risk, and usually the **buyer** carries it. For your prospect the
+biggest risk is **believing your promise** - you are asking them to take your word, in an age
+where scepticism is rampant and they have been let down before.
+
+**The reframe that matters:** go beyond thinking of the guarantee as *risk reversal* meant to
+push fence-sitters over. Think of it as a **proof element** - proof of how confident you are
+about delivering on every promise the offer makes. It is one of the most important
+credibility elements in the offer.
+
+"For every dishonest scammer who takes advantage of your liberal guarantee policy, you will
+get **five honest prospects** who say yes when they otherwise would have been too uneasy."
+
+### The order of the one-two punch (p177)
+
+> **"You want to lead with the Godfather Strategy, which is to make them an offer that is so
+> good they cannot refuse. And then you want to back that up with the whole 'you can't lose'
+> guarantee, and reverse all that risk."**
+
+Offer first. Guarantee second, propping it up.
+
+---
+
+## 7 STEPS TO CREATING A POWER GUARANTEE (pp. 181-183)
+
+**1 - Study the competition.** Google your industry plus the word "guarantee". Have someone
+**call and ask** about theirs. Look outside your industry and geography. What trends? Specific
+performance-related guarantees, or the common lacklustre vanilla "satisfaction guaranteed"?
+
+**2 - Laser in on your strengths.** What is genuinely a strong point - fast results?
+craftsmanship? speed of installation? maintenance? consistently outstanding results? saving
+money or time? **"Always sell the thing you do better than your competition."**
+
+**3 - Be specific.** Not a vague notion of "satisfaction" - too broad. Make a specific promise,
+and they must experience the benefits **or they do not owe you a red cent**. Write down in
+detail what good things happen when a client uses the service, then guarantee *that outcome*.
+**"Guarantee in detail what that satisfaction will look like and make it measurable."**
+
+**4 - Choose a payback.** Fewer than 5% will ever claim it, so make the payback attractive.
+Ideally it **costs little but carries high perceived value**, and removes perceived risk. It
+should **exceed expectations, be memorable, and wow them.**
+
+**5 - Test, measure, refine.** Include it on some landing pages and not others, or across
+different channels. Track results against the same period last year. Test **at least two**
+combinations - 30 days against 90 (**longer guarantees generally work better**); even a
+ten-year or lifetime guarantee as an experiment.
+
+**6 - Put it front and centre.** In writing, on the website, landing pages, proposals, ads,
+brochures - anywhere a customer will see it.
+
+**7 - Give it a name.** Not mandatory, but a unique name dramatises it and heightens impact.
+
+### Name examples (p184)
+
+100% Money-Back - 'Triple-Protection' - Take it to the Bank! - Better than Risk Free - You
+Can't Lose - Unconditional - No Questions Asked - I Personally Guarantee - 30-Day Free
+Examination - No-Questions, No-Quibbles - Iron-Clad - 100% On-the-Spot Full Refund - My 110%
+'Call Me Crazy' GUARANTEE! - Absolutely No Risk to You! - 100% No-Hassle Refund! - No
+Pussyfooting Around and Get Every Cent Back - Stronger than Steel
+
+> **Register warning.** Most of that list is loud. `BRAND-VOICE.md` is quiet authority, no
+> shouting, one exclamation mark per page maximum. **Naming the guarantee is right; naming it
+> "Call Me Crazy" is not.** A Hidden Canyon owner reads that as a used-car lot.
+
+### Industry-defining examples (p185)
+
+| Name | The promise |
+|---|---|
+| **The Forever Guarantee** - Cutco | If at any time you are not completely satisfied with the performance, we will correct the problem or replace it |
+| **The $1 Million Service Guarantee** - LifeLock | Up to $1M on lawyers, investigators and whatever else it takes |
+| **Domino's Pizza** | Your pizza delivered in 30 minutes... or it's FREE |
+| **Costco** | 100% satisfaction; membership fee ($55) refunded in full at any time |
+
+---
+
+## ACTION POINTS (p186)
+
+- You create a **FEATURE LIST**
+- You create a **BENEFIT LIST**
+- You reduce your **OFFER** to writing
+- You offer a **POWER GUARANTEE**
+
+> *"Follow these steps and do them well... then craft an irresistible Godfather Offer and
+> throw that on top... and you've got a money-multiplying formula for wealth in virtually any
+> industry."*
+
+---
+
+## WHAT BATCH 2 CHANGES FOR VIP - observations only, nothing decided
+
+**The guarantee belongs on the visualization, not the paint job.** Step 2 says sell the thing
+you do better than the competition. VIP's warranty is **2 years and CertaPro advertises 2** -
+that is parity, not strength. The **Custom Visualization Service is the strength**:
+uncontested across roughly 50 painters in Irvine and Anaheim. That is where a power guarantee
+has room to be specific, measurable and unmatched.
+
+**Domino's is the structural match.** "Delivered in 30 minutes... or it's free" is a specific,
+measurable, time-bound promise on the thing they do fastest. VIP's offer is already a
+**30-minute** visualization. The shape is sitting there.
+
+**But step 3 collides with `[turnaround]`.** "Guarantee in detail what that satisfaction will
+look like and make it measurable" - VIP cannot guarantee a turnaround it has never measured.
+Test **T4** in `VIZ-RENDER.md` (render one house end to end and time it) is the blocker on any
+measurable guarantee, and it is the same blocker already sitting on the Step Five button.
+
+**Step 1 is unrun research.** Nobody has Googled OC painters plus "guarantee", or called to
+ask. `00-SUMMARY.md` established that nobody claims the coastal/elastomeric wedge; whether
+anybody claims a *guarantee* is unknown. Real gap, cheap to close.
+
+**Step 4's "costs little, high perceived value" has an obvious candidate** - additional
+renders. Low marginal cost, high perceived value, directly relevant to what she came for.
+
+**And p178 stays parked** until California law is checked. Suby's "you already have a
+guarantee" is stated against Australian consumer law. Asserting the equivalent on a
+California contractor's page without checking is exactly the kind of claim this repo does not
+ship.
+
+---
+
 ## STILL TO COME
 
-Items **1–2**, and roughly 40 pages total across the remaining batches.
+Items **1–2** of the 17-section list (they sit before p192), and the remaining batches.
