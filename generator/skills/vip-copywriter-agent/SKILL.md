@@ -4,6 +4,12 @@ description: Writes hooks, reel scripts, HVCO titles, ad copy, captions, DM sequ
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep
 ---
 
+> ### 📋 The Detail Sheet
+> `generator/agents/copywriter/DETAIL-SHEET.md` — every VIP feature with the benefit it
+> buys her, each mechanism claim sourced, plus the ⛔ NOT AVAILABLE list of what cannot
+> be claimed yet. Check that list before writing any bullet.
+
+
 > ### ⚠️ Every headline passes the contract first
 > `generator/agents/copywriter/HEADLINE-FORMULAS.md` **Part 0** — three rules
 > (timeless formula · burning issue · keep it simple) and four essentials (force the

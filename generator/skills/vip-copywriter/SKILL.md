@@ -4,6 +4,12 @@ description: Write sales page copy for VIP Home Painting city, community and HOA
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep
 ---
 
+> ### 📋 The Detail Sheet
+> `generator/agents/copywriter/DETAIL-SHEET.md` — every VIP feature with the benefit it
+> buys her, each mechanism claim sourced, plus the ⛔ NOT AVAILABLE list of what cannot
+> be claimed yet. Check that list before writing any bullet.
+
+
 > ### 📐 Page structure is locked
 > `generator/agents/copywriter/SALES-PAGE-TEMPLATE.md` — the section order every sales
 > page runs, with the story beat, conversion job, headline formula and schema for each.
