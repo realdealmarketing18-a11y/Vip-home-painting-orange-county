@@ -214,3 +214,77 @@ Third most-read element. Needs: reminder of the offer, **warning about not actin
    written, and the Step Five button keeps its `[turnaround]` placeholder.
 5. **Items 1–2** of the 17 are still untranscribed. I have assumed **1 = the headline**; if
    that is wrong the top of this plan shifts.
+
+---
+
+# PART 6 · DRAFTS FOR REVIEW — added 2026-09-17, **still not applied**
+
+## 6A · The three band bullets, sharpened
+
+Kept at three per Fabian. Each already carries a swipe demo, and Part G's show-don't-tell
+rule says a demonstration outweighs a line — three demonstrated beats six asserted.
+
+| Now on the page | Draft | Part G shape |
+|---|---|---|
+| *Eleven schemes, one decision, 30 minutes* | **Never approve a colour you have only seen at 2×2 feet.** Eleven schemes on your own facade, in your own light, in 30 minutes. | **What you should never** — the strongest of the six, because fear of loss beats fear of attainment |
+| *A color you regret costs the whole job twice* | **How to make "I picked the wrong colour" impossible.** Exterior paint is permanent in a way few decisions are, and the second repaint costs exactly what the first one did. | **How to eliminate X** |
+| *A real number, itemized before you sign* | **Most painters will not put a number on their website. Here is ours.** Exterior work starts at $4.75 per square foot of paintable surface, broken out line by line — prep, primer, coating, trim. | **Where to find Y** |
+
+Her words used: *approve*, *permanent*, *your own light*. All from `07-VOICE.md`'s glossary.
+No height added — these replace lines already on the page.
+
+## 6B · The rationale — Fabian's own words, 2026-09-17
+
+**His answer, verbatim from the session:** *"I have seen arguments and homeowners never
+deciding on colors due to frustration and confusion so I created this tool to help and empower
+homeowners to make a fast educated decision."*
+
+That is Part 1 exactly — it names a shared enemy (the paralysis), and makes him the advocate.
+Draft for the byline slot, which currently holds a generic promise:
+
+> **Why it costs you nothing**
+> *I kept watching the same thing happen. Two people who agree on everything else, standing in
+> a driveway holding paint chips, arguing — and then deciding nothing at all. Weeks of it. So
+> we built the tool that ends it. You see your own house in every colour you are considering,
+> and you decide in one sitting. That is worth more to me than charging you for it.*
+> **— Fabian, Founder**
+
+**He has flagged this as a video clip.** Founder to camera in the byline slot, with the text as
+caption. King Kong runs video testimonials in exactly this position and it is the one register
+shift the page can afford — the founder is the one place the editorial distance is allowed to
+drop (`BRAND-VOICE.md`).
+
+## 6C · The offer, stated — for the close section
+
+Goes between the scope list and the byline. **Note: the scope list is the company service
+menu, not the offer stack.** The stack below is what she actually receives.
+
+**Headline candidates** — pick one:
+
+| Formula | Draft |
+|---|---|
+| **A6** cost of wrong | See It On Your House First, or Pay to Find Out the Expensive Way |
+| **B5** Avoid / Get | Avoid the Repaint You Pay for Twice — See All 11 Schemes First |
+| **G1** master formula | Finally! How to Choose Your Exterior Colour Without Guessing, in 30 Minutes |
+
+**Subheadline** — Suby's G3 shape, concrete units and how it arrives:
+
+> *A 30-minute consultation in your home. Your own elevation rendered in 11 colour schemes and
+> 9 finish options, with the Sherwin-Williams pairing for each — and an itemized estimate,
+> line by line.*
+
+**The stack — what she actually receives:**
+
+- 30 minutes, in her home
+- Her **actual elevation** rendered, not a sample board
+- **11** colour schemes
+- **9** further options — lighting, texture, premium additions
+- Palette guidance matched to her community's architecture and light
+- An **itemized** estimate — prep, primer, coating, trim, accents priced separately
+- Her HOA design-review package, prepared as part of the project
+
+**What she does:** one action — send a photo of the front of her house.
+
+> ⛔ **No dollar value attached.** Suby asks for one in all four batches. The $1,000 figure was
+> pulled from the commercial script for having no source. **Fabian's number, not a guess.**
+
