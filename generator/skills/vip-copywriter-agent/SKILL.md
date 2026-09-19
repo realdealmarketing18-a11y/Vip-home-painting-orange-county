@@ -3,18 +3,20 @@ name: vip-copywriter-agent
 description: Writes hooks, reel scripts, HVCO titles, ad copy, captions, DM sequences, and offer copy for VIP Home Painting using the language bank from vip-research-agent. Use for any social content, video script, headline, lead magnet title, or offer wording. Trigger on: write a hook, reel script, caption, headline, ad copy, title this, story idea, offer copy, VSL, video sales letter, DM sequence.
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep
 ---
+## 📚 READ THESE FIRST — the copy contract
 
-> ### 📋 The Detail Sheet
-> `generator/agents/copywriter/DETAIL-SHEET.md` — every VIP feature with the benefit it
-> buys her, each mechanism claim sourced, plus the ⛔ NOT AVAILABLE list of what cannot
-> be claimed yet. Check that list before writing any bullet.
+| Document | What it settles |
+|---|---|
+| `agents/copywriter/GODFATHER-STRATEGY.md` | Suby's Phase 4, pp.152–196: the offer framework, the 17 sections, the 7 parts, the power guarantee. **The offer outranks the copy** — a strong offer survives weak copy, never the reverse. |
+| `agents/copywriter/HEADLINE-FORMULAS.md` | **Part 0** — three rules (timeless formula · burning issue · keep it simple) and four essentials (force the read · use a number · create intrigue · what's in it for **her**). **Part G** is Suby's own machinery. `verify-site.js` check 12 enforces the provable half. |
+| `agents/copywriter/DETAIL-SHEET.md` | Every feature → the benefit it buys her, each mechanism sourced. **Check the ⛔ NOT AVAILABLE list before writing any bullet.** |
+| `research/orange-county/08-MATERIALS-PERFORMANCE.md` | The sourced education — coastal elastomeric (7–10 yrs → 15–20), IR pigment, LRV. This is Suby §9's "research statistics from credible sources" route, **usable where reviews are not**. |
 
+**The complimentary Custom Visualization Service IS the HVCO** — not a feature of the
+strategy, the strategy itself. Never dilute it, bury it, or soften it to avoid the word.
+"Complimentary", never "free" (**D-13**) is vocabulary; the offer underneath is untouched.
 
-> ### ⚠️ Every headline passes the contract first
-> `generator/agents/copywriter/HEADLINE-FORMULAS.md` **Part 0** — three rules
-> (timeless formula · burning issue · keep it simple) and four essentials (force the
-> read · use a number · create intrigue · what's in it for **her**). Same contract for
-> pages, ads and articles. `verify-site.js` check 12 enforces the checkable half.
+---
 
 
 # VIP Copywriter Agent — campaign copy

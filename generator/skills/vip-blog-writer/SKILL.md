@@ -3,12 +3,20 @@ name: vip-blog-writer
 description: Write VIP Home Painting blog articles and city pillar guides — educational content built to earn AI citations from Copilot, Google AI Mode, ChatGPT and Perplexity. Use when writing a blog post, pillar guide, editorial article, or answering a homeowner question as content; when planning a content calendar; or when asked what to write about. Triggers on blog, article, pillar, guide, content plan, editorial, AI citations, what should we write, or a named city needing content.
 allowed-tools: Bash, Read, Write, Edit, Glob, Grep
 ---
+## 📚 READ THESE FIRST — the copy contract
 
-> ### ⚠️ Every headline passes the contract first
-> `generator/agents/copywriter/HEADLINE-FORMULAS.md` **Part 0** — three rules
-> (timeless formula · burning issue · keep it simple) and four essentials (force the
-> read · use a number · create intrigue · what's in it for **her**). Same contract for
-> pages, ads and articles. `verify-site.js` check 12 enforces the checkable half.
+| Document | What it settles |
+|---|---|
+| `agents/copywriter/GODFATHER-STRATEGY.md` | Suby's Phase 4, pp.152–196: the offer framework, the 17 sections, the 7 parts, the power guarantee. **The offer outranks the copy** — a strong offer survives weak copy, never the reverse. |
+| `agents/copywriter/HEADLINE-FORMULAS.md` | **Part 0** — three rules (timeless formula · burning issue · keep it simple) and four essentials (force the read · use a number · create intrigue · what's in it for **her**). **Part G** is Suby's own machinery. `verify-site.js` check 12 enforces the provable half. |
+| `agents/copywriter/DETAIL-SHEET.md` | Every feature → the benefit it buys her, each mechanism sourced. **Check the ⛔ NOT AVAILABLE list before writing any bullet.** |
+| `research/orange-county/08-MATERIALS-PERFORMANCE.md` | The sourced education — coastal elastomeric (7–10 yrs → 15–20), IR pigment, LRV. This is Suby §9's "research statistics from credible sources" route, **usable where reviews are not**. |
+
+**The complimentary Custom Visualization Service IS the HVCO** — not a feature of the
+strategy, the strategy itself. Never dilute it, bury it, or soften it to avoid the word.
+"Complimentary", never "free" (**D-13**) is vocabulary; the offer underneath is untouched.
+
+---
 
 
 # VIP BLOG WRITER
