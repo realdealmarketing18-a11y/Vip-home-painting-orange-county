@@ -462,12 +462,14 @@ function modProblemSolution(c, no, bg) {
 function vizSection(c) {
   /* Must track the OC page verbatim. If the copy there changes, the throw below
      fires rather than letting city pages silently lose their localized lede. */
-  const BASE_SUB = 'They saw color, lighting, texture and the garage door on their own house before anything was scheduled. Work the same four below &mdash; the house you are changing is theirs, and nothing you choose commits you to anything.';
-  const BASE_H2 = 'Every Exterior Decision the Gallaghers Made, <span class="accent">Now On Your Orange County Home</span>';
+  const BASE_SUB = 'The Gallaghers made four decisions, not one &mdash; color, lighting, texture and the garage door. Each one changed how the last one looked. Make all four on their house, before you make them on yours.';
+  /* The localization hook is the question's own middle, not a trailing
+     clause -- the city belongs inside the query a homeowner types. */
+  const BASE_H2 = 'an Exterior Paint Color Without Guessing?';
   if (!VIZ_HTML.includes(BASE_H2)) throw new Error(`${c.slug}: viz headline marker not found — did the OC page copy change?`);
   let html = VIZ_HTML.replace(
     BASE_H2,
-    `Every Exterior Decision the Gallaghers Made, <span class="accent">Now On Your ${c.name} Home</span>`
+    `an Exterior Paint Color in ${c.name} Without Guessing?`
   );
   /* Unique localized lede above the shared tool, so even the boilerplate
      component sits inside text no other page has. */

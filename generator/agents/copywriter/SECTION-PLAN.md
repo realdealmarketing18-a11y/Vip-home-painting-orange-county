@@ -217,7 +217,24 @@ Third most-read element. Needs: reminder of the offer, **warning about not actin
 
 ---
 
-# PART 6 · DRAFTS FOR REVIEW — added 2026-09-17, **still not applied**
+# PART 6 · DRAFTS — **APPLIED 2026-09-20**
+
+Approved by Fabian and written into the OC page. What shipped differs from the
+drafts below in two ways, both his direction:
+
+1. **The queries moved into the H2s.** The intrigue had been sitting in the
+   subheadlines while the H2s carried no harvested query at all — the slot Google
+   and the AI engines actually weight. Finding 5's queries now sit in the H2s.
+2. **The sections carry the hero's numbered beats.** The hero already ends on
+   *1. They visualized it · 2. They loved it · 3. We painted it*, and sections 2, 3
+   and 4 referenced none of them. Their eyebrows are now those three beats, so the
+   page reads as one story instead of three good sections.
+
+**Rule that came out of it:** a headline on this page has to do both jobs at once —
+carry a documented query *and* advance the Gallaghers. A headline that only does one
+gets sent back.
+
+## The drafts as approved
 
 ## 6A · The three band bullets, sharpened
 

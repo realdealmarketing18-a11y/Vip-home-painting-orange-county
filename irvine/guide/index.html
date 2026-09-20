@@ -1516,6 +1516,51 @@
     font-size: 15.5px; color: #4A4F70; margin: 0 0 20px; }
 
   /* ============================================================
+     THE OFFER, STATED -- the strip between sections 2 and 3
+     ============================================================
+     This was a single italic line and a button. It is now the only place the
+     offer is named in full, so it needs to read as a bordered panel rather
+     than as a caption -- Suby's point is that the offer is the thing being
+     sold, and a caption does not look like a thing.
+
+     The stack is two columns on desktop and one on mobile. It is NOT
+     centered: a centred list of eight items with ragged edges on both sides
+     is unreadable, so the panel centres and the list left-aligns inside it.
+     The gold rule top and bottom is the same 1px hairline used elsewhere;
+     the 3px version reads as a section divider and this is not a section. */
+  .offer-stake { max-width: 880px; margin-left: auto; margin-right: auto;
+    padding: clamp(28px, 3.2vw, 40px) clamp(20px, 3vw, 44px);
+    border: 1px solid rgba(168,138,71,.34); border-radius: 6px;
+    background: linear-gradient(180deg, rgba(255,253,248,.92), rgba(250,245,233,.86));
+    box-shadow: 0 10px 34px rgba(26,31,78,.07); }
+  .offer-stake .os-ttl { font-family: var(--font-serif); font-weight: 400;
+    font-size: clamp(21px, 2.3vw, 31px); line-height: 1.22; color: var(--navy);
+    margin: 0 0 14px; letter-spacing: -.01em; }
+  .offer-stake .os-sub { font-family: var(--font-sans); font-style: normal;
+    font-size: clamp(14px, 1.05vw, 16px); line-height: 1.62;
+    color: rgba(26,31,78,.80); max-width: 660px; margin: 0 auto 26px; }
+  .offer-stake .os-stack { list-style: none; margin: 0 auto 24px; padding: 0;
+    max-width: 760px; text-align: left;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 11px 30px; }
+  .offer-stake .os-stack li { position: relative; padding-left: 26px;
+    font-family: var(--font-sans); font-size: clamp(13px, .92vw, 14.5px);
+    line-height: 1.55; color: rgba(26,31,78,.82); }
+  /* The tick is drawn, not a glyph: the font's check renders at a different
+     weight across platforms and looked broken next to Inter on Windows. */
+  .offer-stake .os-stack li::before { content: ''; position: absolute;
+    left: 2px; top: .42em; width: 11px; height: 6px;
+    border-left: 2px solid var(--gold-deep); border-bottom: 2px solid var(--gold-deep);
+    transform: rotate(-45deg); }
+  .offer-stake .os-stack b { font-weight: 600; color: var(--navy); }
+  .offer-stake .os-do { font-family: var(--font-sans) !important;
+    font-style: normal !important; font-size: clamp(14px, 1vw, 15.5px) !important;
+    color: rgba(26,31,78,.88) !important; margin: 0 0 22px !important; }
+  .offer-stake .os-do b { font-weight: 700; color: var(--navy); }
+  @media (max-width: 720px) {
+    .offer-stake .os-stack { grid-template-columns: 1fr; gap: 10px; }
+  }
+
+  /* ============================================================
      STEP FIVE — the elevation upload
      ============================================================ */
   /* Step Five is a full-width block BELOW the two-column flow, not a step

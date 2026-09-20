@@ -1754,6 +1754,51 @@
     font-size: 15.5px; color: #4A4F70; margin: 0 0 20px; }
 
   /* ============================================================
+     THE OFFER, STATED -- the strip between sections 2 and 3
+     ============================================================
+     This was a single italic line and a button. It is now the only place the
+     offer is named in full, so it needs to read as a bordered panel rather
+     than as a caption -- Suby's point is that the offer is the thing being
+     sold, and a caption does not look like a thing.
+
+     The stack is two columns on desktop and one on mobile. It is NOT
+     centered: a centred list of eight items with ragged edges on both sides
+     is unreadable, so the panel centres and the list left-aligns inside it.
+     The gold rule top and bottom is the same 1px hairline used elsewhere;
+     the 3px version reads as a section divider and this is not a section. */
+  .offer-stake { max-width: 880px; margin-left: auto; margin-right: auto;
+    padding: clamp(28px, 3.2vw, 40px) clamp(20px, 3vw, 44px);
+    border: 1px solid rgba(168,138,71,.34); border-radius: 6px;
+    background: linear-gradient(180deg, rgba(255,253,248,.92), rgba(250,245,233,.86));
+    box-shadow: 0 10px 34px rgba(26,31,78,.07); }
+  .offer-stake .os-ttl { font-family: var(--font-serif); font-weight: 400;
+    font-size: clamp(21px, 2.3vw, 31px); line-height: 1.22; color: var(--navy);
+    margin: 0 0 14px; letter-spacing: -.01em; }
+  .offer-stake .os-sub { font-family: var(--font-sans); font-style: normal;
+    font-size: clamp(14px, 1.05vw, 16px); line-height: 1.62;
+    color: rgba(26,31,78,.80); max-width: 660px; margin: 0 auto 26px; }
+  .offer-stake .os-stack { list-style: none; margin: 0 auto 24px; padding: 0;
+    max-width: 760px; text-align: left;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 11px 30px; }
+  .offer-stake .os-stack li { position: relative; padding-left: 26px;
+    font-family: var(--font-sans); font-size: clamp(13px, .92vw, 14.5px);
+    line-height: 1.55; color: rgba(26,31,78,.82); }
+  /* The tick is drawn, not a glyph: the font's check renders at a different
+     weight across platforms and looked broken next to Inter on Windows. */
+  .offer-stake .os-stack li::before { content: ''; position: absolute;
+    left: 2px; top: .42em; width: 11px; height: 6px;
+    border-left: 2px solid var(--gold-deep); border-bottom: 2px solid var(--gold-deep);
+    transform: rotate(-45deg); }
+  .offer-stake .os-stack b { font-weight: 600; color: var(--navy); }
+  .offer-stake .os-do { font-family: var(--font-sans) !important;
+    font-style: normal !important; font-size: clamp(14px, 1vw, 15.5px) !important;
+    color: rgba(26,31,78,.88) !important; margin: 0 0 22px !important; }
+  .offer-stake .os-do b { font-weight: 700; color: var(--navy); }
+  @media (max-width: 720px) {
+    .offer-stake .os-stack { grid-template-columns: 1fr; gap: 10px; }
+  }
+
+  /* ============================================================
      STEP FIVE — the elevation upload
      ============================================================ */
   /* Step Five is a full-width block BELOW the two-column flow, not a step
@@ -3505,9 +3550,9 @@
           <div><div class="name">The Gallagher Family</div>
           <div class="sub-line">Their remaining seven schemes</div></div></div>
       </div>
-      <div class="eyebrow">Why Get A Complimentary Custom Color Consultation</div>
-      <h2>Avoid Costly <span class="accent">Mistakes</span> &mdash; See Your Orange
-        County Home in Every Color First</h2>
+      <div class="eyebrow">1 &middot; They Visualized It</div>
+      <h2>The Gallaghers Did Not Choose This Color. <span class="accent">They Eliminated
+        Ten Others First.</span></h2>
       <!-- THE SWATCH-SCALE ARGUMENT — 07-VOICE.md calls this "the most
            valuable single finding" and names the previous line here as the
            thing to replace. Its criticism: "a paint chip in a store tells
@@ -3569,7 +3614,7 @@
          eleven cards stopped and three brush blocks started with nothing
          carrying the story across. This is the handoff. -->
     <div class="reasons-head">
-      <h3>3 Reasons to See It on <span class="accent">Your Own House</span> First</h3>
+      <h3>3 Things to Settle <span class="accent">Before a Single Gallon Is Opened</span></h3>
     </div>
     <ul class="cand-reasons">
       <li>
@@ -3583,9 +3628,9 @@
             <div class="ba-label r">After</div>
           </div>
         </div>
-        <div><b>Eleven schemes, one decision, 30 minutes</b>
-          Not swatches on three walls &mdash; the whole facade, in your light,
-          in every color you are considering, before anything is scheduled.</div>
+        <div><b>Never approve a color you have only seen at 2&times;2 feet.</b>
+          Eleven schemes on the whole front of your house, in your own light,
+          in 30 minutes &mdash; not three samples taped to a wall.</div>
       </li>
       <li>
         <img class="cr-brush" src="assets/logos/logo-brush-navy.png" alt="" width="128" height="294" loading="lazy" decoding="async"/>
@@ -3598,10 +3643,9 @@
             <div class="ba-label r">After</div>
           </div>
         </div>
-        <div><b>A color you regret costs the whole job twice</b>
-          Exterior paint is permanent in a way few decisions are, and the
-          second repaint costs exactly what the first one did. Seeing it on
-          your own walls first is what makes that impossible.</div>
+        <div><b>What a wrong color actually costs &mdash; and it is not the paint.</b>
+          The second repaint costs exactly what the first one did. Same prep,
+          same primer, same crew. Paint is the cheap part of painting.</div>
       </li>
       <li>
         <img class="cr-brush" src="assets/logos/logo-brush-navy.png" alt="" width="128" height="294" loading="lazy" decoding="async"/>
@@ -3614,15 +3658,39 @@
             <div class="ba-label r">After</div>
           </div>
         </div>
-        <div><b>A real number, itemized before you sign</b>
-          Most painters will not put one on their website. VIP exterior work
-          starts at <b>$4.75</b> per square foot of paintable surface, broken
-          out line by line &mdash; prep, primer, coating, trim.</div>
+        <div><b>The number most painters will not put on their website.</b>
+          VIP exterior work starts at <b>$4.75</b> per square foot of paintable
+          surface, broken out line by line &mdash; prep, primer, coating, trim.</div>
       </li>
     </ul>
 
-    <div class="cand-foot">
-      <p>Your home, rendered the same way, in a complimentary 30-minute consultation.</p>
+    <!-- THE OFFER, STATED -- Suby&apos;s Godfather step. The bridge strip between
+         sections 2 and 3 was a one-line handoff; it is the only place on the
+         page where the offer is named in full, so it carries the stack rather
+         than a promise. The 12-item list further down is the company SERVICE
+         MENU, not this -- the stack below is what she personally receives.
+         No dollar value is attached: Suby asks for one in all four batches and
+         Fabian has not set it. A guessed figure was pulled once already. -->
+    <div class="cand-foot offer-stake">
+      <h3 class="os-ttl">Everything the Gallaghers Saw Before They Committed.
+        <span class="accent">On Your House. In 30 Minutes.</span></h3>
+      <p class="os-sub">Thirty minutes in your living room. You send one photo of the
+        front of your house, and our design team paints it on screen in eleven complete
+        color schemes and nine finish options &mdash; each one with the exact
+        Sherwin-Williams colors &mdash; plus a written estimate broken out line by line.</p>
+      <ul class="os-stack">
+        <li>30 minutes, in your own home</li>
+        <li><b>The front of your house, painted on screen</b> &mdash; not a sample board,
+          not a showroom, not somebody else&rsquo;s project photo</li>
+        <li><b>11</b> complete color schemes &mdash; body, trim and accent together</li>
+        <li><b>9</b> further options &mdash; lighting, texture, premium additions</li>
+        <li>The exact Sherwin-Williams colors for every one, by name and number</li>
+        <li>Color guidance matched to your street&rsquo;s architecture and light</li>
+        <li>A written estimate, <b>itemized</b> &mdash; prep, primer, coating, trim and
+          accents priced separately</li>
+        <li>Your HOA design-review package, prepared as part of the project</li>
+      </ul>
+      <p class="os-do">What you do: one thing. <b>Send a photo of the front of your house.</b></p>
       <a href="#viz" class="btn-gold"><span class="col-2"><span>See Your Home In Every Color</span><span class="sub">Complimentary &middot; Itemized estimate included</span></span></a>
     </div>
   </section>
@@ -3641,9 +3709,9 @@
           <div class="sub-line">Everything they chose after the color</div></div></div>
       </div>
       <div class="sec-no">No. 01</div>
-      <div class="eyebrow">Custom Visualization Service</div>
-      <h2 class="ttl">Every Exterior Decision the Gallaghers Made, <span class="accent">Now On Your Orange County Home</span></h2>
-      <p class="sub" style="text-align:center; font-size: 18px; max-width: 620px; margin: 0 auto 28px;">They saw color, lighting, texture and the garage door on their own house before anything was scheduled. Work the same four below &mdash; the house you are changing is theirs, and nothing you choose commits you to anything.</p>
+      <div class="eyebrow">2 &middot; Now It Is Your Turn</div>
+      <h2 class="ttl">How Do You Choose an Exterior Paint Color Without Guessing? <span class="accent">Do What the Gallaghers Did &mdash; on Their House.</span></h2>
+      <p class="sub" style="text-align:center; font-size: 18px; max-width: 620px; margin: 0 auto 28px;">The Gallaghers made four decisions, not one &mdash; color, lighting, texture and the garage door. Each one changed how the last one looked. Make all four on their house, before you make them on yours.</p>
     </div>
 
     <div class="viz-flow">
@@ -3952,7 +4020,7 @@
   <section id="process" data-story>
     <div class="process-head">
       <div class="sec-no">No. 02</div>
-      <div class="eyebrow">What Happens Next</div>
+      <div class="eyebrow">3 &middot; Then We Painted It</div>
       <h2 class="ttl">See Every Orange County Exterior Painting Decision <span class="accent">Before It Becomes Permanent</span></h2>
       <p class="sub">Color was the first decision the Gallaghers made for their Newport Beach home, not the last. Lighting, texture, materials, the garage door: each one rendered on their own house, at full size, while every choice was still reversible.</p>
     </div>
