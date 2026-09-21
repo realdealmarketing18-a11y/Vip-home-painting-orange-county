@@ -698,12 +698,6 @@
 
 
   /* editorial serial numbers */
-  .sec-no {
-    font-family: var(--font-serif); font-style: italic; font-weight: 500;
-    font-size: 13px; letter-spacing: 0.12em; color: var(--gold-deep);
-    margin-bottom: 8px; text-align: center;
-  }
-  .final-cta .sec-no { text-align: center; }
 
   /* founder byline */
   .byline {
@@ -1152,20 +1146,7 @@
      without competing with the section heading 60px below it. */
   /* The bridge does the return trip: section 3 is white, section 4 is cream,
      and this fades between them so the alternation never shows a hard line. */
-  .stakes { max-width: none; padding: 54px 20px 34px; text-align: center;
-    background: linear-gradient(180deg, #FFFFFF 0%, #FBF8F1 55%, var(--cream) 100%); }
-  .stakes > * { max-width: 720px; margin-inline: auto; }
-  .stakes::before { content: ''; display: block; width: 54px; height: 1px;
-    background: var(--gold); opacity: .55; margin: 0 auto 26px; }
-  .stakes-line { font-family: var(--font-serif); font-weight: 600;
-    font-size: clamp(21px, 2.3vw, 29px); line-height: 1.25; color: var(--navy);
-    margin: 0 0 13px; }
-  .stakes-line em { font-style: italic; font-weight: 500; color: var(--gold-deep); }
-  .stakes-sub { font-family: var(--font-sans); font-size: 15px; line-height: 1.65;
-    color: #4A4F70; margin: 0; max-width: 560px; margin-inline: auto; }
   @media (max-width: 600px) {
-    .stakes { padding: 40px 18px 4px; }
-    .stakes-sub { font-size: 14px; }
   }
 
   /* cream, because section 3 above it is white */
@@ -3452,11 +3433,6 @@ section.navy .sub, section.navy-deep .sub { color: rgba(255,255,255,0.92); }
 section.navy .body, section.navy-deep .body { color: rgba(255,255,255,0.85); }
 
 /* editorial serial numbers */
-.sec-no {
-  font-family: var(--font-serif); font-style: italic; font-weight: 500;
-  font-size: 13px; letter-spacing: 0.12em; color: var(--gold-deep);
-  margin-bottom: 8px; text-align: center;
-}
 
 /* ruled editorial eyebrows — centered section heads */
 .sec-head { text-align: center; max-width: 800px; margin: 0 auto 44px; }
@@ -4098,7 +4074,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           <div><div class="name">The Gallagher Family</div>
           <div class="sub-line">Everything they chose after the color</div></div></div>
       </div>
-      <div class="sec-no">No. 01</div>
       <div class="eyebrow">2 &middot; Now It Is Your Turn</div>
       <h2 class="ttl">How Do You Choose an Exterior Paint Color in Anaheim Without Guessing? <span class="accent">Do What the Gallaghers Did &mdash; on Their House.</span></h2>
       <p class="sub" style="text-align:center; font-size: 18px; max-width: 620px; margin: 0 auto 28px;">Pick a direction and tap through the palettes. The home below repaints itself in real time — the same thing our design team does with your actual elevation during a complimentary consultation, before a single gallon is tinted.</p>
@@ -4385,7 +4360,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="cream-deep" id="pricing">
     <div class="sec-head">
-      <div class="sec-no">No. 03</div>
       <div class="eyebrow">What It Costs — In Writing</div>
       <h2 class="ttl">Anaheim Painting, <span class="accent">Priced Line by Line</span></h2>
       <p class="lead">Anaheim is the market where we are asked about price first and most directly, and we would rather answer it in public than in a driveway. Here is the number, and here is exactly what moves it.</p>
@@ -4415,7 +4389,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="" id="cost-of-wrong">
     <div class="sec-head">
-      <div class="sec-no">No. 04</div>
       <div class="eyebrow">The Real Cost of a Wrong Color</div>
       <h2 class="ttl">A Wrong Color Costs the Whole Job <span class="accent">Twice</span></h2>
     </div>
@@ -4435,7 +4408,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="cream" id="communities">
     <div class="sec-head">
-      <div class="sec-no">No. 05</div>
       <div class="eyebrow">Where We Work in Anaheim</div>
       <h2 class="ttl">Every Village Has Its <span class="accent">Own Light</span></h2>
       <p class="lead">Anaheim Hills is not one place. An acre-plus estate in Peralta Hills with no streetlights on the road and a 3,000-square-foot lot behind the Belsomet gate are different houses, different light, and different decisions. These are the four we know best.</p>
@@ -4467,7 +4439,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   <section class="" id="hoa">
     <div class="split-grid">
       <div>
-        <div class="sec-no" style="text-align:left;">No. 06</div>
         <div class="eyebrow">Design Review, Handled</div>
         <h2 class="ttl">We Do the <span class="accent">Paperwork</span></h2>
         <p class="body">Most of the gated communities above Santa Ana Canyon run some form of architectural review, and the requirements are set by each association individually — Anaheim publishes no central register the way some cities do. So we work from your association's own current guidelines rather than assumptions, and we prepare the submittal package as part of the project.</p>
@@ -4489,7 +4460,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="navy" id="colors">
     <div class="sec-head">
-      <div class="sec-no">No. 07</div>
       <div class="eyebrow">The Anaheim Palette</div>
       <h2 class="ttl">Colors That Fit <span class="accent">Anaheim</span> Architecture</h2>
       <p class="lead">These four hold up in Anaheim Hills light specifically — open slopes, long afternoons, and far less shade than anywhere in Irvine. Every one of them gets rendered on your own elevation before you commit to it.</p>
@@ -4535,7 +4505,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     <div class="split-grid">
       <div class="sp-media" ></div>
       <div>
-        <div class="sec-no" style="text-align:left;">No. 08</div>
         <div class="eyebrow">Why Anaheim Is Different</div>
         <h2 class="ttl">Harder Light Than Anywhere in Irvine</h2>
         <p class="body">Anaheim Hills sits above the basin on open, largely unshaded slopes. There are no mature paseo canopies here filtering the afternoon the way Woodbury has. A warm white that behaves on a filtered Irvine street can go noticeably brassy on a west-facing Anaheim Hills elevation by two in the afternoon. It is the single most common reason a color chosen indoors disappoints outdoors in this city, and it is the entire reason we render your own elevation before anything is scheduled.</p>
@@ -4547,7 +4516,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="" id="process">
     <div class="sec-head">
-      <div class="sec-no">No. 09</div>
       <div class="eyebrow">The White-Glove Process</div>
       <h2 class="ttl">How an Anaheim Project <span class="accent">Actually Runs</span></h2>
     </div>
@@ -4592,7 +4560,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="cream" id="map">
     <div class="sec-head">
-      <div class="sec-no">No. 10</div>
       <div class="eyebrow">Find Us</div>
       <h2 class="ttl">Serving <span class="accent">Anaheim</span> from Anaheim</h2>
       <p class="lead">VIP Home Painting is a service-area company covering every village of
@@ -4622,7 +4589,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="cream" id="faq">
     <div class="faq-head">
-      <div class="sec-no">No. 11</div>
       <div class="eyebrow">Frequently Asked Questions</div>
       <h2 class="ttl">Anaheim Painting — <span class="accent">Your Questions Answered</span></h2>
     </div>
@@ -4665,7 +4631,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       </div>
     </div>
     <div class="final-cta">
-      <div class="sec-no">No. 12</div>
       <div class="ck">Ready To Transform Your Anaheim Home?</div>
       <h2 class="ttl">Let's Make Your Home the <em>Envy of Anaheim</em></h2>
       <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Get My Complimentary Quote Now</span><span class="sub">No Pressure · No Obligation · Always Complimentary</span></span></a>

@@ -10,7 +10,7 @@
      c  = the city object from cities.json
      no = section serial number (No. 03, No. 04 …)
      bg = section background class
-     H  = helpers { CFG, ctaButton, secNo, esc }
+     H  = helpers { CFG, ctaButton, esc }
 
    A module returns '' when its data is missing, so a half-filled
    brief renders a shorter page rather than a broken one. The
@@ -29,7 +29,6 @@ M.cost_of_wrong = (c, no, bg, H) => {
   return `
   <section class="${bg}" id="cost-of-wrong">
     <div class="sec-head">
-      <div class="sec-no">${H.secNo(no)}</div>
       <div class="eyebrow">The Real Cost of a Wrong Color</div>
       <h2 class="ttl">${t.title || ''}</h2>
     </div>
@@ -69,7 +68,6 @@ M.pricing = (c, no, bg, H) => {
   return `
   <section class="${bg}" id="pricing">
     <div class="sec-head">
-      <div class="sec-no">${H.secNo(no)}</div>
       <div class="eyebrow">What It Costs — In Writing</div>
       <h2 class="ttl">${c.name} Painting, <span class="accent">Priced Line by Line</span></h2>
       <p class="lead">${p.intro || p.cost_answer_sentence}</p>
@@ -106,7 +104,6 @@ M.communities = (c, no, bg, H) => {
   return `
   <section class="${bg}" id="communities">
     <div class="sec-head">
-      <div class="sec-no">${H.secNo(no)}</div>
       <div class="eyebrow">Where We Work in ${c.name}</div>
       <h2 class="ttl">Every Village Has Its <span class="accent">Own Light</span></h2>
       <p class="lead">${c.communities_intro || ''}</p>
@@ -135,7 +132,6 @@ M.color_guide = (c, no, bg, H) => {
   return `
   <section class="${bg}" id="colors">
     <div class="sec-head">
-      <div class="sec-no">${H.secNo(no)}</div>
       <div class="eyebrow">The ${c.name} Palette</div>
       <h2 class="ttl">Colors That Fit <span class="accent">${c.name}</span> Architecture</h2>
       <p class="lead">${c.color_guide_intro || ''}</p>
@@ -159,7 +155,6 @@ M.hoa = (c, no, bg, H) => {
   <section class="${bg}" id="hoa">
     <div class="split-grid">
       <div>
-        <div class="sec-no" style="text-align:left;">${H.secNo(no)}</div>
         <div class="eyebrow">Design Review, Handled</div>
         <h2 class="ttl">We Do the <span class="accent">Paperwork</span></h2>
         <p class="body">${h.intro}</p>
@@ -191,7 +186,6 @@ M.video = (c, no, bg, H) => {
   return `
   <section class="${bg}" id="video">
     <div class="sec-head">
-      <div class="sec-no">${H.secNo(no)}</div>
       <div class="eyebrow">See the Work</div>
       <h2 class="ttl">${H.esc(v.title || `Painting in ${c.name}`)}</h2>
       ${v.description ? `<p class="lead">${H.esc(v.description)}</p>` : ''}
@@ -217,7 +211,6 @@ M.spotlight = (c, no, bg, H) => {
     <div class="split-grid">
       <div class="sp-media" ${s.image ? `style="background-image:url('${s.image}')"` : ''}></div>
       <div>
-        <div class="sec-no" style="text-align:left;">${H.secNo(no)}</div>
         <div class="eyebrow">${s.eyebrow || 'Project Spotlight'}</div>
         <h2 class="ttl">${s.title || ''}</h2>
         <p class="body">${s.body || ''}</p>
@@ -235,7 +228,6 @@ M.reviews_map = (c, no, bg, H) => {
   return `
   <section class="${bg}" id="map">
     <div class="sec-head">
-      <div class="sec-no">${H.secNo(no)}</div>
       <div class="eyebrow">Find Us</div>
       <h2 class="ttl">Serving <span class="accent">${c.name}</span> from Anaheim</h2>
       <p class="lead">VIP Home Painting is a service-area company covering every village of
@@ -292,7 +284,6 @@ M.process = (c, no, bg, H) => {
   return `
   <section class="${bg}" id="process">
     <div class="sec-head">
-      <div class="sec-no">${H.secNo(no)}</div>
       <div class="eyebrow">The White-Glove Process</div>
       <h2 class="ttl">How ${AN(c.name)} Project <span class="accent">Actually Runs</span></h2>
     </div>

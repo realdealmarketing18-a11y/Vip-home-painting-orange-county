@@ -676,12 +676,6 @@
 
 
   /* editorial serial numbers */
-  .sec-no {
-    font-family: var(--font-serif); font-style: italic; font-weight: 500;
-    font-size: 13px; letter-spacing: 0.12em; color: var(--gold-deep);
-    margin-bottom: 8px; text-align: center;
-  }
-  .final-cta .sec-no { text-align: center; }
 
   /* founder byline */
   .byline {
@@ -1130,20 +1124,7 @@
      without competing with the section heading 60px below it. */
   /* The bridge does the return trip: section 3 is white, section 4 is cream,
      and this fades between them so the alternation never shows a hard line. */
-  .stakes { max-width: none; padding: 54px 20px 34px; text-align: center;
-    background: linear-gradient(180deg, #FFFFFF 0%, #FBF8F1 55%, var(--cream) 100%); }
-  .stakes > * { max-width: 720px; margin-inline: auto; }
-  .stakes::before { content: ''; display: block; width: 54px; height: 1px;
-    background: var(--gold); opacity: .55; margin: 0 auto 26px; }
-  .stakes-line { font-family: var(--font-serif); font-weight: 600;
-    font-size: clamp(21px, 2.3vw, 29px); line-height: 1.25; color: var(--navy);
-    margin: 0 0 13px; }
-  .stakes-line em { font-style: italic; font-weight: 500; color: var(--gold-deep); }
-  .stakes-sub { font-family: var(--font-sans); font-size: 15px; line-height: 1.65;
-    color: #4A4F70; margin: 0; max-width: 560px; margin-inline: auto; }
   @media (max-width: 600px) {
-    .stakes { padding: 40px 18px 4px; }
-    .stakes-sub { font-size: 14px; }
   }
 
   /* cream, because section 3 above it is white */
@@ -3432,11 +3413,6 @@ section.navy .sub, section.navy-deep .sub { color: rgba(255,255,255,0.92); }
 section.navy .body, section.navy-deep .body { color: rgba(255,255,255,0.85); }
 
 /* editorial serial numbers */
-.sec-no {
-  font-family: var(--font-serif); font-style: italic; font-weight: 500;
-  font-size: 13px; letter-spacing: 0.12em; color: var(--gold-deep);
-  margin-bottom: 8px; text-align: center;
-}
 
 /* ruled editorial eyebrows — centered section heads */
 .sec-head { text-align: center; max-width: 800px; margin: 0 auto 44px; }
@@ -3968,7 +3944,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           <div><div class="name">The Gallagher Family</div>
           <div class="sub-line">Everything they chose after the color</div></div></div>
       </div>
-      <div class="sec-no">No. 01</div>
       <div class="eyebrow">2 &middot; Now It Is Your Turn</div>
       <h2 class="ttl">How Do You Choose an Exterior Paint Color in Altair Without Guessing? <span class="accent">Do What the Gallaghers Did &mdash; on Their House.</span></h2>
       <p class="sub" style="text-align:center; font-size: 18px; max-width: 620px; margin: 0 auto 28px;">On Altair's contemporary architecture, color is doing more work than it does anywhere else in Irvine. Broad uninterrupted stucco planes, deep fascias, and metal detailing mean a charcoal that reads sophisticated on a small sample can turn heavy and flat across a twenty-foot elevation — and the reverse is just as true. Seeing the scheme at full scale on your own home, before a single gallon is tinted, is the difference between a facade that looks designed and one that cost five figures to get wrong twice.</p>
@@ -4255,7 +4230,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="cream-deep" id="specs">
     <div class="sec-head">
-      <div class="sec-no">No. 02</div>
       <div class="eyebrow">Materials &amp; Method</div>
       <h2 class="ttl">The Altair <span class="accent">Specification</span></h2>
       <p class="lead">No mystery products, no shortcuts. This is the exact system we bring to every Altair project — in writing, on every itemized estimate.</p>
@@ -4274,7 +4248,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   <section class="" id="portfolio">
     <div class="split-grid">
       <div>
-        <div class="sec-no" style="text-align:left;">No. 03</div>
         <div class="eyebrow">The Altair Portfolio</div>
         <h2 class="ttl">Contemporary Finishes, <span class="accent">Gallery Standards</span></h2>
         <p class="body">Modern architecture is unforgiving — which is exactly why we like it. Sharp shadow gaps, uniform sheen across twenty-foot planes, and metalwork detailed in coordinated enamels. This is what estate-grade spray application looks like in Altair.</p>
@@ -4297,7 +4270,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="cream" id="process">
     <div class="sec-head">
-      <div class="sec-no">No. 04</div>
       <div class="eyebrow">The White-Glove Process</div>
       <h2 class="ttl">How an Altair Project <span class="accent">Actually Runs</span></h2>
     </div>
@@ -4342,7 +4314,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="" id="colors">
     <div class="sec-head">
-      <div class="sec-no">No. 05</div>
       <div class="eyebrow">The Designer Color Guide</div>
       <h2 class="ttl">A Palette Built For <span class="accent">Altair</span></h2>
       <p class="lead">Altair's homes are contemporary and transitional — large uninterrupted stucco planes, deep fascias, and metal-and-glass details. On modern architecture there is nowhere for a mediocre finish to hide: lap marks, roller stipple, and wavy cut lines read instantly.</p>
@@ -4396,7 +4367,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="navy" id="fit">
     <div class="sec-head">
-      <div class="sec-no">No. 06</div>
       <div class="eyebrow">Made For Altair</div>
       <h2 class="ttl">What Goes Wrong — And How <span class="accent">We Solve It</span></h2>
     </div>
@@ -4434,7 +4404,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section id="map">
     <div class="sec-head">
-      <div class="sec-no">No. 07</div>
       <div class="eyebrow">Service Area · Find Us On Google</div>
       <h2 class="ttl">Proudly Serving <span class="accent">Altair</span>, Irvine</h2>
       <p class="lead">VIP Home Painting is a service-area painting company covering every village of Irvine. Save our Google profile, read our reviews, and see recent project photos before your consultation.</p>
@@ -4460,7 +4429,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="cream" id="faq">
     <div class="faq-head">
-      <div class="sec-no">No. 08</div>
       <div class="eyebrow sec-head-eyebrow">Frequently Asked Questions</div>
       <h2 class="ttl">Altair Home Painting — <span class="accent">Your Questions Answered</span></h2>
     </div>
@@ -4493,7 +4461,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     </div>
 
     <div class="final-cta">
-      <div class="sec-no">No. 09</div>
       <div class="ck">Ready To Transform Your Altair Home?</div>
       <h2 class="ttl">Let's Make Your Home the <em>Envy of Altair</em></h2>
       <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Get My Complimentary Quote Now</span><span class="sub">No Pressure · No Obligation · Always Complimentary</span></span></a>

@@ -676,12 +676,6 @@
 
 
   /* editorial serial numbers */
-  .sec-no {
-    font-family: var(--font-serif); font-style: italic; font-weight: 500;
-    font-size: 13px; letter-spacing: 0.12em; color: var(--gold-deep);
-    margin-bottom: 8px; text-align: center;
-  }
-  .final-cta .sec-no { text-align: center; }
 
   /* founder byline */
   .byline {
@@ -1130,20 +1124,7 @@
      without competing with the section heading 60px below it. */
   /* The bridge does the return trip: section 3 is white, section 4 is cream,
      and this fades between them so the alternation never shows a hard line. */
-  .stakes { max-width: none; padding: 54px 20px 34px; text-align: center;
-    background: linear-gradient(180deg, #FFFFFF 0%, #FBF8F1 55%, var(--cream) 100%); }
-  .stakes > * { max-width: 720px; margin-inline: auto; }
-  .stakes::before { content: ''; display: block; width: 54px; height: 1px;
-    background: var(--gold); opacity: .55; margin: 0 auto 26px; }
-  .stakes-line { font-family: var(--font-serif); font-weight: 600;
-    font-size: clamp(21px, 2.3vw, 29px); line-height: 1.25; color: var(--navy);
-    margin: 0 0 13px; }
-  .stakes-line em { font-style: italic; font-weight: 500; color: var(--gold-deep); }
-  .stakes-sub { font-family: var(--font-sans); font-size: 15px; line-height: 1.65;
-    color: #4A4F70; margin: 0; max-width: 560px; margin-inline: auto; }
   @media (max-width: 600px) {
-    .stakes { padding: 40px 18px 4px; }
-    .stakes-sub { font-size: 14px; }
   }
 
   /* cream, because section 3 above it is white */
@@ -3432,11 +3413,6 @@ section.navy .sub, section.navy-deep .sub { color: rgba(255,255,255,0.92); }
 section.navy .body, section.navy-deep .body { color: rgba(255,255,255,0.85); }
 
 /* editorial serial numbers */
-.sec-no {
-  font-family: var(--font-serif); font-style: italic; font-weight: 500;
-  font-size: 13px; letter-spacing: 0.12em; color: var(--gold-deep);
-  margin-bottom: 8px; text-align: center;
-}
 
 /* ruled editorial eyebrows — centered section heads */
 .sec-head { text-align: center; max-width: 800px; margin: 0 auto 44px; }
@@ -3968,7 +3944,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           <div><div class="name">The Gallagher Family</div>
           <div class="sub-line">Everything they chose after the color</div></div></div>
       </div>
-      <div class="sec-no">No. 01</div>
       <div class="eyebrow">2 &middot; Now It Is Your Turn</div>
       <h2 class="ttl">How Do You Choose an Exterior Paint Color in Woodbury Without Guessing? <span class="accent">Do What the Gallaghers Did &mdash; on Their House.</span></h2>
       <p class="sub" style="text-align:center; font-size: 18px; max-width: 620px; margin: 0 auto 28px;">Woodbury homeowners usually arrive with one of two questions: what color should the outside be, or what would this kitchen look like without the orange-toned cabinets. Both are expensive to answer by guessing — a wrong exterior means repainting the whole house, and refinished cabinets cannot be undone with a second coat. Use the visualizer below to try full schemes on a real home, then let our design team render your own house and kitchen during a complimentary 30-minute consultation.</p>
@@ -4255,7 +4230,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="cream-deep" id="fit">
     <div class="sec-head">
-      <div class="sec-no">No. 02</div>
       <div class="eyebrow">Made For Woodbury</div>
       <h2 class="ttl">What Goes Wrong — And How <span class="accent">We Solve It</span></h2>
     </div>
@@ -4293,7 +4267,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="" id="specs">
     <div class="sec-head">
-      <div class="sec-no">No. 03</div>
       <div class="eyebrow">Materials &amp; Method</div>
       <h2 class="ttl">The Woodbury <span class="accent">Specification</span></h2>
       <p class="lead">No mystery products, no shortcuts. This is the exact system we bring to every Woodbury project — in writing, on every itemized estimate.</p>
@@ -4311,7 +4284,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="cream" id="process">
     <div class="sec-head">
-      <div class="sec-no">No. 04</div>
       <div class="eyebrow">The White-Glove Process</div>
       <h2 class="ttl">How a Woodbury Project <span class="accent">Actually Runs</span></h2>
     </div>
@@ -4357,7 +4329,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   <section class="" id="portfolio">
     <div class="split-grid">
       <div>
-        <div class="sec-no" style="text-align:left;">No. 05</div>
         <div class="eyebrow">The Woodbury Portfolio</div>
         <h2 class="ttl">Kitchens and Exteriors, <span class="accent">Both Done Right</span></h2>
         <p class="body">Half our Woodbury work starts in the kitchen — factory-finish cabinet refinishing in sprayed urethane enamel — and grows into whole-home repaints once owners see the standard. The other half starts outside and ends the same way.</p>
@@ -4380,7 +4351,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="navy" id="colors">
     <div class="sec-head">
-      <div class="sec-no">No. 06</div>
       <div class="eyebrow">The Designer Color Guide</div>
       <h2 class="ttl">A Palette Built For <span class="accent">Woodbury</span></h2>
       <p class="lead">Woodbury blends Spanish Colonial, Tuscan, and cottage styles around its garden paseos and the Commons. Inside, its 2005-era kitchens are the classic candidates for cabinet refinishing — solid boxes, dated finishes.</p>
@@ -4434,7 +4404,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section id="map">
     <div class="sec-head">
-      <div class="sec-no">No. 07</div>
       <div class="eyebrow">Service Area · Find Us On Google</div>
       <h2 class="ttl">Proudly Serving <span class="accent">Woodbury</span>, Irvine</h2>
       <p class="lead">VIP Home Painting is a service-area painting company covering every village of Irvine. Save our Google profile, read our reviews, and see recent project photos before your consultation.</p>
@@ -4460,7 +4429,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="cream" id="faq">
     <div class="faq-head">
-      <div class="sec-no">No. 08</div>
       <div class="eyebrow sec-head-eyebrow">Frequently Asked Questions</div>
       <h2 class="ttl">Woodbury Home Painting — <span class="accent">Your Questions Answered</span></h2>
     </div>
@@ -4493,7 +4461,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     </div>
 
     <div class="final-cta">
-      <div class="sec-no">No. 09</div>
       <div class="ck">Ready To Transform Your Woodbury Home?</div>
       <h2 class="ttl">Let's Make Your Home the <em>Envy of Woodbury</em></h2>
       <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Get My Complimentary Quote Now</span><span class="sub">No Pressure · No Obligation · Always Complimentary</span></span></a>

@@ -133,7 +133,6 @@ const MODULE_META = {
    is cream; the quote section below is white; footer is deep navy. */
 const POSITION_BG = ['cream-deep', '', 'cream', '', 'navy'];
 
-const secNo = (i) => `No. ${String(i).padStart(2, '0')}`;
 
 /* A community belongs to whichever city its record names. This used to be
    the literal string 'Irvine' in a dozen places, which is how four Anaheim
@@ -313,7 +312,6 @@ function modCaseStudy(c, no, bg) {
   return `
   <section class="navy" id="work">
     <div class="sec-head">
-      <div class="sec-no">${secNo(no)}</div>
       <div class="eyebrow">${esc(c.name)} Home Painting Projects</div>
       <h2 class="ttl">Transforming ${esc(c.name)} Homes With <span class="accent">Precision &amp; Care</span></h2>
     </div>
@@ -333,7 +331,6 @@ function modPortfolio(c, no, bg) {
   <section class="${bg}" id="portfolio">
     <div class="split-grid">
       <div>
-        <div class="sec-no" style="text-align:left;">${secNo(no)}</div>
         ${p.eyebrow ? `<div class="eyebrow">${p.eyebrow}</div>` : ''}
         <h2 class="ttl">${p.title || `Our Work in <span class="accent">${c.name}</span>`}</h2>
         ${p.body || p.intro ? `<p class="body">${p.body || p.intro}</p>` : ''}
@@ -356,7 +353,6 @@ function modSpecs(c, no, bg) {
   return `
   <section class="${bg}" id="specs">
     <div class="sec-head">
-      <div class="sec-no">${secNo(no)}</div>
       <div class="eyebrow">Materials &amp; Method</div>
       <h2 class="ttl">The ${c.name} <span class="accent">Specification</span></h2>
       <p class="lead">No mystery products, no shortcuts. This is the exact system we bring to every ${c.name} project — in writing, on every itemized estimate.</p>
@@ -386,7 +382,6 @@ function modColorGuide(c, no, bg) {
   return `
   <section class="${bg}" id="colors">
     <div class="sec-head">
-      <div class="sec-no">${secNo(no)}</div>
       <div class="eyebrow">The Designer Color Guide</div>
       <h2 class="ttl">A Palette Built For <span class="accent">${c.name}</span></h2>
       ${c.context.archNote ? `<p class="lead">${c.context.archNote}</p>` : ''}
@@ -418,7 +413,6 @@ function modProcess(c, no, bg) {
   return `
   <section class="${bg}" id="process">
     <div class="sec-head">
-      <div class="sec-no">${secNo(no)}</div>
       <div class="eyebrow">The White-Glove Process</div>
       <h2 class="ttl">How ${AN(c.name)} Project <span class="accent">Actually Runs</span></h2>
     </div>
@@ -446,7 +440,6 @@ function modProblemSolution(c, no, bg) {
   return `
   <section class="${bg}" id="fit">
     <div class="sec-head">
-      <div class="sec-no">${secNo(no)}</div>
       <div class="eyebrow">Made For ${c.name}</div>
       <h2 class="ttl">What Goes Wrong — And How <span class="accent">We Solve It</span></h2>
     </div>
@@ -486,7 +479,6 @@ function mapSection(c, no) {
   return `
   <section id="map">
     <div class="sec-head">
-      <div class="sec-no">${secNo(no)}</div>
       <div class="eyebrow">Service Area · Find Us On Google</div>
       <h2 class="ttl">Proudly Serving <span class="accent">${c.name}</span>, ${cityOf(c).name}</h2>
       <p class="lead">VIP Home Painting is a service-area painting company covering every village of ${cityOf(c).name}. Save our Google profile, read our reviews, and see recent project photos before your consultation.</p>
@@ -521,7 +513,6 @@ function faqSection(c, no) {
   return `
   <section class="cream" id="faq">
     <div class="faq-head">
-      <div class="sec-no">${secNo(no)}</div>
       <div class="eyebrow sec-head-eyebrow">Frequently Asked Questions</div>
       <h2 class="ttl">${c.name} Home Painting — <span class="accent">Your Questions Answered</span></h2>
     </div>
@@ -780,7 +771,6 @@ ${faqSection(c, c.moduleOrder.length + 3)}
     </div>
 
     <div class="final-cta">
-      <div class="sec-no">${secNo(c.moduleOrder.length + 4)}</div>
       <div class="ck">Ready To Transform Your ${c.name} Home?</div>
       <h2 class="ttl">Let's Make Your Home the <em>Envy of ${c.name}</em></h2>
       ${ctaButton('Get My Complimentary Quote Now', 'No Pressure · No Obligation · Always Complimentary')}
@@ -970,7 +960,7 @@ function buildCityPage(c) {
   /* link() turns the absolute paths stored in cities.json into correct relative
      links — cities.json carries "/irvine/hoa-painting/", which 404s on the
      GitHub Pages subpath if emitted raw. */
-  const H = { CFG, ctaButton, secNo, esc, link: linker(`/${c.slug}/`) };
+  const H = { CFG, ctaButton, esc, link: linker(`/${c.slug}/`) };
 
   /* Child URLs are stored absolute (/irvine/orchard-hills/) but GitHub Pages
      serves this site from a repo subpath, where a leading slash resolves to
@@ -1010,7 +1000,6 @@ function buildCityPage(c) {
   const faqSec = (c.faqs || []).filter(f => f.q && f.a).length ? `
   <section class="cream" id="faq">
     <div class="faq-head">
-      <div class="sec-no">${secNo(order.length + 3)}</div>
       <div class="eyebrow">Frequently Asked Questions</div>
       <h2 class="ttl">${c.name} Painting — <span class="accent">Your Questions Answered</span></h2>
     </div>
@@ -1133,7 +1122,6 @@ ${faqSec}
       </div>
     </div>
     <div class="final-cta">
-      <div class="sec-no">${secNo(order.length + 4)}</div>
       <div class="ck">Ready To Transform Your ${esc(c.name)} Home?</div>
       <h2 class="ttl">Let's Make Your Home the <em>Envy of ${esc(c.name)}</em></h2>
       ${ctaButton('Get My Complimentary Quote Now', 'No Pressure · No Obligation · Always Complimentary')}
@@ -1265,7 +1253,7 @@ function hoaJsonLd(h, city, url) {
 function buildHoaPage(h, city) {
   const url = `${CFG.siteBase}/${city.slug}/${h.slug}/`;
   const A = CFG.assetBase;
-  const H = { CFG, ctaButton, secNo, esc };
+  const H = { CFG, ctaButton, esc };
   const ctx = { ...h, city_name: city.name };
 
   const order = (h.layout && h.layout.module_order) || [];
@@ -1289,7 +1277,6 @@ function buildHoaPage(h, city) {
   const faqSec = hasFaqs ? `
   <section class="cream" id="faq">
     <div class="faq-head">
-      <div class="sec-no">${secNo(order.length + 3)}</div>
       <div class="eyebrow">Board &amp; Manager Questions</div>
       <h2 class="ttl">HOA Painting — <span class="accent">Answered</span></h2>
     </div>
@@ -1587,7 +1574,7 @@ function buildServicePage(s) {
   const url = `${CFG.siteBase}/${s.slug}/`;
   const A = CFG.assetBase;
   const cityLinks = (CITIES.cities || []).map(c => ({ name: c.name, url: `../${c.slug}/` }));
-  const H = { CFG, ctaButton, secNo, esc, A, cityLinks };
+  const H = { CFG, ctaButton, esc, A, cityLinks };
 
   const order = (s.layout && s.layout.module_order) || [];
   const modules = order.map((key, i) => {
@@ -1600,7 +1587,6 @@ function buildServicePage(s) {
   const faqSec = faqs.length ? `
   <section class="cream" id="faq">
     <div class="faq-head">
-      <div class="sec-no">${secNo(order.length + 3)}</div>
       <div class="eyebrow">Common Questions</div>
       <h2 class="ttl">${esc(s.name)} — <span class="accent">Answered</span></h2>
     </div>
@@ -1641,7 +1627,6 @@ function buildServicePage(s) {
   const scopeSec = (s.scope || []).length ? `
   <section id="scope">
     <div class="sec-head">
-      <div class="sec-no">${secNo(2)}</div>
       <div class="eyebrow">What's Included</div>
       <h2 class="ttl">${esc(s.name)} — <span class="accent">The Scope</span></h2>
       ${s.intro ? `<p class="lead">${esc(s.intro)}</p>` : ''}

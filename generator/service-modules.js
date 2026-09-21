@@ -10,7 +10,7 @@
      s  = the service object from services.json
      no = section serial number (No. 03, No. 04 …)
      bg = section background class
-     H  = helpers { CFG, ctaButton, secNo, esc, cityLinks }
+     H  = helpers { CFG, ctaButton, esc, cityLinks }
 
    A module returns '' when its data is missing, so a half-filled
    service renders a shorter page rather than a broken one.
@@ -28,7 +28,6 @@ M.problems = (s, no, bg, H) => {
   return `
   <section class="${bg}" id="problems">
     <div class="sec-head">
-      <div class="sec-no">${H.secNo(no)}</div>
       <div class="eyebrow">What Goes Wrong</div>
       <h2 class="ttl">Where ${H.esc(s.short)} Jobs <span class="accent">Actually Fail</span></h2>
       <p class="lead">Every one of these is a real failure mode we were called in to correct.
@@ -52,7 +51,6 @@ M.system = (s, no, bg, H) => {
   return `
   <section class="${bg}" id="system">
     <div class="sec-head">
-      <div class="sec-no">${H.secNo(no)}</div>
       <div class="eyebrow">Specification</div>
       <h2 class="ttl">${H.esc(y.title || 'The system')}</h2>
       ${y.body ? `<p class="lead">${H.esc(y.body)}</p>` : ''}
@@ -73,7 +71,6 @@ M.system = (s, no, bg, H) => {
 M.visualize = (s, no, bg, H) => `
   <section class="${bg}" id="visualize">
     <div class="sec-head">
-      <div class="sec-no">${H.secNo(no)}</div>
       <div class="eyebrow">Before Anything Is Committed</div>
       <h2 class="ttl">You Approve a <span class="accent">Picture</span>, Not a Swatch</h2>
       <p class="lead">A two-inch chip cannot tell you what a color does across a whole
@@ -94,7 +91,6 @@ M.process = (s, no, bg, H) => {
   return `
   <section class="${bg}" id="process">
     <div class="sec-head">
-      <div class="sec-no">${H.secNo(no)}</div>
       <div class="eyebrow">How It Runs</div>
       <h2 class="ttl">From Rendering to <span class="accent">Final Walkthrough</span></h2>
     </div>
@@ -116,7 +112,6 @@ M.pricing = (s, no, bg, H) => {
   return `
   <section class="${bg}" id="pricing">
     <div class="sec-head">
-      <div class="sec-no">${H.secNo(no)}</div>
       <div class="eyebrow">What It Costs</div>
       <h2 class="ttl">Priced Line by Line, <span class="accent">Not as One Number</span></h2>
     </div>
@@ -137,7 +132,6 @@ M.where = (s, no, bg, H) => {
   return `
   <section class="${bg}" id="where">
     <div class="sec-head">
-      <div class="sec-no">${H.secNo(no)}</div>
       <div class="eyebrow">Where We Work</div>
       <h2 class="ttl">${H.esc(s.short)} Painting <span class="accent">Across Orange County</span></h2>
       <p class="lead">We work county-wide from Anaheim. These cities have their own pages,

@@ -666,12 +666,6 @@
 
 
   /* editorial serial numbers */
-  .sec-no {
-    font-family: var(--font-serif); font-style: italic; font-weight: 500;
-    font-size: 13px; letter-spacing: 0.12em; color: var(--gold-deep);
-    margin-bottom: 8px; text-align: center;
-  }
-  .final-cta .sec-no { text-align: center; }
 
   /* founder byline */
   .byline {
@@ -1120,20 +1114,7 @@
      without competing with the section heading 60px below it. */
   /* The bridge does the return trip: section 3 is white, section 4 is cream,
      and this fades between them so the alternation never shows a hard line. */
-  .stakes { max-width: none; padding: 54px 20px 34px; text-align: center;
-    background: linear-gradient(180deg, #FFFFFF 0%, #FBF8F1 55%, var(--cream) 100%); }
-  .stakes > * { max-width: 720px; margin-inline: auto; }
-  .stakes::before { content: ''; display: block; width: 54px; height: 1px;
-    background: var(--gold); opacity: .55; margin: 0 auto 26px; }
-  .stakes-line { font-family: var(--font-serif); font-weight: 600;
-    font-size: clamp(21px, 2.3vw, 29px); line-height: 1.25; color: var(--navy);
-    margin: 0 0 13px; }
-  .stakes-line em { font-style: italic; font-weight: 500; color: var(--gold-deep); }
-  .stakes-sub { font-family: var(--font-sans); font-size: 15px; line-height: 1.65;
-    color: #4A4F70; margin: 0; max-width: 560px; margin-inline: auto; }
   @media (max-width: 600px) {
-    .stakes { padding: 40px 18px 4px; }
-    .stakes-sub { font-size: 14px; }
   }
 
   /* cream, because section 3 above it is white */
@@ -3420,11 +3401,6 @@ section.navy .sub, section.navy-deep .sub { color: rgba(255,255,255,0.92); }
 section.navy .body, section.navy-deep .body { color: rgba(255,255,255,0.85); }
 
 /* editorial serial numbers */
-.sec-no {
-  font-family: var(--font-serif); font-style: italic; font-weight: 500;
-  font-size: 13px; letter-spacing: 0.12em; color: var(--gold-deep);
-  margin-bottom: 8px; text-align: center;
-}
 
 /* ruled editorial eyebrows — centered section heads */
 .sec-head { text-align: center; max-width: 800px; margin: 0 auto 44px; }
@@ -4156,7 +4132,6 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
 
   <section id="scope">
     <div class="sec-head">
-      <div class="sec-no">No. 02</div>
       <div class="eyebrow">What's Included</div>
       <h2 class="ttl">Exterior House Painting — <span class="accent">The Scope</span></h2>
       <p class="lead">Exterior paint is the one decision on your house that every neighbor sees, every day, for the next decade. It is also the one most people commit to from a two-inch swatch held against a wall in the wrong light. That is why our exterior work starts on a screen, not a ladder.</p>
@@ -4166,7 +4141,6 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
 
   <section class="cream-deep" id="problems">
     <div class="sec-head">
-      <div class="sec-no">No. 03</div>
       <div class="eyebrow">What Goes Wrong</div>
       <h2 class="ttl">Where Exterior Jobs <span class="accent">Actually Fail</span></h2>
       <p class="lead">Every one of these is a real failure mode we were called in to correct.
@@ -4199,7 +4173,6 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
 
   <section class="" id="system">
     <div class="sec-head">
-      <div class="sec-no">No. 04</div>
       <div class="eyebrow">Specification</div>
       <h2 class="ttl">What we actually put on the wall</h2>
       <p class="lead">The coating and the application matter more than the color. Both are specified before the estimate, and both appear on it.</p>
@@ -4227,7 +4200,6 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
 
   <section class="cream" id="visualize">
     <div class="sec-head">
-      <div class="sec-no">No. 05</div>
       <div class="eyebrow">Before Anything Is Committed</div>
       <h2 class="ttl">You Approve a <span class="accent">Picture</span>, Not a Swatch</h2>
       <p class="lead">A two-inch chip cannot tell you what a color does across a whole
@@ -4243,7 +4215,6 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
 
   <section class="" id="process">
     <div class="sec-head">
-      <div class="sec-no">No. 06</div>
       <div class="eyebrow">How It Runs</div>
       <h2 class="ttl">From Rendering to <span class="accent">Final Walkthrough</span></h2>
     </div>
@@ -4274,7 +4245,6 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
 
   <section class="navy" id="pricing">
     <div class="sec-head">
-      <div class="sec-no">No. 07</div>
       <div class="eyebrow">What It Costs</div>
       <h2 class="ttl">Priced Line by Line, <span class="accent">Not as One Number</span></h2>
     </div>
@@ -4287,7 +4257,6 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
 
   <section class="cream-deep" id="where">
     <div class="sec-head">
-      <div class="sec-no">No. 08</div>
       <div class="eyebrow">Where We Work</div>
       <h2 class="ttl">Exterior Painting <span class="accent">Across Orange County</span></h2>
       <p class="lead">We work county-wide from Anaheim. These cities have their own pages,
@@ -4306,7 +4275,6 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
 
   <section class="cream" id="faq">
     <div class="faq-head">
-      <div class="sec-no">No. 09</div>
       <div class="eyebrow">Common Questions</div>
       <h2 class="ttl">Exterior House Painting — <span class="accent">Answered</span></h2>
     </div>

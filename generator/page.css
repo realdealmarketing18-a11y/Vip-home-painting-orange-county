@@ -94,11 +94,6 @@ section.navy .sub, section.navy-deep .sub { color: rgba(255,255,255,0.92); }
 section.navy .body, section.navy-deep .body { color: rgba(255,255,255,0.85); }
 
 /* editorial serial numbers */
-.sec-no {
-  font-family: var(--font-serif); font-style: italic; font-weight: 500;
-  font-size: 13px; letter-spacing: 0.12em; color: var(--gold-deep);
-  margin-bottom: 8px; text-align: center;
-}
 
 /* ruled editorial eyebrows — centered section heads */
 .sec-head { text-align: center; max-width: 800px; margin: 0 auto 44px; }

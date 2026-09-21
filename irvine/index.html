@@ -718,12 +718,6 @@
 
 
   /* editorial serial numbers */
-  .sec-no {
-    font-family: var(--font-serif); font-style: italic; font-weight: 500;
-    font-size: 13px; letter-spacing: 0.12em; color: var(--gold-deep);
-    margin-bottom: 8px; text-align: center;
-  }
-  .final-cta .sec-no { text-align: center; }
 
   /* founder byline */
   .byline {
@@ -1172,20 +1166,7 @@
      without competing with the section heading 60px below it. */
   /* The bridge does the return trip: section 3 is white, section 4 is cream,
      and this fades between them so the alternation never shows a hard line. */
-  .stakes { max-width: none; padding: 54px 20px 34px; text-align: center;
-    background: linear-gradient(180deg, #FFFFFF 0%, #FBF8F1 55%, var(--cream) 100%); }
-  .stakes > * { max-width: 720px; margin-inline: auto; }
-  .stakes::before { content: ''; display: block; width: 54px; height: 1px;
-    background: var(--gold); opacity: .55; margin: 0 auto 26px; }
-  .stakes-line { font-family: var(--font-serif); font-weight: 600;
-    font-size: clamp(21px, 2.3vw, 29px); line-height: 1.25; color: var(--navy);
-    margin: 0 0 13px; }
-  .stakes-line em { font-style: italic; font-weight: 500; color: var(--gold-deep); }
-  .stakes-sub { font-family: var(--font-sans); font-size: 15px; line-height: 1.65;
-    color: #4A4F70; margin: 0; max-width: 560px; margin-inline: auto; }
   @media (max-width: 600px) {
-    .stakes { padding: 40px 18px 4px; }
-    .stakes-sub { font-size: 14px; }
   }
 
   /* cream, because section 3 above it is white */
@@ -3472,11 +3453,6 @@ section.navy .sub, section.navy-deep .sub { color: rgba(255,255,255,0.92); }
 section.navy .body, section.navy-deep .body { color: rgba(255,255,255,0.85); }
 
 /* editorial serial numbers */
-.sec-no {
-  font-family: var(--font-serif); font-style: italic; font-weight: 500;
-  font-size: 13px; letter-spacing: 0.12em; color: var(--gold-deep);
-  margin-bottom: 8px; text-align: center;
-}
 
 /* ruled editorial eyebrows — centered section heads */
 .sec-head { text-align: center; max-width: 800px; margin: 0 auto 44px; }
@@ -4135,7 +4111,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           <div><div class="name">The Gallagher Family</div>
           <div class="sub-line">Everything they chose after the color</div></div></div>
       </div>
-      <div class="sec-no">No. 01</div>
       <div class="eyebrow">2 &middot; Now It Is Your Turn</div>
       <h2 class="ttl">How Do You Choose an Exterior Paint Color in Irvine Without Guessing? <span class="accent">Do What the Gallaghers Did &mdash; on Their House.</span></h2>
       <p class="sub" style="text-align:center; font-size: 18px; max-width: 620px; margin: 0 auto 28px;">Irvine is not one place with one light. Orchard Hills sits against the ridge where afternoon sun pushes warm colors yellow by two. Woodbury’s garden paseos stay filtered and cool. Hidden Canyon takes canyon mornings and hot open afternoons in the same day. The same white behaves like three different colors across those villages, which is why a fan deck decided indoors tells you almost nothing. Choose a direction below and watch a real home change, then let our design team do it with your own elevation.</p>
@@ -4422,7 +4397,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="cream-deep" id="cost-of-wrong">
     <div class="sec-head">
-      <div class="sec-no">No. 03</div>
       <div class="eyebrow">The Real Cost of a Wrong Color</div>
       <h2 class="ttl">The Second Repaint Costs Exactly What the First One Did</h2>
     </div>
@@ -4442,7 +4416,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="" id="pricing">
     <div class="sec-head">
-      <div class="sec-no">No. 04</div>
       <div class="eyebrow">What It Costs — In Writing</div>
       <h2 class="ttl">Irvine Painting, <span class="accent">Priced Line by Line</span></h2>
       <p class="lead">VIP exterior work in Irvine starts at $4.75 per square foot of paintable surface — the premium end of the local range — and every estimate is itemized line by line.</p>
@@ -4472,7 +4445,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="cream" id="communities">
     <div class="sec-head">
-      <div class="sec-no">No. 05</div>
       <div class="eyebrow">Where We Work in Irvine</div>
       <h2 class="ttl">Every Village Has Its <span class="accent">Own Light</span></h2>
       <p class="lead">We work across every village in Irvine, and they do not share a palette. Guard-gated hillside estates want a different register from garden-paseo townhomes, and design review differs street to street. Choose your village for the architecture, the light, and the colors that actually hold there.</p>
@@ -4513,7 +4485,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="" id="colors">
     <div class="sec-head">
-      <div class="sec-no">No. 06</div>
       <div class="eyebrow">The Irvine Palette</div>
       <h2 class="ttl">Colors That Fit <span class="accent">Irvine</span> Architecture</h2>
       <p class="lead">These three carry most Irvine exteriors, and each one behaves differently depending on which village it lands in. Warm whites flatter clay tile and stone; a grounded greige survives bright inland light without going flat; a deep charcoal makes doors and iron read custom instead of builder-spec.</p>
@@ -4558,7 +4529,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   <section class="navy" id="hoa">
     <div class="split-grid">
       <div>
-        <div class="sec-no" style="text-align:left;">No. 07</div>
         <div class="eyebrow">Design Review, Handled</div>
         <h2 class="ttl">We Do the <span class="accent">Paperwork</span></h2>
         <p class="body">Nearly every Irvine village runs its own design review, and color changes need approval before work begins. We prepare the submission package as part of the project — swatches, Sherwin-Williams product data sheets, and elevation callouts, formatted the way your association expects to receive it. The approval step stops being your problem.</p>
@@ -4580,7 +4550,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="cream-deep" id="process">
     <div class="sec-head">
-      <div class="sec-no">No. 08</div>
       <div class="eyebrow">The White-Glove Process</div>
       <h2 class="ttl">How an Irvine Project <span class="accent">Actually Runs</span></h2>
     </div>
@@ -4627,7 +4596,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     <div class="split-grid">
       <div class="sp-media" ></div>
       <div>
-        <div class="sec-no" style="text-align:left;">No. 10</div>
         <div class="eyebrow">How a Project Actually Looks</div>
         <h2 class="ttl">Prep Is the Finish</h2>
         <p class="body">On Irvine stucco, everything you can see at the end was decided before a drop of color went on. Pressure wash, crack repair floated to match the existing texture, bonding primer on bare substrate, then Emerald sprayed with a Titan airless and back-rolled so the coating drives into the texture rather than sitting on top of it. Rolling a full exterior is faster for the crew. Spraying is better for the house.</p>
@@ -4639,7 +4607,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="" id="map">
     <div class="sec-head">
-      <div class="sec-no">No. 11</div>
       <div class="eyebrow">Find Us</div>
       <h2 class="ttl">Serving <span class="accent">Irvine</span> from Anaheim</h2>
       <p class="lead">VIP Home Painting is a service-area company covering every village of
@@ -4669,7 +4636,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="cream" id="faq">
     <div class="faq-head">
-      <div class="sec-no">No. 12</div>
       <div class="eyebrow">Frequently Asked Questions</div>
       <h2 class="ttl">Irvine Painting — <span class="accent">Your Questions Answered</span></h2>
     </div>
@@ -4716,7 +4682,6 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       </div>
     </div>
     <div class="final-cta">
-      <div class="sec-no">No. 13</div>
       <div class="ck">Ready To Transform Your Irvine Home?</div>
       <h2 class="ttl">Let's Make Your Home the <em>Envy of Irvine</em></h2>
       <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Get My Complimentary Quote Now</span><span class="sub">No Pressure · No Obligation · Always Complimentary</span></span></a>

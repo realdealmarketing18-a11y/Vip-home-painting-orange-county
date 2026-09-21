@@ -23,7 +23,6 @@ M.scope = (c, no, bg, H) => {
   return `
   <section class="${bg}" id="scope">
     <div class="sec-head">
-      <div class="sec-no">${H.secNo(no)}</div>
       <div class="eyebrow">Common-Area Painting</div>
       <h2 class="ttl">What We Paint for <span class="accent">Associations</span></h2>
       <p class="lead">${c.scope_intro || ''}</p>
@@ -61,7 +60,6 @@ M.process = (c, no, bg, H) => {
   return `
   <section class="${bg}" id="process">
     <div class="sec-head">
-      <div class="sec-no">${H.secNo(no)}</div>
       <div class="eyebrow">How an Association Project Runs</div>
       <h2 class="ttl">Built for <span class="accent">Board Approval</span></h2>
     </div>
@@ -88,7 +86,6 @@ M.compliance = (c, no, bg, H) => {
   return `
   <section class="${bg}" id="compliance">
     <div class="sec-head">
-      <div class="sec-no">${H.secNo(no)}</div>
       <div class="eyebrow">Documentation</div>
       <h2 class="ttl">Everything Your Board Needs <span class="accent">On File</span></h2>
       <p class="lead">${c.compliance_block}</p>
@@ -102,7 +99,6 @@ M.compliance = (c, no, bg, H) => {
 M.spec = (c, no, bg, H) => `
   <section class="${bg}" id="spec">
     <div class="sec-head">
-      <div class="sec-no">${H.secNo(no)}</div>
       <div class="eyebrow">Materials &amp; Method</div>
       <h2 class="ttl">The Common-Area <span class="accent">Specification</span></h2>
     </div>
@@ -132,7 +128,6 @@ M.references = (c, no, bg, H) => {
   return `
   <section class="${bg}" id="references">
     <div class="sec-head">
-      <div class="sec-no">${H.secNo(no)}</div>
       <div class="eyebrow">Association Work</div>
       <h2 class="ttl">Communities We've <span class="accent">Served</span></h2>
     </div>
@@ -145,7 +140,6 @@ M.references = (c, no, bg, H) => {
 M.bid_cta = (c, no, bg, H) => `
   <section class="${bg}" id="bid">
     <div class="hoa-bid">
-      <div class="sec-no">${H.secNo(no)}</div>
       <div class="eyebrow">Request a Bid</div>
       <h2 class="ttl">${c.bid_cta_title || `Put Us on Your Next Bid List`}</h2>
       <p class="hoa-bid-body">${c.bid_cta || ''}</p>
