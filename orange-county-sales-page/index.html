@@ -1732,36 +1732,36 @@
      No background panel. It is the opening of the band, not a callout inside it,
      and a panel here would recreate the divider the stylesheet deliberately
      removed from this seam. */
-  .floodlight { max-width: 760px; margin: 0 auto clamp(46px, 5vw, 70px);
-    position: relative; z-index: 2; text-align: center; }
-  .floodlight .eyebrow { color: var(--gold-deep); }
-  .floodlight .fl-ttl { font-family: var(--font-serif); font-weight: 400;
-    font-size: clamp(25px, 3.1vw, 41px); line-height: 1.16; color: var(--navy);
-    margin: 10px 0 20px; letter-spacing: -.015em; }
-  .floodlight .fl-lede { font-family: var(--font-sans);
+  /* The bridge line: the one sentence that keeps the subject on the Gallaghers
+     while the copy widens out to everyone. Centred with the headline above it,
+     because it still belongs to the heading; everything after it is the
+     argument and goes left. */
+  .cand-head .fl-bridge { font-family: var(--font-serif); font-style: italic;
+    font-size: clamp(16px, 1.35vw, 20px); color: var(--navy); opacity: .9;
+    margin: 0 0 22px; text-align: center; }
+  .cand-head .fl-lede { font-family: var(--font-sans);
     font-size: clamp(14px, 1.08vw, 16.5px); line-height: 1.7;
     color: rgba(26,31,78,.82); margin: 0 auto 30px; max-width: 660px;
     text-align: left; }
-  .floodlight .fl-tried { text-align: left; max-width: 660px; margin: 0 auto 26px; }
-  .floodlight .fl-tried-hd { font-family: var(--font-serif); font-style: italic;
+  .cand-head .fl-tried { text-align: left; max-width: 660px; margin: 0 auto 26px; }
+  .cand-head .fl-tried-hd { font-family: var(--font-serif); font-style: italic;
     font-weight: 600; font-size: clamp(16px, 1.3vw, 19px); color: var(--navy);
     margin-bottom: 14px; }
-  .floodlight .fl-tried ul { list-style: none; margin: 0; padding: 0; }
-  .floodlight .fl-tried li { position: relative; padding-left: 22px; margin-bottom: 11px;
+  .cand-head .fl-tried ul { list-style: none; margin: 0; padding: 0; }
+  .cand-head .fl-tried li { position: relative; padding-left: 22px; margin-bottom: 11px;
     font-family: var(--font-sans); font-size: clamp(13px, .95vw, 15px);
     line-height: 1.62; color: rgba(26,31,78,.78); }
   /* A rule, not a bullet glyph or a tick: these are things that FAILED, and a
      gold check mark beside each would say the opposite of the sentence. */
-  .floodlight .fl-tried li::before { content: ''; position: absolute; left: 0;
+  .cand-head .fl-tried li::before { content: ''; position: absolute; left: 0;
     top: .72em; width: 12px; height: 1px; background: rgba(168,138,71,.75); }
-  .floodlight .fl-tried li b { font-weight: 600; color: var(--navy); }
-  .floodlight .fl-turn { font-family: var(--font-serif); font-style: italic;
+  .cand-head .fl-tried li b { font-weight: 600; color: var(--navy); }
+  .cand-head .fl-turn { font-family: var(--font-serif); font-style: italic;
     font-size: clamp(15px, 1.2vw, 18px); line-height: 1.6; color: var(--navy);
     max-width: 660px; margin: 0 auto; text-align: left;
     padding-left: 18px; border-left: 2px solid rgba(168,138,71,.45); }
   @media (max-width: 720px) {
-    .floodlight { margin-bottom: 38px; }
-    .floodlight .fl-turn { padding-left: 14px; }
+    .cand-head .fl-turn { padding-left: 14px; }
   }
   .cand-head { max-width: 720px; margin: 0 auto 40px; text-align: center;
     position: relative; z-index: 2; }
@@ -3626,50 +3626,6 @@
   <section class="cand-band" id="candidates" data-story>
     <span class="cand-ghost" aria-hidden="true">VISUALIZED</span>
 
-    <!-- SUBY 5 -- FLOODLIGHT ON THE PROBLEM. The page used to open at "they
-         visualized it", which is the middle of the story: there was no before,
-         so there was nothing to feel. This is the before.
-         Suby's test for this section is that she says "yeah, that's exactly how
-         I feel", and his rule is that people move away from pain harder than they
-         move toward pleasure -- so it agitates first and only then hands off.
-         The bullets are Fabian's "money sauce" note, and every one of them is a
-         row from 07-VOICE.md's "what she tried and why it failed" table. The
-         closing line is the category correction: the careful method fails too,
-         which is what makes this a position rather than a convenience. -->
-    <div class="floodlight">
-      <div class="eyebrow">Before Any of That</div>
-      <h2 class="fl-ttl">The Hard Part Was Never the Painting.
-        <span class="accent">It Was Deciding.</span></h2>
-      <p class="fl-lede">Two people who agree on everything else, standing in a
-        driveway holding paint chips. It starts as the fun part of the project. Then
-        the chips come home and they multiply. One of you likes the warmer one. The
-        other is certain it will look pink. Four of them get taped up beside the front
-        door, and for weeks you walk past them, and every time the light shifts your
-        mind shifts with it. Eventually nobody raises it, because raising it restarts
-        the argument. The house stays the color it already is.</p>
-      <div class="fl-tried">
-        <div class="fl-tried-hd">And you have already tried everything you are
-          supposed to try</div>
-        <ul>
-          <li><b>Weeks of research.</b> It narrowed the field to a shortlist. It told
-            you nothing about how any of them behaves at the size of a house.</li>
-          <li><b>Sample patches on three different walls.</b> Two feet square is too
-            small to predict three thousand. The most common regret afterwards is not
-            having painted the swatches bigger.</li>
-          <li><b>Asking at the paint store.</b> Staff can advise on color. They have
-            never stood in front of your house, in your light, on your street.</li>
-          <li><b>Polling friends and neighbours.</b> What you get back is agreement
-            about a card, not about a house.</li>
-          <li><b>Comparing the finalists side by side.</b> Each one eliminated for an
-            undertone that only showed itself in your own lighting.</li>
-        </ul>
-      </div>
-      <p class="fl-turn">None of that is carelessness. It is the industry&rsquo;s own
-        best advice, followed properly &mdash; and it still ends with a color nobody is
-        certain about. Which is the part worth understanding: doing it the careful way
-        does not work either, because a small sample cannot predict a large surface.
-        The only thing that predicts your whole house is your whole house.</p>
-    </div>
     <div class="cand-head">
       <!-- The same chip that opens the hero, opening this section too. That
            repetition is the point: a visitor arriving here should recognise
@@ -3706,12 +3662,51 @@
            lighting". No quote is reproduced — the source is a homeowner on a
            public forum, not a VIP client, and attributing her words here
            would read as a testimonial she never gave. -->
-      <p>Weeks of samples on three different walls, and the color still read
-        wrong once it was up. A two-foot patch and three thousand square feet
-        of the same paint do not behave the same in your light &mdash; the only
-        thing that predicts your whole house is your whole house. So the
-        Gallaghers saw all <b>11</b> on theirs first. These are the other
-        <b>7</b>, and the one they chose. Tap any one to see it full size.</p>
+      <!-- SUBY 5 -- THE FLOODLIGHT, as the body of this section rather than as a
+           section of its own. It was tried as a separate movement above the
+           Gallagher chip and it broke the story: the hero closes with an arrow
+           reading "Continue their journey", and the reader landed instead on a
+           headline about their own paint chips. Subject went THEY -> YOU -> THEY
+           inside fifteen seconds, behind two competing H2s.
+           The real lesson was that the paragraph BELOW this comment was already
+           the floodlight -- it already agitated -- so a second one stacked on top
+           duplicated "the only thing that predicts your whole house is your whole
+           house" twice on one screen. It is merged now and appears once.
+           The bridge line keeps the subject on the Gallaghers through the pivot,
+           so the copy widens from them to everyone and comes back, instead of
+           cutting away and cutting back. -->
+      <p class="fl-bridge">Before that, they were exactly where most people are.</p>
+      <p class="fl-lede">Two people who agree on everything else, standing in a
+        driveway holding paint chips. It starts as the fun part of the project. Then
+        the chips come home and they multiply. One of you likes the warmer one. The
+        other is certain it will look pink. Four of them get taped up beside the front
+        door, and for weeks you walk past them, and every time the light shifts your
+        mind shifts with it. Eventually nobody raises it, because raising it restarts
+        the argument. The house stays the color it already is.</p>
+      <div class="fl-tried">
+        <div class="fl-tried-hd">And you have already tried everything you are
+          supposed to try</div>
+        <ul>
+          <li><b>Weeks of research.</b> It narrowed the field to a shortlist. It told
+            you nothing about how any of them behaves at the size of a house.</li>
+          <li><b>Sample patches on three different walls.</b> A patch that size cannot
+            tell you how the whole house will behave. The most common regret afterwards
+            is not having painted them bigger.</li>
+          <li><b>Asking at the paint store.</b> Staff can advise on color. They have
+            never stood in front of your house, in your light, on your street.</li>
+          <li><b>Polling friends and neighbours.</b> What you get back is agreement
+            about a card, not about a house.</li>
+          <li><b>Comparing the finalists side by side.</b> Each one eliminated for an
+            undertone that only showed itself in your own lighting.</li>
+        </ul>
+      </div>
+      <p class="fl-turn">None of that is carelessness. It is the industry&rsquo;s own
+        best advice, followed properly, and it still ends with a color nobody is
+        certain about. A two-foot patch and three thousand square feet of the same
+        paint do not behave the same in your light &mdash; the only thing that predicts
+        your whole house is your whole house. So the Gallaghers saw all <b>11</b> on
+        theirs first. These are the other <b>7</b>, and the one they chose. Tap any one
+        to see it full size.</p>
     </div>
     <!-- THE BAND'S OWN SEVEN. The hero tray shows four; these are the
          other seven, so scrolling into this section is new material rather
