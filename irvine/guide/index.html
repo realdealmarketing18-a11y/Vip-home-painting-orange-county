@@ -1618,7 +1618,12 @@
      elsewhere without a cut-out PNG. The float comes from shadows, not a plate. */
   .offer-stake .pkg { margin: 0 0 26px; }
   .offer-stake .pkg figure { margin: 0; }
-  .offer-stake .pkg img { display: block; width: 100%; height: 100%;
+  /* height:auto, NOT 100%. As a grid item the figure stretches to the row
+     height, and height:100% made the image fill all of it -- overriding the
+     aspect-ratio and pushing figcaption past the bottom edge, where
+     overflow:hidden clipped it. Every scheme name was invisible. The
+     aspect-ratio supplies the definite height object-fit needs. */
+  .offer-stake .pkg img { display: block; width: 100%; height: auto;
     object-fit: cover; }
 
   .offer-stake .pkg-hero { max-width: 520px; margin: 0 auto 18px; position: relative;
@@ -1661,10 +1666,19 @@
   .offer-stake .pkg-mark { width: auto; height: 26px; opacity: .85; flex: none; }
 
   @media (max-width: 720px) {
-    .offer-stake .pkg-grid { grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
-      gap: 6px; }
-    .offer-stake .pkg-thumb figcaption { font-size: 7.5px; padding: 4px 2px; }
-    .offer-stake .pkg-hero .paint-can { width: 24px; height: 24px; }
+    .offer-stake .pkg-grid { grid-template-columns: repeat(auto-fit, minmax(104px, 1fr));
+      gap: 8px; }
+    .offer-stake .pkg-thumb figcaption { font-size: 8.5px; padding: 5px 3px; }
+    .offer-stake .pkg-hero .paint-can { width: 26px; height: 26px; }
+  }
+  /* Phones: two columns, not three. minmax(0,1fr) rather than auto-fit so
+     the count is fixed here -- auto-fit would still fit three at 375px and
+     put the tiles back where they were. */
+  @media (max-width: 520px) {
+    .offer-stake .pkg-grid { grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px; max-width: 420px; }
+    .offer-stake .pkg-thumb figcaption { font-size: 10px; letter-spacing: .04em;
+      padding: 6px 4px; }
   }
 
   /* The value anchor reads as an aside, not as body copy: a left gold rule and
