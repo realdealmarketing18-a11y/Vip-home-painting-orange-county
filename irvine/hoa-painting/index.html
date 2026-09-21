@@ -1543,6 +1543,21 @@
   .cand-card .flag { display: inline-block; margin-top: 8px; font-size: 8px;
     font-weight: 800; letter-spacing: .2em; text-transform: uppercase;
     color: var(--navy); background: var(--gold-shine); padding: 4px 9px; }
+  /* SUBY 17 -- the P.S. Set narrow and left-aligned like a letter rather than
+     centred like a banner: it is the last thing read and it should feel written,
+     not designed. The hairline above separates it from the final CTA without
+     reading as a new section. */
+  .ps-close { max-width: 680px; margin: 44px auto 0; padding-top: 26px;
+    border-top: 1px solid rgba(168,138,71,.34); text-align: left; }
+  .ps-close p { font-family: var(--font-sans); font-size: clamp(13.5px, .95vw, 15px);
+    line-height: 1.68; color: rgba(26,31,78,.80); margin: 0 0 13px; }
+  .ps-close p b { font-weight: 700; color: var(--navy); letter-spacing: .02em; }
+  .ps-close .ps-cta { margin: 4px 0 0; }
+  .ps-close .ps-cta a { font-family: var(--font-serif); font-size: clamp(19px, 1.7vw, 24px);
+    font-weight: 600; color: var(--gold-deep); text-decoration: none;
+    border-bottom: 1px solid rgba(168,138,71,.42); }
+  .ps-close .ps-cta a:hover { color: var(--navy); border-bottom-color: var(--navy); }
+  @media (max-width: 720px) { .ps-close { margin-top: 34px; } }
   .cand-foot { text-align: center; margin-top: 34px; position: relative; z-index: 2; }
   .cand-foot p { font-family: var(--font-serif); font-style: italic;
     font-size: 15.5px; color: #4A4F70; margin: 0 0 20px; }

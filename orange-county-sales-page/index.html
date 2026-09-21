@@ -1750,6 +1750,21 @@
   .cand-card .flag { display: inline-block; margin-top: 8px; font-size: 8px;
     font-weight: 800; letter-spacing: .2em; text-transform: uppercase;
     color: var(--navy); background: var(--gold-shine); padding: 4px 9px; }
+  /* SUBY 17 -- the P.S. Set narrow and left-aligned like a letter rather than
+     centred like a banner: it is the last thing read and it should feel written,
+     not designed. The hairline above separates it from the final CTA without
+     reading as a new section. */
+  .ps-close { max-width: 680px; margin: 44px auto 0; padding-top: 26px;
+    border-top: 1px solid rgba(168,138,71,.34); text-align: left; }
+  .ps-close p { font-family: var(--font-sans); font-size: clamp(13.5px, .95vw, 15px);
+    line-height: 1.68; color: rgba(26,31,78,.80); margin: 0 0 13px; }
+  .ps-close p b { font-weight: 700; color: var(--navy); letter-spacing: .02em; }
+  .ps-close .ps-cta { margin: 4px 0 0; }
+  .ps-close .ps-cta a { font-family: var(--font-serif); font-size: clamp(19px, 1.7vw, 24px);
+    font-weight: 600; color: var(--gold-deep); text-decoration: none;
+    border-bottom: 1px solid rgba(168,138,71,.42); }
+  .ps-close .ps-cta a:hover { color: var(--navy); border-bottom-color: var(--navy); }
+  @media (max-width: 720px) { .ps-close { margin-top: 34px; } }
   .cand-foot { text-align: center; margin-top: 34px; position: relative; z-index: 2; }
   .cand-foot p { font-family: var(--font-serif); font-style: italic;
     font-size: 15.5px; color: #4A4F70; margin: 0 0 20px; }
@@ -4510,6 +4525,30 @@
       <div class="ck">Ready To Transform Your Home?</div>
       <h2 class="ttl">See Your Home in <em>11 Colors</em> Before You Commit to One</h2>
       <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Get My Complimentary Quote Now</span><span class="sub">No Pressure · No Obligation · Always Complimentary</span></span></a>
+    </div>
+
+    <!-- SUBY 17 -- the P.S. "The third most read element." It reminds of the offer,
+         warns of the consequence of not acting, and carries the CTA. His fourth
+         requirement, "remind of the limit", is deliberately absent: Fabian declined
+         scarcity for this business and there is no real limit, so stating one would
+         be the fake scarcity BRAND-VOICE bans.
+         It also shuts the story frame. The page opened on the Gallaghers and then
+         simply stopped. No after-story is invented for them and no words are put in
+         their mouths -- the only thing claimed here is the ORDER they did things in,
+         which is what the rest of the page already says. -->
+    <div class="ps-close">
+      <p><b>P.S.</b> &mdash; Everything above happened in one order: the Gallaghers saw
+        their home in eleven complete color schemes, chose one, and only then did anyone
+        open a can of paint.</p>
+      <p>Most exterior projects run that order backwards. Choose from a card, hope it
+        reads the same at three thousand square feet, and find out for certain when the
+        last drop cloth comes up. This is the one decision in a house you cannot quietly
+        redo on a Saturday &mdash; and the second repaint costs exactly what the first
+        one did. Same prep, same primer, same crew.</p>
+      <p>You can have the same thirty minutes the Gallaghers had. Send one photo of the
+        front of your house: complimentary, itemized estimate included, and you will have
+        seen all eleven before you commit to one.</p>
+      <p class="ps-cta"><a href="tel:9093125400">(909) 312-5400</a></p>
     </div>
   </section>
 
