@@ -74,6 +74,7 @@
       "@id": "https://realdealmarketing18-a11y.github.io/Vip-home-painting-orange-county/orange-county-sales-page/#faq",
       "mainEntity": [
         { "@type": "Question", "name": "How much does exterior house painting cost in Orange County CA?", "acceptedAnswer": { "@type": "Answer", "text": "VIP Home Painting starts at $4.75 per square foot of paintable surface. Where a project lands above that depends on the home — how much prep and repair the existing paint needs, the amount of trim and detail work, the height and access, and the finish you choose. A straightforward repaint and a stucco estate with extensive wood trim are not the same job. Every estimate is complimentary, itemised and no-obligation, and includes a custom visualization of your own home in the colors you are considering. Call (909) 312-5400." } },
+        { "@type": "Question", "name": "How much does an exterior color consultation cost?", "acceptedAnswer": { "@type": "Answer", "text": "Independent color consultants charge roughly $300 to $1,000 for an exterior color consultation, and one widely used online service publishes a $329 exterior package. What it delivers is a written report with three color variations plus paint sample cards mailed to you. VIP Home Painting's Custom Visualization Service works differently and is complimentary: our design team paints at least 11 complete color schemes \u2014 body, trim and accent together \u2014 onto a photo of your own home, so you judge the result on your house instead of on a card. It takes about 30 minutes and includes an itemised estimate. Call (909) 312-5400." } },
         { "@type": "Question", "name": "Do you paint homes in Newport Beach and Newport Coast?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. VIP Home Painting provides full exterior and interior painting in Newport Beach, Newport Coast, Corona del Mar, and surrounding luxury communities, using Sherwin-Williams premium paints and backed by a 2-Year Warranty." } },
         { "@type": "Question", "name": "Do you offer painting services in Coto de Caza and Irvine?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. We serve Coto de Caza, Irvine, Laguna Beach, Mission Viejo, Dana Point, Ladera Ranch, and all Orange County communities, specializing in luxury residential exterior painting for gated and high-value neighborhoods." } },
         { "@type": "Question", "name": "How long does it take to paint a house exterior in Orange County?", "acceptedAnswer": { "@type": "Answer", "text": "Most Orange County residential exterior painting projects are completed in 3 to 5 days, including color consultation, surface preparation, priming, and painting, with minimal disruption to your schedule." } },
@@ -1777,6 +1778,17 @@
   .offer-stake .os-sub { font-family: var(--font-sans); font-style: normal;
     font-size: clamp(14px, 1.05vw, 16px); line-height: 1.62;
     color: rgba(26,31,78,.80); max-width: 660px; margin: 0 auto 26px; }
+  /* The value anchor reads as an aside, not as body copy: a left gold rule and
+     a warmer ground so the eye registers it as "here is the comparison" before
+     reading a word of it. Left-aligned -- it is three sentences of argument and
+     centred argument is hard to track. */
+  .offer-stake .os-anchor { max-width: 660px; margin: 0 auto 24px; text-align: left;
+    padding: 14px 18px; border-left: 3px solid var(--gold-deep); border-radius: 0 4px 4px 0;
+    background: rgba(201,169,97,.10);
+    font-family: var(--font-sans) !important; font-style: normal !important;
+    font-size: clamp(13px, .95vw, 14.5px) !important; line-height: 1.6;
+    color: rgba(26,31,78,.84) !important; }
+  .offer-stake .os-anchor b { font-weight: 700; color: var(--navy); }
   .offer-stake .os-stack { list-style: none; margin: 0 auto 24px; padding: 0;
     max-width: 760px; text-align: left;
     display: grid; grid-template-columns: 1fr 1fr; gap: 11px 30px; }
@@ -3678,6 +3690,20 @@
         front of your house, and our design team paints it on screen in eleven complete
         color schemes and nine finish options &mdash; each one with the exact
         Sherwin-Williams colors &mdash; plus a written estimate broken out line by line.</p>
+      <!-- VALUE ANCHOR. Sources, checked 2026-09-21 and all publicly verifiable:
+           $329 exterior package, "report with three variations", colour cards by
+           FedEx -- thecolorconcierge.com/online-color-consulting/ (live checkout).
+           $300-$1,000 colour consultation range -- Angi 2026 cost guide.
+           The $1,000-$3,000 bracket was rejected on purpose: per Angi that is the
+           band where 3D renderings ARE included, so quoting it would point at the
+           competitors who already render. Lower and checkable beats higher and
+           arguable. No dollar value is placed on VIP's own consultation -- the
+           comparison is 3 variations against 11, and the reader does the division. -->
+      <p class="os-anchor"><b>What three color variations cost elsewhere: $329.</b>
+        An independent color consultant&rsquo;s exterior package arrives as a written
+        report with three variations and a set of paint cards in the mail. VIP commits
+        to at least eleven &mdash; every one of them painted onto the front of your own
+        house &mdash; and charges nothing for it.</p>
       <ul class="os-stack">
         <li>30 minutes, in your own home</li>
         <li><b>The front of your house, painted on screen</b> &mdash; not a sample board,
@@ -4419,6 +4445,10 @@
       <details class="faq-item" open>
         <summary class="faq-q">How much does exterior house painting cost in Orange County CA?<span class="pm">+</span></summary>
         <div class="faq-a">VIP Home Painting <b>starts at $4.75 per square foot of paintable surface</b>. Where a project lands above that depends on the home — how much prep and repair the existing paint needs, the amount of trim and detail work, the height and access, and the finish you choose. A straightforward repaint and a stucco estate with extensive wood trim are not the same job. Every estimate is complimentary, itemised and no-obligation, and includes a custom visualization of your own home in the colors you are considering. Call <a href="tel:9093125400">(909) 312-5400</a>.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">How much does an exterior color consultation cost?<span class="pm">+</span></summary>
+        <div class="faq-a">Independent color consultants charge roughly <b>$300 to $1,000</b> for an exterior color consultation, and one widely used online service publishes a <b>$329</b> exterior package. What it delivers is a written report with three color variations plus paint sample cards mailed to you. VIP Home Painting&rsquo;s Custom Visualization Service works differently and is <b>complimentary</b>: our design team paints <b>at least 11</b> complete color schemes &mdash; body, trim and accent together &mdash; onto a photo of your own home, so you judge the result on your house instead of on a card. It takes about 30 minutes and includes an itemised estimate. Call <a href="tel:9093125400">(909) 312-5400</a>.</div>
       </details>
       <details class="faq-item">
         <summary class="faq-q">Do you paint homes in Newport Beach and Newport Coast?<span class="pm">+</span></summary>

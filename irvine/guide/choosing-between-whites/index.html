@@ -1549,6 +1549,17 @@
   .offer-stake .os-sub { font-family: var(--font-sans); font-style: normal;
     font-size: clamp(14px, 1.05vw, 16px); line-height: 1.62;
     color: rgba(26,31,78,.80); max-width: 660px; margin: 0 auto 26px; }
+  /* The value anchor reads as an aside, not as body copy: a left gold rule and
+     a warmer ground so the eye registers it as "here is the comparison" before
+     reading a word of it. Left-aligned -- it is three sentences of argument and
+     centred argument is hard to track. */
+  .offer-stake .os-anchor { max-width: 660px; margin: 0 auto 24px; text-align: left;
+    padding: 14px 18px; border-left: 3px solid var(--gold-deep); border-radius: 0 4px 4px 0;
+    background: rgba(201,169,97,.10);
+    font-family: var(--font-sans) !important; font-style: normal !important;
+    font-size: clamp(13px, .95vw, 14.5px) !important; line-height: 1.6;
+    color: rgba(26,31,78,.84) !important; }
+  .offer-stake .os-anchor b { font-weight: 700; color: var(--navy); }
   .offer-stake .os-stack { list-style: none; margin: 0 auto 24px; padding: 0;
     max-width: 760px; text-align: left;
     display: grid; grid-template-columns: 1fr 1fr; gap: 11px 30px; }
