@@ -1852,6 +1852,60 @@
   .offer-stake .os-sub { font-family: var(--font-sans); font-style: normal;
     font-size: clamp(14px, 1.05vw, 16px); line-height: 1.62;
     color: rgba(26,31,78,.80); max-width: 660px; margin: 0 auto 26px; }
+  /* THE PACKAGE SHOT. No background of its own -- the card behind it shows
+     through, which is what lets the same block sit on cream here and on navy
+     elsewhere without a cut-out PNG. The float comes from shadows, not a plate. */
+  .offer-stake .pkg { margin: 0 0 26px; }
+  .offer-stake .pkg figure { margin: 0; }
+  .offer-stake .pkg img { display: block; width: 100%; height: 100%;
+    object-fit: cover; }
+
+  .offer-stake .pkg-hero { max-width: 520px; margin: 0 auto 18px; position: relative;
+    border-radius: 10px; overflow: hidden;
+    border: 1px solid rgba(168,138,71,.34);
+    box-shadow: 0 18px 44px rgba(26,31,78,.20); }
+  .offer-stake .pkg-hero img { aspect-ratio: 16 / 10; }
+  .offer-stake .pkg-hero figcaption { position: absolute; left: 0; right: 0; bottom: 0;
+    display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+    background: linear-gradient(180deg, rgba(26,31,78,0), rgba(26,31,78,.86) 42%);
+    text-align: left; }
+  .offer-stake .pkg-hero .paint-can { width: 30px; height: 30px; border-radius: 50%; }
+  .offer-stake .pkg-txt { display: flex; flex-direction: column; min-width: 0; }
+  .offer-stake .pkg-nm { font-family: var(--font-serif); font-style: italic;
+    font-weight: 600; font-size: clamp(13px, 1.05vw, 15.5px); color: #fff;
+    line-height: 1.2; }
+  .offer-stake .pkg-co { font-family: var(--font-sans); font-size: 10.5px;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--gold-bright);
+    margin-top: 2px; }
+
+  /* auto-fit, so the row can never overflow the way .pillars did: the track
+     count follows the width instead of being fixed and forcing a scrollbar. */
+  .offer-stake .pkg-grid { display: grid; gap: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+    max-width: 760px; margin: 0 auto; }
+  .offer-stake .pkg-thumb { border-radius: 6px; overflow: hidden;
+    border: 1px solid rgba(168,138,71,.30);
+    box-shadow: 0 6px 16px rgba(26,31,78,.13);
+    background: rgba(255,253,248,.7); }
+  .offer-stake .pkg-thumb img { aspect-ratio: 16 / 10; }
+  .offer-stake .pkg-thumb figcaption { font-family: var(--font-sans);
+    font-size: 8.5px; letter-spacing: .06em; text-transform: uppercase;
+    color: rgba(26,31,78,.72); padding: 5px 4px; line-height: 1.25;
+    text-align: center; }
+
+  .offer-stake .pkg-cap { display: flex; align-items: center; justify-content: center;
+    gap: 9px; margin: 16px 0 0 !important;
+    font-family: var(--font-serif) !important; font-style: italic !important;
+    font-size: clamp(15px, 1.25vw, 19px) !important; color: var(--navy) !important; }
+  .offer-stake .pkg-mark { width: auto; height: 26px; opacity: .85; flex: none; }
+
+  @media (max-width: 720px) {
+    .offer-stake .pkg-grid { grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+      gap: 6px; }
+    .offer-stake .pkg-thumb figcaption { font-size: 7.5px; padding: 4px 2px; }
+    .offer-stake .pkg-hero .paint-can { width: 24px; height: 24px; }
+  }
+
   /* The value anchor reads as an aside, not as body copy: a left gold rule and
      a warmer ground so the eye registers it as "here is the comparison" before
      reading a word of it. Left-aligned -- it is three sentences of argument and
@@ -3845,6 +3899,91 @@
         front of your house, and our design team paints it on screen in eleven complete
         color schemes and nine finish options &mdash; each one with the exact
         Sherwin-Williams colors &mdash; plus a written estimate broken out line by line.</p>
+      <!-- THE PACKAGE SHOT -- Suby G5, show don't tell. The stack below states
+           what she gets; this is what it looks like.
+           Every image here is a REAL VIP render off disk, not a generated
+           composite. Generating them would invent houses on the one section
+           whose premise is that she sees her own.
+           No background on this block: the card's cream shows through, so it
+           drops onto any ground without a cut-out.
+           Paint-can rule: three real cans on the hero, and NO swatch under the
+           thumbnails -- a 12px chip under each would be the flat sample this
+           entire page argues against. The thumbnails show the colour on the
+           house, which is the argument. -->
+      <div class="pkg">
+        <figure class="pkg-hero">
+          <img src="viz-photos/scheme-organic.jpg"
+               alt="A Newport Beach home rendered in the Coastal Organic Compound scheme"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <figcaption>
+            <span class="paint-cans">
+              <span class="paint-can" style="--c:#EDEAE0"></span>
+              <span class="paint-can" style="--c:#54504A"></span>
+              <span class="paint-can" style="--c:#9C7B53"></span>
+            </span>
+            <span class="pkg-txt">
+              <span class="pkg-nm">Coastal Organic Compound</span>
+              <span class="pkg-co">Alabaster SW 7008 &middot; Urbane Bronze SW 7048</span>
+            </span>
+          </figcaption>
+        </figure>
+        <div class="pkg-grid">
+        <figure class="pkg-thumb">
+          <img src="viz-photos/scheme-pebblebeach.jpg" alt="The same Newport Beach home in the Pebble Beach Manor scheme"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <figcaption>Pebble Beach Manor</figcaption>
+        </figure>
+        <figure class="pkg-thumb">
+          <img src="viz-photos/scheme-ibiza.jpg" alt="The same Newport Beach home in the Ibiza Luxury Villa scheme"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <figcaption>Ibiza Luxury Villa</figcaption>
+        </figure>
+        <figure class="pkg-thumb">
+          <img src="viz-photos/scheme-pacificsage.jpg" alt="The same Newport Beach home in the Pacific Sage Estate scheme"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <figcaption>Pacific Sage Estate</figcaption>
+        </figure>
+        <figure class="pkg-thumb">
+          <img src="viz-photos/scheme-marinelayer.jpg" alt="The same Newport Beach home in the Marine Layer scheme"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <figcaption>Marine Layer</figcaption>
+        </figure>
+        <figure class="pkg-thumb">
+          <img src="viz-photos/scheme-admiral.jpg" alt="The same Newport Beach home in the Newport Admiral scheme"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <figcaption>Newport Admiral</figcaption>
+        </figure>
+        <figure class="pkg-thumb">
+          <img src="viz-photos/scheme-spanish.jpg" alt="The same Newport Beach home in the Santa Barbara Luxe scheme"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <figcaption>Santa Barbara Luxe</figcaption>
+        </figure>
+        <figure class="pkg-thumb">
+          <img src="viz-photos/scheme-resort.jpg" alt="The same Newport Beach home in the Beverly Hills Resort scheme"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <figcaption>Beverly Hills Resort</figcaption>
+        </figure>
+        <figure class="pkg-thumb">
+          <img src="viz-photos/scheme-riviera.jpg" alt="The same Newport Beach home in the Riviera Tuxedo scheme"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <figcaption>Riviera Tuxedo</figcaption>
+        </figure>
+        <figure class="pkg-thumb">
+          <img src="viz-photos/scheme-euro.jpg" alt="The same Newport Beach home in the Euro-Industrial Estate scheme"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <figcaption>Euro-Industrial Estate</figcaption>
+        </figure>
+        <figure class="pkg-thumb">
+          <img src="viz-photos/scheme-obsidian.jpg" alt="The same Newport Beach home in the Obsidian Monolith scheme"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <figcaption>Obsidian Monolith</figcaption>
+        </figure>
+        </div>
+        <p class="pkg-cap">
+          <img class="pkg-mark" src="assets/logos/logo-brush-navy.png" alt=""
+               width="128" height="294" loading="lazy" decoding="async"/>
+          Every one of these is the same house.</p>
+      </div>
       <!-- VALUE ANCHOR. Sources, checked 2026-09-21 and all publicly verifiable:
            $329 exterior package, "report with three variations", colour cards by
            FedEx -- thecolorconcierge.com/online-color-consulting/ (live checkout).
