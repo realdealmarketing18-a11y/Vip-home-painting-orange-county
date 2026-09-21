@@ -3312,6 +3312,34 @@
      Same chip, on the pale ground. The hero's version is navy glass on a
      photograph; this one has to sit on paper, so it takes the section's
      own palette rather than the hero's. */
+  /* The lead into the schemes. Short on purpose: the headline should hand
+     straight over to the cards, and the argument for why any of it matters
+     now sits underneath them. */
+  .cand-head .cand-lead { font-family: var(--font-serif); font-style: italic;
+    font-size: clamp(15px, 1.25vw, 19px); line-height: 1.5; color: var(--navy);
+    opacity: .9; margin: 14px 0 0; }
+  .cand-head .cand-lead b { font-weight: 600; color: var(--gold-deep);
+    font-style: normal; }
+
+  /* The floodlight now sits below the carousel rather than inside the head,
+     so it needs its own centring and its own top margin. */
+  .cand-band .fl-bridge, .cand-band .fl-lede, .cand-band .fl-tried,
+  .cand-band .fl-turn { max-width: 660px; margin-left: auto; margin-right: auto;
+    position: relative; z-index: 2; }
+  .cand-band .fl-bridge { margin-top: clamp(34px, 4vw, 54px); }
+
+  /* THE MOBILE CAROUSEL. flex-basis was clamp(330px, 25vw, 470px); at 375px
+     the track is 335px wide, so the card filled it with five pixels to spare
+     and nothing peeked -- it read as one static picture with no sign there
+     were six more. The peek IS the affordance, and the hint backs it up. */
+  .cand-swipe { display: none; }
+  @media (max-width: 720px) {
+    .cand-card { flex-basis: min(76vw, 292px); }
+    .cand-swipe { display: block; text-align: center; margin: 14px 0 0;
+      font-family: var(--font-sans); font-size: 11.5px; font-weight: 600;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--gold-deep); position: relative; z-index: 2; }
+  }
   .cand-pill { margin-bottom: clamp(16px, 2vw, 26px); }
   .cand-pill .avatar-pill { background: rgba(255,253,248,.92);
     border: 1px solid rgba(168,138,71,.34);
@@ -3644,6 +3672,9 @@
       <div class="eyebrow">1 &middot; They Visualized It</div>
       <h2>The Gallaghers Did Not Choose This Color. <span class="accent">They Eliminated
         Ten Others First.</span></h2>
+      <p class="cand-lead">So the Gallaghers saw all <b>11</b> on their own house
+        before they chose. These are the other <b>7</b>, and the one they picked.
+        Tap any one to see it full size.</p>
       <!-- THE SWATCH-SCALE ARGUMENT — 07-VOICE.md calls this "the most
            valuable single finding" and names the previous line here as the
            thing to replace. Its criticism: "a paint chip in a store tells
@@ -3662,6 +3693,31 @@
            lighting". No quote is reproduced — the source is a homeowner on a
            public forum, not a VIP client, and attributing her words here
            would read as a testimonial she never gave. -->
+    </div>
+    <!-- THE BAND'S OWN SEVEN. The hero tray shows four; these are the
+         other seven, so scrolling into this section is new material rather
+         than a repeat of what was just seen. Santa Barbara Luxe — the
+         scheme the Gallaghers actually chose — lives here.
+
+         Paths stay in markup so generate.js's url('viz-photos/ rewrite
+         still applies if this section is ever lifted onto another page. -->
+    <template id="bandSchemes">
+      <i data-id="pebblebeach" data-nm="Pebble Beach Manor"        data-co="Accessible Beige SW 7036 &middot; Dover White SW 6385"   data-sw="#D1C7B8" data-trim="#EFE8D8" data-accent="#95948C" style="background-image:url('viz-photos/scheme-pebblebeach.jpg')"></i>
+      <i data-id="ibiza"       data-nm="Ibiza Luxury Villa"        data-co="Balanced Beige SW 7037 &middot; Aesthetic White SW 7035" data-sw="#D1C7B8" data-trim="#E8E3DA" data-accent="#C8B59B" style="background-image:url('viz-photos/scheme-ibiza.jpg')"></i>
+      <i data-id="pacificsage" data-nm="Pacific Sage Estate"       data-co="Evergreen Fog SW 9130 &middot; Shoji White SW 7042"      data-sw="#95978A" data-trim="#E6DFD3" data-accent="#A98D4B" style="background-image:url('viz-photos/scheme-pacificsage.jpg')"></i>
+      <i data-id="obsidian"    data-nm="Obsidian Monolith"         data-co="Iron Ore SW 7069 &middot; Tricorn Black SW 6258"        data-sw="#434341" data-trim="#2F2F30" data-accent="#5B5E62" style="background-image:url('viz-photos/scheme-obsidian.jpg')"></i>
+      <i data-id="marinelayer" data-nm="Marine Layer"              data-co="Sea Salt SW 6204 &middot; High Reflective White SW 7757" data-sw="#CBD6D0" data-trim="#F7F7F1" data-accent="#BFC7C5" style="background-image:url('viz-photos/scheme-marinelayer.jpg')"></i>
+      <i data-id="resort"      data-nm="Beverly Hills Resort"      data-co="City Loft SW 7631, monochrome"                 data-sw="#B9B2A7" data-trim="#D6D2C9" data-accent="#8C6E4C" style="background-image:url('viz-photos/scheme-resort.jpg')"></i>
+      <i data-id="spanish"     data-nm="Santa Barbara Luxe"        data-co="Alabaster SW 7008 &middot; Tricorn Black SW 6258"       data-sw="#F1EDE2" data-trim="#2F2F30" data-accent="#B5714A" style="background-image:url('viz-photos/scheme-spanish.jpg')"></i>
+      <!-- The payoff card. Coastal Organic Compound also leads the hero, and
+           it is here again on purpose: the band walks the seven they passed
+           on and ends on the one that went on the house, so section two
+           finishes the decision rather than trailing off. -->
+      <i data-id="organic"     data-nm="Coastal Organic Compound"  data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048"       data-sw="#EDE8DC" data-trim="#54504A" data-accent="#9C7B53" data-chosen="1" style="background-image:url('viz-photos/scheme-organic.jpg')"></i>
+</template>
+    <div class="cand-track" id="candTrack"></div>
+    <p class="cand-swipe">Swipe to see them all &rarr;</p>
+
       <!-- SUBY 5 -- THE FLOODLIGHT, as the body of this section rather than as a
            section of its own. It was tried as a separate movement above the
            Gallagher chip and it broke the story: the hero closes with an arrow
@@ -3704,32 +3760,7 @@
         best advice, followed properly, and it still ends with a color nobody is
         certain about. A two-foot patch and three thousand square feet of the same
         paint do not behave the same in your light &mdash; the only thing that predicts
-        your whole house is your whole house. So the Gallaghers saw all <b>11</b> on
-        theirs first. These are the other <b>7</b>, and the one they chose. Tap any one
-        to see it full size.</p>
-    </div>
-    <!-- THE BAND'S OWN SEVEN. The hero tray shows four; these are the
-         other seven, so scrolling into this section is new material rather
-         than a repeat of what was just seen. Santa Barbara Luxe — the
-         scheme the Gallaghers actually chose — lives here.
-
-         Paths stay in markup so generate.js's url('viz-photos/ rewrite
-         still applies if this section is ever lifted onto another page. -->
-    <template id="bandSchemes">
-      <i data-id="pebblebeach" data-nm="Pebble Beach Manor"        data-co="Accessible Beige SW 7036 &middot; Dover White SW 6385"   data-sw="#D1C7B8" data-trim="#EFE8D8" data-accent="#95948C" style="background-image:url('viz-photos/scheme-pebblebeach.jpg')"></i>
-      <i data-id="ibiza"       data-nm="Ibiza Luxury Villa"        data-co="Balanced Beige SW 7037 &middot; Aesthetic White SW 7035" data-sw="#D1C7B8" data-trim="#E8E3DA" data-accent="#C8B59B" style="background-image:url('viz-photos/scheme-ibiza.jpg')"></i>
-      <i data-id="pacificsage" data-nm="Pacific Sage Estate"       data-co="Evergreen Fog SW 9130 &middot; Shoji White SW 7042"      data-sw="#95978A" data-trim="#E6DFD3" data-accent="#A98D4B" style="background-image:url('viz-photos/scheme-pacificsage.jpg')"></i>
-      <i data-id="obsidian"    data-nm="Obsidian Monolith"         data-co="Iron Ore SW 7069 &middot; Tricorn Black SW 6258"        data-sw="#434341" data-trim="#2F2F30" data-accent="#5B5E62" style="background-image:url('viz-photos/scheme-obsidian.jpg')"></i>
-      <i data-id="marinelayer" data-nm="Marine Layer"              data-co="Sea Salt SW 6204 &middot; High Reflective White SW 7757" data-sw="#CBD6D0" data-trim="#F7F7F1" data-accent="#BFC7C5" style="background-image:url('viz-photos/scheme-marinelayer.jpg')"></i>
-      <i data-id="resort"      data-nm="Beverly Hills Resort"      data-co="City Loft SW 7631, monochrome"                 data-sw="#B9B2A7" data-trim="#D6D2C9" data-accent="#8C6E4C" style="background-image:url('viz-photos/scheme-resort.jpg')"></i>
-      <i data-id="spanish"     data-nm="Santa Barbara Luxe"        data-co="Alabaster SW 7008 &middot; Tricorn Black SW 6258"       data-sw="#F1EDE2" data-trim="#2F2F30" data-accent="#B5714A" style="background-image:url('viz-photos/scheme-spanish.jpg')"></i>
-      <!-- The payoff card. Coastal Organic Compound also leads the hero, and
-           it is here again on purpose: the band walks the seven they passed
-           on and ends on the one that went on the house, so section two
-           finishes the decision rather than trailing off. -->
-      <i data-id="organic"     data-nm="Coastal Organic Compound"  data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048"       data-sw="#EDE8DC" data-trim="#54504A" data-accent="#9C7B53" data-chosen="1" style="background-image:url('viz-photos/scheme-organic.jpg')"></i>
-</template>
-    <div class="cand-track" id="candTrack"></div>
+        your whole house is your whole house.</p>
     <!-- The three reasons used to be their own section further down, saying
          the same thing in other words against a stock photo of somebody
          else's house. Here they sit under the proof instead of arguing for
