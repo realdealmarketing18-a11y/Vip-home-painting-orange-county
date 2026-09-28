@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DRAFT — One Story, Five Clips</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1A1F4E;
+    --accent-gold: #C9A961;
+    --accent-orange: #C9A961;
+    --neutral-gray: #BAAEA1;
+    --cream: #F5EFE2;
+    --card: #FFFDF8;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--cream); color: var(--primary);
+    font-family: 'Inter', sans-serif; line-height: 1.6;
+    padding: 0 0 80px;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+  /* -------- draft banner -------- */
+  .draft-banner {
+    background: var(--primary); color: #fff; text-align: center;
+    padding: 14px 20px; font-family: 'Inter', sans-serif; font-weight: 700;
+    font-size: 13px; letter-spacing: .08em; text-transform: uppercase;
+  }
+  .draft-banner span { color: var(--accent-gold); }
+
+  /* -------- header -------- */
+  header { padding: 44px 0 30px; border-bottom: 1px solid rgba(26,31,78,.14); }
+  .eyebrow { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 11.5px;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--accent-gold); margin: 0 0 10px; }
+  h1 { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(26px, 4vw, 38px);
+    margin: 0 0 14px; line-height: 1.18; }
+  h1 em { font-style: italic; color: var(--accent-gold); }
+  .lede { font-size: 15px; color: rgba(26,31,78,.78); max-width: 640px; margin: 0 0 18px; }
+  .open-decision {
+    background: var(--card); border: 1px solid rgba(201,169,97,.4); border-left: 3px solid var(--accent-gold);
+    border-radius: 0 6px 6px 0; padding: 14px 18px; font-size: 13.5px; margin: 18px 0 0; max-width: 640px;
+  }
+  .open-decision b { color: var(--primary); }
+
+  /* -------- continuity block -------- */
+  .continuity { background: var(--card); border: 1px solid rgba(168,138,71,.28); border-radius: 8px;
+    padding: 22px 24px; margin: 30px 0; }
+  .continuity h2 { font-family: 'Fraunces', serif; font-weight: 600; font-style: italic;
+    font-size: 18px; margin: 0 0 12px; }
+  .continuity dl { display: grid; grid-template-columns: 110px 1fr; gap: 8px 14px; margin: 0; font-size: 13.5px; }
+  .continuity dt { font-weight: 700; color: rgba(26,31,78,.55); text-transform: uppercase; font-size: 10.5px;
+    letter-spacing: .08em; padding-top: 2px; }
+  .continuity dd { margin: 0; color: rgba(26,31,78,.85); }
+
+  /* -------- flow map -------- */
+  .flowmap { margin: 30px 0; }
+  .flowmap h2 { font-family: 'Fraunces', serif; font-weight: 600; font-style: italic; font-size: 20px; margin: 0 0 6px; }
+  .flowmap-note { font-size: 13px; color: rgba(26,31,78,.65); margin: 0 0 16px; max-width: 640px; }
+  .flowmap table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid rgba(168,138,71,.28);
+    border-radius: 8px; overflow: hidden; font-size: 12.5px; }
+  .flowmap th { text-align: left; background: var(--primary); color: var(--accent-gold); font-family: 'Inter', sans-serif;
+    font-weight: 700; font-size: 10px; letter-spacing: .07em; text-transform: uppercase; padding: 10px 12px; }
+  .flowmap td { padding: 11px 12px; border-top: 1px solid rgba(168,138,71,.18); vertical-align: top; color: rgba(26,31,78,.82); }
+  .flowmap tr.hl td { background: rgba(201,169,97,.08); }
+  .flowmap td:first-child { font-family: 'Fraunces', serif; font-style: italic; font-weight: 600; color: var(--accent-gold);
+    white-space: nowrap; }
+  .flowmap em { font-style: italic; color: var(--primary); }
+  .status { white-space: nowrap; font-weight: 700; font-size: 10.5px; letter-spacing: .03em; }
+  .status-new { color: #5A8F6E; } .status-ok { color: rgba(26,31,78,.55); }
+  .status-later { color: var(--accent-gold); } .status-skip { color: rgba(26,31,78,.4); }
+  @media (max-width: 640px) { .flowmap table, .flowmap thead, .flowmap tbody, .flowmap th, .flowmap td, .flowmap tr { display: block; }
+    .flowmap thead { display: none; }
+    .flowmap tr { border-top: 2px solid rgba(168,138,71,.3); padding: 10px 0; }
+    .flowmap td { border-top: none; padding: 3px 12px; }
+    .flowmap td:first-child::before { content: 'Chapter '; }
+  }
+
+  /* -------- style prefix -------- */
+  .style-prefix { background: var(--primary); color: var(--cream); border-radius: 8px;
+    padding: 20px 24px; margin: 26px 0; position: relative; }
+  .style-prefix h2 { font-family: 'Fraunces', serif; font-weight: 600; font-style: italic;
+    font-size: 15px; color: var(--accent-gold); margin: 0 0 10px; }
+  .style-prefix code { display: block; font-family: 'SF Mono', Consolas, monospace; font-size: 12.5px;
+    line-height: 1.65; white-space: pre-wrap; color: #EDEAF5; }
+  .copy-btn { position: absolute; top: 16px; right: 16px; background: var(--accent-gold); color: var(--primary);
+    border: none; border-radius: 4px; padding: 6px 12px; font-family: 'Inter', sans-serif; font-weight: 700;
+    font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
+  .copy-btn:hover { background: #DCC07E; }
+  .copy-btn.copied { background: #5A8F6E; color: #fff; }
+
+  /* -------- scenes -------- */
+  .scene { background: var(--card); border: 1px solid rgba(168,138,71,.28); border-radius: 10px;
+    margin: 22px 0; overflow: hidden; }
+  .scene-head { display: flex; align-items: flex-start; gap: 14px; padding: 18px 22px;
+    border-bottom: 1px solid rgba(168,138,71,.2); }
+  .scene-head input[type="checkbox"] { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--accent-gold); flex: none; }
+  .scene-num { font-family: 'Fraunces', serif; font-style: italic; font-weight: 600; color: var(--accent-gold);
+    font-size: 13px; letter-spacing: .04em; }
+  .scene-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; margin: 2px 0 4px; }
+  .scene-for { font-size: 12.5px; color: rgba(26,31,78,.62); }
+  .scene.done .scene-title { text-decoration: line-through; opacity: .55; }
+  .prompt-block { position: relative; margin: 16px 22px 20px; background: #FBF8F1;
+    border: 1px solid rgba(168,138,71,.22); border-radius: 6px; padding: 16px 18px 16px; }
+  .prompt-block pre { margin: 0; white-space: pre-wrap; font-family: 'SF Mono', Consolas, monospace;
+    font-size: 12.5px; line-height: 1.7; color: rgba(26,31,78,.88); }
+  .prompt-block .wc { position: absolute; bottom: 8px; right: 14px; font-family: 'Inter', sans-serif;
+    font-size: 10.5px; color: rgba(26,31,78,.4); }
+  .prompt-block .copy-btn { top: 12px; right: 12px; background: var(--primary); color: var(--accent-gold); }
+  .prompt-block .copy-btn:hover { background: #2A305F; }
+
+  /* -------- caption overlay plan -------- */
+  .cap-badge { display: inline-block; background: var(--primary); color: var(--accent-gold);
+    font-family: 'Inter', sans-serif; font-weight: 700; font-size: 9.5px; letter-spacing: .07em;
+    text-transform: uppercase; padding: 3px 8px; border-radius: 3px; margin-left: 8px; vertical-align: middle; }
+  .caption-plan { margin: 0 22px 20px; border: 1px solid rgba(168,138,71,.32); border-left: 3px solid var(--accent-gold);
+    border-radius: 0 6px 6px 0; padding: 14px 18px; background: rgba(201,169,97,.06); }
+  .caption-plan h4 { font-family: 'Fraunces', serif; font-style: italic; font-weight: 600; font-size: 14px;
+    margin: 0 0 4px; color: var(--primary); }
+  .caption-plan .cap-note { font-size: 12px; color: rgba(26,31,78,.6); margin: 0 0 12px; }
+  .caption-plan table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .caption-plan th { text-align: left; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 9.5px;
+    letter-spacing: .06em; text-transform: uppercase; color: rgba(26,31,78,.5); padding: 0 8px 6px 0; }
+  .caption-plan td { padding: 6px 8px 6px 0; vertical-align: top; border-top: 1px solid rgba(168,138,71,.16); }
+  .caption-plan td.cap-beat { font-family: 'Fraunces', serif; font-style: italic; font-weight: 600; color: var(--accent-gold);
+    white-space: nowrap; }
+  .caption-plan td.cap-text { font-family: 'Fraunces', serif; font-weight: 500; color: var(--primary); font-size: 13px; }
+  .caption-plan td.cap-src { color: rgba(26,31,78,.55); font-size: 11px; }
+
+  footer { text-align: center; font-size: 12px; color: rgba(26,31,78,.5); margin-top: 40px; }
+</style>
+</head>
+<body>
+
+<div class="draft-banner">Draft &mdash; Not Cleared for Generation &middot; <span>The page as one video sales letter, in chapters</span></div>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Orange County Sales Page &middot; Seedance Shotlist</div>
+    <h1>One story, five clips &mdash; <em>the page as a video sales letter, in chapters</em></h1>
+    <p class="lede">Not disconnected b-roll per section. One throughline, in the same order the copy already
+      runs &mdash; the hero&rsquo;s promise, then the offer proven, then the fascination bullets &mdash;
+      so if every clip on the page played back to back it would read as one continuous sales film, and on
+      the page each chapter simply lives inside the section that makes that argument. The flow map below
+      lays out the whole page; five scenes are written to full prompts so far, the rest are planned but
+      not yet scripted.</p>
+    <div class="open-decision">
+      <b>Decided:</b> hands/backs-only, no faces in frame &mdash; confirmed, to conserve credits. A trained
+      Gallagher character/Soul already exists in Higgsfield if faces are ever wanted for a future piece;
+      noted for later, not used here.
+    </div>
+  </header>
+
+  <div class="continuity">
+    <h2>Continuity across all four scenes</h2>
+    <dl>
+      <dt>Location</dt>
+      <dd>A pale oak dining table in a sunlit coastal-contemporary living room, tall window camera-left. A
+        generic staged interior &mdash; not a specific real client property, so it does not need to trace
+        back to a verified real-home plate the way an actual client house would.</dd>
+      <dt>Cast</dt>
+      <dd>An unnamed homeowner couple in their fifties, filmed only from behind/above or as hands-only
+        inserts. No faces visible in any frame, ever. Him: navy blazer, short grey hair at the back of the
+        head. Her: cream blouse, shoulder-length blonde hair.</dd>
+      <dt>Props</dt>
+      <dd>A silver laptop &middot; an open navy-blue presentation folder with a gold-embossed crowned-brush
+        emblem, holding glossy photo prints &middot; a printed itemized estimate page. No paint cans, no
+        colour chips, no swatch cards, no fan decks anywhere &mdash; a colour is never shown as a flat
+        sample on this page, only as a full house or a full number.</dd>
+      <dt>Screens &amp; text</dt>
+      <dd>Every screen and every printed page is generated as a soft neutral glow or out-of-focus fine print
+        &mdash; never asked to render legible imagery or text. The real renders, the real prints, and the
+        real &ldquo;$4.75/sq&nbsp;ft&rdquo; line are composited on top afterward, not generated. Video and
+        image models both fail at small legible detail; this sidesteps that failure mode entirely.</dd>
+    </dl>
+  </div>
+
+  <div class="flowmap">
+    <h2>The whole page, as one video sales letter</h2>
+    <p class="flowmap-note">Same beat order the copy already runs in. Column 3 is the film&rsquo;s job in
+      that chapter &mdash; not a repeat of the headline, the reason the clip exists.</p>
+    <table>
+      <thead><tr><th>Chapter</th><th>Section</th><th>The clip&rsquo;s job</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>0</td><td>Hero</td>
+          <td>Prove the headline&rsquo;s sequence &mdash; visualize, decide, <em>then</em> paint. Never the
+            other way.</td><td class="status status-new">Scripted below</td></tr>
+        <tr><td>&mdash;</td><td>&sect;2 &middot; the floodlight</td>
+          <td>The paralysis, the driveway, the five failed tries. Prose does this better than footage would
+            &mdash; a staged &ldquo;unhappy couple&rdquo; clip reads as acted, not felt.</td>
+          <td class="status status-skip">No clip &mdash; recommended</td></tr>
+        <tr><td>1</td><td>&sect;2 &middot; &ldquo;They Visualized It&rdquo; schemes carousel</td>
+          <td>They saw all eleven, chose one. Already a working image wipe.</td>
+          <td class="status status-ok">Exists, not urgent</td></tr>
+        <tr class="hl"><td>2&ndash;4</td><td>&sect;2 &middot; the three intrigue bullets</td>
+          <td>The chip is too small &middot; the real cost &middot; the number nobody publishes.</td>
+          <td class="status status-new">Scripted below</td></tr>
+        <tr class="hl"><td>5</td><td>&sect;2 &middot; the offer, stated</td>
+          <td>The reveal &mdash; the moment the slider moves. Suby&rsquo;s &ldquo;visual representation of
+            what they&rsquo;re getting.&rdquo;</td><td class="status status-new">Scripted below</td></tr>
+        <tr><td>&mdash;</td><td>&sect;3 &middot; the visualizer</td>
+          <td>The solution, live. It is an interactive tool, not a video &mdash; it demonstrates itself
+            better than a clip of someone else using it would.</td>
+          <td class="status status-skip">No clip needed</td></tr>
+        <tr><td>&mdash;</td><td>&sect;4 &middot; &ldquo;Then We Painted It&rdquo;</td>
+          <td>The same first brushstroke from the Hero chapter, held longer &mdash; one continuous job, not
+            a second shoot.</td><td class="status status-later">Reuse Hero footage, later</td></tr>
+        <tr><td>&mdash;</td><td>benefits &middot; &ldquo;What It Buys You&rdquo;</td>
+          <td>Eight mechanism&rarr;consequence lines with no imagery at all right now &mdash; back-rolling,
+            wet-film thickness, the founder&rsquo;s walkthrough. Real candidates once the five above are
+            approved and shot.</td><td class="status status-later">Deferred</td></tr>
+        <tr><td>&mdash;</td><td>FAQ &middot; services &middot; service areas</td>
+          <td>Informational, answer-first sections &mdash; a clip would compete with the text these are
+            built to be quoted from.</td><td class="status status-skip">No clip</td></tr>
+        <tr><td>&mdash;</td><td>Final CTA &middot; the P.S.</td>
+          <td>A closing beat &mdash; the folder closes, or a hand reaches for the phone. Nice-to-have, not
+            load-bearing.</td><td class="status status-later">Deferred, low priority</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="style-prefix">
+    <h2>Global Style Prefix &mdash; prepend verbatim to every prompt</h2>
+    <button class="copy-btn" onclick="copyText(this, stylePrefix)">Copy</button>
+    <code id="stylePrefixText">Style: 8K commercial, 16:9, photorealistic &mdash; no 3D render, no game engine. Lighting: bright natural daylight, crisp real shadows. Color: 60:30:10. Camera: physical cine lens, 180&deg; shutter blur. Realism: natural physics, tactile materials, rule of thirds, 24fps. Skin: anti-plastic, pore-level realism, natural hand texture, NOT glossy, NOT waxy. Continuity: identical environment, wardrobe and props across cuts.</code>
+  </div>
+
+  <div class="open-decision">
+    <b>Realism pass, 2026-09-22 &mdash; sourced from Higgsfield&rsquo;s own docs, not generic AI-prompt
+    folklore.</b> The &ldquo;Skin:&rdquo; line above is lifted from <a href="https://higgsfield.ai/creator-hub/help-center/getting-started/how-do-i-write-a-good-prompt" target="_blank" rel="noopener">their own worked example for seedance_2_0</a>
+    (our target model), verbatim in spirit: <em>&ldquo;anti-plastic, pore-level realism&hellip; NOT
+    glossy&hellip; NOT smoothed, NOT waxy.&rdquo;</em> More load-bearing: <a href="https://higgsfield.ai/blog/ai-video-hands-faces" target="_blank" rel="noopener">their dedicated hands/faces failure-mode article</a>
+    says the #1 fix isn&rsquo;t a keyword at all &mdash; it&rsquo;s describing a hand&rsquo;s <b>start
+    position and end position</b>, never the motion between them. An open gesture path is exactly what
+    the model has to invent mid-generation, and mid-invention is where extra fingers appear. Every cut
+    below that involved a hand in motion has been rewritten that way. Camera movement (a push-in, a
+    drift) is a <em>different</em>, safer category and was left alone &mdash; the fix is for hand/finger
+    motion specifically, not for the camera.
+  </div>
+
+  <!-- ========== SCENE 0 ========== -->
+  <div class="scene" data-scene="0">
+    <div class="scene-head">
+      <input type="checkbox" onchange="toggleDone(this)">
+      <div>
+        <div class="scene-num">Scene 0 &middot; ~15s &middot; Chapter 0</div>
+        <div class="scene-title">The Promise</div>
+        <div class="scene-for">For: the hero headline, &ldquo;Right the First Time in 30 Minutes&hellip; Before a Single Brushstroke&rdquo;</div>
+      </div>
+    </div>
+    <div class="prompt-block">
+      <button class="copy-btn" onclick="copyText(this, scene0)">Copy full prompt</button>
+      <pre id="scene0">[STYLE PREFIX &mdash; paste from above]
+Characters: an unnamed couple in their fifties, from behind or hands-only, no faces visible, ever. Final cut only: a separate painter&rsquo;s gloved hand and forearm, muted work-navy sleeve, no face, no visible logo.
+Scene: two locations. INTERIOR &mdash; a smooth pale oak dining table in a bright modern coastal living room, tall window camera-left, an open silver laptop glowing softly, a navy presentation folder beside it. EXTERIOR, final cut only &mdash; a sunlit plain stucco wall corner on an anonymous house, no address, no distinguishing architecture.
+CUT 1 &mdash; Interior, over-the-shoulder wide, 35mm, static: START &mdash; laptop closed, couple upright and apart. END &mdash; laptop glowing, both leaning in together, shoulders angled inward, heads bowed.
+CUT 2 &mdash; Interior, close insert, 50mm, static: START &mdash; folder open. END &mdash; folder closed, one hand resting flat on top, still.
+CUT 3 &mdash; Hard cut to exterior, close insert, 50mm, static: START &mdash; gloved hand holding a loaded brush an inch above dry stucco. END &mdash; one stroke of warm off-white laid down, brush lifted clear.</pre>
+      <span class="wc" data-src="scene0"></span>
+    </div>
+  </div>
+
+  <!-- ========== SCENE 5 (was Scene 1) ========== -->
+  <div class="scene" data-scene="5">
+    <div class="scene-head">
+      <input type="checkbox" onchange="toggleDone(this)">
+      <div>
+        <div class="scene-num">Scene 5 &middot; ~15s &middot; Chapter 5</div>
+        <div class="scene-title">The Reveal &mdash; the lid opens</div>
+        <div class="scene-for">For: the offer-stake panel, &ldquo;Everything the Gallaghers Saw Before They Committed&rdquo;</div>
+      </div>
+    </div>
+    <div class="prompt-block">
+      <button class="copy-btn" onclick="copyText(this, scene1)">Copy full prompt</button>
+      <pre id="scene1">[STYLE PREFIX &mdash; paste from above]
+Characters: an unnamed couple in their fifties filmed only from behind and above, backs to camera, no faces visible in any frame. Him: navy blazer, short grey hair at the back of the head. Her: cream blouse, shoulder-length blonde hair.
+Scene: INTERIOR, indoors. A smooth pale oak dining table in a bright modern coastal living room, tall window camera-left, warm afternoon light. A closed silver laptop sits centre table. The couple are seated together behind it, seen from behind.
+CUT 1 &mdash; Overhead insert, 50mm, static: START &mdash; laptop closed. END &mdash; lid raised, screen lit with a soft neutral warm-white glow.
+CUT 2 &mdash; Close insert, 50mm, slow push-in: hand already resting on the trackpad, one finger settled at its centre, hand position fixed for the full push-in &mdash; the camera moves, the hand does not.
+CUT 3 &mdash; Over-the-shoulder wide, from behind and above, 35mm, gentle drift-in: START &mdash; couple upright and apart. END &mdash; both leaning toward the glowing screen together, shoulders angled in, heads bowed &mdash; no faces visible, held.</pre>
+      <span class="wc" data-src="scene1"></span>
+    </div>
+  </div>
+
+  <!-- ========== SCENE 2 ========== -->
+  <div class="scene" data-scene="2">
+    <div class="scene-head">
+      <input type="checkbox" onchange="toggleDone(this)">
+      <div>
+        <div class="scene-num">Scene 2 &middot; ~15s &middot; Chapter 2</div>
+        <div class="scene-title">The Chip<span class="cap-badge">+ Caption Overlay</span></div>
+        <div class="scene-for">For bullet: &ldquo;Never approve a color you have only seen at 2&times;2 feet.&rdquo;</div>
+      </div>
+    </div>
+    <div class="prompt-block">
+      <button class="copy-btn" onclick="copyText(this, scene2)">Copy full prompt</button>
+      <pre id="scene2">[STYLE PREFIX &mdash; paste from above]
+Characters: one man&rsquo;s hand and forearm only, no face in frame at any point, pale blue shirt cuff, no watch.
+Scene: INTERIOR, indoors. A smooth pale oak dining table in a bright modern coastal living room, tall window camera-left, warm afternoon light. An open silver laptop sits behind on the table, screen a soft neutral warm-white glow, no legible content. On the table is a small square paint colour swatch card: flat matte cardstock, one solid beige colour, roughly two inches square. It is a flat paint sample card, NOT food, NOT a snack, NOT a potato chip.
+CUT 1 &mdash; Close insert, 85mm, static: START &mdash; hand resting flat on the table beside the square swatch card. END &mdash; hand raised, the flat card held upright between thumb and forefinger, printed face toward camera, fingers relaxed.
+CUT 2 &mdash; Close insert, 85mm, static, rack focus only, no hand movement: the small card stays sharp in the foreground, held still; focus racks past it to the laptop&rsquo;s soft glow behind, which blurs large and bright &mdash; the card looks tiny against it.
+CUT 3 &mdash; Overhead insert, 50mm, static: START &mdash; hand holding the card above the table. END &mdash; card released face-down flat on the oak table, hand withdrawn from frame, fingers relaxed and separated.</pre>
+      <span class="wc" data-src="scene2"></span>
+    </div>
+    <div class="caption-plan">
+      <h4>Caption overlay &mdash; the one clip that restates the headline, 3-step funnel structure</h4>
+      <p class="cap-note">Added in the edit, not the generation &mdash; this pipeline&rsquo;s own rule is that
+        on-screen text is never asked of the video model. Zero extra credits. Every line below is restated
+        from copy already live and approved elsewhere on the page &mdash; nothing new is being written or
+        put through headline approval here.</p>
+      <table>
+        <thead><tr><th>Beat</th><th>Timing</th><th>On-screen text</th><th>Restates</th></tr></thead>
+        <tbody>
+          <tr><td class="cap-beat">Problem</td><td>Cut 1, chip lifted</td>
+            <td class="cap-text">&ldquo;A 2&times;2 sample can&rsquo;t predict three thousand square feet.&rdquo;</td>
+            <td class="cap-src">&sect;2 turn paragraph &middot; the funnel doc&rsquo;s own strongest line</td></tr>
+          <tr><td class="cap-beat">Fix</td><td>Cut 2, scale contrast</td>
+            <td class="cap-text">&ldquo;So we paint the whole house first &mdash; not a sample.&rdquo;</td>
+            <td class="cap-src">this bullet&rsquo;s own body copy</td></tr>
+          <tr><td class="cap-beat">Ask</td><td>Cut 3, held beat</td>
+            <td class="cap-text">&ldquo;See yours. Thirty minutes, complimentary.&rdquo;</td>
+            <td class="cap-src">the page&rsquo;s own CTA language</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ========== SCENE 3 ========== -->
+  <div class="scene" data-scene="3">
+    <div class="scene-head">
+      <input type="checkbox" onchange="toggleDone(this)">
+      <div>
+        <div class="scene-num">Scene 3 &middot; ~15s &middot; Chapter 3</div>
+        <div class="scene-title">The Cost</div>
+        <div class="scene-for">For bullet: &ldquo;What a wrong color actually costs &mdash; and it is not the paint.&rdquo;</div>
+      </div>
+    </div>
+    <div class="prompt-block">
+      <button class="copy-btn" onclick="copyText(this, scene3)">Copy full prompt</button>
+      <pre id="scene3">[STYLE PREFIX &mdash; paste from above]
+Characters: two hands only, one man&rsquo;s and one woman&rsquo;s, no faces in frame at any point. His: pale blue shirt cuff. Hers: cream sleeve.
+Scene: INTERIOR, indoors. A smooth pale oak dining table in a bright modern coastal living room, tall window camera-left, warm afternoon light. A navy-blue presentation folder in matte board lies closed flat on the table, a gold-embossed crowned-paintbrush emblem on its cover. Inside it are two printed pages of an itemized estimate, fine rows of print, none of it legible.
+CUT 1 &mdash; Overhead insert, 35mm, static: START &mdash; folder closed flat. END &mdash; folder open flat, two printed pages side by side, both hands resting on the open cover, fingers spread flat.
+CUT 2 &mdash; Close insert, 50mm, hard cut, no camera or hand movement within either half: one finger resting on the left page, then &mdash; cut &mdash; the same finger resting on the right page. Two static positions, not a tracked motion.
+CUT 3 &mdash; Overhead wide, 35mm, static, held beat: both pages open together, identical in shape and layout, hands already withdrawn from frame.</pre>
+      <span class="wc" data-src="scene3"></span>
+    </div>
+  </div>
+
+  <!-- ========== SCENE 4 ========== -->
+  <div class="scene" data-scene="4">
+    <div class="scene-head">
+      <input type="checkbox" onchange="toggleDone(this)">
+      <div>
+        <div class="scene-num">Scene 4 &middot; ~15s &middot; Chapter 4</div>
+        <div class="scene-title">The Number</div>
+        <div class="scene-for">For bullet: &ldquo;The number most painters will not put on their website.&rdquo;</div>
+      </div>
+    </div>
+    <div class="prompt-block">
+      <button class="copy-btn" onclick="copyText(this, scene4)">Copy full prompt</button>
+      <pre id="scene4">[STYLE PREFIX &mdash; paste from above]
+Characters: one man&rsquo;s hand and forearm only, no face in frame at any point, pale blue shirt cuff.
+Scene: INTERIOR, indoors. A smooth pale oak dining table in a bright modern coastal living room, tall window camera-left, warm afternoon light. Tight on a single printed itemized estimate page lying on the oak table, warm afternoon light raking across the paper, fine rows of print, none of it legible.
+CUT 1 &mdash; Overhead macro insert, 85mm, static: the page fills the frame, no hand present, rows of fine print blurred just enough to stay unreadable.
+CUT 2 &mdash; Overhead macro insert, 85mm, slow tilt down: START &mdash; finger resting at the top edge of the page. END &mdash; same finger resting near the bottom, on a single line.
+CUT 3 &mdash; Overhead macro insert, 85mm, static, held beat: finger already resting on the line; one small tap, then still.</pre>
+      <span class="wc" data-src="scene4"></span>
+    </div>
+  </div>
+
+  <footer>Draft shotlist &middot; orange-county-sales-page &middot; 5 of 10 chapters scripted, nothing generated, no credits spent &middot; checkbox state saved to this browser only</footer>
+</div>
+
+<script>
+  var stylePrefix = document.getElementById('stylePrefixText').textContent.trim();
+
+  function copyText(btn, text) {
+    navigator.clipboard.writeText(text.trim ? text.trim() : text).then(function () {
+      var was = btn.textContent;
+      btn.textContent = 'Copied';
+      btn.classList.add('copied');
+      setTimeout(function () { btn.textContent = was; btn.classList.remove('copied'); }, 1400);
+    });
+  }
+
+  function toggleDone(cb) {
+    var scene = cb.closest('.scene');
+    scene.classList.toggle('done', cb.checked);
+    try {
+      localStorage.setItem('shotlist-swipe-demos-' + scene.dataset.scene, cb.checked ? '1' : '0');
+    } catch (e) {}
+  }
+
+  document.querySelectorAll('.scene').forEach(function (scene) {
+    var cb = scene.querySelector('input[type="checkbox"]');
+    try {
+      if (localStorage.getItem('shotlist-swipe-demos-' + scene.dataset.scene) === '1') {
+        cb.checked = true;
+        scene.classList.add('done');
+      }
+    } catch (e) {}
+  });
+
+  // BUGFIX 2026-09-22: this used to count the <pre> text as-is, which includes the
+  // 4-word placeholder "[STYLE PREFIX -- paste from above]" instead of the real ~45-word
+  // prefix that actually gets pasted in before submission. Scene 0 was displaying "178
+  // words" against a true submitted total of 217/220 -- three words of headroom, not the
+  // ~40 the old number implied. This counts what actually gets submitted.
+  var PLACEHOLDER = '[STYLE PREFIX \u2014 paste from above]';
+  var prefixWords = stylePrefix.split(/\s+/).length;
+  document.querySelectorAll('.wc').forEach(function (el) {
+    var src = document.getElementById(el.dataset.src);
+    var contentOnly = src.textContent.replace(PLACEHOLDER, '').trim();
+    var words = prefixWords + contentOnly.split(/\s+/).length;
+    el.textContent = words + ' true words once submitted (limit 220)' + (words > 220 ? ' \u2014 OVER' : '');
+    el.style.color = words > 220 ? '#B23A3A' : '';
+  });
+</script>
+
+</body>
+</html>
