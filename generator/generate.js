@@ -133,6 +133,36 @@ const MODULE_META = {
    is cream; the quote section below is white; footer is deep navy. */
 const POSITION_BG = ['cream-deep', '', 'cream', '', 'navy'];
 
+/* The published rate, as structured data.
+
+   The pages have stated "starts at $4.75 per square foot of paintable surface"
+   in copy since launch, and it appeared nowhere in the schema -- so the one
+   number a buyer actually searches for was invisible to the engines that answer
+   "exterior painting cost per square foot", which 00-SUMMARY.md Finding 5 lists
+   as a live commercial-investigation query. Competitors on page one publish no
+   number at all; publishing one and then hiding it from machines was the worst
+   of both.
+
+   minPrice, never price: it is a FLOOR, not a rate card. Writing it as `price`
+   would assert a fixed cost per square foot and break the same rule the copy
+   follows -- "starts at", never "averages" (CLAUDE.md). unitCode FTK is the
+   UN/CEFACT code for square foot; unitText carries the qualifier that matters
+   locally, since the denominator is PAINTABLE surface and not home square
+   footage, and conflating those two is how a quote comes in wrong. */
+const rateOffer = () => ({
+  '@type': 'Offer',
+  priceCurrency: CFG.startingRateCurrency,
+  availability: 'https://schema.org/InStock',
+  priceSpecification: {
+    '@type': 'UnitPriceSpecification',
+    minPrice: CFG.startingRate,
+    priceCurrency: CFG.startingRateCurrency,
+    unitText: CFG.startingRateUnit,
+    unitCode: 'FTK',
+    referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitCode: 'FTK' }
+  }
+});
+
 
 /* A community belongs to whichever city its record names. This used to be
    the literal string 'Irvine' in a dozen places, which is how four Anaheim
@@ -581,7 +611,8 @@ function jsonLd(c, url) {
     serviceType: 'Residential Painting',
     description: c.metaDescription,
     provider: { '@id': `${CFG.siteBase}/#business` },
-    areaServed: { '@type': 'Place', name: `${c.name}, ${cityOf(c).name}, CA` }
+    areaServed: { '@type': 'Place', name: `${c.name}, ${cityOf(c).name}, CA` },
+    offers: rateOffer()
   };
   const webPage = {
     '@type': 'WebPage',
@@ -902,7 +933,8 @@ function cityJsonLd(c, url) {
     serviceType: 'Residential Painting',
     description: c.seo.meta_desc,
     provider: { '@id': `${base}/#business` },
-    areaServed: { '@type': 'City', name: c.name }
+    areaServed: { '@type': 'City', name: c.name },
+    offers: rateOffer()
   }];
 
   /* ItemList — tells Google this hub owns the villages below it */
@@ -1539,7 +1571,16 @@ function serviceJsonLd(s, url) {
       itemListElement: (s.scope || []).map(x => ({
         '@type': 'Offer', itemOffered: { '@type': 'Service', name: x }
       }))
-    }
+    },
+    /* The published rate is EXTERIOR work only -- the copy says so in every
+       instance: "VIP exterior work starts at $4.75 per square foot of paintable
+       surface." Interior is not quoted per paintable square foot and cabinets
+       are not quoted by area at all, so attaching this Offer to those two pages
+       would be asserting a price for work it was never measured against. No
+       verified rate exists for either, and inventing one to fill a schema field
+       is the same failure as inventing a review. Exterior only, until a real
+       number exists for the others. */
+    ...(s.slug === 'exterior-painting' ? { offers: rateOffer() } : {})
   }, {
     '@type': 'WebPage',
     '@id': url,
