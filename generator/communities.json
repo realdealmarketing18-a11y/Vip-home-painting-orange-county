@@ -795,25 +795,31 @@
     {
       "slug": "woodbury",
       "name": "Woodbury",
-      "title": "Woodbury Irvine House & Cabinet Painters | VIP",
-      "metaDescription": "Woodbury Irvine house painting and factory-finish kitchen cabinet refinishing. Complimentary color visualization, itemized estimates, and a 2-Year Warranty.",
-      "primaryKeyword": "factory finish kitchen cabinet painting Irvine",
-      "vizIntro": "Woodbury homeowners usually arrive with one of two questions: what color should the outside be, or what would this kitchen look like without the orange-toned cabinets. Both are expensive to answer by guessing — a wrong exterior means repainting the whole house, and refinished cabinets cannot be undone with a second coat. Use the visualizer below to try full schemes on a real home, then let our design team render your own house and kitchen during a complimentary 30-minute consultation.",
-      "heroEyebrow": "Woodbury · Irvine Home & Cabinet Painting",
-      "h1": "Woodbury's Painters for <span class=\"gold\">Factory-Finish Cabinets</span> and Flawless Exteriors",
+      "title": "Woodbury Irvine Exterior House Painting & Cabinets | VIP",
+      "metaDescription": "Exterior house painting and cabinet refinishing in Woodbury, Irvine 92620. See your home in {schemes} color schemes first, complimentary. From {rate}/sq ft.",
+      "primaryKeyword": "Woodbury exterior house painting",
+      "vizIntro": "Woodbury houses are seen up close and at walking pace. The garden paseos take neighbors past the side of a house as often as the front, mature trees move shade across the stucco through the day, and a Spanish Colonial, a Tuscan and a cottage can share one short block, so every color is judged against a different neighbor. A creamy white that looks settled in the shade of a paseo can turn yellow on the sunny street side. Below is {their} {place} house as they saw it. Pick any scheme, pull the slider across, and watch one choice rewrite the entire house.",
+      "heroEyebrow": "Woodbury · Irvine · Exterior House Painting",
+      "h1": "How to Choose Exterior Colors for Your Woodbury Home in 30 Minutes <span class=\"gold\">Without Paying to Paint It Twice</span>",
       "heroKicker": "Complimentary Custom Color Visualization Included",
-      "capsule": "VIP Home Painting serves Woodbury in Irvine, CA with luxury exterior repaints and factory-finish kitchen cabinet painting. Cabinet doors and drawers are sprayed off-site in Sherwin-Williams urethane enamel for a hard, showroom-smooth finish, while exteriors get Emerald and Duration coating systems applied with professional Graco and Titan airless spray equipment. Every project starts with a complimentary 30-minute custom color visualization, every estimate is itemized line by line with no hidden charges, and all work is backed by a 2-Year Warranty. Call (909) 312-5400.",
+      "capsule": "VIP Home Painting is a house painting company working in Woodbury, the garden-paseo village of Irvine, CA 92620, where the homes are Spanish Colonial, Tuscan and cottage in style. From its base in Anaheim, the company paints exteriors and interiors and refinishes kitchen cabinets, spraying doors and drawers off-site in urethane enamel. Before a Woodbury project is scheduled, a complimentary 30-minute consultation shows the owner their own house in {schemes} complete color schemes, each Sherwin-Williams color named by number. Exterior work starts at {rate} per square foot of paintable surface, priced line by line, and the {warranty} covers labor and materials. Phone {phone}.",
       "context": {
-        "archNote": "Woodbury blends Spanish Colonial, Tuscan, and cottage styles around its garden paseos and the Commons. Inside, its 2005-era kitchens are the classic candidates for cabinet refinishing — solid boxes, dated finishes.",
-        "hoaNote": "the Woodbury community association's design review",
-        "settingNote": "mature landscaping and garden walls that demand careful masking and protection during exterior spray work"
+        "archNote": "Woodbury is a mature, built-out village of Spanish Colonial, Tuscan and cottage homes set along garden paseos and around The Commons. Its kitchens, most of them from the village’s mid-2000s build-out, are the usual starting point for cabinet refinishing, and the exteriors follow.",
+        "hoaNote": "the Woodbury Community Association’s design review",
+        "settingNote": "garden paseos, garden walls and mature landscaping that sit within a few feet of the walls being sprayed"
       },
       "moduleOrder": [
+        "offer",
+        "eliminated",
+        "instead",
+        "painted",
         "problemSolution",
-        "specs",
-        "process",
-        "portfolio",
-        "colorGuide"
+        "settle",
+        "warranty",
+        "beforeCommit",
+        "neighbors",
+        "services",
+        "serviceArea"
       ],
       "geo": {
         "lat": 33.7005,
@@ -821,16 +827,36 @@
       },
       "faqs": [
         {
-          "q": "How much does factory-finish kitchen cabinet painting cost in Woodbury, Irvine?",
-          "a": "Cabinet refinishing is priced per door, drawer, and box face, itemized on every estimate — typically a fraction of the cost of cabinet replacement. Doors and drawers are sprayed off-site in urethane enamel; boxes are sprayed in place. Call (909) 312-5400 for an itemized quote."
+          "q": "How much does exterior house painting cost in Woodbury, Irvine?",
+          "a": "VIP Home Painting’s exterior work in Woodbury starts at {rate} per square foot of paintable surface, which is a starting rate and not an average. The measurement covers only what receives paint (stucco, trim, doors, garden walls if you include them), not the living area printed in a listing. Every item is its own line: preparation, primer, the two finish coats, trim and each accent color. Two estimates can then be compared line against line, instead of one total against another. The estimate arrives with the complimentary color renders. Call {phone}."
         },
         {
-          "q": "Will painted cabinets chip or peel?",
-          "a": "Not when the system is right. We use hard-curing urethane enamel over a full degrease-sand-prime sequence, with proper cure time before doors are re-hung. That's what 'factory finish' means — and it's backed by our 2-Year Warranty."
+          "q": "How much does kitchen cabinet painting cost in Woodbury?",
+          "a": "VIP Home Painting prices kitchen cabinet refinishing by what is actually in the kitchen: each door, each drawer front and the cabinet boxes, listed as separate lines. VIP does not publish a flat cabinet price, because two Woodbury kitchens with the same floor plan can have very different door counts and details. The count is taken at the consultation, and the itemized figure follows in writing. Doors and drawers are sprayed off-site in urethane enamel, the boxes are sprayed in place, and the hardware is re-hung square."
         },
         {
-          "q": "Do you also paint Woodbury home exteriors?",
-          "a": "Yes — full exterior repaints with Sherwin-Williams Emerald and Duration systems applied by Graco and Titan airless spray, with landscaping and garden walls masked and protected. We handle the Woodbury community association's design review submission as part of the project."
+          "q": "Do I need Woodbury Community Association approval before painting my house?",
+          "a": "Check with the association before any exterior color changes. Woodbury is governed by the Woodbury Community Association, managed by Keystone Pacific, and its design review decides which exterior colors are approved. VIP Home Painting does not guess at those rules; it prepares the color submission as part of every exterior project, listing each Sherwin-Williams color by name and number, the product data sheets, and where each color goes. What happens if a house is painted without approval is set out in the association’s own documents, which is the reason to submit before the crew is booked."
+        },
+        {
+          "q": "What exterior colors suit Spanish Colonial, Tuscan and cottage homes in Woodbury?",
+          "a": "VIP Home Painting builds a Woodbury palette around the style of the house and the garden in front of it. A Spanish Colonial usually wants a warm, creamy white such as Greek Villa SW 7551 or Alabaster SW 7008 with a dark accent like Iron Ore SW 7069. A Tuscan house can carry a warmer body, and a cottage often suits a softer gray such as Dorian Gray SW 7017 on doors and trim. Held to roughly 60/30/10 between body, trim and accent, each scheme reads as one decision. The complimentary Custom Visualization Service shows every combination on your own house first."
+        },
+        {
+          "q": "Greek Villa or Alabaster: which white is right for a Woodbury house?",
+          "a": "VIP Home Painting’s answer is to see both on the house before buying either. Greek Villa SW 7551 is a creamy white; Alabaster SW 7008 is a soft, warm white that sits a touch cleaner. On a small card the difference is slight. Across a whole wall, in the filtered light of a paseo on one side and open sun on the other, one can look creamy and the other nearly yellow, and which does which depends on the house. A render of the whole front shows it in seconds."
+        },
+        {
+          "q": "Will painted kitchen cabinets chip or peel?",
+          "a": "VIP Home Painting refinishes cabinets so that the finish behaves like a factory coat rather than a brushed one. Doors and drawers come off and are sprayed off-site in urethane enamel, which cures to a hard, even film without brush marks, and the boxes are sprayed in place. The hardware then goes back on square. The work carries the same {warranty} on labor and materials as the exterior, written into the estimate you approve."
+        },
+        {
+          "q": "How are garden walls, paseos and landscaping protected during spraying?",
+          "a": "VIP Home Painting masks and contains the work area before any spraying begins. On a Woodbury lot that means garden walls, hardscape and planting within reach of the spray covered, windows and doors taped off, and spraying scheduled around the wind so a gust never carries paint into a neighbor’s garden or across a paseo. The site is cleaned every evening, and the job closes with a raking-light inspection and a walkthrough with the founder."
+        },
+        {
+          "q": "How often does a Woodbury home need exterior repainting?",
+          "a": "VIP Home Painting plans an exterior repaint on an 8-to-15-year cycle, and preparation decides where in that window a house lands. Stucco that is repaired, primed and given two full coats of Sherwin-Williams Emerald or Duration at the thickness the manufacturer specifies holds its color evenly. A thinned coat lets sunlight through, and the street side fades first. In a village as mature as Woodbury, many houses are reaching that window together, which is a good reason to settle the color carefully instead of copying the house next door."
         }
       ],
       "extraColors": [
@@ -838,49 +864,125 @@
           "name": "Greek Villa",
           "code": "SW 7551",
           "hex": "#EFE9DC",
-          "note": "A creamy white that suits Woodbury's Spanish Colonial detailing — warm in the paseos' filtered light."
+          "note": "A creamy white for Spanish Colonial and Tuscan bodies. Worth seeing in both paseo shade and street-side sun before choosing."
         },
         {
           "name": "Dorian Gray",
           "code": "SW 7017",
           "hex": "#ACA79E",
-          "note": "A mid-tone gray for shutters and doors that pairs cleanly with both white and greige bodies."
+          "note": "A mid-tone gray for doors and trim that sits comfortably beside a white or greige body."
         }
       ],
       "problems": [
         {
-          "p": "A 2005-era kitchen with solid cabinets but a tired, orange-toned finish.",
-          "s": "Factory-finish cabinet refinishing: doors and drawers sprayed off-site in urethane enamel, boxes sprayed in place — a true furniture-grade result at a fraction of replacement cost."
+          "p": "A creamy white picked from a card that turns yellow once it covers the whole sunny side of the house.",
+          "s": "Our design team renders the whole front of your house in each candidate scheme, so the white you approve is one you have already seen at full size, not on a two-inch card."
         },
         {
-          "p": "Brush-painted cabinets that chip at the corners within a year.",
-          "s": "We use catalyzed-hardness urethane enamel systems, proper degrease-sand-prime sequence, and cure time before re-hanging — that's what makes the finish last."
+          "p": "A kitchen repainted by brush whose cabinet doors show brush marks and wear through at the edges.",
+          "s": "Doors and drawers are removed and sprayed off-site in urethane enamel, the boxes sprayed in place and the hardware re-hung square, so the cabinets end up with one even, factory-style finish."
         },
         {
-          "p": "Exterior colors that have quietly faded a shade lighter than the neighbors'.",
-          "s": "Sherwin-Williams Emerald exterior at the full thickness the manufacturer specifies by airless spray restores depth and holds it — with a 2-Year Warranty behind it."
+          "p": "An exterior color that suits the Spanish Colonial next door but not your cottage.",
+          "s": "Each scheme is judged on your own house and its style, then held to roughly 60/30/10 between body, trim and accent, so the result suits your house rather than your neighbor’s."
         },
         {
-          "p": "Painters who overspray garden walls, paseos, and your neighbor's roses.",
-          "s": "White-glove masking and containment on every Woodbury job — landscaping wrapped, hardscape covered, and a clean site every evening."
+          "p": "Overspray on a garden wall, a paseo path or a neighbor’s planting.",
+          "s": "Full masking and containment before anything is sprayed, spraying scheduled around the wind, and the site cleaned every evening before the crew leaves."
+        },
+        {
+          "p": "An estimate that arrives as one total, so there is no way to tell what was left out until the invoice.",
+          "s": "Every item is priced separately (prep, primer, coating, trim, accents, cabinet doors and boxes) from {rate} per square foot of paintable surface on the exterior, with the {warranty} printed on the same page."
         }
       ],
       "portfolio": {
         "eyebrow": "The Woodbury Portfolio",
-        "title": "Kitchens and Exteriors, <span class=\"accent\">Both Done Right</span>",
-        "body": "Half our Woodbury work starts in the kitchen — factory-finish cabinet refinishing in sprayed urethane enamel — and grows into whole-home repaints once owners see the standard. The other half starts outside and ends the same way."
+        "title": "Kitchens First, <span class=\"accent\">Then the Whole House</span>",
+        "body": "Woodbury projects often begin in the kitchen, with cabinets sprayed in urethane enamel, and move outside once the color question is settled on screen."
       },
-      "cabinetLine": "Factory-finish kitchen cabinet painting is our signature Woodbury service — doors sprayed off-site, boxes sprayed in place, urethane enamel throughout.",
+      "cabinetLine": "Kitchen cabinets refinished the factory way: doors and drawers sprayed off-site in urethane enamel, boxes sprayed in place, hardware re-hung square.",
       "hero_story": {
         "youtube_id": "",
         "eyebrow": "Woodbury · Irvine Home & Cabinet Painting",
-        "headline": "Discover How VIP Home Painting Transforms <span class=\"gold\">Woodbury Kitchens &amp; Exteriors</span> in Just 4 Days",
+        "headline": "Discover How VIP Home Painting Repaints <span class=\"gold\">Woodbury Kitchens &amp; Exteriors</span> With Every Color Seen First",
         "kicker": "With Custom Color Consultation",
         "play_label": "Watch the Film",
-        "note": "Factory-finish cabinets, sprayed off-site in urethane enamel.",
-        "days": 4
+        "note": "Cabinets sprayed off-site in urethane enamel; exteriors rendered in every scheme before anything is booked."
       },
-      "city": "irvine"
+      "city": "irvine",
+      "master": {
+        "hero": {
+          "eyebrow": "Woodbury · Irvine · Exterior House Painting",
+          "h1": "How to Choose Exterior Colors for Your Woodbury Home in 30 Minutes <span class=\"gold\">Without Paying to Paint It Twice</span>",
+          "continue": "See the package {they} received, then picture your own Woodbury house"
+        },
+        "offer": {
+          "h2": "Your Woodbury Home in <span class=\"accent\">{schemes} Complete Color Schemes</span>, Settled in 30 Minutes and Complimentary",
+          "sub": "Everything {they} received is offered to Woodbury owners on identical terms. You send one photo of the front of your house; our design team paints it in {schemes} complete schemes, each named in Sherwin-Williams colors, and returns it with an estimate priced line by line. If the kitchen cabinets are part of the plan, they are counted and priced on the same estimate. The consultation takes thirty minutes, costs nothing, and nothing is booked until a scheme is chosen."
+        },
+        "eliminated": {
+          "h2": "{They} Tried Their House in <span class=\"accent\">{schemes} Schemes</span> and Ruled Out Ten Before Paying for One",
+          "lead": "Every scheme below was judged whole, on the front of their own {place} house: body, trim and accent together. They ruled out ten and kept one, {chosen}. For a Woodbury owner the value of that is plain arithmetic. A color that goes wrong on the wall costs the job a second time, while a color that goes wrong in a render costs a click. On a street where a Spanish Colonial, a Tuscan and a cottage stand side by side, the render is also the only way to see whether your scheme suits your house or merely suits the one next door."
+        },
+        "instead": {
+          "eyebrow": "What Woodbury Owners Try First",
+          "h2": "The Sample Pots on the Garage Wall, <span class=\"accent\">and Why They Rarely Settle Anything</span>",
+          "bridge": "Before {they} saw their house rendered, they were where most careful owners start: sure the color had to change, and not willing to spend the money twice finding out which one.",
+          "lede": "In Woodbury it usually starts with three sample pots and a garage wall. Greek Villa on the left, Alabaster in the middle, something warmer on the right. A neighbor on the paseo gives an opinion, then another neighbor gives the opposite one. The patches look different at breakfast than at dinner, and different again once the tree by the drive fills in. Someone suggests painting bigger patches. The pots go on a shelf in the garage, and another summer passes with the old color on the house.",
+          "turn": "Nothing in that process is careless. It fails because a patch the size of a doormat cannot tell you what a whole house will look like; only the whole house can. That is what the render shows, before a single gallon is paid for."
+        },
+        "painted": {
+          "h2": "3 Steps From Render to a Repainted Woodbury Home, <span class=\"accent\">Each One Priced Before It Starts</span>",
+          "sub": "For {they}, the color was settled first and everything else followed from it: the details, the finish, the last touches, each one seen on their own house while it could still change. A Woodbury project follows the same three steps. The questions are local ones: whether the garden wall is painted with the house, where the dark accent stops on a cottage, and whether the kitchen goes first. Each is answered, and priced, before anything starts."
+        },
+        "problemSolution": {
+          "h2": "5 Ways a Woodbury Repaint Ends Up <span class=\"accent\">Paid for Twice</span>, and What Prevents Each"
+        },
+        "settle": {
+          "h2": "3 Choices to Settle on Paper Before <span class=\"accent\">Anyone Opens a Gallon</span> in Woodbury",
+          "lead": "Three choices, each made on the whole house and written into the estimate before a crew is booked for Vintage, Sarabande, Twin Gables or anywhere else in the village. Settling them now costs a conversation. Discovering one of them on the wall costs the whole job a second time, and in a village where neighbors walk past on the paseo every evening, it is a very visible way to find out."
+        },
+        "warranty": {
+          "h2": "A Woodbury Repaint Covered by the <span class=\"accent\">{warranty}</span>, Written Into the Estimate You Approve",
+          "body": "The {warranty} covers labor and materials on the exterior and on refinished cabinets alike, and it is printed on the itemized estimate, so you can read the terms before anyone arrives. What sits behind it is listed on the same page: cracks in the stucco floated back to match and primed, trim and doors priced as their own lines, and two coats of Sherwin-Williams Emerald or Duration at the thickness the manufacturer specifies. If anything covered fails inside the warranty period, VIP Home Painting comes back and puts it right. For a Woodbury owner, that is the point of paying once: knowing in writing what happens if it goes wrong."
+        },
+        "beforeCommit": {
+          "h2": "What a Woodbury Owner Has in Hand Before <span class=\"accent\">a Single Line Is Signed</span>",
+          "lead": "The expensive part of a repaint is doing it twice, so four things reach you before you sign anything: renders of your own house, an estimate priced line by line, the warranty in writing, and a color submission ready for the Woodbury Community Association’s design review. Together they turn the decision from a guess into a comparison. You know what the house will look like, what each part of the job costs, and what happens if something fails."
+        },
+        "neighbors": {
+          "h2": "Along the Woodbury Paseos, the Neighbors See Your Color <span class=\"accent\">for 8 to 15 Years</span>",
+          "sub": "Woodbury is not a gated enclave. It is a walking village, built around paseos, The Commons and the Jeffrey Open Space Trail, and that means a house is seen from the side and the back as often as from the street. The difference between a good repaint and a poor one rarely shows the week it is finished. It shows several summers later, on the side that takes the afternoon sun. Most of that difference is preparation, so each item below is written into the estimate rather than promised at the door."
+        },
+        "services": {
+          "h2": "Exterior House Painting, Interiors and Kitchen Cabinets in Woodbury, <span class=\"accent\">on One Itemized Estimate</span>",
+          "items": [
+            {
+              "title": "Exterior House Painting — Woodbury",
+              "body": "Spanish Colonial, Tuscan and cottage exteriors, with the garden walls and planting that sit close to them. Stucco cracks floated back to match, trim and doors priced as their own lines, and Sherwin-Williams Emerald or Duration sprayed with Graco and Titan airless rigs, then back-rolled. Priced from {rate} per square foot of paintable surface, measured only on what receives paint."
+            },
+            {
+              "title": "Kitchen Cabinet Painting — Woodbury",
+              "body": "The service most Woodbury projects start with. Doors and drawers removed and sprayed off-site in urethane enamel, cabinet boxes sprayed in place, and hardware re-hung square: a factory-style finish on the cabinets already in the kitchen, with the color named by Sherwin-Williams number and agreed before a single door comes off."
+            },
+            {
+              "title": "Interior House Painting — Woodbury",
+              "body": "Walls, ceilings, trim and crown molding. Often added once the kitchen is done and the rooms around it look tired beside it, or when a new exterior palette changes how the front rooms read. Every color is named by number and every room is priced as its own line, so the scope can grow without the estimate becoming guesswork."
+            }
+          ]
+        },
+        "serviceArea": {
+          "h2": "Painting Homes in Woodbury, Irvine 92620, <span class=\"accent\">and the Villages Around It</span>",
+          "lead": "From its base in Anaheim, VIP Home Painting takes on projects all over Irvine; in Woodbury (92620) that means streets such as Vintage, Great Lawn, Sarabande, Mayfair, Chantilly, Twin Gables, Sanctuary, Flamenco and Wild Lilac, around Woodbury Town Center, The Commons and the Jeffrey Open Space Trail. The links below lead to neighboring villages, the Irvine color guide, and painting for community associations and common areas."
+        },
+        "close": {
+          "h2": "Settle Your Woodbury Home’s Colors in <span class=\"accent\">30 Minutes</span>, and Pay for the Paint Job Once",
+          "ps": [
+            "Every section of this page followed one order. {They} looked at {schemes} complete schemes on their own house, ruled out ten, and only then paid for paint. Most repaints run the other way round: sample pots on the garage wall, a best guess, and the answer arriving on the day the masking comes off, when changing it means paying for the whole job again.",
+            "Woodbury rewards getting it right the first time. The village is mature, many of its houses are due for color at around the same time, and the paseos mean yours is seen from every side. {They} needed half an hour and a single photo of their house to see it first. For you it is the same half hour, it costs nothing, and the itemized estimate comes with it."
+          ]
+        }
+      }
     },
     {
       "slug": "stonegate",

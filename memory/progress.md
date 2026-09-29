@@ -24,6 +24,7 @@ Layer: **Project memory** (B.L.A.S.T. Protocol 0). Append; don't rewrite history
 - 2026-09-29 · Altair (rollout row 2) on the master sales process — B3 H1, 8 FAQs, unverified claims (3–5 day timeline, laser-checked masking) removed; staging only, WordPress untouched
 - 2026-09-29 · Portola Springs (rollout row 3) on the master sales process — B5 H1, 8 FAQs, Tier 2 value register, wrong "1-Yr Warranty" meta fixed; staging only, WordPress untouched
 - 2026-09-29 · Hidden Canyon (rollout row 4) on the master sales process — A2 H1, 8 FAQs, Tier 1 discretion register, unbacked claims (5-day timeline, badged crews, Santa Barbara style) removed; staging only, WordPress untouched
+- 2026-09-29 · Woodbury (rollout row 5) on the master sales process — B2 H1, 8 FAQs, Tier 2 value register with cabinets as second thread; "OUR INSANE 1-YEAR WARRANTY" badge images removed from all 20 generated pages and gated (verify-site check 11) — the OC page still shows them; staging only, WordPress untouched
 
 ---
 

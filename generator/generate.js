@@ -118,6 +118,10 @@ const PORTFOLIO_IMGS = [
 
 const SVG_PHONE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
 const SVG_STAR = '<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+/* Warranty mark. Replaces assets/badges/badge-warranty.png, whose pixels read
+   "OUR INSANE 1-YEAR WARRANTY" — wrong length (config.warranty is 2 years) and a
+   hype word. The label beside it reads config.warranty. verify-site check 11. */
+const SVG_SHIELD = '<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>';
 const SVG_CLOCK = '<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
 
 const MODULE_META = {
@@ -298,7 +302,7 @@ ${heroReel(A)}
         <img class="strip-badge" src="${A}/assets/badges/badge-color-schemes.png" alt="Custom Color Schemes badge"/>
         <div class="lb">Custom Visualization</div><div class="sb">See it before we paint</div></div>
       <div class="cell">
-        <img class="strip-badge" src="${A}/assets/badges/badge-warranty.png" alt="${CFG.warranty} badge"/>
+        ${SVG_SHIELD}
         <div class="lb">${CFG.warranty}</div><div class="sb">No questions asked</div></div>
       <div class="cell">${SVG_STAR}<div class="lb">Licensed &amp; Insured</div><div class="sb">Bonded in California</div></div>
       <div class="cell">${SVG_CLOCK}<div class="lb">${esc(story.days ? `${story.days}-Day Transformations` : '5-Day Transformations')}</div>
@@ -780,7 +784,7 @@ ${heroReel(A)}
         <div class="lb">Custom Visualization</div>
         <div class="sb">See it before we paint</div></div>
       <div class="cell">
-        <img class="strip-badge" src="${A}/assets/badges/badge-warranty.png" alt="Insane ${CFG.warranty} badge"/>
+        ${SVG_SHIELD}
         <div class="lb">${CFG.warranty}</div>
         <div class="sb">No questions asked</div></div>
       <div class="cell">
@@ -1156,7 +1160,7 @@ ${heroReel(A)}
     <div class="hero-strip">
       <div class="cell"><img class="strip-badge" src="${A}/assets/badges/badge-color-schemes.png" alt="Custom Color Schemes badge"/>
         <div class="lb">Custom Visualization</div><div class="sb">See it before we paint</div></div>
-      <div class="cell"><img class="strip-badge" src="${A}/assets/badges/badge-warranty.png" alt="${CFG.warranty} badge"/>
+      <div class="cell">${SVG_SHIELD}
         <div class="lb">${CFG.warranty}</div><div class="sb">No questions asked</div></div>
       <div class="cell">${SVG_STAR}<div class="lb">Licensed &amp; Insured</div><div class="sb">Bonded in California</div></div>
       <div class="cell">${SVG_CLOCK}<div class="lb">5-Day Transformations</div><div class="sb">Concierge scheduling</div></div>
@@ -1439,7 +1443,7 @@ ${heroReel(A)}
     </div>
     <div class="hero-strip">
       <div class="cell">${SVG_STAR}<div class="lb">Licensed &amp; Insured</div><div class="sb">COI naming your association</div></div>
-      <div class="cell"><img class="strip-badge" src="${A}/assets/badges/badge-warranty.png" alt="${CFG.warranty} badge"/>
+      <div class="cell">${SVG_SHIELD}
         <div class="lb">${CFG.warranty}</div><div class="sb">Labor &amp; materials</div></div>
       <div class="cell"><img class="strip-badge" src="${A}/assets/badges/badge-color-schemes.png" alt="Color rendering badge"/>
         <div class="lb">Rendered Before the Vote</div><div class="sb">Residents see it first</div></div>
@@ -1793,7 +1797,7 @@ ${heroReel(A)}
     <div class="hero-strip">
       <div class="cell"><img class="strip-badge" src="${A}/assets/badges/badge-color-schemes.png" alt="Custom visualization badge" loading="lazy" width="447" height="410"/>
         <div class="lb">Custom Visualization</div><div class="sb">See it before we paint</div></div>
-      <div class="cell"><img class="strip-badge" src="${A}/assets/badges/badge-warranty.png" alt="${CFG.warranty} badge" loading="lazy" width="447" height="366"/>
+      <div class="cell">${SVG_SHIELD}
         <div class="lb">${CFG.warranty}</div><div class="sb">Labor &amp; materials</div></div>
       <div class="cell">${SVG_STAR}<div class="lb">Licensed &amp; Insured</div><div class="sb">Every crew, every job</div></div>
       <div class="cell">${SVG_CLOCK}<div class="lb">Itemized Estimates</div><div class="sb">Never one lump sum</div></div>

@@ -4079,6 +4079,18 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 /* The master's hub grid holds two cities side by side; a page names only
    its own, so the one card centres instead of sitting in half a grid. */
 .city-hubs.city-hubs-single { grid-template-columns: minmax(0, 640px); justify-content: center; }
+/* The warranty seal is set in type from config.warranty (master-modules.js,
+   warrantySeal) — the master's seal image has the wrong length in its pixels. */
+.warranty-seal .seal-type { width: 280px; height: 280px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: var(--navy); color: var(--cream); border: 2px solid var(--gold); box-shadow: 0 0 0 10px var(--cream), 0 0 0 12px var(--gold-deep), 0 18px 36px rgba(168,138,71,0.30); }
+.warranty-seal .seal-term { font-family: var(--font-serif); font-weight: 600; font-size: 46px; line-height: 1; color: var(--gold-bright); letter-spacing: -0.01em; }
+.warranty-seal .seal-word { font-family: var(--font-serif); font-style: italic; font-size: 26px; line-height: 1.2; margin-top: 6px; }
+.warranty-seal .seal-rule { width: 56px; height: 1px; background: var(--gold); margin: 14px 0 12px; }
+.warranty-seal .seal-sub { font-family: var(--font-sans); font-weight: 700; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+@media (max-width: 600px) {
+  .warranty-seal .seal-type { width: 220px; height: 220px; }
+  .warranty-seal .seal-term { font-size: 38px; }
+  .warranty-seal .seal-word { font-size: 22px; }
+}
 
 /* ============================================================
    FILM PLAYER — the "Watch the Film" lightbox
@@ -4940,7 +4952,12 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           <li>Written into your itemized estimate</li>
         </ul>
       </div>
-      <div class="warranty-seal"><img src="../../orange-county-sales-page/assets/badges/vip-warranty-laurel-web.png" alt="VIP Home Painting 2-Year Warranty seal" loading="lazy" width="448" height="600"/></div>
+      <div class="warranty-seal"><div class="seal-type" role="img" aria-label="VIP Home Painting 2-Year Warranty seal">
+        <span class="seal-term">2-Year</span>
+        <span class="seal-word">Warranty</span>
+        <span class="seal-rule"></span>
+        <span class="seal-sub">Labor &amp; Materials</span>
+      </div></div>
     </div>
   </section>
 

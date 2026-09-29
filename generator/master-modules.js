@@ -54,7 +54,6 @@ module.exports = function makeMasterModules(ctx) {
     stack:    cut('<ul class="os-stack">', '</ul>', 'offer stack', true),
     osDo:     cut('<p class="os-do">', '</p>', 'offer action', true),
     steps:    cut('<div class="steps">', '\n  </section>', 'painted steps'),
-    seal:     cut('<div class="warranty-seal">', '</div>', 'warranty seal', true),
     pillars:  cut('<div class="pillars">', '\n  </section>', 'before-you-commit pillars'),
     wbList:   cut('<ul class="wb-list">', '</ul>', 'neighbors benefits', true),
     testi:    cut('<div class="testi-grid">', '\n  </section>', 'testimonials'),
@@ -300,6 +299,24 @@ module.exports = function makeMasterModules(ctx) {
   </section>`;
   }
 
+  /* The seal is drawn in type, not lifted from the master. The master's
+     seal image (assets/badges/vip-warranty-laurel-web.png) has
+     "OUR INSANE 1-YEAR WARRANTY" baked into the pixels: the wrong length
+     (the warranty is 2 years, config.warranty) and a hype word. A length
+     typed into a picture cannot follow config, so no generated page uses
+     one; the words below come from config and change with it. */
+  function warrantySeal() {
+    const w = String(CFG.warranty || '').trim();
+    const m = w.match(/^(.*?)\s*warranty$/i);
+    const term = m ? m[1] : w;
+    return `<div class="warranty-seal"><div class="seal-type" role="img" aria-label="VIP Home Painting ${esc(w)} seal">
+        <span class="seal-term">${esc(term)}</span>
+        <span class="seal-word">Warranty</span>
+        <span class="seal-rule"></span>
+        <span class="seal-sub">Labor &amp; Materials</span>
+      </div></div>`;
+  }
+
   /* Risk reversal. Built here rather than extracted: the warranty length
      must come from config, never from typed text. */
   function warranty(c, no, bg) {
@@ -317,7 +334,7 @@ module.exports = function makeMasterModules(ctx) {
           <li>Written into your itemized estimate</li>
         </ul>
       </div>
-      ${rewriteAssetPaths(X.seal)}
+      ${warrantySeal()}
     </div>
   </section>`;
   }

@@ -380,3 +380,15 @@ taller than the viewport and the visitor scrolls, which is what a hero is allowe
 ## RETIRED — findings that ranking data disproved
 
 *(none yet — add here rather than deleting, with the evidence that killed it)*
+
+### F-19 · A number baked into a picture cannot follow config
+The warranty went from 1 year to 2 on 2026-07-31 and every data file followed. Two badge
+images did not: `vip-warranty-laurel-web.png` and `badge-warranty.png` read "OUR INSANE
+1-YEAR WARRANTY" in their pixels, under alt text that says 2-Year. Text checks, alt checks
+and the config rule all passed, because none of them can read an image. Found by looking
+at a screenshot during rollout row 5, two months after the change.
+
+**The rule:** a fact that lives in config (warranty, phone, price) is never baked into an
+image. Draw it in type from config. When a fact changes, open the pages and *look* — a
+gate that reads text cannot see a picture. `verify-site.js` check 11 now fails generated
+pages that use either image.

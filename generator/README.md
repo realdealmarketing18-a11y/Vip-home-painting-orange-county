@@ -94,7 +94,7 @@ the visualizer → *(the rotating sections)* → the FAQ → the close with the 
 | `settle` | "3 things to settle before a gallon is opened" | `h2`, `lead` |
 | `offer` | The package: the 11 renders, the $329 comparison, what you get | `h2`, `sub` |
 | `painted` | "Then we painted it" — the 3 steps | `h2`, `sub` |
-| `warranty` | The warranty (length read from config) | `h2`, `body` |
+| `warranty` | The warranty (length read from config; the seal is drawn in type, never the master's badge image, which says 1-year) | `h2`, `body` |
 | `beforeCommit` | "What you get before you commit" — the 4 pillars | `h2`, `lead` (optional) |
 | `neighbors` | "The one thing your neighbors see every day" | `h2`, `sub` |
 | `testimonials` | The three quotes from the master | `{}` — ⚠ unverified, see ABOUT-VIP item 6 |

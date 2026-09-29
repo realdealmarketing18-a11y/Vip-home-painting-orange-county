@@ -516,6 +516,16 @@ console.log('\n11. paint-can rule');
     if (!fs.existsSync(abs)) { bad(`${pg.rel} can-top.jpg does not resolve: ${m[1]}`); broken++; }
   }
   if (!broken) ok('can-top.jpg resolves from every page that uses it');
+  /* The master's warranty seal images say "OUR INSANE 1-YEAR WARRANTY" in
+     their pixels: wrong length, hype word. Generated pages draw the seal in
+     type from config.warranty instead (master-modules.js, warrantySeal). */
+  const SEALS = /vip-warranty-laurel-web\.png|badge-warranty\.png/;
+  let seals = 0;
+  for (const pg of pages) {
+    if (SEALS.test(fs.readFileSync(pg.file, 'utf8'))) { bad(`${pg.rel} uses a warranty seal image that says "1-YEAR"`); seals++; }
+  }
+  if (!seals) ok('no generated page shows the "1-YEAR" warranty seal image');
+  if (SEALS.test(fs.readFileSync(ocFile, 'utf8'))) console.log('   note  county page still shows the seal image that reads "OUR INSANE 1-YEAR WARRANTY" (hand-maintained; needs a 2-year image)');
 }
 
 console.log('\n12. headline contract');
