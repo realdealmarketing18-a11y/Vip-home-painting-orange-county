@@ -823,7 +823,7 @@
         "palette_baseline"
       ],
       "architecture_delta": {
-        "note": "Hidden Canyon's estates are Santa Barbara and transitional in character — smooth-troweled stucco, limestone details, and generous rooflines on canyon-edge lots. Finishes here are judged up close, in person, by owners who know what custom looks like.",
+        "note": "Hidden Canyon estates are Mediterranean and contemporary: smooth-troweled stucco, limestone details and canyon-edge lots. Smooth stucco hides nothing, so the preparation under the color is as visible as the color itself.",
         "confirmed_styles": [
           "Mediterranean",
           "Contemporary"
@@ -846,30 +846,36 @@
         "association_name": null,
         "has_color_guidelines": null,
         "approval_required": null,
-        "notes": "Hidden Canyon's community design review",
-        "source": null
+        "notes": "Hidden Canyon’s community design review",
+        "source": "https://livinghiddencanyon.com/"
       },
       "palette_extras": [
         {
           "sw_code": "SW 7004",
           "sw_name": "Snowbound",
           "hex": "#EDEAE4",
-          "note": "A refined, slightly warm white for smooth-trowel stucco — the quiet Santa Barbara look Hidden Canyon was designed around."
+          "note": "A refined white with a slight warmth for smooth-troweled stucco. Worth seeing beside the limestone before choosing."
         },
         {
           "sw_code": "SW 6258",
           "sw_name": "Tricorn Black",
           "hex": "#2F2F30",
-          "note": "For iron gates, lanterns, and window frames — a true black that anchors limestone and white stucco."
+          "note": "A true black for iron, gates and trim, anchoring a pale stucco body."
         }
       ],
       "layout": {
         "module_order": [
-          "process",
+          "neighbors",
+          "instead",
+          "eliminated",
+          "painted",
+          "offer",
+          "beforeCommit",
+          "settle",
+          "warranty",
           "problemSolution",
-          "colorGuide",
-          "specs",
-          "portfolio"
+          "services",
+          "serviceArea"
         ]
       },
       "story": {
@@ -882,46 +888,75 @@
         "media_status": "pending"
       },
       "seo": {
-        "primary_keyword": "Hidden Canyon estate painters",
-        "meta_title": "Hidden Canyon Estate Painters, Irvine | VIP Painting",
-        "meta_desc": "Hidden Canyon estate painters in Irvine. White-glove exteriors for guard-gated homes, complimentary color visualization, itemized estimates, 2-Year Warranty.",
-        "h1": "Hidden Canyon's <span class=\"gold\">Estate Painting Standard</span> — White-Glove From Gate to Walkthrough",
-        "answer_capsule": "VIP Home Painting is the estate painting company for Hidden Canyon, the guard-gated luxury enclave in Irvine, CA. Hidden Canyon's Santa Barbara and transitional estates are repainted with Sherwin-Williams Emerald coating systems applied by professional Graco and Titan airless spray equipment under white-glove site protocols, every project begins with a complimentary 30-minute custom color visualization of the front of your house, and every proposal is itemized line by line. All work is backed by a 2-Year Warranty. Call (909) 312-5400.",
-        "viz_intro": "At Hidden Canyon price points, a repaint is not a maintenance item — it is a decision about how the estate presents itself from the gate. Smooth-troweled stucco and limestone read differently in canyon morning light than they do at golden hour, and a white that feels refined at noon can go cold by evening. Before we schedule anything, our design team renders the front of your house in every scheme under consideration, so the palette you approve is one you have already seen on your own home."
+        "primary_keyword": "Hidden Canyon exterior house painting",
+        "meta_title": "Hidden Canyon House Painting, Irvine — Seen First | VIP",
+        "meta_desc": "Exterior house painting for Hidden Canyon’s guard-gated estates in Irvine. See your home in {schemes} color schemes first, complimentary. From {rate}/sq ft.",
+        "h1": "The Hidden Canyon Standard for <span class=\"gold\">Exterior House Painting</span> Begins With Every Color Seen on Your Estate",
+        "answer_capsule": "VIP Home Painting is a house painting company working in Hidden Canyon, the 24/7 guard-gated enclave of Irvine, CA 92618, where the homes are Mediterranean and contemporary estates finished in smooth-troweled stucco and limestone. From its base in Anaheim, the company paints estate exteriors, interiors and kitchen cabinetry. Before a Hidden Canyon project is scheduled, a complimentary 30-minute consultation shows the owner their own house in {schemes} complete color schemes, with each Sherwin-Williams color named by number. Exterior work starts at {rate} per square foot of paintable surface, itemized line by line, and the {warranty} covers labor and materials. Phone {phone}.",
+        "viz_intro": "A Hidden Canyon estate gives a color very little to hide behind. Smooth-troweled stucco presents each wall as one continuous surface, the limestone beside it is not changing, and on a canyon-edge lot two sides of the same house rarely share the same light at the same hour. A white that reads soft at noon can turn cold by evening; a warm neutral can pick up the stone and drift creamy. {Their} {place} house is in the tool below, exactly as they reviewed it: choose a scheme, drag the slider, and see how much one decision changes the whole front of a house."
       },
       "faqs": [
         {
-          "q": "Do you work in guard-gated communities like Hidden Canyon?",
-          "a": "Yes — estate work in guard-gated Irvine communities is our core business. Gate clearance is arranged in advance, crews are badged and briefed, and work hours are coordinated with your household and neighbors under white-glove site protocols.",
+          "q": "How much does exterior house painting cost in Hidden Canyon, Irvine?",
+          "a": "VIP Home Painting’s exterior work in Hidden Canyon starts at {rate} per square foot of paintable surface, the premium end of what Irvine painters charge, and it is a starting rate rather than an average. An estate is measured on the stucco, trim, iron and gates that will actually be painted, not on the living area in a listing. Surface repairs, iron, doors and each change of color are priced as separate lines, so a designer or property manager reading the estimate can see exactly what was counted. The complimentary color visualization arrives with it. Call {phone}.",
           "short_youtube_id": ""
         },
         {
-          "q": "How long does an estate repaint take in Hidden Canyon?",
-          "a": "Most Hidden Canyon exteriors are completed in five working days, sequenced one side at a time so the home stays fully livable. The project ends with a raking-light inspection and a founder-signed walkthrough, backed by a 2-Year Warranty.",
+          "q": "How does VIP Home Painting work inside a guard-gated community like Hidden Canyon?",
+          "a": "VIP Home Painting plans a Hidden Canyon project around the gate and the household rather than through them. Hidden Canyon presents itself as a 24/7 guard-gated community, so access for the crew is arranged with the owner, or with whoever runs the property, before work begins. On site, the standard is the one written into every VIP estimate: full masking and containment before any spraying, spraying timed around the wind, the site cleaned every evening, and a raking-light inspection and a walkthrough with the founder at the finish.",
           "short_youtube_id": ""
         },
         {
-          "q": "What finish do you recommend for Hidden Canyon's smooth-trowel stucco?",
-          "a": "Smooth stucco shows everything, so preparation is the finish: skim repairs floated to match, elastomeric patching, full prime, then Sherwin-Williams Emerald applied by Graco and Titan airless spray for a glass-even film. Colors like Snowbound SW 7004 and Alabaster SW 7008 are rendered on the front of your house first through our complimentary visualization. Call (909) 312-5400.",
+          "q": "Does VIP Home Painting prepare the design review submission for a Hidden Canyon home?",
+          "a": "Yes. VIP Home Painting prepares the color submission for Hidden Canyon’s community design review as part of every exterior project: each Sherwin-Williams color by name and number, the product data sheets, and a note of which color goes on which surface. What the community approves, and how its review runs, is set by the community itself, and VIP does not guess at those rules. The package is prepared to whatever the review asks for, so a reviewer can read the scheme without a meeting.",
+          "short_youtube_id": ""
+        },
+        {
+          "q": "What exterior colors suit a Mediterranean or contemporary estate in Hidden Canyon?",
+          "a": "VIP Home Painting starts a Hidden Canyon palette from what is not changing: the limestone, the roof and the setting. A refined white such as Snowbound SW 7004, or the warmer Alabaster SW 7008, suits smooth stucco without turning stark. Chatura Gray SW 9169 gives a warm, layered gray for a contemporary body, and Tricorn Black SW 6258 or Iron Ore SW 7069 carries iron, gates and trim. Held to roughly 60/30/10 between body, trim and accent, the scheme reads deliberate rather than decorated. The complimentary Custom Visualization Service shows each combination on your own house before anything is chosen.",
+          "short_youtube_id": ""
+        },
+        {
+          "q": "Snowbound or Alabaster: which white suits smooth-troweled stucco in Hidden Canyon?",
+          "a": "VIP Home Painting’s answer is that the house decides, and that both are worth seeing on it before either is ordered. Snowbound SW 7004 is a refined white with a slight warmth; Alabaster SW 7008 is warmer and softer. Smooth-troweled stucco has no texture to break a color up, so the undertone shows across the entire wall. Beside pale limestone a warm white can read creamy, and in evening shade a cleaner white can look faintly gray. A sample board shows neither effect at full size. A render of the whole front of the house shows both.",
+          "short_youtube_id": ""
+        },
+        {
+          "q": "Why does smooth-troweled stucco show every repair, and how is it prepared?",
+          "a": "VIP Home Painting treats preparation on smooth stucco as part of the finish, because a smooth wall shows everything beneath it. On a heavy texture a patched crack disappears into the pattern; on smooth-troweled stucco it can show as a halo when the light comes in low across the wall. So cracks are floated back to match the surrounding surface and primed, then Sherwin-Williams Emerald or Duration goes on in two coats at the thickness the manufacturer specifies, sprayed with Graco and Titan airless rigs and back-rolled. The job closes with a raking-light inspection, which finds that kind of flaw before you do.",
+          "short_youtube_id": ""
+        },
+        {
+          "q": "Can the renders and estimate go to our designer or property manager?",
+          "a": "Yes. VIP Home Painting’s renders and itemized estimate arrive as images and a written document, so they can be forwarded to a designer, architect or property manager as easily as they reach you. Every render names each Sherwin-Williams color by number, which lets a designer check a scheme against the interiors and the landscape rather than against a description, and the separate lines let a manager compare the estimate with other bids. The founder’s walkthrough at the end can be held with whoever oversees the project.",
+          "short_youtube_id": ""
+        },
+        {
+          "q": "How often does a Hidden Canyon estate need exterior repainting?",
+          "a": "VIP Home Painting plans an exterior repaint on an 8-to-15-year cycle, and on a Hidden Canyon estate the preparation decides where in that range a house lands. Smooth stucco that was properly repaired, primed and given two full coats holds its color evenly. A coat thinned to stretch it lets sunlight through, and the walls with the longest afternoon exposure fade first. Whatever is chosen now is what the neighbors on Panorama and Shady Arbor see for a decade or longer, which is why the color deserves more deliberation than the schedule.",
           "short_youtube_id": ""
         }
       ],
       "problems": [
         {
-          "p": "Most painting crews aren't set up for guard-gated estate work — access, scheduling, and site conduct included.",
-          "s": "We run concierge scheduling: gate clearance handled in advance, crews badged and briefed, work hours coordinated with your household staff and neighbors."
+          "p": "A white chosen from a fan deck turns cold, or creamy, once it covers smooth stucco beside limestone.",
+          "s": "Our design team renders the whole front of your house, stone included, in each candidate scheme, so the white you approve is one you have already seen beside your own limestone."
         },
         {
-          "p": "Smooth-trowel stucco shows every patch, pinhole, and lap line.",
-          "s": "Estate-grade prep — skim repairs floated to match, elastomeric patching, full prime — then airless spray application for a glass-even film."
+          "p": "A patched crack in smooth-troweled stucco that shows through the new color as a halo in low evening light.",
+          "s": "Cracks are floated back to the surrounding surface and primed before any color goes on, and the job closes with a raking-light inspection, the one light that reveals exactly that kind of repair."
         },
         {
-          "p": "A repaint that disrupts the household for weeks.",
-          "s": "Most Hidden Canyon exteriors are completed in five working days, sequenced one side at a time so the house stays livable throughout."
+          "p": "Iron, gates and dark trim left in a black that no longer suits the new body color.",
+          "s": "Every dark accent is its own line on the estimate and its own choice in the render. Tricorn Black SW 6258 and Iron Ore SW 7069 are two options; whichever you choose is seen against the new stucco first."
         },
         {
-          "p": "Committing to a palette on a multi-million-dollar house, sight unseen.",
-          "s": "Our complimentary custom color visualization renders your estate in each candidate scheme first — you approve what you've already seen."
+          "p": "A repaint that asks the household to work around the crew, instead of the other way round.",
+          "s": "Work is planned around the gate and the household: full masking before any spraying, spraying timed around the wind, and the site cleaned every evening before the house is handed back."
+        },
+        {
+          "p": "An estimate your designer or property manager cannot check, because it arrives as a single number.",
+          "s": "Each line is priced separately (prep, primer, coating, trim, iron and accents) from {rate} per square foot of paintable surface, and the {warranty} printed on the same estimate."
         }
       ],
       "market_delta": {
