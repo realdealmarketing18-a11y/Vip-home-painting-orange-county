@@ -95,7 +95,7 @@ the visualizer → *(the rotating sections)* → the FAQ → the close with the 
 | `offer` | The package: the 11 renders, the $329 comparison, what you get | `h2`, `sub` |
 | `painted` | "Then we painted it" — the 3 steps | `h2`, `sub` |
 | `warranty` | The warranty (length read from config) | `h2`, `body` |
-| `beforeCommit` | "What you get before you commit" — the 4 pillars | `h2` |
+| `beforeCommit` | "What you get before you commit" — the 4 pillars | `h2`, `lead` (optional) |
 | `neighbors` | "The one thing your neighbors see every day" | `h2`, `sub` |
 | `testimonials` | The three quotes from the master | `{}` — ⚠ unverified, see ABOUT-VIP item 6 |
 | `services` | Exterior / interior / cabinets, linking to their pages | `h2`, `items` ×3 `{title, body}` |
@@ -109,6 +109,14 @@ build fills them in from the story block: `{they}` / `{They}` (the Gallaghers),
 `{place}` (Newport Beach), `{location}`, `{schemes}` (11), `{chosen}` (the scheme
 they picked), plus `{community}`, `{city}`, `{warranty}`, `{rate}`, `{phone}`.
 A typo in a token stops the build and says which one.
+
+The same tokens work in the page's **title, meta description, short answer
+(`capsule`), visualizer intro (`vizIntro`), FAQ and problem cards** once the
+page has a `master` block — so the phone, warranty, starting rate and scheme
+count are never typed into the data, and a swapped family reaches the FAQ too.
+Optional extras: `master.beforeCommit.lead` (a paragraph under that heading)
+and `master.problemSolution.h2` (a local heading for the problem cards, if the
+page's `moduleOrder` includes `problemSolution`).
 
 ### Swapping a page's homeowner and photos
 

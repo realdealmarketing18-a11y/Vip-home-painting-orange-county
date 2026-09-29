@@ -3647,6 +3647,7 @@ section.navy .body, section.navy-deep .body { color: rgba(255,255,255,0.85); }
 .sec-head .eyebrow::after  { background: linear-gradient(90deg, rgba(201,169,97,0.75), transparent); }
 .sec-head .lead { font-family: var(--font-sans); font-size: 15.5px; color: #4A4F70; line-height: 1.65; max-width: 680px; margin: 0 auto; }
 section.navy .sec-head .lead, section.navy-deep .sec-head .lead { color: rgba(255,255,255,0.85); }
+.pillars-head .lead { font-family: var(--font-sans); font-size: 15.5px; color: #4A4F70; line-height: 1.65; max-width: 680px; margin: 14px auto 0; }
 
 /* ============ STATIC CINEMATIC HERO ============ */
 .hero-cinema { position: relative; min-height: 92svh; padding: 0;
@@ -3940,7 +3941,16 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   .ttl, .final-cta .ttl { font-size: 32px; }
   .capsule-card { padding: 28px 26px 26px; }
 }
+/* The master's own phone-width steps for the bar (12px 14px, gap 8px) are
+   cancelled by the plain .topbar rule above and the 1024px step, because this
+   sheet is appended after the base sheet. Without these, the phone number ran
+   14px off the right edge at 375px on every generated page. */
+@media (max-width: 900px) {
+  .topbar { gap: 12px; }
+  .top-logo { gap: 8px; }
+}
 @media (max-width: 600px) {
+  .topbar { padding: 12px 14px; gap: 8px; }
   section { padding: 48px 20px; }
   .capsule { padding: 40px 20px 32px; }
   .swatch-grid { grid-template-columns: 1fr; }

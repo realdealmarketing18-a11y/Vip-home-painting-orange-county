@@ -330,6 +330,7 @@ module.exports = function makeMasterModules(ctx) {
     <div class="pillars-head">
       <div class="eyebrow">${tok(b.eyebrow || 'Before You Commit', c)}</div>
       <h2 class="ttl">${tok(b.h2, c)}</h2>
+      ${b.lead ? `<p class="lead">${tok(b.lead, c)}</p>` : ''}
     </div>
     ${X.pillars}
   </section>`;
@@ -534,7 +535,25 @@ module.exports = function makeMasterModules(ctx) {
     if (missing.size) throw new Error(`${label}: these pictures do not exist in orange-county-sales-page/ — ${[...missing].slice(0, 6).join(', ')}${missing.size > 6 ? ` (+${missing.size - 6} more)` : ''}. If you swapped the family's photos, check the story block's photoDir, before and after.`);
   }
 
+  /* The page-level copy on a master-process page — title, meta, the short
+     answer, the visualizer lede, the FAQ and the problem cards — may use the
+     same tokens as the modules. So the phone, warranty, rate and scheme count
+     are read from config and the story block instead of being typed into the
+     data, and a swapped family flows into the FAQ as well. Pages without a
+     master block are returned untouched. */
+  function resolve(c) {
+    if (!isMaster(c)) return c;
+    const t = (s) => (s == null ? s : tok(s, c));
+    return {
+      ...c,
+      title: t(c.title), metaDescription: t(c.metaDescription),
+      capsule: t(c.capsule), vizIntro: t(c.vizIntro),
+      faqs: (c.faqs || []).map(f => ({ ...f, q: t(f.q), a: t(f.a) })),
+      problems: (c.problems || []).map(p => ({ p: t(p.p || p.problem), s: t(p.s || p.solution) }))
+    };
+  }
+
   const MODULES = { eliminated, instead, settle, offer, painted, warranty, beforeCommit, neighbors, testimonials, services, serviceArea };
 
-  return { MODULES, hero, close, vizAdjust, reelJs, jsonLdExtras, assertAssets, isMaster, storyOf, tok, DEFAULT_STORY };
+  return { MODULES, hero, close, vizAdjust, reelJs, jsonLdExtras, assertAssets, isMaster, storyOf, tok, resolve, DEFAULT_STORY };
 };

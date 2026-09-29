@@ -20,11 +20,17 @@
   ],
   "used": {
     "/irvine/orchard-hills/": [
-      "portfolio",
-      "colorGuide",
-      "specs",
-      "process",
-      "problemSolution"
+      "instead",
+      "eliminated",
+      "settle",
+      "painted",
+      "offer",
+      "neighbors",
+      "warranty",
+      "beforeCommit",
+      "problemSolution",
+      "services",
+      "serviceArea"
     ],
     "/irvine/altair/": [
       "specs",
@@ -61,5 +67,22 @@
       "colorGuide",
       "specs"
     ]
-  }
+  },
+  "master_pool": [
+    "instead",
+    "eliminated",
+    "settle",
+    "painted",
+    "offer",
+    "neighbors",
+    "warranty",
+    "beforeCommit",
+    "services",
+    "serviceArea",
+    "problemSolution",
+    "specs",
+    "process",
+    "testimonials"
+  ],
+  "_master_pool_doc": "Rotating modules for pages on the OC master sales process (generator/master-modules.js). Story hero, short answer and visualizer stay fixed at the top; FAQ and the close with the P.S. stay fixed at the bottom. testimonials stays out until ABOUT-VIP item 6 is confirmed."
 }

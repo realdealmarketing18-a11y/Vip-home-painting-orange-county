@@ -20,6 +20,7 @@ Layer: **Project memory** (B.L.A.S.T. Protocol 0). Append; don't rewrite history
 - Output gate at **21 checks**, green (was 18; the hero work added three)
 - Visualizer verified live: 11/11 colour schemes, 9/9 options, on both Irvine and Anaheim
 - 2026-09-29 · OC master sales process ported into the generator (`master-modules.js`, rollout row 0) — switched on per page by a `master` block, homeowner swappable via `story`; no page changed yet
+- 2026-09-29 · Orchard Hills (rollout row 1) on the master sales process — B4 H1, 8 FAQs, story sections with local copy, tokenized SEO fields; phone-width top bar fixed on every generated page (staging only, WordPress untouched)
 
 ---
 

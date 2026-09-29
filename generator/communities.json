@@ -26,25 +26,31 @@
     {
       "slug": "orchard-hills",
       "name": "Orchard Hills",
-      "title": "Orchard Hills House Painters | Luxury Exteriors — VIP",
-      "metaDescription": "Orchard Hills luxury house painters. See your estate in every color before we paint — complimentary visualization, itemized estimate, 2-Year Warranty.",
-      "primaryKeyword": "Orchard Hills luxury house painters",
-      "vizIntro": "Orchard Hills homes are judged against the hillside — warm stucco, stone wainscots, and clay tile that shift color hour by hour as the light moves across the orchards. A shade that looks perfect on a paper swatch in the showroom can read chalky or yellow on your own south-facing wall by two in the afternoon. This is why we render your actual home in every candidate palette first: a repaint in the wrong color costs the entire project over again, and almost nobody who regrets their color ever saw it on their own facade before the crew arrived.",
+      "title": "Orchard Hills Exterior House Painting, Irvine CA | VIP",
+      "metaDescription": "Exterior house painting in Orchard Hills, Irvine. See your own home in {schemes} color schemes first — complimentary, itemized from {rate}/sq ft, {warranty}.",
+      "primaryKeyword": "exterior house painting Orchard Hills",
+      "vizIntro": "On an Orchard Hills exterior, the paint has to agree with three things that are not changing: a clay-tile roof, a stone wainscot, and a hillside that throws hard afternoon light onto the south and west walls. A body color that looks warm on a card can turn chalky against the stone, or yellow beside the tile, once it covers the whole house. The tool below is the one {they} used on their own {place} home. Pick a scheme, drag the slider, and watch how far a single choice moves the whole front of the house.",
       "heroEyebrow": "Orchard Hills · Irvine Luxury Home Painting",
-      "h1": "Orchard Hills' <span class=\"gold\">Luxury House Painters</span> — Estate Exteriors, Finished Like Furniture",
+      "h1": "The Orchard Hills Homeowner’s Guide to <span class=\"gold\">Exterior House Painting</span> Without Living With the Wrong Color",
       "heroKicker": "Complimentary Custom Color Visualization Included",
-      "capsule": "VIP Home Painting is the luxury house painting company serving Orchard Hills in Irvine, CA. We repaint Orchard Hills estate exteriors, interiors, and kitchen cabinets using Sherwin-Williams Emerald and Duration coatings applied with professional Graco and Titan airless spray equipment, and every project starts with a complimentary 30-minute custom color visualization so you see your home in its new palette before a single brushstroke. VIP exterior work in Irvine starts at $4.75 per square foot of paintable surface — the premium end of the local range — itemized line by line with no hidden charges, and all work is backed by a 2-Year Warranty. Call (909) 312-5400.",
+      "capsule": "VIP Home Painting is a luxury residential painting company, based in Anaheim, that paints exteriors, interiors and kitchen cabinets in Orchard Hills, Irvine, CA 92602. Before any work is booked, our design team renders the front of your own home in {schemes} complete color schemes during a complimentary 30-minute consultation, each one named in exact Sherwin-Williams colors. Exterior work starts at {rate} per square foot of paintable surface, itemized line by line, with Sherwin-Williams Emerald and Duration sprayed and back-rolled on stucco. Every project carries a {warranty} on labor and materials. Call {phone}.",
       "context": {
         "archNote": "Orchard Hills homes lean Tuscan, Santa Barbara, and Spanish Colonial — warm stucco bodies, stone accents, and clay-tile roofs set against the hillside orchards. The palette has to respect that architecture and the village's design review standards.",
         "hoaNote": "your Orchard Hills community association's design review process",
         "settingNote": "hillside lots along Loma Ridge, where afternoon sun and orchard dust are hard on south- and west-facing walls"
       },
       "moduleOrder": [
-        "portfolio",
-        "colorGuide",
-        "specs",
-        "process",
-        "problemSolution"
+        "instead",
+        "eliminated",
+        "settle",
+        "painted",
+        "offer",
+        "neighbors",
+        "warranty",
+        "beforeCommit",
+        "problemSolution",
+        "services",
+        "serviceArea"
       ],
       "geo": {
         "lat": 33.7273,
@@ -53,15 +59,35 @@
       "faqs": [
         {
           "q": "How much does exterior house painting cost in Orchard Hills, Irvine?",
-          "a": "VIP exterior work in Irvine starts at $4.75 per square foot of paintable surface — the premium end of the local range — and larger Orchard Hills estates with stone accents, extensive trim, or three-coat color changes price above that. Every VIP estimate is itemized line by line — prep, primer, coating, trim, and accents priced separately — and includes a complimentary custom color visualization of your home. Call (909) 312-5400."
+          "a": "VIP Home Painting’s exterior work in Orchard Hills starts at {rate} per square foot of paintable surface, the premium end of the Irvine range. Paintable surface is not the same as living area: on a two-story stucco home it usually runs about 0.85 to 1.1 times the interior square footage. Trim, iron, doors and any color change are priced as their own lines, so the estimate shows exactly which surfaces were counted. The complimentary color visualization comes with every estimate. Call {phone}."
         },
         {
-          "q": "Do you handle the Orchard Hills design review and HOA color approval?",
-          "a": "Yes. We prepare the complete color submission package for your Orchard Hills community association's design review — swatches, Sherwin-Williams product data sheets, and a callout for each side of the house — as part of every exterior project, so approval doesn't stall your repaint."
+          "q": "Does VIP Home Painting handle Orchard Hills HOA color approval?",
+          "a": "Yes. VIP Home Painting prepares the design-review submission for your Orchard Hills association as part of every exterior project. Orchard Hills is not one association but several, including The Groves, The Reserve and The Summit, and each runs its own review, so the package is built for yours: every Sherwin-Williams color by name and number, the product data sheets, and a note of which color goes on which surface. Several of these associations are professionally managed by Keystone Pacific Property Management. The approved colors and the submission requirements come from your association, never from a guess."
         },
         {
-          "q": "What are the best paint colors for Orchard Hills' Tuscan and Santa Barbara homes?",
-          "a": "Warm whites and greiges lead in Orchard Hills — Sherwin-Williams Alabaster SW 7008 and Accessible Beige SW 7036 for bodies, with Urbane Bronze SW 7048 or Iron Ore SW 7069 on doors and iron. Our complimentary Custom Visualization Service renders your own home in each palette before you choose."
+          "q": "What are the best exterior paint colors for Tuscan and Santa Barbara homes in Orchard Hills?",
+          "a": "VIP Home Painting starts an Orchard Hills palette from the two things that are staying: the clay-tile roof and the stone wainscot. Warm bodies such as Alabaster SW 7008 or Accessible Beige SW 7036 sit comfortably beside both, while Urbane Bronze SW 7048 or Iron Ore SW 7069 carry the entry door, the iron and the garage door. A 60/30/10 split — body, trim, accent — keeps the stone and tile as the richest texture on the house. A shortlist is not a verdict on your house, which is why the complimentary Custom Visualization Service renders each option on your own home before you choose."
+        },
+        {
+          "q": "Why does a paint color look different on my Orchard Hills house than it did on the swatch?",
+          "a": "VIP Home Painting’s short answer is scale and light: a swatch shows two inches of color under store lighting, while an Orchard Hills home shows thousands of square feet of it in hillside sun. A warm white that reads soft on a card can go chalky across a south-facing wall by mid-afternoon, and a greige can lean yellow beside terracotta tile. Even two-foot patches painted on three walls cannot show the whole house. The only reliable preview is the whole front of your own home, rendered in every candidate scheme."
+        },
+        {
+          "q": "What happens in the complimentary 30-minute color consultation?",
+          "a": "VIP Home Painting’s color consultation takes 30 minutes and needs one thing from you: a photo of the front of your Orchard Hills home. Our design team returns it painted in {schemes} complete color schemes, body, trim and accent together, plus further options for lighting, texture and premium additions. Every scheme is named in exact Sherwin-Williams colors, and a written estimate itemized line by line comes with it. It is complimentary, and nothing is scheduled until you have chosen."
+        },
+        {
+          "q": "Is VIP Home Painting licensed and insured, and what does the warranty cover?",
+          "a": "VIP Home Painting is licensed, bonded and insured in the State of California, and every Orchard Hills project carries a {warranty} on labor and materials. The warranty is written into the itemized estimate you sign rather than promised after the crew leaves, next to the prep it depends on: stucco cracks floated to match the existing texture, a bonding primer where it is needed, and two coats at the thickness the manufacturer specifies."
+        },
+        {
+          "q": "How do you protect stone, tile and landscaping on a hillside Orchard Hills lot?",
+          "a": "VIP Home Painting masks and contains before a sprayer is switched on: stone wainscots and clay tile are covered, planting is wrapped, and hardscape is protected. Spraying is scheduled around the wind, which matters on an open hillside lot, and the site is cleaned every evening. Work is timed around your household and the gate rather than through them, and the job closes with a raking-light inspection and the founder’s walkthrough. Nothing is signed off until each side of the house has been checked in low, angled light, which is when a missed patch or a thin coat shows."
+        },
+        {
+          "q": "How often does an Orchard Hills stucco home need repainting?",
+          "a": "VIP Home Painting plans exterior repaints around an 8-to-15-year window, which is exactly why the color decision carries so much weight: whatever goes on an Orchard Hills house now is what the street sees for a decade or more. Where a house lands in that window depends on the prep and the coating. Two full coats of Sherwin-Williams Emerald or Duration, back-rolled into the stucco texture, bond to the wall and hold their color longer than a single thinned coat that lets sunlight through to the wall."
         }
       ],
       "extraColors": [
@@ -80,20 +106,24 @@
       ],
       "problems": [
         {
-          "p": "South-facing stucco fades unevenly on hillside lots, leaving chalky, blotchy walls within a few seasons.",
-          "s": "We spec Sherwin-Williams Emerald exterior — a self-priming, UV-stable acrylic — and apply a full-thickness coating by airless spray so every side of the house weathers evenly."
+          "p": "A body color chosen from a card turns chalky or yellow once it covers a south- or west-facing wall in hillside sun.",
+          "s": "Our design team renders the whole front of your house in every candidate scheme first, so the color you approve is one you have already seen at full size, on your own walls."
         },
         {
-          "p": "Design review paperwork stalls the project before it starts.",
-          "s": "We prepare your color submission package — swatches, product data sheets, and notes for each side of the house — formatted for your association's design review, so approval is a formality, not a delay."
+          "p": "Several Orchard Hills associations, each with its own design review, and a submission that stalls when one sheet is missing.",
+          "s": "VIP Home Painting assembles the package for your association — Sherwin-Williams names and numbers, product data sheets, a color-by-surface note — as part of the project, never as an add-on."
         },
         {
-          "p": "Estimates from other painters arrive as one vague lump sum.",
-          "s": "Every VIP proposal is itemized — prep, primer, coating system, trim, and accents priced line by line — so you know exactly what you're paying for."
+          "p": "Stone wainscots, clay tile and mature planting sit inches from every wall that needs paint.",
+          "s": "Full masking and containment before any spraying, work scheduled around the wind on an exposed lot, and a site cleaned every evening before the household gets it back."
         },
         {
-          "p": "Crews that treat a luxury estate like a tract repaint.",
-          "s": "White-glove protocols on every Orchard Hills project: full masking of stone, landscape and hardscape protection, daily clean-up, and a final walkthrough with the founder's checklist."
+          "p": "An estimate that arrives as a single number, with no way to tell which surfaces were counted.",
+          "s": "Every line is priced separately — prep, primer, coating, trim, accents — starting at {rate} per square foot of paintable surface, with the {warranty} written into the same document."
+        },
+        {
+          "p": "A deep accent such as Iron Ore on a west-facing garage door soaks up the afternoon heat a lighter color would reflect.",
+          "s": "Every scheme comes with its exact Sherwin-Williams colors, so how much light each one reflects is known before you choose, and the dark accent goes only where it earns its place."
         }
       ],
       "portfolio": {
@@ -111,7 +141,79 @@
         "note": "Hillside light changes everything. See yours before we paint it.",
         "days": 5
       },
-      "city": "irvine"
+      "city": "irvine",
+      "master": {
+        "hero": {
+          "eyebrow": "Orchard Hills · Irvine · Luxury Home Painting",
+          "h1": "The Orchard Hills Homeowner’s Guide to <span class=\"gold\">Exterior House Painting</span> Without Living With the Wrong Color",
+          "continue": "Follow their story, then see your Orchard Hills home in every color"
+        },
+        "instead": {
+          "h2": "A Wrong Color Costs the Whole Job Twice — Even on the Most <span class=\"accent\">Carefully Chosen</span> Orchard Hills Home",
+          "bridge": "Before {they} saw their home rendered, they were where most Orchard Hills owners begin: a shortlist of warm whites and greiges, and no way of knowing which one would survive the hillside light.",
+          "lede": "It usually starts on a weekend, with sample pots. A patch of Alabaster goes up beside the stone wainscot and another of Accessible Beige around the side of the house. At ten in the morning both look right. By mid-afternoon, with the sun full on the south and west walls, one has gone chalky and the other reads yellow against the clay tile. The patches stay up for weeks. Nobody wants to be the one who chose wrong on a street where every house is judged against the one beside it, so the decision waits, and the house stays the color it already is.",
+          "turn": "None of that is carelessness. On a Tuscan or Santa Barbara exterior, the body color has to hold its own beside stone and tile that will never change, and a two-foot patch cannot show that relationship. Only the whole house can show it."
+        },
+        "eliminated": {
+          "h2": "{They} Saw <span class=\"accent\">{schemes} Color Schemes</span> on Their Own House, Then Eliminated Ten",
+          "lead": "So {they} did it the other way round: every scheme, body, trim and accent together, on the front of their own {place} home before a single can was opened. These are the ones they passed on, and the one they kept: {chosen}. On an Orchard Hills home, the clay-tile roof and the stone wainscot do part of the eliminating for you. Any white that fights them shows it at once, across the whole house rather than on a chip."
+        },
+        "settle": {
+          "h2": "<span class=\"accent\">3 Costly Things</span> to Settle Before Anyone Paints an Orchard Hills Home",
+          "lead": "Three decisions, settled on the whole house and on paper before a crew is booked for Summerland, Big Sur or Glacier Valley. Each is cheap to settle now and expensive to discover once the drop cloths come up. The three are the same for every homeowner. What changes in Orchard Hills is how visible a wrong answer is: on a hillside, a house is seen from the street below and the lots above, not only from the curb in front of it."
+        },
+        "painted": {
+          "h2": "How to Settle Every Orchard Hills Exterior Painting Decision <span class=\"accent\">in 30 Minutes</span> Without Guessing",
+          "sub": "Color was the first decision {they} made, not the last. Lighting, texture, stone and the garage door followed, each rendered on their own house while every choice could still be undone. An Orchard Hills home asks the same questions, plus one more: how each choice sits beside a roof that is staying exactly as it is."
+        },
+        "offer": {
+          "h2": "Avoid Choosing From a Card — See Your Orchard Hills Home in <span class=\"accent\">{schemes} Complete Schemes</span>, Complimentary",
+          "sub": "Thirty minutes, at a time that suits your household. You send one photo of the front of your Orchard Hills home; our design team returns it painted in {schemes} complete color schemes, each named in exact Sherwin-Williams colors, together with an estimate itemized line by line. It is the same package {they} received for their {place} home, and nothing in the household has to be rearranged for it."
+        },
+        "neighbors": {
+          "h2": "What Your Orchard Hills Neighbors Will See on Your House <span class=\"accent\">for the Next 8 to 15 Years</span>",
+          "sub": "Behind a guard gate, the same neighbors pass the same house from the same angles, every day, for years. Nothing on this list is visible the afternoon the crew packs up. Every item is visible to the street by the sixth summer. On warm Tuscan and Santa Barbara stucco, most of what decides it is underneath the color, which is why each one is written into the estimate."
+        },
+        "warranty": {
+          "h2": "Your <span class=\"accent\">{warranty}</span> Is Written Into the Orchard Hills Estimate Before Work Begins",
+          "body": "The {warranty} covers labor and materials, and it sits inside the itemized estimate you sign rather than arriving as a promise afterwards. On an Orchard Hills exterior, the prep it depends on is in writing too: stucco cracks floated to match the texture, stone and tile masked, two coats of Sherwin-Williams Emerald or Duration at the thickness the manufacturer specifies. If something fails inside the warranty period, VIP Home Painting comes back and puts it right. The terms are the same on every project, whatever the size of the house, and you read them before you sign rather than after the crew has gone."
+        },
+        "beforeCommit": {
+          "h2": "What You Get Before You Commit to an <span class=\"accent\">Orchard Hills</span> Painter",
+          "lead": "In Orchard Hills the hard part of a repaint is rarely the price. It is signing off on something the whole street will judge before you have seen it. So all four of these are in your hands first: the renders, the written estimate, the warranty and the design-review package for your association. The only decision left is one you have already watched play out on your own house."
+        },
+        "problemSolution": {
+          "h2": "Five Ways an Orchard Hills Repaint Goes Wrong — <span class=\"accent\">and What Prevents Each</span>"
+        },
+        "services": {
+          "h2": "Exterior, Interior and Kitchen Cabinet Painting in Orchard Hills — <span class=\"accent\">One Itemized Estimate</span>",
+          "items": [
+            {
+              "title": "Exterior House Painting — Orchard Hills",
+              "body": "Warm stucco bodies, stone wainscots, iron and wood trim on Tuscan, Santa Barbara and Spanish Colonial homes. Stucco repairs floated to match, stone and tile masked, Sherwin-Williams Emerald or Duration sprayed with Graco and Titan airless rigs and back-rolled. Starts at {rate} per square foot of paintable surface, measured on the surfaces actually painted rather than the size of the house."
+            },
+            {
+              "title": "Interior House Painting — Orchard Hills",
+              "body": "Walls, ceilings, trim and crown molding, scheduled around the household instead of through it. The same itemized estimate, the same Sherwin-Williams naming, and the same founder’s walkthrough at the end. Useful when the exterior palette changes and the rooms that look onto it need to follow."
+            },
+            {
+              "title": "Kitchen Cabinet Painting — Orchard Hills",
+              "body": "A factory finish without replacing the cabinetry: doors and drawers sprayed off-site in urethane enamel, cabinet boxes sprayed in place, and hardware re-hung square. The color is chosen the same way as the exterior: seen first, then approved."
+            }
+          ]
+        },
+        "serviceArea": {
+          "h2": "Exterior House Painting in <span class=\"accent\">Orchard Hills</span> and Across Irvine",
+          "lead": "VIP Home Painting works from Anaheim and paints across Irvine’s villages. In Orchard Hills (92602) that means the hillside streets near Loma Ridge — Summerland, Big Sur, Glacier Valley, Treeline, Milpas, Lugano and Open Range — and the neighborhoods around the Orchard Hills Shopping Center and Orchard Hills School. Neighboring Irvine villages, the Irvine color guide and our HOA painting page are linked below."
+        },
+        "close": {
+          "h2": "Before the Street Sees Your Orchard Hills Home, <span class=\"accent\">See It Yourself — in 30 Minutes</span>",
+          "ps": [
+            "Everything on this page happened in one order: {they} saw their home in {schemes} complete color schemes, chose one, and only then did anyone open a can. Most Orchard Hills repaints run that order backwards. A card is held against the stone, everyone hopes it reads the same across the whole house, and the real answer arrives when the scaffolding comes down.",
+            "On a hillside where the neighbors will look at the result for the next eight to fifteen years, that is the one decision worth settling first. The same thirty minutes {they} had are yours: one photo of the front of your home, complimentary, with an itemized estimate included."
+          ]
+        }
+      }
     },
     {
       "slug": "altair",

@@ -471,7 +471,7 @@ function modProblemSolution(c, no, bg) {
   <section class="${bg}" id="fit">
     <div class="sec-head">
       <div class="eyebrow">Made For ${c.name}</div>
-      <h2 class="ttl">What Goes Wrong — And How <span class="accent">We Solve It</span></h2>
+      <h2 class="ttl">${(c.master && c.master.problemSolution && c.master.problemSolution.h2) || 'What Goes Wrong — And How <span class="accent">We Solve It</span>'}</h2>
     </div>
     <div class="ps-grid">${cards}
     </div>
@@ -656,6 +656,8 @@ function jsonLd(c, url, masterRendered) {
 /* ---------------- PAGE ---------------- */
 
 function buildPage(c) {
+  /* Master-process pages: fill {tokens} in title, meta, capsule, FAQ etc. */
+  c = MASTER.resolve(c);
   /* a community belongs to exactly one city — see communities.json city field */
   const cityDir = c.city || CFG.outputDir;
   const url = `${CFG.siteBase}/${cityDir}/${c.slug}/`;

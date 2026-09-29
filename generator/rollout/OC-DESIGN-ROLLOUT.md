@@ -15,7 +15,7 @@ from HEADLINE-FORMULAS.md, and its own section order so no two pages share a lay
 | # | Page | Staging URL | Status | Run date | Notes |
 |---|---|---|---|---|---|
 | 0 | GENERATOR PORT — OC story sections become reusable generator modules | — | done | 2026-09-29 | 11 modules in `generator/master-modules.js` + fixed story hero and P.S. close. Tested on a throwaway copy (Orchard Hills + Anaheim with test copy): gates green, 375px + 1440px checked, no sideways scroll. No live page changed. See decisions below. |
-| 1 | irvine/orchard-hills | /irvine/orchard-hills/ | todo | | |
+| 1 | irvine/orchard-hills | /irvine/orchard-hills/ | done | 2026-09-29 | H1 = **B4** identity guide ("The Orchard Hills Homeowner’s Guide to Exterior House Painting Without Living With the Wrong Color"). moduleOrder: instead → eliminated → settle → painted → offer → neighbors → warranty → beforeCommit → problemSolution → services → serviceArea. 8 FAQs, ~2,520 local words. Left out (not in research): HOA rules, dues, project totals, job length. |
 | 2 | irvine/altair | /irvine/altair/ | todo | | |
 | 3 | irvine/portola-springs | /irvine/portola-springs/ | todo | | |
 | 4 | irvine/hidden-canyon | /irvine/hidden-canyon/ | todo | | |
@@ -41,6 +41,12 @@ Staging base: https://realdealmarketing18-a11y.github.io/Vip-home-painting-orang
 - **Row 0 · section order.** Story hero, short answer and visualizer are fixed at the top; FAQ and the close with the P.S. are fixed at the bottom; everything between rotates per page. Beat numbers ("1 ·", "2 ·") come off the section labels because rotation would put them out of order.
 - **Found, not fixed (master page is read-only to this task):** on the OC page the "3 things to settle" swipes still say *PLACEHOLDER — DEMO FOOTAGE PENDING*, and "$4.75" breaks onto its own line in the third one. Pages that use `settle` inherit both until the master is fixed.
 
+- **Row 1 · colorGuide, portfolio, specs and process are off the Orchard Hills layout.** colorGuide still draws flat colour chips (`.swatch-chip`) — the paint-can rule forbids them, but check 11 does not look for that class, so the other nine community pages still show them. portfolio claimed Orchard Hills work ("our crews finish Orchard Hills exteriors") that is not verified. specs and process repeat what the master's steps and benefits already say. **Found, not fixed:** the chips on the other pages go when each row reaches them.
+- **Row 1 · the Orchard Hills associations are named** (The Groves, The Reserve, The Summit; several managed by Keystone Pacific) because `research/irvine/06-hoa.md` sources them. No rules, dues or approval steps are stated — the copy says those come from the association.
+- **Row 1 · two small generator additions, both no-ops for other pages:** page copy (title, meta, short answer, FAQ, problem cards) now takes the same `{tokens}` as the story sections, so phone, warranty, rate and scheme count are read from config; and `beforeCommit` takes an optional `lead`, `problemSolution` an optional local heading.
+- **Row 1 · fixed on every page:** at phone width the phone number in the top bar ran 14px off the right edge on all generated pages (the generator's stylesheet was cancelling the master's phone-width spacing). Now matches the OC page. CSS only; no copy changed on other pages.
+
 ## Run log
 (newest first — one line per run: date · row · result · commit)
+- 2026-09-29 · row 1 · done — Orchard Hills on the master sales process; generate + verify-site 25/25 + validate-brief green; 375px/1440px checked · see git log
 - 2026-09-29 · row 0 · done — master sales process ported into the generator as reusable modules; all 21 pages rebuild unchanged; verify-site 25/25 · c7b9855
