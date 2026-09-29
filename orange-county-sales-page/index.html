@@ -1900,10 +1900,15 @@
      aspect-ratio and pushing figcaption past the bottom edge, where
      overflow:hidden clipped it. Every scheme name was invisible. The
      aspect-ratio supplies the definite height object-fit needs. */
-  .offer-stake .pkg img { display: block; width: 100%; height: auto;
+  /* Scoped to images inside a figure or a thumb BUTTON, not every descendant
+     img. The unscoped version was (0,2,1) and outranked .pkg-mark at (0,2,0),
+     so the 128px brand mark in the caption inherited width:100% and rendered
+     as a blurred full-width crest. Same collision as the figcaption clip. */
+  .offer-stake .pkg figure img,
+  .offer-stake .pkg-thumb img { display: block; width: 100%; height: auto;
     object-fit: cover; }
 
-  .offer-stake .pkg-hero { max-width: 520px; margin: 0 auto 18px; position: relative;
+  .offer-stake .pkg-hero { max-width: 760px; margin: 0 auto 18px; position: relative;
     border-radius: 10px; overflow: hidden;
     border: 1px solid rgba(168,138,71,.34);
     box-shadow: 0 18px 44px rgba(26,31,78,.20); }
@@ -1921,41 +1926,113 @@
     letter-spacing: .08em; text-transform: uppercase; color: var(--gold-bright);
     margin-top: 2px; }
 
-  /* auto-fit, so the row can never overflow the way .pillars did: the track
-     count follows the width instead of being fixed and forcing a scrollbar. */
-  .offer-stake .pkg-grid { display: grid; gap: 8px;
-    grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+  /* Ten thumbs, so five columns is the only count that leaves no orphan row.
+     auto-fit gave 8 + 2, which reads as a mistake. minmax(0,1fr) -- not the
+     default minmax(auto,1fr) -- because auto resolves to min-content and is
+     what overflowed .pillars. */
+  .offer-stake .pkg-grid { display: grid; gap: 10px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     max-width: 760px; margin: 0 auto; }
-  .offer-stake .pkg-thumb { border-radius: 6px; overflow: hidden;
+
+  /* The thumbs are BUTTONS: clicking one promotes it into the hero above, so
+     the reader gets a second and third look without leaving the section. */
+  .offer-stake .pkg-thumb { display: block; width: 100%; padding: 0;
+    font: inherit; color: inherit; text-align: center; cursor: pointer;
+    -webkit-appearance: none; appearance: none;
+    border-radius: 6px; overflow: hidden;
     border: 1px solid rgba(168,138,71,.30);
     box-shadow: 0 6px 16px rgba(26,31,78,.13);
-    background: rgba(255,253,248,.7); }
+    background: rgba(255,253,248,.7);
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
   .offer-stake .pkg-thumb img { aspect-ratio: 16 / 10; }
-  .offer-stake .pkg-thumb figcaption { font-family: var(--font-sans);
-    font-size: 8.5px; letter-spacing: .06em; text-transform: uppercase;
-    color: rgba(26,31,78,.72); padding: 5px 4px; line-height: 1.25;
-    text-align: center; }
+  .offer-stake .pkg-thumb:hover, .offer-stake .pkg-thumb:focus-visible {
+    transform: translateY(-3px); border-color: var(--gold-bright);
+    box-shadow: 0 12px 26px rgba(26,31,78,.22); outline: none; }
+  .offer-stake .pkg-thumb[aria-current="true"] {
+    border-color: var(--gold-bright);
+    box-shadow: 0 0 0 2px var(--gold-bright), 0 6px 16px rgba(26,31,78,.13); }
+  .offer-stake .pkg-thumb-nm { display: block; font-family: var(--font-sans);
+    font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase;
+    color: rgba(26,31,78,.72); padding: 6px 4px; line-height: 1.25; }
 
-  .offer-stake .pkg-cap { display: flex; align-items: center; justify-content: center;
-    gap: 9px; margin: 16px 0 0 !important;
+  /* Covers the hero image. The figcaption sits above it on z-index, so the
+     scheme name stays readable while the whole picture is one click target. */
+  .offer-stake .pkg-zoom { position: absolute; inset: 0; z-index: 1;
+    display: flex; align-items: flex-start; justify-content: flex-end;
+    padding: 10px; border: 0; background: transparent; cursor: zoom-in;
+    -webkit-appearance: none; appearance: none; }
+  .offer-stake .pkg-zoom span { font-family: var(--font-sans); font-size: 10px;
+    letter-spacing: .1em; text-transform: uppercase; color: #fff;
+    background: rgba(26,31,78,.72); border: 1px solid rgba(201,169,97,.5);
+    border-radius: 999px; padding: 6px 12px; opacity: .9;
+    transition: opacity .18s ease, background .18s ease; }
+  .offer-stake .pkg-zoom:hover span, .offer-stake .pkg-zoom:focus-visible span {
+    opacity: 1; background: var(--navy); }
+  .offer-stake .pkg-hero figcaption { z-index: 2; }
+
+  .offer-stake .pkg-cap { margin: 16px 0 0 !important; text-align: center;
     font-family: var(--font-serif) !important; font-style: italic !important;
     font-size: clamp(15px, 1.25vw, 19px) !important; color: var(--navy) !important; }
-  .offer-stake .pkg-mark { width: auto; height: 26px; opacity: .85; flex: none; }
+  .offer-stake .pkg-hint { display: block; margin-top: 5px;
+    font-family: var(--font-sans) !important; font-style: normal !important;
+    font-size: 11.5px !important; letter-spacing: .07em; text-transform: uppercase;
+    color: rgba(26,31,78,.6) !important; }
 
   @media (max-width: 720px) {
-    .offer-stake .pkg-grid { grid-template-columns: repeat(auto-fit, minmax(104px, 1fr));
-      gap: 8px; }
-    .offer-stake .pkg-thumb figcaption { font-size: 8.5px; padding: 5px 3px; }
+    .offer-stake .pkg-grid { gap: 8px; }
+    .offer-stake .pkg-thumb-nm { font-size: 8.5px; padding: 5px 3px; }
     .offer-stake .pkg-hero .paint-can { width: 26px; height: 26px; }
   }
-  /* Phones: two columns, not three. minmax(0,1fr) rather than auto-fit so
-     the count is fixed here -- auto-fit would still fit three at 375px and
-     put the tiles back where they were. */
+  /* Phones: two columns, five rows. Five columns at 375px would be 60px tiles,
+     which is the problem this section exists to argue against. */
   @media (max-width: 520px) {
     .offer-stake .pkg-grid { grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 9px; max-width: 420px; }
-    .offer-stake .pkg-thumb figcaption { font-size: 10px; letter-spacing: .04em;
+    .offer-stake .pkg-thumb-nm { font-size: 10px; letter-spacing: .04em;
       padding: 6px 4px; }
+    .offer-stake .pkg-zoom span { font-size: 9px; padding: 5px 10px; }
+  }
+
+  /* THE LIGHTBOX. Lives just before </body> so no ancestor's overflow:hidden
+     or transform can trap a position:fixed layer. */
+  .pkg-lb { position: fixed; inset: 0; z-index: 9000;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(12,15,40,.93); padding: 4vh 3vw; }
+  .pkg-lb[hidden] { display: none; }
+  .pkg-lb-fig { margin: 0; max-width: 1200px; width: 100%; }
+  .pkg-lb-fig img { display: block; width: 100%; height: auto;
+    max-height: 76vh; object-fit: contain; border-radius: 8px;
+    border: 1px solid rgba(201,169,97,.35); }
+  .pkg-lb-cap { display: flex; align-items: center; justify-content: center;
+    gap: 12px; margin-top: 14px; text-align: left; }
+  .pkg-lb-cap .paint-can { width: 30px; height: 30px; border-radius: 50%; }
+  .pkg-lb-nm { display: block; font-family: var(--font-serif); font-style: italic;
+    font-weight: 600; font-size: clamp(16px, 1.6vw, 22px); color: #fff; line-height: 1.2; }
+  .pkg-lb-co { display: block; font-family: var(--font-sans); font-size: 11px;
+    letter-spacing: .09em; text-transform: uppercase;
+    color: var(--gold-bright); margin-top: 3px; }
+  .pkg-lb-btn { position: absolute; -webkit-appearance: none; appearance: none;
+    display: flex; align-items: center; justify-content: center;
+    width: 46px; height: 46px; border-radius: 50%; cursor: pointer;
+    color: #fff; font-size: 24px; line-height: 1;
+    background: rgba(26,31,78,.8); border: 1px solid rgba(201,169,97,.45);
+    transition: background .18s ease, border-color .18s ease; }
+  .pkg-lb-btn:hover, .pkg-lb-btn:focus-visible {
+    background: var(--navy); border-color: var(--gold-bright); outline: none; }
+  .pkg-lb-x { top: 3vh; right: 3vw; font-size: 22px; }
+  .pkg-lb-prev { left: 2vw; }
+  .pkg-lb-next { right: 2vw; }
+  @media (max-width: 640px) {
+    .pkg-lb { padding: 8vh 4vw; }
+    .pkg-lb-btn { width: 40px; height: 40px; font-size: 20px; }
+    .pkg-lb-prev { left: 3vw; bottom: 4vh; }
+    .pkg-lb-next { right: 3vw; bottom: 4vh; }
+    .pkg-lb-cap { gap: 9px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .offer-stake .pkg-thumb { transition: none; }
+    .offer-stake .pkg-thumb:hover, .offer-stake .pkg-thumb:focus-visible {
+      transform: none; }
   }
 
   /* The value anchor reads as an aside, not as body copy: a left gold rule and
@@ -3962,79 +4039,132 @@
            thumbnails -- a 12px chip under each would be the flat sample this
            entire page argues against. The thumbnails show the colour on the
            house, which is the argument. -->
-      <div class="pkg">
-        <figure class="pkg-hero">
-          <img src="viz-photos/scheme-organic.jpg"
+      <div class="pkg" id="pkg">
+        <figure class="pkg-hero" id="pkgHero"
+                data-src="viz-photos/scheme-organic.jpg"
+                data-nm="Coastal Organic Compound"
+                data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048"
+                data-sw="#EDEAE0" data-trim="#54504A" data-accent="#9C7B53">
+          <img id="pkgHeroImg" src="viz-photos/scheme-organic.jpg"
                alt="A Newport Beach home rendered in the Coastal Organic Compound scheme"
                width="1200" height="750" loading="lazy" decoding="async"/>
+          <button type="button" class="pkg-zoom" id="pkgZoom"
+                  aria-label="View this color scheme full size">
+            <span aria-hidden="true">View full size</span>
+          </button>
           <figcaption>
-            <span class="paint-cans">
+            <span class="paint-cans" id="pkgHeroCans">
               <span class="paint-can" style="--c:#EDEAE0"></span>
               <span class="paint-can" style="--c:#54504A"></span>
               <span class="paint-can" style="--c:#9C7B53"></span>
             </span>
             <span class="pkg-txt">
-              <span class="pkg-nm">Coastal Organic Compound</span>
-              <span class="pkg-co">Alabaster SW 7008 &middot; Urbane Bronze SW 7048</span>
+              <span class="pkg-nm" id="pkgHeroNm">Coastal Organic Compound</span>
+              <span class="pkg-co" id="pkgHeroCo">Alabaster SW 7008 &middot; Urbane Bronze SW 7048</span>
             </span>
           </figcaption>
         </figure>
+        <!-- Each thumb is a BUTTON, not a figure. Clicking one promotes it
+             into the hero above; the hero itself opens the lightbox. That is
+             the second and third look -- the whole premise of the section is
+             that she gets to compare, so the tiles have to be operable.
+             Colour data is duplicated from the SCHEMES array further down so
+             the swap needs no lookup; if a palette changes there, change it
+             here in the same commit. -->
         <div class="pkg-grid">
-        <figure class="pkg-thumb">
+        <button type="button" class="pkg-thumb"
+                data-src="viz-photos/scheme-pebblebeach.jpg"
+                data-nm="Pebble Beach Manor" data-co="Accessible Beige SW 7036 &middot; Dover White SW 6385"
+                data-sw="#D1C7B8" data-trim="#EFE8D8" data-accent="#95948C"
+                aria-label="Show this house in the Pebble Beach Manor scheme">
           <img src="viz-photos/scheme-pebblebeach.jpg" alt="The same Newport Beach home in the Pebble Beach Manor scheme"
                width="1200" height="750" loading="lazy" decoding="async"/>
-          <figcaption>Pebble Beach Manor</figcaption>
-        </figure>
-        <figure class="pkg-thumb">
+          <span class="pkg-thumb-nm">Pebble Beach Manor</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="viz-photos/scheme-ibiza.jpg"
+                data-nm="Ibiza Luxury Villa" data-co="Balanced Beige SW 7037 &middot; Aesthetic White SW 7035"
+                data-sw="#D1C7B8" data-trim="#E8E3DA" data-accent="#C8B59B"
+                aria-label="Show this house in the Ibiza Luxury Villa scheme">
           <img src="viz-photos/scheme-ibiza.jpg" alt="The same Newport Beach home in the Ibiza Luxury Villa scheme"
                width="1200" height="750" loading="lazy" decoding="async"/>
-          <figcaption>Ibiza Luxury Villa</figcaption>
-        </figure>
-        <figure class="pkg-thumb">
+          <span class="pkg-thumb-nm">Ibiza Luxury Villa</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="viz-photos/scheme-pacificsage.jpg"
+                data-nm="Pacific Sage Estate" data-co="Evergreen Fog SW 9130 &middot; Shoji White SW 7042"
+                data-sw="#95978A" data-trim="#E6DFD3" data-accent="#A98D4B"
+                aria-label="Show this house in the Pacific Sage Estate scheme">
           <img src="viz-photos/scheme-pacificsage.jpg" alt="The same Newport Beach home in the Pacific Sage Estate scheme"
                width="1200" height="750" loading="lazy" decoding="async"/>
-          <figcaption>Pacific Sage Estate</figcaption>
-        </figure>
-        <figure class="pkg-thumb">
+          <span class="pkg-thumb-nm">Pacific Sage Estate</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="viz-photos/scheme-marinelayer.jpg"
+                data-nm="Marine Layer" data-co="Sea Salt SW 6204 &middot; High Reflective White SW 7757"
+                data-sw="#CDD2CA" data-trim="#F7F7F1" data-accent="#BFC7C5"
+                aria-label="Show this house in the Marine Layer scheme">
           <img src="viz-photos/scheme-marinelayer.jpg" alt="The same Newport Beach home in the Marine Layer scheme"
                width="1200" height="750" loading="lazy" decoding="async"/>
-          <figcaption>Marine Layer</figcaption>
-        </figure>
-        <figure class="pkg-thumb">
+          <span class="pkg-thumb-nm">Marine Layer</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="viz-photos/scheme-admiral.jpg"
+                data-nm="Newport Admiral" data-co="Repose Gray SW 7015 &middot; Pure White SW 7005"
+                data-sw="#CCC9C0" data-trim="#F0EFE9" data-accent="#2F2F30"
+                aria-label="Show this house in the Newport Admiral scheme">
           <img src="viz-photos/scheme-admiral.jpg" alt="The same Newport Beach home in the Newport Admiral scheme"
                width="1200" height="750" loading="lazy" decoding="async"/>
-          <figcaption>Newport Admiral</figcaption>
-        </figure>
-        <figure class="pkg-thumb">
+          <span class="pkg-thumb-nm">Newport Admiral</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="viz-photos/scheme-spanish.jpg"
+                data-nm="Santa Barbara Luxe" data-co="Alabaster SW 7008 &middot; Tricorn Black SW 6258"
+                data-sw="#F1EDE2" data-trim="#2F2F30" data-accent="#B5714A"
+                aria-label="Show this house in the Santa Barbara Luxe scheme">
           <img src="viz-photos/scheme-spanish.jpg" alt="The same Newport Beach home in the Santa Barbara Luxe scheme"
                width="1200" height="750" loading="lazy" decoding="async"/>
-          <figcaption>Santa Barbara Luxe</figcaption>
-        </figure>
-        <figure class="pkg-thumb">
+          <span class="pkg-thumb-nm">Santa Barbara Luxe</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="viz-photos/scheme-resort.jpg"
+                data-nm="Beverly Hills Resort" data-co="City Loft SW 7631, monochrome"
+                data-sw="#D6D2C9" data-trim="#D6D2C9" data-accent="#8C6E4C"
+                aria-label="Show this house in the Beverly Hills Resort scheme">
           <img src="viz-photos/scheme-resort.jpg" alt="The same Newport Beach home in the Beverly Hills Resort scheme"
                width="1200" height="750" loading="lazy" decoding="async"/>
-          <figcaption>Beverly Hills Resort</figcaption>
-        </figure>
-        <figure class="pkg-thumb">
+          <span class="pkg-thumb-nm">Beverly Hills Resort</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="viz-photos/scheme-riviera.jpg"
+                data-nm="Riviera Tuxedo" data-co="Snowbound SW 7004 &middot; Black Magic SW 6991"
+                data-sw="#EDEAE0" data-trim="#2A2A2C" data-accent="#3B3B3E"
+                aria-label="Show this house in the Riviera Tuxedo scheme">
           <img src="viz-photos/scheme-riviera.jpg" alt="The same Newport Beach home in the Riviera Tuxedo scheme"
                width="1200" height="750" loading="lazy" decoding="async"/>
-          <figcaption>Riviera Tuxedo</figcaption>
-        </figure>
-        <figure class="pkg-thumb">
+          <span class="pkg-thumb-nm">Riviera Tuxedo</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="viz-photos/scheme-euro.jpg"
+                data-nm="Euro-Industrial Estate" data-co="Peppercorn SW 7674 &middot; Cityscape SW 7067"
+                data-sw="#585A5C" data-trim="#9A9C98" data-accent="#7E8285"
+                aria-label="Show this house in the Euro-Industrial Estate scheme">
           <img src="viz-photos/scheme-euro.jpg" alt="The same Newport Beach home in the Euro-Industrial Estate scheme"
                width="1200" height="750" loading="lazy" decoding="async"/>
-          <figcaption>Euro-Industrial Estate</figcaption>
-        </figure>
-        <figure class="pkg-thumb">
+          <span class="pkg-thumb-nm">Euro-Industrial Estate</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="viz-photos/scheme-obsidian.jpg"
+                data-nm="Obsidian Monolith" data-co="Iron Ore SW 7069 &middot; Tricorn Black SW 6258"
+                data-sw="#434341" data-trim="#2F2F30" data-accent="#5B5E62"
+                aria-label="Show this house in the Obsidian Monolith scheme">
           <img src="viz-photos/scheme-obsidian.jpg" alt="The same Newport Beach home in the Obsidian Monolith scheme"
                width="1200" height="750" loading="lazy" decoding="async"/>
-          <figcaption>Obsidian Monolith</figcaption>
-        </figure>
+          <span class="pkg-thumb-nm">Obsidian Monolith</span>
+        </button>
         </div>
-        <p class="pkg-cap">
-          <img class="pkg-mark" src="assets/logos/logo-brush-navy.png" alt=""
-               width="128" height="294" loading="lazy" decoding="async"/>
-          Every one of these is the same house.</p>
+        <p class="pkg-cap">Every one of these is the same house.
+          <span class="pkg-hint">Tap any one to see it larger</span></p>
       </div>
       <!-- VALUE ANCHOR. Sources, checked 2026-09-21 and all publicly verifiable:
            $329 exterior package, "report with three variations", colour cards by
@@ -6166,6 +6296,127 @@ setTimeout(() => {
      already sticky and carries both the phone number and Complimentary
      Quote, so the page keeps a persistent ask without a second bar sitting
      over the content. -->
+<script>
+/* PACKAGE SHOT -- thumb click promotes to hero, hero click opens the lightbox.
+   Order is hero first, then the ten thumbs, so the lightbox arrows walk all
+   eleven schemes in the order they appear on the page.
+
+   The lightbox is BUILT HERE rather than written into the markup: generate.js
+   copies this tail into all 21 generated pages, none of which carry the
+   package section, and a static div would have shipped as dead markup on
+   every one of them. The guard below means nothing is created there. */
+(function () {
+  var hero = document.getElementById('pkgHero');
+  if (!hero) return;
+
+  var thumbs = [].slice.call(document.querySelectorAll('.pkg-thumb'));
+  var items  = [hero].concat(thumbs).map(function (el) {
+    return { src: el.dataset.src, nm: el.dataset.nm, co: el.dataset.co,
+             sw: el.dataset.sw, trim: el.dataset.trim, accent: el.dataset.accent };
+  });
+
+  var heroImg  = document.getElementById('pkgHeroImg');
+  var heroNm   = document.getElementById('pkgHeroNm');
+  var heroCo   = document.getElementById('pkgHeroCo');
+  var heroCans = document.getElementById('pkgHeroCans');
+
+  var current = 0;          /* index into items -- 0 is the scheme the page ships with */
+  var lastFocus = null;
+  var lb = null, lbImg, lbNm, lbCo, lbCans;
+
+  function cans(host, it) {
+    host.innerHTML = '';
+    [it.sw, it.trim, it.accent].forEach(function (c) {
+      var i = document.createElement('span');
+      i.className = 'paint-can';
+      i.style.setProperty('--c', c);
+      host.appendChild(i);
+    });
+  }
+
+  function setHero(i) {
+    var it = items[i];
+    current = i;
+    heroImg.src = it.src;
+    heroImg.alt = 'A Newport Beach home rendered in the ' + it.nm + ' scheme';
+    heroNm.innerHTML = it.nm;
+    heroCo.innerHTML = it.co;
+    cans(heroCans, it);
+    thumbs.forEach(function (t, n) {
+      t.setAttribute('aria-current', n + 1 === i ? 'true' : 'false');
+    });
+  }
+
+  function build() {
+    lb = document.createElement('div');
+    lb.className = 'pkg-lb';
+    lb.id = 'pkgLb';
+    lb.setAttribute('role', 'dialog');
+    lb.setAttribute('aria-modal', 'true');
+    lb.setAttribute('aria-label', 'Color scheme viewer');
+    lb.hidden = true;
+    lb.innerHTML =
+      '<button type="button" class="pkg-lb-btn pkg-lb-x" aria-label="Close">&times;</button>' +
+      '<button type="button" class="pkg-lb-btn pkg-lb-prev" aria-label="Previous scheme">&lsaquo;</button>' +
+      '<button type="button" class="pkg-lb-btn pkg-lb-next" aria-label="Next scheme">&rsaquo;</button>' +
+      '<figure class="pkg-lb-fig"><img alt=""/>' +
+        '<figcaption class="pkg-lb-cap"><span class="paint-cans"></span>' +
+        '<span><span class="pkg-lb-nm"></span><span class="pkg-lb-co"></span></span>' +
+        '</figcaption></figure>';
+    document.body.appendChild(lb);
+
+    lbImg  = lb.querySelector('.pkg-lb-fig img');
+    lbNm   = lb.querySelector('.pkg-lb-nm');
+    lbCo   = lb.querySelector('.pkg-lb-co');
+    lbCans = lb.querySelector('.pkg-lb-cap .paint-cans');
+
+    lb.querySelector('.pkg-lb-x').addEventListener('click', close);
+    lb.querySelector('.pkg-lb-prev').addEventListener('click', function () { step(-1); });
+    lb.querySelector('.pkg-lb-next').addEventListener('click', function () { step(1); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+  }
+
+  function paint(i) {
+    var it = items[i];
+    current = i;
+    lbImg.src = it.src;
+    lbImg.alt = 'The same Newport Beach home in the ' + it.nm + ' scheme';
+    lbNm.innerHTML = it.nm;
+    lbCo.innerHTML = it.co;
+    cans(lbCans, it);
+  }
+
+  function open(i) {
+    if (!lb) build();
+    lastFocus = document.activeElement;
+    paint(i);
+    lb.hidden = false;
+    document.body.style.overflow = 'hidden';
+    lb.querySelector('.pkg-lb-x').focus();
+  }
+
+  function close() {
+    lb.hidden = true;
+    document.body.style.overflow = '';
+    setHero(current);                      /* the page keeps their last look */
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  function step(d) { paint((current + d + items.length) % items.length); }
+
+  thumbs.forEach(function (t, n) {
+    t.addEventListener('click', function () { setHero(n + 1); });
+  });
+  document.getElementById('pkgZoom').addEventListener('click', function () { open(current); });
+
+  document.addEventListener('keydown', function (e) {
+    if (!lb || lb.hidden) return;
+    if (e.key === 'Escape')          { close(); }
+    else if (e.key === 'ArrowLeft')  { step(-1); }
+    else if (e.key === 'ArrowRight') { step(1); }
+  });
+})();
+</script>
 <!-- REEL:END -->
 </body>
 </html>

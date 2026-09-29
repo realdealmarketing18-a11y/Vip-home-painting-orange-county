@@ -1633,10 +1633,15 @@
      aspect-ratio and pushing figcaption past the bottom edge, where
      overflow:hidden clipped it. Every scheme name was invisible. The
      aspect-ratio supplies the definite height object-fit needs. */
-  .offer-stake .pkg img { display: block; width: 100%; height: auto;
+  /* Scoped to images inside a figure or a thumb BUTTON, not every descendant
+     img. The unscoped version was (0,2,1) and outranked .pkg-mark at (0,2,0),
+     so the 128px brand mark in the caption inherited width:100% and rendered
+     as a blurred full-width crest. Same collision as the figcaption clip. */
+  .offer-stake .pkg figure img,
+  .offer-stake .pkg-thumb img { display: block; width: 100%; height: auto;
     object-fit: cover; }
 
-  .offer-stake .pkg-hero { max-width: 520px; margin: 0 auto 18px; position: relative;
+  .offer-stake .pkg-hero { max-width: 760px; margin: 0 auto 18px; position: relative;
     border-radius: 10px; overflow: hidden;
     border: 1px solid rgba(168,138,71,.34);
     box-shadow: 0 18px 44px rgba(26,31,78,.20); }
@@ -1654,41 +1659,113 @@
     letter-spacing: .08em; text-transform: uppercase; color: var(--gold-bright);
     margin-top: 2px; }
 
-  /* auto-fit, so the row can never overflow the way .pillars did: the track
-     count follows the width instead of being fixed and forcing a scrollbar. */
-  .offer-stake .pkg-grid { display: grid; gap: 8px;
-    grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+  /* Ten thumbs, so five columns is the only count that leaves no orphan row.
+     auto-fit gave 8 + 2, which reads as a mistake. minmax(0,1fr) -- not the
+     default minmax(auto,1fr) -- because auto resolves to min-content and is
+     what overflowed .pillars. */
+  .offer-stake .pkg-grid { display: grid; gap: 10px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     max-width: 760px; margin: 0 auto; }
-  .offer-stake .pkg-thumb { border-radius: 6px; overflow: hidden;
+
+  /* The thumbs are BUTTONS: clicking one promotes it into the hero above, so
+     the reader gets a second and third look without leaving the section. */
+  .offer-stake .pkg-thumb { display: block; width: 100%; padding: 0;
+    font: inherit; color: inherit; text-align: center; cursor: pointer;
+    -webkit-appearance: none; appearance: none;
+    border-radius: 6px; overflow: hidden;
     border: 1px solid rgba(168,138,71,.30);
     box-shadow: 0 6px 16px rgba(26,31,78,.13);
-    background: rgba(255,253,248,.7); }
+    background: rgba(255,253,248,.7);
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
   .offer-stake .pkg-thumb img { aspect-ratio: 16 / 10; }
-  .offer-stake .pkg-thumb figcaption { font-family: var(--font-sans);
-    font-size: 8.5px; letter-spacing: .06em; text-transform: uppercase;
-    color: rgba(26,31,78,.72); padding: 5px 4px; line-height: 1.25;
-    text-align: center; }
+  .offer-stake .pkg-thumb:hover, .offer-stake .pkg-thumb:focus-visible {
+    transform: translateY(-3px); border-color: var(--gold-bright);
+    box-shadow: 0 12px 26px rgba(26,31,78,.22); outline: none; }
+  .offer-stake .pkg-thumb[aria-current="true"] {
+    border-color: var(--gold-bright);
+    box-shadow: 0 0 0 2px var(--gold-bright), 0 6px 16px rgba(26,31,78,.13); }
+  .offer-stake .pkg-thumb-nm { display: block; font-family: var(--font-sans);
+    font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase;
+    color: rgba(26,31,78,.72); padding: 6px 4px; line-height: 1.25; }
 
-  .offer-stake .pkg-cap { display: flex; align-items: center; justify-content: center;
-    gap: 9px; margin: 16px 0 0 !important;
+  /* Covers the hero image. The figcaption sits above it on z-index, so the
+     scheme name stays readable while the whole picture is one click target. */
+  .offer-stake .pkg-zoom { position: absolute; inset: 0; z-index: 1;
+    display: flex; align-items: flex-start; justify-content: flex-end;
+    padding: 10px; border: 0; background: transparent; cursor: zoom-in;
+    -webkit-appearance: none; appearance: none; }
+  .offer-stake .pkg-zoom span { font-family: var(--font-sans); font-size: 10px;
+    letter-spacing: .1em; text-transform: uppercase; color: #fff;
+    background: rgba(26,31,78,.72); border: 1px solid rgba(201,169,97,.5);
+    border-radius: 999px; padding: 6px 12px; opacity: .9;
+    transition: opacity .18s ease, background .18s ease; }
+  .offer-stake .pkg-zoom:hover span, .offer-stake .pkg-zoom:focus-visible span {
+    opacity: 1; background: var(--navy); }
+  .offer-stake .pkg-hero figcaption { z-index: 2; }
+
+  .offer-stake .pkg-cap { margin: 16px 0 0 !important; text-align: center;
     font-family: var(--font-serif) !important; font-style: italic !important;
     font-size: clamp(15px, 1.25vw, 19px) !important; color: var(--navy) !important; }
-  .offer-stake .pkg-mark { width: auto; height: 26px; opacity: .85; flex: none; }
+  .offer-stake .pkg-hint { display: block; margin-top: 5px;
+    font-family: var(--font-sans) !important; font-style: normal !important;
+    font-size: 11.5px !important; letter-spacing: .07em; text-transform: uppercase;
+    color: rgba(26,31,78,.6) !important; }
 
   @media (max-width: 720px) {
-    .offer-stake .pkg-grid { grid-template-columns: repeat(auto-fit, minmax(104px, 1fr));
-      gap: 8px; }
-    .offer-stake .pkg-thumb figcaption { font-size: 8.5px; padding: 5px 3px; }
+    .offer-stake .pkg-grid { gap: 8px; }
+    .offer-stake .pkg-thumb-nm { font-size: 8.5px; padding: 5px 3px; }
     .offer-stake .pkg-hero .paint-can { width: 26px; height: 26px; }
   }
-  /* Phones: two columns, not three. minmax(0,1fr) rather than auto-fit so
-     the count is fixed here -- auto-fit would still fit three at 375px and
-     put the tiles back where they were. */
+  /* Phones: two columns, five rows. Five columns at 375px would be 60px tiles,
+     which is the problem this section exists to argue against. */
   @media (max-width: 520px) {
     .offer-stake .pkg-grid { grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 9px; max-width: 420px; }
-    .offer-stake .pkg-thumb figcaption { font-size: 10px; letter-spacing: .04em;
+    .offer-stake .pkg-thumb-nm { font-size: 10px; letter-spacing: .04em;
       padding: 6px 4px; }
+    .offer-stake .pkg-zoom span { font-size: 9px; padding: 5px 10px; }
+  }
+
+  /* THE LIGHTBOX. Lives just before </body> so no ancestor's overflow:hidden
+     or transform can trap a position:fixed layer. */
+  .pkg-lb { position: fixed; inset: 0; z-index: 9000;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(12,15,40,.93); padding: 4vh 3vw; }
+  .pkg-lb[hidden] { display: none; }
+  .pkg-lb-fig { margin: 0; max-width: 1200px; width: 100%; }
+  .pkg-lb-fig img { display: block; width: 100%; height: auto;
+    max-height: 76vh; object-fit: contain; border-radius: 8px;
+    border: 1px solid rgba(201,169,97,.35); }
+  .pkg-lb-cap { display: flex; align-items: center; justify-content: center;
+    gap: 12px; margin-top: 14px; text-align: left; }
+  .pkg-lb-cap .paint-can { width: 30px; height: 30px; border-radius: 50%; }
+  .pkg-lb-nm { display: block; font-family: var(--font-serif); font-style: italic;
+    font-weight: 600; font-size: clamp(16px, 1.6vw, 22px); color: #fff; line-height: 1.2; }
+  .pkg-lb-co { display: block; font-family: var(--font-sans); font-size: 11px;
+    letter-spacing: .09em; text-transform: uppercase;
+    color: var(--gold-bright); margin-top: 3px; }
+  .pkg-lb-btn { position: absolute; -webkit-appearance: none; appearance: none;
+    display: flex; align-items: center; justify-content: center;
+    width: 46px; height: 46px; border-radius: 50%; cursor: pointer;
+    color: #fff; font-size: 24px; line-height: 1;
+    background: rgba(26,31,78,.8); border: 1px solid rgba(201,169,97,.45);
+    transition: background .18s ease, border-color .18s ease; }
+  .pkg-lb-btn:hover, .pkg-lb-btn:focus-visible {
+    background: var(--navy); border-color: var(--gold-bright); outline: none; }
+  .pkg-lb-x { top: 3vh; right: 3vw; font-size: 22px; }
+  .pkg-lb-prev { left: 2vw; }
+  .pkg-lb-next { right: 2vw; }
+  @media (max-width: 640px) {
+    .pkg-lb { padding: 8vh 4vw; }
+    .pkg-lb-btn { width: 40px; height: 40px; font-size: 20px; }
+    .pkg-lb-prev { left: 3vw; bottom: 4vh; }
+    .pkg-lb-next { right: 3vw; bottom: 4vh; }
+    .pkg-lb-cap { gap: 9px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .offer-stake .pkg-thumb { transition: none; }
+    .offer-stake .pkg-thumb:hover, .offer-stake .pkg-thumb:focus-visible {
+      transform: none; }
   }
 
   /* The value anchor reads as an aside, not as body copy: a left gold rule and
