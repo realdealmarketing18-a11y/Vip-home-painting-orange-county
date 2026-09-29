@@ -388,8 +388,14 @@ module.exports = function makeMasterModules(ctx) {
   function services(c, no, bg) {
     const b = M(c, 'services'); if (!b || !b.h2 || !Array.isArray(b.items) || b.items.length < 3) return '';
     const link = linker(where(c).path);
-    const cards = SERVICES.slice(0, 3).map((svc, i) => {
-      const it = b.items[i] || {};
+    /* A card is paired with its service by NAME, not by position: Woodbury
+       listed exterior, cabinets, interior, and positional pairing sent the
+       cabinet card to the interior page (and gave it the interior picture).
+       A card whose title names no service falls back to its position. */
+    const svcs = SERVICES.slice(0, 3);
+    const named = it => svcs.find(s => (it.title || '').toLowerCase().includes(s.name.toLowerCase()));
+    const cards = svcs.map((svc, i) => {
+      const it = b.items.find(x => named(x) === svc) || (named(b.items[i] || {}) ? {} : b.items[i]) || {};
       return `
       <div class="service">
         <div class="service-img" style="background-image:url('${SERVICE_IMGS[i]}')"></div>

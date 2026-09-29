@@ -1149,7 +1149,11 @@
         "palette_baseline"
       ],
       "architecture_delta": {
-        "note": "Stonegate's Santa Barbara and Spanish-influenced homes sit on tight, immaculate streetscapes near the Jeffrey Open Space Trail — where one crisp repaint visibly resets the standard for the block, and design review keeps everyone honest."
+        "note": "Stonegate is an Irvine village of Santa Barbara and Spanish-influenced homes on tight, carefully kept streets near Stonegate Park and the Jeffrey Open Space Trail. With houses this close together, a new exterior color is seen by the whole street, next to every house around it.",
+        "confirmed_styles": [
+          "Santa Barbara",
+          "Spanish-influenced"
+        ]
       },
       "geography_delta": {
         "streets": [
@@ -1168,33 +1172,39 @@
         "guard_gated": false
       },
       "hoa": {
-        "association_name": null,
+        "association_name": "Stonegate Village Owners Association (SVOA)",
         "has_color_guidelines": null,
         "approval_required": null,
-        "notes": "the Stonegate community association's design review",
-        "source": null
+        "notes": "the Stonegate Village Owners Association’s design review",
+        "source": "socalhomefix.com/neighborhoods/stonegate-irvine — managed by Keystone Pacific (research/irvine/06-hoa.md)"
       },
       "palette_extras": [
         {
           "sw_code": "SW 7022",
           "sw_name": "Alpaca",
           "hex": "#CBC3B8",
-          "note": "A gentle greige body color that photographs beautifully on Stonegate's Santa Barbara facades."
+          "note": "A soft greige for Santa Barbara-style stucco. Worth seeing at full size, beside the neighbors’ colors, before choosing."
         },
         {
           "sw_code": "SW 7069",
           "sw_name": "Iron Ore",
           "hex": "#434341",
-          "note": "Doubled down as the accent of choice for Stonegate garage doors and shutters — deep, modern, HOA-friendly."
+          "note": "A deep charcoal for front doors, iron and garage doors that anchors a white or greige body."
         }
       ],
       "layout": {
         "module_order": [
-          "portfolio",
-          "process",
+          "eliminated",
+          "settle",
           "problemSolution",
-          "colorGuide",
-          "specs"
+          "instead",
+          "offer",
+          "painted",
+          "neighbors",
+          "warranty",
+          "beforeCommit",
+          "services",
+          "serviceArea"
         ]
       },
       "story": {
@@ -1207,46 +1217,75 @@
         "media_status": "pending"
       },
       "seo": {
-        "primary_keyword": "Stonegate Irvine house painters",
-        "meta_title": "Stonegate Irvine House Painters | HOA-Ready | VIP",
-        "meta_desc": "Stonegate Irvine house painters. HOA-ready color submissions, estate-grade spray finish, complimentary visualization, itemized estimates, 2-Year Warranty.",
-        "h1": "Stonegate <span class=\"gold\">House Painters</span> — HOA-Ready Colors, Estate-Grade Finish",
-        "answer_capsule": "VIP Home Painting provides luxury house painting for Stonegate in Irvine, CA — exterior repaints, interiors, and kitchen cabinet refinishing. We handle the color submission package for your community's design review, render your home in each candidate palette with a complimentary 30-minute custom color visualization, and apply Sherwin-Williams Emerald and Duration systems with professional Graco and Titan airless spray equipment. Estimates are itemized line by line with no hidden charges, VIP exterior work starts at $4.75 per square foot of paintable surface, and everything is backed by a 2-Year Warranty. Call (909) 312-5400.",
-        "viz_intro": "Stonegate streets are tight, immaculate, and close enough that one repaint visibly resets the standard for the block — which is exactly why the wrong shade is so costly here. Three approved whites on a swatch card look nearly identical in your hand and completely different across a Santa Barbara facade in afternoon sun. Try full schemes on a real home below, then have our design team render the front of your house before you commit a dollar or submit anything to design review."
+        "primary_keyword": "Stonegate exterior house painting",
+        "meta_title": "Exterior House Painting in Stonegate, Irvine 92620 | VIP",
+        "meta_desc": "Exterior house painting in Stonegate, Irvine 92620: compare {schemes} color schemes on your own house before you pay, with every line of the estimate priced.",
+        "h1": "3 Ways to Get Exterior House Painting Right in Stonegate <span class=\"gold\">Without Guessing From a Swatch</span>",
+        "answer_capsule": "VIP Home Painting paints houses in Stonegate, the Irvine, CA 92620 village of Santa Barbara and Spanish-influenced homes on close, well-kept streets, where exterior colors go through the Stonegate Village Owners Association’s design review. Working from Anaheim, VIP repaints exteriors and interiors and refinishes kitchen cabinets. The first step for any Stonegate home is a complimentary 30-minute consultation in which our design team shows the owner their own house in {schemes} complete color schemes, each Sherwin-Williams color named by number. Stonegate exterior work starts at {rate} per square foot of paintable surface, with each item priced as its own line, and a {warranty} on labor and materials. Call {phone}.",
+        "viz_intro": "On a Stonegate street the houses stand close enough that a color is never judged on its own. It is read against the house on either side and the one across the street, and on Santa Barbara-style stucco a greige that looked calm on a card can lean pink in late sun or turn gray in shade. Below is {their} {place} house exactly as they reviewed it. Choose a scheme, drag the slider, and see how far one decision moves the whole front of a house before you think about your own."
       },
       "faqs": [
         {
-          "q": "Can you get my Stonegate exterior color change approved by the HOA?",
-          "a": "We prepare the complete submission for the Stonegate community association's design review — approved-range swatches, Sherwin-Williams product data, and a callout for each side of the house. We've formatted these packages many times, so approval is a step, not a stall.",
+          "q": "How much does exterior house painting cost in Stonegate, Irvine?",
+          "a": "VIP Home Painting’s exterior work in Stonegate starts at {rate} per square foot of paintable surface; that is a starting rate, not an average. Paintable surface means the stucco, trim, doors and any walls that will actually receive paint, not the living area printed in a listing. Each part of the job is a separate line: preparation, primer, two finish coats, trim and every accent color. That makes a VIP estimate simple to hold up against another bid, line for line. The complimentary color renders arrive with it. Call {phone}.",
           "short_youtube_id": ""
         },
         {
-          "q": "How much does exterior painting cost in Stonegate, Irvine?",
-          "a": "VIP exterior work starts at $4.75 per square foot of paintable surface — the premium end of the Irvine range — and most Stonegate homes price from there. Every estimate is itemized line by line with no hidden charges and includes a complimentary 30-minute custom color visualization. Call (909) 312-5400.",
+          "q": "Do I need Stonegate Village Owners Association approval to paint my house?",
+          "a": "Check with the association before changing any exterior color. The Irvine village of Stonegate is governed by the Stonegate Village Owners Association (SVOA), managed by Keystone Pacific, and its design review decides which exterior colors are approved. VIP Home Painting leaves the rules to the association and handles the paperwork: every exterior project includes a color submission that names each Sherwin-Williams color and number, attaches the product data sheets, and marks which surface gets which color. The consequences of painting without approval are set by the association’s governing documents, which is why the submission is made before a start date is set.",
           "short_youtube_id": ""
         },
         {
-          "q": "How do I choose between similar whites and greiges for my Stonegate home?",
-          "a": "Don't choose from a paper swatch. Our complimentary Custom Visualization Service renders the front of your house in each candidate — Alabaster SW 7008, Alpaca SW 7022, Chatura Gray SW 9169 — in real light, so the difference becomes obvious before you commit.",
+          "q": "What exterior colors suit a Santa Barbara or Spanish-style home in Stonegate?",
+          "a": "VIP Home Painting builds a Stonegate palette from the style of the house and the houses beside it. Santa Barbara and Spanish-influenced stucco usually suits a warm white such as Alabaster SW 7008 or a soft greige such as Alpaca SW 7022 on the body, with a dark accent like Iron Ore SW 7069 on the front door, iron or garage door. Chatura Gray SW 9169 is a warm, layered gray for owners who want to move away from beige without the house going cold. Held to roughly 60/30/10 between body, trim and accent, a scheme reads as one decision. The complimentary Custom Visualization Service shows each option on your own house.",
+          "short_youtube_id": ""
+        },
+        {
+          "q": "Alpaca or Alabaster: which works better on a Stonegate house?",
+          "a": "VIP Home Painting’s advice is to put both on the whole front of the house before ordering a gallon of either. Alpaca SW 7022 is a soft greige; Alabaster SW 7008 is a warm white. On a card they look like close relatives. Across the whole front of a stucco house, the greige can lean gray in shade or faintly pink in late sun, and the white can drift creamy. Which one does what depends on the house, the way it faces, and the colors of the houses beside it. A render of the entire front shows the difference in seconds, and it costs nothing.",
+          "short_youtube_id": ""
+        },
+        {
+          "q": "Why do paint samples look different once the whole house is painted?",
+          "a": "The short answer is scale: a small sample cannot predict a large wall. A patch the size of a doormat is surrounded by the old color, which changes how the eye reads it, and it only ever catches one kind of light at a time. Spread across the whole front of a house, the same color is seen all at once, bouncing light onto itself and standing next to the neighbors’ colors, so an undertone that was invisible on the patch becomes the first thing anyone notices. VIP Home Painting renders the whole house so that surprise happens on a screen, not on the wall.",
+          "short_youtube_id": ""
+        },
+        {
+          "q": "How do I compare house painting estimates in Irvine?",
+          "a": "Compare them line by line, not total against total. A VIP Home Painting estimate lists preparation, primer, each finish coat, trim, doors and each accent color separately, measured on paintable surface and starting at {rate} per square foot, with the {warranty} written on the same page. When another bid arrives as a single number, ask which surfaces it counts, how many coats it includes and which product it names. The gap between two bids usually sits in those three answers, and an itemized estimate makes all three visible.",
+          "short_youtube_id": ""
+        },
+        {
+          "q": "How are neighboring homes protected when Stonegate houses sit this close together?",
+          "a": "VIP Home Painting masks and contains the work area before any spraying starts. On a close-set Stonegate street that means neighboring walls, driveways and planting within reach of the spray are covered, windows and doors are taped off, and spraying is scheduled around the wind so a gust does not carry paint onto the house next door. The site is cleaned every evening, and the job ends with a raking-light inspection and a walkthrough with the founder.",
+          "short_youtube_id": ""
+        },
+        {
+          "q": "How often should a Stonegate home be repainted?",
+          "a": "VIP Home Painting plans exterior repaints on an 8-to-15-year cycle, and preparation decides where in that window a house ends up. Stucco that has been repaired, primed and given two full coats of Sherwin-Williams Emerald or Duration holds its color evenly. A thinned coat lets sunlight through, and the sunniest wall fades first. On streets as close-set as Stonegate’s, a faded side is visible to the whole block, which is one more reason to settle the color carefully the first time and not the second.",
           "short_youtube_id": ""
         }
       ],
       "problems": [
         {
-          "p": "You want a color change, but the design review process feels opaque.",
-          "s": "We prepare the complete submission — approved-range swatches, product data, a callout for each side of the house — for your association's review, and we've formatted these packages many times."
+          "p": "A greige chosen from a card that leans pink or gray once it covers the whole front of the house.",
+          "s": "Our design team renders the entire front of your house in each candidate scheme, so a greige such as Alpaca SW 7022 is judged at full size, beside the houses around it, before a gallon is bought."
         },
         {
-          "p": "Flat builder-grade paint has gone chalky after a decade of full sun.",
-          "s": "Sherwin-Williams Emerald exterior, self-priming and UV-stable, applied at the full thickness the manufacturer specifies with Graco and Titan airless equipment."
+          "p": "A color you approved that the Stonegate Village Owners Association has not, discovered after the crew is booked.",
+          "s": "The color submission for the association’s design review is prepared as part of the project, naming each Sherwin-Williams color and number and where it goes, so it can go in before anyone is scheduled."
         },
         {
-          "p": "Tight lot lines mean overspray risk on your neighbor's car, wall, and roses.",
-          "s": "Containment-first spraying: wind-checked scheduling, full masking, and shielded application on zero-setback walls."
+          "p": "Overspray on the wall, driveway or planting next door, on a street where the houses sit close together.",
+          "s": "Full masking and containment before anything is sprayed, spraying timed around the wind, and the site cleaned every evening before the crew leaves."
         },
         {
-          "p": "Choosing between three whites that all look identical on a paper swatch.",
-          "s": "Our complimentary custom color visualization puts each one on the front of your house in real light — the difference becomes obvious in minutes."
+          "p": "A quote that arrives as one number, so two bids cannot be compared and extras surface on the invoice.",
+          "s": "Every item is its own line (prep, primer, both finish coats, trim, doors and each accent color), starting at {rate} per square foot of paintable surface, with the {warranty} printed on the same page."
+        },
+        {
+          "p": "A repaint that looks right the day it is finished and tired on the sunny side a few summers later.",
+          "s": "Cracks floated back to match and primed, then two coats of Sherwin-Williams Emerald or Duration at the thickness the manufacturer specifies, sprayed with Graco and Titan airless rigs and back-rolled into the stucco."
         }
       ],
       "market_delta": {

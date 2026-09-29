@@ -25,6 +25,7 @@ Layer: **Project memory** (B.L.A.S.T. Protocol 0). Append; don't rewrite history
 - 2026-09-29 · Portola Springs (rollout row 3) on the master sales process — B5 H1, 8 FAQs, Tier 2 value register, wrong "1-Yr Warranty" meta fixed; staging only, WordPress untouched
 - 2026-09-29 · Hidden Canyon (rollout row 4) on the master sales process — A2 H1, 8 FAQs, Tier 1 discretion register, unbacked claims (5-day timeline, badged crews, Santa Barbara style) removed; staging only, WordPress untouched
 - 2026-09-29 · Woodbury (rollout row 5) on the master sales process — B2 H1, 8 FAQs, Tier 2 value register with cabinets as second thread; "OUR INSANE 1-YEAR WARRANTY" badge images removed from all 20 generated pages and gated (verify-site check 11) — the OC page still shows them; staging only, WordPress untouched
+- 2026-09-29 · Stonegate (rollout row 6) on the master sales process — B1 H1, 8 FAQs, Tier 2 value register, Stonegate Village Owners Association named; unbacked claims (4-day timeline, "formatted these packages many times", shutters) removed; Woodbury service cards were linking cabinets↔interior — fixed in the generator for every page; staging only, WordPress untouched
 
 ---
 

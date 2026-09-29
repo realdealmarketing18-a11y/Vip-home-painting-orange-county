@@ -117,6 +117,10 @@ count are never typed into the data, and a swapped family reaches the FAQ too.
 Optional extras: `master.beforeCommit.lead` (a paragraph under that heading)
 and `master.problemSolution.h2` (a local heading for the problem cards, if the
 page's `moduleOrder` includes `problemSolution`).
+`master.services.items` are matched to the exterior, interior and cabinet pages
+**by the service name in each card's title** ("Kitchen Cabinet Painting — …"),
+so their order in the data does not matter; a card whose title names no
+service keeps its position.
 
 ### Swapping a page's homeowner and photos
 
