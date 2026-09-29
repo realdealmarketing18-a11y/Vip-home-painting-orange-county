@@ -108,7 +108,7 @@ const DEFAULT_SCHEMES = ['obsidian', 'organic', 'pacificsage'];
 const DEFAULT_OPTIONS = 'light';
 
 const OPT_META = {
-  light:   { heading: 'Then the details',        lead: 'Fixtures change an elevation after dark as much as color changes it at noon.' },
+  light:   { heading: 'Then the details',        lead: 'Fixtures change the look of a house after dark as much as color changes it at noon.' },
   siding:  { heading: 'Then the material',       lead: 'Cedar shake, board and batten, or stacked stone, layered onto the same facade.' },
   premium: { heading: 'Then the finishing work', lead: 'Garage doors and natural stone, where a repaint becomes a transformation.' }
 };
@@ -194,7 +194,7 @@ ${optList.length ? `
     </section>` : ''}
 
     <div class="vj-close">
-      <p>Every image above is a rendering of one real home. <b>The next one is yours.</b> Our design team renders your actual elevation in every palette you are considering, at no cost, before anything is scheduled.</p>
+      <p>Every image above is a rendering of one real home. <b>The next one is yours.</b> Our design team renders the front of your house in every palette you are considering, at no cost, before anything is scheduled.</p>
       ${H.ctaButton('Claim Complimentary Color Consultation', 'See your home in every color before a single gallon is tinted')}
     </div>
   </div>`;

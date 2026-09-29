@@ -89,7 +89,7 @@
           "name": "Should I paint a test patch on the house first?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A large sample board moved around the elevations through the day is far better than judging from a card, and better than a small patch painted directly on the wall, which is influenced by the color already underneath it. The limitation of any physical sample is that it still shows you a fragment rather than the whole house. Rendering your actual elevation in the candidate palettes shows you the finished result, which is the thing you are actually deciding on."
+            "text": "A large sample board moved around the house through the day is far better than judging from a card, and better than a small patch painted directly on the wall, which is influenced by the color already underneath it. The limitation of any physical sample is that it still shows you a fragment rather than the whole house. Rendering the front of your house in the candidate palettes shows you the finished result, which is the thing you are actually deciding on."
           }
         },
         {
@@ -1680,6 +1680,28 @@
     font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase;
     color: rgba(26,31,78,.72); padding: 6px 4px; line-height: 1.25; }
 
+  /* IDEA 01 -- the count, on the picture. "Eleven schemes" was in the copy but
+     never on screen, so the number was claimed and never felt. The corner turns
+     it into a quantity she is moving through: at 04/11 she knows seven are left.
+     Sits above .pkg-zoom on z-index or the click layer would cover it. */
+  .offer-stake .pkg-count { position: absolute; top: 10px; left: 12px; z-index: 3;
+    font-family: var(--font-serif); font-style: italic; font-size: 15px; color: #fff;
+    background: rgba(26,31,78,.72); border: 1px solid rgba(201,169,97,.5);
+    border-radius: 999px; padding: 5px 13px; letter-spacing: .04em;
+    pointer-events: none; }
+  .offer-stake .pkg-count b { font-weight: 600; color: var(--gold-bright);
+    font-style: normal; }
+  .offer-stake .pkg-count i { font-style: normal; opacity: .62; margin: 0 3px; }
+
+  /* IDEA 02 -- name whose house this is. The headline promises "On Your House"
+     and then shows the Gallaghers', which she notices. Saying it first turns
+     the gap into the offer instead of leaving her to object.
+     No "elevation" here or anywhere in customer copy -- BRAND-VOICE rule 3. */
+  .offer-stake .pkg-yours { display: block; margin-top: 9px;
+    font-family: var(--font-sans) !important; font-style: normal !important;
+    font-size: 13.5px !important; line-height: 1.6; color: #4A4F70 !important; }
+  .offer-stake .pkg-yours b { color: var(--navy); font-weight: 600; }
+
   /* Covers the hero image. The figcaption sits above it on z-index, so the
      scheme name stays readable while the whole picture is one click target. */
   .offer-stake .pkg-zoom { position: absolute; inset: 0; z-index: 1;
@@ -1716,6 +1738,7 @@
     .offer-stake .pkg-thumb-nm { font-size: 10px; letter-spacing: .04em;
       padding: 6px 4px; }
     .offer-stake .pkg-zoom span { font-size: 9px; padding: 5px 10px; }
+    .offer-stake .pkg-count { font-size: 13px; padding: 4px 10px; top: 8px; left: 9px; }
   }
 
   /* THE LIGHTBOX. Lives just before </body> so no ancestor's overflow:hidden
@@ -1724,7 +1747,15 @@
     display: flex; align-items: center; justify-content: center;
     background: rgba(12,15,40,.93); padding: 4vh 3vw; }
   .pkg-lb[hidden] { display: none; }
-  .pkg-lb-fig { margin: 0; max-width: 1200px; width: 100%; }
+  .pkg-lb-fig { margin: 0; max-width: 1200px; width: 100%; position: relative; }
+  /* Same count in the lightbox. Without it the prev/next arrows give her no
+     sense of position -- she cannot tell if two remain or nine. */
+  .pkg-lb-count { position: absolute; top: 12px; left: 14px;
+    font-family: var(--font-serif); font-style: italic; font-size: 16px; color: #fff;
+    background: rgba(26,31,78,.72); border: 1px solid rgba(201,169,97,.5);
+    border-radius: 999px; padding: 5px 14px; letter-spacing: .04em; }
+  .pkg-lb-count b { font-weight: 600; color: var(--gold-bright); font-style: normal; }
+  .pkg-lb-count i { font-style: normal; opacity: .62; margin: 0 3px; }
   .pkg-lb-fig img { display: block; width: 100%; height: auto;
     max-height: 76vh; object-fit: contain; border-radius: 8px;
     border: 1px solid rgba(201,169,97,.35); }
@@ -4339,7 +4370,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     <div class="vj-intro">
       <div class="vj-eyebrow">The Custom Visualization Service</div>
       <h2 class="pl-h2">One House, Three Directions</h2>
-      <p class="pl-lead">This is the point. Pick a style direction below and tap through the palettes — the home re-paints itself in real time. It is a demonstration of what our design team does with your actual elevation during a complimentary consultation: you see the color on the house, in context, before a single gallon is tinted.</p>
+      <p class="pl-lead">This is the point. Pick a style direction below and tap through the palettes — the home re-paints itself in real time. It is a demonstration of what our design team does with the front of your house during a complimentary consultation: you see the color on the house, in context, before a single gallon is tinted.</p>
     </div>
 
     <section class="vj-step">
@@ -4411,7 +4442,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <div class="vj-step-head">
         <div class="vj-step-n">03</div>
         <h3 class="vj-step-t">Then the details</h3>
-        <p class="vj-step-d">Fixtures change an elevation after dark as much as color changes it at noon.</p>
+        <p class="vj-step-d">Fixtures change the look of a house after dark as much as color changes it at noon.</p>
       </div>
       <div class="vj-opts">
         <figure class="vj-opt">
@@ -4433,7 +4464,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     </section>
 
     <div class="vj-close">
-      <p>Every image above is a rendering of one real home. <b>The next one is yours.</b> Our design team renders your actual elevation in every palette you are considering, at no cost, before anything is scheduled.</p>
+      <p>Every image above is a rendering of one real home. <b>The next one is yours.</b> Our design team renders the front of your house in every palette you are considering, at no cost, before anything is scheduled.</p>
       <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Claim Complimentary Color Consultation</span><span class="sub">See your home in every color before a single gallon is tinted</span></span></a>
     </div>
   </div></div>
@@ -4459,7 +4490,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="pl-section" id="scale">
     <h2 class="pl-h2">The same color is a different color at scale</h2>
-    <p>This is a well-documented perceptual effect and it catches almost everyone. A hue viewed across a large area appears more intense and more saturated than the identical hue viewed on a small sample. A beige that looked restrained on a card can read distinctly gold across an entire elevation. A soft gray-green can arrive at full strength as something closer to sage.</p>
+    <p>This is a well-documented perceptual effect and it catches almost everyone. A hue viewed across a large area appears more intense and more saturated than the identical hue viewed on a small sample. A beige that looked restrained on a card can read distinctly gold across an entire wall. A soft gray-green can arrive at full strength as something closer to sage.</p>
     <p>The practical consequence: people routinely choose one to two steps stronger than they meant to, discover it at the moment the crew pulls the masking, and then have to decide whether to live with it or pay for the whole job again.</p>
     
     
@@ -4467,7 +4498,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="pl-section" id="light">
     <h2 class="pl-h2">Irvine light is not one light</h2>
-    <p>The villages of Irvine sit at different elevations with genuinely different exposure, and that does more to your color than most homeowners expect.</p>
+    <p>The villages of Irvine sit at different heights with genuinely different exposure, and that does more to your color than most homeowners expect.</p>
     <p>In Woodbury, mature landscaping and garden paseos keep much of the community filtered and cool through the day, which flatters warmer whites that would go brassy elsewhere. On a west-facing slope in Orchard Hills, that same warm white takes direct afternoon sun off the ridge and reads yellow. Hidden Canyon gives you two different conditions in a single day — cool, often marine-influenced mornings, then hot open afternoons — so a white that feels refined at noon can go noticeably cold by evening.</p>
     <p>Same paint. Same wall. Different hour, different village, different color.</p>
     
@@ -4486,7 +4517,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   <section class="pl-section" id="fixed">
     <h2 class="pl-h2">The things you are not repainting decide more than you think</h2>
     <p>Your roof is staying. So is the stone wainscot, the driveway, the window frames, and in most Irvine villages a good deal of hardscape and mature planting.</p>
-    <p>Every one of those surfaces reflects color back onto the wall. A terracotta tile roof throws warm light down onto the fascia and upper body all day. Large expanses of green landscaping push a subtle cool cast onto shaded elevations. A warm-toned stone base can make a neutral gray body read faintly lilac by contrast — an effect nobody predicts from a card and everybody notices on the finished house.</p>
+    <p>Every one of those surfaces reflects color back onto the wall. A terracotta tile roof throws warm light down onto the fascia and upper body all day. Large expanses of green landscaping push a subtle cool cast onto shaded walls. A warm-toned stone base can make a neutral gray body read faintly lilac by contrast — an effect nobody predicts from a card and everybody notices on the finished house.</p>
     <p>This is the failure mode that produces the most regret, because the color is not wrong in isolation. It is wrong next to the four things that were always going to stay.</p>
     
     
@@ -4506,7 +4537,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <div class="pl-answer-lbl">What to remember</div>
       <ol>
         <li>Expect any color to read <b>stronger and deeper</b> on the house than on the card. Almost everyone chooses a step too strong.</li>
-        <li>Judge a candidate color <b>at three different times of day</b>, on the elevation that actually faces the sun.</li>
+        <li>Judge a candidate color <b>at three different times of day</b>, on the wall that actually faces the sun.</li>
         <li>Hold it against the <b>roof, the stone and the hardscape</b> — the things you are not repainting are half the decision.</li>
         <li>A repaint to fix a color is the <b>whole project again</b>, not a touch-up.</li>
         <li>The only reliable test is <b>seeing it on your own house</b> before anything is scheduled.</li>
@@ -4523,7 +4554,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       </details>
       <details class="faq-item">
         <summary class="faq-q">Should I paint a test patch on the house first?<span class="pm">+</span></summary>
-        <div class="faq-a">A large sample board moved around the elevations through the day is far better than judging from a card, and better than a small patch painted directly on the wall, which is influenced by the color already underneath it. The limitation of any physical sample is that it still shows you a fragment rather than the whole house. Rendering your actual elevation in the candidate palettes shows you the finished result, which is the thing you are actually deciding on.</div>
+        <div class="faq-a">A large sample board moved around the house through the day is far better than judging from a card, and better than a small patch painted directly on the wall, which is influenced by the color already underneath it. The limitation of any physical sample is that it still shows you a fragment rather than the whole house. Rendering the front of your house in the candidate palettes shows you the finished result, which is the thing you are actually deciding on.</div>
       </details>
       <details class="faq-item">
         <summary class="faq-q">How much does it cost to repaint if I choose the wrong color?<span class="pm">+</span></summary>

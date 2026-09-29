@@ -1955,6 +1955,28 @@
     font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase;
     color: rgba(26,31,78,.72); padding: 6px 4px; line-height: 1.25; }
 
+  /* IDEA 01 -- the count, on the picture. "Eleven schemes" was in the copy but
+     never on screen, so the number was claimed and never felt. The corner turns
+     it into a quantity she is moving through: at 04/11 she knows seven are left.
+     Sits above .pkg-zoom on z-index or the click layer would cover it. */
+  .offer-stake .pkg-count { position: absolute; top: 10px; left: 12px; z-index: 3;
+    font-family: var(--font-serif); font-style: italic; font-size: 15px; color: #fff;
+    background: rgba(26,31,78,.72); border: 1px solid rgba(201,169,97,.5);
+    border-radius: 999px; padding: 5px 13px; letter-spacing: .04em;
+    pointer-events: none; }
+  .offer-stake .pkg-count b { font-weight: 600; color: var(--gold-bright);
+    font-style: normal; }
+  .offer-stake .pkg-count i { font-style: normal; opacity: .62; margin: 0 3px; }
+
+  /* IDEA 02 -- name whose house this is. The headline promises "On Your House"
+     and then shows the Gallaghers', which she notices. Saying it first turns
+     the gap into the offer instead of leaving her to object.
+     No "elevation" here or anywhere in customer copy -- BRAND-VOICE rule 3. */
+  .offer-stake .pkg-yours { display: block; margin-top: 9px;
+    font-family: var(--font-sans) !important; font-style: normal !important;
+    font-size: 13.5px !important; line-height: 1.6; color: #4A4F70 !important; }
+  .offer-stake .pkg-yours b { color: var(--navy); font-weight: 600; }
+
   /* Covers the hero image. The figcaption sits above it on z-index, so the
      scheme name stays readable while the whole picture is one click target. */
   .offer-stake .pkg-zoom { position: absolute; inset: 0; z-index: 1;
@@ -1991,6 +2013,7 @@
     .offer-stake .pkg-thumb-nm { font-size: 10px; letter-spacing: .04em;
       padding: 6px 4px; }
     .offer-stake .pkg-zoom span { font-size: 9px; padding: 5px 10px; }
+    .offer-stake .pkg-count { font-size: 13px; padding: 4px 10px; top: 8px; left: 9px; }
   }
 
   /* THE LIGHTBOX. Lives just before </body> so no ancestor's overflow:hidden
@@ -1999,7 +2022,15 @@
     display: flex; align-items: center; justify-content: center;
     background: rgba(12,15,40,.93); padding: 4vh 3vw; }
   .pkg-lb[hidden] { display: none; }
-  .pkg-lb-fig { margin: 0; max-width: 1200px; width: 100%; }
+  .pkg-lb-fig { margin: 0; max-width: 1200px; width: 100%; position: relative; }
+  /* Same count in the lightbox. Without it the prev/next arrows give her no
+     sense of position -- she cannot tell if two remain or nine. */
+  .pkg-lb-count { position: absolute; top: 12px; left: 14px;
+    font-family: var(--font-serif); font-style: italic; font-size: 16px; color: #fff;
+    background: rgba(26,31,78,.72); border: 1px solid rgba(201,169,97,.5);
+    border-radius: 999px; padding: 5px 14px; letter-spacing: .04em; }
+  .pkg-lb-count b { font-weight: 600; color: var(--gold-bright); font-style: normal; }
+  .pkg-lb-count i { font-style: normal; opacity: .62; margin: 0 3px; }
   .pkg-lb-fig img { display: block; width: 100%; height: auto;
     max-height: 76vh; object-fit: contain; border-radius: 8px;
     border: 1px solid rgba(201,169,97,.35); }
@@ -4045,6 +4076,7 @@
                 data-nm="Coastal Organic Compound"
                 data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048"
                 data-sw="#EDEAE0" data-trim="#54504A" data-accent="#9C7B53">
+          <div class="pkg-count" id="pkgCount"><b>01</b><i>/</i>11</div>
           <img id="pkgHeroImg" src="viz-photos/scheme-organic.jpg"
                alt="A Newport Beach home rendered in the Coastal Organic Compound scheme"
                width="1200" height="750" loading="lazy" decoding="async"/>
@@ -4164,7 +4196,9 @@
         </button>
         </div>
         <p class="pkg-cap">Every one of these is the same house.
-          <span class="pkg-hint">Tap any one to see it larger</span></p>
+          <span class="pkg-hint">Tap any one to see it larger</span>
+          <span class="pkg-yours">This one belongs to the Gallaghers in Newport Beach.
+            <b>Yours gets the same eleven &mdash; on the front of your own house.</b></span></p>
       </div>
       <!-- VALUE ANCHOR. Sources, checked 2026-09-21 and all publicly verifiable:
            $329 exterior package, "report with three variations", colour cards by
@@ -6319,10 +6353,16 @@ setTimeout(() => {
   var heroNm   = document.getElementById('pkgHeroNm');
   var heroCo   = document.getElementById('pkgHeroCo');
   var heroCans = document.getElementById('pkgHeroCans');
+  var heroCount = document.getElementById('pkgCount');
+
+  /* 1-based, zero-padded: "04" reads as a position in a set, "4" reads as a tally. */
+  function label(i) {
+    return '<b>' + ('0' + (i + 1)).slice(-2) + '</b><i>/</i>' + items.length;
+  }
 
   var current = 0;          /* index into items -- 0 is the scheme the page ships with */
   var lastFocus = null;
-  var lb = null, lbImg, lbNm, lbCo, lbCans;
+  var lb = null, lbImg, lbNm, lbCo, lbCans, lbCount;
 
   function cans(host, it) {
     host.innerHTML = '';
@@ -6342,6 +6382,7 @@ setTimeout(() => {
     heroNm.innerHTML = it.nm;
     heroCo.innerHTML = it.co;
     cans(heroCans, it);
+    heroCount.innerHTML = label(i);
     thumbs.forEach(function (t, n) {
       t.setAttribute('aria-current', n + 1 === i ? 'true' : 'false');
     });
@@ -6359,7 +6400,7 @@ setTimeout(() => {
       '<button type="button" class="pkg-lb-btn pkg-lb-x" aria-label="Close">&times;</button>' +
       '<button type="button" class="pkg-lb-btn pkg-lb-prev" aria-label="Previous scheme">&lsaquo;</button>' +
       '<button type="button" class="pkg-lb-btn pkg-lb-next" aria-label="Next scheme">&rsaquo;</button>' +
-      '<figure class="pkg-lb-fig"><img alt=""/>' +
+      '<figure class="pkg-lb-fig"><div class="pkg-lb-count"></div><img alt=""/>' +
         '<figcaption class="pkg-lb-cap"><span class="paint-cans"></span>' +
         '<span><span class="pkg-lb-nm"></span><span class="pkg-lb-co"></span></span>' +
         '</figcaption></figure>';
@@ -6369,6 +6410,7 @@ setTimeout(() => {
     lbNm   = lb.querySelector('.pkg-lb-nm');
     lbCo   = lb.querySelector('.pkg-lb-co');
     lbCans = lb.querySelector('.pkg-lb-cap .paint-cans');
+    lbCount = lb.querySelector('.pkg-lb-count');
 
     lb.querySelector('.pkg-lb-x').addEventListener('click', close);
     lb.querySelector('.pkg-lb-prev').addEventListener('click', function () { step(-1); });
@@ -6384,6 +6426,7 @@ setTimeout(() => {
     lbNm.innerHTML = it.nm;
     lbCo.innerHTML = it.co;
     cans(lbCans, it);
+    lbCount.innerHTML = label(i);
   }
 
   function open(i) {

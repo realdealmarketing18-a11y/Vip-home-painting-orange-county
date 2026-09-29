@@ -60,7 +60,7 @@ the interactive visualizer appears on every page, and no headline buries it belo
 ## WHAT'S INCLUDED
 
 - 30-minute consultation, in home
-- Your actual elevation rendered in every candidate scheme by our design team
+- The front of your actual house rendered in every candidate scheme by our design team
 - Palette guidance matched to your community's architecture and light
 - **Itemized estimate** — prep, primer, coating, trim, accents priced line by line
 - HOA / design-review submission package prepared as part of the project

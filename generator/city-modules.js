@@ -148,7 +148,7 @@ M.hoa = (c, no, bg, H) => {
   if (!h.intro) return '';
   const steps = [
     ['We pull your association\'s approved palette', 'Before anything is proposed.'],
-    ['We prepare the submission package', 'Swatches, Sherwin-Williams product data, elevation callouts.'],
+    ['We prepare the submission package', 'Swatches, Sherwin-Williams product data, and a callout for each side of the house.'],
     ['You submit — or we submit for you', 'Formatted the way your board expects to receive it.']
   ].map(([t, d]) => `<li><b>${t}</b>${d}</li>`).join('\n          ');
   return `
@@ -271,7 +271,7 @@ M.process = (c, no, bg, H) => {
     ['Precision Spray Application',
      'Sherwin-Williams Emerald applied with Graco and Titan airless equipment at full wet-mil, back-rolled on stucco, hand-cut at every transition.'],
     ['Founder’s Walkthrough &amp; Warranty',
-     `Raking-light inspection of every elevation, touch-ups before you ask, and a signed walkthrough — backed by our ${H.CFG.warranty}.`]
+     `Raking-light inspection of every side of the house, touch-ups before you ask, and a signed walkthrough — backed by our ${H.CFG.warranty}.`]
   ];
   const rows = steps.map(([t, d], i) => `
       <div class="glove-step">

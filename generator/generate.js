@@ -427,10 +427,10 @@ function modColorGuide(c, no, bg) {
 function modProcess(c, no, bg) {
   const steps = [
     ['Private Color Consultation', 'A 30-minute in-home consultation, then our design team renders your ' + c.name + ' home in each candidate palette through our complimentary <em>Custom Visualization Service</em> — before anything is scheduled.'],
-    ['Design Review, Handled', 'We prepare the complete color submission package for ' + c.context.hoaNote + ' — swatches, product data sheets, and elevation callouts — so approval never stalls your project.'],
+    ['Design Review, Handled', 'We prepare the complete color submission package for ' + c.context.hoaNote + ' — swatches, product data sheets, and a callout for each side of the house — so approval never stalls your project.'],
     ['Estate-Grade Preparation', 'Pressure wash, stucco repair floated to match texture, sanding, and bonding primer. Landscaping and hardscape are masked and wrapped before a single gallon is opened.'],
     ['Precision Spray Application', 'Sherwin-Williams Emerald applied with Graco and Titan airless equipment at full wet-mil, back-rolled on stucco, with hand-cut lines at every transition.'],
-    ['Founder’s Walkthrough &amp; Warranty', `Raking-light inspection of every elevation, touch-ups before you ask, and a signed walkthrough — backed by our ${CFG.warranty}, no questions asked.`]
+    ['Founder’s Walkthrough &amp; Warranty', `Raking-light inspection of every side of the house, touch-ups before you ask, and a signed walkthrough — backed by our ${CFG.warranty}, no questions asked.`]
   ];
   const rows = steps.map((s, i) => `
       <div class="glove-step">

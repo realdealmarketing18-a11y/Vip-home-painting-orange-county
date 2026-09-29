@@ -1688,6 +1688,28 @@
     font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase;
     color: rgba(26,31,78,.72); padding: 6px 4px; line-height: 1.25; }
 
+  /* IDEA 01 -- the count, on the picture. "Eleven schemes" was in the copy but
+     never on screen, so the number was claimed and never felt. The corner turns
+     it into a quantity she is moving through: at 04/11 she knows seven are left.
+     Sits above .pkg-zoom on z-index or the click layer would cover it. */
+  .offer-stake .pkg-count { position: absolute; top: 10px; left: 12px; z-index: 3;
+    font-family: var(--font-serif); font-style: italic; font-size: 15px; color: #fff;
+    background: rgba(26,31,78,.72); border: 1px solid rgba(201,169,97,.5);
+    border-radius: 999px; padding: 5px 13px; letter-spacing: .04em;
+    pointer-events: none; }
+  .offer-stake .pkg-count b { font-weight: 600; color: var(--gold-bright);
+    font-style: normal; }
+  .offer-stake .pkg-count i { font-style: normal; opacity: .62; margin: 0 3px; }
+
+  /* IDEA 02 -- name whose house this is. The headline promises "On Your House"
+     and then shows the Gallaghers', which she notices. Saying it first turns
+     the gap into the offer instead of leaving her to object.
+     No "elevation" here or anywhere in customer copy -- BRAND-VOICE rule 3. */
+  .offer-stake .pkg-yours { display: block; margin-top: 9px;
+    font-family: var(--font-sans) !important; font-style: normal !important;
+    font-size: 13.5px !important; line-height: 1.6; color: #4A4F70 !important; }
+  .offer-stake .pkg-yours b { color: var(--navy); font-weight: 600; }
+
   /* Covers the hero image. The figcaption sits above it on z-index, so the
      scheme name stays readable while the whole picture is one click target. */
   .offer-stake .pkg-zoom { position: absolute; inset: 0; z-index: 1;
@@ -1724,6 +1746,7 @@
     .offer-stake .pkg-thumb-nm { font-size: 10px; letter-spacing: .04em;
       padding: 6px 4px; }
     .offer-stake .pkg-zoom span { font-size: 9px; padding: 5px 10px; }
+    .offer-stake .pkg-count { font-size: 13px; padding: 4px 10px; top: 8px; left: 9px; }
   }
 
   /* THE LIGHTBOX. Lives just before </body> so no ancestor's overflow:hidden
@@ -1732,7 +1755,15 @@
     display: flex; align-items: center; justify-content: center;
     background: rgba(12,15,40,.93); padding: 4vh 3vw; }
   .pkg-lb[hidden] { display: none; }
-  .pkg-lb-fig { margin: 0; max-width: 1200px; width: 100%; }
+  .pkg-lb-fig { margin: 0; max-width: 1200px; width: 100%; position: relative; }
+  /* Same count in the lightbox. Without it the prev/next arrows give her no
+     sense of position -- she cannot tell if two remain or nine. */
+  .pkg-lb-count { position: absolute; top: 12px; left: 14px;
+    font-family: var(--font-serif); font-style: italic; font-size: 16px; color: #fff;
+    background: rgba(26,31,78,.72); border: 1px solid rgba(201,169,97,.5);
+    border-radius: 999px; padding: 5px 14px; letter-spacing: .04em; }
+  .pkg-lb-count b { font-weight: 600; color: var(--gold-bright); font-style: normal; }
+  .pkg-lb-count i { font-style: normal; opacity: .62; margin: 0 3px; }
   .pkg-lb-fig img { display: block; width: 100%; height: auto;
     max-height: 76vh; object-fit: contain; border-radius: 8px;
     border: 1px solid rgba(201,169,97,.35); }
@@ -4394,7 +4425,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <li>Every color identified by <b>manufacturer, name and code</b> — for example Sherwin-Williams Alabaster SW 7008 — never by description alone</li>
       <li>Physical color samples or manufacturer chips, as the guidelines specify</li>
       <li>A clear indication of which color goes on which element: body, trim, fascia, garage door, entry door, accents</li>
-      <li>Photographs of the existing elevations</li>
+      <li>Photographs of the house as it is now</li>
       <li>A rendering of the proposed colors on your actual home, where the association accepts one</li>
       <li>Contractor license and insurance information, if the form requests it</li>
     </ul>
@@ -4404,7 +4435,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   <section class="pl-section" id="mistake">
     <h2 class="pl-h2">The mistake that costs most people a round</h2>
     <p>It is not choosing a bold color. It is submitting something the committee cannot evaluate with confidence.</p>
-    <p>A reviewer looking at three paper chips stapled to a form has to imagine the result on your elevation, in your village’s light, next to your roof. Faced with genuine uncertainty, a committee’s safest decision is to ask for more information — which is a return, and another cycle.</p>
+    <p>A reviewer looking at three paper chips stapled to a form has to imagine the result on the front of your house, in your village’s light, next to your roof. Faced with genuine uncertainty, a committee’s safest decision is to ask for more information — which is a return, and another cycle.</p>
     <p>Giving them the finished picture removes that uncertainty. It is the same reason the visualization matters to you: the difference between a decision made on imagination and a decision made on sight.</p>
     <p>The second most common mistake is starting work before written approval arrives. Verbal encouragement from a board member is not approval, and unwinding unapproved work is far more expensive than waiting.</p>
     

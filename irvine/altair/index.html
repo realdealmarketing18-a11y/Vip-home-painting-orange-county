@@ -160,7 +160,7 @@
         },
         {
           "@type": "Question",
-          "name": "Will a dark color like Iron Ore fade on a full-sun Altair elevation?",
+          "name": "Will a dark color like Iron Ore fade on a full-sun Altair wall?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Not with the right system. We spec Sherwin-Williams Emerald with fade-resistant colorants rated for dark exterior use, applied at full wet-mil thickness. Deep charcoals like Iron Ore SW 7069 stay deep — and our work is backed by a 2-Year Warranty."
@@ -171,7 +171,7 @@
           "name": "How long does it take to paint an Altair home's exterior?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Most Altair exterior projects are completed in 3 to 5 working days, including preparation, masking, spraying, and detail enamel work — sequenced elevation by elevation with concierge scheduling. Call (909) 312-5400 for a complimentary estimate with color visualization."
+            "text": "Most Altair exterior projects are completed in 3 to 5 working days, including preparation, masking, spraying, and detail enamel work — sequenced one side at a time with concierge scheduling. Call (909) 312-5400 for a complimentary estimate with color visualization."
           }
         }
       ]
@@ -1764,6 +1764,28 @@
     font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase;
     color: rgba(26,31,78,.72); padding: 6px 4px; line-height: 1.25; }
 
+  /* IDEA 01 -- the count, on the picture. "Eleven schemes" was in the copy but
+     never on screen, so the number was claimed and never felt. The corner turns
+     it into a quantity she is moving through: at 04/11 she knows seven are left.
+     Sits above .pkg-zoom on z-index or the click layer would cover it. */
+  .offer-stake .pkg-count { position: absolute; top: 10px; left: 12px; z-index: 3;
+    font-family: var(--font-serif); font-style: italic; font-size: 15px; color: #fff;
+    background: rgba(26,31,78,.72); border: 1px solid rgba(201,169,97,.5);
+    border-radius: 999px; padding: 5px 13px; letter-spacing: .04em;
+    pointer-events: none; }
+  .offer-stake .pkg-count b { font-weight: 600; color: var(--gold-bright);
+    font-style: normal; }
+  .offer-stake .pkg-count i { font-style: normal; opacity: .62; margin: 0 3px; }
+
+  /* IDEA 02 -- name whose house this is. The headline promises "On Your House"
+     and then shows the Gallaghers', which she notices. Saying it first turns
+     the gap into the offer instead of leaving her to object.
+     No "elevation" here or anywhere in customer copy -- BRAND-VOICE rule 3. */
+  .offer-stake .pkg-yours { display: block; margin-top: 9px;
+    font-family: var(--font-sans) !important; font-style: normal !important;
+    font-size: 13.5px !important; line-height: 1.6; color: #4A4F70 !important; }
+  .offer-stake .pkg-yours b { color: var(--navy); font-weight: 600; }
+
   /* Covers the hero image. The figcaption sits above it on z-index, so the
      scheme name stays readable while the whole picture is one click target. */
   .offer-stake .pkg-zoom { position: absolute; inset: 0; z-index: 1;
@@ -1800,6 +1822,7 @@
     .offer-stake .pkg-thumb-nm { font-size: 10px; letter-spacing: .04em;
       padding: 6px 4px; }
     .offer-stake .pkg-zoom span { font-size: 9px; padding: 5px 10px; }
+    .offer-stake .pkg-count { font-size: 13px; padding: 4px 10px; top: 8px; left: 9px; }
   }
 
   /* THE LIGHTBOX. Lives just before </body> so no ancestor's overflow:hidden
@@ -1808,7 +1831,15 @@
     display: flex; align-items: center; justify-content: center;
     background: rgba(12,15,40,.93); padding: 4vh 3vw; }
   .pkg-lb[hidden] { display: none; }
-  .pkg-lb-fig { margin: 0; max-width: 1200px; width: 100%; }
+  .pkg-lb-fig { margin: 0; max-width: 1200px; width: 100%; position: relative; }
+  /* Same count in the lightbox. Without it the prev/next arrows give her no
+     sense of position -- she cannot tell if two remain or nine. */
+  .pkg-lb-count { position: absolute; top: 12px; left: 14px;
+    font-family: var(--font-serif); font-style: italic; font-size: 16px; color: #fff;
+    background: rgba(26,31,78,.72); border: 1px solid rgba(201,169,97,.5);
+    border-radius: 999px; padding: 5px 14px; letter-spacing: .04em; }
+  .pkg-lb-count b { font-weight: 600; color: var(--gold-bright); font-style: normal; }
+  .pkg-lb-count i { font-style: normal; opacity: .62; margin: 0 3px; }
   .pkg-lb-fig img { display: block; width: 100%; height: auto;
     max-height: 76vh; object-fit: contain; border-radius: 8px;
     border: 1px solid rgba(201,169,97,.35); }
@@ -4118,7 +4149,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       </div>
       <div class="eyebrow">2 &middot; Now It Is Your Turn</div>
       <h2 class="ttl">How Do You Choose an Exterior Paint Color in Altair Without Guessing? <span class="accent">Do What the Gallaghers Did &mdash; on Their House.</span></h2>
-      <p class="sub" style="text-align:center; font-size: 18px; max-width: 620px; margin: 0 auto 28px;">On Altair's contemporary architecture, color is doing more work than it does anywhere else in Irvine. Broad uninterrupted stucco planes, deep fascias, and metal detailing mean a charcoal that reads sophisticated on a small sample can turn heavy and flat across a twenty-foot elevation — and the reverse is just as true. Seeing the scheme at full scale on your own home, before a single gallon is tinted, is the difference between a facade that looks designed and one that cost five figures to get wrong twice.</p>
+      <p class="sub" style="text-align:center; font-size: 18px; max-width: 620px; margin: 0 auto 28px;">On Altair's contemporary architecture, color is doing more work than it does anywhere else in Irvine. Broad uninterrupted stucco planes, deep fascias, and metal detailing mean a charcoal that reads sophisticated on a small sample can turn heavy and flat across a twenty-foot wall — and the reverse is just as true. Seeing the scheme at full scale on your own home, before a single gallon is tinted, is the difference between a facade that looks designed and one that cost five figures to get wrong twice.</p>
       <p class="viz-lede-cta">The Gallaghers made four decisions, not one &mdash; color, lighting, texture and the garage door. Each one changed how the last one looked. Make all four on their house, before you make them on yours.</p>
     </div>
 
@@ -4411,7 +4442,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <div class="st-row"><span class="st-k">Surface Preparation</span><span class="st-v">Pressure wash, scrape and sand failing edges, <b>stucco crack and patch repair floated to match the existing texture</b>, and spot-priming with bonding primer — the finish is only as good as what's under it.</span></div>
       <div class="st-row"><span class="st-k">Coating System</span><span class="st-v"><b>Sherwin-Williams Emerald and Duration</b> exterior acrylics for bodies and fascias; Emerald urethane trim enamel for doors, trim, and cabinetry. Two coats at full wet-mil thickness, never over-thinned.</span></div>
       <div class="st-row"><span class="st-k">Application</span><span class="st-v"><b>Graco and Titan professional airless spray rigs</b>, back-rolled on stucco to drive coating into the texture, with hand-cut lines at every color transition.</span></div>
-      <div class="st-row"><span class="st-k">Site Protection</span><span class="st-v">Full masking and containment for wide, sun-exposed elevations near the Great Park, where inland heat cycles stress builder-grade coatings — landscaping wrapped, hardscape covered, wind-checked spray scheduling, clean site every evening.</span></div>
+      <div class="st-row"><span class="st-k">Site Protection</span><span class="st-v">Full masking and containment for wide, sun-exposed walls near the Great Park, where inland heat cycles stress builder-grade coatings — landscaping wrapped, hardscape covered, wind-checked spray scheduling, clean site every evening.</span></div>
       <div class="st-row"><span class="st-k">Transparency</span><span class="st-v">Every proposal is <b>itemized line by line</b> — prep, primer, coating, trim, and accents priced separately. No lump sums, no hidden charges.</span></div>
       <div class="st-row"><span class="st-k">Warranty</span><span class="st-v"><b>2-Year Warranty on labor and materials</b>, no questions asked. Licensed, Bonded &amp; Insured in the State of California.</span></div>
     </div>
@@ -4457,7 +4488,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
         <div class="glove-num">2</div>
         <div>
           <h3 class="glove-title">Design Review, Handled</h3>
-          <p class="glove-desc">We prepare the complete color submission package for Altair's community design review — swatches, product data sheets, and elevation callouts — so approval never stalls your project.</p>
+          <p class="glove-desc">We prepare the complete color submission package for Altair's community design review — swatches, product data sheets, and a callout for each side of the house — so approval never stalls your project.</p>
         </div>
       </div>
       <div class="glove-step">
@@ -4478,7 +4509,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
         <div class="glove-num">5</div>
         <div>
           <h3 class="glove-title">Founder’s Walkthrough &amp; Warranty</h3>
-          <p class="glove-desc">Raking-light inspection of every elevation, touch-ups before you ask, and a signed walkthrough — backed by our 2-Year Warranty, no questions asked.</p>
+          <p class="glove-desc">Raking-light inspection of every side of the house, touch-ups before you ask, and a signed walkthrough — backed by our 2-Year Warranty, no questions asked.</p>
         </div>
       </div>
     </div>
@@ -4566,7 +4597,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       </div>
       <div class="ps-card">
         <div class="ps-lbl problem">The Problem</div>
-        <p class="ps-p">You can't picture a charcoal-and-white scheme on your own elevation.</p>
+        <p class="ps-p">You can't picture a charcoal-and-white scheme on the front of your house.</p>
         <div class="ps-divider"></div>
         <div class="ps-lbl solution">The VIP Solution</div>
         <p class="ps-s">Our complimentary custom color visualization shows your actual home in each candidate palette before you commit to a single gallon.</p>
@@ -4610,12 +4641,12 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
         <div class="faq-a">Yes — modern architecture is a VIP specialty. Altair's large stucco planes and sharp rooflines demand airless spray application with Graco and Titan equipment for a uniform, stipple-complimentary film, plus laser-checked masking at every color transition. That's our standard system.</div>
       </details>
       <details class="faq-item">
-        <summary class="faq-q">Will a dark color like Iron Ore fade on a full-sun Altair elevation?<span class="pm">+</span></summary>
+        <summary class="faq-q">Will a dark color like Iron Ore fade on a full-sun Altair wall?<span class="pm">+</span></summary>
         <div class="faq-a">Not with the right system. We spec Sherwin-Williams Emerald with fade-resistant colorants rated for dark exterior use, applied at full wet-mil thickness. Deep charcoals like Iron Ore SW 7069 stay deep — and our work is backed by a 2-Year Warranty.</div>
       </details>
       <details class="faq-item">
         <summary class="faq-q">How long does it take to paint an Altair home's exterior?<span class="pm">+</span></summary>
-        <div class="faq-a">Most Altair exterior projects are completed in 3 to 5 working days, including preparation, masking, spraying, and detail enamel work — sequenced elevation by elevation with concierge scheduling. Call <a href="tel:9093125400">(909) 312-5400</a> for a complimentary estimate with color visualization.</div>
+        <div class="faq-a">Most Altair exterior projects are completed in 3 to 5 working days, including preparation, masking, spraying, and detail enamel work — sequenced one side at a time with concierge scheduling. Call <a href="tel:9093125400">(909) 312-5400</a> for a complimentary estimate with color visualization.</div>
       </details>
     </div>
   </section>
@@ -5987,10 +6018,16 @@ setTimeout(() => {
   var heroNm   = document.getElementById('pkgHeroNm');
   var heroCo   = document.getElementById('pkgHeroCo');
   var heroCans = document.getElementById('pkgHeroCans');
+  var heroCount = document.getElementById('pkgCount');
+
+  /* 1-based, zero-padded: "04" reads as a position in a set, "4" reads as a tally. */
+  function label(i) {
+    return '<b>' + ('0' + (i + 1)).slice(-2) + '</b><i>/</i>' + items.length;
+  }
 
   var current = 0;          /* index into items -- 0 is the scheme the page ships with */
   var lastFocus = null;
-  var lb = null, lbImg, lbNm, lbCo, lbCans;
+  var lb = null, lbImg, lbNm, lbCo, lbCans, lbCount;
 
   function cans(host, it) {
     host.innerHTML = '';
@@ -6010,6 +6047,7 @@ setTimeout(() => {
     heroNm.innerHTML = it.nm;
     heroCo.innerHTML = it.co;
     cans(heroCans, it);
+    heroCount.innerHTML = label(i);
     thumbs.forEach(function (t, n) {
       t.setAttribute('aria-current', n + 1 === i ? 'true' : 'false');
     });
@@ -6027,7 +6065,7 @@ setTimeout(() => {
       '<button type="button" class="pkg-lb-btn pkg-lb-x" aria-label="Close">&times;</button>' +
       '<button type="button" class="pkg-lb-btn pkg-lb-prev" aria-label="Previous scheme">&lsaquo;</button>' +
       '<button type="button" class="pkg-lb-btn pkg-lb-next" aria-label="Next scheme">&rsaquo;</button>' +
-      '<figure class="pkg-lb-fig"><img alt=""/>' +
+      '<figure class="pkg-lb-fig"><div class="pkg-lb-count"></div><img alt=""/>' +
         '<figcaption class="pkg-lb-cap"><span class="paint-cans"></span>' +
         '<span><span class="pkg-lb-nm"></span><span class="pkg-lb-co"></span></span>' +
         '</figcaption></figure>';
@@ -6037,6 +6075,7 @@ setTimeout(() => {
     lbNm   = lb.querySelector('.pkg-lb-nm');
     lbCo   = lb.querySelector('.pkg-lb-co');
     lbCans = lb.querySelector('.pkg-lb-cap .paint-cans');
+    lbCount = lb.querySelector('.pkg-lb-count');
 
     lb.querySelector('.pkg-lb-x').addEventListener('click', close);
     lb.querySelector('.pkg-lb-prev').addEventListener('click', function () { step(-1); });
@@ -6052,6 +6091,7 @@ setTimeout(() => {
     lbNm.innerHTML = it.nm;
     lbCo.innerHTML = it.co;
     cans(lbCans, it);
+    lbCount.innerHTML = label(i);
   }
 
   function open(i) {

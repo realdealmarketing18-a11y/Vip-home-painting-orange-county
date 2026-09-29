@@ -46,7 +46,7 @@ Generic luxury language is invisible to this buyer. Detail is the proof.
 > skim repairs floated to match, elastomeric patching, full prime, then airless spray."
 
 > ❌ "We serve the beautiful Orchard Hills community."
-> ✅ "Orchard Hills elevations are judged against the hillside — a shade that looks perfect
+> ✅ "Orchard Hills homes are judged against the hillside — a shade that looks perfect
 > on a swatch can read chalky on your south-facing wall by two in the afternoon."
 
 ### 2. Name the fear, then remove it
@@ -69,6 +69,14 @@ and it burns a slot that a term they'd actually search could have had.
 *Elevation* was live in ten places before Fabian caught it — including the
 pre-filled text message a homeowner sends from their own phone, which had them
 saying it too.
+
+It came back. By 2026-09-29 *elevation* was in **161 strings** across the briefs,
+communities, cities, services, blog and three generator modules — reaching the
+reader on all 21 pages. It returned because this rule lived only in this document,
+and a rule that lives only in a document is advice. **It is now a gate:**
+`verify-site.js` check 2 fails the build on `elevation` or `elevations` in rendered
+copy. Say *the front of the house*, *a side of the house*, or *a wall*. For height
+above sea level, say *height*.
 
 The same test kills **substrate**, **mil thickness**, **cut line**, **fascia**,
 **friable**, **efflorescence** and **punch list** in customer copy. All of them

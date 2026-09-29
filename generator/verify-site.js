@@ -125,6 +125,14 @@ function copyProblems(body) {
   if (hit(/\bfree\b/gi)) probs.push('"free" (use complimentary)');
   if (hit(/\bAI\b/g)) probs.push('"AI" (use "our design team")');
   if (hit(/\bcolour/gi)) probs.push('British "colour"');
+  /* BRAND-VOICE rule 3: never a word the homeowner would not use about her own
+     house. "elevation" was caught by Fabian once and removed from ten places,
+     then crept back into 122 strings across the briefs, communities, services
+     and both module files by 2026-09-29 -- reaching the reader on all 21 pages.
+     It came back because the rule lived only in a document, and a rule that
+     lives only in a document is advice. This is the gate.
+     Say: the front of the house, a side of the house, or a wall. */
+  if (hit(/\belevations?\b/gi)) probs.push('"elevation" (BRAND-VOICE rule 3 — say "the front of the house", "a side of the house" or "a wall")');
   /* VIP has 9 reviews and the rating is unconfirmed, so no star claim of any
      kind ships. The old pattern wanted the digit touching the word; the front
      page wrote it as "5" then "★" then "Star Reviews" in three sibling divs,

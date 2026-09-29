@@ -179,7 +179,7 @@
           "name": "How long does an exterior repaint take?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Most homes are completed in about five working days, sequenced elevation by elevation so the house stays livable throughout. Larger estates with extensive trim take longer, and the estimate says which."
+            "text": "Most homes are completed in about five working days, sequenced one side at a time so the house stays livable throughout. Larger estates with extensive trim take longer, and the estimate says which."
           }
         },
         {
@@ -187,7 +187,7 @@
           "name": "Do you handle HOA design review?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. We prepare the color submission package — swatches, product data sheets and elevation notes — formatted for your association's design review, so approval is a formality rather than a delay."
+            "text": "Yes. We prepare the color submission package — swatches, product data sheets and notes for each side of the house — formatted for your association's design review, so approval is a formality rather than a delay."
           }
         },
         {
@@ -195,7 +195,7 @@
           "name": "What paint do you use on exteriors?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sherwin-Williams Emerald and Duration exterior systems, applied at full wet-mil by airless spray. Emerald is a self-priming, UV-stable acrylic, which is what keeps deep colors from chalking on sun-exposed elevations."
+            "text": "Sherwin-Williams Emerald and Duration exterior systems, applied at full wet-mil by airless spray. Emerald is a self-priming, UV-stable acrylic, which is what keeps deep colors from chalking on sun-exposed walls."
           }
         },
         {
@@ -1754,6 +1754,28 @@
     font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase;
     color: rgba(26,31,78,.72); padding: 6px 4px; line-height: 1.25; }
 
+  /* IDEA 01 -- the count, on the picture. "Eleven schemes" was in the copy but
+     never on screen, so the number was claimed and never felt. The corner turns
+     it into a quantity she is moving through: at 04/11 she knows seven are left.
+     Sits above .pkg-zoom on z-index or the click layer would cover it. */
+  .offer-stake .pkg-count { position: absolute; top: 10px; left: 12px; z-index: 3;
+    font-family: var(--font-serif); font-style: italic; font-size: 15px; color: #fff;
+    background: rgba(26,31,78,.72); border: 1px solid rgba(201,169,97,.5);
+    border-radius: 999px; padding: 5px 13px; letter-spacing: .04em;
+    pointer-events: none; }
+  .offer-stake .pkg-count b { font-weight: 600; color: var(--gold-bright);
+    font-style: normal; }
+  .offer-stake .pkg-count i { font-style: normal; opacity: .62; margin: 0 3px; }
+
+  /* IDEA 02 -- name whose house this is. The headline promises "On Your House"
+     and then shows the Gallaghers', which she notices. Saying it first turns
+     the gap into the offer instead of leaving her to object.
+     No "elevation" here or anywhere in customer copy -- BRAND-VOICE rule 3. */
+  .offer-stake .pkg-yours { display: block; margin-top: 9px;
+    font-family: var(--font-sans) !important; font-style: normal !important;
+    font-size: 13.5px !important; line-height: 1.6; color: #4A4F70 !important; }
+  .offer-stake .pkg-yours b { color: var(--navy); font-weight: 600; }
+
   /* Covers the hero image. The figcaption sits above it on z-index, so the
      scheme name stays readable while the whole picture is one click target. */
   .offer-stake .pkg-zoom { position: absolute; inset: 0; z-index: 1;
@@ -1790,6 +1812,7 @@
     .offer-stake .pkg-thumb-nm { font-size: 10px; letter-spacing: .04em;
       padding: 6px 4px; }
     .offer-stake .pkg-zoom span { font-size: 9px; padding: 5px 10px; }
+    .offer-stake .pkg-count { font-size: 13px; padding: 4px 10px; top: 8px; left: 9px; }
   }
 
   /* THE LIGHTBOX. Lives just before </body> so no ancestor's overflow:hidden
@@ -1798,7 +1821,15 @@
     display: flex; align-items: center; justify-content: center;
     background: rgba(12,15,40,.93); padding: 4vh 3vw; }
   .pkg-lb[hidden] { display: none; }
-  .pkg-lb-fig { margin: 0; max-width: 1200px; width: 100%; }
+  .pkg-lb-fig { margin: 0; max-width: 1200px; width: 100%; position: relative; }
+  /* Same count in the lightbox. Without it the prev/next arrows give her no
+     sense of position -- she cannot tell if two remain or nine. */
+  .pkg-lb-count { position: absolute; top: 12px; left: 14px;
+    font-family: var(--font-serif); font-style: italic; font-size: 16px; color: #fff;
+    background: rgba(26,31,78,.72); border: 1px solid rgba(201,169,97,.5);
+    border-radius: 999px; padding: 5px 14px; letter-spacing: .04em; }
+  .pkg-lb-count b { font-weight: 600; color: var(--gold-bright); font-style: normal; }
+  .pkg-lb-count i { font-style: normal; opacity: .62; margin: 0 3px; }
   .pkg-lb-fig img { display: block; width: 100%; height: auto;
     max-height: 76vh; object-fit: contain; border-radius: 8px;
     border: 1px solid rgba(201,169,97,.35); }
@@ -4244,7 +4275,7 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
       <div class="hero-fleuron" aria-hidden="true">&#10087;</div>
       <div class="eyebrow-ruled">Orange County · Exterior House Painting</div>
       <h1 class="ttl-hero">A Wrong Exterior Color Costs the <span class="gold">Whole Job Twice</span></h1>
-      <div class="hero-kicker eyebrow-ruled">See it on your own elevation first</div>
+      <div class="hero-kicker eyebrow-ruled">See it on the front of your house first</div>
 
       <figure class="hr-inset">
         <div class="hr-plate" id="hrPlate" data-hold="1100" data-dur="2600">
@@ -4321,8 +4352,8 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
     <div class="ps-grid">
       
       <article class="ps-card">
-        <div class="ps-p"><span class="ps-tag">The problem</span><p>South-facing stucco fades unevenly on hillside lots, leaving chalky, blotchy elevations within a few seasons.</p></div>
-        <div class="ps-s"><span class="ps-tag">How we answer it</span><p>We spec Sherwin-Williams Emerald exterior — a self-priming, UV-stable acrylic — and apply a full wet-mil coating by airless spray so every elevation weathers evenly.</p></div>
+        <div class="ps-p"><span class="ps-tag">The problem</span><p>South-facing stucco fades unevenly on hillside lots, leaving chalky, blotchy walls within a few seasons.</p></div>
+        <div class="ps-s"><span class="ps-tag">How we answer it</span><p>We spec Sherwin-Williams Emerald exterior — a self-priming, UV-stable acrylic — and apply a full wet-mil coating by airless spray so every side of the house weathers evenly.</p></div>
       </article>
       <article class="ps-card">
         <div class="ps-p"><span class="ps-tag">The problem</span><p>Roller stipple and lap marks ruin the flat, monolithic look modern stucco is designed for.</p></div>
@@ -4361,7 +4392,7 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
       </div>
       <div class="spec-row">
         <dt>Film build</dt>
-        <dd>Full wet-mil, so every elevation weathers at the same rate</dd>
+        <dd>Full wet-mil, so every side of the house weathers at the same rate</dd>
       </div>
       <div class="spec-row">
         <dt>Warranty</dt>
@@ -4406,7 +4437,7 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
       </li>
       <li>
         <span class="step-n">04</span>
-        <div><h3>Spray</h3><p>Airless application at full wet-mil, elevation by elevation, so the house stays livable.</p></div>
+        <div><h3>Spray</h3><p>Airless application at full wet-mil, one side at a time, so the house stays livable.</p></div>
       </li>
       <li>
         <span class="step-n">05</span>
@@ -4453,15 +4484,15 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
     <div class="faq-list">
       <details class="faq-item" open>
         <summary class="faq-q">How long does an exterior repaint take?<span class="pm">+</span></summary>
-        <div class="faq-a">Most homes are completed in about five working days, sequenced elevation by elevation so the house stays livable throughout. Larger estates with extensive trim take longer, and the estimate says which.</div>
+        <div class="faq-a">Most homes are completed in about five working days, sequenced one side at a time so the house stays livable throughout. Larger estates with extensive trim take longer, and the estimate says which.</div>
       </details>
       <details class="faq-item">
         <summary class="faq-q">Do you handle HOA design review?<span class="pm">+</span></summary>
-        <div class="faq-a">Yes. We prepare the color submission package — swatches, product data sheets and elevation notes — formatted for your association's design review, so approval is a formality rather than a delay.</div>
+        <div class="faq-a">Yes. We prepare the color submission package — swatches, product data sheets and notes for each side of the house — formatted for your association's design review, so approval is a formality rather than a delay.</div>
       </details>
       <details class="faq-item">
         <summary class="faq-q">What paint do you use on exteriors?<span class="pm">+</span></summary>
-        <div class="faq-a">Sherwin-Williams Emerald and Duration exterior systems, applied at full wet-mil by airless spray. Emerald is a self-priming, UV-stable acrylic, which is what keeps deep colors from chalking on sun-exposed elevations.</div>
+        <div class="faq-a">Sherwin-Williams Emerald and Duration exterior systems, applied at full wet-mil by airless spray. Emerald is a self-priming, UV-stable acrylic, which is what keeps deep colors from chalking on sun-exposed walls.</div>
       </details>
       <details class="faq-item">
         <summary class="faq-q">Can I see the color on my house before committing?<span class="pm">+</span></summary>
@@ -5317,10 +5348,16 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
   var heroNm   = document.getElementById('pkgHeroNm');
   var heroCo   = document.getElementById('pkgHeroCo');
   var heroCans = document.getElementById('pkgHeroCans');
+  var heroCount = document.getElementById('pkgCount');
+
+  /* 1-based, zero-padded: "04" reads as a position in a set, "4" reads as a tally. */
+  function label(i) {
+    return '<b>' + ('0' + (i + 1)).slice(-2) + '</b><i>/</i>' + items.length;
+  }
 
   var current = 0;          /* index into items -- 0 is the scheme the page ships with */
   var lastFocus = null;
-  var lb = null, lbImg, lbNm, lbCo, lbCans;
+  var lb = null, lbImg, lbNm, lbCo, lbCans, lbCount;
 
   function cans(host, it) {
     host.innerHTML = '';
@@ -5340,6 +5377,7 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
     heroNm.innerHTML = it.nm;
     heroCo.innerHTML = it.co;
     cans(heroCans, it);
+    heroCount.innerHTML = label(i);
     thumbs.forEach(function (t, n) {
       t.setAttribute('aria-current', n + 1 === i ? 'true' : 'false');
     });
@@ -5357,7 +5395,7 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
       '<button type="button" class="pkg-lb-btn pkg-lb-x" aria-label="Close">&times;</button>' +
       '<button type="button" class="pkg-lb-btn pkg-lb-prev" aria-label="Previous scheme">&lsaquo;</button>' +
       '<button type="button" class="pkg-lb-btn pkg-lb-next" aria-label="Next scheme">&rsaquo;</button>' +
-      '<figure class="pkg-lb-fig"><img alt=""/>' +
+      '<figure class="pkg-lb-fig"><div class="pkg-lb-count"></div><img alt=""/>' +
         '<figcaption class="pkg-lb-cap"><span class="paint-cans"></span>' +
         '<span><span class="pkg-lb-nm"></span><span class="pkg-lb-co"></span></span>' +
         '</figcaption></figure>';
@@ -5367,6 +5405,7 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
     lbNm   = lb.querySelector('.pkg-lb-nm');
     lbCo   = lb.querySelector('.pkg-lb-co');
     lbCans = lb.querySelector('.pkg-lb-cap .paint-cans');
+    lbCount = lb.querySelector('.pkg-lb-count');
 
     lb.querySelector('.pkg-lb-x').addEventListener('click', close);
     lb.querySelector('.pkg-lb-prev').addEventListener('click', function () { step(-1); });
@@ -5382,6 +5421,7 @@ section.navy .price-body, section.navy-deep .price-body { color: rgba(255,255,25
     lbNm.innerHTML = it.nm;
     lbCo.innerHTML = it.co;
     cans(lbCans, it);
+    lbCount.innerHTML = label(i);
   }
 
   function open(i) {

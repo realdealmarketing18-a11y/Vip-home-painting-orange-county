@@ -105,7 +105,7 @@
           "name": "What is paintable surface, and why not just use my square footage?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Paintable surface is the actual area being coated — exterior walls, fascia, eaves, soffits, trim, garage doors and railings — measured elevation by elevation on site. Your home’s square footage is conditioned interior floor area, which is a different number. A two-story home with tall entry volumes can have far more paintable surface than a single-story home of the same interior footage."
+            "text": "Paintable surface is the actual area being coated — exterior walls, fascia, eaves, soffits, trim, garage doors and railings — measured one side at a time on site. Your home’s square footage is conditioned interior floor area, which is a different number. A two-story home with tall entry volumes can have far more paintable surface than a single-story home of the same interior footage."
           }
         },
         {
@@ -1688,6 +1688,28 @@
     font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase;
     color: rgba(26,31,78,.72); padding: 6px 4px; line-height: 1.25; }
 
+  /* IDEA 01 -- the count, on the picture. "Eleven schemes" was in the copy but
+     never on screen, so the number was claimed and never felt. The corner turns
+     it into a quantity she is moving through: at 04/11 she knows seven are left.
+     Sits above .pkg-zoom on z-index or the click layer would cover it. */
+  .offer-stake .pkg-count { position: absolute; top: 10px; left: 12px; z-index: 3;
+    font-family: var(--font-serif); font-style: italic; font-size: 15px; color: #fff;
+    background: rgba(26,31,78,.72); border: 1px solid rgba(201,169,97,.5);
+    border-radius: 999px; padding: 5px 13px; letter-spacing: .04em;
+    pointer-events: none; }
+  .offer-stake .pkg-count b { font-weight: 600; color: var(--gold-bright);
+    font-style: normal; }
+  .offer-stake .pkg-count i { font-style: normal; opacity: .62; margin: 0 3px; }
+
+  /* IDEA 02 -- name whose house this is. The headline promises "On Your House"
+     and then shows the Gallaghers', which she notices. Saying it first turns
+     the gap into the offer instead of leaving her to object.
+     No "elevation" here or anywhere in customer copy -- BRAND-VOICE rule 3. */
+  .offer-stake .pkg-yours { display: block; margin-top: 9px;
+    font-family: var(--font-sans) !important; font-style: normal !important;
+    font-size: 13.5px !important; line-height: 1.6; color: #4A4F70 !important; }
+  .offer-stake .pkg-yours b { color: var(--navy); font-weight: 600; }
+
   /* Covers the hero image. The figcaption sits above it on z-index, so the
      scheme name stays readable while the whole picture is one click target. */
   .offer-stake .pkg-zoom { position: absolute; inset: 0; z-index: 1;
@@ -1724,6 +1746,7 @@
     .offer-stake .pkg-thumb-nm { font-size: 10px; letter-spacing: .04em;
       padding: 6px 4px; }
     .offer-stake .pkg-zoom span { font-size: 9px; padding: 5px 10px; }
+    .offer-stake .pkg-count { font-size: 13px; padding: 4px 10px; top: 8px; left: 9px; }
   }
 
   /* THE LIGHTBOX. Lives just before </body> so no ancestor's overflow:hidden
@@ -1732,7 +1755,15 @@
     display: flex; align-items: center; justify-content: center;
     background: rgba(12,15,40,.93); padding: 4vh 3vw; }
   .pkg-lb[hidden] { display: none; }
-  .pkg-lb-fig { margin: 0; max-width: 1200px; width: 100%; }
+  .pkg-lb-fig { margin: 0; max-width: 1200px; width: 100%; position: relative; }
+  /* Same count in the lightbox. Without it the prev/next arrows give her no
+     sense of position -- she cannot tell if two remain or nine. */
+  .pkg-lb-count { position: absolute; top: 12px; left: 14px;
+    font-family: var(--font-serif); font-style: italic; font-size: 16px; color: #fff;
+    background: rgba(26,31,78,.72); border: 1px solid rgba(201,169,97,.5);
+    border-radius: 999px; padding: 5px 14px; letter-spacing: .04em; }
+  .pkg-lb-count b { font-weight: 600; color: var(--gold-bright); font-style: normal; }
+  .pkg-lb-count i { font-style: normal; opacity: .62; margin: 0 3px; }
   .pkg-lb-fig img { display: block; width: 100%; height: auto;
     max-height: 76vh; object-fit: contain; border-radius: 8px;
     border: 1px solid rgba(201,169,97,.35); }
@@ -4357,7 +4388,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
         <li><b>Paintable surface area</b> — which is not the same number as your home’s square footage</li>
         <li><b>Substrate condition</b> — how much crack repair, patching and priming the stucco needs before any color goes on</li>
         <li><b>Number of colors in the scheme</b> — body, trim, fascia, doors and accents are separate cut-ins, not one pass</li>
-        <li><b>Height and access</b> — second stories, hillside lots and zero-setback elevations all change the labor</li>
+        <li><b>Height and access</b> — second stories, hillside lots and zero-setback walls all change the labor</li>
         <li><b>Coating specification</b> — product line, film thickness, and whether the crew back-rolls or only sprays</li>
       </ul>
     </div>
@@ -4366,10 +4397,10 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   <section class="pl-section" id="surface">
     <h2 class="pl-h2"><span class="ar-num">1</span>Paintable surface is not your square footage</h2>
     <p>This is the single most common misunderstanding, and it is the reason two quotes on the same house can look like they are describing different projects.</p>
-    <p>When a listing says a home is 3,200 square feet, that is conditioned interior floor area. Paintable surface is something else entirely — the actual area a brush or sprayer has to cover. Exterior walls, fascia, eaves and soffits, trim, garage doors, railings, shutters. It is measured elevation by elevation on site.</p>
+    <p>When a listing says a home is 3,200 square feet, that is conditioned interior floor area. Paintable surface is something else entirely — the actual area a brush or sprayer has to cover. Exterior walls, fascia, eaves and soffits, trim, garage doors, railings, shutters. It is measured one side at a time on site.</p>
     <p>A two-story home with tall entry volumes and deep overhangs can have far more paintable surface than a single-story home of the same interior footage. A home with extensive stone or brick wainscot can have considerably less. Neither is knowable from a listing.</p>
     
-    <div class="ar-callout"><p>If a quote arrives without anyone having measured your elevations, it is an estimate of a house in general, not of your house.</p></div>
+    <div class="ar-callout"><p>If a quote arrives without anyone having measured your walls, it is an estimate of a house in general, not of your house.</p></div>
   </section>
 
   <section class="pl-section" id="prep">
@@ -4390,7 +4421,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     <h2 class="pl-h2"><span class="ar-num">3</span>How many colors are actually in the scheme</h2>
     <p>A single-color repaint and a four-color scheme are not the same job, even on the same house.</p>
     <p>Every additional color is a separate mobilization: separate masking, separate cut-in by hand, separate dry time before the adjacent surface can be worked. A body-and-trim scheme is standard. Add a contrasting fascia, a front door in a third color, and shutters or a garage door in a fourth, and the labor rises noticeably even though the material cost barely moves.</p>
-    <p>This is worth knowing before you fall in love with a five-color elevation. It is not that it cannot be done well — it is that it should be priced honestly as what it is.</p>
+    <p>This is worth knowing before you fall in love with a five-color house. It is not that it cannot be done well — it is that it should be priced honestly as what it is.</p>
     
     
   </section>
@@ -4398,7 +4429,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   <section class="pl-section" id="access">
     <h2 class="pl-h2"><span class="ar-num">4</span>Height, slope, and how close the neighbors are</h2>
     <p>Labor is the majority of any exterior repaint, and access is what decides how much labor a given square foot takes.</p>
-    <p>Second-story elevations mean staging, ladders or lifts, and slower, more careful work. Hillside lots — much of Orchard Hills sits against the ridge — can mean a downhill elevation that needs scaffolding to reach at all. And in tighter villages like Stonegate, where homes sit close together with minimal setback, containment is not optional. Overspray onto a neighbor’s car, wall or planting is a genuine risk, which means more masking, more shielding, and scheduling around wind rather than against it.</p>
+    <p>Second-story walls mean staging, ladders or lifts, and slower, more careful work. Hillside lots — much of Orchard Hills sits against the ridge — can mean a downhill wall that needs scaffolding to reach at all. And in tighter villages like Stonegate, where homes sit close together with minimal setback, containment is not optional. Overspray onto a neighbor’s car, wall or planting is a genuine risk, which means more masking, more shielding, and scheduling around wind rather than against it.</p>
     <p>None of that shows up in a square-foot number. All of it shows up in the hours.</p>
     
     
@@ -4431,7 +4462,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
         </tbody>
       </table>
     </div>
-    <p class="ar-table-note">Typical project totals are deliberately not published here. A total is only meaningful once the elevations have been measured, and a number invented for a web page is worth nothing to you.</p>
+    <p class="ar-table-note">Typical project totals are deliberately not published here. A total is only meaningful once the walls have been measured, and a number invented for a web page is worth nothing to you.</p>
   </section>
 
   <section class="pl-section" id="takeaways">
@@ -4442,7 +4473,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
         <li>Ask what happens to <b>cracks and bare substrate</b> specifically. Vague answers here are the most expensive kind.</li>
         <li>Ask whether the crew <b>back-rolls on stucco</b> or only sprays.</li>
         <li>Ask for the estimate <b>itemized</b>. If two bids are far apart, the difference is almost always a line one of them left out.</li>
-        <li>Count the <b>colors in your scheme</b> before comparing quotes — a four-color elevation is a different job from a two-color one.</li>
+        <li>Count the <b>colors in your scheme</b> before comparing quotes — a four-color house is a different job from a two-color one.</li>
       </ol>
     </div>
   </section>
@@ -4464,7 +4495,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       </details>
       <details class="faq-item">
         <summary class="faq-q">What is paintable surface, and why not just use my square footage?<span class="pm">+</span></summary>
-        <div class="faq-a">Paintable surface is the actual area being coated — exterior walls, fascia, eaves, soffits, trim, garage doors and railings — measured elevation by elevation on site. Your home’s square footage is conditioned interior floor area, which is a different number. A two-story home with tall entry volumes can have far more paintable surface than a single-story home of the same interior footage.</div>
+        <div class="faq-a">Paintable surface is the actual area being coated — exterior walls, fascia, eaves, soffits, trim, garage doors and railings — measured one side at a time on site. Your home’s square footage is conditioned interior floor area, which is a different number. A two-story home with tall entry volumes can have far more paintable surface than a single-story home of the same interior footage.</div>
       </details>
       <details class="faq-item">
         <summary class="faq-q">Is the estimate itself complimentary?<span class="pm">+</span></summary>

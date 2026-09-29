@@ -1678,6 +1678,28 @@
     font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase;
     color: rgba(26,31,78,.72); padding: 6px 4px; line-height: 1.25; }
 
+  /* IDEA 01 -- the count, on the picture. "Eleven schemes" was in the copy but
+     never on screen, so the number was claimed and never felt. The corner turns
+     it into a quantity she is moving through: at 04/11 she knows seven are left.
+     Sits above .pkg-zoom on z-index or the click layer would cover it. */
+  .offer-stake .pkg-count { position: absolute; top: 10px; left: 12px; z-index: 3;
+    font-family: var(--font-serif); font-style: italic; font-size: 15px; color: #fff;
+    background: rgba(26,31,78,.72); border: 1px solid rgba(201,169,97,.5);
+    border-radius: 999px; padding: 5px 13px; letter-spacing: .04em;
+    pointer-events: none; }
+  .offer-stake .pkg-count b { font-weight: 600; color: var(--gold-bright);
+    font-style: normal; }
+  .offer-stake .pkg-count i { font-style: normal; opacity: .62; margin: 0 3px; }
+
+  /* IDEA 02 -- name whose house this is. The headline promises "On Your House"
+     and then shows the Gallaghers', which she notices. Saying it first turns
+     the gap into the offer instead of leaving her to object.
+     No "elevation" here or anywhere in customer copy -- BRAND-VOICE rule 3. */
+  .offer-stake .pkg-yours { display: block; margin-top: 9px;
+    font-family: var(--font-sans) !important; font-style: normal !important;
+    font-size: 13.5px !important; line-height: 1.6; color: #4A4F70 !important; }
+  .offer-stake .pkg-yours b { color: var(--navy); font-weight: 600; }
+
   /* Covers the hero image. The figcaption sits above it on z-index, so the
      scheme name stays readable while the whole picture is one click target. */
   .offer-stake .pkg-zoom { position: absolute; inset: 0; z-index: 1;
@@ -1714,6 +1736,7 @@
     .offer-stake .pkg-thumb-nm { font-size: 10px; letter-spacing: .04em;
       padding: 6px 4px; }
     .offer-stake .pkg-zoom span { font-size: 9px; padding: 5px 10px; }
+    .offer-stake .pkg-count { font-size: 13px; padding: 4px 10px; top: 8px; left: 9px; }
   }
 
   /* THE LIGHTBOX. Lives just before </body> so no ancestor's overflow:hidden
@@ -1722,7 +1745,15 @@
     display: flex; align-items: center; justify-content: center;
     background: rgba(12,15,40,.93); padding: 4vh 3vw; }
   .pkg-lb[hidden] { display: none; }
-  .pkg-lb-fig { margin: 0; max-width: 1200px; width: 100%; }
+  .pkg-lb-fig { margin: 0; max-width: 1200px; width: 100%; position: relative; }
+  /* Same count in the lightbox. Without it the prev/next arrows give her no
+     sense of position -- she cannot tell if two remain or nine. */
+  .pkg-lb-count { position: absolute; top: 12px; left: 14px;
+    font-family: var(--font-serif); font-style: italic; font-size: 16px; color: #fff;
+    background: rgba(26,31,78,.72); border: 1px solid rgba(201,169,97,.5);
+    border-radius: 999px; padding: 5px 14px; letter-spacing: .04em; }
+  .pkg-lb-count b { font-weight: 600; color: var(--gold-bright); font-style: normal; }
+  .pkg-lb-count i { font-style: normal; opacity: .62; margin: 0 3px; }
   .pkg-lb-fig img { display: block; width: 100%; height: auto;
     max-height: 76vh; object-fit: contain; border-radius: 8px;
     border: 1px solid rgba(201,169,97,.35); }
@@ -4337,7 +4368,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     <div class="vj-intro">
       <div class="vj-eyebrow">The Custom Visualization Service</div>
       <h2 class="pl-h2">One House, Three Directions</h2>
-      <p class="pl-lead">Before reading further, try it. Pick a style direction and tap through the palettes — the home below re-paints itself in real time. It is a demonstration of the same thing our design team does with your actual elevation during a complimentary consultation: you see the color on the house before a single gallon is tinted, instead of imagining it from a swatch.</p>
+      <p class="pl-lead">Before reading further, try it. Pick a style direction and tap through the palettes — the home below re-paints itself in real time. It is a demonstration of the same thing our design team does with the front of your house during a complimentary consultation: you see the color on the house before a single gallon is tinted, instead of imagining it from a swatch.</p>
     </div>
 
     <section class="vj-step">
@@ -4409,7 +4440,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <div class="vj-step-head">
         <div class="vj-step-n">03</div>
         <h3 class="vj-step-t">Then the details</h3>
-        <p class="vj-step-d">Fixtures change an elevation after dark as much as color changes it at noon.</p>
+        <p class="vj-step-d">Fixtures change the look of a house after dark as much as color changes it at noon.</p>
       </div>
       <div class="vj-opts">
         <figure class="vj-opt">
@@ -4431,7 +4462,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     </section>
 
     <div class="vj-close">
-      <p>Every image above is a rendering of one real home. <b>The next one is yours.</b> Our design team renders your actual elevation in every palette you are considering, at no cost, before anything is scheduled.</p>
+      <p>Every image above is a rendering of one real home. <b>The next one is yours.</b> Our design team renders the front of your house in every palette you are considering, at no cost, before anything is scheduled.</p>
       <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Claim Complimentary Color Consultation</span><span class="sub">See your home in every color before a single gallon is tinted</span></span></a>
     </div>
   </div></div>
@@ -4444,7 +4475,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <section class="pl-section" id="why-different">
     <h2 class="pl-h2">Why Irvine Is Not One Market</h2>
-    <p>People say "Irvine" as though it were a single place with a single look. It is not. The villages were built in different decades by different builders in different architectural languages, and they sit at different elevations with genuinely different exposure.</p>
+    <p>People say "Irvine" as though it were a single place with a single look. It is not. The villages were built in different decades by different builders in different architectural languages, and they sit at different heights with genuinely different exposure.</p>
     <p>The value spread alone is roughly five to one, from Stonegate’s close-set Santa Barbara streetscapes to Hidden Canyon’s guard-gated canyon estates. Three of the six are gated. Each runs its own design review, and Orchard Hills alone has three separate associations.</p>
     <p>A palette that looks considered in one village can look borrowed in the next.</p>
     <div class="pl-stats">
@@ -4472,7 +4503,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
         <h3 class="pl-h3">Orchard Hills</h3>
         <div class="pl-village-meta">Guard-gated · Tuscan &amp; Santa Barbara · ~$3.5M</div>
       </div>
-      <p>Orchard Hills sits against the ridge, and that changes everything about color. Warm stucco, stone wainscots and clay tile all take direct afternoon sun, and a white that looked composed at nine in the morning can read distinctly yellow by two. Streets like Summerland and Glacier Valley run along slopes where west-facing elevations get the worst of it.</p>
+      <p>Orchard Hills sits against the ridge, and that changes everything about color. Warm stucco, stone wainscots and clay tile all take direct afternoon sun, and a white that looked composed at nine in the morning can read distinctly yellow by two. Streets like Summerland and Glacier Valley run along slopes where west-facing walls get the worst of it.</p>
       <p>The village is three separate associations — The Groves, The Reserve and The Summit — each with its own board and its own design review. That matters more than most homeowners expect when a color change is on the table.</p>
       <div class="pl-palette">
         <span class="pl-chip" style="--c:#EDEAE0"><i></i>Alabaster <em>SW 7008</em></span>
@@ -4501,7 +4532,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
         <div class="pl-village-meta">Foothill Mediterranean</div>
       </div>
       <p>Most Portola Springs homes are still wearing some version of the palette the builder chose for the entire street. That makes a repaint the single highest-impact change available here — and also the easiest to get wrong, because Mediterranean stucco reacts unpredictably to warm whites under bright foothill light.</p>
-      <p>Streets run botanical: Yellow Iris, Soaring Eagle, Campion. The village steps up toward Loma Ridge, so elevation and exposure vary noticeably from one block to the next.</p>
+      <p>Streets run botanical: Yellow Iris, Soaring Eagle, Campion. The village steps up toward Loma Ridge, so height and exposure vary noticeably from one block to the next.</p>
       <div class="pl-palette">
         <span class="pl-chip" style="--c:#E6DFD3"><i></i>Shoji White <em>SW 7042</em></span>
         <span class="pl-chip" style="--c:#D1CBC1"><i></i>Agreeable Gray <em>SW 7029</em></span>
@@ -4539,8 +4570,8 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
         <h3 class="pl-h3">Stonegate</h3>
         <div class="pl-village-meta">Santa Barbara streetscapes · ~$1.8M</div>
       </div>
-      <p>Stonegate streets are tight, immaculate and close enough together that one repaint visibly resets the standard for the block. Coleridge, Dunmore, Doverwood and Fenway are close-set Santa Barbara facades where your neighbours will notice the result whether or not they say so.</p>
-      <p>That proximity is also a practical constraint. Zero-setback elevations mean overspray risk on a neighbour’s car, wall and planting, so containment and wind-checked scheduling matter more here than anywhere else in Irvine.</p>
+      <p>Stonegate streets are tight, immaculate and close enough together that one repaint visibly resets the standard for the block. Coleridge, Dunmore, Doverwood and Fenway are close-set Santa Barbara facades where your neighbors will notice the result whether or not they say so.</p>
+      <p>That proximity is also a practical constraint. Zero-setback walls mean overspray risk on a neighbor’s car, wall and planting, so containment and wind-checked scheduling matter more here than anywhere else in Irvine.</p>
       <div class="pl-palette">
         <span class="pl-chip" style="--c:#CBC3B8"><i></i>Alpaca <em>SW 7022</em></span>
         <span class="pl-chip" style="--c:#8A857D"><i></i>Chatura Gray <em>SW 9169</em></span>
@@ -5476,10 +5507,16 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   var heroNm   = document.getElementById('pkgHeroNm');
   var heroCo   = document.getElementById('pkgHeroCo');
   var heroCans = document.getElementById('pkgHeroCans');
+  var heroCount = document.getElementById('pkgCount');
+
+  /* 1-based, zero-padded: "04" reads as a position in a set, "4" reads as a tally. */
+  function label(i) {
+    return '<b>' + ('0' + (i + 1)).slice(-2) + '</b><i>/</i>' + items.length;
+  }
 
   var current = 0;          /* index into items -- 0 is the scheme the page ships with */
   var lastFocus = null;
-  var lb = null, lbImg, lbNm, lbCo, lbCans;
+  var lb = null, lbImg, lbNm, lbCo, lbCans, lbCount;
 
   function cans(host, it) {
     host.innerHTML = '';
@@ -5499,6 +5536,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     heroNm.innerHTML = it.nm;
     heroCo.innerHTML = it.co;
     cans(heroCans, it);
+    heroCount.innerHTML = label(i);
     thumbs.forEach(function (t, n) {
       t.setAttribute('aria-current', n + 1 === i ? 'true' : 'false');
     });
@@ -5516,7 +5554,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       '<button type="button" class="pkg-lb-btn pkg-lb-x" aria-label="Close">&times;</button>' +
       '<button type="button" class="pkg-lb-btn pkg-lb-prev" aria-label="Previous scheme">&lsaquo;</button>' +
       '<button type="button" class="pkg-lb-btn pkg-lb-next" aria-label="Next scheme">&rsaquo;</button>' +
-      '<figure class="pkg-lb-fig"><img alt=""/>' +
+      '<figure class="pkg-lb-fig"><div class="pkg-lb-count"></div><img alt=""/>' +
         '<figcaption class="pkg-lb-cap"><span class="paint-cans"></span>' +
         '<span><span class="pkg-lb-nm"></span><span class="pkg-lb-co"></span></span>' +
         '</figcaption></figure>';
@@ -5526,6 +5564,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     lbNm   = lb.querySelector('.pkg-lb-nm');
     lbCo   = lb.querySelector('.pkg-lb-co');
     lbCans = lb.querySelector('.pkg-lb-cap .paint-cans');
+    lbCount = lb.querySelector('.pkg-lb-count');
 
     lb.querySelector('.pkg-lb-x').addEventListener('click', close);
     lb.querySelector('.pkg-lb-prev').addEventListener('click', function () { step(-1); });
@@ -5541,6 +5580,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     lbNm.innerHTML = it.nm;
     lbCo.innerHTML = it.co;
     cans(lbCans, it);
+    lbCount.innerHTML = label(i);
   }
 
   function open(i) {

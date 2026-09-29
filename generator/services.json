@@ -9,7 +9,7 @@
       "nav_label": "Exterior House Painting",
       "hero_formula": "A6 — the cost of wrong",
       "h1": "A Wrong Exterior Color Costs the <span class=\"gold\">Whole Job Twice</span>",
-      "hero_kicker": "See it on your own elevation first",
+      "hero_kicker": "See it on the front of your house first",
       "sub": "Your home rendered in every candidate palette — matched to Orange County light — before a single gallon is tinted.",
       "layout": { "module_order": ["problems", "system", "visualize", "process", "pricing", "where"] },
       "seo": {
@@ -33,12 +33,12 @@
         "specs": [
           { "k": "Coating", "v": "Sherwin-Williams Emerald and Duration exterior systems — self-priming, UV-stable acrylics" },
           { "k": "Application", "v": "Graco and Titan airless spray at consistent tip and pressure, back-rolled where the substrate calls for it" },
-          { "k": "Film build", "v": "Full wet-mil, so every elevation weathers at the same rate" },
+          { "k": "Film build", "v": "Full wet-mil, so every side of the house weathers at the same rate" },
           { "k": "Warranty", "v": "2-Year Warranty on labor and materials" }
         ]
       },
       "problems": [
-        { "p": "South-facing stucco fades unevenly on hillside lots, leaving chalky, blotchy elevations within a few seasons.", "s": "We spec Sherwin-Williams Emerald exterior — a self-priming, UV-stable acrylic — and apply a full wet-mil coating by airless spray so every elevation weathers evenly." },
+        { "p": "South-facing stucco fades unevenly on hillside lots, leaving chalky, blotchy walls within a few seasons.", "s": "We spec Sherwin-Williams Emerald exterior — a self-priming, UV-stable acrylic — and apply a full wet-mil coating by airless spray so every side of the house weathers evenly." },
         { "p": "Roller stipple and lap marks ruin the flat, monolithic look modern stucco is designed for.", "s": "We spray every large plane with Graco and Titan airless rigs at a consistent tip and pressure, then back-roll where the substrate calls for it — a uniform film, edge to edge." },
         { "p": "Dark modern colors like Iron Ore can fail fast in full sun if the wrong product is used.", "s": "We spec Sherwin-Williams Emerald with modern, fade-resistant colorants rated for dark exterior use, so deep charcoals stay deep." },
         { "p": "Crisp two-tone schemes live or die on the cut lines.", "s": "Laser-checked masking and hand-cut transitions where volumes meet — the detail work that separates an estate finish from a production repaint." },
@@ -48,7 +48,7 @@
         { "t": "Visualize", "d": "Your actual home rendered in each candidate palette. You approve a picture, not a swatch." },
         { "t": "Specify", "d": "Coating system, prep scope and access plan written down, then priced line by line." },
         { "t": "Prepare", "d": "Wash, repair, mask and prime. This is the half of the job that decides how long the other half lasts." },
-        { "t": "Spray", "d": "Airless application at full wet-mil, elevation by elevation, so the house stays livable." },
+        { "t": "Spray", "d": "Airless application at full wet-mil, one side at a time, so the house stays livable." },
         { "t": "Walk it", "d": "A final walkthrough against the checklist before we pull masking." }
       ],
       "pricing": {
@@ -56,9 +56,9 @@
         "body": "Where a project lands above that depends on the home — how much prep and repair the existing paint needs, the amount of trim and detail work, the height and access, and the finish you choose. A straightforward repaint and a stucco estate with extensive wood trim are not the same job. Every estimate is itemized: prep, primer, coating system, trim and accents priced separately."
       },
       "faqs": [
-        { "q": "How long does an exterior repaint take?", "a": "Most homes are completed in about five working days, sequenced elevation by elevation so the house stays livable throughout. Larger estates with extensive trim take longer, and the estimate says which." },
-        { "q": "Do you handle HOA design review?", "a": "Yes. We prepare the color submission package — swatches, product data sheets and elevation notes — formatted for your association's design review, so approval is a formality rather than a delay." },
-        { "q": "What paint do you use on exteriors?", "a": "Sherwin-Williams Emerald and Duration exterior systems, applied at full wet-mil by airless spray. Emerald is a self-priming, UV-stable acrylic, which is what keeps deep colors from chalking on sun-exposed elevations." },
+        { "q": "How long does an exterior repaint take?", "a": "Most homes are completed in about five working days, sequenced one side at a time so the house stays livable throughout. Larger estates with extensive trim take longer, and the estimate says which." },
+        { "q": "Do you handle HOA design review?", "a": "Yes. We prepare the color submission package — swatches, product data sheets and notes for each side of the house — formatted for your association's design review, so approval is a formality rather than a delay." },
+        { "q": "What paint do you use on exteriors?", "a": "Sherwin-Williams Emerald and Duration exterior systems, applied at full wet-mil by airless spray. Emerald is a self-priming, UV-stable acrylic, which is what keeps deep colors from chalking on sun-exposed walls." },
         { "q": "Can I see the color on my house before committing?", "a": "That is how every project starts. Our complimentary Custom Visualization Service renders your actual home in each candidate palette, so you approve something you have already seen." }
       ]
     },

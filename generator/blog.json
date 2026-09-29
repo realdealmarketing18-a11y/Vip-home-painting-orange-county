@@ -61,10 +61,10 @@
         }
       ],
       "intro": "At nine in the morning in Woodbury, filtered through the paseo trees, Alabaster looks like the warmest, calmest white you have ever seen. At two in the afternoon on a west-facing slope in Orchard Hills, the same paint on the same wall reads yellow.\n\nNothing changed except the light. That is the problem with choosing an exterior color the way almost everyone chooses one — from a two-inch card, indoors, under a showroom bulb, for a decision that will sit on the front of your house for the next eight years.\n\nThis guide walks the six villages of Irvine and what each one does to color. It is the same walk we take with homeowners before anything is scheduled.",
-      "viz_intro": "Before reading further, try it. Pick a style direction and tap through the palettes — the home below re-paints itself in real time. It is a demonstration of the same thing our design team does with your actual elevation during a complimentary consultation: you see the color on the house before a single gallon is tinted, instead of imagining it from a swatch.",
+      "viz_intro": "Before reading further, try it. Pick a style direction and tap through the palettes — the home below re-paints itself in real time. It is a demonstration of the same thing our design team does with the front of your house during a complimentary consultation: you see the color on the house before a single gallon is tinted, instead of imagining it from a swatch.",
       "why_different": {
         "heading": "Why Irvine Is Not One Market",
-        "body": "People say \"Irvine\" as though it were a single place with a single look. It is not. The villages were built in different decades by different builders in different architectural languages, and they sit at different elevations with genuinely different exposure.\n\nThe value spread alone is roughly five to one, from Stonegate’s close-set Santa Barbara streetscapes to Hidden Canyon’s guard-gated canyon estates. Three of the six are gated. Each runs its own design review, and Orchard Hills alone has three separate associations.\n\nA palette that looks considered in one village can look borrowed in the next.",
+        "body": "People say \"Irvine\" as though it were a single place with a single look. It is not. The villages were built in different decades by different builders in different architectural languages, and they sit at different heights with genuinely different exposure.\n\nThe value spread alone is roughly five to one, from Stonegate’s close-set Santa Barbara streetscapes to Hidden Canyon’s guard-gated canyon estates. Three of the six are gated. Each runs its own design review, and Orchard Hills alone has three separate associations.\n\nA palette that looks considered in one village can look borrowed in the next.",
         "stats": [
           {
             "value": "6",
@@ -88,7 +88,7 @@
           "name": "Orchard Hills",
           "url": "/irvine/orchard-hills/",
           "meta": "Guard-gated · Tuscan & Santa Barbara · ~$3.5M",
-          "body": "Orchard Hills sits against the ridge, and that changes everything about color. Warm stucco, stone wainscots and clay tile all take direct afternoon sun, and a white that looked composed at nine in the morning can read distinctly yellow by two. Streets like Summerland and Glacier Valley run along slopes where west-facing elevations get the worst of it.\n\nThe village is three separate associations — The Groves, The Reserve and The Summit — each with its own board and its own design review. That matters more than most homeowners expect when a color change is on the table.",
+          "body": "Orchard Hills sits against the ridge, and that changes everything about color. Warm stucco, stone wainscots and clay tile all take direct afternoon sun, and a white that looked composed at nine in the morning can read distinctly yellow by two. Streets like Summerland and Glacier Valley run along slopes where west-facing walls get the worst of it.\n\nThe village is three separate associations — The Groves, The Reserve and The Summit — each with its own board and its own design review. That matters more than most homeowners expect when a color change is on the table.",
           "palette": [
             {
               "name": "Alabaster",
@@ -136,7 +136,7 @@
           "name": "Portola Springs",
           "url": "/irvine/portola-springs/",
           "meta": "Foothill Mediterranean",
-          "body": "Most Portola Springs homes are still wearing some version of the palette the builder chose for the entire street. That makes a repaint the single highest-impact change available here — and also the easiest to get wrong, because Mediterranean stucco reacts unpredictably to warm whites under bright foothill light.\n\nStreets run botanical: Yellow Iris, Soaring Eagle, Campion. The village steps up toward Loma Ridge, so elevation and exposure vary noticeably from one block to the next.",
+          "body": "Most Portola Springs homes are still wearing some version of the palette the builder chose for the entire street. That makes a repaint the single highest-impact change available here — and also the easiest to get wrong, because Mediterranean stucco reacts unpredictably to warm whites under bright foothill light.\n\nStreets run botanical: Yellow Iris, Soaring Eagle, Campion. The village steps up toward Loma Ridge, so height and exposure vary noticeably from one block to the next.",
           "palette": [
             {
               "name": "Shoji White",
@@ -193,7 +193,7 @@
           "name": "Stonegate",
           "url": "/irvine/stonegate/",
           "meta": "Santa Barbara streetscapes · ~$1.8M",
-          "body": "Stonegate streets are tight, immaculate and close enough together that one repaint visibly resets the standard for the block. Coleridge, Dunmore, Doverwood and Fenway are close-set Santa Barbara facades where your neighbours will notice the result whether or not they say so.\n\nThat proximity is also a practical constraint. Zero-setback elevations mean overspray risk on a neighbour’s car, wall and planting, so containment and wind-checked scheduling matter more here than anywhere else in Irvine.",
+          "body": "Stonegate streets are tight, immaculate and close enough together that one repaint visibly resets the standard for the block. Coleridge, Dunmore, Doverwood and Fenway are close-set Santa Barbara facades where your neighbors will notice the result whether or not they say so.\n\nThat proximity is also a practical constraint. Zero-setback walls mean overspray risk on a neighbor’s car, wall and planting, so containment and wind-checked scheduling matter more here than anywhere else in Irvine.",
           "palette": [
             {
               "name": "Alpaca",
@@ -328,7 +328,7 @@
               "<b>Paintable surface area</b> — which is not the same number as your home’s square footage",
               "<b>Substrate condition</b> — how much crack repair, patching and priming the stucco needs before any color goes on",
               "<b>Number of colors in the scheme</b> — body, trim, fascia, doors and accents are separate cut-ins, not one pass",
-              "<b>Height and access</b> — second stories, hillside lots and zero-setback elevations all change the labor",
+              "<b>Height and access</b> — second stories, hillside lots and zero-setback walls all change the labor",
               "<b>Coating specification</b> — product line, film thickness, and whether the crew back-rolls or only sprays"
             ]
           },
@@ -337,8 +337,8 @@
               "id": "surface",
               "number": "1",
               "heading": "Paintable surface is not your square footage",
-              "body": "This is the single most common misunderstanding, and it is the reason two quotes on the same house can look like they are describing different projects.\n\nWhen a listing says a home is 3,200 square feet, that is conditioned interior floor area. Paintable surface is something else entirely — the actual area a brush or sprayer has to cover. Exterior walls, fascia, eaves and soffits, trim, garage doors, railings, shutters. It is measured elevation by elevation on site.\n\nA two-story home with tall entry volumes and deep overhangs can have far more paintable surface than a single-story home of the same interior footage. A home with extensive stone or brick wainscot can have considerably less. Neither is knowable from a listing.",
-              "callout": "If a quote arrives without anyone having measured your elevations, it is an estimate of a house in general, not of your house."
+              "body": "This is the single most common misunderstanding, and it is the reason two quotes on the same house can look like they are describing different projects.\n\nWhen a listing says a home is 3,200 square feet, that is conditioned interior floor area. Paintable surface is something else entirely — the actual area a brush or sprayer has to cover. Exterior walls, fascia, eaves and soffits, trim, garage doors, railings, shutters. It is measured one side at a time on site.\n\nA two-story home with tall entry volumes and deep overhangs can have far more paintable surface than a single-story home of the same interior footage. A home with extensive stone or brick wainscot can have considerably less. Neither is knowable from a listing.",
+              "callout": "If a quote arrives without anyone having measured your walls, it is an estimate of a house in general, not of your house."
             },
             {
               "id": "prep",
@@ -356,13 +356,13 @@
               "id": "colors",
               "number": "3",
               "heading": "How many colors are actually in the scheme",
-              "body": "A single-color repaint and a four-color scheme are not the same job, even on the same house.\n\nEvery additional color is a separate mobilization: separate masking, separate cut-in by hand, separate dry time before the adjacent surface can be worked. A body-and-trim scheme is standard. Add a contrasting fascia, a front door in a third color, and shutters or a garage door in a fourth, and the labor rises noticeably even though the material cost barely moves.\n\nThis is worth knowing before you fall in love with a five-color elevation. It is not that it cannot be done well — it is that it should be priced honestly as what it is."
+              "body": "A single-color repaint and a four-color scheme are not the same job, even on the same house.\n\nEvery additional color is a separate mobilization: separate masking, separate cut-in by hand, separate dry time before the adjacent surface can be worked. A body-and-trim scheme is standard. Add a contrasting fascia, a front door in a third color, and shutters or a garage door in a fourth, and the labor rises noticeably even though the material cost barely moves.\n\nThis is worth knowing before you fall in love with a five-color house. It is not that it cannot be done well — it is that it should be priced honestly as what it is."
             },
             {
               "id": "access",
               "number": "4",
               "heading": "Height, slope, and how close the neighbors are",
-              "body": "Labor is the majority of any exterior repaint, and access is what decides how much labor a given square foot takes.\n\nSecond-story elevations mean staging, ladders or lifts, and slower, more careful work. Hillside lots — much of Orchard Hills sits against the ridge — can mean a downhill elevation that needs scaffolding to reach at all. And in tighter villages like Stonegate, where homes sit close together with minimal setback, containment is not optional. Overspray onto a neighbor’s car, wall or planting is a genuine risk, which means more masking, more shielding, and scheduling around wind rather than against it.\n\nNone of that shows up in a square-foot number. All of it shows up in the hours."
+              "body": "Labor is the majority of any exterior repaint, and access is what decides how much labor a given square foot takes.\n\nSecond-story walls mean staging, ladders or lifts, and slower, more careful work. Hillside lots — much of Orchard Hills sits against the ridge — can mean a downhill wall that needs scaffolding to reach at all. And in tighter villages like Stonegate, where homes sit close together with minimal setback, containment is not optional. Overspray onto a neighbor’s car, wall or planting is a genuine risk, which means more masking, more shielding, and scheduling around wind rather than against it.\n\nNone of that shows up in a square-foot number. All of it shows up in the hours."
             },
             {
               "id": "spec",
@@ -423,7 +423,7 @@
                 "Included — not a separate charge"
               ]
             ],
-            "note": "Typical project totals are deliberately not published here. A total is only meaningful once the elevations have been measured, and a number invented for a web page is worth nothing to you."
+            "note": "Typical project totals are deliberately not published here. A total is only meaningful once the walls have been measured, and a number invented for a web page is worth nothing to you."
           },
           "takeaways": {
             "heading": "What to remember",
@@ -432,7 +432,7 @@
               "Ask what happens to <b>cracks and bare substrate</b> specifically. Vague answers here are the most expensive kind.",
               "Ask whether the crew <b>back-rolls on stucco</b> or only sprays.",
               "Ask for the estimate <b>itemized</b>. If two bids are far apart, the difference is almost always a line one of them left out.",
-              "Count the <b>colors in your scheme</b> before comparing quotes — a four-color elevation is a different job from a two-color one."
+              "Count the <b>colors in your scheme</b> before comparing quotes — a four-color house is a different job from a two-color one."
             ]
           },
           "faq_heading": "Questions people ask",
@@ -451,7 +451,7 @@
             },
             {
               "q": "What is paintable surface, and why not just use my square footage?",
-              "a": "Paintable surface is the actual area being coated — exterior walls, fascia, eaves, soffits, trim, garage doors and railings — measured elevation by elevation on site. Your home’s square footage is conditioned interior floor area, which is a different number. A two-story home with tall entry volumes can have far more paintable surface than a single-story home of the same interior footage."
+              "a": "Paintable surface is the actual area being coated — exterior walls, fascia, eaves, soffits, trim, garage doors and railings — measured one side at a time on site. Your home’s square footage is conditioned interior floor area, which is a different number. A two-story home with tall entry volumes can have far more paintable surface than a single-story home of the same interior footage."
             },
             {
               "q": "Is the estimate itself complimentary?",
@@ -554,12 +554,12 @@
             {
               "id": "scale",
               "heading": "The same color is a different color at scale",
-              "body": "This is a well-documented perceptual effect and it catches almost everyone. A hue viewed across a large area appears more intense and more saturated than the identical hue viewed on a small sample. A beige that looked restrained on a card can read distinctly gold across an entire elevation. A soft gray-green can arrive at full strength as something closer to sage.\n\nThe practical consequence: people routinely choose one to two steps stronger than they meant to, discover it at the moment the crew pulls the masking, and then have to decide whether to live with it or pay for the whole job again."
+              "body": "This is a well-documented perceptual effect and it catches almost everyone. A hue viewed across a large area appears more intense and more saturated than the identical hue viewed on a small sample. A beige that looked restrained on a card can read distinctly gold across an entire wall. A soft gray-green can arrive at full strength as something closer to sage.\n\nThe practical consequence: people routinely choose one to two steps stronger than they meant to, discover it at the moment the crew pulls the masking, and then have to decide whether to live with it or pay for the whole job again."
             },
             {
               "id": "light",
               "heading": "Irvine light is not one light",
-              "body": "The villages of Irvine sit at different elevations with genuinely different exposure, and that does more to your color than most homeowners expect.\n\nIn Woodbury, mature landscaping and garden paseos keep much of the community filtered and cool through the day, which flatters warmer whites that would go brassy elsewhere. On a west-facing slope in Orchard Hills, that same warm white takes direct afternoon sun off the ridge and reads yellow. Hidden Canyon gives you two different conditions in a single day — cool, often marine-influenced mornings, then hot open afternoons — so a white that feels refined at noon can go noticeably cold by evening.\n\nSame paint. Same wall. Different hour, different village, different color.",
+              "body": "The villages of Irvine sit at different heights with genuinely different exposure, and that does more to your color than most homeowners expect.\n\nIn Woodbury, mature landscaping and garden paseos keep much of the community filtered and cool through the day, which flatters warmer whites that would go brassy elsewhere. On a west-facing slope in Orchard Hills, that same warm white takes direct afternoon sun off the ridge and reads yellow. Hidden Canyon gives you two different conditions in a single day — cool, often marine-influenced mornings, then hot open afternoons — so a white that feels refined at noon can go noticeably cold by evening.\n\nSame paint. Same wall. Different hour, different village, different color.",
               "callout": "A color is not a property of the paint. It is a property of the paint, the surface, the light, and everything nearby that is reflecting into it."
             },
             {
@@ -570,7 +570,7 @@
             {
               "id": "fixed",
               "heading": "The things you are not repainting decide more than you think",
-              "body": "Your roof is staying. So is the stone wainscot, the driveway, the window frames, and in most Irvine villages a good deal of hardscape and mature planting.\n\nEvery one of those surfaces reflects color back onto the wall. A terracotta tile roof throws warm light down onto the fascia and upper body all day. Large expanses of green landscaping push a subtle cool cast onto shaded elevations. A warm-toned stone base can make a neutral gray body read faintly lilac by contrast — an effect nobody predicts from a card and everybody notices on the finished house.\n\nThis is the failure mode that produces the most regret, because the color is not wrong in isolation. It is wrong next to the four things that were always going to stay."
+              "body": "Your roof is staying. So is the stone wainscot, the driveway, the window frames, and in most Irvine villages a good deal of hardscape and mature planting.\n\nEvery one of those surfaces reflects color back onto the wall. A terracotta tile roof throws warm light down onto the fascia and upper body all day. Large expanses of green landscaping push a subtle cool cast onto shaded walls. A warm-toned stone base can make a neutral gray body read faintly lilac by contrast — an effect nobody predicts from a card and everybody notices on the finished house.\n\nThis is the failure mode that produces the most regret, because the color is not wrong in isolation. It is wrong next to the four things that were always going to stay."
             },
             {
               "id": "cost",
@@ -578,12 +578,12 @@
               "body": "A wrong exterior color is not a touch-up. It is the entire project again — full preparation, full material, full labor — because the surface has to be recoated in its entirety for the finish to be uniform.\n\nFor a typical Irvine home that is four to seven thousand dollars, paid a second time, plus another stretch of weeks with the house staged and the crew on site. And in a design-review community it can also mean a second submittal to the association.\n\nAgainst that, the cost of being certain in advance is thirty minutes."
             }
           ],
-          "viz_intro": "This is the point. Pick a style direction below and tap through the palettes — the home re-paints itself in real time. It is a demonstration of what our design team does with your actual elevation during a complimentary consultation: you see the color on the house, in context, before a single gallon is tinted.",
+          "viz_intro": "This is the point. Pick a style direction below and tap through the palettes — the home re-paints itself in real time. It is a demonstration of what our design team does with the front of your house during a complimentary consultation: you see the color on the house, in context, before a single gallon is tinted.",
           "takeaways": {
             "heading": "What to remember",
             "points": [
               "Expect any color to read <b>stronger and deeper</b> on the house than on the card. Almost everyone chooses a step too strong.",
-              "Judge a candidate color <b>at three different times of day</b>, on the elevation that actually faces the sun.",
+              "Judge a candidate color <b>at three different times of day</b>, on the wall that actually faces the sun.",
               "Hold it against the <b>roof, the stone and the hardscape</b> — the things you are not repainting are half the decision.",
               "A repaint to fix a color is the <b>whole project again</b>, not a touch-up.",
               "The only reliable test is <b>seeing it on your own house</b> before anything is scheduled."
@@ -597,7 +597,7 @@
             },
             {
               "q": "Should I paint a test patch on the house first?",
-              "a": "A large sample board moved around the elevations through the day is far better than judging from a card, and better than a small patch painted directly on the wall, which is influenced by the color already underneath it. The limitation of any physical sample is that it still shows you a fragment rather than the whole house. Rendering your actual elevation in the candidate palettes shows you the finished result, which is the thing you are actually deciding on."
+              "a": "A large sample board moved around the house through the day is far better than judging from a card, and better than a small patch painted directly on the wall, which is influenced by the color already underneath it. The limitation of any physical sample is that it still shows you a fragment rather than the whole house. Rendering the front of your house in the candidate palettes shows you the finished result, which is the thing you are actually deciding on."
             },
             {
               "q": "How much does it cost to repaint if I choose the wrong color?",
@@ -730,7 +730,7 @@
                 "Every color identified by <b>manufacturer, name and code</b> — for example Sherwin-Williams Alabaster SW 7008 — never by description alone",
                 "Physical color samples or manufacturer chips, as the guidelines specify",
                 "A clear indication of which color goes on which element: body, trim, fascia, garage door, entry door, accents",
-                "Photographs of the existing elevations",
+                "Photographs of the house as it is now",
                 "A rendering of the proposed colors on your actual home, where the association accepts one",
                 "Contractor license and insurance information, if the form requests it"
               ]
@@ -738,7 +738,7 @@
             {
               "id": "mistake",
               "heading": "The mistake that costs most people a round",
-              "body": "It is not choosing a bold color. It is submitting something the committee cannot evaluate with confidence.\n\nA reviewer looking at three paper chips stapled to a form has to imagine the result on your elevation, in your village’s light, next to your roof. Faced with genuine uncertainty, a committee’s safest decision is to ask for more information — which is a return, and another cycle.\n\nGiving them the finished picture removes that uncertainty. It is the same reason the visualization matters to you: the difference between a decision made on imagination and a decision made on sight.\n\nThe second most common mistake is starting work before written approval arrives. Verbal encouragement from a board member is not approval, and unwinding unapproved work is far more expensive than waiting."
+              "body": "It is not choosing a bold color. It is submitting something the committee cannot evaluate with confidence.\n\nA reviewer looking at three paper chips stapled to a form has to imagine the result on the front of your house, in your village’s light, next to your roof. Faced with genuine uncertainty, a committee’s safest decision is to ask for more information — which is a return, and another cycle.\n\nGiving them the finished picture removes that uncertainty. It is the same reason the visualization matters to you: the difference between a decision made on imagination and a decision made on sight.\n\nThe second most common mistake is starting work before written approval arrives. Verbal encouragement from a board member is not approval, and unwinding unapproved work is far more expensive than waiting."
             }
           ],
           "table": {
@@ -899,14 +899,14 @@
               "label": "Questions people ask"
             }
           ],
-          "intro": "You have narrowed it to three whites. Side by side on the counter they are indistinguishable — three slightly different pieces of white paper.\n\nOn two thousand square feet of stucco, in Irvine sun, next to a clay tile roof, they are not remotely the same. One will look crisp and composed. One will go faintly yellow by mid-afternoon. One will read cold and slightly blue on the shaded elevation.\n\nThere are two published numbers that tell you most of this before you commit, and one way to be certain.",
+          "intro": "You have narrowed it to three whites. Side by side on the counter they are indistinguishable — three slightly different pieces of white paper.\n\nOn two thousand square feet of stucco, in Irvine sun, next to a clay tile roof, they are not remotely the same. One will look crisp and composed. One will go faintly yellow by mid-afternoon. One will read cold and slightly blue on the shaded wall.\n\nThere are two published numbers that tell you most of this before you commit, and one way to be certain.",
           "answer": {
             "label": "The short answer",
             "body": "To distinguish between white exterior paint colors that look identical on a chip, use three things in order:",
             "points": [
               "<b>Light Reflectance Value (LRV)</b> — the manufacturer’s published 0–100 figure for how much light the color reflects. Higher reads brighter and flatter in strong sun; lower holds more depth and shows shadow",
               "<b>Undertone</b> — the faint hue underneath the white, usually yellow, greige or gray. This is what decides whether it harmonizes with your roof and stone or fights them",
-              "<b>Seeing it rendered on your own elevation</b> — the only step that accounts for your village’s light, your texture, and everything you are not repainting"
+              "<b>Seeing it rendered on the front of your house</b> — the only step that accounts for your village’s light, your texture, and everything you are not repainting"
             ]
           },
           "table": {
@@ -924,7 +924,7 @@
                 "Pure White <em>SW 7005</em>",
                 "84",
                 "Near-neutral, very slightly warm",
-                "Contemporary elevations with broad flat planes — Altair"
+                "Contemporary homes with broad flat planes — Altair"
               ],
               [
                 "Greek Villa <em>SW 7551</em>",
@@ -958,7 +958,7 @@
               "id": "lrv",
               "number": "1",
               "heading": "Read the LRV before you read the name",
-              "body": "Light Reflectance Value is a number from 0 to 100 describing how much visible light a color reflects. Pure black sits near 0; the brightest available whites approach the high 80s. Sherwin-Williams publishes an LRV for every color they make, and it is the most useful single number in the entire selection process.\n\nThe reason it matters more outdoors than indoors is that exterior light is not adjustable. An LRV of 84 in full Irvine afternoon sun on a west-facing wall is genuinely bright — bright enough that architectural detail flattens out and shadow lines disappear. Drop to the mid-70s and the same elevation keeps its depth.\n\nThe practical rule: <b>the more direct sun an elevation takes, the more you should question a very high LRV.</b> On a shaded or filtered elevation, high LRV is what keeps the house from looking dull.",
+              "body": "Light Reflectance Value is a number from 0 to 100 describing how much visible light a color reflects. Pure black sits near 0; the brightest available whites approach the high 80s. Sherwin-Williams publishes an LRV for every color they make, and it is the most useful single number in the entire selection process.\n\nThe reason it matters more outdoors than indoors is that exterior light is not adjustable. An LRV of 84 in full Irvine afternoon sun on a west-facing wall is genuinely bright — bright enough that architectural detail flattens out and shadow lines disappear. Drop to the mid-70s and the same wall keeps its depth.\n\nThe practical rule: <b>the more direct sun an wall takes, the more you should question a very high LRV.</b> On a shaded or filtered wall, high LRV is what keeps the house from looking dull.",
               "callout": "Alabaster at 82 and Shoji White at 74 are only eight points apart on paper. On a sunlit stucco wall, that is the difference between crisp and glaring."
             },
             {
@@ -977,15 +977,15 @@
               "id": "see",
               "number": "3",
               "heading": "Then see it on your own house, because the first two only narrow it",
-              "body": "LRV and undertone will reliably get you from thirty candidates to three. They will not pick the winner, because neither number knows anything about your specific house.\n\nThey do not know your elevation faces west into afternoon sun coming off the Orchard Hills ridge. They do not know your roof is terracotta and throws warm light onto the fascia all day. They do not know your stucco carries a heavy texture that will read the color two steps deeper, or that your neighbor’s mature landscaping puts a cool cast on the north side every morning.\n\nThat is the gap the Custom Visualization Service closes. Our design team renders your actual home — your elevation, your roof, your surroundings — in each of the finalists, so the decision is made by looking rather than imagining. It costs nothing, it happens before anything is scheduled, and it takes about thirty minutes."
+              "body": "LRV and undertone will reliably get you from thirty candidates to three. They will not pick the winner, because neither number knows anything about your specific house.\n\nThey do not know the front of your house faces west into afternoon sun coming off the Orchard Hills ridge. They do not know your roof is terracotta and throws warm light onto the fascia all day. They do not know your stucco carries a heavy texture that will read the color two steps deeper, or that your neighbor’s mature landscaping puts a cool cast on the north side every morning.\n\nThat is the gap the Custom Visualization Service closes. Our design team renders your actual home — the front of your house, your roof, your surroundings — in each of the finalists, so the decision is made by looking rather than imagining. It costs nothing, it happens before anything is scheduled, and it takes about thirty minutes."
             }
           ],
-          "viz_intro": "Try the principle here first. Pick a direction and tap through the palettes — the home below re-paints itself in real time so you can watch how much a small shift in undertone changes the whole elevation. Then we do it with your house.",
+          "viz_intro": "Try the principle here first. Pick a direction and tap through the palettes — the home below re-paints itself in real time so you can watch how much a small shift in undertone changes the whole house. Then we do it with your house.",
           "faq_heading": "Questions people ask",
           "faq": [
             {
               "q": "What is LRV and why does it matter for exterior paint?",
-              "a": "Light Reflectance Value is a manufacturer-published number from 0 to 100 describing how much visible light a color reflects, where 0 is black and the brightest whites reach the high 80s. It matters more outdoors than indoors because exterior light cannot be adjusted. A very high LRV on a west-facing wall in full Irvine sun can flatten architectural detail and wash out shadow lines, while a lower LRV keeps depth on the same elevation."
+              "a": "Light Reflectance Value is a manufacturer-published number from 0 to 100 describing how much visible light a color reflects, where 0 is black and the brightest whites reach the high 80s. It matters more outdoors than indoors because exterior light cannot be adjusted. A very high LRV on a west-facing wall in full Irvine sun can flatten architectural detail and wash out shadow lines, while a lower LRV keeps depth on the same wall."
             },
             {
               "q": "How do I see the undertone in a white paint color?",
@@ -993,7 +993,7 @@
             },
             {
               "q": "What is the difference between Alabaster and Greek Villa?",
-              "a": "Both are warm whites with subtle yellow and beige undertones, but Greek Villa is published at LRV 84 against Alabaster at 82, so Greek Villa reads slightly brighter and Alabaster carries marginally more depth and creaminess. On a shaded or filtered elevation the difference is very subtle. In direct Irvine afternoon sun it is more apparent, and both can push yellow on a hot west-facing slope."
+              "a": "Both are warm whites with subtle yellow and beige undertones, but Greek Villa is published at LRV 84 against Alabaster at 82, so Greek Villa reads slightly brighter and Alabaster carries marginally more depth and creaminess. On a shaded or filtered wall the difference is very subtle. In direct Irvine afternoon sun it is more apparent, and both can push yellow on a hot west-facing slope."
             },
             {
               "q": "Is Snowbound a warm or cool white?",
@@ -1001,7 +1001,7 @@
             },
             {
               "q": "Which white is best for an Irvine home?",
-              "a": "There is no single answer, because the six villages of Irvine have genuinely different light. Woodbury’s filtered garden paseos flatter warmer whites that would go brassy on an exposed Orchard Hills slope, and Hidden Canyon’s cool marine mornings and hot open afternoons make a white behave differently across a single day. Narrow with LRV and undertone, then have the finalists rendered on your own elevation before deciding. Call (909) 312-5400 to arrange it."
+              "a": "There is no single answer, because the six villages of Irvine have genuinely different light. Woodbury’s filtered garden paseos flatter warmer whites that would go brassy on an exposed Orchard Hills slope, and Hidden Canyon’s cool marine mornings and hot open afternoons make a white behave differently across a single day. Narrow with LRV and undertone, then have the finalists rendered on the front of your house before deciding. Call (909) 312-5400 to arrange it."
             }
           ],
           "related_heading": "Read next",
