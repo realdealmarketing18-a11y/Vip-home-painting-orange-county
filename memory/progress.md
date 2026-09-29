@@ -22,6 +22,7 @@ Layer: **Project memory** (B.L.A.S.T. Protocol 0). Append; don't rewrite history
 - 2026-09-29 · OC master sales process ported into the generator (`master-modules.js`, rollout row 0) — switched on per page by a `master` block, homeowner swappable via `story`; no page changed yet
 - 2026-09-29 · Orchard Hills (rollout row 1) on the master sales process — B4 H1, 8 FAQs, story sections with local copy, tokenized SEO fields; phone-width top bar fixed on every generated page (staging only, WordPress untouched)
 - 2026-09-29 · Altair (rollout row 2) on the master sales process — B3 H1, 8 FAQs, unverified claims (3–5 day timeline, laser-checked masking) removed; staging only, WordPress untouched
+- 2026-09-29 · Portola Springs (rollout row 3) on the master sales process — B5 H1, 8 FAQs, Tier 2 value register, wrong "1-Yr Warranty" meta fixed; staging only, WordPress untouched
 
 ---
 

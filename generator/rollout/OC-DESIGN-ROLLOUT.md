@@ -17,7 +17,7 @@ from HEADLINE-FORMULAS.md, and its own section order so no two pages share a lay
 | 0 | GENERATOR PORT — OC story sections become reusable generator modules | — | done | 2026-09-29 | 11 modules in `generator/master-modules.js` + fixed story hero and P.S. close. Tested on a throwaway copy (Orchard Hills + Anaheim with test copy): gates green, 375px + 1440px checked, no sideways scroll. No live page changed. See decisions below. |
 | 1 | irvine/orchard-hills | /irvine/orchard-hills/ | done | 2026-09-29 | H1 = **B4** identity guide ("The Orchard Hills Homeowner’s Guide to Exterior House Painting Without Living With the Wrong Color"). moduleOrder: instead → eliminated → settle → painted → offer → neighbors → warranty → beforeCommit → problemSolution → services → serviceArea. 8 FAQs, ~2,520 local words. Left out (not in research): HOA rules, dues, project totals, job length. |
 | 2 | irvine/altair | /irvine/altair/ | done | 2026-09-29 | H1 = **B3** costly things ("3 Costly Things to Settle Before Exterior House Painting in Altair") — the `settle` section right under it pays it off. moduleOrder: settle → instead → eliminated → painted → warranty → offer → neighbors → problemSolution → beforeCommit → services → serviceArea. 8 FAQs, ~2,640 local words. Left out (not in research): association rules, management company, job length, glass/roof details. |
-| 3 | irvine/portola-springs | /irvine/portola-springs/ | todo | | |
+| 3 | irvine/portola-springs | /irvine/portola-springs/ | done | 2026-09-29 | H1 = **B5** avoid/get ("Avoid Paying for Exterior House Painting Twice in Portola Springs — See Every Color on Your House First, Complimentary"). moduleOrder: eliminated → offer → instead → painted → problemSolution → settle → neighbors → warranty → beforeCommit → services → serviceArea. 8 FAQs, ~2,830 local words. Left out (not in research): home values, build years, association rules/dues, job length, roof and window details beyond "tile roofs". |
 | 4 | irvine/hidden-canyon | /irvine/hidden-canyon/ | todo | | |
 | 5 | irvine/woodbury | /irvine/woodbury/ | todo | | |
 | 6 | irvine/stonegate | /irvine/stonegate/ | todo | | |
@@ -51,8 +51,16 @@ Staging base: https://realdealmarketing18-a11y.github.io/Vip-home-painting-orang
 - **Row 2 · the dark-color FAQ** uses the sourced light-reflectance explanation and names Sherwin-Williams Loxon XP IR Reflective as a manufacturer product (`research/orange-county/08-MATERIALS-PERFORMANCE.md`). It does not say VIP stocks or prices it — tell me if it should.
 - **Still inherited from the master (unchanged):** the "3 things to settle" swipes show *PLACEHOLDER — DEMO FOOTAGE PENDING*; Altair uses that section, so it shows it too until the OC page is fixed.
 
+- **Row 3 · Portola Springs is written to Tier 2** (BRAND-VOICE rule 5): value certainty and "paying for it twice", not gate protocol. It is not gated, so the neighbors section talks about the park and Hicks Canyon Trail, not a gate.
+- **Row 3 · the Portola Springs Association and Keystone Pacific are named** — `research/irvine/06-hoa.md` and `cities.json` source both to portolasprings.org. No rules or approval steps are stated. The brief's `hoa.association_name` was blank and is now filled from that source.
+- **Row 3 · "builder palette" is written as a possibility, not a fact.** Research calls it the angle for this village but does not show how many houses still wear their original colors, so the copy says "the palette it was built in" without claiming most do.
+- **Row 3 · the old copy's "1-Yr Warranty" meta description, "builder-grade paint chalks and fades years early" and "most forgiving greige in the deck" are gone** — the first was wrong, the other two unbacked.
+- **Row 3 · new FAQ answers the searched question "what happens if you paint your house without HOA approval"** (`research/orange-county/07-VOICE.md`) by pointing to the association's own documents — it does not state any penalty.
+- **Still inherited:** the "3 things to settle" placeholder footage (Portola Springs uses that section too).
+
 ## Run log
 (newest first — one line per run: date · row · result · commit)
+- 2026-09-29 · row 3 · done — Portola Springs on the master sales process; generate + verify-site 25/25 + validate-brief green; 375px/1440px checked, no sideways scroll · see git log
 - 2026-09-29 · row 2 · done — Altair on the master sales process; generate + verify-site 25/25 + validate-brief green; 375px/1440px checked, no sideways scroll · see git log
 - 2026-09-29 · row 1 · done — Orchard Hills on the master sales process; generate + verify-site 25/25 + validate-brief green; 375px/1440px checked · see git log
 - 2026-09-29 · row 0 · done — master sales process ported into the generator as reusable modules; all 21 pages rebuild unchanged; verify-site 25/25 · c7b9855

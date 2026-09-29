@@ -666,7 +666,7 @@
         "palette_baseline"
       ],
       "architecture_delta": {
-        "note": "Portola Springs is classic Irvine Mediterranean — warm stucco, arched entries, wrought-iron details, and tile roofs stepping up the foothills. The right palette keeps that warmth while reading current, not dated."
+        "note": "Portola Springs homes are Mediterranean and Spanish in style: warm stucco, arched entries, iron details and tile roofs stepping up the foothills. The body color has to work with a roof that stays."
       },
       "geography_delta": {
         "streets": [
@@ -684,11 +684,11 @@
         "guard_gated": false
       },
       "hoa": {
-        "association_name": null,
+        "association_name": "Portola Springs Association",
         "has_color_guidelines": null,
         "approval_required": null,
-        "notes": "the Portola Springs community association's design review",
-        "source": null
+        "notes": "the Portola Springs Association’s design review",
+        "source": "https://portolasprings.org/"
       },
       "palette_extras": [
         {
@@ -701,16 +701,22 @@
           "sw_code": "SW 7029",
           "sw_name": "Agreeable Gray",
           "hex": "#D1CBC1",
-          "note": "The most forgiving greige in the deck — beautiful under Portola Springs' bright foothill light, morning and evening."
+          "note": "A greige, gray with beige in it, that can lean warmer in full foothill sun and flatter in shade. Worth seeing on the whole house before choosing."
         }
       ],
       "layout": {
         "module_order": [
-          "colorGuide",
-          "process",
-          "portfolio",
+          "eliminated",
+          "offer",
+          "instead",
+          "painted",
           "problemSolution",
-          "specs"
+          "settle",
+          "neighbors",
+          "warranty",
+          "beforeCommit",
+          "services",
+          "serviceArea"
         ]
       },
       "story": {
@@ -723,46 +729,75 @@
         "media_status": "pending"
       },
       "seo": {
-        "primary_keyword": "Portola Springs house painters",
-        "meta_title": "Portola Springs House Painters, Irvine | VIP Painting",
-        "meta_desc": "Portola Springs house painters in Irvine. Exterior repaints and factory-finish cabinets, complimentary color visualization, itemized estimates, 1-Yr Warranty.",
-        "h1": "Portola Springs <span class=\"gold\">House Painters</span> Who Treat Every Home Like an Estate",
-        "answer_capsule": "VIP Home Painting serves Portola Springs in Irvine, CA with luxury exterior painting, interior painting, and kitchen cabinet refinishing. Portola Springs' Spanish and Mediterranean architecture is repainted with Sherwin-Williams Emerald and Duration coatings applied by professional Graco and Titan airless spray equipment, colors are chosen through a complimentary 30-minute custom visualization of your actual home, and every estimate is itemized line by line with no hidden charges. VIP exterior work in Irvine starts at $4.75 per square foot of paintable surface, and all work carries a 2-Year Warranty. Call (909) 312-5400.",
-        "viz_intro": "Most Portola Springs homes are still wearing some version of the palette the builder chose for the whole street. Modernizing it is the single highest-impact change you can make — and also the easiest one to get wrong, because Mediterranean stucco reacts unpredictably to warm whites and greiges under bright foothill sun. Watch the front of your house change color in real time below, then bring the scheme you chose to a complimentary 30-minute consultation with an itemized estimate attached."
+        "primary_keyword": "Portola Springs house painting",
+        "meta_title": "Portola Springs House Painting, Irvine — Done Once | VIP",
+        "meta_desc": "Exterior house painting in Portola Springs, Irvine. See your Mediterranean home in {schemes} color schemes, complimentary. From {rate}/sq ft, {warranty}.",
+        "h1": "Avoid Paying for <span class=\"gold\">Exterior House Painting</span> Twice in Portola Springs — See Every Color on Your House First, Complimentary",
+        "answer_capsule": "VIP Home Painting is a house painting company working in Portola Springs, the foothill village of Irvine, CA 92618 near Hicks Canyon Trail and Loma Ridge, known for its Mediterranean and Spanish-style homes. Based in Anaheim, it paints exteriors, interiors and kitchen cabinets. Before any Portola Springs project is booked, a complimentary 30-minute consultation shows the owner their own house in {schemes} complete color schemes, with every Sherwin-Williams color given by name and number. Exterior work starts at {rate} per square foot of paintable surface, each line priced separately, and the {warranty} covers labor and materials. Phone {phone}.",
+        "viz_intro": "A Portola Springs house is mostly warm stucco, framed by arched entries, iron details and a tile roof, so the body color has to get along with a roof that is not changing. A warm white can lean pink beside the tile. A greige can drift yellow in foothill sun, or go gray and flat on the shaded side. {Their} {place} house is in the tool below, exactly as they compared it: pick a scheme, drag the slider, and watch how far one decision moves the whole front of a house."
       },
       "faqs": [
         {
-          "q": "How much does it cost to paint a house in Portola Springs?",
-          "a": "VIP exterior work starts at $4.75 per square foot of paintable surface — the premium end of the Irvine range — and most Portola Springs homes price from there. Every VIP proposal is itemized line by line with no hidden charges, and includes a complimentary 30-minute custom color visualization of your actual home. Call (909) 312-5400.",
+          "q": "How much does exterior house painting cost in Portola Springs, Irvine?",
+          "a": "VIP Home Painting’s exterior work in Portola Springs starts at {rate} per square foot of paintable surface, the premium end of what Irvine painters charge. It is a starting rate, not an average. The measurement comes from the stucco, trim and iron that will actually be painted, not from the square footage on a listing; on a two-story stucco house the paintable surface usually lands between 0.85 and 1.1 times the living area. Stucco repairs, iron, doors and any change of color each appear as a separate line, and the complimentary color visualization comes with the estimate. Call {phone}.",
           "short_youtube_id": ""
         },
         {
-          "q": "Do you offer kitchen cabinet painting in Portola Springs?",
-          "a": "Yes — factory-finish cabinet refinishing is one of our most-requested Portola Springs services. Doors and drawers are sprayed off-site in urethane enamel and boxes are sprayed in place, producing a hard, showroom-smooth finish at a fraction of replacement cost.",
+          "q": "Does VIP Home Painting handle Portola Springs Association color approval?",
+          "a": "Yes. VIP Home Painting prepares the color submission for the Portola Springs Association as part of every exterior project in the village. The association is professionally managed by Keystone Pacific, and the package is built so a reviewer can read it without a meeting: each Sherwin-Williams color by name and number, the product data sheets, and a note of which color goes on which surface. What the association allows, and what it wants to see, is set by the association. VIP Home Painting does not guess at those rules; it prepares the package to them.",
           "short_youtube_id": ""
         },
         {
-          "q": "Can you handle the Portola Springs HOA color approval process?",
-          "a": "Yes. We assemble the color submission package for the Portola Springs community association's design review — swatches, product spec sheets, and notes for each side of the house — as part of the project, so the approval step never becomes your problem.",
+          "q": "What exterior colors update a Mediterranean house in Portola Springs?",
+          "a": "VIP Home Painting’s advice for a Portola Springs house is to start from the roof, because the tile is the one color that is not changing. A warm white such as Shoji White SW 7042 or Alabaster SW 7008 keeps the Mediterranean warmth while reading cleaner than a heavy beige. Agreeable Gray SW 7029 and Chatura Gray SW 9169 give a layered greige or warm gray for the body, and Iron Ore SW 7069 carries iron, doors and accents. Split roughly 60/30/10 between body, trim and accent, the house reads current without fighting its own architecture. The complimentary Custom Visualization Service shows each combination on your own house before you choose.",
+          "short_youtube_id": ""
+        },
+        {
+          "q": "Agreeable Gray or Shoji White: which suits a Portola Springs stucco house?",
+          "a": "VIP Home Painting’s answer is that it depends on the roof and on which way the house faces, and that both are worth seeing before you choose. Agreeable Gray SW 7029 is a greige, a gray with beige in it; on a sunny wall it can lean warmer than the chip suggests, and on a shaded wall it can go flatter and grayer. Shoji White SW 7042 is a soft warm white that updates Mediterranean stucco without fighting most roof tile, though beside a strongly orange roof it can pick up the warmth and read slightly pink. A two-foot sample square will not settle the question, because it shows one wall at one hour. A render of the whole front of the house will.",
+          "short_youtube_id": ""
+        },
+        {
+          "q": "What happens if I paint my house without HOA approval in Portola Springs?",
+          "a": "VIP Home Painting’s advice is not to find out. What follows an unapproved color change is set out in the Portola Springs Association’s own governing documents, not by any painter. Whatever those consequences are, the practical risk is the same: a color that has to be changed after it is on the house is the whole job paid for twice. That is why the color submission is prepared as part of every VIP exterior project, so the review is part of the plan rather than an afterthought. For the current process, ask the association or Keystone Pacific, which manages it.",
+          "short_youtube_id": ""
+        },
+        {
+          "q": "Should the wrought iron be repainted when a Portola Springs house is painted?",
+          "a": "VIP Home Painting treats the iron as its own decision, and its own line on the estimate, rather than something swept up with the walls. On a Mediterranean house the iron is often the darkest note on the front, so its color changes how the whole scheme reads: a soft black such as Iron Ore SW 7069 keeps it crisp, while a color picked to match an older palette can look dated against a new body. Whether it is repainted, and in what, is shown in the render before it is priced. Iron and gates are part of VIP’s exterior service.",
+          "short_youtube_id": ""
+        },
+        {
+          "q": "How often does a stucco house in Portola Springs need exterior repainting?",
+          "a": "VIP Home Painting plans exterior repaints on an 8-to-15-year cycle, so the color chosen now is the one the street sees for a decade or more. Where a house falls in that range depends on preparation and coating more than on the calendar. Two full coats of Sherwin-Williams Emerald or Duration, back-rolled into the stucco texture, bond to the wall and keep their color; a single thinned coat lets sunlight through and starts to chalk and fade early. The walls that take the most sun usually show it first.",
+          "short_youtube_id": ""
+        },
+        {
+          "q": "What is included in the complimentary color consultation for a Portola Springs home?",
+          "a": "VIP Home Painting’s complimentary consultation gives a Portola Springs owner three things in 30 minutes: the front of their own house rendered in {schemes} complete schemes, the exact Sherwin-Williams color names and numbers behind each one, and an estimate with every line priced separately. The renders show body, trim and accent together, with further choices for lighting, texture and premium additions. It starts from a single photo of the house, nothing is charged, and nothing is scheduled until a scheme has been chosen.",
           "short_youtube_id": ""
         }
       ],
       "problems": [
         {
-          "p": "The original builder palette now reads dated against newer phases of the village.",
-          "s": "A complimentary 30-minute color visualization shows your home in current designer schemes — warm whites, greiges, and deep accents — before you decide anything."
+          "p": "A warm white chosen from a card reads pink or peach once it sits under a tile roof.",
+          "s": "Our design team renders the whole front of your house, roof included, in each candidate scheme, so the white you approve is one you have already seen beside your own tile."
         },
         {
-          "p": "Sun-baked foothill walls chalk and fade within a few years.",
-          "s": "Sherwin-Williams Emerald and Duration exterior systems, applied at the full thickness the manufacturer specifies by airless spray, are engineered for exactly this exposure."
+          "p": "A greige such as Agreeable Gray leans yellow on a sunny wall and flat gray on a shaded one, and a sample square on one wall never shows both.",
+          "s": "Each render shows the full front of the house, so the color is judged at the size the street sees it, not from one square at one hour."
         },
         {
-          "p": "Design review requirements make color changes feel like a bureaucratic project.",
-          "s": "We assemble the color submission package for your association's review — swatches, spec sheets, notes for each side of the house — as part of the job."
+          "p": "Iron railings and details painted as an afterthought, in a black that fights the new body color.",
+          "s": "Iron is its own line on the estimate and its own choice in the render. Iron Ore SW 7069 is one option; whichever you pick is seen against the new stucco before it is applied."
         },
         {
-          "p": "Cabinet painting that leaves brush marks and starts peeling at the hinges.",
-          "s": "Factory-finish cabinet refinishing: doors sprayed off-site in urethane enamel, boxes sprayed in place, hardware re-hung square."
+          "p": "A color change sent to the association with nothing but a chip, and weeks lost while the reviewer asks what goes where.",
+          "s": "VIP Home Painting prepares the submission for the Portola Springs Association’s design review: every Sherwin-Williams color by name and number, the product data sheets, and which color goes on which surface."
+        },
+        {
+          "p": "An estimate that is one number, with no way to tell whether the trim, the iron and the stucco repairs were counted.",
+          "s": "Every line is priced on its own (prep, primer, coating, trim, iron and accents) from {rate} per square foot of paintable surface, with the {warranty} written on the same page."
         }
       ],
       "market_delta": {
