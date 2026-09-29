@@ -18,8 +18,12 @@
     "used_on": "/orange-county-sales-page/",
     "city": "Newport Beach",
     "community": "Pelican Hill",
+    "address": "14 Pelican Hill Road",
     "project_type": "exterior",
-    "verified": false,
-    "note": "Hero film subject. Higgsfield-rendered imagery — confirm real-client status before reuse."
+    "verified": true,
+    "verified_by": "Fabian",
+    "verified_on": "2026-09-23",
+    "imagery": "rendered",
+    "note": "Real clients. Fabian confirmed on 2026-09-23 that Richard and Elizabeth Gallagher are real clients who gave permission to be portrayed in commercials and ads. The IMAGERY is still Higgsfield-rendered rather than photographed, which is a production fact, not a verification gap — the people and the project are real, the footage is a dramatisation of their actual job. Keep those two separate: naming them as clients is now cleared; presenting rendered footage as documentary photography is not, and never was."
   }
 }

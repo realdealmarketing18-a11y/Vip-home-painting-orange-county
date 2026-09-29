@@ -215,9 +215,14 @@ where nothing checks it automatically. **This list is the check.**
   reviews and the rating is unconfirmed. A false one reached a live page once already.
 - ❌ **Project counts** ("500 estates") — no verified count exists.
 - ❌ **Invented people.** No client stories, no named homeowners, no "she taped fourteen
-  chips to her stucco." **The Gallagher family is unverified** (`STORY-SLOTS.md`) — their
-  house is on the page as a render subject, and they must not be described as clients in an
-  ad until that is confirmed.
+  chips to her stucco." Every named client must appear in
+  `generator/registry/client-stories.json` with `verified: true` — check it before writing a
+  name into an ad, not after.
+  **The Gallagher family is now cleared** (Fabian, 2026-09-23): Richard and Elizabeth are real
+  clients at 14 Pelican Hill Road who gave permission to be portrayed in commercials and ads.
+  They may be named and their project described. What is still true, and is a different rule:
+  their on-screen imagery is **rendered, not filmed**, so it is a dramatisation of a real job
+  and must never be captioned or implied to be documentary footage of the day.
 - ❌ **The Houzz poster's words as a testimonial.** She is a public forum poster, not a VIP
   client. Use her *vocabulary* — "reads", "leaning", "griege", "swatches", "my lighting",
   "so permanent", "rookie mistake" — in our own sentences. Never in quotation marks, never

@@ -79,11 +79,19 @@ Currently verified:
 |---|---|---|
 | Douglas & Sheri | ✅ verified | Pelican Hill, Newport Beach — used on the OC page |
 | Ceasar & Julie | ✅ verified | **Shady Canyon, Irvine** — used on the OC page |
-| Gallagher family | ⚠️ **not verified** | Higgsfield-rendered. Confirm before naming as a client. |
+| Gallagher family | ✅ verified | **14 Pelican Hill Road, Newport Beach** — used on the OC page and the NB-002 commercial. Cleared by Fabian 2026-09-23. Imagery is rendered, not photographed — see below. |
 
 If no real story exists for a page, set `is_representative: true` and don't invent a name.
 A board or a homeowner will call to check — this is the one place fabricated proof gets
 caught by a person rather than an algorithm.
+
+**Real client ≠ real footage, and the Gallaghers are the case that proves it.** Their status
+was cleared on 2026-09-23: Richard and Elizabeth are real clients at a real address who gave
+permission to appear in commercials. What has *not* changed is that their on-screen imagery is
+generated, not filmed. So they can be named as clients, their project can be described, and
+the work can be shown — but rendered footage is a dramatisation of a real job and must never be
+captioned, tagged or implied to be documentary photography of the day. Those are two separate
+permissions and only one of them was granted.
 
 **Geography matters too.** A Newport Beach story heading an Orchard Hills page tells the
 reader they're on the wrong page and dilutes the local relevance the page exists for.
