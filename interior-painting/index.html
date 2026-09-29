@@ -3912,6 +3912,26 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 }
 
 /* ============================================================
+   MASTER-PROCESS MODULES (generator/master-modules.js)
+   The OC page's sections, lifted into their own sections. Only the
+   seams need styling here — everything else is the master's own CSS.
+   ============================================================ */
+/* "3 things to settle" is an h3 inside the band on the master; standing
+   alone it is the section's H2, so it takes the h3's look. */
+.reasons-head h2 { font-family: var(--font-serif); font-weight: 600;
+  font-size: clamp(21px, 2.3vw, 31px); line-height: 1.22; color: var(--navy); margin: 10px 0 0; }
+.reasons-head h2 .accent { font-style: italic; color: var(--gold-deep); }
+.reasons-head .eyebrow { color: var(--gold-deep); }
+.reasons-head .reasons-lead { font-family: var(--font-serif); font-style: italic;
+  font-size: 16.5px; line-height: 1.62; color: #4A4F70; margin: 14px auto 0; max-width: 640px; }
+.cand-band-solo .fl-head { margin-top: 0; }
+.cand-band-solo .reasons-head { margin-top: 0; }
+.offer-stake .eyebrow { color: var(--gold-deep); margin-bottom: 10px; }
+/* The master's hub grid holds two cities side by side; a page names only
+   its own, so the one card centres instead of sitting in half a grid. */
+.city-hubs.city-hubs-single { grid-template-columns: minmax(0, 640px); justify-content: center; }
+
+/* ============================================================
    CITY PAGE MODULES — styles
    Appended after page.css. Community pages never load these.
    ============================================================ */

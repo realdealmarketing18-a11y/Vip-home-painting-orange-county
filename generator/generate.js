@@ -562,7 +562,7 @@ const MODULE_BUILDERS = {
 
 /* ---------------- STRUCTURED DATA ---------------- */
 
-function jsonLd(c, url) {
+function jsonLd(c, url, masterRendered) {
   const business = {
     '@type': 'HousePainter',
     '@id': `${CFG.siteBase}/#business`,
@@ -641,6 +641,15 @@ function jsonLd(c, url) {
       { '@type': 'ListItem', position: 3, name: c.name, item: url }
     ]
   };
+  /* Master-process pages: one Service per trade (exterior carries the
+     published floor as an Offer), ImageObjects for the family's before and
+     after, a HowTo for the painted-it steps, and speakable reaching the FAQ —
+     the passages Copilot and Google AI Mode actually lift (M-06). */
+  if (masterRendered) {
+    webPage.speakable = { '@type': 'SpeakableSpecification', cssSelector: ['h1', '.capsule-text', '.faq-q', '.faq-a'] };
+    webPage.primaryImageOfPage = { '@id': `${url}#after` };
+    return JSON.stringify({ '@context': 'https://schema.org', '@graph': [business, ...MASTER.jsonLdExtras(c, url, masterRendered, rateOffer), faqPage, webPage, breadcrumbs] }, null, 2);
+  }
   return JSON.stringify({ '@context': 'https://schema.org', '@graph': [business, service, faqPage, webPage, breadcrumbs] }, null, 2);
 }
 
@@ -655,8 +664,16 @@ function buildPage(c) {
   /* One nav for every page type — four categories, built in site-nav.js. */
   const navLinks = topNav(navCtx(`/${cityDir}/${c.slug}/`, cityDir, A));
 
+  /* A page with a `master` block runs the OC page's story-led process
+     (master-modules.js). Every other page renders exactly as before. */
+  const master = MASTER.isMaster(c);
+  const rendered = [];
   const modules = c.moduleOrder
-    .map((k, i) => MODULE_BUILDERS[k](c, i + 2, POSITION_BG[i]))
+    .map((k, i) => {
+      const html = MODULE_BUILDERS[k](c, i + 2, POSITION_BG[i % POSITION_BG.length]);
+      if (html) rendered.push(k);
+      return html;
+    })
     .join('\n');
 
   const otherCommunities = DATA.communities
@@ -701,7 +718,7 @@ function buildPage(c) {
 
 <!-- ============ STRUCTURED DATA — LocalBusiness + Service + WebPage ============ -->
 <script type="application/ld+json">
-${jsonLd(c, url)}
+${jsonLd(c, url, master ? rendered : null)}
 </script>
 
 <style>
@@ -737,7 +754,7 @@ ${FILM_CSS}
   </header>
 
   <!-- ============ HERO — unified cinematic style, static image ============ -->
-  ${heroStory(c.hero_story, c.name, A) || `<section class="hero hero-cinema" id="hero">
+  ${master ? MASTER.hero(c) : heroStory(c.hero_story, c.name, A) || `<section class="hero hero-cinema" id="hero">
     <div class="hero-photo" style="background-image:url('${A}/video/hero-poster.jpg');"></div>
     <div class="hero-scrim"></div>
     <div class="hero-goldframe" aria-hidden="true"></div>
@@ -784,13 +801,13 @@ ${heroReel(A)}
   </section>
 
   <!-- ============ No. 01 — INTERACTIVE CUSTOM VISUALIZATION (the highlight) ============ -->
-  ${vizSection(c)}
+  ${master ? MASTER.vizAdjust(vizSection(c)) : vizSection(c)}
 ${modules}
-${mapSection(c, c.moduleOrder.length + 2)}
+${master ? '' : mapSection(c, c.moduleOrder.length + 2)}
 ${faqSection(c, c.moduleOrder.length + 3)}
 
   <!-- ============ BYLINE + FINAL CTA ============ -->
-  <section id="quote">
+  ${master ? MASTER.close(c) : `<section id="quote">
     <div class="byline">
       <img class="byline-ph" src="${A}/assets/fabian.jpg" alt="Fabian — Founder, VIP Home Painting"/>
       <div class="byline-txt">
@@ -806,7 +823,7 @@ ${faqSection(c, c.moduleOrder.length + 3)}
       <h2 class="ttl">Let's Make Your Home the <em>Envy of ${c.name}</em></h2>
       ${ctaButton('Get My Complimentary Quote Now', 'No Pressure · No Obligation · Always Complimentary')}
     </div>
-  </section>
+  </section>`}
 
   <!-- ============ FOOTER ============ -->
 ${buildFooter(navCtx(`/${cityDir}/${c.slug}/`, cityDir, A))}
@@ -868,7 +885,7 @@ ${VIZ_JS}
   });
 })();
 </script>
-${REEL_JS}
+${master ? MASTER.reelJs(REEL_JS, c) : REEL_JS}
 </body>
 </html>
 `;
@@ -903,7 +920,7 @@ const esc = (s) => String(s == null ? '' : s)
    for the two-level case, so shift them up one for the city. */
 const cityAssets = (html) => html.split('../../orange-county-sales-page').join('../orange-county-sales-page');
 
-function cityJsonLd(c, url) {
+function cityJsonLd(c, url, masterRendered) {
   const base = CFG.siteBase;
   const business = {
     '@type': 'HousePainter',
@@ -983,6 +1000,15 @@ function cityJsonLd(c, url) {
       { '@type': 'ListItem', position: 2, name: c.name, item: url }
     ]
   });
+  /* Master-process city hub: same extras as a community page. The generic
+     Service node is replaced by one per trade, not duplicated. */
+  if (masterRendered) {
+    const wp = graph.find(n => n['@type'] === 'WebPage');
+    wp.speakable = { '@type': 'SpeakableSpecification', cssSelector: ['h1', '.capsule-text', '.faq-q', '.faq-a'] };
+    wp.primaryImageOfPage = { '@id': `${url}#after` };
+    const at = graph.findIndex(n => n['@type'] === 'Service');
+    graph.splice(at, at < 0 ? 0 : 1, ...MASTER.jsonLdExtras(c, url, masterRendered, rateOffer));
+  }
   return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2);
 }
 
@@ -1003,6 +1029,9 @@ function buildCityPage(c) {
   const cWithRel = { ...c, child_communities: kids };
 
   const order = (c.layout && c.layout.module_order) || [];
+  /* Same switch as the community pages: a `master` block turns on the OC
+     page's story hero, P.S. close and master modules for this city hub. */
+  const cityMaster = MASTER.isMaster(c);
   const rendered = [];
   const modules = order.map((key, i) => {
     const fn = CITY_MODULES[key] || MODULE_BUILDERS[key];
@@ -1075,7 +1104,7 @@ function buildCityPage(c) {
 <meta name="robots" content="${ROBOTS_META}">
 
 <script type="application/ld+json">
-${cityJsonLd(c, url)}
+${cityJsonLd(c, url, cityMaster ? rendered : null)}
 </script>
 
 <style>
@@ -1107,7 +1136,7 @@ ${FILM_CSS}
     </a>
   </header>
 
-  ${heroStory(c.hero_story, c.name, A) || `<section class="hero hero-cinema" id="hero">
+  ${cityMaster ? MASTER.hero(c) : heroStory(c.hero_story, c.name, A) || `<section class="hero hero-cinema" id="hero">
     ${heroMedia}
     <div class="hero-scrim"></div>
     <div class="hero-goldframe" aria-hidden="true"></div>
@@ -1139,11 +1168,11 @@ ${heroReel(A)}
     </div>
   </section>
 
-  ${vizSection({ name: c.name, vizIntro: c.seo.viz_intro })}
+  ${cityMaster ? MASTER.vizAdjust(vizSection({ name: c.name, vizIntro: c.seo.viz_intro })) : vizSection({ name: c.name, vizIntro: c.seo.viz_intro })}
 ${modules}
 ${faqSec}
 
-  <section id="quote">
+  ${cityMaster ? MASTER.close(c) : `<section id="quote">
     <div class="byline">
       <img class="byline-ph" src="${A}/assets/fabian.jpg" alt="Fabian — Founder, VIP Home Painting"/>
       <div class="byline-txt">
@@ -1158,7 +1187,7 @@ ${faqSec}
       <h2 class="ttl">Let's Make Your Home the <em>Envy of ${esc(c.name)}</em></h2>
       ${ctaButton('Get My Complimentary Quote Now', 'No Pressure · No Obligation · Always Complimentary')}
     </div>
-  </section>
+  </section>`}
 
 ${buildFooter(navCtx(`/${c.slug}/`, c.slug, A))}
 
@@ -1219,7 +1248,7 @@ ${VIZ_JS}
   });
 })();
 </script>
-${REEL_JS}
+${MASTER.isMaster(c) ? MASTER.reelJs(REEL_JS, c) : REEL_JS}
 </body>
 </html>
 `);
@@ -1234,6 +1263,15 @@ ${REEL_JS}
 const HOA_MODULES = require('./hoa-modules.js');
 const SERVICE_MODULES = require('./service-modules.js');
 const SERVICES = JSON.parse(fs.readFileSync(path.join(__dirname, 'services.json'), 'utf8')).services;
+
+/* The OC page's story-led sales process as reusable modules — extracted
+   from the master at build time. Registered into MODULE_BUILDERS so any
+   community (moduleOrder) or city (layout.module_order) can use them. */
+const MASTER = require('./master-modules.js')({
+  BASE_PAGE, sliceBetween, rewriteAssetPaths, CFG, ctaButton, esc,
+  ROOT, DATA, CITIES, BLOG, SERVICES, linker, cityOf
+});
+Object.assign(MODULE_BUILDERS, MASTER.MODULES);
 const SERVICE_CSS = fs.readFileSync(path.join(__dirname, 'service-page.css'), 'utf8');
 const HOA_CSS = fs.readFileSync(path.join(__dirname, 'hoa-page.css'), 'utf8');
 
@@ -2196,6 +2234,7 @@ function main() {
     fs.mkdirSync(dir, { recursive: true });
     const html = buildPage(c);
     auditOutput(html, `irvine/${c.slug}`);
+    if (MASTER.isMaster(c)) MASTER.assertAssets(html, `${c.city || CFG.outputDir}/${c.slug}`);
     fs.writeFileSync(path.join(dir, 'index.html'), html, 'utf8');
     console.log(`  ✓ ${c.city || CFG.outputDir}/${c.slug}/index.html  [${c.moduleOrder.join(' → ')}]`);
   }
@@ -2204,6 +2243,7 @@ function main() {
     fs.mkdirSync(dir, { recursive: true });
     const chtml = buildCityPage(city);
     auditOutput(chtml, `${city.slug} (city)`);
+    if (MASTER.isMaster(city)) MASTER.assertAssets(chtml.split('../orange-county-sales-page').join(CFG.assetBase), `${city.slug} (city)`);
     fs.writeFileSync(path.join(dir, 'index.html'), chtml, 'utf8');
     console.log(`  ✓ ${city.slug}/index.html  [CITY: ${(city.layout.module_order||[]).length} modules]`);
     if (city.hoa_page) {

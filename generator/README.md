@@ -51,7 +51,7 @@ Outputs (all committed to the repo — GitHub Pages serves them as-is):
 - **Answer capsule** — an AI-search-ready summary paragraph directly under the
   hero: who/where/what/price anchor/warranty/phone in one crawlable block.
 - **Proof policy** — general, truthful proof points (Graco/Titan airless
-  application, Sherwin-Williams Emerald/Duration, itemized estimates, 1-Year
+  application, Sherwin-Williams Emerald/Duration, itemized estimates, 2-Year
   Warranty) framed around each community's real architecture. No fabricated
   testimonials or invented project claims.
 
@@ -66,3 +66,81 @@ footers pick up the new cross-link automatically.
 Never say "AI" in customer-facing copy — it's the "Custom Visualization
 Service" / "our design team". Navy `#1A1F4E` · Gold `#C9A961` · Cream
 `#F5EFE2` · Fraunces + Inter · (909) 312-5400.
+
+## The master sales process on a community or city page (added 2026-09-29)
+
+The Orange County page's story-led process — the family's story in the hero,
+*they visualized it → they loved it → we painted it*, the package, the
+warranty, the P.S. — is now a set of generator modules in
+`generator/master-modules.js`. Everything that is the same on every page is
+**lifted from `orange-county-sales-page/index.html` at build time**, so an
+improvement there reaches every page on the next build. Only the local words
+live in the data.
+
+**How a page switches on:** give it a `master` block (in `communities.json`,
+or on the city in `cities.json`) with at least `master.hero.h1`. A page
+without one looks exactly as it did before.
+
+**The fixed parts** (always in this place): the story hero → the short answer →
+the visualizer → *(the rotating sections)* → the FAQ → the close with the P.S.
+
+**The rotating sections** — list them in the page's `moduleOrder` (city pages:
+`layout.module_order`). Each one appears only once its words are written:
+
+| Name | What it is on the master | Words it needs |
+|---|---|---|
+| `eliminated` | "They did not choose this color — they eliminated ten others" + the scheme cards | `h2`, `lead` |
+| `instead` | "What usually happens instead" + the things-you-already-tried list | `h2`, `bridge`, `lede`, `turn` |
+| `settle` | "3 things to settle before a gallon is opened" | `h2`, `lead` |
+| `offer` | The package: the 11 renders, the $329 comparison, what you get | `h2`, `sub` |
+| `painted` | "Then we painted it" — the 3 steps | `h2`, `sub` |
+| `warranty` | The warranty (length read from config) | `h2`, `body` |
+| `beforeCommit` | "What you get before you commit" — the 4 pillars | `h2` |
+| `neighbors` | "The one thing your neighbors see every day" | `h2`, `sub` |
+| `testimonials` | The three quotes from the master | `{}` — ⚠ unverified, see ABOUT-VIP item 6 |
+| `services` | Exterior / interior / cabinets, linking to their pages | `h2`, `items` ×3 `{title, body}` |
+| `serviceArea` | Links up to the city, across to neighbors, the map and contact card | `h2`, `lead` |
+
+The close takes `master.close.h2` and `master.close.ps` (a list of paragraphs).
+
+**Words in the copy never name the family.** Write tokens instead, and the
+build fills them in from the story block: `{they}` / `{They}` (the Gallaghers),
+`{their}` / `{Their}` (the Gallaghers’), `{family}` (The Gallagher Family),
+`{place}` (Newport Beach), `{location}`, `{schemes}` (11), `{chosen}` (the scheme
+they picked), plus `{community}`, `{city}`, `{warranty}`, `{rate}`, `{phone}`.
+A typo in a token stops the build and says which one.
+
+### Swapping a page's homeowner and photos
+
+Every page starts with **the OC page's own family as a placeholder**. To put
+the real homeowner on a page, add (or edit) one block on that page and re-run
+`node generator/generate.js`:
+
+```json
+"story": {
+  "family": "The Smith Family",          ← the name on the little photo chip
+  "short": "the Smiths",                 ← how the copy says them mid-sentence
+  "possessive": "the Smiths’",           ← "the Smiths’ home"
+  "location": "Orchard Hills, Irvine",   ← under their name on the chip
+  "place": "Irvine",                     ← "their Irvine home"
+  "avatar": "assets/avatar-smith.jpg",   ← their photo
+  "heroPhoto": "assets/hero-smith.jpg",  ← the big picture behind the headline
+  "photoDir": "story-photos/smith",      ← the folder of their house pictures
+  "before": "base.webp",                 ← their house before
+  "after": "scheme-organic.jpg",         ← their house in the scheme they chose
+  "chosen": { "name": "Coastal Organic Compound",
+              "colors": "Alabaster SW 7008 &middot; Urbane Bronze SW 7048",
+              "body": "#EDE8DC", "trim": "#54504A", "accent": "#9C7B53" },
+  "schemeCount": 11,
+  "placeholder": false
+}
+```
+
+- All paths are inside `orange-county-sales-page/`.
+- **The photo folder** must hold the same file names as `viz-photos/`:
+  `base.webp` plus the eleven `scheme-….jpg` renders of *their* house. The hero,
+  the scheme cards, the package and the step swipes all read from it.
+- If a picture is missing, the build stops and lists exactly which ones.
+- You only need the lines you change — anything left out stays as the placeholder.
+- **The visualizer never changes.** It is the demonstration tool, and it always
+  shows the Gallaghers' house with their name, which stays true.

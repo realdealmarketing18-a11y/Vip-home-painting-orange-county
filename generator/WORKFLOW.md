@@ -162,6 +162,14 @@ GitHub Pages deploys in ~60 seconds.
 
 **Never hand-edit a generated page.** Data in, pages out.
 
+**The master sales process** (2026-09-29): a page with a `master` block runs the
+OC page's story-led sections from `generator/master-modules.js` — story hero,
+the eleven-scheme band, the package, the painted-it steps, the P.S. — lifted
+from the OC page at build time. The homeowner is a swappable `story` block;
+copy names them only through `{they}` / `{their}` tokens. Fields, module names
+and the swap checklist: `generator/README.md`. Progress per page:
+`generator/rollout/OC-DESIGN-ROLLOUT.md`.
+
 ---
 
 ## STEP 6 · THE OUTPUT AUDIT

@@ -19,6 +19,7 @@ Layer: **Project memory** (B.L.A.S.T. Protocol 0). Append; don't rewrite history
 - 3 server-side plugins installed (`generator/wp-mu-plugins/` mirrors them)
 - Output gate at **21 checks**, green (was 18; the hero work added three)
 - Visualizer verified live: 11/11 colour schemes, 9/9 options, on both Irvine and Anaheim
+- 2026-09-29 · OC master sales process ported into the generator (`master-modules.js`, rollout row 0) — switched on per page by a `master` block, homeowner swappable via `story`; no page changed yet
 
 ---
 
