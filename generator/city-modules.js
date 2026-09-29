@@ -269,7 +269,7 @@ M.process = (c, no, bg, H) => {
     ['Estate-Grade Preparation',
      'Pressure wash, stucco repair floated to match texture, sanding, bonding primer. Landscaping and hardscape masked before a gallon is opened.'],
     ['Precision Spray Application',
-     'Sherwin-Williams Emerald applied with Graco and Titan airless equipment at full wet-mil, back-rolled on stucco, hand-cut at every transition.'],
+     'Sherwin-Williams Emerald applied with Graco and Titan airless equipment at the full thickness the manufacturer specifies, back-rolled on stucco, hand-cut at every transition.'],
     ['Founder’s Walkthrough &amp; Warranty',
      `Raking-light inspection of every side of the house, touch-ups before you ask, and a signed walkthrough — backed by our ${H.CFG.warranty}.`]
   ];

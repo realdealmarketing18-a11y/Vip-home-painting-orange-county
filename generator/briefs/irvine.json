@@ -293,7 +293,7 @@
       },
       {
         "q": "What paint do you use, and why does it matter here?",
-        "a": "Sherwin-Williams Emerald and Duration exterior systems, applied at full wet-mil thickness and never over-thinned. Inland Irvine sun is hard on coatings: builder-grade paint chalks and fades years early, and deep colors in particular fail fast without fade-resistant colorants. All work carries a 2-Year Warranty on labor and materials."
+        "a": "Sherwin-Williams Emerald and Duration exterior systems, applied at the full thickness the manufacturer specifies and never over-thinned. Inland Irvine sun is hard on coatings: builder-grade paint chalks and fades years early, and deep colors in particular fail fast without fade-resistant colorants. All work carries a 2-Year Warranty on labor and materials."
       },
       {
         "q": "Do you handle HOA and design review approval?",
@@ -317,7 +317,7 @@
     "spotlight": {
       "eyebrow": "How a Project Actually Looks",
       "title": "Prep Is the Finish",
-      "body": "On Irvine stucco, everything you can see at the end was decided before a drop of color went on. Pressure wash, crack repair floated to match the existing texture, bonding primer on bare substrate, then Emerald sprayed with a Titan airless and back-rolled so the coating drives into the texture rather than sitting on top of it. Rolling a full exterior is faster for the crew. Spraying is better for the house.",
+      "body": "On Irvine stucco, everything you can see at the end was decided before a drop of color went on. Pressure wash, crack repair floated to match the existing texture, bonding primer on bare surfaces, then Emerald sprayed with a Titan airless and back-rolled so the coating drives into the texture rather than sitting on top of it. Rolling a full exterior is faster for the crew. Spraying is better for the house.",
       "is_representative": true
     }
   },
@@ -426,7 +426,7 @@
       "problems": [
         {
           "p": "South-facing stucco fades unevenly on hillside lots, leaving chalky, blotchy walls within a few seasons.",
-          "s": "We spec Sherwin-Williams Emerald exterior — a self-priming, UV-stable acrylic — and apply a full wet-mil coating by airless spray so every side of the house weathers evenly."
+          "s": "We spec Sherwin-Williams Emerald exterior — a self-priming, UV-stable acrylic — and apply a full-thickness coating by airless spray so every side of the house weathers evenly."
         },
         {
           "p": "Design review paperwork stalls the project before it starts.",
@@ -464,7 +464,7 @@
         "palette_baseline"
       ],
       "architecture_delta": {
-        "note": "Altair's homes are contemporary and transitional — large uninterrupted stucco planes, deep fascias, and metal-and-glass details. On modern architecture there is nowhere for a mediocre finish to hide: lap marks, roller stipple, and wavy cut lines read instantly.",
+        "note": "Altair's homes are contemporary and transitional — large uninterrupted stucco planes, deep roof edges, and metal-and-glass details. On modern architecture there is nowhere for a mediocre finish to hide: lap marks, roller stipple, and wavy cut lines read instantly.",
         "confirmed_styles": [
           "Modern",
           "Contemporary"
@@ -536,7 +536,7 @@
         "meta_desc": "Altair Irvine exterior painters for modern estates. Flawless airless spray finishes, complimentary color visualization, itemized pricing, 2-Year Warranty.",
         "h1": "Altair's <span class=\"gold\">Modern Estate Painters</span> — Crisp Lines for Contemporary Architecture",
         "answer_capsule": "VIP Home Painting provides luxury exterior and interior painting for the Altair community in Irvine, CA. Altair's contemporary architecture — broad stucco planes, metal accents, and sharp rooflines — demands the flawless, even finish that only professional Graco and Titan airless spray application delivers. We use Sherwin-Williams Emerald and Duration systems in modern palettes like Alabaster, Chatura Gray, and Iron Ore, provide a complimentary 30-minute custom color visualization before any work begins, and price every proposal as an itemized line-by-line estimate backed by a 2-Year Warranty. Call (909) 312-5400.",
-        "viz_intro": "On Altair's contemporary architecture, color is doing more work than it does anywhere else in Irvine. Broad uninterrupted stucco planes, deep fascias, and metal detailing mean a charcoal that reads sophisticated on a small sample can turn heavy and flat across a twenty-foot wall — and the reverse is just as true. Seeing the scheme at full scale on your own home, before a single gallon is tinted, is the difference between a facade that looks designed and one that cost five figures to get wrong twice."
+        "viz_intro": "On Altair's contemporary architecture, color is doing more work than it does anywhere else in Irvine. Broad uninterrupted stucco planes, deep roof edges, and metal detailing mean a charcoal that reads sophisticated on a small sample can turn heavy and flat across a twenty-foot wall — and the reverse is just as true. Seeing the scheme at full scale on your own home, before a single gallon is tinted, is the difference between a facade that looks designed and one that cost five figures to get wrong twice."
       },
       "faqs": [
         {
@@ -546,7 +546,7 @@
         },
         {
           "q": "Will a dark color like Iron Ore fade on a full-sun Altair wall?",
-          "a": "Not with the right system. We spec Sherwin-Williams Emerald with fade-resistant colorants rated for dark exterior use, applied at full wet-mil thickness. Deep charcoals like Iron Ore SW 7069 stay deep — and our work is backed by a 2-Year Warranty.",
+          "a": "Not with the right system. We spec Sherwin-Williams Emerald with fade-resistant colorants rated for dark exterior use, applied at the full thickness the manufacturer specifies. Deep charcoals like Iron Ore SW 7069 stay deep — and our work is backed by a 2-Year Warranty.",
           "short_youtube_id": ""
         },
         {
@@ -558,7 +558,7 @@
       "problems": [
         {
           "p": "Roller stipple and lap marks ruin the flat, monolithic look modern stucco is designed for.",
-          "s": "We spray every large plane with Graco and Titan airless rigs at a consistent tip and pressure, then back-roll where the substrate calls for it — a uniform film, edge to edge."
+          "s": "We spray every large plane with Graco and Titan airless rigs at a consistent tip and pressure, then back-roll where the surface calls for it — a uniform film, edge to edge."
         },
         {
           "p": "Dark modern colors like Iron Ore can fail fast in full sun if the wrong product is used.",
@@ -684,7 +684,7 @@
         },
         {
           "p": "Sun-baked foothill walls chalk and fade within a few years.",
-          "s": "Sherwin-Williams Emerald and Duration exterior systems, applied at full wet-mil by airless spray, are engineered for exactly this exposure."
+          "s": "Sherwin-Williams Emerald and Duration exterior systems, applied at the full thickness the manufacturer specifies by airless spray, are engineered for exactly this exposure."
         },
         {
           "p": "Design review requirements make color changes feel like a bureaucratic project.",
@@ -939,7 +939,7 @@
         },
         {
           "p": "Exterior colors that have quietly faded a shade lighter than the neighbors'.",
-          "s": "Sherwin-Williams Emerald exterior at full wet-mil by airless spray restores depth and holds it — with a 2-Year Warranty behind it."
+          "s": "Sherwin-Williams Emerald exterior at the full thickness the manufacturer specifies by airless spray restores depth and holds it — with a 2-Year Warranty behind it."
         },
         {
           "p": "Painters who overspray garden walls, paseos, and your neighbor's roses.",
@@ -1058,7 +1058,7 @@
         },
         {
           "p": "Flat builder-grade paint has gone chalky after a decade of full sun.",
-          "s": "Sherwin-Williams Emerald exterior, self-priming and UV-stable, applied at full wet-mil with Graco and Titan airless equipment."
+          "s": "Sherwin-Williams Emerald exterior, self-priming and UV-stable, applied at the full thickness the manufacturer specifies with Graco and Titan airless equipment."
         },
         {
           "p": "Tight lot lines mean overspray risk on your neighbor's car, wall, and roses.",
@@ -1197,7 +1197,7 @@
       },
       {
         "q": "How do you price common-area painting?",
-        "a": "Itemized by structure rather than as a single lump figure, so your board can compare our proposal against others line by line and approve scope selectively if the budget requires phasing. Pricing depends on surface area, substrate condition and access. We measure on site rather than estimating from plans."
+        "a": "Itemized by structure rather than as a single lump figure, so your board can compare our proposal against others line by line and approve scope selectively if the budget requires phasing. Pricing depends on surface area, the condition of the surface, and access. We measure on site rather than estimating from plans."
       },
       {
         "q": "Can the board see the colors before approving them?",

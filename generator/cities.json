@@ -122,7 +122,7 @@
         },
         {
           "q": "What paint do you use, and why does it matter here?",
-          "a": "Sherwin-Williams Emerald and Duration exterior systems, applied at full wet-mil thickness and never over-thinned. Inland Irvine sun is hard on coatings: builder-grade paint chalks and fades years early, and deep colors in particular fail fast without fade-resistant colorants. All work carries a 2-Year Warranty on labor and materials."
+          "a": "Sherwin-Williams Emerald and Duration exterior systems, applied at the full thickness the manufacturer specifies and never over-thinned. Inland Irvine sun is hard on coatings: builder-grade paint chalks and fades years early, and deep colors in particular fail fast without fade-resistant colorants. All work carries a 2-Year Warranty on labor and materials."
         },
         {
           "q": "Do you handle HOA and design review approval?",
@@ -174,7 +174,7 @@
       "spotlight": {
         "eyebrow": "How a Project Actually Looks",
         "title": "Prep Is the Finish",
-        "body": "On Irvine stucco, everything you can see at the end was decided before a drop of color went on. Pressure wash, crack repair floated to match the existing texture, bonding primer on bare substrate, then Emerald sprayed with a Titan airless and back-rolled so the coating drives into the texture rather than sitting on top of it. Rolling a full exterior is faster for the crew. Spraying is better for the house.",
+        "body": "On Irvine stucco, everything you can see at the end was decided before a drop of color went on. Pressure wash, crack repair floated to match the existing texture, bonding primer on bare surfaces, then Emerald sprayed with a Titan airless and back-rolled so the coating drives into the texture rather than sitting on top of it. Rolling a full exterior is faster for the crew. Spraying is better for the house.",
         "is_representative": true
       },
       "hoa_page": {
@@ -293,7 +293,7 @@
           },
           {
             "q": "How do you price common-area painting?",
-            "a": "Itemized by structure rather than as a single lump figure, so your board can compare our proposal against others line by line and approve scope selectively if the budget requires phasing. Pricing depends on surface area, substrate condition and access. We measure on site rather than estimating from plans."
+            "a": "Itemized by structure rather than as a single lump figure, so your board can compare our proposal against others line by line and approve scope selectively if the budget requires phasing. Pricing depends on surface area, the condition of the surface, and access. We measure on site rather than estimating from plans."
           },
           {
             "q": "Can the board see the colors before approving them?",
@@ -441,7 +441,7 @@
         },
         {
           "q": "What coatings do you use?",
-          "a": "Sherwin-Williams Emerald and Duration exterior systems, two coats at full wet-mil thickness and never over-thinned, applied with professional Graco and Titan airless equipment and back-rolled on stucco. Anaheim Hills exposure is hard on coatings — open slopes, long sun, and real temperature swings between canyon mornings and afternoons. Builder-grade paint chalks and fades years early up here. All work carries a 2-Year Warranty on labor and materials."
+          "a": "Sherwin-Williams Emerald and Duration exterior systems, two coats at the full thickness the manufacturer specifies and never over-thinned, applied with professional Graco and Titan airless equipment and back-rolled on stucco. Anaheim Hills exposure is hard on coatings — open slopes, long sun, and real temperature swings between canyon mornings and afternoons. Builder-grade paint chalks and fades years early up here. All work carries a 2-Year Warranty on labor and materials."
         },
         {
           "q": "How long does an exterior repaint take?",

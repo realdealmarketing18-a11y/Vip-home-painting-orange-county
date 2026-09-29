@@ -47,7 +47,7 @@ M.process = (c, no, bg, H) => {
     ['Phased Execution',
      'Work is sequenced building by building so amenities stay open. Full masking, daily clean-up, and crews briefed on gate and pool-area protocol.'],
     ['Board Walkthrough &amp; Warranty',
-     `Final walkthrough with your manager or board representative, punch list closed before sign-off, backed by our ${H.CFG.warranty} on labor and materials.`]
+     `Final walkthrough with your manager or board representative, every item on the final list closed before sign-off, backed by our ${H.CFG.warranty} on labor and materials.`]
   ];
   const rows = steps.map(([t, d], i) => `
       <div class="glove-step">
@@ -104,8 +104,8 @@ M.spec = (c, no, bg, H) => `
     </div>
     <div class="spec-table">
       <div class="st-head"><span class="t">Association Painting Specification</span><span class="n">Prepared for ${c.city_name || ''} associations</span></div>
-      <div class="st-row"><span class="st-k">Surface Preparation</span><span class="st-v">Pressure wash, scrape and sand failing edges, <b>stucco crack and patch repair floated to match existing texture</b>, bonding primer on bare substrate.</span></div>
-      <div class="st-row"><span class="st-k">Coating System</span><span class="st-v"><b>Sherwin-Williams Emerald and Duration</b> exterior acrylics on bodies and walls; urethane trim enamel on doors, railings and iron. Two coats at full wet-mil.</span></div>
+      <div class="st-row"><span class="st-k">Surface Preparation</span><span class="st-v">Pressure wash, scrape and sand failing edges, <b>stucco crack and patch repair floated to match existing texture</b>, bonding primer on bare surfaces.</span></div>
+      <div class="st-row"><span class="st-k">Coating System</span><span class="st-v"><b>Sherwin-Williams Emerald and Duration</b> exterior acrylics on bodies and walls; urethane trim enamel on doors, railings and iron. Two coats at the full thickness the manufacturer specifies.</span></div>
       <div class="st-row"><span class="st-k">Application</span><span class="st-v"><b>Graco and Titan professional airless rigs</b>, back-rolled on stucco, hand-cut at every transition.</span></div>
       <div class="st-row"><span class="st-k">Iron &amp; Metalwork</span><span class="st-v">Rust treatment and spot-prime on gates, railings and light poles before finish coats.</span></div>
       <div class="st-row"><span class="st-k">Site Protection</span><span class="st-v">Landscaping wrapped, hardscape and pool surrounds covered, wind-checked spray scheduling, clean site every evening. Amenities stay open wherever sequencing allows.</span></div>

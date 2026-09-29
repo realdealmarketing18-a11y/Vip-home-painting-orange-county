@@ -16,7 +16,7 @@
         "primary_keyword": "exterior house painting Orange County",
         "meta_title": "Exterior House Painting Orange County | VIP Home Painting",
         "meta_desc": "Exterior house painting across Orange County. See your home in every color before we paint — complimentary visualization, itemized estimate, 2-Year Warranty.",
-        "answer_capsule": "VIP Home Painting provides exterior house painting across Orange County, CA, from a base in Anaheim. Exterior work is specified in Sherwin-Williams Emerald and Duration coating systems and applied at full wet-mil by Graco and Titan airless spray. Every project begins with a complimentary custom visualization of your own home in each candidate palette, is quoted line by line rather than as a lump sum, and is backed by a 2-Year Warranty on labor and materials. Call (909) 312-5400."
+        "answer_capsule": "VIP Home Painting provides exterior house painting across Orange County, CA, from a base in Anaheim. Exterior work is specified in Sherwin-Williams Emerald and Duration coating systems and applied at the full thickness the manufacturer specifies by Graco and Titan airless spray. Every project begins with a complimentary custom visualization of your own home in each candidate palette, is quoted line by line rather than as a lump sum, and is backed by a 2-Year Warranty on labor and materials. Call (909) 312-5400."
       },
       "intro": "Exterior paint is the one decision on your house that every neighbor sees, every day, for the next decade. It is also the one most people commit to from a two-inch swatch held against a wall in the wrong light. That is why our exterior work starts on a screen, not a ladder.",
       "scope": [
@@ -32,14 +32,14 @@
         "body": "The coating and the application matter more than the color. Both are specified before the estimate, and both appear on it.",
         "specs": [
           { "k": "Coating", "v": "Sherwin-Williams Emerald and Duration exterior systems — self-priming, UV-stable acrylics" },
-          { "k": "Application", "v": "Graco and Titan airless spray at consistent tip and pressure, back-rolled where the substrate calls for it" },
-          { "k": "Film build", "v": "Full wet-mil, so every side of the house weathers at the same rate" },
+          { "k": "Application", "v": "Graco and Titan airless spray at consistent tip and pressure, back-rolled where the surface calls for it" },
+          { "k": "Film build", "v": "Full specified thickness, so every side of the house weathers at the same rate" },
           { "k": "Warranty", "v": "2-Year Warranty on labor and materials" }
         ]
       },
       "problems": [
-        { "p": "South-facing stucco fades unevenly on hillside lots, leaving chalky, blotchy walls within a few seasons.", "s": "We spec Sherwin-Williams Emerald exterior — a self-priming, UV-stable acrylic — and apply a full wet-mil coating by airless spray so every side of the house weathers evenly." },
-        { "p": "Roller stipple and lap marks ruin the flat, monolithic look modern stucco is designed for.", "s": "We spray every large plane with Graco and Titan airless rigs at a consistent tip and pressure, then back-roll where the substrate calls for it — a uniform film, edge to edge." },
+        { "p": "South-facing stucco fades unevenly on hillside lots, leaving chalky, blotchy walls within a few seasons.", "s": "We spec Sherwin-Williams Emerald exterior — a self-priming, UV-stable acrylic — and apply a full-thickness coating by airless spray so every side of the house weathers evenly." },
+        { "p": "Roller stipple and lap marks ruin the flat, monolithic look modern stucco is designed for.", "s": "We spray every large plane with Graco and Titan airless rigs at a consistent tip and pressure, then back-roll where the surface calls for it — a uniform film, edge to edge." },
         { "p": "Dark modern colors like Iron Ore can fail fast in full sun if the wrong product is used.", "s": "We spec Sherwin-Williams Emerald with modern, fade-resistant colorants rated for dark exterior use, so deep charcoals stay deep." },
         { "p": "Crisp two-tone schemes live or die on the cut lines.", "s": "Laser-checked masking and hand-cut transitions where volumes meet — the detail work that separates an estate finish from a production repaint." },
         { "p": "Painters who overspray garden walls, paseos, and your neighbor's roses.", "s": "White-glove masking and containment on every job — landscaping wrapped, hardscape covered, and a clean site every evening." }
@@ -48,7 +48,7 @@
         { "t": "Visualize", "d": "Your actual home rendered in each candidate palette. You approve a picture, not a swatch." },
         { "t": "Specify", "d": "Coating system, prep scope and access plan written down, then priced line by line." },
         { "t": "Prepare", "d": "Wash, repair, mask and prime. This is the half of the job that decides how long the other half lasts." },
-        { "t": "Spray", "d": "Airless application at full wet-mil, one side at a time, so the house stays livable." },
+        { "t": "Spray", "d": "Airless application at the full thickness the manufacturer specifies, one side at a time, so the house stays livable." },
         { "t": "Walk it", "d": "A final walkthrough against the checklist before we pull masking." }
       ],
       "pricing": {
@@ -58,7 +58,7 @@
       "faqs": [
         { "q": "How long does an exterior repaint take?", "a": "Most homes are completed in about five working days, sequenced one side at a time so the house stays livable throughout. Larger estates with extensive trim take longer, and the estimate says which." },
         { "q": "Do you handle HOA design review?", "a": "Yes. We prepare the color submission package — swatches, product data sheets and notes for each side of the house — formatted for your association's design review, so approval is a formality rather than a delay." },
-        { "q": "What paint do you use on exteriors?", "a": "Sherwin-Williams Emerald and Duration exterior systems, applied at full wet-mil by airless spray. Emerald is a self-priming, UV-stable acrylic, which is what keeps deep colors from chalking on sun-exposed walls." },
+        { "q": "What paint do you use on exteriors?", "a": "Sherwin-Williams Emerald and Duration exterior systems, applied at the full thickness the manufacturer specifies by airless spray. Emerald is a self-priming, UV-stable acrylic, which is what keeps deep colors from chalking on sun-exposed walls." },
         { "q": "Can I see the color on my house before committing?", "a": "That is how every project starts. Our complimentary Custom Visualization Service renders your actual home in each candidate palette, so you approve something you have already seen." }
       ]
     },

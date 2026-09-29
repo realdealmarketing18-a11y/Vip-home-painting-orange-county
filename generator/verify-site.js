@@ -133,6 +133,21 @@ function copyProblems(body) {
      lives only in a document is advice. This is the gate.
      Say: the front of the house, a side of the house, or a wall. */
   if (hit(/\belevations?\b/gi)) probs.push('"elevation" (BRAND-VOICE rule 3 — say "the front of the house", "a side of the house" or "a wall")');
+  /* The rest of BRAND-VOICE rule 3's list. Each has a plain-English equivalent
+     that is a STRONGER claim, not a softer one: "the full thickness the
+     manufacturer specifies" is checkable, "full wet-mil" is only impressive.
+     57 of these were in customer copy on 2026-09-29.
+
+     fascia is deliberately absent from this gate. Fabian's call: it stays in
+     estimate language, because she meets the word on her own estimate and a
+     line item that names the surface being priced is honest. It was swept out
+     of scene-setting prose only, where it was buying nothing. If that ever
+     needs enforcing, it cannot be a flat word match -- it has to tell a line
+     item from a sentence, which no regex here can do. */
+  if (hit(/\bsubstrates?\b/gi)) probs.push('"substrate" (BRAND-VOICE rule 3 — say "the surface")');
+  if (hit(/\bwet-?mils?\b/gi)) probs.push('"wet-mil" (BRAND-VOICE rule 3 — say "the full thickness the manufacturer specifies")');
+  if (hit(/\bmil\s+thickness\b/gi)) probs.push('"mil thickness" (BRAND-VOICE rule 3 — say "thickness")');
+  if (hit(/\bpunch\s+lists?\b/gi)) probs.push('"punch list" (BRAND-VOICE rule 3 — say "the final list")');
   /* VIP has 9 reviews and the rating is unconfirmed, so no star claim of any
      kind ships. The old pattern wanted the digit touching the word; the front
      page wrote it as "5" then "★" then "Star Reviews" in three sibling divs,

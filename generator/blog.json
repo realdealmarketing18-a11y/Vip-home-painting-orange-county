@@ -112,7 +112,7 @@
           "name": "Altair",
           "url": "/irvine/altair/",
           "meta": "Guard-gated · Contemporary · ~$4.6M",
-          "body": "Altair is the one village where the architecture, not the light, sets the rule. Broad uninterrupted stucco planes and deep fascias mean there is nowhere for a mediocre finish to hide — roller stipple and lap marks that would vanish on a textured Mediterranean facade are obvious across twenty feet of flat wall.\n\nThe streets are named for astronomy. Bellatrix is a star in Orion, Chasma is a planetary canyon, Bolide is a bright meteor, and Sagan Way needs no explanation. The community itself is named for the star Altair. A palette here should feel deliberate and modern rather than warm and traditional.",
+          "body": "Altair is the one village where the architecture, not the light, sets the rule. Broad uninterrupted stucco planes and deep roof edges mean there is nowhere for a mediocre finish to hide — roller stipple and lap marks that would vanish on a textured Mediterranean facade are obvious across twenty feet of flat wall.\n\nThe streets are named for astronomy. Bellatrix is a star in Orion, Chasma is a planetary canyon, Bolide is a bright meteor, and Sagan Way needs no explanation. The community itself is named for the star Altair. A palette here should feel deliberate and modern rather than warm and traditional.",
           "palette": [
             {
               "name": "Pure White",
@@ -213,8 +213,8 @@
         "body": "The villages differ. The work underneath does not.\n\nOn stucco, everything you can see at the end was decided before a drop of color went on. Rolling a full exterior is faster for the crew; spraying and back-rolling is better for the house, because it drives the coating into the texture instead of leaving it sitting on top.",
         "points": [
           "Pressure wash, then stucco crack and patch repair floated to match the existing texture",
-          "Bonding primer on any bare substrate — not a shortcut worth taking on inland exposure",
-          "Sherwin-Williams Emerald and Duration, two coats at full wet-mil, never over-thinned",
+          "Bonding primer on any bare surface — not a shortcut worth taking on inland exposure",
+          "Sherwin-Williams Emerald and Duration, two coats at the full thickness the manufacturer specifies, never over-thinned",
           "Graco and Titan airless application, back-rolled on stucco, hand-cut at every transition",
           "Your community association’s design review package prepared as part of the project",
           "Raking-light inspection at the end, then a 2-Year Warranty on labor and materials"
@@ -326,7 +326,7 @@
             "body": "Exterior painting in Irvine, California runs roughly <b>$2.74 to $4.89 per square foot of paintable surface</b> based on published local rate data. <b>VIP Home Painting starts at $4.75 per square foot of paintable surface</b>, at the premium end of that range.\n\nWhere a specific home lands inside the range is decided by five variables, in rough order of impact:",
             "points": [
               "<b>Paintable surface area</b> — which is not the same number as your home’s square footage",
-              "<b>Substrate condition</b> — how much crack repair, patching and priming the stucco needs before any color goes on",
+              "<b>The condition of the surface</b> — how much crack repair, patching and priming the stucco needs before any color goes on",
               "<b>Number of colors in the scheme</b> — body, trim, fascia, doors and accents are separate cut-ins, not one pass",
               "<b>Height and access</b> — second stories, hillside lots and zero-setback walls all change the labor",
               "<b>Coating specification</b> — product line, film thickness, and whether the crew back-rolls or only sprays"
@@ -344,11 +344,11 @@
               "id": "prep",
               "number": "2",
               "heading": "What the stucco is hiding",
-              "body": "On stucco — which is most of Irvine — everything you can see when the job is finished was decided before a drop of color went on.\n\nHairline cracking is normal on stucco and does not mean anything is structurally wrong. But every crack has to be opened, filled and floated to match the surrounding texture, or it telegraphs straight through the new coating within a season. A home with substantial crack repair carries real hours that a home with sound stucco does not.\n\nThe same is true of bare substrate. Anywhere the previous coating has failed, chalked or been repaired needs bonding primer before topcoat. This is the line item most likely to be quietly missing from a cheaper bid, and it is the one that decides whether the finish lasts eight years or three.",
+              "body": "On stucco — which is most of Irvine — everything you can see when the job is finished was decided before a drop of color went on.\n\nHairline cracking is normal on stucco and does not mean anything is structurally wrong. But every crack has to be opened, filled and floated to match the surrounding texture, or it telegraphs straight through the new coating within a season. A home with substantial crack repair carries real hours that a home with sound stucco does not.\n\nThe same is true of bare surfaces. Anywhere the previous coating has failed, chalked or been repaired needs bonding primer before topcoat. This is the line item most likely to be quietly missing from a cheaper bid, and it is the one that decides whether the finish lasts eight years or three.",
               "list": [
                 "Pressure wash to remove chalking, dust and organic growth",
                 "Crack repair opened, filled, and floated to match existing texture",
-                "Bonding primer on all bare or repaired substrate",
+                "Bonding primer on all bare or repaired surfaces",
                 "Caulking at every transition, penetration and dissimilar-material joint"
               ]
             },
@@ -368,8 +368,8 @@
               "id": "spec",
               "number": "5",
               "heading": "The specification, and what \"two coats\" actually means",
-              "body": "Two bids can both say \"two coats\" and describe meaningfully different work.\n\nCoating applied too thin, or over-thinned to spray more easily, technically leaves two coats on the wall and delivers a fraction of the intended film thickness. Manufacturers publish a wet-mil spec for a reason. Applying below it is the most invisible way to reduce cost on a painting job, and the homeowner does not find out for several years.\n\nThe other variable is method. Spraying alone is faster. Spraying and then back-rolling drives the coating into the stucco texture instead of leaving it bridging on top of it, which is what adhesion and service life depend on. It takes longer, and it is the correct way to do it.",
-              "callout": "VIP specifies Sherwin-Williams Emerald and Duration, two coats at full wet-mil, never over-thinned — sprayed and back-rolled on stucco with Graco and Titan airless equipment."
+              "body": "Two bids can both say \"two coats\" and describe meaningfully different work.\n\nCoating applied too thin, or over-thinned to spray more easily, technically leaves two coats on the wall and delivers a fraction of the intended film thickness. Manufacturers publish a minimum thickness spec for a reason. Applying below it is the most invisible way to reduce cost on a painting job, and the homeowner does not find out for several years.\n\nThe other variable is method. Spraying alone is faster. Spraying and then back-rolling drives the coating into the stucco texture instead of leaving it bridging on top of it, which is what adhesion and service life depend on. It takes longer, and it is the correct way to do it.",
+              "callout": "VIP specifies Sherwin-Williams Emerald and Duration, two coats at the full thickness the manufacturer specifies, never over-thinned — sprayed and back-rolled on stucco with Graco and Titan airless equipment."
             }
           ],
           "table": {
@@ -389,7 +389,7 @@
               ],
               [
                 "Priming",
-                "Bonding primer on bare, repaired or chalking substrate",
+                "Bonding primer on bare, repaired or chalking surfaces",
                 "How much of the wall is exposed after prep"
               ],
               [
@@ -399,7 +399,7 @@
               ],
               [
                 "Body coating",
-                "Two coats at full wet-mil, sprayed and back-rolled",
+                "Two coats at the full thickness the manufacturer specifies, sprayed and back-rolled",
                 "Paintable surface area and access height"
               ],
               [
@@ -429,7 +429,7 @@
             "heading": "What to remember",
             "points": [
               "Ask for the <b>paintable surface measurement</b>, not a price based on your home’s square footage.",
-              "Ask what happens to <b>cracks and bare substrate</b> specifically. Vague answers here are the most expensive kind.",
+              "Ask what happens to <b>cracks and bare surfaces</b> specifically. Vague answers here are the most expensive kind.",
               "Ask whether the crew <b>back-rolls on stucco</b> or only sprays.",
               "Ask for the estimate <b>itemized</b>. If two bids are far apart, the difference is almost always a line one of them left out.",
               "Count the <b>colors in your scheme</b> before comparing quotes — a four-color house is a different job from a two-color one."
@@ -447,7 +447,7 @@
             },
             {
               "q": "Why is one painting quote so much cheaper than another?",
-              "a": "Almost always because of something that was left out rather than something that was discounted. The most common omissions are bonding primer on bare substrate, crack repair floated to match texture, and back-rolling on stucco. All three are invisible on the day the job finishes and decisive three years later. Comparing itemized estimates rather than totals is the only reliable way to see the difference."
+              "a": "Almost always because of something that was left out rather than something that was discounted. The most common omissions are bonding primer on bare surfaces, crack repair floated to match texture, and back-rolling on stucco. All three are invisible on the day the job finishes and decisive three years later. Comparing itemized estimates rather than totals is the only reliable way to see the difference."
             },
             {
               "q": "What is paintable surface, and why not just use my square footage?",
@@ -570,7 +570,7 @@
             {
               "id": "fixed",
               "heading": "The things you are not repainting decide more than you think",
-              "body": "Your roof is staying. So is the stone wainscot, the driveway, the window frames, and in most Irvine villages a good deal of hardscape and mature planting.\n\nEvery one of those surfaces reflects color back onto the wall. A terracotta tile roof throws warm light down onto the fascia and upper body all day. Large expanses of green landscaping push a subtle cool cast onto shaded walls. A warm-toned stone base can make a neutral gray body read faintly lilac by contrast — an effect nobody predicts from a card and everybody notices on the finished house.\n\nThis is the failure mode that produces the most regret, because the color is not wrong in isolation. It is wrong next to the four things that were always going to stay."
+              "body": "Your roof is staying. So is the stone wainscot, the driveway, the window frames, and in most Irvine villages a good deal of hardscape and mature planting.\n\nEvery one of those surfaces reflects color back onto the wall. A terracotta tile roof throws warm light down onto the trim under the roofline and the upper body all day. Large expanses of green landscaping push a subtle cool cast onto shaded walls. A warm-toned stone base can make a neutral gray body read faintly lilac by contrast — an effect nobody predicts from a card and everybody notices on the finished house.\n\nThis is the failure mode that produces the most regret, because the color is not wrong in isolation. It is wrong next to the four things that were always going to stay."
             },
             {
               "id": "cost",
@@ -605,7 +605,7 @@
             },
             {
               "q": "Does the roof really affect what exterior color I should choose?",
-              "a": "Substantially. A terracotta or clay tile roof reflects warm light onto the fascia and upper body of the house throughout the day, which pushes neutral colors warmer than they appear in isolation. Since the roof is not changing, it is one of the fixed constraints the color has to work with rather than a detail to consider afterward."
+              "a": "Substantially. A terracotta or clay tile roof reflects warm light onto the trim under the roofline and the upper body of the house throughout the day, which pushes neutral colors warmer than they appear in isolation. Since the roof is not changing, it is one of the fixed constraints the color has to work with rather than a detail to consider afterward."
             }
           ],
           "related_heading": "Read next",
@@ -977,7 +977,7 @@
               "id": "see",
               "number": "3",
               "heading": "Then see it on your own house, because the first two only narrow it",
-              "body": "LRV and undertone will reliably get you from thirty candidates to three. They will not pick the winner, because neither number knows anything about your specific house.\n\nThey do not know the front of your house faces west into afternoon sun coming off the Orchard Hills ridge. They do not know your roof is terracotta and throws warm light onto the fascia all day. They do not know your stucco carries a heavy texture that will read the color two steps deeper, or that your neighbor’s mature landscaping puts a cool cast on the north side every morning.\n\nThat is the gap the Custom Visualization Service closes. Our design team renders your actual home — the front of your house, your roof, your surroundings — in each of the finalists, so the decision is made by looking rather than imagining. It costs nothing, it happens before anything is scheduled, and it takes about thirty minutes."
+              "body": "LRV and undertone will reliably get you from thirty candidates to three. They will not pick the winner, because neither number knows anything about your specific house.\n\nThey do not know the front of your house faces west into afternoon sun coming off the Orchard Hills ridge. They do not know your roof is terracotta and throws warm light onto the trim under the roofline all day. They do not know your stucco carries a heavy texture that will read the color two steps deeper, or that your neighbor’s mature landscaping puts a cool cast on the north side every morning.\n\nThat is the gap the Custom Visualization Service closes. Our design team renders your actual home — the front of your house, your roof, your surroundings — in each of the finalists, so the decision is made by looking rather than imagining. It costs nothing, it happens before anything is scheduled, and it takes about thirty minutes."
             }
           ],
           "viz_intro": "Try the principle here first. Pick a direction and tap through the palettes — the home below re-paints itself in real time so you can watch how much a small shift in undertone changes the whole house. Then we do it with your house.",

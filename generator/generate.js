@@ -390,7 +390,7 @@ function modSpecs(c, no, bg) {
     <div class="spec-table">
       <div class="st-head"><span class="t">Estate Painting Specification</span><span class="n">Prepared for ${c.name}, ${cityOf(c).name}</span></div>
       <div class="st-row"><span class="st-k">Surface Preparation</span><span class="st-v">Pressure wash, scrape and sand failing edges, <b>stucco crack and patch repair floated to match the existing texture</b>, and spot-priming with bonding primer — the finish is only as good as what's under it.</span></div>
-      <div class="st-row"><span class="st-k">Coating System</span><span class="st-v"><b>Sherwin-Williams Emerald and Duration</b> exterior acrylics for bodies and fascias; Emerald urethane trim enamel for doors, trim, and cabinetry. Two coats at full wet-mil thickness, never over-thinned.</span></div>
+      <div class="st-row"><span class="st-k">Coating System</span><span class="st-v"><b>Sherwin-Williams Emerald and Duration</b> exterior acrylics for bodies and fascias; Emerald urethane trim enamel for doors, trim, and cabinetry. Two coats at the full thickness the manufacturer specifies, never over-thinned.</span></div>
       <div class="st-row"><span class="st-k">Application</span><span class="st-v"><b>Graco and Titan professional airless spray rigs</b>, back-rolled on stucco to drive coating into the texture, with hand-cut lines at every color transition.</span></div>
       <div class="st-row"><span class="st-k">Site Protection</span><span class="st-v">Full masking and containment for ${c.context.settingNote || c.name} — landscaping wrapped, hardscape covered, wind-checked spray scheduling, clean site every evening.</span></div>
       <div class="st-row"><span class="st-k">Transparency</span><span class="st-v">Every proposal is <b>itemized line by line</b> — prep, primer, coating, trim, and accents priced separately. No lump sums, no hidden charges.</span></div>
@@ -429,7 +429,7 @@ function modProcess(c, no, bg) {
     ['Private Color Consultation', 'A 30-minute in-home consultation, then our design team renders your ' + c.name + ' home in each candidate palette through our complimentary <em>Custom Visualization Service</em> — before anything is scheduled.'],
     ['Design Review, Handled', 'We prepare the complete color submission package for ' + c.context.hoaNote + ' — swatches, product data sheets, and a callout for each side of the house — so approval never stalls your project.'],
     ['Estate-Grade Preparation', 'Pressure wash, stucco repair floated to match texture, sanding, and bonding primer. Landscaping and hardscape are masked and wrapped before a single gallon is opened.'],
-    ['Precision Spray Application', 'Sherwin-Williams Emerald applied with Graco and Titan airless equipment at full wet-mil, back-rolled on stucco, with hand-cut lines at every transition.'],
+    ['Precision Spray Application', 'Sherwin-Williams Emerald applied with Graco and Titan airless equipment at the full thickness the manufacturer specifies, back-rolled on stucco, with hand-cut lines at every transition.'],
     ['Founder’s Walkthrough &amp; Warranty', `Raking-light inspection of every side of the house, touch-ups before you ask, and a signed walkthrough — backed by our ${CFG.warranty}, no questions asked.`]
   ];
   const rows = steps.map((s, i) => `

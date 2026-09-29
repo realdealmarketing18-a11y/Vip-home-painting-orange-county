@@ -82,7 +82,29 @@ The same test kills **substrate**, **mil thickness**, **cut line**, **fascia**,
 **friable**, **efflorescence** and **punch list** in customer copy. All of them
 are correct. None of them are hers.
 
-> **The test:** would she say this word to a neighbour over the fence?
+**Swept and gated on 2026-09-29** — 57 uses removed, and `verify-site.js` check 2
+now fails the build on each. The replacement is always the stronger claim, never
+the softer one: *the full thickness the manufacturer specifies* is something she
+can check, *full wet-mil* is only impressive.
+
+| Trade word | Say instead | Gated |
+|---|---|---|
+| substrate | the surface | ✅ |
+| wet-mil · mil thickness | the full thickness the manufacturer specifies | ✅ |
+| punch list | the final list | ✅ |
+| elevation | the front of the house · a side of the house · a wall | ✅ |
+| **fascia** | **keep it** — see below | ❌ by decision |
+
+**Fascia is the deliberate exception.** Fabian's call, 2026-09-29: it stays in
+**estimate language** — a line item naming a surface being priced (*"walls, fascia,
+eaves, trim — measured on site"*), or a note saying which color goes where. She meets
+the word on her own estimate, so meeting it on the page is honest rather than
+alienating. It was removed only from scene-setting prose, where it bought nothing
+(*"deep fascias and metal detailing"* → *"deep roof edges"*). This exception is not
+gated, because enforcing it would mean telling a line item from a sentence, which a
+word match cannot do. It is a judgment call each time.
+
+> **The test:** would she say this word to a neighbor over the fence?
 > If not, it belongs in the estimate, not on the page.
 
 Two exceptions, because they are the proof rather than the jargon: a
