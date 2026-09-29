@@ -16,7 +16,7 @@ from HEADLINE-FORMULAS.md, and its own section order so no two pages share a lay
 |---|---|---|---|---|---|
 | 0 | GENERATOR PORT — OC story sections become reusable generator modules | — | done | 2026-09-29 | 11 modules in `generator/master-modules.js` + fixed story hero and P.S. close. Tested on a throwaway copy (Orchard Hills + Anaheim with test copy): gates green, 375px + 1440px checked, no sideways scroll. No live page changed. See decisions below. |
 | 1 | irvine/orchard-hills | /irvine/orchard-hills/ | done | 2026-09-29 | H1 = **B4** identity guide ("The Orchard Hills Homeowner’s Guide to Exterior House Painting Without Living With the Wrong Color"). moduleOrder: instead → eliminated → settle → painted → offer → neighbors → warranty → beforeCommit → problemSolution → services → serviceArea. 8 FAQs, ~2,520 local words. Left out (not in research): HOA rules, dues, project totals, job length. |
-| 2 | irvine/altair | /irvine/altair/ | todo | | |
+| 2 | irvine/altair | /irvine/altair/ | done | 2026-09-29 | H1 = **B3** costly things ("3 Costly Things to Settle Before Exterior House Painting in Altair") — the `settle` section right under it pays it off. moduleOrder: settle → instead → eliminated → painted → warranty → offer → neighbors → problemSolution → beforeCommit → services → serviceArea. 8 FAQs, ~2,640 local words. Left out (not in research): association rules, management company, job length, glass/roof details. |
 | 3 | irvine/portola-springs | /irvine/portola-springs/ | todo | | |
 | 4 | irvine/hidden-canyon | /irvine/hidden-canyon/ | todo | | |
 | 5 | irvine/woodbury | /irvine/woodbury/ | todo | | |
@@ -46,7 +46,13 @@ Staging base: https://realdealmarketing18-a11y.github.io/Vip-home-painting-orang
 - **Row 1 · two small generator additions, both no-ops for other pages:** page copy (title, meta, short answer, FAQ, problem cards) now takes the same `{tokens}` as the story sections, so phone, warranty, rate and scheme count are read from config; and `beforeCommit` takes an optional `lead`, `problemSolution` an optional local heading.
 - **Row 1 · fixed on every page:** at phone width the phone number in the top bar ran 14px off the right edge on all generated pages (the generator's stylesheet was cancelling the master's phone-width spacing). Now matches the OC page. CSS only; no copy changed on other pages.
 
+- **Row 2 · removed from the old Altair copy because nothing backs them:** "laser-checked masking", "3 to 5 working days", "fade-resistant colorants rated for dark exterior use" and "metal-and-glass details". Research confirms modern/contemporary, broad stucco planes and metal accents — that is all the page claims about the architecture.
+- **Row 2 · the Altair Irvine Master Association is named** (confirmed in `research/irvine/06-hoa.md`); its management company and rules are not, so the copy says the package is built to whatever the association asks for.
+- **Row 2 · the dark-color FAQ** uses the sourced light-reflectance explanation and names Sherwin-Williams Loxon XP IR Reflective as a manufacturer product (`research/orange-county/08-MATERIALS-PERFORMANCE.md`). It does not say VIP stocks or prices it — tell me if it should.
+- **Still inherited from the master (unchanged):** the "3 things to settle" swipes show *PLACEHOLDER — DEMO FOOTAGE PENDING*; Altair uses that section, so it shows it too until the OC page is fixed.
+
 ## Run log
 (newest first — one line per run: date · row · result · commit)
+- 2026-09-29 · row 2 · done — Altair on the master sales process; generate + verify-site 25/25 + validate-brief green; 375px/1440px checked, no sideways scroll · see git log
 - 2026-09-29 · row 1 · done — Orchard Hills on the master sales process; generate + verify-site 25/25 + validate-brief green; 375px/1440px checked · see git log
 - 2026-09-29 · row 0 · done — master sales process ported into the generator as reusable modules; all 21 pages rebuild unchanged; verify-site 25/25 · c7b9855

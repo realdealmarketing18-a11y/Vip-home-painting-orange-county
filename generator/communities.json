@@ -218,25 +218,31 @@
     {
       "slug": "altair",
       "name": "Altair",
-      "title": "Altair Irvine Exterior Painters | Modern Estates — VIP",
-      "metaDescription": "Altair Irvine exterior painters for modern estates. Flawless airless spray finishes, complimentary color visualization, itemized pricing, 2-Year Warranty.",
-      "primaryKeyword": "Altair Irvine exterior painters",
-      "vizIntro": "On Altair's contemporary architecture, color is doing more work than it does anywhere else in Irvine. Broad uninterrupted stucco planes, deep roof edges, and metal detailing mean a charcoal that reads sophisticated on a small sample can turn heavy and flat across a twenty-foot wall — and the reverse is just as true. Seeing the scheme at full scale on your own home, before a single gallon is tinted, is the difference between a facade that looks designed and one that cost five figures to get wrong twice.",
-      "heroEyebrow": "Altair · Irvine Modern Estate Painting",
-      "h1": "Altair's <span class=\"gold\">Modern Estate Painters</span> — Crisp Lines for Contemporary Architecture",
+      "title": "Altair Irvine House Painters for Modern Homes | VIP",
+      "metaDescription": "House painters for Altair’s modern homes in Irvine. See your house in {schemes} color schemes first — complimentary, itemized from {rate}/sq ft, {warranty}.",
+      "primaryKeyword": "Altair Irvine house painters",
+      "vizIntro": "On a modern Altair home the walls do most of the talking: broad stucco planes and metal accents, with little ornament to break a color up, so the body color is most of what the street sees. A gray that looks calm on a chip can turn cold and flat once it covers an entire plane, and a white can go stark beside dark metal. {Their} {place} house is in the tool below, exactly as they tested it: pick a scheme, drag the slider, and see how far one choice moves the whole front of a house.",
+      "heroEyebrow": "Altair · Irvine · Modern Home Painting",
+      "h1": "3 Costly Things to Settle Before <span class=\"gold\">Exterior House Painting</span> in Altair",
       "heroKicker": "Complimentary Custom Color Visualization Included",
-      "capsule": "VIP Home Painting provides luxury exterior and interior painting for the Altair community in Irvine, CA. Altair's contemporary architecture — broad stucco planes, metal accents, and sharp rooflines — demands the flawless, even finish that only professional Graco and Titan airless spray application delivers. We use Sherwin-Williams Emerald and Duration systems in modern palettes like Alabaster, Chatura Gray, and Iron Ore, provide a complimentary 30-minute custom color visualization before any work begins, and price every proposal as an itemized line-by-line estimate backed by a 2-Year Warranty. Call (909) 312-5400.",
+      "capsule": "VIP Home Painting paints modern and contemporary homes in Altair, the 24/7 guard-gated community near the Orange County Great Park in Irvine, CA 92618. The company works from Anaheim and covers exteriors, interiors and kitchen cabinets. Every project begins with a complimentary 30-minute consultation in which our design team shows the front of your own house in {schemes} complete color schemes, each named in exact Sherwin-Williams colors, before anything is booked. Exterior work starts at {rate} per square foot of paintable surface, priced line by line, and carries a {warranty} on labor and materials. Call {phone}.",
       "context": {
-        "archNote": "Altair's homes are contemporary and transitional — large uninterrupted stucco planes, deep roof edges, and metal-and-glass details. On modern architecture there is nowhere for a mediocre finish to hide: lap marks, roller stipple, and wavy cut lines read instantly.",
-        "hoaNote": "Altair's community design review",
-        "settingNote": "wide, sun-exposed walls near the Great Park, where inland heat cycles stress builder-grade coatings"
+        "archNote": "Altair’s homes are modern and contemporary — broad stucco planes and metal accents, with little ornament to break a color up. On architecture this clean, the body color is most of what the street sees.",
+        "hoaNote": "the Altair Irvine Master Association’s review",
+        "settingNote": "guard-gated streets near the Orange County Great Park, where broad walls stand in open sun"
       },
       "moduleOrder": [
-        "specs",
-        "portfolio",
-        "process",
-        "colorGuide",
-        "problemSolution"
+        "settle",
+        "instead",
+        "eliminated",
+        "painted",
+        "warranty",
+        "offer",
+        "neighbors",
+        "problemSolution",
+        "beforeCommit",
+        "services",
+        "serviceArea"
       ],
       "geo": {
         "lat": 33.7069,
@@ -244,16 +250,36 @@
       },
       "faqs": [
         {
-          "q": "Do you paint modern and contemporary homes in Altair, Irvine?",
-          "a": "Yes — modern architecture is a VIP specialty. Altair's large stucco planes and sharp rooflines demand airless spray application with Graco and Titan equipment for a uniform, stipple-complimentary film, plus laser-checked masking at every color transition. That's our standard system."
+          "q": "How much does exterior house painting cost in Altair, Irvine?",
+          "a": "VIP Home Painting prices Altair exteriors from {rate} per square foot of paintable surface, which sits at the premium end of what Irvine painters charge. That figure is a starting point, not an average: the measurement is taken from the walls, trim and metal that will actually be painted, not from the size of the house on a listing. For a two-story stucco home, paintable surface typically comes to between 0.85 and 1.1 times the interior square footage. Metal accents, doors and any change of color each appear as their own line, and the complimentary color visualization is included with the estimate. Call {phone}."
         },
         {
-          "q": "Will a dark color like Iron Ore fade on a full-sun Altair wall?",
-          "a": "Not with the right system. We spec Sherwin-Williams Emerald with fade-resistant colorants rated for dark exterior use, applied at the full thickness the manufacturer specifies. Deep charcoals like Iron Ore SW 7069 stay deep — and our work is backed by a 2-Year Warranty."
+          "q": "Does VIP Home Painting handle Altair Irvine Master Association color approval?",
+          "a": "Yes. VIP Home Painting prepares the color submission for the Altair Irvine Master Association as part of every Altair exterior project. The package names every Sherwin-Williams color by name and number, includes the product data sheets, and states which color goes on which surface, so a reviewer never has to guess what a render means. What the association approves, and what it asks to see, comes from the association itself; VIP Home Painting does not assume its rules, it builds the package to them."
         },
         {
-          "q": "How long does it take to paint an Altair home's exterior?",
-          "a": "Most Altair exterior projects are completed in 3 to 5 working days, including preparation, masking, spraying, and detail enamel work — sequenced one side at a time with concierge scheduling. Call (909) 312-5400 for a complimentary estimate with color visualization."
+          "q": "What exterior paint colors suit modern and contemporary homes in Altair?",
+          "a": "VIP Home Painting builds most Altair palettes from a clean light body, a dark accent and a crisp trim, split roughly 60/30/10. Alabaster SW 7008 and Pure White SW 7005 are natural starting points for the body and the trim; Chatura Gray SW 9169 gives a warmer, layered gray; Peppercorn SW 7674 and Iron Ore SW 7069 carry accent volumes, entry surrounds and metal. On contemporary architecture the proportions matter as much as the colors, because each tone covers a whole plane rather than a band of trim. The complimentary Custom Visualization Service shows each combination on your own house before you choose one."
+        },
+        {
+          "q": "Will a dark exterior color make my Altair house hotter?",
+          "a": "VIP Home Painting’s answer is that it can, and that you can see by how much before you choose. Every paint color has a light reflectance value on a scale of 0 to 100: the higher the number, the more sunlight the color reflects and the less heat it absorbs, and a deep charcoal sits far lower on that scale than a white. Because every VIP scheme is named in exact Sherwin-Williams colors, each color’s value is a lookup rather than a guess. Sherwin-Williams also makes an infrared-reflective masonry coating, Loxon XP IR Reflective, designed to help darker colors keep a wall cooler, which is worth asking about if the scheme you love is a dark one."
+        },
+        {
+          "q": "Why does a gray look different on my Altair house than it did on the paint chip?",
+          "a": "VIP Home Painting sees this more on modern houses than on any other kind, and the cause is scale. A chip is a few square inches under store lighting; the front of an Altair home is one broad, uninterrupted plane of that color in open Irvine sun, with nothing to interrupt it. Across that much wall, an undertone too faint to notice on the chip becomes the color the street sees, so a gray can lean blue, green or beige depending on the hour. Larger sample patches help less than people hope, because they still show a square of wall rather than the house."
+        },
+        {
+          "q": "What does the complimentary color consultation for an Altair home include?",
+          "a": "VIP Home Painting’s consultation lasts 30 minutes and starts from one photo of the front of your Altair home. Our design team returns that photo painted in {schemes} complete color schemes, with body, trim and accent shown together, along with further options for lighting, texture and premium additions. Each scheme lists its exact Sherwin-Williams colors, and an estimate priced line by line comes with it. There is no charge, and no work is scheduled until you have chosen."
+        },
+        {
+          "q": "How does VIP Home Painting work inside a 24/7 guard-gated community like Altair?",
+          "a": "VIP Home Painting schedules an Altair project around the gate and the household, not the other way round. Crew arrivals are arranged in advance, the house is masked and contained before any sprayer starts, landscaping and hardscape are covered, and spraying is timed around the wind. The site is cleaned every evening, so the drive looks the way the neighbors expect it to. The project ends with a raking-light inspection, which shows up a thin coat or a visible repair on a flat stucco plane, and a walkthrough with the founder."
+        },
+        {
+          "q": "How often does a modern stucco home in Altair need repainting?",
+          "a": "VIP Home Painting plans exterior repaints on an 8-to-15-year cycle, which is why the color choice deserves more care than the schedule does: whatever goes on an Altair house now is what the gate and the street see for the next decade. Where a house falls within that cycle depends mostly on preparation and coating. Sherwin-Williams Emerald or Duration applied in two full coats and back-rolled into the texture bonds to the stucco and holds its color, where a single thinned coat lets sunlight through to the wall and fades early."
         }
       ],
       "extraColors": [
@@ -261,7 +287,7 @@
           "name": "Pure White",
           "code": "SW 7005",
           "hex": "#EDECE6",
-          "note": "A clean, neutral white for fascias and metal trim that keeps Altair's contemporary lines razor sharp."
+          "note": "A clean, neutral white for trim and metal that keeps Altair’s contemporary lines crisp."
         },
         {
           "name": "Peppercorn",
@@ -272,28 +298,32 @@
       ],
       "problems": [
         {
-          "p": "Roller stipple and lap marks ruin the flat, monolithic look modern stucco is designed for.",
-          "s": "We spray every large plane with Graco and Titan airless rigs at a consistent tip and pressure, then back-roll where the surface calls for it — a uniform film, edge to edge."
+          "p": "A gray picked from a chip reads colder, or flatter, once it covers a whole plane of modern stucco.",
+          "s": "Our design team renders the entire front of your house in each candidate scheme, so the tone you approve is one you have already seen at full size, on your own walls."
         },
         {
-          "p": "Dark modern colors like Iron Ore can fail fast in full sun if the wrong product is used.",
-          "s": "We spec Sherwin-Williams Emerald with modern, fade-resistant colorants rated for dark exterior use, so deep charcoals stay deep."
+          "p": "On a two-tone modern house, every place one color meets the next is in plain view, and a wandering edge shows from the street.",
+          "s": "Every transition is masked before any spraying, and the estimate names which color goes on which surface, so each edge lands where the architecture puts it."
         },
         {
-          "p": "Crisp two-tone schemes live or die on the cut lines.",
-          "s": "Laser-checked masking and hand-cut transitions where volumes meet — the detail work that separates an estate finish from a production repaint."
+          "p": "A dark body or accent such as Iron Ore or Peppercorn absorbs far more afternoon sun than a light one.",
+          "s": "Every scheme is named in exact Sherwin-Williams colors, so how much light each one reflects is known before you choose, and the deep tone goes only where it earns its place."
         },
         {
-          "p": "You can't picture a charcoal-and-white scheme on the front of your house.",
-          "s": "Our complimentary custom color visualization shows your actual home in each candidate palette before you commit to a single gallon."
+          "p": "Paint sprayed onto broad planes that never reaches the valleys of the texture, so the wall looks patchy in low light.",
+          "s": "Sherwin-Williams Emerald or Duration sprayed with Graco and Titan airless rigs, then back-rolled into the stucco, and a raking-light inspection before anything is signed off."
+        },
+        {
+          "p": "An estimate that is one number, with no way to see which walls, metal and trim were counted.",
+          "s": "Each line is priced on its own — prep, primer, coating, trim, metal and accents — from {rate} per square foot of paintable surface, with the {warranty} written into the same document."
         }
       ],
       "portfolio": {
         "eyebrow": "The Altair Portfolio",
         "title": "Contemporary Finishes, <span class=\"accent\">Gallery Standards</span>",
-        "body": "Modern architecture is unforgiving — which is exactly why we like it. Sharp shadow gaps, uniform sheen across twenty-foot planes, and metalwork detailed in coordinated enamels. This is what estate-grade spray application looks like in Altair."
+        "body": "Modern architecture is unforgiving, which is exactly why it rewards preparation: cracks floated back to the texture, every color transition masked, and two full coats back-rolled into the stucco before a raking-light inspection."
       },
-      "cabinetLine": "Flat-panel and slab cabinet refinishing in sprayed urethane enamel — the factory-finish look Altair's modern kitchens were built around.",
+      "cabinetLine": "Flat and slab cabinet doors sprayed off-site in urethane enamel, for a finish without brush marks.",
       "hero_story": {
         "youtube_id": "",
         "eyebrow": "Altair · Irvine Modern Estate Painting",
@@ -303,7 +333,79 @@
         "note": "On broad stucco planes there is nowhere for a mediocre finish to hide.",
         "days": 5
       },
-      "city": "irvine"
+      "city": "irvine",
+      "master": {
+        "hero": {
+          "eyebrow": "Altair · Irvine · Modern Home Painting",
+          "h1": "3 Costly Things to Settle Before <span class=\"gold\">Exterior House Painting</span> in Altair",
+          "continue": "See how {they} ruled out ten schemes, then try yours"
+        },
+        "settle": {
+          "h2": "On a Modern Altair Home, a Wrong Color Costs the Whole Job <span class=\"accent\">Twice</span>. These 3 Decisions Prevent It.",
+          "lead": "Three decisions, settled on the whole house and in writing before a crew is booked anywhere from Bellatrix to Sagan Way. Each one costs almost nothing to settle now and a second repaint to discover later. What makes them sharper in Altair is the architecture. A contemporary house is mostly two or three colors on large, flat planes, so the body color is not one choice among many. It is the house."
+        },
+        "instead": {
+          "h2": "5 Careful Ways Altair Owners Test a Color — and Why <span class=\"accent\">None Shows the Whole House</span>",
+          "bridge": "Before {they} saw their home rendered, they were where most owners of a modern house begin: a shortlist of whites and grays, and no way to know which would still look deliberate across a whole plane of stucco.",
+          "lede": "It tends to start with sample pots on a Saturday. A square of Pure White goes on one wall, a square of Chatura Gray on the next, and a patch of Peppercorn beside the garage for the accent. Up close, in the morning, all three look right. By late afternoon the white has turned glaring, the gray reads colder than it did on the card, and the charcoal square says nothing about how a full volume of the house will look in it. On a street of clean-lined homes, nobody wants to be the one that got it wrong. So the squares stay up, the decision waits, and the house stays exactly as it is.",
+          "turn": "None of that is carelessness. On contemporary architecture the color is not decorating the design, it is the design, and a two-foot square cannot show how one tone behaves across a broad, uninterrupted wall. Only the whole house can show that."
+        },
+        "eliminated": {
+          "h2": "{They} Saw Their House in <span class=\"accent\">{schemes} Schemes</span>. Ten Were Ruled Out Before a Can Was Opened.",
+          "lead": "So {they} worked the other way round: every scheme, body, trim and accent together, on the front of their own {place} home before any paint was bought. Below are the ones they ruled out, and the one they kept, {chosen}. On a modern Altair house the ruling-out goes faster, because clean lines are unforgiving. A white that fights the metal accents, or a charcoal that swallows the shadow where two planes meet, gives itself away across the whole house at once."
+        },
+        "painted": {
+          "h2": "How to See Every Altair Exterior Decision <span class=\"accent\">in 30 Minutes</span> Without a Single Sample Patch",
+          "sub": "Color was the first thing {they} decided, not the last. Lighting, texture and the finishing details came after, each rendered on their own house while it could still be changed. A modern Altair home asks the same questions with less room for error, because on clean lines every meeting point between two colors is in plain view."
+        },
+        "warranty": {
+          "h2": "The <span class=\"accent\">{warranty}</span> Sits in Your Altair Estimate, Beside the Prep It Depends On",
+          "body": "The {warranty} covers labor and materials, and it is part of the itemized estimate you sign, not a promise made on the way out of the gate. On an Altair exterior, the prep it relies on is written down beside it: cracks in the stucco floated back to the surrounding texture so a repair does not show on a flat plane, iron and metal accents priced as their own line, and two coats of Sherwin-Williams Emerald or Duration at the thickness the manufacturer specifies. If something fails within the warranty period, VIP Home Painting returns and puts it right. The terms are the same on every project, and you read them before you sign."
+        },
+        "offer": {
+          "h2": "Avoid Judging a Whole Wall From a Chip — See Your Altair Home in <span class=\"accent\">{schemes} Complete Schemes</span>, Complimentary",
+          "sub": "Thirty minutes, scheduled around your household and the gate. You send one photo of the front of your Altair home, and our design team returns it painted in {schemes} complete schemes, each named in exact Sherwin-Williams colors, with an estimate priced line by line. It is the same package {they} received for their {place} home, and the only thing it asks of you is the photo."
+        },
+        "neighbors": {
+          "h2": "Every Car Through the Altair Gate Judges Your House <span class=\"accent\">for the Next 8 to 15 Years</span>",
+          "sub": "Altair is guard-gated around the clock, so the people who see your house are the same neighbors, on the same drive, every day. None of what follows is visible the afternoon the crew leaves. All of it is visible by the sixth summer. On broad modern stucco, where a flaw has nothing to hide behind, most of what decides it happens beneath the color, which is why each item is written into the estimate."
+        },
+        "problemSolution": {
+          "h2": "5 Ways a Modern Altair Repaint Goes Wrong — <span class=\"accent\">and the Fix for Each</span>"
+        },
+        "beforeCommit": {
+          "h2": "Four Things in Your Hands Before You Commit to an <span class=\"accent\">Altair</span> Painter",
+          "lead": "In a community like Altair, the risk in a repaint is seldom the price. It is approving something the whole street will look at before you have seen it yourself. So four things are yours first: renders of your own house, the estimate priced line by line, the warranty in writing, and a color submission ready for the Altair Irvine Master Association. By the time you decide, you have already watched the decision play out."
+        },
+        "services": {
+          "h2": "Exterior, Interior and Cabinet Painting for Altair’s Modern Homes — <span class=\"accent\">Itemized on One Estimate</span>",
+          "items": [
+            {
+              "title": "Exterior House Painting — Altair",
+              "body": "Broad stucco planes, metal accents and two-tone schemes on modern and contemporary homes. Cracks floated back to the surrounding texture, every color transition masked, and Sherwin-Williams Emerald or Duration sprayed with Graco and Titan airless rigs and back-rolled. Starts at {rate} per square foot of paintable surface, measured on what is actually painted."
+            },
+            {
+              "title": "Interior House Painting — Altair",
+              "body": "Walls, ceilings, trim and crown molding, scheduled around the household and the gate. Useful when a new exterior palette changes how the rooms that look out onto it read. The same line-by-line estimate, the same Sherwin-Williams naming, and the same walkthrough with the founder at the end."
+            },
+            {
+              "title": "Kitchen Cabinet Painting — Altair",
+              "body": "Flat and slab cabinet doors show every brush mark, which is why doors and drawers are sprayed off-site in urethane enamel, cabinet boxes are sprayed in place, and hardware is re-hung square. The color is chosen the way the exterior is: seen first, approved second."
+            }
+          ]
+        },
+        "serviceArea": {
+          "h2": "House Painters for <span class=\"accent\">Altair</span> and Every Irvine Village Around It",
+          "lead": "VIP Home Painting works from Anaheim and paints throughout Irvine. In Altair (92618) that means the guard-gated streets named for the sky and its birds — Bellatrix, Interstellar, Pulsar, Sagan Way, Chasma, Bolide, Iluna, Eider Run, Hornbill and Buttonquail — around the Altair Clubhouse and Beacon Park, a short distance from the Orange County Great Park. The villages next door, the Irvine color guide and the page for association and common-area painting are all one click from here."
+        },
+        "close": {
+          "h2": "Before the Street Sees Your New Color, <span class=\"accent\">See It Yourself in 30 Minutes</span>",
+          "ps": [
+            "Everything on this page happened in one order: {they} saw their home in {schemes} complete color schemes, ruled out ten, and only then did anyone open a can. Most repaints on modern houses run it the other way. A chip is held up to the wall, everyone hopes it behaves the same across a whole plane of stucco, and the real answer arrives when the masking comes off.",
+            "Altair is named for a star, and its streets for the sky: Bellatrix in Orion, Bolide for a bright meteor, Sagan Way for Carl Sagan. A house color is judged the way a star is, from a distance and in full light, for years. {They} needed thirty minutes and one photo of the front of the house. So do you, and it is complimentary, with the itemized estimate included."
+          ]
+        }
+      }
     },
     {
       "slug": "portola-springs",
