@@ -43,4 +43,4 @@ Staging base: https://realdealmarketing18-a11y.github.io/Vip-home-painting-orang
 
 ## Run log
 (newest first — one line per run: date · row · result · commit)
-- 2026-09-29 · row 0 · done — master sales process ported into the generator as reusable modules; all 21 pages rebuild unchanged; verify-site 25/25 · 71233b8
+- 2026-09-29 · row 0 · done — master sales process ported into the generator as reusable modules; all 21 pages rebuild unchanged; verify-site 25/25 · c7b9855
