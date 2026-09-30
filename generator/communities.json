@@ -547,7 +547,8 @@
         "hero": {
           "eyebrow": "Portola Springs · Irvine · House Painting",
           "h1": "Avoid Paying for <span class=\"gold\">Exterior House Painting</span> Twice in Portola Springs — See Every Color on Your House First, Complimentary",
-          "continue": "Start with the {schemes} schemes {they} compared, then picture yours"
+          "continue": "Start with the {schemes} schemes {they} compared, then picture yours",
+          "deck": "{They} were approved on the first submission. In Portola Springs, exterior color goes to the Portola Springs Association’s design review first — which makes the submission the step that decides how soon the crew arrives."
         },
         "eliminated": {
           "h2": "Before Anyone Opened a Can, {They} Had Seen Their House in <span class=\"accent\">{schemes} Schemes</span>",
@@ -555,13 +556,15 @@
         },
         "offer": {
           "h2": "How to See Your Portola Springs House in <span class=\"accent\">{schemes} Complete Schemes</span> in 30 Minutes, Without a Sample Pot",
-          "sub": "This is the package {they} received, offered the same way to Portola Springs owners. One photo of the front of your house goes to our design team and comes back painted in {schemes} complete schemes, body, trim and accent together, each named in Sherwin-Williams colors. The estimate arrives with it, priced line by line, so the cost of the scheme you like is known the day you first see it. It costs nothing, and nothing is booked until you choose."
+          "sub": "This is the package {they} received, offered the same way to Portola Springs owners. One photo of the front of your house goes to our design team and comes back painted in {schemes} complete schemes, body, trim and accent together, each named in Sherwin-Williams colors. The estimate arrives with it, priced line by line, so the cost of the scheme you like is known the day you first see it. It costs nothing, and nothing is booked until you choose.",
+          "eyebrow": "What {They} Submitted — the Same Package for Portola Springs"
         },
         "instead": {
-          "h2": "5 Tests Careful Portola Springs Owners Run on a Color, <span class=\"accent\">and the One Question None Can Answer</span>",
-          "bridge": "Before {they} saw their home rendered, they were where most careful owners start: sure the colors had to change, and unsure what to change them to. In Portola Springs the question has a second half, which is how far a house can move from the palette it was built in without looking out of place on its own street.",
-          "lede": "It tends to begin with two sample pots and a Saturday. A square of Shoji White goes up by the front door, a square of Agreeable Gray beside the garage. In the morning, both look right. By four o’clock the white has picked up the warmth of the roof tile and can read almost peach, and the gray has either gone flat or started to lean yellow, depending on which way the wall faces. Neighbors are asked. A third pot is bought. The squares stay up through the summer, and the house stays exactly as it was.",
-          "turn": "None of that is careless. It is the method the industry recommends, and it fails for a plain reason: a two-foot square cannot show how a color behaves across a whole house, under a tile roof, beside dark iron, in foothill light. Only the house can show that."
+          "eyebrow": "The Approval Trap",
+          "h2": "Where a Portola Springs Color Change Gets Stuck: <span class=\"accent\">3 Approval Traps</span>",
+          "bridge": "{They} knew the color had to change. What they did not want was to ask permission twice, or pay for it twice.",
+          "lede": "In Portola Springs the Portola Springs Association reviews exterior color, and the wait tends to come from three places. The palette book comes first, useful for knowing what has been accepted and silent about how it will look against warm tile in full inland sun. Then a submission that is really a hope — a chip, a sample square — comes back with questions. Then the second submission, and the weeks that go with it, while two sample squares by the front door keep disagreeing.",
+          "turn": "None of that is anyone being unreasonable. An association can only judge what it is shown, and a sample square shows it almost nothing."
         },
         "painted": {
           "h2": "3 Steps to a Repainted Portola Springs Home <span class=\"accent\">Without a Second Guess</span>",
@@ -613,8 +616,60 @@
             "The order is the whole point. {They} looked at {schemes} complete schemes on their own house, let ten go and kept one, and the painting came last. A Portola Springs repaint usually runs the other way round: two sample squares by the front door, a best guess, and the real answer showing up on the day the masking comes off.",
             "Portola Springs streets are named for what grows and flies on the hills around them: Yellow Iris, Campion, Soaring Eagle. The houses sit in that same warm, open light, and a color that fights it is visible from across the street. Seeing it first took {they} thirty minutes and one photo of the front of the house. It takes the same for you, it is complimentary, and the itemized estimate comes with it."
           ]
+        },
+        "_parked": {
+          "instead": {
+            "h2": "5 Tests Careful Portola Springs Owners Run on a Color, <span class=\"accent\">and the One Question None Can Answer</span>",
+            "bridge": "Before {they} saw their home rendered, they were where most careful owners start: sure the colors had to change, and unsure what to change them to. In Portola Springs the question has a second half, which is how far a house can move from the palette it was built in without looking out of place on its own street.",
+            "lede": "It tends to begin with two sample pots and a Saturday. A square of Shoji White goes up by the front door, a square of Agreeable Gray beside the garage. In the morning, both look right. By four o’clock the white has picked up the warmth of the roof tile and can read almost peach, and the gray has either gone flat or started to lean yellow, depending on which way the wall faces. Neighbors are asked. A third pot is bought. The squares stay up through the summer, and the house stays exactly as it was.",
+            "turn": "None of that is careless. It is the method the industry recommends, and it fails for a plain reason: a two-foot square cannot show how a color behaves across a whole house, under a tile roof, beside dark iron, in foothill light. Only the house can show that."
+          }
+        },
+        "timeline": {
+          "eyebrow": "Approval, Then Painting",
+          "h2": "Portola Springs, From Submission to Finished House: <span class=\"accent\">5 Steps</span>",
+          "lead": "Once {they} had chosen, the order was simple: the association’s answer first, then the crew. This is that order for a Portola Springs house.",
+          "days": [
+            {
+              "label": "Step One",
+              "title": "Every Scheme on One Photo",
+              "body": "The front of the house rendered in {schemes} complete schemes, body, trim and accent together, each named in Sherwin-Williams colors."
+            },
+            {
+              "label": "Step Two",
+              "title": "The Submission",
+              "body": "Every color by name and number, the surface each one goes on, and the product data sheets, prepared for the Portola Springs Association’s design review."
+            },
+            {
+              "label": "Step Three",
+              "title": "The Decision",
+              "body": "The association sets its own timing. Nothing is booked until its answer arrives."
+            },
+            {
+              "label": "Step Four",
+              "title": "Prep and Two Coats",
+              "body": "Stucco repaired and primed, then Sherwin-Williams Emerald or Duration sprayed and back-rolled into the texture."
+            },
+            {
+              "label": "Step Five",
+              "title": "The Final Walk",
+              "body": "Each side of the house checked in raking light, touch-ups made, and the {warranty} already written into your estimate."
+            }
+          ],
+          "note": "An illustrative order, not a promise of dates. Review timing belongs to the association; painting time depends on the house."
+        },
+        "viz": {
+          "h2": "Your Turn: Start With Your Portola Springs Street, <span class=\"accent\">Then the Photo of Your House</span>"
+        },
+        "faq": {
+          "h2": "Portola Springs Painting Questions — <span class=\"accent\">Association First</span>"
         }
-      }
+      },
+      "storyLayout": "E",
+      "layoutOptions": [
+        "eliminated",
+        "beforeCommit"
+      ]
     },
     {
       "slug": "hidden-canyon",
