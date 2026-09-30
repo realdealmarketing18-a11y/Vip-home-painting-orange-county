@@ -97,7 +97,7 @@ module.exports = function makeStoryLayouts(ctx) {
       faqWeight: 'hoa',
       slots: [
         [{ m: 'instead', swap: 'LOCAL' }],
-        [{ m: 'offer', swap: 'CLIENT' }, { m: 'eliminated', swap: 'CLIENT', opt: 'eliminated' }],
+        [{ m: 'eliminated', swap: 'CLIENT', opt: 'eliminated' }, { m: 'offer', swap: 'CLIENT' }],
         [{ m: 'timeline', swap: 'CLIENT' }],
         [{ m: 'viz' }],
         [{ m: 'warranty' }, { m: 'beforeCommit', opt: 'beforeCommit' }],

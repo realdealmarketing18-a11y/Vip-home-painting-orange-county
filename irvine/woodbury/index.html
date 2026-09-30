@@ -4146,6 +4146,53 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   .film-close { top: 12px; right: 12px; padding: 9px 14px; }
 }
 
+/* ============================================================
+   STORY-LAYOUT PAGES ONLY (storyLayout B–F) — see story-layouts.js.
+   Loaded after page.css / city-page.css, and only on layout pages, so
+   no other page changes. Colours come only from the brand tokens the
+   generated pages carry (--navy, --gold, --gold-deep, --gold-bright,
+   --cream …, from design-system/); shadows are navy-based, never black.
+   ============================================================ */
+
+/* Hero: the layout's story line under the H1 */
+.hero-cinema .hero-deck {
+  font-family: var(--font-serif); font-style: italic; font-weight: 400;
+  font-size: clamp(17px, 2.1vw, 22px); line-height: 1.3;
+  color: var(--gold-bright); max-width: 720px; margin: 14px auto 0; text-align: center;
+}
+
+/* Flashback / dusk walk: a single column of story prose under the chip */
+.lx-story { max-width: 760px; margin: 0 auto; }
+.lx-story .pill-wrap { margin-bottom: 18px; }
+.lx-story .body { font-size: 17px; line-height: 1.65; margin: 0 0 16px; color: var(--navy); }
+
+/* Timeline: day label above each step title, and the honesty note */
+.lx-day { font-family: var(--font-sans); font-weight: 700; font-size: 10.5px;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-deep); margin: 4px 0 6px; }
+.lx-note { max-width: 760px; margin: 36px auto 0; text-align: center;
+  font-family: var(--font-serif); font-style: italic; font-size: 15px; line-height: 1.5; color: var(--gold-deep); }
+
+/* Near-miss No. 1: the family's card leads the grid */
+.ps-card.lx-near { border: 1.5px solid var(--gold); box-shadow: 0 10px 26px rgba(26,31,78,0.12); }
+
+/* Palette: every colour as a three-can set */
+.lx-can-card .lx-cans { display: flex; justify-content: center; gap: 10px; padding: 22px 16px 6px; }
+.lx-can-card .paint-can { width: 58px; height: 58px; }
+.lx-can-card .lx-with { font-style: italic; }
+
+/* Proof */
+.lx-proof-lead { max-width: 720px; margin: 14px auto 0; text-align: center; }
+.cases-grid.lx-single { grid-template-columns: minmax(0, 620px); justify-content: center; }
+
+@media (max-width: 860px) {
+  .cases-grid { grid-template-columns: 1fr; }
+  .cases-grid.lx-single { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .lx-can-card .paint-can { width: 48px; height: 48px; }
+  .lx-story .body { font-size: 16px; }
+}
+
 </style>
 </head>
 <body>
@@ -4220,12 +4267,17 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     <div class="hero-stack" id="heroStack">
       <div class="hero-fleuron" aria-hidden="true">&#10087;</div>
       <div class="eyebrow eyebrow-ruled">Woodbury · Irvine · Exterior House Painting</div>
-      <div class="pill-wrap pill-wrap-lede">
+      
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=woodbury] › story (family, avatar, location) --><div class="pill-wrap pill-wrap-lede">
         <div class="avatar-pill"><div class="ph"><img src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"/></div>
           <div><div class="name">The Gallagher Family</div>
           <div class="sub-line">Pelican Hill, Newport Beach</div></div></div>
       </div>
+  <!-- /SWAP:CLIENT -->
       <h1 class="ttl-hero">How to Choose Exterior Colors for Your Woodbury Home in 30 Minutes <span class="gold">Without Paying to Paint It Twice</span></h1>
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=woodbury] › master.hero.deck -->
+      <p class="hero-deck">The Gallaghers were approved on the first submission. In Woodbury, where the Woodbury Community Association reviews exterior color, that is the step a repaint waits on.</p>
+  <!-- /SWAP:CLIENT -->
       <ol class="hero-beats">
         <li><span class="n">1</span><span class="t"><span class="w">They</span> visualized it</span></li>
         <li><span class="n">2</span><span class="t"><span class="w">They</span> loved it</span></li>
@@ -4272,7 +4324,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           <button class="hr-tray-cta" type="button" id="hrReplay">Discover</button>
         </div>
       </figure>
-      <a class="hero-continue" href="#viz">
+      <a class="hero-continue" href="#story">
         <span class="hc-rule" aria-hidden="true"></span>
         <span class="hc-txt">See the package the Gallaghers received, then picture your own Woodbury house</span>
         <span class="hc-arrow" aria-hidden="true">&#8595;</span>
@@ -4289,7 +4341,275 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   </section>
 
   <!-- ============ No. 01 — INTERACTIVE CUSTOM VISUALIZATION (the highlight) ============ -->
-  <section class="viz" id="viz" data-story>
+  
+
+  <div id="story" aria-hidden="true"></div>
+  <!-- ============ LAYOUT E · BEAT 2 ============ -->
+  <!-- SWAP:LOCAL --><!-- edit: generator/communities.json › communities[slug=woodbury] › master.instead -->
+  <section class="cand-band cand-band-solo" id="instead" data-story>
+    <div class="fl-head">
+      <div class="eyebrow">The Approval Trap</div>
+      <h2>How a Woodbury Color Submission Loses Weeks: <span class="accent">3 Traps Before a Crew Is Booked</span></h2>
+      <p class="fl-bridge">Before the Gallaghers had anything rendered, their color was stuck where many careful owners get stuck: not in the choosing, but in the asking permission.</p>
+    </div>
+    <p class="fl-lede">In Woodbury the exterior color goes to the Woodbury Community Association’s design review before any crew is booked, and three things tend to slow it down. The first is the palette book: it tells you which colors the association has seen before, and nothing about how any of them will look on your walls. The second is a thin submission — a chip number and a hopeful description — that comes back with questions instead of an answer. The third is the resubmission, which starts the wait again while the house stays exactly as it is. Meanwhile the sample pots stay up on the garage wall.</p>
+    <div class="fl-tried">
+        <div class="fl-tried-hd">And you have already tried everything you are
+          supposed to try</div>
+        <ul>
+          <li><b>Weeks of research.</b> It narrowed the field to a shortlist. It told
+            you nothing about how any of them behaves at the size of a house.</li>
+          <li><b>Sample patches on three different walls.</b> A patch that size cannot
+            tell you how the whole house will behave. The most common regret afterwards
+            is not having painted them bigger.</li>
+          <li><b>Asking at the paint store.</b> Staff can advise on color. They have
+            never stood in front of your house, in your light, on your street.</li>
+          <li><b>Polling friends and neighbors.</b> What you get back is agreement
+            about a card, not about a house.</li>
+          <li><b>Comparing the finalists side by side.</b> Each one eliminated for an
+            undertone that only showed itself in your own lighting.</li>
+        </ul>
+      </div>
+    <p class="fl-turn">None of that is the association being difficult. A reviewer can only approve what a submission shows, and a chip number shows almost nothing about a house.</p>
+  </section>
+  <!-- /SWAP:LOCAL -->
+
+  <!-- ============ LAYOUT E · BEAT 3 ============ -->
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=woodbury] › master.eliminated (+ story block: family, chosen scheme, photos) -->
+  <section class="cand-band" id="candidates" data-story>
+    <span class="cand-ghost" aria-hidden="true">VISUALIZED</span>
+    <div class="cand-head">
+      <div class="pill-wrap pill-wrap-lede">
+        <div class="avatar-pill"><div class="ph"><img src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"/></div>
+          <div><div class="name">The Gallagher Family</div>
+          <div class="sub-line">Their remaining 7 schemes</div></div></div>
+      </div>
+      <div class="eyebrow">They Visualized It</div>
+      <h2>The Gallaghers Tried Their House in <span class="accent">11 Schemes</span> and Ruled Out Ten Before Paying for One</h2>
+      <p class="cand-lead">Every scheme below was judged whole, on the front of their own Newport Beach house: body, trim and accent together. They ruled out ten and kept one, Coastal Organic Compound. For a Woodbury owner the value of that is plain arithmetic. A color that goes wrong on the wall costs the job a second time, while a color that goes wrong in a render costs a click. On a street where a Spanish Colonial, a Tuscan and a cottage stand side by side, the render is also the only way to see whether your scheme suits your house or merely suits the one next door.</p>
+    </div>
+    <template id="bandSchemes">
+      <i data-id="pebblebeach" data-nm="Pebble Beach Manor"        data-co="Accessible Beige SW 7036 &middot; Dover White SW 6385"   data-sw="#D1C7B8" data-trim="#EFE8D8" data-accent="#95948C" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg')"></i>
+      <i data-id="ibiza"       data-nm="Ibiza Luxury Villa"        data-co="Balanced Beige SW 7037 &middot; Aesthetic White SW 7035" data-sw="#D1C7B8" data-trim="#E8E3DA" data-accent="#C8B59B" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-ibiza.jpg')"></i>
+      <i data-id="pacificsage" data-nm="Pacific Sage Estate"       data-co="Evergreen Fog SW 9130 &middot; Shoji White SW 7042"      data-sw="#95978A" data-trim="#E6DFD3" data-accent="#A98D4B" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg')"></i>
+      <i data-id="obsidian"    data-nm="Obsidian Monolith"         data-co="Iron Ore SW 7069 &middot; Tricorn Black SW 6258"        data-sw="#434341" data-trim="#2F2F30" data-accent="#5B5E62" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg')"></i>
+      <i data-id="marinelayer" data-nm="Marine Layer"              data-co="Sea Salt SW 6204 &middot; High Reflective White SW 7757" data-sw="#CBD6D0" data-trim="#F7F7F1" data-accent="#BFC7C5" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-marinelayer.jpg')"></i>
+      <i data-id="resort"      data-nm="Beverly Hills Resort"      data-co="City Loft SW 7631, monochrome"                 data-sw="#B9B2A7" data-trim="#D6D2C9" data-accent="#8C6E4C" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-resort.jpg')"></i>
+      <i data-id="spanish"     data-nm="Santa Barbara Luxe"        data-co="Alabaster SW 7008 &middot; Tricorn Black SW 6258"       data-sw="#F1EDE2" data-trim="#2F2F30" data-accent="#B5714A" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-spanish.jpg')"></i>
+      <i data-id="organic"     data-nm="Coastal Organic Compound"  data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048"       data-sw="#EDE8DC" data-trim="#54504A" data-accent="#9C7B53" data-chosen="1" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-organic.jpg')"></i>
+</template>
+    <div class="cand-track" id="candTrack"></div>
+    <p class="cand-swipe">Swipe to see them all &rarr;</p>
+  </section>
+  <!-- /SWAP:CLIENT -->
+
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=woodbury] › master.offer (+ story block) -->
+  <section class="cand-band cand-band-solo" id="offer" data-story>
+    <div class="cand-foot offer-stake">
+      <div class="eyebrow">What The Gallaghers Submitted — Now Yours</div>
+      <h2 class="os-ttl">Your Woodbury Home in <span class="accent">11 Complete Color Schemes</span>, Settled in 30 Minutes and Complimentary</h2>
+      <p class="os-sub">Everything the Gallaghers received is offered to Woodbury owners on identical terms. You send one photo of the front of your house; our design team paints it in 11 complete schemes, each named in Sherwin-Williams colors, and returns it with an estimate priced line by line. If the kitchen cabinets are part of the plan, they are counted and priced on the same estimate. The consultation takes thirty minutes, costs nothing, and nothing is booked until a scheme is chosen.</p>
+      <div class="pkg" id="pkg">
+        <figure class="pkg-hero" id="pkgHero"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-organic.jpg"
+                data-nm="Coastal Organic Compound"
+                data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048"
+                data-sw="#EDEAE0" data-trim="#54504A" data-accent="#9C7B53">
+          <div class="pkg-count" id="pkgCount"><b>01</b><i>/</i>11</div>
+          <img id="pkgHeroImg" src="../../orange-county-sales-page/viz-photos/scheme-organic.jpg"
+               alt="Newport Beach home exterior rendered in the Coastal Organic Compound scheme — Sherwin-Williams Alabaster SW 7008 and Urbane Bronze SW 7048"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <button type="button" class="pkg-zoom" id="pkgZoom"
+                  aria-label="View this color scheme full size">
+            <span aria-hidden="true">View full size</span>
+          </button>
+          <figcaption>
+            <span class="paint-cans" id="pkgHeroCans">
+              <span class="paint-can" style="--c:#EDEAE0"></span>
+              <span class="paint-can" style="--c:#54504A"></span>
+              <span class="paint-can" style="--c:#9C7B53"></span>
+            </span>
+            <span class="pkg-txt">
+              <span class="pkg-nm" id="pkgHeroNm">Coastal Organic Compound</span>
+              <span class="pkg-co" id="pkgHeroCo">Alabaster SW 7008 &middot; Urbane Bronze SW 7048</span>
+            </span>
+          </figcaption>
+        </figure>
+        <div class="pkg-grid">
+        <button type="button" class="pkg-thumb"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg"
+                data-nm="Pebble Beach Manor" data-co="Accessible Beige SW 7036 &middot; Dover White SW 6385"
+                data-sw="#D1C7B8" data-trim="#EFE8D8" data-accent="#95948C"
+                aria-label="Show this house in the Pebble Beach Manor scheme">
+          <img src="../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg" alt="Newport Beach home exterior rendered in the Pebble Beach Manor scheme — Sherwin-Williams Accessible Beige SW 7036 and Dover White SW 6385"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <span class="pkg-thumb-nm">Pebble Beach Manor</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-ibiza.jpg"
+                data-nm="Ibiza Luxury Villa" data-co="Balanced Beige SW 7037 &middot; Aesthetic White SW 7035"
+                data-sw="#D1C7B8" data-trim="#E8E3DA" data-accent="#C8B59B"
+                aria-label="Show this house in the Ibiza Luxury Villa scheme">
+          <img src="../../orange-county-sales-page/viz-photos/scheme-ibiza.jpg" alt="Newport Beach home exterior rendered in the Ibiza Luxury Villa scheme — Sherwin-Williams Balanced Beige SW 7037 and Aesthetic White SW 7035"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <span class="pkg-thumb-nm">Ibiza Luxury Villa</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg"
+                data-nm="Pacific Sage Estate" data-co="Evergreen Fog SW 9130 &middot; Shoji White SW 7042"
+                data-sw="#95978A" data-trim="#E6DFD3" data-accent="#A98D4B"
+                aria-label="Show this house in the Pacific Sage Estate scheme">
+          <img src="../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg" alt="Newport Beach home exterior rendered in the Pacific Sage Estate scheme — Sherwin-Williams Evergreen Fog SW 9130 and Shoji White SW 7042"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <span class="pkg-thumb-nm">Pacific Sage Estate</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-marinelayer.jpg"
+                data-nm="Marine Layer" data-co="Sea Salt SW 6204 &middot; High Reflective White SW 7757"
+                data-sw="#CDD2CA" data-trim="#F7F7F1" data-accent="#BFC7C5"
+                aria-label="Show this house in the Marine Layer scheme">
+          <img src="../../orange-county-sales-page/viz-photos/scheme-marinelayer.jpg" alt="Newport Beach home exterior rendered in the Marine Layer scheme — Sherwin-Williams Sea Salt SW 6204 and High Reflective White SW 7757"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <span class="pkg-thumb-nm">Marine Layer</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-admiral.jpg"
+                data-nm="Newport Admiral" data-co="Repose Gray SW 7015 &middot; Pure White SW 7005"
+                data-sw="#CCC9C0" data-trim="#F0EFE9" data-accent="#2F2F30"
+                aria-label="Show this house in the Newport Admiral scheme">
+          <img src="../../orange-county-sales-page/viz-photos/scheme-admiral.jpg" alt="Newport Beach home exterior rendered in the Newport Admiral scheme — Sherwin-Williams Repose Gray SW 7015 and Pure White SW 7005"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <span class="pkg-thumb-nm">Newport Admiral</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-spanish.jpg"
+                data-nm="Santa Barbara Luxe" data-co="Alabaster SW 7008 &middot; Tricorn Black SW 6258"
+                data-sw="#F1EDE2" data-trim="#2F2F30" data-accent="#B5714A"
+                aria-label="Show this house in the Santa Barbara Luxe scheme">
+          <img src="../../orange-county-sales-page/viz-photos/scheme-spanish.jpg" alt="Newport Beach home exterior rendered in the Santa Barbara Luxe scheme — Sherwin-Williams Alabaster SW 7008 and Tricorn Black SW 6258"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <span class="pkg-thumb-nm">Santa Barbara Luxe</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-resort.jpg"
+                data-nm="Beverly Hills Resort" data-co="City Loft SW 7631, monochrome"
+                data-sw="#D6D2C9" data-trim="#D6D2C9" data-accent="#8C6E4C"
+                aria-label="Show this house in the Beverly Hills Resort scheme">
+          <img src="../../orange-county-sales-page/viz-photos/scheme-resort.jpg" alt="Newport Beach home exterior rendered in the Beverly Hills Resort scheme — Sherwin-Williams City Loft SW 7631, monochrome"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <span class="pkg-thumb-nm">Beverly Hills Resort</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-riviera.jpg"
+                data-nm="Riviera Tuxedo" data-co="Snowbound SW 7004 &middot; Black Magic SW 6991"
+                data-sw="#EDEAE0" data-trim="#2A2A2C" data-accent="#3B3B3E"
+                aria-label="Show this house in the Riviera Tuxedo scheme">
+          <img src="../../orange-county-sales-page/viz-photos/scheme-riviera.jpg" alt="Newport Beach home exterior rendered in the Riviera Tuxedo scheme — Sherwin-Williams Snowbound SW 7004 and Black Magic SW 6991"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <span class="pkg-thumb-nm">Riviera Tuxedo</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-euro.jpg"
+                data-nm="Euro-Industrial Estate" data-co="Peppercorn SW 7674 &middot; Cityscape SW 7067"
+                data-sw="#585A5C" data-trim="#9A9C98" data-accent="#7E8285"
+                aria-label="Show this house in the Euro-Industrial Estate scheme">
+          <img src="../../orange-county-sales-page/viz-photos/scheme-euro.jpg" alt="Newport Beach home exterior rendered in the Euro-Industrial Estate scheme — Sherwin-Williams Peppercorn SW 7674 and Cityscape SW 7067"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <span class="pkg-thumb-nm">Euro-Industrial Estate</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg"
+                data-nm="Obsidian Monolith" data-co="Iron Ore SW 7069 &middot; Tricorn Black SW 6258"
+                data-sw="#434341" data-trim="#2F2F30" data-accent="#5B5E62"
+                aria-label="Show this house in the Obsidian Monolith scheme">
+          <img src="../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg" alt="Newport Beach home exterior rendered in the Obsidian Monolith scheme — Sherwin-Williams Iron Ore SW 7069 and Tricorn Black SW 6258"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <span class="pkg-thumb-nm">Obsidian Monolith</span>
+        </button>
+        </div>
+        <p class="pkg-cap">Every one of these is the same house.
+          <span class="pkg-hint">Tap any one to see it larger</span>
+          <span class="pkg-yours">This one belongs to the Gallaghers in Newport Beach.
+            <b>Yours gets the same eleven &mdash; on the front of your own house.</b></span></p>
+      </div>
+      <p class="os-anchor"><b>What three color variations cost elsewhere: $329.</b>
+        An independent color consultant&rsquo;s exterior package arrives as a written
+        report with three variations and a set of paint cards in the mail. VIP commits
+        to at least eleven &mdash; every one of them painted onto the front of your own
+        house &mdash; and charges nothing for it.</p>
+      <ul class="os-stack">
+        <li>30 minutes, in your own home</li>
+        <li><b>The front of your house, painted on screen</b> &mdash; not a sample board,
+          not a showroom, not somebody else&rsquo;s project photo</li>
+        <li><b>11</b> complete color schemes &mdash; body, trim and accent together</li>
+        <li><b>9</b> further options &mdash; lighting, texture, premium additions</li>
+        <li>The exact Sherwin-Williams colors for every one, by name and number</li>
+        <li>Color guidance matched to your street&rsquo;s architecture and light</li>
+        <li>A written estimate, <b>itemized</b> &mdash; prep, primer, coating, trim and
+          accents priced separately</li>
+        <li>Your HOA design-review package, prepared as part of the project</li>
+      </ul>
+      <p class="os-do">What you do: one thing. <b>Send a photo of the front of your house.</b></p>
+      <a href="#viz" class="btn-gold"><span class="col-2"><span>See Your Home In Every Color</span><span class="sub">Complimentary &middot; Itemized estimate included</span></span></a>
+    </div>
+  </section>
+  <!-- /SWAP:CLIENT -->
+
+  <!-- ============ LAYOUT E · BEAT 4 ============ -->
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=woodbury] › master.timeline -->
+  <section id="timeline" data-story>
+    <div class="sec-head">
+      <div class="eyebrow">Approval, Then Painting</div>
+      <h2 class="ttl">From Submission to Walkthrough in Woodbury: <span class="accent">5 Steps, In Order</span></h2>
+      <p class="lead">Once the Gallaghers had chosen, the rest ran in one order: the association first, the crew second. This is that order for a Woodbury house.</p>
+    </div>
+    <div class="glove-steps">
+      <div class="glove-step">
+        <div class="glove-num">1</div>
+        <div>
+          <div class="lx-day">Step One</div>
+          <h3 class="glove-title">One Photo, Every Scheme</h3>
+          <p class="glove-desc">The front of the house rendered in 11 complete schemes, each named in exact Sherwin-Williams colors.</p>
+        </div>
+      </div>
+      <div class="glove-step">
+        <div class="glove-num">2</div>
+        <div>
+          <div class="lx-day">Step Two</div>
+          <h3 class="glove-title">The Submission Package</h3>
+          <p class="glove-desc">The chosen scheme, every color by name and number, which color goes on which surface, and the product data sheets — prepared for the Woodbury Community Association’s design review.</p>
+        </div>
+      </div>
+      <div class="glove-step">
+        <div class="glove-num">3</div>
+        <div>
+          <div class="lx-day">Step Three</div>
+          <h3 class="glove-title">The Association Decides</h3>
+          <p class="glove-desc">The timing is the association’s, not ours. Nothing is scheduled until its answer is in hand.</p>
+        </div>
+      </div>
+      <div class="glove-step">
+        <div class="glove-num">4</div>
+        <div>
+          <div class="lx-day">Step Four</div>
+          <h3 class="glove-title">Prep, Then Paint</h3>
+          <p class="glove-desc">Garden walls and planting protected, stucco repaired and primed, then Sherwin-Williams Emerald or Duration sprayed and back-rolled.</p>
+        </div>
+      </div>
+      <div class="glove-step">
+        <div class="glove-num">5</div>
+        <div>
+          <div class="lx-day">Step Five</div>
+          <h3 class="glove-title">The Walkthrough</h3>
+          <p class="glove-desc">Every side of the house checked in raking light, touch-ups before you ask, and the 2-Year Warranty already in the estimate you signed.</p>
+        </div>
+      </div>
+    </div>
+    <p class="lx-note">An illustrative order, not a promise of dates. How long the association takes is up to the association; how long the painting takes depends on the house.</p>
+  </section>
+  <!-- /SWAP:CLIENT -->
+
+  <!-- ============ LAYOUT E · BEAT 5 ============ --><section class="viz" id="viz" data-story>
     <div class="head">
       <!-- Third appearance of the chip, and the sub-line moves the story on:
            hero = who they are, band = the schemes they passed on, here = the
@@ -4302,9 +4622,11 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           <div class="sub-line">Everything they chose after the color</div></div></div>
       </div>
       <div class="eyebrow">Now It Is Your Turn</div>
-      <h2 class="ttl">How Do You Choose an Exterior Paint Color in Woodbury Without Guessing? <span class="accent">Do What the Gallaghers Did &mdash; on Their House.</span></h2>
+  <!-- SWAP:VIZCOPY --><!-- edit: generator/communities.json › communities[slug=woodbury] › master.viz.h2 · vizIntro · master.viz.sub -->
+      <h2 class="ttl">Your Turn: Start With Your Woodbury Community, <span class="accent">Then Send the Photo</span></h2>
       <p class="sub" style="text-align:center; font-size: 18px; max-width: 620px; margin: 0 auto 28px;">Woodbury houses are seen up close and at walking pace. The garden paseos take neighbors past the side of a house as often as the front, mature trees move shade across the stucco through the day, and a Spanish Colonial, a Tuscan and a cottage can share one short block, so every color is judged against a different neighbor. A creamy white that looks settled in the shade of a paseo can turn yellow on the sunny street side. Below is the Gallaghers’ Newport Beach house as they saw it. Pick any scheme, pull the slider across, and watch one choice rewrite the entire house.</p>
       <p class="viz-lede-cta">The Gallaghers made four decisions, not one &mdash; color, lighting, texture and the garage door. Each one changed how the last one looked. Make all four on their house, before you make them on yours.</p>
+  <!-- /SWAP:VIZCOPY -->
     </div>
 
     <div class="viz-flow">
@@ -4487,7 +4809,9 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <div class="s5-head">
     <div class="tl-num-label">Step Five &middot; Your Home</div>
     <h3 class="s5-title">Now Do It On <em>Your House</em></h3>
-    <p class="s5-lede">You have just repainted a Newport Beach estate. Send us the front of your home and our design team renders it in your three closest palettes &mdash; the same way you just saw.</p>
+    
+  <!-- SWAP:VIZCOPY --><!-- edit: generator/communities.json › communities[slug=woodbury] › master.viz.lede --><p class="s5-lede">You have just repainted a Newport Beach estate. Send us the front of your home and our design team renders it in your three closest palettes &mdash; the same way you just saw.</p>
+  <!-- /SWAP:VIZCOPY -->
       </div>
 
         <div class="s5">
@@ -4530,8 +4854,8 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
                 <div class="s5-gate" id="s5Gate">
                   <div class="s5-fields">
                     <div class="s5-field">
-                      <label for="s5Place">Address or community</label>
-                      <input id="s5Place" name="place" type="text" autocomplete="address-line1" placeholder="Orchard Hills, Irvine">
+                      <label for="s5Place">Your community (or address)</label>
+                      <input id="s5Place" name="place" type="text" autocomplete="address-line1" placeholder="Woodbury, Irvine">
                       <p class="s5-err" id="s5PlaceErr"></p>
                       <p class="s5-hint">Community is enough &mdash; it tells us the design-review rules you are working inside.</p>
                     </div>
@@ -4585,348 +4909,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   </section>
 
-  <section class="cand-band cand-band-solo" id="offer" data-story>
-    <div class="cand-foot offer-stake">
-      <div class="eyebrow">What You Get</div>
-      <h2 class="os-ttl">Your Woodbury Home in <span class="accent">11 Complete Color Schemes</span>, Settled in 30 Minutes and Complimentary</h2>
-      <p class="os-sub">Everything the Gallaghers received is offered to Woodbury owners on identical terms. You send one photo of the front of your house; our design team paints it in 11 complete schemes, each named in Sherwin-Williams colors, and returns it with an estimate priced line by line. If the kitchen cabinets are part of the plan, they are counted and priced on the same estimate. The consultation takes thirty minutes, costs nothing, and nothing is booked until a scheme is chosen.</p>
-      <div class="pkg" id="pkg">
-        <figure class="pkg-hero" id="pkgHero"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-organic.jpg"
-                data-nm="Coastal Organic Compound"
-                data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048"
-                data-sw="#EDEAE0" data-trim="#54504A" data-accent="#9C7B53">
-          <div class="pkg-count" id="pkgCount"><b>01</b><i>/</i>11</div>
-          <img id="pkgHeroImg" src="../../orange-county-sales-page/viz-photos/scheme-organic.jpg"
-               alt="Newport Beach home exterior rendered in the Coastal Organic Compound scheme — Sherwin-Williams Alabaster SW 7008 and Urbane Bronze SW 7048"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <button type="button" class="pkg-zoom" id="pkgZoom"
-                  aria-label="View this color scheme full size">
-            <span aria-hidden="true">View full size</span>
-          </button>
-          <figcaption>
-            <span class="paint-cans" id="pkgHeroCans">
-              <span class="paint-can" style="--c:#EDEAE0"></span>
-              <span class="paint-can" style="--c:#54504A"></span>
-              <span class="paint-can" style="--c:#9C7B53"></span>
-            </span>
-            <span class="pkg-txt">
-              <span class="pkg-nm" id="pkgHeroNm">Coastal Organic Compound</span>
-              <span class="pkg-co" id="pkgHeroCo">Alabaster SW 7008 &middot; Urbane Bronze SW 7048</span>
-            </span>
-          </figcaption>
-        </figure>
-        <div class="pkg-grid">
-        <button type="button" class="pkg-thumb"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg"
-                data-nm="Pebble Beach Manor" data-co="Accessible Beige SW 7036 &middot; Dover White SW 6385"
-                data-sw="#D1C7B8" data-trim="#EFE8D8" data-accent="#95948C"
-                aria-label="Show this house in the Pebble Beach Manor scheme">
-          <img src="../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg" alt="Newport Beach home exterior rendered in the Pebble Beach Manor scheme — Sherwin-Williams Accessible Beige SW 7036 and Dover White SW 6385"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <span class="pkg-thumb-nm">Pebble Beach Manor</span>
-        </button>
-        <button type="button" class="pkg-thumb"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-ibiza.jpg"
-                data-nm="Ibiza Luxury Villa" data-co="Balanced Beige SW 7037 &middot; Aesthetic White SW 7035"
-                data-sw="#D1C7B8" data-trim="#E8E3DA" data-accent="#C8B59B"
-                aria-label="Show this house in the Ibiza Luxury Villa scheme">
-          <img src="../../orange-county-sales-page/viz-photos/scheme-ibiza.jpg" alt="Newport Beach home exterior rendered in the Ibiza Luxury Villa scheme — Sherwin-Williams Balanced Beige SW 7037 and Aesthetic White SW 7035"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <span class="pkg-thumb-nm">Ibiza Luxury Villa</span>
-        </button>
-        <button type="button" class="pkg-thumb"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg"
-                data-nm="Pacific Sage Estate" data-co="Evergreen Fog SW 9130 &middot; Shoji White SW 7042"
-                data-sw="#95978A" data-trim="#E6DFD3" data-accent="#A98D4B"
-                aria-label="Show this house in the Pacific Sage Estate scheme">
-          <img src="../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg" alt="Newport Beach home exterior rendered in the Pacific Sage Estate scheme — Sherwin-Williams Evergreen Fog SW 9130 and Shoji White SW 7042"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <span class="pkg-thumb-nm">Pacific Sage Estate</span>
-        </button>
-        <button type="button" class="pkg-thumb"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-marinelayer.jpg"
-                data-nm="Marine Layer" data-co="Sea Salt SW 6204 &middot; High Reflective White SW 7757"
-                data-sw="#CDD2CA" data-trim="#F7F7F1" data-accent="#BFC7C5"
-                aria-label="Show this house in the Marine Layer scheme">
-          <img src="../../orange-county-sales-page/viz-photos/scheme-marinelayer.jpg" alt="Newport Beach home exterior rendered in the Marine Layer scheme — Sherwin-Williams Sea Salt SW 6204 and High Reflective White SW 7757"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <span class="pkg-thumb-nm">Marine Layer</span>
-        </button>
-        <button type="button" class="pkg-thumb"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-admiral.jpg"
-                data-nm="Newport Admiral" data-co="Repose Gray SW 7015 &middot; Pure White SW 7005"
-                data-sw="#CCC9C0" data-trim="#F0EFE9" data-accent="#2F2F30"
-                aria-label="Show this house in the Newport Admiral scheme">
-          <img src="../../orange-county-sales-page/viz-photos/scheme-admiral.jpg" alt="Newport Beach home exterior rendered in the Newport Admiral scheme — Sherwin-Williams Repose Gray SW 7015 and Pure White SW 7005"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <span class="pkg-thumb-nm">Newport Admiral</span>
-        </button>
-        <button type="button" class="pkg-thumb"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-spanish.jpg"
-                data-nm="Santa Barbara Luxe" data-co="Alabaster SW 7008 &middot; Tricorn Black SW 6258"
-                data-sw="#F1EDE2" data-trim="#2F2F30" data-accent="#B5714A"
-                aria-label="Show this house in the Santa Barbara Luxe scheme">
-          <img src="../../orange-county-sales-page/viz-photos/scheme-spanish.jpg" alt="Newport Beach home exterior rendered in the Santa Barbara Luxe scheme — Sherwin-Williams Alabaster SW 7008 and Tricorn Black SW 6258"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <span class="pkg-thumb-nm">Santa Barbara Luxe</span>
-        </button>
-        <button type="button" class="pkg-thumb"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-resort.jpg"
-                data-nm="Beverly Hills Resort" data-co="City Loft SW 7631, monochrome"
-                data-sw="#D6D2C9" data-trim="#D6D2C9" data-accent="#8C6E4C"
-                aria-label="Show this house in the Beverly Hills Resort scheme">
-          <img src="../../orange-county-sales-page/viz-photos/scheme-resort.jpg" alt="Newport Beach home exterior rendered in the Beverly Hills Resort scheme — Sherwin-Williams City Loft SW 7631, monochrome"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <span class="pkg-thumb-nm">Beverly Hills Resort</span>
-        </button>
-        <button type="button" class="pkg-thumb"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-riviera.jpg"
-                data-nm="Riviera Tuxedo" data-co="Snowbound SW 7004 &middot; Black Magic SW 6991"
-                data-sw="#EDEAE0" data-trim="#2A2A2C" data-accent="#3B3B3E"
-                aria-label="Show this house in the Riviera Tuxedo scheme">
-          <img src="../../orange-county-sales-page/viz-photos/scheme-riviera.jpg" alt="Newport Beach home exterior rendered in the Riviera Tuxedo scheme — Sherwin-Williams Snowbound SW 7004 and Black Magic SW 6991"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <span class="pkg-thumb-nm">Riviera Tuxedo</span>
-        </button>
-        <button type="button" class="pkg-thumb"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-euro.jpg"
-                data-nm="Euro-Industrial Estate" data-co="Peppercorn SW 7674 &middot; Cityscape SW 7067"
-                data-sw="#585A5C" data-trim="#9A9C98" data-accent="#7E8285"
-                aria-label="Show this house in the Euro-Industrial Estate scheme">
-          <img src="../../orange-county-sales-page/viz-photos/scheme-euro.jpg" alt="Newport Beach home exterior rendered in the Euro-Industrial Estate scheme — Sherwin-Williams Peppercorn SW 7674 and Cityscape SW 7067"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <span class="pkg-thumb-nm">Euro-Industrial Estate</span>
-        </button>
-        <button type="button" class="pkg-thumb"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg"
-                data-nm="Obsidian Monolith" data-co="Iron Ore SW 7069 &middot; Tricorn Black SW 6258"
-                data-sw="#434341" data-trim="#2F2F30" data-accent="#5B5E62"
-                aria-label="Show this house in the Obsidian Monolith scheme">
-          <img src="../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg" alt="Newport Beach home exterior rendered in the Obsidian Monolith scheme — Sherwin-Williams Iron Ore SW 7069 and Tricorn Black SW 6258"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <span class="pkg-thumb-nm">Obsidian Monolith</span>
-        </button>
-        </div>
-        <p class="pkg-cap">Every one of these is the same house.
-          <span class="pkg-hint">Tap any one to see it larger</span>
-          <span class="pkg-yours">This one belongs to the Gallaghers in Newport Beach.
-            <b>Yours gets the same eleven &mdash; on the front of your own house.</b></span></p>
-      </div>
-      <p class="os-anchor"><b>What three color variations cost elsewhere: $329.</b>
-        An independent color consultant&rsquo;s exterior package arrives as a written
-        report with three variations and a set of paint cards in the mail. VIP commits
-        to at least eleven &mdash; every one of them painted onto the front of your own
-        house &mdash; and charges nothing for it.</p>
-      <ul class="os-stack">
-        <li>30 minutes, in your own home</li>
-        <li><b>The front of your house, painted on screen</b> &mdash; not a sample board,
-          not a showroom, not somebody else&rsquo;s project photo</li>
-        <li><b>11</b> complete color schemes &mdash; body, trim and accent together</li>
-        <li><b>9</b> further options &mdash; lighting, texture, premium additions</li>
-        <li>The exact Sherwin-Williams colors for every one, by name and number</li>
-        <li>Color guidance matched to your street&rsquo;s architecture and light</li>
-        <li>A written estimate, <b>itemized</b> &mdash; prep, primer, coating, trim and
-          accents priced separately</li>
-        <li>Your HOA design-review package, prepared as part of the project</li>
-      </ul>
-      <p class="os-do">What you do: one thing. <b>Send a photo of the front of your house.</b></p>
-      <a href="#viz" class="btn-gold"><span class="col-2"><span>See Your Home In Every Color</span><span class="sub">Complimentary &middot; Itemized estimate included</span></span></a>
-    </div>
-  </section>
-
-  <section class="cand-band" id="candidates" data-story>
-    <span class="cand-ghost" aria-hidden="true">VISUALIZED</span>
-    <div class="cand-head">
-      <div class="pill-wrap pill-wrap-lede">
-        <div class="avatar-pill"><div class="ph"><img src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"/></div>
-          <div><div class="name">The Gallagher Family</div>
-          <div class="sub-line">Their remaining 7 schemes</div></div></div>
-      </div>
-      <div class="eyebrow">They Visualized It</div>
-      <h2>The Gallaghers Tried Their House in <span class="accent">11 Schemes</span> and Ruled Out Ten Before Paying for One</h2>
-      <p class="cand-lead">Every scheme below was judged whole, on the front of their own Newport Beach house: body, trim and accent together. They ruled out ten and kept one, Coastal Organic Compound. For a Woodbury owner the value of that is plain arithmetic. A color that goes wrong on the wall costs the job a second time, while a color that goes wrong in a render costs a click. On a street where a Spanish Colonial, a Tuscan and a cottage stand side by side, the render is also the only way to see whether your scheme suits your house or merely suits the one next door.</p>
-    </div>
-    <template id="bandSchemes">
-      <i data-id="pebblebeach" data-nm="Pebble Beach Manor"        data-co="Accessible Beige SW 7036 &middot; Dover White SW 6385"   data-sw="#D1C7B8" data-trim="#EFE8D8" data-accent="#95948C" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg')"></i>
-      <i data-id="ibiza"       data-nm="Ibiza Luxury Villa"        data-co="Balanced Beige SW 7037 &middot; Aesthetic White SW 7035" data-sw="#D1C7B8" data-trim="#E8E3DA" data-accent="#C8B59B" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-ibiza.jpg')"></i>
-      <i data-id="pacificsage" data-nm="Pacific Sage Estate"       data-co="Evergreen Fog SW 9130 &middot; Shoji White SW 7042"      data-sw="#95978A" data-trim="#E6DFD3" data-accent="#A98D4B" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg')"></i>
-      <i data-id="obsidian"    data-nm="Obsidian Monolith"         data-co="Iron Ore SW 7069 &middot; Tricorn Black SW 6258"        data-sw="#434341" data-trim="#2F2F30" data-accent="#5B5E62" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg')"></i>
-      <i data-id="marinelayer" data-nm="Marine Layer"              data-co="Sea Salt SW 6204 &middot; High Reflective White SW 7757" data-sw="#CBD6D0" data-trim="#F7F7F1" data-accent="#BFC7C5" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-marinelayer.jpg')"></i>
-      <i data-id="resort"      data-nm="Beverly Hills Resort"      data-co="City Loft SW 7631, monochrome"                 data-sw="#B9B2A7" data-trim="#D6D2C9" data-accent="#8C6E4C" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-resort.jpg')"></i>
-      <i data-id="spanish"     data-nm="Santa Barbara Luxe"        data-co="Alabaster SW 7008 &middot; Tricorn Black SW 6258"       data-sw="#F1EDE2" data-trim="#2F2F30" data-accent="#B5714A" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-spanish.jpg')"></i>
-      <i data-id="organic"     data-nm="Coastal Organic Compound"  data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048"       data-sw="#EDE8DC" data-trim="#54504A" data-accent="#9C7B53" data-chosen="1" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-organic.jpg')"></i>
-</template>
-    <div class="cand-track" id="candTrack"></div>
-    <p class="cand-swipe">Swipe to see them all &rarr;</p>
-  </section>
-
-  <section class="cand-band cand-band-solo" id="instead" data-story>
-    <div class="fl-head">
-      <div class="eyebrow">What Woodbury Owners Try First</div>
-      <h2>The Sample Pots on the Garage Wall, <span class="accent">and Why They Rarely Settle Anything</span></h2>
-      <p class="fl-bridge">Before the Gallaghers saw their house rendered, they were where most careful owners start: sure the color had to change, and not willing to spend the money twice finding out which one.</p>
-    </div>
-    <p class="fl-lede">In Woodbury it usually starts with three sample pots and a garage wall. Greek Villa on the left, Alabaster in the middle, something warmer on the right. A neighbor on the paseo gives an opinion, then another neighbor gives the opposite one. The patches look different at breakfast than at dinner, and different again once the tree by the drive fills in. Someone suggests painting bigger patches. The pots go on a shelf in the garage, and another summer passes with the old color on the house.</p>
-    <div class="fl-tried">
-        <div class="fl-tried-hd">And you have already tried everything you are
-          supposed to try</div>
-        <ul>
-          <li><b>Weeks of research.</b> It narrowed the field to a shortlist. It told
-            you nothing about how any of them behaves at the size of a house.</li>
-          <li><b>Sample patches on three different walls.</b> A patch that size cannot
-            tell you how the whole house will behave. The most common regret afterwards
-            is not having painted them bigger.</li>
-          <li><b>Asking at the paint store.</b> Staff can advise on color. They have
-            never stood in front of your house, in your light, on your street.</li>
-          <li><b>Polling friends and neighbors.</b> What you get back is agreement
-            about a card, not about a house.</li>
-          <li><b>Comparing the finalists side by side.</b> Each one eliminated for an
-            undertone that only showed itself in your own lighting.</li>
-        </ul>
-      </div>
-    <p class="fl-turn">Nothing in that process is careless. It fails because a patch the size of a doormat cannot tell you what a whole house will look like; only the whole house can. That is what the render shows, before a single gallon is paid for.</p>
-  </section>
-
-  <section id="process" data-story>
-    <div class="process-head">
-      <div class="eyebrow">Then We Painted It</div>
-      <h2 class="ttl">3 Steps From Render to a Repainted Woodbury Home, <span class="accent">Each One Priced Before It Starts</span></h2>
-      <p class="sub">For the Gallaghers, the color was settled first and everything else followed from it: the details, the finish, the last touches, each one seen on their own house while it could still change. A Woodbury project follows the same three steps. The questions are local ones: whether the garden wall is painted with the house, where the dark accent stops on a cottage, and whether the kitchen goes first. Each is answered, and priced, before anything starts.</p>
-    </div>
-    <div class="steps">
-      <div class="step"><div class="step-num"><span>1</span></div>
-        <div class="demo-swipe">
-          <div class="ba-frame">
-            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-riviera.jpg')"></div>
-            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
-            <div class="ba-label l">Before</div>
-            <div class="ba-label r">After</div>
-          </div>
-        </div><div class="step-title">Personalized Exterior Color Consultation</div><div class="step-desc">We start with mood, not color. You describe how the house should feel, and that narrows eleven exterior palettes down to the few worth seeing on the whole facade.</div></div>
-      <div class="step"><div class="step-num"><span>2</span></div>
-        <div class="demo-swipe">
-          <div class="ba-frame">
-            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg')"></div>
-            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
-            <div class="ba-label l">Before</div>
-            <div class="ba-label r">After</div>
-          </div>
-        </div><div class="step-title">Customized Visualizations In 30 Minutes</div><div class="step-desc">Your own house comes back rendered in every direction you shortlisted &mdash; then the decisions no one else puts in front of you: lighting, siding texture, stone, and the garage door.</div></div>
-      <div class="step"><div class="step-num"><span>3</span></div>
-        <div class="demo-swipe">
-          <div class="ba-frame">
-            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg')"></div>
-            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
-            <div class="ba-label l">Before</div>
-            <div class="ba-label r">After</div>
-          </div>
-        </div><div class="step-title">An Itemized Painting Estimate</div><div class="step-desc">Exterior painting starts at $4.75 per square foot of paintable surface, and the estimate shows which surfaces we counted to get there. The 2-year warranty is written into it.</div></div>
-    </div>
-  </section>
-
-  <section class="navy" id="fit">
-    <div class="sec-head">
-      <div class="eyebrow">Made For Woodbury</div>
-      <h2 class="ttl">5 Ways a Woodbury Repaint Ends Up <span class="accent">Paid for Twice</span>, and What Prevents Each</h2>
-    </div>
-    <div class="ps-grid">
-      <div class="ps-card">
-        <div class="ps-lbl problem">The Problem</div>
-        <p class="ps-p">A creamy white picked from a card that turns yellow once it covers the whole sunny side of the house.</p>
-        <div class="ps-divider"></div>
-        <div class="ps-lbl solution">The VIP Solution</div>
-        <p class="ps-s">Our design team renders the whole front of your house in each candidate scheme, so the white you approve is one you have already seen at full size, not on a two-inch card.</p>
-      </div>
-      <div class="ps-card">
-        <div class="ps-lbl problem">The Problem</div>
-        <p class="ps-p">A kitchen repainted by brush whose cabinet doors show brush marks and wear through at the edges.</p>
-        <div class="ps-divider"></div>
-        <div class="ps-lbl solution">The VIP Solution</div>
-        <p class="ps-s">Doors and drawers are removed and sprayed off-site in urethane enamel, the boxes sprayed in place and the hardware re-hung square, so the cabinets end up with one even, factory-style finish.</p>
-      </div>
-      <div class="ps-card">
-        <div class="ps-lbl problem">The Problem</div>
-        <p class="ps-p">An exterior color that suits the Spanish Colonial next door but not your cottage.</p>
-        <div class="ps-divider"></div>
-        <div class="ps-lbl solution">The VIP Solution</div>
-        <p class="ps-s">Each scheme is judged on your own house and its style, then held to roughly 60/30/10 between body, trim and accent, so the result suits your house rather than your neighbor’s.</p>
-      </div>
-      <div class="ps-card">
-        <div class="ps-lbl problem">The Problem</div>
-        <p class="ps-p">Overspray on a garden wall, a paseo path or a neighbor’s planting.</p>
-        <div class="ps-divider"></div>
-        <div class="ps-lbl solution">The VIP Solution</div>
-        <p class="ps-s">Full masking and containment before anything is sprayed, spraying scheduled around the wind, and the site cleaned every evening before the crew leaves.</p>
-      </div>
-      <div class="ps-card">
-        <div class="ps-lbl problem">The Problem</div>
-        <p class="ps-p">An estimate that arrives as one total, so there is no way to tell what was left out until the invoice.</p>
-        <div class="ps-divider"></div>
-        <div class="ps-lbl solution">The VIP Solution</div>
-        <p class="ps-s">Every item is priced separately (prep, primer, coating, trim, accents, cabinet doors and boxes) from $4.75 per square foot of paintable surface on the exterior, with the 2-Year Warranty printed on the same page.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="cand-band cand-band-solo" id="settle" data-story>
-    <div class="reasons-head">
-      <div class="eyebrow">Before You Choose</div>
-      <h2>3 Choices to Settle on Paper Before <span class="accent">Anyone Opens a Gallon</span> in Woodbury</h2>
-      <p class="reasons-lead">Three choices, each made on the whole house and written into the estimate before a crew is booked for Vintage, Sarabande, Twin Gables or anywhere else in the village. Settling them now costs a conversation. Discovering one of them on the wall costs the whole job a second time, and in a village where neighbors walk past on the paseo every evening, it is a very visible way to find out.</p>
-    </div>
-    <ul class="cand-reasons">
-      <li>
-        <img class="cr-brush" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" loading="lazy" decoding="async"/>
-        <div class="demo-swipe">
-          <div class="ba-frame">
-            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg')"></div>
-            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
-            <div class="ba-label l">Before</div>
-            <div class="ba-label r">After</div>
-          </div>
-        </div>
-        <div><b>Never approve a color you have only seen at 2&times;2 feet.</b>
-          Eleven schemes on the whole front of your house, in your own light,
-          in 30 minutes &mdash; not three samples taped to a wall.</div>
-      </li>
-      <li>
-        <img class="cr-brush" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" loading="lazy" decoding="async"/>
-        <div class="demo-swipe">
-          <div class="ba-frame">
-            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-marinelayer.jpg')"></div>
-            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
-            <div class="ba-label l">Before</div>
-            <div class="ba-label r">After</div>
-          </div>
-        </div>
-        <div><b>What a wrong color actually costs &mdash; and it is not the paint.</b>
-          The second repaint costs exactly what the first one did. Same prep,
-          same primer, same crew. Paint is the cheap part of painting.</div>
-      </li>
-      <li>
-        <img class="cr-brush" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" loading="lazy" decoding="async"/>
-        <div class="demo-swipe">
-          <div class="ba-frame">
-            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-organic.jpg')"></div>
-            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
-            <div class="ba-label l">Before</div>
-            <div class="ba-label r">After</div>
-          </div>
-        </div>
-        <div><b>The number most painters will not put on their website.</b>
-          VIP exterior work starts at <b>$4.75</b> per square foot of paintable
-          surface, broken out line by line &mdash; prep, primer, coating, trim.</div>
-      </li>
-    </ul>
-  </section>
-
+  <!-- ============ LAYOUT E · BEAT 6 ============ -->
   <section id="warranty" data-story>
     <div class="warranty-section">
       <div>
@@ -4948,63 +4931,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     </div>
   </section>
 
-  <section class="cream-deep" id="before-you-commit">
-    <div class="pillars-head">
-      <div class="eyebrow">Before You Commit</div>
-      <h2 class="ttl">What a Woodbury Owner Has in Hand Before <span class="accent">a Single Line Is Signed</span></h2>
-      <p class="lead">The expensive part of a repaint is doing it twice, so four things reach you before you sign anything: renders of your own house, an estimate priced line by line, the warranty in writing, and a color submission ready for the Woodbury Community Association’s design review. Together they turn the decision from a guess into a comparison. You know what the house will look like, what each part of the job costs, and what happens if something fails.</p>
-    </div>
-    <div class="pillars">
-      <div class="pillar"><div class="num">1</div><div><h3>COMPLIMENTARY Custom Color Consultation</h3><p>Choosing the right colors can be overwhelming. VIP Home Painting&rsquo;s complimentary consultation lets you visualize and decide in 30 minutes.</p></div></div>
-      <div class="pillar"><div class="num">2</div><div><h3>2-Year Written Warranty</h3><p>Labor and materials, in writing, on every project. If something fails inside two years we come back and put it right.</p></div></div>
-      <div class="pillar"><div class="num">3</div><div><h3>Itemized, Line by Line</h3><p>VIP Home Painting prices prep, primer, coating, trim and accents separately, starting at $4.75 per square foot of paintable surface. You see what you are paying for before you sign.</p></div></div>
-      <div class="pillar"><div class="num">4</div><div><h3>Design Review Handled</h3><p>We prepare the submission package your community association asks for and carry it through approval. That is part of the project, not an add-on.</p></div></div>
-    </div>
-  </section>
-
-  <section id="benefits" data-story>
-    <div class="wwd-benefits">
-      <div class="wb-head">
-        <div class="eyebrow">What It Buys You</div>
-        <h2 class="ttl">Along the Woodbury Paseos, the Neighbors See Your Color <span class="accent">for 8 to 15 Years</span></h2>
-        <p class="wb-sub">Woodbury is not a gated enclave. It is a walking village, built around paseos, The Commons and the Jeffrey Open Space Trail, and that means a house is seen from the side and the back as often as from the street. The difference between a good repaint and a poor one rarely shows the week it is finished. It shows several summers later, on the side that takes the afternoon sun. Most of that difference is preparation, so each item below is written into the estimate rather than promised at the door.</p>
-      </div>
-      <ul class="wb-list">
-        <li><b>Your stucco holds the paint instead of shedding it.</b>
-          Sprayed paint lands on the peaks of the texture and never reaches the
-          valleys. Back-rolling works the wet coat down into the surface, so the film
-          bonds to the wall rather than sitting on the high points and peeling off
-          a facade you just paid five figures for.</li>
-        <li><b>The color you approved is the color in year six.</b>
-          Paint thinned to stretch a bucket lets UV through to the surface underneath, and
-          chalking and fade follow. Two coats at full wet-film thickness reach the
-          dry film the manufacturer designed the product around.</li>
-        <li><b>Repairs disappear instead of becoming scars.</b>
-          A patch that is not floated back to match the texture reads as a smooth
-          streak across a textured wall in raking afternoon light &mdash; visible from
-          the street, permanently.</li>
-        <li><b>Your next repaint is a repaint, not a rebuild.</b>
-          Paint does not fix rot, it conceals it until it is worse and costs more.
-          Wood is repaired before anything is coated over it.</li>
-        <li><b>Two separate companies stand behind the same wall.</b>
-          Sherwin-Williams Emerald and Duration carry the manufacturer&rsquo;s own
-          limited lifetime warranty on the coating. VIP&rsquo;s 2-year written warranty
-          covers labor and materials on top of it.</li>
-        <li><b>The flaws get found by us, in daylight.</b>
-          Low-angle light is what exposes lap marks, thin spots and misses. The work
-          is inspected under it at completion, which is why you are not the one who
-          notices a week later.</li>
-        <li><b>You keep living in your house while it happens.</b>
-          Cars, windows, roof tiles, plants and your neighbor&rsquo;s driveway come
-          out the way they went in, and the site is clean every evening. Your weekend
-          is not a job site.</li>
-        <li><b>Someone specific answers for the result.</b>
-          The founder walks the finished project and signs off on it, so there is a
-          name attached to the work and a person to talk to about it.</li>
-      </ul>
-    </div>
-  </section>
-
+  <!-- ============ LAYOUT E · BEAT 7 ============ -->
   <section class="cream-deep" id="services" data-story>
     <div class="services-head">
       <div class="eyebrow">Our Woodbury Residential Painting Services</div>
@@ -5073,23 +5000,24 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   </section>
 
 
+  <!-- SWAP:FAQ --><!-- edit: generator/communities.json › communities[slug=woodbury] › faqs[] (q, a) · master.faq.h2 -->
   <section class="cream" id="faq">
     <div class="faq-head">
       <div class="eyebrow sec-head-eyebrow">Frequently Asked Questions</div>
-      <h2 class="ttl">Woodbury Home Painting — <span class="accent">Your Questions Answered</span></h2>
+      <h2 class="ttl">Woodbury Painting Questions — <span class="accent">Association Approval First</span></h2>
     </div>
     <div class="faq-list">
       <details class="faq-item" open>
+        <summary class="faq-q">Do I need Woodbury Community Association approval before painting my house?<span class="pm">+</span></summary>
+        <div class="faq-a">Check with the association before any exterior color changes. Woodbury is governed by the Woodbury Community Association, managed by Keystone Pacific, and its design review decides which exterior colors are approved. VIP Home Painting does not guess at those rules; it prepares the color submission as part of every exterior project, listing each Sherwin-Williams color by name and number, the product data sheets, and where each color goes. What happens if a house is painted without approval is set out in the association’s own documents, which is the reason to submit before the crew is booked.</div>
+      </details>
+      <details class="faq-item">
         <summary class="faq-q">How much does exterior house painting cost in Woodbury, Irvine?<span class="pm">+</span></summary>
         <div class="faq-a">VIP Home Painting’s exterior work in Woodbury starts at $4.75 per square foot of paintable surface, which is a starting rate and not an average. The measurement covers only what receives paint (stucco, trim, doors, garden walls if you include them), not the living area printed in a listing. Every item is its own line: preparation, primer, the two finish coats, trim and each accent color. Two estimates can then be compared line against line, instead of one total against another. The estimate arrives with the complimentary color renders. Call <a href="tel:9093125400">(909) 312-5400</a>.</div>
       </details>
       <details class="faq-item">
         <summary class="faq-q">How much does kitchen cabinet painting cost in Woodbury?<span class="pm">+</span></summary>
         <div class="faq-a">VIP Home Painting prices kitchen cabinet refinishing by what is actually in the kitchen: each door, each drawer front and the cabinet boxes, listed as separate lines. VIP does not publish a flat cabinet price, because two Woodbury kitchens with the same floor plan can have very different door counts and details. The count is taken at the consultation, and the itemized figure follows in writing. Doors and drawers are sprayed off-site in urethane enamel, the boxes are sprayed in place, and the hardware is re-hung square.</div>
-      </details>
-      <details class="faq-item">
-        <summary class="faq-q">Do I need Woodbury Community Association approval before painting my house?<span class="pm">+</span></summary>
-        <div class="faq-a">Check with the association before any exterior color changes. Woodbury is governed by the Woodbury Community Association, managed by Keystone Pacific, and its design review decides which exterior colors are approved. VIP Home Painting does not guess at those rules; it prepares the color submission as part of every exterior project, listing each Sherwin-Williams color by name and number, the product data sheets, and where each color goes. What happens if a house is painted without approval is set out in the association’s own documents, which is the reason to submit before the crew is booked.</div>
       </details>
       <details class="faq-item">
         <summary class="faq-q">What exterior colors suit Spanish Colonial, Tuscan and cottage homes in Woodbury?<span class="pm">+</span></summary>
@@ -5113,6 +5041,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       </details>
     </div>
   </section>
+  <!-- /SWAP:FAQ -->
 
   <!-- ============ BYLINE + FINAL CTA ============ -->
   
@@ -5152,11 +5081,13 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Get My Complimentary Quote Now</span><span class="sub">No Pressure · No Obligation · Always Complimentary</span></span></a>
     </div>
     
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=woodbury] › master.close.ps[] -->
     <div class="ps-close">
       <p><b>P.S.</b> &mdash; Every section of this page followed one order. The Gallaghers looked at 11 complete schemes on their own house, ruled out ten, and only then paid for paint. Most repaints run the other way round: sample pots on the garage wall, a best guess, and the answer arriving on the day the masking comes off, when changing it means paying for the whole job again.</p>
       <p>Woodbury rewards getting it right the first time. The village is mature, many of its houses are due for color at around the same time, and the paseos mean yours is seen from every side. The Gallaghers needed half an hour and a single photo of their house to see it first. For you it is the same half hour, it costs nothing, and the itemized estimate comes with it.</p>
       <p class="ps-cta"><a href="tel:9093125400">(909) 312-5400</a></p>
     </div>
+  <!-- /SWAP:CLIENT -->
   </section>
 
   <!-- ============ FOOTER ============ -->
