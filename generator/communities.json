@@ -1679,6 +1679,14 @@
         {
           "problem": "Getting a crew and materials through a guarded gate.",
           "solution": "Vehicle details and crew names go to the gate in advance, deliveries are scheduled, and everything stages on your property rather than the street."
+        },
+        {
+          "problem": "Three decades of hairline cracks covered rather than repaired.",
+          "solution": "Each crack is opened, filled and floated to match the surrounding texture, with bonding primer wherever the original coating has chalked, so the new finish rests on a sound surface."
+        },
+        {
+          "problem": "A single lump-sum quote with no way to see what was counted.",
+          "solution": "Every estimate is itemized line by line — preparation, primer, coating, trim and accents — from {rate} per square foot of paintable surface, with the {warranty} written into the same document."
         }
       ],
       "portfolio": {
@@ -1690,6 +1698,80 @@
         "headline": "Built in 1991. Most of the Street Is Still Wearing the Builder's Choice.",
         "kicker": "A color change costs almost exactly what a refresh costs. Worth knowing before you decide.",
         "play_label": "Watch the Film"
+      },
+      "storyLayout": "D",
+      "schema": "legacy",
+      "layoutOptions": [],
+      "master": {
+        "hero": {
+          "eyebrow": "Summit Pointe · Anaheim Hills",
+          "h1": "Summit Pointe Painting — <span class=\"accent\">See the Color Before</span> the Crew Arrives",
+          "deck": "Built in 1991, and much of the street still wears the builder’s choice. {They} were one signature away from painting their house twice — and from a hillside with 180-degree views, a miss does not stay private.",
+          "continue": "See how close it came"
+        },
+        "nearMiss": {
+          "label": "No. 1 · {Their} Near-Miss",
+          "story": "{They} nearly signed off on a refresh of the colors already on their {place} house. Rendered across the whole front and seen from a distance, the old palette looked tired rather than safe — and a new scheme would cost almost exactly the same. The refresh was the first thing they ruled out.",
+          "fixLabel": "What Caught It"
+        },
+        "problemSolution": {
+          "h2": "5 Ways a Summit Pointe Repaint Goes Wrong — <span class=\"accent\">and What Prevents Each</span>"
+        },
+        "eliminated": {
+          "eyebrow": "They Visualized It",
+          "h2": "What Caught It: {schemes} Schemes on Their House, <span class=\"accent\">Ten Ruled Out Before the Street Saw One</span>",
+          "lead": "Every scheme was rendered on the front of {their} {place} house — body, trim and accent together — before anything was bought. Ten went; {chosen} stayed. In Summit Pointe, where many homes look out over 180 degrees of hillside, the same half hour shows what a render at arm’s length never can: how the house reads from far away."
+        },
+        "viz": {
+          "h2": "Your Turn: Judge a Summit Pointe Color From a Distance, <span class=\"accent\">on Their House First</span>"
+        },
+        "neighbors": {
+          "h2": "Seen From Across the Hillside, a Summit Pointe House Is Judged <span class=\"accent\">for 8 to 15 Years</span>",
+          "sub": "Summit Pointe is 243 homes behind one gate, and with panoramic views off many of them, a house is seen from further away and by more neighbors than almost anywhere in the city. None of what follows is visible the week the crew leaves. All of it is visible several summers on, which is why each item is written into the estimate."
+        },
+        "painted": {
+          "h2": "Then We Painted It: 3 Steps From Render to a Summit Pointe Walkthrough, <span class=\"accent\">Each Seen First</span>",
+          "sub": "For {they}, the color came first and the rest followed — the details, the finish, the last touches — each seen on their own house while it could still change. A Summit Pointe project runs the same three steps, with gate clearance for the crew and deliveries arranged in advance and materials staged on your property."
+        },
+        "warranty": {
+          "h2": "The <span class=\"accent\">{warranty}</span> Sits in Your Summit Pointe Estimate, Beside the Prep It Depends On",
+          "body": "The {warranty} covers labor and materials and is printed on the itemized estimate you sign. On a house three decades from its original finish, the preparation behind it is listed on the same page: cracks floated back to the texture, bonding primer where the old coating has chalked, and two coats of Sherwin-Williams Emerald or Duration. If something covered fails within the warranty period, VIP Home Painting comes back and puts it right."
+        },
+        "beforeCommit": {
+          "h2": "Before You Commit to a Summit Pointe Painter, <span class=\"accent\">Four Things Are Already Yours</span>",
+          "lead": "The expensive part of a repaint is doing it twice, so four things reach you first: renders of your own house, an estimate priced line by line, the warranty in writing, and a color submission prepared for the community association’s design review."
+        },
+        "services": {
+          "h2": "Exterior, Interior and Cabinet Painting for Summit Pointe Homes, <span class=\"accent\">on One Itemized Estimate</span>",
+          "items": [
+            {
+              "title": "Exterior House Painting — Summit Pointe",
+              "body": "Original 1991 finishes brought back to a sound surface, then Sherwin-Williams Emerald or Duration sprayed with Graco and Titan airless equipment and back-rolled. Starts at {rate} per square foot of paintable surface, measured on what is actually painted."
+            },
+            {
+              "title": "Interior House Painting — Summit Pointe",
+              "body": "Walls, ceilings, trim and doors, useful when a new exterior palette changes how the rooms facing the view read. The same line-by-line estimate and Sherwin-Williams naming."
+            },
+            {
+              "title": "Kitchen Cabinet Painting — Summit Pointe",
+              "body": "Cabinet doors and drawers are sprayed off-site in Sherwin-Williams urethane enamel for a factory-smooth finish — the single highest-impact change available in a 1991 kitchen without replacing the boxes."
+            }
+          ]
+        },
+        "serviceArea": {
+          "h2": "House Painters for Summit Pointe, Anaheim Hills, <span class=\"accent\">and the Gated Communities Around It</span>",
+          "lead": "VIP Home Painting is based in Anaheim and paints across the hillside communities above Santa Ana Canyon. From Summit Pointe, the neighboring communities we paint are one click away, along with our exterior, interior and kitchen cabinet painting pages."
+        },
+        "faq": {
+          "h2": "Summit Pointe House Painting — <span class=\"accent\">Your Questions, Answered</span>"
+        },
+        "close": {
+          "h2": "The Whole Hillside Will See It. <span class=\"accent\">See It First, in 30 Minutes.</span>",
+          "ps": [
+            "{They} nearly refreshed the colors they already had. What changed their mind was seeing {schemes} complete schemes on the house itself, ruling out ten, and only then opening a can.",
+            "In Summit Pointe a house is seen from far away and for years. One photo of the front of yours is all the consultation asks, and it is complimentary, with the itemized estimate included."
+          ]
+        }
       }
     },
     {
