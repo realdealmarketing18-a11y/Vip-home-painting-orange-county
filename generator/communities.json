@@ -1178,7 +1178,8 @@
         "hero": {
           "eyebrow": "Stonegate · Irvine · Exterior House Painting",
           "h1": "3 Ways to Get Exterior House Painting Right in Stonegate <span class=\"gold\">Without Guessing From a Swatch</span>",
-          "continue": "See the 3 ways {they} got it right, then picture your own Stonegate house"
+          "continue": "See the 3 ways {they} got it right, then picture your own Stonegate house",
+          "deck": "{They} were approved on the first submission. In Stonegate, the Stonegate Village Owners Association reviews exterior color before a crew is booked — and that review is where a repaint usually waits."
         },
         "eliminated": {
           "h2": "{They} Saw Their House in <span class=\"accent\">{schemes} Schemes</span> and Crossed Off Ten Without Painting a Single Swatch",
@@ -1193,15 +1194,16 @@
           "h2": "5 Ways a Stonegate Repaint Goes Wrong in Full View of the Street, <span class=\"accent\">and What Prevents Each</span>"
         },
         "instead": {
-          "eyebrow": "What Stonegate Owners Try First",
-          "h2": "The Test Patches by the Front Door, <span class=\"accent\">and Why Careful Owners Still Guess Wrong</span>",
-          "bridge": "Before {they} saw their own house rendered, they were where most careful owners begin: certain the house needed a new color, and determined not to pay for the wrong one.",
-          "lede": "In Stonegate it usually starts with a fan deck on the kitchen table. Three greiges make the shortlist, and three patches go up beside the front door, each about the size of a doormat. A neighbor walking toward Stonegate Park stops to give an opinion. By late afternoon the patch that looked warm in the morning looks faintly pink, and the one that looked safe looks flat. Somebody photographs all three and sends them around. The photographs disagree with the wall, and the wall disagrees with the card.",
-          "turn": "None of that is careless. It is the method most owners are told to use, and it fails for a simple reason: a patch the size of a doormat cannot show what a whole house will look like beside the houses on either side. Only the whole house can. That is what the render shows, before any money is spent."
+          "eyebrow": "The Approval Trap",
+          "h2": "The Stonegate Approval Trap: <span class=\"accent\">3 Ways a Color Submission Stalls</span>",
+          "bridge": "Before {they} had anything rendered, the hard part was not picking a color. It was getting one approved without guessing twice.",
+          "lede": "In Stonegate a color change goes through the Stonegate Village Owners Association’s design review, and three things tend to hold it up. A palette book narrows the choice, then says nothing about how a greige will look on a close-set street at four o’clock. A submission built on a chip number and a doormat-sized patch invites a question back rather than an answer. And each round of questions restarts the wait, while the patches beside the front door fade a little more.",
+          "turn": "A reviewer can only approve what the submission shows. Show the whole house, in named colors, and there is far less left to ask."
         },
         "offer": {
           "h2": "Your Stonegate Home in <span class=\"accent\">{schemes} Complete Color Schemes</span>, With the Price of Every Line in Writing",
-          "sub": "{They} received a package, and Stonegate owners receive the same one on the same terms. Send one photograph of the front of your house; our design team returns it painted in {schemes} complete schemes, each named in Sherwin-Williams colors, together with an estimate in which every item carries its own price. The consultation takes thirty minutes and costs nothing. Nothing is scheduled until a scheme has been chosen, and the estimate shows exactly which surfaces were counted to reach its total."
+          "sub": "{They} received a package, and Stonegate owners receive the same one on the same terms. Send one photograph of the front of your house; our design team returns it painted in {schemes} complete schemes, each named in Sherwin-Williams colors, together with an estimate in which every item carries its own price. The consultation takes thirty minutes and costs nothing. Nothing is scheduled until a scheme has been chosen, and the estimate shows exactly which surfaces were counted to reach its total.",
+          "eyebrow": "What {They} Submitted — Yours on the Same Terms"
         },
         "painted": {
           "h2": "After the Render, 3 Steps to a Repainted Stonegate Home, <span class=\"accent\">With the Price Known at Each One</span>",
@@ -1246,8 +1248,61 @@
             "Every section of this page followed the same order. {They} saw {schemes} complete schemes on their own house, crossed off ten, and only then paid for paint. Most repaints happen the other way round: a fan deck, a few patches by the front door, a best guess, and the real answer arriving on the day the masking comes off, when changing it means paying for the whole job again.",
             "Stonegate is a village where that answer is public. The streets are close, the houses are kept with care, and the Stonegate Village Owners Association reviews the color before it goes up. {They} needed half an hour and one photograph to see their house first. Yours takes the same half hour, costs nothing, and comes with an estimate that shows the price of every line."
           ]
+        },
+        "_parked": {
+          "instead": {
+            "eyebrow": "What Stonegate Owners Try First",
+            "h2": "The Test Patches by the Front Door, <span class=\"accent\">and Why Careful Owners Still Guess Wrong</span>",
+            "bridge": "Before {they} saw their own house rendered, they were where most careful owners begin: certain the house needed a new color, and determined not to pay for the wrong one.",
+            "lede": "In Stonegate it usually starts with a fan deck on the kitchen table. Three greiges make the shortlist, and three patches go up beside the front door, each about the size of a doormat. A neighbor walking toward Stonegate Park stops to give an opinion. By late afternoon the patch that looked warm in the morning looks faintly pink, and the one that looked safe looks flat. Somebody photographs all three and sends them around. The photographs disagree with the wall, and the wall disagrees with the card.",
+            "turn": "None of that is careless. It is the method most owners are told to use, and it fails for a simple reason: a patch the size of a doormat cannot show what a whole house will look like beside the houses on either side. Only the whole house can. That is what the render shows, before any money is spent."
+          }
+        },
+        "timeline": {
+          "eyebrow": "Approval, Then Painting",
+          "h2": "From Approval to Walkthrough on a Stonegate Home: <span class=\"accent\">5 Steps in Order</span>",
+          "lead": "After {they} chose, everything ran in one order — the association first, the crew second. Here is that order for a house in Stonegate.",
+          "days": [
+            {
+              "label": "Step One",
+              "title": "The House in Every Scheme",
+              "body": "One photo of the front, rendered in {schemes} complete schemes, each named in exact Sherwin-Williams colors."
+            },
+            {
+              "label": "Step Two",
+              "title": "A Package the Reviewer Can Read",
+              "body": "The chosen scheme with every color by name and number, which color goes where, and the product data sheets, prepared for the Stonegate Village Owners Association."
+            },
+            {
+              "label": "Step Three",
+              "title": "The Association’s Answer",
+              "body": "Its timing is the association’s. No crew is scheduled until the answer is in."
+            },
+            {
+              "label": "Step Four",
+              "title": "Protect, Prepare, Paint",
+              "body": "Neighboring walls, driveways and planting covered, stucco repaired and primed, then two coats sprayed and back-rolled."
+            },
+            {
+              "label": "Step Five",
+              "title": "Walk It Together",
+              "body": "Every side of the house checked in raking light, touch-ups before you ask, and the {warranty} in the estimate you already signed."
+            }
+          ],
+          "note": "An illustrative order, not a promise of dates. The review runs on the association’s calendar; the painting depends on the house."
+        },
+        "viz": {
+          "h2": "Your Turn: Name Your Stonegate Community First, <span class=\"accent\">Then Add the Photo</span>"
+        },
+        "faq": {
+          "h2": "Stonegate Painting Questions — <span class=\"accent\">Starting With the Association</span>"
         }
-      }
+      },
+      "storyLayout": "E",
+      "layoutOptions": [
+        "beforeCommit",
+        "services"
+      ]
     },
     {
       "city": "anaheim",
