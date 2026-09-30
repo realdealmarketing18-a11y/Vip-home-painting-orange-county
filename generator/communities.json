@@ -338,7 +338,8 @@
         "hero": {
           "eyebrow": "Altair · Irvine · Modern Home Painting",
           "h1": "3 Costly Things to Settle Before <span class=\"gold\">Exterior House Painting</span> in Altair",
-          "continue": "See how {they} ruled out ten schemes, then try yours"
+          "continue": "See how {they} ruled out ten schemes, then try yours",
+          "deck": "On clean modern lines like Altair’s, a wrong color shows on every plane — and {they} were one signature away from painting their house twice."
         },
         "settle": {
           "h2": "On a Modern Altair Home, a Wrong Color Costs the Whole Job <span class=\"accent\">Twice</span>. These 3 Decisions Prevent It.",
@@ -404,8 +405,24 @@
             "Everything on this page happened in one order: {they} saw their home in {schemes} complete color schemes, ruled out ten, and only then did anyone open a can. Most repaints on modern houses run it the other way. A chip is held up to the wall, everyone hopes it behaves the same across a whole plane of stucco, and the real answer arrives when the masking comes off.",
             "Altair is named for a star, and its streets for the sky: Bellatrix in Orion, Bolide for a bright meteor, Sagan Way for Carl Sagan. A house color is judged the way a star is, from a distance and in full light, for years. {They} needed thirty minutes and one photo of the front of the house. So do you, and it is complimentary, with the itemized estimate included."
           ]
+        },
+        "nearMiss": {
+          "label": "No. 1 · {Their} Near-Miss",
+          "story": "{They} had a gray chosen from a chip and were ready to book the crew. Rendered across the whole front of their {place} house, that gray turned cold and flat by afternoon. The scheme they were one signature away from painting was the first one they ruled out.",
+          "fixLabel": "What Caught It"
+        },
+        "viz": {
+          "h2": "Your Turn: Catch an Altair Near-Miss on <span class=\"accent\">Their House Before It Reaches Yours</span>"
+        },
+        "faq": {
+          "h2": "Altair Exterior Painting — <span class=\"accent\">What Owners Ask Before They Sign</span>"
         }
-      }
+      },
+      "storyLayout": "D",
+      "layoutOptions": [
+        "instead",
+        "offer"
+      ]
     },
     {
       "slug": "portola-springs",

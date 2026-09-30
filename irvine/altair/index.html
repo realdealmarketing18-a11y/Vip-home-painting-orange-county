@@ -4146,6 +4146,52 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   .film-close { top: 12px; right: 12px; padding: 9px 14px; }
 }
 
+/* ============================================================
+   STORY-LAYOUT PAGES ONLY (storyLayout B–F) — see story-layouts.js.
+   Loaded after page.css / city-page.css, and only on layout pages, so
+   no other page changes. Colours, type and shadows come from the
+   design-system tokens already on the page (design-system/*.css).
+   ============================================================ */
+
+/* Hero: the layout's story line under the H1 */
+.hero-cinema .hero-deck {
+  font-family: var(--font-serif); font-style: italic; font-weight: 400;
+  font-size: clamp(17px, 2.1vw, 22px); line-height: var(--lh-snug);
+  color: var(--gold-bright); max-width: 720px; margin: 14px auto 0; text-align: center;
+}
+
+/* Flashback / dusk walk: a single column of story prose under the chip */
+.lx-story { max-width: 760px; margin: 0 auto; }
+.lx-story .pill-wrap { margin-bottom: 18px; }
+.lx-story .body { font-size: 17px; line-height: var(--lh-relaxed); margin: 0 0 16px; }
+
+/* Timeline: day label above each step title, and the honesty note */
+.lx-day { font-family: var(--font-sans); font-weight: 700; font-size: 10.5px;
+  letter-spacing: var(--tracking-overline); text-transform: uppercase; color: var(--gold-deep); margin: 4px 0 6px; }
+.lx-note { max-width: 760px; margin: 36px auto 0; text-align: center;
+  font-family: var(--font-serif); font-style: italic; font-size: 15px; color: var(--fg-secondary); }
+
+/* Near-miss No. 1: the family's card leads the grid */
+.ps-card.lx-near { border: var(--border-gold); box-shadow: var(--shadow-md); }
+
+/* Palette: every colour as a three-can set */
+.lx-can-card .lx-cans { display: flex; justify-content: center; gap: 10px; padding: 22px 16px 6px; }
+.lx-can-card .paint-can { width: 58px; height: 58px; }
+.lx-can-card .lx-with { font-style: italic; }
+
+/* Proof */
+.lx-proof-lead { max-width: 720px; margin: 14px auto 0; text-align: center; }
+.cases-grid.lx-single { grid-template-columns: minmax(0, 620px); justify-content: center; }
+
+@media (max-width: 860px) {
+  .cases-grid { grid-template-columns: 1fr; }
+  .cases-grid.lx-single { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .lx-can-card .paint-can { width: 48px; height: 48px; }
+  .lx-story .body { font-size: 16px; }
+}
+
 </style>
 </head>
 <body>
@@ -4220,12 +4266,17 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     <div class="hero-stack" id="heroStack">
       <div class="hero-fleuron" aria-hidden="true">&#10087;</div>
       <div class="eyebrow eyebrow-ruled">Altair · Irvine · Modern Home Painting</div>
-      <div class="pill-wrap pill-wrap-lede">
+      
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=altair] › story (family, avatar, location) --><div class="pill-wrap pill-wrap-lede">
         <div class="avatar-pill"><div class="ph"><img src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"/></div>
           <div><div class="name">The Gallagher Family</div>
           <div class="sub-line">Pelican Hill, Newport Beach</div></div></div>
       </div>
+  <!-- /SWAP:CLIENT -->
       <h1 class="ttl-hero">3 Costly Things to Settle Before <span class="gold">Exterior House Painting</span> in Altair</h1>
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=altair] › master.hero.deck -->
+      <p class="hero-deck">On clean modern lines like Altair’s, a wrong color shows on every plane — and the Gallaghers were one signature away from painting their house twice.</p>
+  <!-- /SWAP:CLIENT -->
       <ol class="hero-beats">
         <li><span class="n">1</span><span class="t"><span class="w">They</span> visualized it</span></li>
         <li><span class="n">2</span><span class="t"><span class="w">They</span> loved it</span></li>
@@ -4272,7 +4323,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           <button class="hr-tray-cta" type="button" id="hrReplay">Discover</button>
         </div>
       </figure>
-      <a class="hero-continue" href="#viz">
+      <a class="hero-continue" href="#story">
         <span class="hc-rule" aria-hidden="true"></span>
         <span class="hc-txt">See how the Gallaghers ruled out ten schemes, then try yours</span>
         <span class="hc-arrow" aria-hidden="true">&#8595;</span>
@@ -4289,7 +4340,118 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   </section>
 
   <!-- ============ No. 01 — INTERACTIVE CUSTOM VISUALIZATION (the highlight) ============ -->
-  <section class="viz" id="viz" data-story>
+  
+
+  <div id="story" aria-hidden="true"></div>
+  <!-- ============ LAYOUT D · BEAT 2 ============ -->
+  <!-- SWAP:LOCAL --><!-- edit: generator/communities.json › communities[slug=altair] › problems[] (local problems) · master.problemSolution.h2 -->
+  <section class="cream" id="fit" data-story>
+    <div class="sec-head">
+      <div class="eyebrow">Made For Altair</div>
+      <h2 class="ttl">5 Ways a Modern Altair Repaint Goes Wrong — <span class="accent">and the Fix for Each</span></h2>
+      
+    </div>
+    <div class="ps-grid">
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=altair] › master.nearMiss -->
+      <div class="ps-card lx-near">
+        <div class="ps-lbl problem">No. 1 · The Gallaghers’ Near-Miss</div>
+        <p class="ps-p">The Gallaghers had a gray chosen from a chip and were ready to book the crew. Rendered across the whole front of their Newport Beach house, that gray turned cold and flat by afternoon. The scheme they were one signature away from painting was the first one they ruled out.</p>
+        <div class="ps-divider"></div>
+        <div class="ps-lbl solution">What Caught It</div>
+        <p class="ps-s">Our design team renders the entire front of your house in each candidate scheme, so the tone you approve is one you have already seen at full size, on your own walls.</p>
+      </div>
+  <!-- /SWAP:CLIENT -->
+      <div class="ps-card">
+        <div class="ps-lbl problem">The Problem</div>
+        <p class="ps-p">On a two-tone modern house, every place one color meets the next is in plain view, and a wandering edge shows from the street.</p>
+        <div class="ps-divider"></div>
+        <div class="ps-lbl solution">The VIP Solution</div>
+        <p class="ps-s">Every transition is masked before any spraying, and the estimate names which color goes on which surface, so each edge lands where the architecture puts it.</p>
+      </div>
+      <div class="ps-card">
+        <div class="ps-lbl problem">The Problem</div>
+        <p class="ps-p">A dark body or accent such as Iron Ore or Peppercorn absorbs far more afternoon sun than a light one.</p>
+        <div class="ps-divider"></div>
+        <div class="ps-lbl solution">The VIP Solution</div>
+        <p class="ps-s">Every scheme is named in exact Sherwin-Williams colors, so how much light each one reflects is known before you choose, and the deep tone goes only where it earns its place.</p>
+      </div>
+      <div class="ps-card">
+        <div class="ps-lbl problem">The Problem</div>
+        <p class="ps-p">Paint sprayed onto broad planes that never reaches the valleys of the texture, so the wall looks patchy in low light.</p>
+        <div class="ps-divider"></div>
+        <div class="ps-lbl solution">The VIP Solution</div>
+        <p class="ps-s">Sherwin-Williams Emerald or Duration sprayed with Graco and Titan airless rigs, then back-rolled into the stucco, and a raking-light inspection before anything is signed off.</p>
+      </div>
+      <div class="ps-card">
+        <div class="ps-lbl problem">The Problem</div>
+        <p class="ps-p">An estimate that is one number, with no way to see which walls, metal and trim were counted.</p>
+        <div class="ps-divider"></div>
+        <div class="ps-lbl solution">The VIP Solution</div>
+        <p class="ps-s">Each line is priced on its own — prep, primer, coating, trim, metal and accents — from $4.75 per square foot of paintable surface, with the 2-Year Warranty written into the same document.</p>
+      </div>
+    </div>
+  </section>
+  <!-- /SWAP:LOCAL -->
+
+  <!-- SWAP:LOCAL --><!-- edit: generator/communities.json › communities[slug=altair] › master.instead -->
+  <section class="cand-band cand-band-solo" id="instead" data-story>
+    <div class="fl-head">
+      <div class="eyebrow">What Usually Happens Instead</div>
+      <h2>5 Careful Ways Altair Owners Test a Color — and Why <span class="accent">None Shows the Whole House</span></h2>
+      <p class="fl-bridge">Before the Gallaghers saw their home rendered, they were where most owners of a modern house begin: a shortlist of whites and grays, and no way to know which would still look deliberate across a whole plane of stucco.</p>
+    </div>
+    <p class="fl-lede">It tends to start with sample pots on a Saturday. A square of Pure White goes on one wall, a square of Chatura Gray on the next, and a patch of Peppercorn beside the garage for the accent. Up close, in the morning, all three look right. By late afternoon the white has turned glaring, the gray reads colder than it did on the card, and the charcoal square says nothing about how a full volume of the house will look in it. On a street of clean-lined homes, nobody wants to be the one that got it wrong. So the squares stay up, the decision waits, and the house stays exactly as it is.</p>
+    <div class="fl-tried">
+        <div class="fl-tried-hd">And you have already tried everything you are
+          supposed to try</div>
+        <ul>
+          <li><b>Weeks of research.</b> It narrowed the field to a shortlist. It told
+            you nothing about how any of them behaves at the size of a house.</li>
+          <li><b>Sample patches on three different walls.</b> A patch that size cannot
+            tell you how the whole house will behave. The most common regret afterwards
+            is not having painted them bigger.</li>
+          <li><b>Asking at the paint store.</b> Staff can advise on color. They have
+            never stood in front of your house, in your light, on your street.</li>
+          <li><b>Polling friends and neighbors.</b> What you get back is agreement
+            about a card, not about a house.</li>
+          <li><b>Comparing the finalists side by side.</b> Each one eliminated for an
+            undertone that only showed itself in your own lighting.</li>
+        </ul>
+      </div>
+    <p class="fl-turn">None of that is carelessness. On contemporary architecture the color is not decorating the design, it is the design, and a two-foot square cannot show how one tone behaves across a broad, uninterrupted wall. Only the whole house can show that.</p>
+  </section>
+  <!-- /SWAP:LOCAL -->
+
+  <!-- ============ LAYOUT D · BEAT 3 ============ -->
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=altair] › master.eliminated (+ story block: family, chosen scheme, photos) -->
+  <section class="cand-band" id="candidates" data-story>
+    <span class="cand-ghost" aria-hidden="true">VISUALIZED</span>
+    <div class="cand-head">
+      <div class="pill-wrap pill-wrap-lede">
+        <div class="avatar-pill"><div class="ph"><img src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"/></div>
+          <div><div class="name">The Gallagher Family</div>
+          <div class="sub-line">Their remaining 7 schemes</div></div></div>
+      </div>
+      <div class="eyebrow">They Visualized It</div>
+      <h2>The Gallaghers Saw Their House in <span class="accent">11 Schemes</span>. Ten Were Ruled Out Before a Can Was Opened.</h2>
+      <p class="cand-lead">So the Gallaghers worked the other way round: every scheme, body, trim and accent together, on the front of their own Newport Beach home before any paint was bought. Below are the ones they ruled out, and the one they kept, Coastal Organic Compound. On a modern Altair house the ruling-out goes faster, because clean lines are unforgiving. A white that fights the metal accents, or a charcoal that swallows the shadow where two planes meet, gives itself away across the whole house at once.</p>
+    </div>
+    <template id="bandSchemes">
+      <i data-id="pebblebeach" data-nm="Pebble Beach Manor"        data-co="Accessible Beige SW 7036 &middot; Dover White SW 6385"   data-sw="#D1C7B8" data-trim="#EFE8D8" data-accent="#95948C" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg')"></i>
+      <i data-id="ibiza"       data-nm="Ibiza Luxury Villa"        data-co="Balanced Beige SW 7037 &middot; Aesthetic White SW 7035" data-sw="#D1C7B8" data-trim="#E8E3DA" data-accent="#C8B59B" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-ibiza.jpg')"></i>
+      <i data-id="pacificsage" data-nm="Pacific Sage Estate"       data-co="Evergreen Fog SW 9130 &middot; Shoji White SW 7042"      data-sw="#95978A" data-trim="#E6DFD3" data-accent="#A98D4B" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg')"></i>
+      <i data-id="obsidian"    data-nm="Obsidian Monolith"         data-co="Iron Ore SW 7069 &middot; Tricorn Black SW 6258"        data-sw="#434341" data-trim="#2F2F30" data-accent="#5B5E62" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg')"></i>
+      <i data-id="marinelayer" data-nm="Marine Layer"              data-co="Sea Salt SW 6204 &middot; High Reflective White SW 7757" data-sw="#CBD6D0" data-trim="#F7F7F1" data-accent="#BFC7C5" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-marinelayer.jpg')"></i>
+      <i data-id="resort"      data-nm="Beverly Hills Resort"      data-co="City Loft SW 7631, monochrome"                 data-sw="#B9B2A7" data-trim="#D6D2C9" data-accent="#8C6E4C" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-resort.jpg')"></i>
+      <i data-id="spanish"     data-nm="Santa Barbara Luxe"        data-co="Alabaster SW 7008 &middot; Tricorn Black SW 6258"       data-sw="#F1EDE2" data-trim="#2F2F30" data-accent="#B5714A" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-spanish.jpg')"></i>
+      <i data-id="organic"     data-nm="Coastal Organic Compound"  data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048"       data-sw="#EDE8DC" data-trim="#54504A" data-accent="#9C7B53" data-chosen="1" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-organic.jpg')"></i>
+</template>
+    <div class="cand-track" id="candTrack"></div>
+    <p class="cand-swipe">Swipe to see them all &rarr;</p>
+  </section>
+  <!-- /SWAP:CLIENT -->
+
+  <!-- ============ LAYOUT D · BEAT 4 ============ --><section class="viz" id="viz" data-story>
     <div class="head">
       <!-- Third appearance of the chip, and the sub-line moves the story on:
            hero = who they are, band = the schemes they passed on, here = the
@@ -4302,9 +4464,11 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           <div class="sub-line">Everything they chose after the color</div></div></div>
       </div>
       <div class="eyebrow">Now It Is Your Turn</div>
-      <h2 class="ttl">How Do You Choose an Exterior Paint Color in Altair Without Guessing? <span class="accent">Do What the Gallaghers Did &mdash; on Their House.</span></h2>
+  <!-- SWAP:VIZCOPY --><!-- edit: generator/communities.json › communities[slug=altair] › master.viz.h2 · vizIntro · master.viz.sub -->
+      <h2 class="ttl">Your Turn: Catch an Altair Near-Miss on <span class="accent">Their House Before It Reaches Yours</span></h2>
       <p class="sub" style="text-align:center; font-size: 18px; max-width: 620px; margin: 0 auto 28px;">On a modern Altair home the walls do most of the talking: broad stucco planes and metal accents, with little ornament to break a color up, so the body color is most of what the street sees. A gray that looks calm on a chip can turn cold and flat once it covers an entire plane, and a white can go stark beside dark metal. The Gallaghers’ Newport Beach house is in the tool below, exactly as they tested it: pick a scheme, drag the slider, and see how far one choice moves the whole front of a house.</p>
       <p class="viz-lede-cta">The Gallaghers made four decisions, not one &mdash; color, lighting, texture and the garage door. Each one changed how the last one looked. Make all four on their house, before you make them on yours.</p>
+  <!-- /SWAP:VIZCOPY -->
     </div>
 
     <div class="viz-flow">
@@ -4487,7 +4651,9 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <div class="s5-head">
     <div class="tl-num-label">Step Five &middot; Your Home</div>
     <h3 class="s5-title">Now Do It On <em>Your House</em></h3>
-    <p class="s5-lede">You have just repainted a Newport Beach estate. Send us the front of your home and our design team renders it in your three closest palettes &mdash; the same way you just saw.</p>
+    
+  <!-- SWAP:VIZCOPY --><!-- edit: generator/communities.json › communities[slug=altair] › master.viz.lede --><p class="s5-lede">You have just repainted a Newport Beach estate. Send us the front of your home and our design team renders it in your three closest palettes &mdash; the same way you just saw.</p>
+  <!-- /SWAP:VIZCOPY -->
       </div>
 
         <div class="s5">
@@ -4531,7 +4697,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
                   <div class="s5-fields">
                     <div class="s5-field">
                       <label for="s5Place">Address or community</label>
-                      <input id="s5Place" name="place" type="text" autocomplete="address-line1" placeholder="Orchard Hills, Irvine">
+                      <input id="s5Place" name="place" type="text" autocomplete="address-line1" placeholder="Altair, Irvine">
                       <p class="s5-err" id="s5PlaceErr"></p>
                       <p class="s5-hint">Community is enough &mdash; it tells us the design-review rules you are working inside.</p>
                     </div>
@@ -4585,175 +4751,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   </section>
 
-  <section class="cand-band cand-band-solo" id="settle" data-story>
-    <div class="reasons-head">
-      <div class="eyebrow">Before You Choose</div>
-      <h2>On a Modern Altair Home, a Wrong Color Costs the Whole Job <span class="accent">Twice</span>. These 3 Decisions Prevent It.</h2>
-      <p class="reasons-lead">Three decisions, settled on the whole house and in writing before a crew is booked anywhere from Bellatrix to Sagan Way. Each one costs almost nothing to settle now and a second repaint to discover later. What makes them sharper in Altair is the architecture. A contemporary house is mostly two or three colors on large, flat planes, so the body color is not one choice among many. It is the house.</p>
-    </div>
-    <ul class="cand-reasons">
-      <li>
-        <img class="cr-brush" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" loading="lazy" decoding="async"/>
-        <div class="demo-swipe">
-          <div class="ba-frame">
-            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg')"></div>
-            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
-            <div class="ba-label l">Before</div>
-            <div class="ba-label r">After</div>
-          </div>
-        </div>
-        <div><b>Never approve a color you have only seen at 2&times;2 feet.</b>
-          Eleven schemes on the whole front of your house, in your own light,
-          in 30 minutes &mdash; not three samples taped to a wall.</div>
-      </li>
-      <li>
-        <img class="cr-brush" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" loading="lazy" decoding="async"/>
-        <div class="demo-swipe">
-          <div class="ba-frame">
-            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-marinelayer.jpg')"></div>
-            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
-            <div class="ba-label l">Before</div>
-            <div class="ba-label r">After</div>
-          </div>
-        </div>
-        <div><b>What a wrong color actually costs &mdash; and it is not the paint.</b>
-          The second repaint costs exactly what the first one did. Same prep,
-          same primer, same crew. Paint is the cheap part of painting.</div>
-      </li>
-      <li>
-        <img class="cr-brush" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" loading="lazy" decoding="async"/>
-        <div class="demo-swipe">
-          <div class="ba-frame">
-            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-organic.jpg')"></div>
-            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
-            <div class="ba-label l">Before</div>
-            <div class="ba-label r">After</div>
-          </div>
-        </div>
-        <div><b>The number most painters will not put on their website.</b>
-          VIP exterior work starts at <b>$4.75</b> per square foot of paintable
-          surface, broken out line by line &mdash; prep, primer, coating, trim.</div>
-      </li>
-    </ul>
-  </section>
-
-  <section class="cand-band cand-band-solo" id="instead" data-story>
-    <div class="fl-head">
-      <div class="eyebrow">What Usually Happens Instead</div>
-      <h2>5 Careful Ways Altair Owners Test a Color — and Why <span class="accent">None Shows the Whole House</span></h2>
-      <p class="fl-bridge">Before the Gallaghers saw their home rendered, they were where most owners of a modern house begin: a shortlist of whites and grays, and no way to know which would still look deliberate across a whole plane of stucco.</p>
-    </div>
-    <p class="fl-lede">It tends to start with sample pots on a Saturday. A square of Pure White goes on one wall, a square of Chatura Gray on the next, and a patch of Peppercorn beside the garage for the accent. Up close, in the morning, all three look right. By late afternoon the white has turned glaring, the gray reads colder than it did on the card, and the charcoal square says nothing about how a full volume of the house will look in it. On a street of clean-lined homes, nobody wants to be the one that got it wrong. So the squares stay up, the decision waits, and the house stays exactly as it is.</p>
-    <div class="fl-tried">
-        <div class="fl-tried-hd">And you have already tried everything you are
-          supposed to try</div>
-        <ul>
-          <li><b>Weeks of research.</b> It narrowed the field to a shortlist. It told
-            you nothing about how any of them behaves at the size of a house.</li>
-          <li><b>Sample patches on three different walls.</b> A patch that size cannot
-            tell you how the whole house will behave. The most common regret afterwards
-            is not having painted them bigger.</li>
-          <li><b>Asking at the paint store.</b> Staff can advise on color. They have
-            never stood in front of your house, in your light, on your street.</li>
-          <li><b>Polling friends and neighbors.</b> What you get back is agreement
-            about a card, not about a house.</li>
-          <li><b>Comparing the finalists side by side.</b> Each one eliminated for an
-            undertone that only showed itself in your own lighting.</li>
-        </ul>
-      </div>
-    <p class="fl-turn">None of that is carelessness. On contemporary architecture the color is not decorating the design, it is the design, and a two-foot square cannot show how one tone behaves across a broad, uninterrupted wall. Only the whole house can show that.</p>
-  </section>
-
-  <section class="cand-band" id="candidates" data-story>
-    <span class="cand-ghost" aria-hidden="true">VISUALIZED</span>
-    <div class="cand-head">
-      <div class="pill-wrap pill-wrap-lede">
-        <div class="avatar-pill"><div class="ph"><img src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"/></div>
-          <div><div class="name">The Gallagher Family</div>
-          <div class="sub-line">Their remaining 7 schemes</div></div></div>
-      </div>
-      <div class="eyebrow">They Visualized It</div>
-      <h2>The Gallaghers Saw Their House in <span class="accent">11 Schemes</span>. Ten Were Ruled Out Before a Can Was Opened.</h2>
-      <p class="cand-lead">So the Gallaghers worked the other way round: every scheme, body, trim and accent together, on the front of their own Newport Beach home before any paint was bought. Below are the ones they ruled out, and the one they kept, Coastal Organic Compound. On a modern Altair house the ruling-out goes faster, because clean lines are unforgiving. A white that fights the metal accents, or a charcoal that swallows the shadow where two planes meet, gives itself away across the whole house at once.</p>
-    </div>
-    <template id="bandSchemes">
-      <i data-id="pebblebeach" data-nm="Pebble Beach Manor"        data-co="Accessible Beige SW 7036 &middot; Dover White SW 6385"   data-sw="#D1C7B8" data-trim="#EFE8D8" data-accent="#95948C" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg')"></i>
-      <i data-id="ibiza"       data-nm="Ibiza Luxury Villa"        data-co="Balanced Beige SW 7037 &middot; Aesthetic White SW 7035" data-sw="#D1C7B8" data-trim="#E8E3DA" data-accent="#C8B59B" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-ibiza.jpg')"></i>
-      <i data-id="pacificsage" data-nm="Pacific Sage Estate"       data-co="Evergreen Fog SW 9130 &middot; Shoji White SW 7042"      data-sw="#95978A" data-trim="#E6DFD3" data-accent="#A98D4B" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg')"></i>
-      <i data-id="obsidian"    data-nm="Obsidian Monolith"         data-co="Iron Ore SW 7069 &middot; Tricorn Black SW 6258"        data-sw="#434341" data-trim="#2F2F30" data-accent="#5B5E62" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg')"></i>
-      <i data-id="marinelayer" data-nm="Marine Layer"              data-co="Sea Salt SW 6204 &middot; High Reflective White SW 7757" data-sw="#CBD6D0" data-trim="#F7F7F1" data-accent="#BFC7C5" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-marinelayer.jpg')"></i>
-      <i data-id="resort"      data-nm="Beverly Hills Resort"      data-co="City Loft SW 7631, monochrome"                 data-sw="#B9B2A7" data-trim="#D6D2C9" data-accent="#8C6E4C" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-resort.jpg')"></i>
-      <i data-id="spanish"     data-nm="Santa Barbara Luxe"        data-co="Alabaster SW 7008 &middot; Tricorn Black SW 6258"       data-sw="#F1EDE2" data-trim="#2F2F30" data-accent="#B5714A" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-spanish.jpg')"></i>
-      <i data-id="organic"     data-nm="Coastal Organic Compound"  data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048"       data-sw="#EDE8DC" data-trim="#54504A" data-accent="#9C7B53" data-chosen="1" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-organic.jpg')"></i>
-</template>
-    <div class="cand-track" id="candTrack"></div>
-    <p class="cand-swipe">Swipe to see them all &rarr;</p>
-  </section>
-
-  <section id="process" data-story>
-    <div class="process-head">
-      <div class="eyebrow">Then We Painted It</div>
-      <h2 class="ttl">How to See Every Altair Exterior Decision <span class="accent">in 30 Minutes</span> Without a Single Sample Patch</h2>
-      <p class="sub">Color was the first thing the Gallaghers decided, not the last. Lighting, texture and the finishing details came after, each rendered on their own house while it could still be changed. A modern Altair home asks the same questions with less room for error, because on clean lines every meeting point between two colors is in plain view.</p>
-    </div>
-    <div class="steps">
-      <div class="step"><div class="step-num"><span>1</span></div>
-        <div class="demo-swipe">
-          <div class="ba-frame">
-            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-riviera.jpg')"></div>
-            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
-            <div class="ba-label l">Before</div>
-            <div class="ba-label r">After</div>
-          </div>
-        </div><div class="step-title">Personalized Exterior Color Consultation</div><div class="step-desc">We start with mood, not color. You describe how the house should feel, and that narrows eleven exterior palettes down to the few worth seeing on the whole facade.</div></div>
-      <div class="step"><div class="step-num"><span>2</span></div>
-        <div class="demo-swipe">
-          <div class="ba-frame">
-            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg')"></div>
-            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
-            <div class="ba-label l">Before</div>
-            <div class="ba-label r">After</div>
-          </div>
-        </div><div class="step-title">Customized Visualizations In 30 Minutes</div><div class="step-desc">Your own house comes back rendered in every direction you shortlisted &mdash; then the decisions no one else puts in front of you: lighting, siding texture, stone, and the garage door.</div></div>
-      <div class="step"><div class="step-num"><span>3</span></div>
-        <div class="demo-swipe">
-          <div class="ba-frame">
-            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg')"></div>
-            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
-            <div class="ba-label l">Before</div>
-            <div class="ba-label r">After</div>
-          </div>
-        </div><div class="step-title">An Itemized Painting Estimate</div><div class="step-desc">Exterior painting starts at $4.75 per square foot of paintable surface, and the estimate shows which surfaces we counted to get there. The 2-year warranty is written into it.</div></div>
-    </div>
-  </section>
-
-  <section id="warranty" data-story>
-    <div class="warranty-section">
-      <div>
-        <div class="eyebrow">Written, Not Promised</div>
-        <h2 class="ttl">The <span class="accent">2-Year Warranty</span> Sits in Your Altair Estimate, Beside the Prep It Depends On</h2>
-        <p class="body">The 2-Year Warranty covers labor and materials, and it is part of the itemized estimate you sign, not a promise made on the way out of the gate. On an Altair exterior, the prep it relies on is written down beside it: cracks in the stucco floated back to the surrounding texture so a repair does not show on a flat plane, iron and metal accents priced as their own line, and two coats of Sherwin-Williams Emerald or Duration at the thickness the manufacturer specifies. If something fails within the warranty period, VIP Home Painting returns and puts it right. The terms are the same on every project, and you read them before you sign.</p>
-        <ul class="checks-row" style="margin-top: 20px;">
-          <li>2-Year Warranty on Labor &amp; Materials</li>
-          <li>Licensed, Bonded &amp; Insured</li>
-          <li>Written into your itemized estimate</li>
-        </ul>
-      </div>
-      <div class="warranty-seal"><div class="seal-type" role="img" aria-label="VIP Home Painting 2-Year Warranty seal">
-        <span class="seal-term">2-Year</span>
-        <span class="seal-word">Warranty</span>
-        <span class="seal-rule"></span>
-        <span class="seal-sub">Labor &amp; Materials</span>
-      </div></div>
-    </div>
-  </section>
-
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=altair] › master.offer (+ story block) -->
   <section class="cand-band cand-band-solo" id="offer" data-story>
     <div class="cand-foot offer-stake">
       <div class="eyebrow">What You Get</div>
@@ -4903,7 +4901,10 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <a href="#viz" class="btn-gold"><span class="col-2"><span>See Your Home In Every Color</span><span class="sub">Complimentary &middot; Itemized estimate included</span></span></a>
     </div>
   </section>
+  <!-- /SWAP:CLIENT -->
 
+  <!-- ============ LAYOUT D · BEAT 5 ============ -->
+  <!-- SWAP:LOCAL --><!-- edit: generator/communities.json › communities[slug=altair] › master.neighbors -->
   <section id="benefits" data-story>
     <div class="wwd-benefits">
       <div class="wb-head">
@@ -4946,51 +4947,73 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       </ul>
     </div>
   </section>
+  <!-- /SWAP:LOCAL -->
 
-  <section class="cream" id="fit">
-    <div class="sec-head">
-      <div class="eyebrow">Made For Altair</div>
-      <h2 class="ttl">5 Ways a Modern Altair Repaint Goes Wrong — <span class="accent">and the Fix for Each</span></h2>
+  <!-- ============ LAYOUT D · BEAT 6 ============ -->
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=altair] › master.painted (+ story block) -->
+  <section id="process" data-story>
+    <div class="process-head">
+      <div class="eyebrow">Then We Painted It</div>
+      <h2 class="ttl">How to See Every Altair Exterior Decision <span class="accent">in 30 Minutes</span> Without a Single Sample Patch</h2>
+      <p class="sub">Color was the first thing the Gallaghers decided, not the last. Lighting, texture and the finishing details came after, each rendered on their own house while it could still be changed. A modern Altair home asks the same questions with less room for error, because on clean lines every meeting point between two colors is in plain view.</p>
     </div>
-    <div class="ps-grid">
-      <div class="ps-card">
-        <div class="ps-lbl problem">The Problem</div>
-        <p class="ps-p">A gray picked from a chip reads colder, or flatter, once it covers a whole plane of modern stucco.</p>
-        <div class="ps-divider"></div>
-        <div class="ps-lbl solution">The VIP Solution</div>
-        <p class="ps-s">Our design team renders the entire front of your house in each candidate scheme, so the tone you approve is one you have already seen at full size, on your own walls.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num"><span>1</span></div>
+        <div class="demo-swipe">
+          <div class="ba-frame">
+            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
+            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-riviera.jpg')"></div>
+            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
+            <div class="ba-label l">Before</div>
+            <div class="ba-label r">After</div>
+          </div>
+        </div><div class="step-title">Personalized Exterior Color Consultation</div><div class="step-desc">We start with mood, not color. You describe how the house should feel, and that narrows eleven exterior palettes down to the few worth seeing on the whole facade.</div></div>
+      <div class="step"><div class="step-num"><span>2</span></div>
+        <div class="demo-swipe">
+          <div class="ba-frame">
+            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
+            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg')"></div>
+            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
+            <div class="ba-label l">Before</div>
+            <div class="ba-label r">After</div>
+          </div>
+        </div><div class="step-title">Customized Visualizations In 30 Minutes</div><div class="step-desc">Your own house comes back rendered in every direction you shortlisted &mdash; then the decisions no one else puts in front of you: lighting, siding texture, stone, and the garage door.</div></div>
+      <div class="step"><div class="step-num"><span>3</span></div>
+        <div class="demo-swipe">
+          <div class="ba-frame">
+            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
+            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg')"></div>
+            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
+            <div class="ba-label l">Before</div>
+            <div class="ba-label r">After</div>
+          </div>
+        </div><div class="step-title">An Itemized Painting Estimate</div><div class="step-desc">Exterior painting starts at $4.75 per square foot of paintable surface, and the estimate shows which surfaces we counted to get there. The 2-year warranty is written into it.</div></div>
+    </div>
+  </section>
+  <!-- /SWAP:CLIENT -->
+
+  <section id="warranty" data-story>
+    <div class="warranty-section">
+      <div>
+        <div class="eyebrow">Written, Not Promised</div>
+        <h2 class="ttl">The <span class="accent">2-Year Warranty</span> Sits in Your Altair Estimate, Beside the Prep It Depends On</h2>
+        <p class="body">The 2-Year Warranty covers labor and materials, and it is part of the itemized estimate you sign, not a promise made on the way out of the gate. On an Altair exterior, the prep it relies on is written down beside it: cracks in the stucco floated back to the surrounding texture so a repair does not show on a flat plane, iron and metal accents priced as their own line, and two coats of Sherwin-Williams Emerald or Duration at the thickness the manufacturer specifies. If something fails within the warranty period, VIP Home Painting returns and puts it right. The terms are the same on every project, and you read them before you sign.</p>
+        <ul class="checks-row" style="margin-top: 20px;">
+          <li>2-Year Warranty on Labor &amp; Materials</li>
+          <li>Licensed, Bonded &amp; Insured</li>
+          <li>Written into your itemized estimate</li>
+        </ul>
       </div>
-      <div class="ps-card">
-        <div class="ps-lbl problem">The Problem</div>
-        <p class="ps-p">On a two-tone modern house, every place one color meets the next is in plain view, and a wandering edge shows from the street.</p>
-        <div class="ps-divider"></div>
-        <div class="ps-lbl solution">The VIP Solution</div>
-        <p class="ps-s">Every transition is masked before any spraying, and the estimate names which color goes on which surface, so each edge lands where the architecture puts it.</p>
-      </div>
-      <div class="ps-card">
-        <div class="ps-lbl problem">The Problem</div>
-        <p class="ps-p">A dark body or accent such as Iron Ore or Peppercorn absorbs far more afternoon sun than a light one.</p>
-        <div class="ps-divider"></div>
-        <div class="ps-lbl solution">The VIP Solution</div>
-        <p class="ps-s">Every scheme is named in exact Sherwin-Williams colors, so how much light each one reflects is known before you choose, and the deep tone goes only where it earns its place.</p>
-      </div>
-      <div class="ps-card">
-        <div class="ps-lbl problem">The Problem</div>
-        <p class="ps-p">Paint sprayed onto broad planes that never reaches the valleys of the texture, so the wall looks patchy in low light.</p>
-        <div class="ps-divider"></div>
-        <div class="ps-lbl solution">The VIP Solution</div>
-        <p class="ps-s">Sherwin-Williams Emerald or Duration sprayed with Graco and Titan airless rigs, then back-rolled into the stucco, and a raking-light inspection before anything is signed off.</p>
-      </div>
-      <div class="ps-card">
-        <div class="ps-lbl problem">The Problem</div>
-        <p class="ps-p">An estimate that is one number, with no way to see which walls, metal and trim were counted.</p>
-        <div class="ps-divider"></div>
-        <div class="ps-lbl solution">The VIP Solution</div>
-        <p class="ps-s">Each line is priced on its own — prep, primer, coating, trim, metal and accents — from $4.75 per square foot of paintable surface, with the 2-Year Warranty written into the same document.</p>
-      </div>
+      <div class="warranty-seal"><div class="seal-type" role="img" aria-label="VIP Home Painting 2-Year Warranty seal">
+        <span class="seal-term">2-Year</span>
+        <span class="seal-word">Warranty</span>
+        <span class="seal-rule"></span>
+        <span class="seal-sub">Labor &amp; Materials</span>
+      </div></div>
     </div>
   </section>
 
+  <!-- ============ LAYOUT D · BEAT 7 ============ -->
   <section class="cream-deep" id="before-you-commit">
     <div class="pillars-head">
       <div class="eyebrow">Before You Commit</div>
@@ -5005,6 +5028,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     </div>
   </section>
 
+  <!-- ============ LAYOUT D · BEAT 8 ============ -->
   <section class="cream-deep" id="services" data-story>
     <div class="services-head">
       <div class="eyebrow">Our Altair Residential Painting Services</div>
@@ -5073,10 +5097,11 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   </section>
 
 
+  <!-- SWAP:FAQ --><!-- edit: generator/communities.json › communities[slug=altair] › faqs[] (q, a) · master.faq.h2 -->
   <section class="cream" id="faq">
     <div class="faq-head">
       <div class="eyebrow sec-head-eyebrow">Frequently Asked Questions</div>
-      <h2 class="ttl">Altair Home Painting — <span class="accent">Your Questions Answered</span></h2>
+      <h2 class="ttl">Altair Exterior Painting — <span class="accent">What Owners Ask Before They Sign</span></h2>
     </div>
     <div class="faq-list">
       <details class="faq-item" open>
@@ -5113,6 +5138,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       </details>
     </div>
   </section>
+  <!-- /SWAP:FAQ -->
 
   <!-- ============ BYLINE + FINAL CTA ============ -->
   
@@ -5152,11 +5178,13 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Get My Complimentary Quote Now</span><span class="sub">No Pressure · No Obligation · Always Complimentary</span></span></a>
     </div>
     
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=altair] › master.close.ps[] -->
     <div class="ps-close">
       <p><b>P.S.</b> &mdash; Everything on this page happened in one order: the Gallaghers saw their home in 11 complete color schemes, ruled out ten, and only then did anyone open a can. Most repaints on modern houses run it the other way. A chip is held up to the wall, everyone hopes it behaves the same across a whole plane of stucco, and the real answer arrives when the masking comes off.</p>
       <p>Altair is named for a star, and its streets for the sky: Bellatrix in Orion, Bolide for a bright meteor, Sagan Way for Carl Sagan. A house color is judged the way a star is, from a distance and in full light, for years. The Gallaghers needed thirty minutes and one photo of the front of the house. So do you, and it is complimentary, with the itemized estimate included.</p>
       <p class="ps-cta"><a href="tel:9093125400">(909) 312-5400</a></p>
     </div>
+  <!-- /SWAP:CLIENT -->
   </section>
 
   <!-- ============ FOOTER ============ -->
