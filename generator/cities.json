@@ -324,6 +324,116 @@
         "play_label": "Watch the Film",
         "note": "See your home in every color before a single brushstroke.",
         "days": 4
+      },
+      "storyLayout": "B",
+      "schema": "legacy",
+      "master": {
+        "hero": {
+          "eyebrow": "Irvine · Luxury Home Painting",
+          "h1": "Every Other Irvine Painter Guesses. <span class=\"gold\">We Render It First.</span>",
+          "deck": "The finished house comes first: {their} home in {chosen}. Then the years before it — and why, in light that changes from one Irvine village to the next, the color kept waiting.",
+          "continue": "Go back to the years before the color"
+        },
+        "flashback": {
+          "eyebrow": "Before the Color",
+          "h2": "Years in the Same Color: The <span class=\"accent\">3 Reasons</span> an Irvine Repaint Gets Put Off",
+          "lead": "Irvine is not one place with one light. Orchard Hills takes the late sun off the ridge, Woodbury’s paseos stay filtered and cool, and Hidden Canyon swings from canyon shade to open glare in a single day. A color that behaves in one village can misbehave a mile away, and that is where the waiting starts.",
+          "chipLine": "Before anything changed",
+          "body": [
+            "For years, {their} house wore the color it had when they moved in. Not because they loved it. Because every time the subject came up, three things stopped them.",
+            "The first was the chip: a two-inch square under store light that said nothing about a whole house in afternoon sun. The second was the street, because whatever they chose, the neighbors would live with too. The third was the bill. A repaint that turned out wrong would cost the whole job a second time.",
+            "So nothing changed, and the house kept wearing a color nobody had chosen. In Irvine the same three reasons come with one more: a design review that wants the decision in writing before a crew is booked, which gives the wait another reason to go on."
+          ]
+        },
+        "instead": {
+          "eyebrow": "What They Tried First",
+          "h2": "Palette Books, Sample Patches, Asking Around: <span class=\"accent\">5 Things That Never Showed an Irvine House Whole</span>",
+          "bridge": "{They} did what careful owners do. Before anything was rendered, they worked through the list below — every step reasonable, and not one of them able to show the whole house in its own light.",
+          "lede": "In Irvine the list usually starts with the association’s palette book. It narrows the choice to colors the village will accept, and says nothing about how any of them will look across your walls at four in the afternoon. Then come the sample pots: a square on the garage, another by the front door, each one right at the hour you happen to check it. Neighbors are asked. The finalists are compared side by side on a card, and each loses to an undertone nobody saw coming.",
+          "turn": "Nobody in that story did anything wrong. A palette book and a sample square are the tools the industry hands you, and neither can show a whole Irvine house in the light it actually stands in."
+        },
+        "eliminated": {
+          "eyebrow": "They Visualized It",
+          "h2": "The 30 Minutes That Ended It: <span class=\"accent\">{schemes} Schemes</span> on Their House, Ten Ruled Out",
+          "lead": "One photo of the front of {their} {place} home, and {schemes} complete schemes rendered on it — body, trim and accent together. Ten were ruled out in the time it takes to scroll them. The one left standing, {chosen}, is the house at the top of this page. For an Irvine owner the same half hour settles what a palette book cannot: which of the village’s colors still looks deliberate on your own walls, in your own light."
+        },
+        "timeline": {
+          "eyebrow": "Then We Painted It",
+          "h2": "How the Painting Days Run on an Irvine Exterior, <span class=\"accent\">Day by Day</span>",
+          "lead": "Once {they} had chosen, the rest was sequence. This is the order the work follows, from the first morning to the walkthrough.",
+          "days": [
+            {
+              "label": "First",
+              "title": "Protect Everything That Is Not Being Painted",
+              "body": "Landscaping wrapped, hardscape and windows covered, and the house masked before any sprayer is uncapped."
+            },
+            {
+              "label": "Next",
+              "title": "Wash, Repair and Prime",
+              "body": "A pressure wash, cracks in the stucco floated to match the texture around them, and bonding primer on anything bare."
+            },
+            {
+              "label": "Then",
+              "title": "The Body Color",
+              "body": "Sherwin-Williams Emerald or Duration sprayed and back-rolled into the texture, two coats at the thickness the manufacturer specifies."
+            },
+            {
+              "label": "After That",
+              "title": "Trim, Doors and Accents",
+              "body": "Every transition cut by hand, so each edge lands where the architecture puts it."
+            },
+            {
+              "label": "Last",
+              "title": "The Walkthrough",
+              "body": "A raking-light inspection of every side of the house, touch-ups before you ask, and the {warranty} already written into the estimate you signed."
+            }
+          ],
+          "note": "An illustrative order, not a promise of dates: every Irvine house is sequenced on its own itemized estimate, and how long it takes depends on its size and condition."
+        },
+        "viz": {
+          "h2": "Your Turn: Try an Irvine Color on <span class=\"accent\">Their House First, Then Send Us Yours</span>"
+        },
+        "communities": {
+          "eyebrow": "Pick Your Village",
+          "h2": "Pick Your Irvine Village and <span class=\"accent\">See the Colors That Hold There</span>"
+        },
+        "hoaBlock": {
+          "h2": "Irvine Design Review, <span class=\"accent\">Handled as Part of the Job</span>"
+        },
+        "warranty": {
+          "eyebrow": "Written, Not Promised",
+          "h2": "The <span class=\"accent\">{warranty}</span> Is a Line in Your Irvine Estimate",
+          "body": "The {warranty} covers labor and materials, and it is written into the itemized estimate you sign, beside the preparation it depends on. If something fails within the warranty period, VIP Home Painting comes back and puts it right. The terms are the same on every Irvine project, and you read them before you sign."
+        },
+        "proof": {
+          "eyebrow": "More Irvine Families",
+          "h2": "{Their} House Before and After, and <span class=\"accent\">More Irvine Families</span>",
+          "lead": "The frame below is {their} {place} house: the photo as it stood, and the scheme they kept. Beside it are Irvine homeowners whose stories sit alongside theirs.",
+          "family": {
+            "tag": "Custom Visualization",
+            "headline": "{They}: the house as it stood, and in {chosen}",
+            "story": "{They} saw their home in {schemes} complete schemes before a can was opened. Drag the slider: on the left, the house as it stood; on the right, the scheme they kept."
+          },
+          "more": [
+            {
+              "name": "Ceasar & Julie",
+              "location": "Shady Canyon, Irvine",
+              "initials": "C&J",
+              "tag": "Home Exterior Painting",
+              "headline": "How VIP Home Painting Transformed Ceasar &amp; Julie’s Shady Canyon Home in Just 4 Days"
+            }
+          ]
+        },
+        "faq": {
+          "h2": "Irvine House Painting — <span class=\"accent\">The Questions Owners Ask First</span>"
+        },
+        "close": {
+          "h2": "The Ending Came First on This Page. <span class=\"accent\">Yours Can Start in 30 Minutes.</span>",
+          "ps": [
+            "This page started at the end: {their} house finished, in {chosen}. Everything after it was how they got there — years of waiting, a list of careful steps that never showed the whole house, and {schemes} schemes on one photo that settled it.",
+            "In Irvine the same half hour does one more job: it gives you colors named in exact Sherwin-Williams numbers to put in front of your association. One photo of the front of your house is all it asks, and it is complimentary, with the itemized estimate included."
+          ]
+        }
       }
     },
     {

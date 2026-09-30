@@ -192,7 +192,11 @@ module.exports = function makeStoryLayouts(ctx) {
     let out = html;
     if (o.h2) out = out.replace(/(<h2 class="ttl">)[\s\S]*?(<\/h2>)/, (m, a, b) => `${a}${o.h2}${b}`);
     if (o.eyebrow) out = out.replace(/(<div class="eyebrow[^"]*">)[\s\S]*?(<\/div>)/, (m, a, b) => `${a}${o.eyebrow}${b}`);
-    if (o.lead) out = out.replace(/(<p class="lead"[^>]*>)[\s\S]*?(<\/p>)/, (m, a, b) => `${a}${o.lead}${b}`);
+    if (o.lead) {
+      out = /<p class="lead"/.test(out)
+        ? out.replace(/(<p class="lead"[^>]*>)[\s\S]*?(<\/p>)/, (m, a, b) => `${a}${o.lead}${b}`)
+        : out.replace(/(<h2 class="ttl">[\s\S]*?<\/h2>)/, (m) => `${m}\n      <p class="lead">${o.lead}</p>`);
+    }
     if (o.story && !/data-story/.test(out.slice(0, out.indexOf('>') + 1))) out = out.replace(/<section /, '<section data-story ');
     return out;
   }
@@ -476,7 +480,7 @@ module.exports = function makeStoryLayouts(ctx) {
         <div style="text-align:center;"><div class="case-tag">${tok(g.tag || 'Home Exterior Painting', c)}</div></div>
         <h3 class="case-head">${tok(g.headline || `${MASTER.storyOf(c).short.replace(/^the /, 'The ')}: before, and in the scheme they chose`, c)}</h3>
         <div class="ba-frame">
-          <div class="ba-cap">${tok(g.caption || '{chosen}', c)}</div>
+          ${g.caption ? `<div class="ba-cap">${tok(g.caption, c)}</div>` : ''}
           <div class="ba-img before" style="background-image: url('${photo(s.before)}')"></div>
           <div class="ba-img after"  style="background-image: url('${photo(s.after)}')"></div>
           <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob">${knob}</div></div></div>
