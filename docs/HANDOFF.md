@@ -19,7 +19,7 @@ pages below go live on github.io **only after the branch is merged to main**).
   with `"storyLayout": "B"…"F"` in its data record; pages without it build byte-for-byte as
   before (checked: HOA page, guide + 4 articles, 3 service pages and the OC page are
   identical to `main`).
-- **All 13 city/community pages assigned** exactly as briefed:
+- **All 12 city/community pages assigned** exactly as briefed:
   B /irvine/ · C /anaheim/ · D altair, crown-pointe, summit-pointe ·
   E woodbury, stonegate, portola-springs, orchard-hills · F peralta-hills, hidden-canyon, belsomet.
   One commit per page (Altair was the pilot).
@@ -32,7 +32,7 @@ pages below go live on github.io **only after the branch is merged to main**).
   headless Chromium at 390px and 1440px — no horizontal scroll, no JS errors, no local 404s,
   visualizer scheme + option clicks, both slider types and the photo form all work.
   Title, meta description, canonical, robots and JSON-LD compared against `main`: identical on
-  all 13 pages. No internal link dropped on any page.
+  all 12 pages. No internal link dropped on any page.
 
 ### Judgment calls (change any of them)
 

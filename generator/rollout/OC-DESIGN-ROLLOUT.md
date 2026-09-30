@@ -33,7 +33,7 @@ Staging base: https://realdealmarketing18-a11y.github.io/Vip-home-painting-orang
 
 ## ⚠ Layout restructure — 2026-09-30 (branch `layout-restructure`)
 
-All 13 city and community pages now carry `storyLayout` (B–F) — see
+All 12 city and community pages now carry `storyLayout` (B–F) — see
 `generator/LAYOUTS.md`. On those pages **`moduleOrder` / `layout.module_order`
 no longer decide the section order** (the layout does; `moduleOrder` is kept only
 because the schema reads it). Rows 7–12 were restructured in that run: the four
