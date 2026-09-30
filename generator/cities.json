@@ -593,6 +593,54 @@
         "eyebrow": "Why Anaheim Is Different",
         "title": "Harder Light Than Anywhere in Irvine",
         "body": "Anaheim Hills sits above the basin on open, largely unshaded slopes. There are no mature paseo canopies here filtering the afternoon the way Woodbury has. A warm white that behaves on a filtered Irvine street can go noticeably brassy on a west-facing Anaheim Hills wall by two in the afternoon. It is the single most common reason a color chosen indoors disappoints outdoors in this city, and it is the entire reason we render the front of your house before anything is scheduled."
+      },
+      "storyLayout": "C",
+      "schema": "legacy",
+      "master": {
+        "hero": {
+          "eyebrow": "Anaheim · Our Home Market",
+          "h1": "Anaheim House Painters Who Show You the Color <span class=\"accent\">on Your Own Home</span> First",
+          "deck": "The chip looked perfect — until the afternoon sun. On the open slopes above Anaheim, that is the light every color has to survive, and it is the light {they} tested theirs against.",
+          "continue": "Meet the light first"
+        },
+        "spotlightBlock": {
+          "eyebrow": "The Villain · Anaheim’s Afternoon Light"
+        },
+        "costOfWrong": {
+          "eyebrow": "What the Light Does on an Anaheim Street",
+          "h2": "Fade, Undertone Shift, and a Wrong Color That <span class=\"accent\">Costs the Whole Job Twice</span>",
+          "lead": "West-facing walls on the open slopes take the full afternoon, and two things follow. The undertone shifts first: a warm white leans brassy, a gray leans cold, and the color you approved is not the color the street sees by two o’clock. Then, summer after summer of unshaded sun, the fade. Both are a reason to see the color in that light before it goes on the house."
+        },
+        "eliminated": {
+          "eyebrow": "How They Beat It",
+          "h2": "{They} Saw {schemes} Schemes in Their Own Light. <span class=\"accent\">Ten Failed the Afternoon Test.</span>",
+          "lead": "The fix was not a better chip. It was seeing every scheme on the whole front of {their} {place} house before anything was bought — body, trim and accent together — and ruling out the ones whose undertones would turn in hard light. Ten went. {chosen} stayed. On an Anaheim Hills wall that faces the afternoon, that is the test every color has to pass, and a render is the one place it can fail at no cost."
+        },
+        "viz": {
+          "h2": "Your Turn: Test an Anaheim Color Against <span class=\"accent\">the Afternoon Before You Paint</span>"
+        },
+        "mapBlock": {
+          "eyebrow": "The Hometown Edge",
+          "lead": "VIP Home Painting is based in Anaheim. These are the streets we drive every day, from the flats to the gated hillside communities above Santa Ana Canyon. Save our Google profile, read the reviews, and see recent project photos before your consultation."
+        },
+        "hoaBlock": {
+          "h2": "Anaheim Design Review, <span class=\"accent\">Handled From Your Association’s Own Guidelines</span>"
+        },
+        "palette": {
+          "eyebrow": "The Anaheim Palette",
+          "h2": "Colors That Hold Up in <span class=\"accent\">Anaheim Hills Light</span>",
+          "schemeName": "The Anaheim Hills Baseline"
+        },
+        "faq": {
+          "h2": "Anaheim House Painting — <span class=\"accent\">Straight Answers</span>"
+        },
+        "close": {
+          "h2": "The Afternoon Sun Will Judge Your Color. <span class=\"accent\">See It First, in 30 Minutes.</span>",
+          "ps": [
+            "{They} did not beat the light with a better chip. They saw {schemes} complete schemes on their own house, ruled out ten, and only then did anyone open a can.",
+            "VIP Home Painting is based here, on the same streets. One photo of the front of your house is all the consultation asks, and it is complimentary, with the itemized estimate included."
+          ]
+        }
       }
     }
   ]
