@@ -4052,6 +4052,53 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   .film-close { top: 12px; right: 12px; padding: 9px 14px; }
 }
 
+/* ============================================================
+   STORY-LAYOUT PAGES ONLY (storyLayout B–F) — see story-layouts.js.
+   Loaded after page.css / city-page.css, and only on layout pages, so
+   no other page changes. Colours come only from the brand tokens the
+   generated pages carry (--navy, --gold, --gold-deep, --gold-bright,
+   --cream …, from design-system/); shadows are navy-based, never black.
+   ============================================================ */
+
+/* Hero: the layout's story line under the H1 */
+.hero-cinema .hero-deck {
+  font-family: var(--font-serif); font-style: italic; font-weight: 400;
+  font-size: clamp(17px, 2.1vw, 22px); line-height: 1.3;
+  color: var(--gold-bright); max-width: 720px; margin: 14px auto 0; text-align: center;
+}
+
+/* Flashback / dusk walk: a single column of story prose under the chip */
+.lx-story { max-width: 760px; margin: 0 auto; }
+.lx-story .pill-wrap { margin-bottom: 18px; }
+.lx-story .body { font-size: 17px; line-height: 1.65; margin: 0 0 16px; color: var(--navy); }
+
+/* Timeline: day label above each step title, and the honesty note */
+.lx-day { font-family: var(--font-sans); font-weight: 700; font-size: 10.5px;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-deep); margin: 4px 0 6px; }
+.lx-note { max-width: 760px; margin: 36px auto 0; text-align: center;
+  font-family: var(--font-serif); font-style: italic; font-size: 15px; line-height: 1.5; color: var(--gold-deep); }
+
+/* Near-miss No. 1: the family's card leads the grid */
+.ps-card.lx-near { border: 1.5px solid var(--gold); box-shadow: 0 10px 26px rgba(26,31,78,0.12); }
+
+/* Palette: every colour as a three-can set */
+.lx-can-card .lx-cans { display: flex; justify-content: center; gap: 10px; padding: 22px 16px 6px; }
+.lx-can-card .paint-can { width: 58px; height: 58px; }
+.lx-can-card .lx-with { font-style: italic; }
+
+/* Proof */
+.lx-proof-lead { max-width: 720px; margin: 14px auto 0; text-align: center; }
+.cases-grid.lx-single { grid-template-columns: minmax(0, 620px); justify-content: center; }
+
+@media (max-width: 860px) {
+  .cases-grid { grid-template-columns: 1fr; }
+  .cases-grid.lx-single { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .lx-can-card .paint-can { width: 48px; height: 48px; }
+  .lx-story .body { font-size: 16px; }
+}
+
 </style>
 </head>
 <body>
@@ -4105,27 +4152,39 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <!-- ============ HERO — unified cinematic style, static image ============ -->
   
-  <section class="hero hero-cinema hero-story" id="hero">
-    <div class="hero-photo" style="background-image:url('../../orange-county-sales-page/video/hero-poster.jpg');"></div>
+  <section class="hero hero-cinema" id="hero" data-story>
+    <div class="hero-photo" style="background-image:url('../../orange-county-sales-page/video/hero-poster.jpg')"></div>
     <div class="hero-scrim"></div>
     <div class="hero-goldframe" aria-hidden="true"></div>
 
-    <div class="hero-stack">
+    <div class="hero-stack" id="heroStack">
       <div class="hero-fleuron" aria-hidden="true">&#10087;</div>
-      <div class="eyebrow eyebrow-ruled">Peralta Hills</div>
-      <h1 class="ttl-hero">The Road Has No Streetlights. That Changes How You Choose a Color.</h1>
-      <div class="hero-kicker eyebrow-ruled">One-acre minimums, custom homes, and light you cannot borrow from anywhere else.</div>
-
+      <div class="eyebrow eyebrow-ruled">Peralta Hills · Anaheim</div>
       
-
-
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=peralta-hills] › story (family, avatar, location) --><div class="pill-wrap pill-wrap-lede">
+        <div class="avatar-pill"><div class="ph"><img src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"/></div>
+          <div><div class="name">The Gallagher Family</div>
+          <div class="sub-line">Pelican Hill, Newport Beach</div></div></div>
+      </div>
+  <!-- /SWAP:CLIENT -->
+      <h1 class="ttl-hero">The Road Has No Streetlights. That Changes How You Choose a Color.</h1>
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=peralta-hills] › master.hero.deck -->
+      <p class="hero-deck">The Gallaghers walked their house at noon and again after dark. On a Peralta Hills road with no streetlights, those are the only two lights a color is ever seen in.</p>
+  <!-- /SWAP:CLIENT -->
+      <ol class="hero-beats">
+        <li><span class="n">1</span><span class="t"><span class="w">They</span> visualized it</span></li>
+        <li><span class="n">2</span><span class="t"><span class="w">They</span> loved it</span></li>
+        <li><span class="n">3</span><span class="t"><span class="w">We</span> painted it</span></li>
+      </ol>
       <figure class="hr-inset">
         <div class="hr-plate" id="hrPlate" data-hold="1100" data-dur="2600">
-          <div class="hr-before" id="hrBefore" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-          <div class="hr-cand" data-nm="Riviera Tuxedo" data-co="Snowbound SW 7004 &middot; Black Magic SW 6991" data-sw="#EDEAE4" data-trim="#2A2A2C" data-accent="#3B3B3E" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-riviera.jpg')"></div>
-          <div class="hr-cand" data-nm="Euro-Industrial Estate" data-co="Peppercorn SW 7674 &middot; Cityscape SW 7067" data-sw="#5E5A57" data-trim="#9A9C98" data-accent="#7E8285" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-euro.jpg')"></div>
-          <div class="hr-cand" data-nm="Newport Admiral" data-co="Repose Gray SW 7015 &middot; Pure White SW 7005" data-sw="#C9C6C0" data-trim="#F0EFE9" data-accent="#2F2F30" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-admiral.jpg')"></div>
-          <div class="hr-cand final" data-nm="Coastal Organic Compound" data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048" data-sw="#EDE8DC" data-trim="#54504A" data-accent="#9C7B53" data-chosen="1" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-organic.jpg')"></div>
+          <div class="hr-before" id="hrBefore" role="img" aria-label="The Gallaghers’ Newport Beach home before repainting." style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
+
+          <div class="hr-cand" data-nm="Riviera Tuxedo" data-co="Snowbound SW 7004 &middot; Black Magic SW 6991" data-sw="#EDEAE4" data-trim="#2A2A2C" data-accent="#3B3B3E" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-riviera.jpg')" role="img" aria-label="Newport Beach home exterior rendered in Riviera Tuxedo — Snowbound SW 7004 with Black Magic SW 6991 trim."></div>
+          <div class="hr-cand" data-nm="Euro-Industrial Estate" data-co="Peppercorn SW 7674 &middot; Cityscape SW 7067" data-sw="#5E5A57" data-trim="#9A9C98" data-accent="#7E8285" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-euro.jpg')" role="img" aria-label="Newport Beach home exterior rendered in Euro-Industrial Estate — Peppercorn SW 7674 with Cityscape SW 7067 trim."></div>
+          <div class="hr-cand" data-nm="Newport Admiral" data-co="Repose Gray SW 7015 &middot; Pure White SW 7005" data-sw="#C9C6C0" data-trim="#F0EFE9" data-accent="#2F2F30" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-admiral.jpg')" role="img" aria-label="Newport Beach home exterior rendered in Newport Admiral — Repose Gray SW 7015 with Pure White SW 7005 trim."></div>
+          <div class="hr-cand final" data-nm="Coastal Organic Compound" data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048" data-sw="#EDE8DC" data-trim="#54504A" data-accent="#9C7B53" data-chosen="1" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-organic.jpg')" role="img" aria-label="Newport Beach home exterior rendered in Coastal Organic Compound — Alabaster SW 7008 with Urbane Bronze SW 7048."></div>
+
           <div class="hr-grab" id="hrGrab"></div>
           <div class="hr-seam" id="hrSeam">
             <span class="hr-knob">
@@ -4145,29 +4204,24 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           </div>
           <span class="hr-counter" id="hrCt"></span>
         </div>
+
+        <figcaption class="hr-caption">
+          <img class="hr-cap-face" src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="The Gallagher Family, Pelican Hill, Newport Beach" width="480" height="480" loading="lazy" decoding="async"/>
+          <span class="hr-cap-line">The Gallaghers saw their Newport Beach home
+            in all <b>11</b> color schemes. These <b>4</b> are a quick preview.</span>
+        </figcaption>
+
         <div class="hr-tray">
           <span class="hr-tray-label">They saw</span>
           <span class="hr-thumbs" id="hrThumbs"></span>
           <button class="hr-tray-cta" type="button" id="hrReplay">Discover</button>
         </div>
       </figure>
-
-      <div class="hero-cta-wrap">
-        <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Claim Complimentary Color Consultation</span><span class="sub">Irresistible Painting Estimates Included</span></span></a>
-        
-      </div>
-    </div>
-
-    <div class="hero-strip">
-      <div class="cell">
-        <img class="strip-badge" src="../../orange-county-sales-page/assets/badges/badge-color-schemes.png" alt="Custom Color Schemes badge"/>
-        <div class="lb">Custom Visualization</div><div class="sb">See it before we paint</div></div>
-      <div class="cell">
-        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-        <div class="lb">2-Year Warranty</div><div class="sb">No questions asked</div></div>
-      <div class="cell"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><div class="lb">Licensed &amp; Insured</div><div class="sb">Bonded in California</div></div>
-      <div class="cell"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><div class="lb">5-Day Transformations</div>
-        <div class="sb">Concierge scheduling</div></div>
+      <a class="hero-continue" href="#story">
+        <span class="hc-rule" aria-hidden="true"></span>
+        <span class="hc-txt">Walk the property at noon, then at dusk</span>
+        <span class="hc-arrow" aria-hidden="true">&#8595;</span>
+      </a>
     </div>
   </section>
 
@@ -4180,7 +4234,42 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   </section>
 
   <!-- ============ No. 01 — INTERACTIVE CUSTOM VISUALIZATION (the highlight) ============ -->
-  <section class="viz" id="viz" data-story>
+  
+
+  <div id="story" aria-hidden="true"></div>
+  <!-- ============ LAYOUT F · BEAT 2 ============ -->
+  <!-- SWAP:LOCAL --><!-- edit: generator/communities.json › communities[slug=peralta-hills] › master.dusk -->
+  <section class="cream" id="dusk" data-story>
+    <div class="sec-head">
+      <div class="eyebrow">The Dusk Walk</div>
+      <h2 class="ttl">Noon, Then Dusk: The <span class="accent">2 Lights</span> a Peralta Hills Color Has to Pass</h2>
+      <p class="lead">Peralta Hills was laid out to feel semi-rural and still does: one-acre minimum lots, equestrian allowances, and no streetlights, curbs or gutters — a design decision, not an oversight. That decision is what makes choosing a color here different.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card">
+        <div class="ps-lbl solution">At Noon</div>
+        <p class="ps-p">Across open ground the house is judged from two hundred feet, not twenty. The body color carries almost the whole impression and the trim reads as detail. A white that looks calm on a chip can glare across a long, sunlit wall.</p>
+      </div>
+      <div class="ps-card">
+        <div class="ps-lbl solution">At Dusk</div>
+        <p class="ps-p">When the sun goes, nothing on the road lights the house for you. What anyone sees after dark is your own exterior lighting on your own color, with nothing in between.</p>
+      </div>
+    </div>
+    
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=peralta-hills] › master.dusk.scale -->
+    <div class="lx-story" style="margin-top:36px;">
+      <div class="pill-wrap pill-wrap-lede">
+        <div class="avatar-pill"><div class="ph"><img src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"/></div>
+          <div><div class="name">The Gallagher Family</div>
+          <div class="sub-line">Walking the property</div></div></div>
+      </div>
+      <p class="body">The Gallaghers did the same walk on their own Newport Beach property: the whole front from the far end of the drive at midday, then again under their own fixtures after dark. Two walks, two very different houses — which is why, when they sat down with our design team, the lighting was settled before the color.</p>
+    </div>
+  <!-- /SWAP:CLIENT -->
+  </section>
+  <!-- /SWAP:LOCAL -->
+
+  <!-- ============ LAYOUT F · BEAT 3 ============ --><section class="viz" id="viz" data-story>
     <div class="head">
       <!-- Third appearance of the chip, and the sub-line moves the story on:
            hero = who they are, band = the schemes they passed on, here = the
@@ -4192,10 +4281,12 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           <div><div class="name">The Gallagher Family</div>
           <div class="sub-line">Everything they chose after the color</div></div></div>
       </div>
-      <div class="eyebrow">2 &middot; Now It Is Your Turn</div>
-      <h2 class="ttl">How Do You Choose an Exterior Paint Color in Peralta Hills Without Guessing? <span class="accent">Do What the Gallaghers Did &mdash; on Their House.</span></h2>
+      <div class="eyebrow">Now It Is Your Turn</div>
+  <!-- SWAP:VIZCOPY --><!-- edit: generator/communities.json › communities[slug=peralta-hills] › master.viz.h2 · vizIntro · master.viz.sub -->
+      <h2 class="ttl">Your Turn: Light a Peralta Hills House First, <span class="accent">Then Choose Its Color</span></h2>
       <p class="sub" style="text-align:center; font-size: 18px; max-width: 620px; margin: 0 auto 28px;">Pick a direction and tap through the palettes — the home below repaints itself in real time. Our design team does exactly this with the front of your house, at no cost, before anything is scheduled.</p>
-      <p class="viz-lede-cta">The Gallaghers made four decisions, not one &mdash; color, lighting, texture and the garage door. Each one changed how the last one looked. Make all four on their house, before you make them on yours.</p>
+      <p class="viz-lede-cta">The Gallaghers made four decisions, lighting first — then color, texture and the garage door. On a road with no streetlights, the fixtures decide which colors survive the dark. Make all four on their house, before you make them on yours.</p>
+  <!-- /SWAP:VIZCOPY -->
     </div>
 
     <div class="viz-flow">
@@ -4235,35 +4326,11 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <div class="viz-timeline" id="vizTimeline">
         <div class="tl-rail"><div class="tl-fill" id="tlFill"></div></div>
 
-        <!-- STEP 1 — Color -->
+                <!-- STEP 2 — Lighting -->
         <div class="tl-step active" data-step="1">
           <div class="tl-dot">1</div>
           <div class="tl-body">
-            <div class="tl-num-label">Step One</div>
-            <h3 class="tl-title">Choose Your <em>Color Scheme</em></h3>
-            <p class="tl-desc">Pick a style direction, then a palette — your home re-paints itself in real time.</p>
-            <div class="style-banner" id="styleBanner"><img id="styleBannerImg" alt="Style collection flat-lay" width="1400" height="594" loading="lazy" decoding="async"/></div>
-            <div class="viz-tabs" id="vizTabs"></div>
-            <div class="viz-style-desc" id="vizStyleDesc"></div>
-            <div class="scheme-grid" id="schemeGrid"></div>
-          </div>
-        </div>
-
-
-        <!-- Between the steps: the brand mark on the rail, and the reason this
-             step leads to the next one. Not a .tl-step -- the timeline JS
-             selects .tl-step only, so the numbered coins are untouched. -->
-        <div class="tl-link">
-          <img class="tl-link-mark" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt=""
-               width="128" height="294" loading="lazy" decoding="async"/>
-          <p class="tl-link-lead">Color is only half of what the street sees after dark.</p>
-          <p class="tl-link-sub">Fixtures change how a facade reads at night, which is why lighting is the next decision here rather than an afterthought on the invoice.</p>
-        </div>
-        <!-- STEP 2 — Lighting -->
-        <div class="tl-step" data-step="2">
-          <div class="tl-dot">2</div>
-          <div class="tl-body">
-            <div class="tl-num-label">Step Two · Lighting Fixtures</div>
+            <div class="tl-num-label">Step One · Lighting Fixtures</div>
             <h3 class="tl-title">The Right <em>Lighting</em></h3>
             <p class="tl-desc">From minimalist LED slots to wrought-iron lanterns — tap each fixture to see it glowing on your home.</p>
             <div class="elevate-options" data-cat="light">
@@ -4283,15 +4350,31 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           </div>
         </div>
 
+        <div class="tl-link">
+          <img class="tl-link-mark" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt=""
+               width="128" height="294" loading="lazy" decoding="async"/>
+          <p class="tl-link-lead">Light decided first. Now the color has to hold up under it.</p>
+          <p class="tl-link-sub">A color that glows under your fixtures can go flat by day, which is why the palette is chosen after the lighting, not before.</p>
+        </div>
+        <!-- STEP 1 — Color -->
+        <div class="tl-step" data-step="2">
+          <div class="tl-dot">2</div>
+          <div class="tl-body">
+            <div class="tl-num-label">Step Two</div>
+            <h3 class="tl-title">Choose Your <em>Color Scheme</em></h3>
+            <p class="tl-desc">Pick a style direction, then a palette — your home re-paints itself in real time.</p>
+            <div class="style-banner" id="styleBanner"><img id="styleBannerImg" alt="Style collection flat-lay" width="1400" height="594" loading="lazy" decoding="async"/></div>
+            <div class="viz-tabs" id="vizTabs"></div>
+            <div class="viz-style-desc" id="vizStyleDesc"></div>
+            <div class="scheme-grid" id="schemeGrid"></div>
+          </div>
+        </div>
 
-        <!-- Between the steps: the brand mark on the rail, and the reason this
-             step leads to the next one. Not a .tl-step -- the timeline JS
-             selects .tl-step only, so the numbered coins are untouched. -->
         <div class="tl-link">
           <img class="tl-link-mark" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt=""
                width="128" height="294" loading="lazy" decoding="async"/>
           <p class="tl-link-lead">Texture decides how the color behaves.</p>
-          <p class="tl-link-sub">The same pigment on smooth stucco and on cedar shake is not the same color in your light. That is precisely what a sample board cannot tell you.</p>
+          <p class="tl-link-sub">The same pigment on smooth stucco and on cedar shake is not the same color in your light.</p>
         </div>
         <!-- STEP 3 — Siding -->
         <div class="tl-step" data-step="3">
@@ -4317,15 +4400,11 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           </div>
         </div>
 
-
-        <!-- Between the steps: the brand mark on the rail, and the reason this
-             step leads to the next one. Not a .tl-step -- the timeline JS
-             selects .tl-step only, so the numbered coins are untouched. -->
         <div class="tl-link">
           <img class="tl-link-mark" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt=""
                width="128" height="294" loading="lazy" decoding="async"/>
-          <p class="tl-link-lead">The last decisions are the ones the street sees first.</p>
-          <p class="tl-link-sub">A garage door faces the road more squarely than any wall does, and it is the piece most homeowners leave to chance.</p>
+          <p class="tl-link-lead">The last decisions are the ones the road sees first.</p>
+          <p class="tl-link-sub">A garage door faces the drive more squarely than any wall does, and it is the piece most owners leave to chance.</p>
         </div>
         <!-- STEP 4 — Premium -->
         <div class="tl-step" data-step="4">
@@ -4378,7 +4457,9 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <div class="s5-head">
     <div class="tl-num-label">Step Five &middot; Your Home</div>
     <h3 class="s5-title">Now Do It On <em>Your House</em></h3>
-    <p class="s5-lede">You have just repainted a Newport Beach estate. Send us the front of your home and our design team renders it in your three closest palettes &mdash; the same way you just saw.</p>
+    
+  <!-- SWAP:VIZCOPY --><!-- edit: generator/communities.json › communities[slug=peralta-hills] › master.viz.lede --><p class="s5-lede">You have just repainted a Newport Beach estate. Send us the front of your home and our design team renders it in your three closest palettes &mdash; the same way you just saw.</p>
+  <!-- /SWAP:VIZCOPY -->
       </div>
 
         <div class="s5">
@@ -4422,7 +4503,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
                   <div class="s5-fields">
                     <div class="s5-field">
                       <label for="s5Place">Address or community</label>
-                      <input id="s5Place" name="place" type="text" autocomplete="address-line1" placeholder="Orchard Hills, Irvine">
+                      <input id="s5Place" name="place" type="text" autocomplete="address-line1" placeholder="Peralta Hills, Anaheim">
                       <p class="s5-err" id="s5PlaceErr"></p>
                       <p class="s5-hint">Community is enough &mdash; it tells us the design-review rules you are working inside.</p>
                     </div>
@@ -4476,7 +4557,8 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   </section>
 
-  <section class="cream-deep" id="specs">
+  <!-- ============ LAYOUT F · BEAT 4 ============ -->
+  <section class="cream" id="specs">
     <div class="sec-head">
       <div class="eyebrow">Materials &amp; Method</div>
       <h2 class="ttl">The Peralta Hills <span class="accent">Specification</span></h2>
@@ -4493,86 +4575,103 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     </div>
   </section>
 
+  <!-- ============ LAYOUT F · BEAT 5 ============ -->
   <section class="" id="colors">
     <div class="sec-head">
-      <div class="eyebrow">The Designer Color Guide</div>
-      <h2 class="ttl">A Palette Built For <span class="accent">Peralta Hills</span></h2>
-      
+      <div class="eyebrow">The Designer Palette</div>
+      <h2 class="ttl">A Palette for Peralta Hills, <span class="accent">Seen From Across the Acre</span></h2>
+      <p class="lead">Five colors that hold their composure on wide, sun-exposed estate walls and still read after dark under your own lighting. Each is shown as a set of three, with a trim and an accent beside it, the way it would sit on the house.</p>
     </div>
     <div class="swatch-grid">
-      <div class="swatch-card">
-        <div class="swatch-chip" style="background:#EDEAE0;"></div>
+      <div class="swatch-card lx-can-card">
+        <div class="paint-cans lx-cans"><span class="paint-can" style="--c:#EDEAE0"></span><span class="paint-can" style="--c:#EDECE6"></span><span class="paint-can" style="--c:#434341"></span></div>
         <div class="swatch-body">
           <div class="swatch-name">Alabaster</div>
           <div class="swatch-code">Sherwin-Williams · SW 7008</div>
           <p class="swatch-note">The definitive luxury white — soft, warm, and the most-requested estate body color across Orange County.</p>
+          <p class="swatch-note lx-with">Shown as the body, with Pure White SW 7005 trim and Iron Ore SW 7069 accent.</p>
         </div>
       </div>
-      <div class="swatch-card">
-        <div class="swatch-chip" style="background:#8A857D;"></div>
+      <div class="swatch-card lx-can-card">
+        <div class="paint-cans lx-cans"><span class="paint-can" style="--c:#8A857D"></span><span class="paint-can" style="--c:#EDEAE0"></span><span class="paint-can" style="--c:#434341"></span></div>
         <div class="swatch-body">
           <div class="swatch-name">Chatura Gray</div>
           <div class="swatch-code">Sherwin-Williams · SW 9169</div>
           <p class="swatch-note">A grounded warm gray for bodies and garage doors that holds its color in bright Southern California light.</p>
+          <p class="swatch-note lx-with">Shown as the body, with Alabaster SW 7008 trim and Iron Ore SW 7069 accent.</p>
         </div>
       </div>
-      <div class="swatch-card">
-        <div class="swatch-chip" style="background:#434341;"></div>
+      <div class="swatch-card lx-can-card">
+        <div class="paint-cans lx-cans"><span class="paint-can" style="--c:#434341"></span><span class="paint-can" style="--c:#EDEAE0"></span><span class="paint-can" style="--c:#54504A"></span></div>
         <div class="swatch-body">
           <div class="swatch-name">Iron Ore</div>
           <div class="swatch-code">Sherwin-Williams · SW 7069</div>
           <p class="swatch-note">The modern deep charcoal — front doors, shutters, ironwork, and full accent volumes.</p>
+          <p class="swatch-note lx-with">Shown as the body, with Alabaster SW 7008 trim and Urbane Bronze SW 7048 accent.</p>
         </div>
       </div>
-      <div class="swatch-card">
-        <div class="swatch-chip" style="background:#E6DFD3;"></div>
+      <div class="swatch-card lx-can-card">
+        <div class="paint-cans lx-cans"><span class="paint-can" style="--c:#E6DFD3"></span><span class="paint-can" style="--c:#EDEAE0"></span><span class="paint-can" style="--c:#434341"></span></div>
         <div class="swatch-body">
           <div class="swatch-name">Shoji White</div>
           <div class="swatch-code">Sherwin-Williams · SW 7042</div>
           <p class="swatch-note">A warm greige that holds its composure on wide, sun-exposed estate walls where a brighter white would glare.</p>
+          <p class="swatch-note lx-with">Shown as the body, with Alabaster SW 7008 trim and Iron Ore SW 7069 accent.</p>
         </div>
       </div>
-      <div class="swatch-card">
-        <div class="swatch-chip" style="background:#54504A;"></div>
+      <div class="swatch-card lx-can-card">
+        <div class="paint-cans lx-cans"><span class="paint-can" style="--c:#54504A"></span><span class="paint-can" style="--c:#EDEAE0"></span><span class="paint-can" style="--c:#434341"></span></div>
         <div class="swatch-body">
           <div class="swatch-name">Urbane Bronze</div>
           <div class="swatch-code">Sherwin-Williams · SW 7048</div>
           <p class="swatch-note">For fascia, ironwork and the deep accents that read from across an acre of open ground.</p>
+          <p class="swatch-note lx-with">Shown as the body, with Alabaster SW 7008 trim and Iron Ore SW 7069 accent.</p>
         </div>
       </div>
     </div>
     <div class="sec-head" style="margin:44px auto 0;">
-      <p class="lead" style="font-family:var(--font-serif); font-style:italic; font-size:16.5px;">Every palette is test-rendered on <b>your own home</b> through our complimentary Custom Visualization Service — you approve a color you've already seen, not a paper swatch.</p>
+      <p class="lead" style="font-family:var(--font-serif); font-style:italic; font-size:16.5px;">Every palette here is rendered on <b>your own home</b> before you choose it — you approve a color you have already seen on the house, not a sample.</p>
     </div>
   </section>
 
-  <section class="cream" id="portfolio">
-    <div class="split-grid">
-      <div>
+  <!-- ============ LAYOUT F · BEAT 6 ============ -->
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=peralta-hills] › master.proof (+ story block: family, before/after photos) -->
+  <section class="navy" id="work" data-story>
+    <div class="cases-head">
+      <div class="eyebrow">Our Work in Peralta Hills</div>
+      <h2 class="ttl">One House, Start to Finish: <span class="accent">What a Peralta Hills Owner Sees First</span></h2>
+      <p class="sub lx-proof-lead">The frame below is the Gallaghers’ Newport Beach house, before and in the scheme they chose. A Peralta Hills estate goes through the same sequence: the lighting settled, every scheme seen on the house, and only then paint.</p>
+    </div>
+    <div class="cases-grid lx-single">
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=peralta-hills] › master.proof.family (+ story block photos) -->
+      <article class="case-card">
+        <div class="pill-wrap"><div class="avatar-pill"><div class="ph"><img src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"/></div>
+          <div><div class="name">The Gallagher Family</div><div class="sub-line">Pelican Hill, Newport Beach</div></div></div></div>
+        <div style="text-align:center;"><div class="case-tag">Custom Visualization</div></div>
+        <h3 class="case-head">The Gallaghers: the house before, and in Coastal Organic Compound</h3>
+        <div class="ba-frame">
+          
+          <div class="ba-img before" style="background-image: url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
+          <div class="ba-img after"  style="background-image: url('../../orange-county-sales-page/viz-photos/scheme-organic.jpg')"></div>
+          <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
+          <div class="ba-label l">Before</div>
+          <div class="ba-label r">Chosen</div>
+        </div>
+        <p class="drop">The Gallaghers saw their home in 11 complete schemes before a can was opened. Drag the slider: on the left, the house as it stood; on the right, the scheme they kept.</p>
         
-        <h2 class="ttl">Our Work in <span class="accent">Peralta Hills</span></h2>
-        <p class="body">Estate exteriors, interiors and cabinetry across Anaheim Hills.</p>
-        <ul class="checks-row">
-          <li>Graco &amp; Titan professional airless spray application</li>
-          <li>Sherwin-Williams Emerald &amp; Duration coating systems</li>
-          <li>Cabinet doors and drawers are sprayed off-site in Sherwin-Williams urethane enamel for a hard, showroom-smooth finish, then rehung — no brush marks, no lingering odor in the house.</li>
-          <li>2-Year Warranty · Licensed, Bonded &amp; Insured</li>
-        </ul>
-        <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Claim Complimentary Color Consultation</span><span class="sub">Peralta Hills estimates, itemized line by line</span></span></a>
-      </div>
-      <div class="photo-grid">
-          <div style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&auto=format&fit=crop&q=80')"></div>
-          <div style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&auto=format&fit=crop&q=80')"></div>
-          <div style="background-image:url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&auto=format&fit=crop&q=80')"></div>
-          <div style="background-image:url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&auto=format&fit=crop&q=80')"></div>
-      </div>
+      </article>
+  <!-- /SWAP:CLIENT -->
     </div>
   </section>
+  <!-- /SWAP:CLIENT -->
 
-  <section class="" id="fit">
+  <!-- ============ LAYOUT F · BEAT 7 ============ -->
+  <!-- SWAP:LOCAL --><!-- edit: generator/communities.json › communities[slug=peralta-hills] › problems[] (local problems) · master.problemSolution.h2 -->
+  <section class="" id="fit" data-story>
     <div class="sec-head">
       <div class="eyebrow">Made For Peralta Hills</div>
-      <h2 class="ttl">What Goes Wrong — And How <span class="accent">We Solve It</span></h2>
+      <h2 class="ttl">3 Things That Go Wrong on a Peralta Hills Estate — <span class="accent">and the Fix for Each</span></h2>
+      
     </div>
     <div class="ps-grid">
       <div class="ps-card">
@@ -4598,11 +4697,12 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       </div>
     </div>
   </section>
+  <!-- /SWAP:LOCAL -->
 
-  <section class="navy" id="process">
+  <section class="cream" id="process">
     <div class="sec-head">
       <div class="eyebrow">The White-Glove Process</div>
-      <h2 class="ttl">How a Peralta Hills Project <span class="accent">Actually Runs</span></h2>
+      <h2 class="ttl">How a Peralta Hills Project Runs, <span class="accent">From Consultation to Walkthrough</span></h2>
     </div>
     <div class="glove-steps">
       <div class="glove-step">
@@ -4643,23 +4743,44 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     </div>
   </section>
 
-  <section id="map">
-    <div class="sec-head">
-      <div class="eyebrow">Service Area · Find Us On Google</div>
-      <h2 class="ttl">Proudly Serving <span class="accent">Peralta Hills</span>, Anaheim</h2>
-      <p class="lead">VIP Home Painting is a service-area painting company covering every village of Anaheim. Save our Google profile, read our reviews, and see recent project photos before your consultation.</p>
+  <!-- ============ LAYOUT F · BEAT 8 ============ -->
+  <section class="cream" id="service-areas">
+    <div class="areas-head">
+      <div class="eyebrow">Where We Work</div>
+      <h2 class="ttl">Painting Estates in Peralta Hills, Anaheim, <span class="accent">and the Hillside Communities Around It</span></h2>
+      <p class="lead">VIP Home Painting is based in Anaheim and paints across the hillside communities above Santa Ana Canyon. From Peralta Hills, the neighboring communities we paint are one click away, along with our exterior, interior and kitchen cabinet painting pages.</p>
     </div>
-    <div class="map-grid">
+    <div class="city-hubs city-hubs-single">
+      <div class="city-hub">
+        <a class="ch-head" href="../">
+          <span class="ch-name">Anaheim</span>
+          <span class="ch-go">View Anaheim painting &rarr;</span>
+        </a>
+        <div class="ch-label">Neighboring communities we paint</div>
+        <div class="ch-links">
+          <a href="../summit-pointe/">Summit Pointe</a>
+          <a href="../belsomet/">Belsomet</a>
+          <a href="../crown-pointe/">Crown Pointe</a>
+        </div>
+        <div class="ch-foot">
+          
+          
+          <a href="../../exterior-painting/">Exterior House Painting</a>
+          <a href="../../interior-painting/">Interior House Painting</a>
+          <a href="../../kitchen-cabinet-painting/">Kitchen Cabinet Painting</a>
+        </div>
+      </div>
+    </div>
+    <div class="map-grid" style="margin-top:40px;">
       <div class="map-embed">
         <iframe title="Map of Peralta Hills, Anaheim, CA — VIP Home Painting service area" src="https://www.google.com/maps?q=Peralta%20Hills%2C%20Anaheim%2C%20CA&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       </div>
       <div class="nap-card">
         <div class="nap-name">VIP Home Painting</div>
-        <div class="nap-line" style="font-family:var(--font-serif); font-style:italic; color:var(--gold-deep);">Luxury Residential Painting · Peralta Hills, Anaheim, CA</div>
+        <div class="nap-line" style="font-family:var(--font-serif); font-style:italic; color:var(--gold-deep);">Service-area painting company · based in Anaheim, CA</div>
         <div class="nap-line"><b>Phone:</b> <a href="tel:9093125400">(909) 312-5400</a></div>
         <div class="nap-line"><b>Email:</b> <a href="mailto:Contact@VIPHomePainting.com">Contact@VIPHomePainting.com</a></div>
         <div class="nap-line"><b>Hours:</b> Mon–Fri 8am–6pm · Sat 9am–3pm</div>
-        <div class="nap-line"><b>Service Area:</b> Orchard Hills · Altair · Portola Springs · Hidden Canyon · Woodbury · Stonegate · Peralta Hills · Summit Pointe · Belsomet · Crown Pointe &amp; all Anaheim villages</div>
         <div class="nap-btns">
           <a class="btn-gold" href="https://g.page/viphomepainting" target="_blank" rel="noopener">See Us On Google</a>
           <a class="nap-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=VIP%20Home%20Painting%20Anaheim%20CA" target="_blank" rel="noopener">Open Google Maps</a>
@@ -4668,10 +4789,12 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     </div>
   </section>
 
+
+  <!-- SWAP:FAQ --><!-- edit: generator/communities.json › communities[slug=peralta-hills] › faqs[] (q, a) · master.faq.h2 -->
   <section class="cream" id="faq">
     <div class="faq-head">
       <div class="eyebrow sec-head-eyebrow">Frequently Asked Questions</div>
-      <h2 class="ttl">Peralta Hills Home Painting — <span class="accent">Your Questions Answered</span></h2>
+      <h2 class="ttl">Peralta Hills Estate Painting — <span class="accent">Your Questions, Answered</span></h2>
     </div>
     <div class="faq-list">
       <details class="faq-item" open>
@@ -4696,11 +4819,32 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       </details>
     </div>
   </section>
+  <!-- /SWAP:FAQ -->
 
   <!-- ============ BYLINE + FINAL CTA ============ -->
-  <section id="quote">
+  
+  <section id="quote" data-story>
+    <div class="scope-block">
+      <div class="eyebrow">Our Complete Scope of Work</div>
+      <h3 class="ttl">Every Service. <span class="accent">One Team.</span></h3>
+      <ul class="scope-list">
+        <li>Full Exterior Painting</li>
+        <li>Stucco Repair</li>
+        <li>Surface Preparation</li>
+        <li>Interior Walls</li>
+        <li>Wood Trim Replacement</li>
+        <li>Premium Paints Only</li>
+        <li>Cabinet Refinishing</li>
+        <li>Color Consultation</li>
+        <li>Clean Worksites</li>
+        <li>Garage Floor Coatings</li>
+        <li>Pressure Washing</li>
+        <li>Final Inspection</li>
+      </ul>
+    </div>
+
     <div class="byline">
-      <img class="byline-ph" src="../../orange-county-sales-page/assets/fabian.jpg" alt="Fabian — Founder, VIP Home Painting"/>
+      <img class="byline-ph" src="../../orange-county-sales-page/assets/fabian.jpg" alt="Fabian — Founder, VIP Home Painting" width="360" height="360" loading="lazy"/>
       <div class="byline-txt">
         <div class="byline-kicker">From the Desk of the Founder</div>
         <p class="byline-quote">"Every estate deserves to be seen before a single brushstroke. That's my promise to every Peralta Hills homeowner we serve."</p>
@@ -4710,10 +4854,18 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     </div>
 
     <div class="final-cta">
-      <div class="ck">Ready To Transform Your Peralta Hills Home?</div>
-      <h2 class="ttl">Let's Make Your Home the <em>Envy of Peralta Hills</em></h2>
+      <div class="ck">Ready To See Your Peralta Hills Home First?</div>
+      <h2 class="ttl">Before the Road Goes Dark, <span class="accent">See Your Color in 30 Minutes</span></h2>
       <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Get My Complimentary Quote Now</span><span class="sub">No Pressure · No Obligation · Always Complimentary</span></span></a>
     </div>
+    
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=peralta-hills] › master.close.ps[] -->
+    <div class="ps-close">
+      <p><b>P.S.</b> &mdash; The Gallaghers walked their house at noon and after dark, settled the lighting, and then saw 11 complete color schemes on the house before anyone opened a can.</p>
+      <p>A Peralta Hills estate is seen from across an acre by day and only by its own light at night. One photo of the front of the house is all the consultation asks, and it is complimentary, with the itemized estimate included.</p>
+      <p class="ps-cta"><a href="tel:9093125400">(909) 312-5400</a></p>
+    </div>
+  <!-- /SWAP:CLIENT -->
   </section>
 
   <!-- ============ FOOTER ============ -->
@@ -5599,12 +5751,12 @@ setTimeout(() => {
       picB.className = 'pic-before';
       picB.style.backgroundImage = beforeBg;
       picB.setAttribute('role', 'img');
-      picB.setAttribute('aria-label', 'The Gallaghers’ Newport Beach home before repainting, unpainted.');
+      picB.setAttribute('aria-label', 'The Gallaghers’ Newport Beach home before repainting.');
       var picA = document.createElement('span');
       picA.className = 'pic-after';
       picA.style.backgroundImage = el.style.backgroundImage;
       picA.setAttribute('role', 'img');
-      picA.setAttribute('aria-label', 'Newport Beach estate exterior rendered in ' + nm + (co ? ' — ' + co + '.' : '.'));
+      picA.setAttribute('aria-label', 'Newport Beach home exterior rendered in ' + nm + (co ? ' — ' + co + '.' : '.'));
       var picS = document.createElement('span');
       picS.className = 'pic-seam';
       pic.appendChild(picB); pic.appendChild(picA); pic.appendChild(picS);

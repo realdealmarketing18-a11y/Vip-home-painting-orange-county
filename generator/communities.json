@@ -1335,6 +1335,64 @@
         "headline": "The Road Has No Streetlights. That Changes How You Choose a Color.",
         "kicker": "One-acre minimums, custom homes, and light you cannot borrow from anywhere else.",
         "play_label": "Watch the Film"
+      },
+      "storyLayout": "F",
+      "schema": "legacy",
+      "master": {
+        "hero": {
+          "eyebrow": "Peralta Hills · Anaheim",
+          "h1": "The Road Has No Streetlights. That Changes How You Choose a Color.",
+          "deck": "{They} walked their house at noon and again after dark. On a Peralta Hills road with no streetlights, those are the only two lights a color is ever seen in.",
+          "continue": "Walk the property at noon, then at dusk"
+        },
+        "dusk": {
+          "eyebrow": "The Dusk Walk",
+          "h2": "Noon, Then Dusk: The <span class=\"accent\">2 Lights</span> a Peralta Hills Color Has to Pass",
+          "lead": "Peralta Hills was laid out to feel semi-rural and still does: one-acre minimum lots, equestrian allowances, and no streetlights, curbs or gutters — a design decision, not an oversight. That decision is what makes choosing a color here different.",
+          "noon": "Across open ground the house is judged from two hundred feet, not twenty. The body color carries almost the whole impression and the trim reads as detail. A white that looks calm on a chip can glare across a long, sunlit wall.",
+          "dusk": "When the sun goes, nothing on the road lights the house for you. What anyone sees after dark is your own exterior lighting on your own color, with nothing in between.",
+          "chipLine": "Walking the property",
+          "scale": "{They} did the same walk on their own {place} property: the whole front from the far end of the drive at midday, then again under their own fixtures after dark. Two walks, two very different houses — which is why, when they sat down with our design team, the lighting was settled before the color."
+        },
+        "viz": {
+          "h2": "Your Turn: Light a Peralta Hills House First, <span class=\"accent\">Then Choose Its Color</span>",
+          "sub": "{They} made four decisions, lighting first — then color, texture and the garage door. On a road with no streetlights, the fixtures decide which colors survive the dark. Make all four on their house, before you make them on yours."
+        },
+        "palette": {
+          "eyebrow": "The Designer Palette",
+          "h2": "A Palette for Peralta Hills, <span class=\"accent\">Seen From Across the Acre</span>",
+          "lead": "Five colors that hold their composure on wide, sun-exposed estate walls and still read after dark under your own lighting. Each is shown as a set of three, with a trim and an accent beside it, the way it would sit on the house."
+        },
+        "proof": {
+          "eyebrow": "Our Work in Peralta Hills",
+          "h2": "One House, Start to Finish: <span class=\"accent\">What a Peralta Hills Owner Sees First</span>",
+          "lead": "The frame below is {their} {place} house, before and in the scheme they chose. A Peralta Hills estate goes through the same sequence: the lighting settled, every scheme seen on the house, and only then paint.",
+          "family": {
+            "tag": "Custom Visualization",
+            "headline": "{They}: the house before, and in {chosen}",
+            "story": "{They} saw their home in {schemes} complete schemes before a can was opened. Drag the slider: on the left, the house as it stood; on the right, the scheme they kept."
+          }
+        },
+        "problemSolution": {
+          "h2": "3 Things That Go Wrong on a Peralta Hills Estate — <span class=\"accent\">and the Fix for Each</span>"
+        },
+        "process": {
+          "h2": "How a Peralta Hills Project Runs, <span class=\"accent\">From Consultation to Walkthrough</span>"
+        },
+        "serviceArea": {
+          "h2": "Painting Estates in Peralta Hills, Anaheim, <span class=\"accent\">and the Hillside Communities Around It</span>",
+          "lead": "VIP Home Painting is based in Anaheim and paints across the hillside communities above Santa Ana Canyon. From Peralta Hills, the neighboring communities we paint are one click away, along with our exterior, interior and kitchen cabinet painting pages."
+        },
+        "faq": {
+          "h2": "Peralta Hills Estate Painting — <span class=\"accent\">Your Questions, Answered</span>"
+        },
+        "close": {
+          "h2": "Before the Road Goes Dark, <span class=\"accent\">See Your Color in 30 Minutes</span>",
+          "ps": [
+            "{They} walked their house at noon and after dark, settled the lighting, and then saw {schemes} complete color schemes on the house before anyone opened a can.",
+            "A Peralta Hills estate is seen from across an acre by day and only by its own light at night. One photo of the front of the house is all the consultation asks, and it is complimentary, with the itemized estimate included."
+          ]
+        }
       }
     },
     {

@@ -529,6 +529,13 @@ module.exports = function makeStoryLayouts(ctx) {
     if (!fn) throw new Error(`${c.slug}: layout ${c.storyLayout} uses module "${key}", which has no builder`);
     let html = fn(city ? cWithRel : c, 0, nextBg(prevBg), H);
     if (OVERRIDE[key]) html = retitle(html, tokAll(M(c, OVERRIDE[key]), c));
+    /* The old per-community map section carried an "Open Google Maps" link.
+       The service-area section replaces it on a layout page, so the link
+       moves with it rather than being dropped. */
+    if (key === 'serviceArea' && html && !/google\.com\/maps\/search/.test(html)) {
+      html = html.replace(/(<div class="nap-btns">[\s\S]*?)(\n        <\/div>)/, (m, a, z) =>
+        `${a}\n          <a class="nap-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent(`VIP Home Painting ${where(c).city} CA`)}" target="_blank" rel="noopener">Open Google Maps</a>${z}`);
+    }
     return html;
   }
 
