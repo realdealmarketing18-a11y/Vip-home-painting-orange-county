@@ -1778,6 +1778,77 @@
         "headline": "One Hundred Homes Behind the Gate. Yours Is Seen by Every One of Them.",
         "kicker": "Which is why the color is worth being certain about before the crew arrives.",
         "play_label": "Watch the Film"
+      },
+      "storyLayout": "F",
+      "schema": "legacy",
+      "layoutOptions": [
+        "warranty"
+      ],
+      "master": {
+        "hero": {
+          "eyebrow": "Belsomet · Anaheim Hills",
+          "h1": "One Hundred Homes Behind the Gate. Yours Is Seen by Every One of Them.",
+          "deck": "About a hundred homes behind one gate, close together, with canyon light by day and city lights after dark. {They} walked their house through both before choosing a color.",
+          "continue": "Walk the street by day, then after dark"
+        },
+        "dusk": {
+          "eyebrow": "The Dusk Walk",
+          "h2": "Canyon Light by Day, City Lights After Dark: <span class=\"accent\">2 Belsomet Tests</span> for Every Color",
+          "lead": "Belsomet is small — around a hundred homes behind the gate, on Bridgewood Drive and the courts and circles off it — and the parcels sit close together. On a street like that a repaint is not a private decision, and it is judged in more light than most.",
+          "noonLabel": "By Day",
+          "noon": "Canyon and mountain light moves across the front of the house through the day, and the neighbors see it from a few yards away rather than from across a lawn. A color that looked quiet indoors can read loud beside the house next door.",
+          "duskLabel": "After Dark",
+          "dusk": "When the city lights come on below, the house is seen by its own fixtures instead. A color is being judged across a much wider range of conditions than on a flat inland street, and a chip chosen indoors was never tested in any of them.",
+          "chipLine": "Walking the street",
+          "scale": "{They} did the same walk at their own {place} house: the front at midday, then again under their own fixtures after dark. Two very different houses — which is why the lighting was settled before the color when they sat down with our design team."
+        },
+        "viz": {
+          "h2": "Your Turn: Light a Belsomet Home First, <span class=\"accent\">Then Choose Its Color</span>",
+          "sub": "{They} made four decisions, lighting first — then color, texture and the garage door. On a street that is seen after dark by its own fixtures, the lighting decides which colors hold up. Make all four on their house, before you make them on yours."
+        },
+        "specs": {
+          "h2": "The Belsomet <span class=\"accent\">Specification</span>, Written Into Every Estimate"
+        },
+        "palette": {
+          "eyebrow": "The Designer Palette",
+          "h2": "A Palette for Belsomet, <span class=\"accent\">Chosen for a Close-Set Street</span>",
+          "lead": "Five colors that look deliberate beside the house next door, by canyon light and under your own fixtures. Each is shown as a set of three, with a trim and an accent beside it."
+        },
+        "proof": {
+          "eyebrow": "Our Work in Belsomet",
+          "h2": "One House, Start to Finish: <span class=\"accent\">What a Belsomet Owner Sees First</span>",
+          "lead": "The frame below is {their} {place} house, before and in the scheme they chose. A Belsomet home follows the same sequence: the light understood, every scheme seen on the house, and only then paint.",
+          "family": {
+            "tag": "Custom Visualization",
+            "headline": "{They}: the house before, and in {chosen}",
+            "story": "{They} saw their home in {schemes} complete schemes before a can was opened. Drag the slider: on the left, the house as it stood; on the right, the scheme they kept."
+          }
+        },
+        "problemSolution": {
+          "h2": "3 Things That Go Wrong on a Belsomet Repaint — <span class=\"accent\">and the Fix for Each</span>"
+        },
+        "process": {
+          "h2": "How a Belsomet Project Runs, <span class=\"accent\">From the Gate to the Walkthrough</span>"
+        },
+        "warranty": {
+          "eyebrow": "Written, Not Promised",
+          "h2": "A <span class=\"accent\">{warranty}</span> in Your Belsomet Estimate, Beside the Crack Repair It Depends On",
+          "body": "The {warranty} covers labor and materials and is printed on the itemized estimate you sign. On a Belsomet house three decades on from its original finish, the work it relies on is listed beside it: every hairline crack opened, filled and floated to match the texture, bonding primer wherever the old coating has chalked, and two coats of Sherwin-Williams Emerald or Duration. If something covered fails within the warranty period, VIP Home Painting comes back and puts it right."
+        },
+        "serviceArea": {
+          "h2": "Painting Homes in Belsomet, Anaheim Hills, <span class=\"accent\">and the Gated Communities Around It</span>",
+          "lead": "VIP Home Painting is based in Anaheim and paints across the hillside communities above Santa Ana Canyon. From Belsomet, the neighboring communities we paint are one click away, along with our exterior, interior and kitchen cabinet painting pages."
+        },
+        "faq": {
+          "h2": "Belsomet House Painting — <span class=\"accent\">Your Questions, Answered</span>"
+        },
+        "close": {
+          "h2": "A Hundred Neighbors Will See It. <span class=\"accent\">See It First, in 30 Minutes.</span>",
+          "ps": [
+            "{They} walked their house by day and after dark, settled the lighting, and then saw {schemes} complete color schemes on the house before anyone opened a can.",
+            "In Belsomet the whole street sees the result. One photo of the front of your house is all the consultation asks, and it is complimentary, with the itemized estimate included."
+          ]
+        }
       }
     },
     {
