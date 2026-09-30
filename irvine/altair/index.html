@@ -4149,30 +4149,31 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 /* ============================================================
    STORY-LAYOUT PAGES ONLY (storyLayout B–F) — see story-layouts.js.
    Loaded after page.css / city-page.css, and only on layout pages, so
-   no other page changes. Colours, type and shadows come from the
-   design-system tokens already on the page (design-system/*.css).
+   no other page changes. Colours come only from the brand tokens the
+   generated pages carry (--navy, --gold, --gold-deep, --gold-bright,
+   --cream …, from design-system/); shadows are navy-based, never black.
    ============================================================ */
 
 /* Hero: the layout's story line under the H1 */
 .hero-cinema .hero-deck {
   font-family: var(--font-serif); font-style: italic; font-weight: 400;
-  font-size: clamp(17px, 2.1vw, 22px); line-height: var(--lh-snug);
+  font-size: clamp(17px, 2.1vw, 22px); line-height: 1.3;
   color: var(--gold-bright); max-width: 720px; margin: 14px auto 0; text-align: center;
 }
 
 /* Flashback / dusk walk: a single column of story prose under the chip */
 .lx-story { max-width: 760px; margin: 0 auto; }
 .lx-story .pill-wrap { margin-bottom: 18px; }
-.lx-story .body { font-size: 17px; line-height: var(--lh-relaxed); margin: 0 0 16px; }
+.lx-story .body { font-size: 17px; line-height: 1.65; margin: 0 0 16px; color: var(--navy); }
 
 /* Timeline: day label above each step title, and the honesty note */
 .lx-day { font-family: var(--font-sans); font-weight: 700; font-size: 10.5px;
-  letter-spacing: var(--tracking-overline); text-transform: uppercase; color: var(--gold-deep); margin: 4px 0 6px; }
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-deep); margin: 4px 0 6px; }
 .lx-note { max-width: 760px; margin: 36px auto 0; text-align: center;
-  font-family: var(--font-serif); font-style: italic; font-size: 15px; color: var(--fg-secondary); }
+  font-family: var(--font-serif); font-style: italic; font-size: 15px; line-height: 1.5; color: var(--gold-deep); }
 
 /* Near-miss No. 1: the family's card leads the grid */
-.ps-card.lx-near { border: var(--border-gold); box-shadow: var(--shadow-md); }
+.ps-card.lx-near { border: 1.5px solid var(--gold); box-shadow: 0 10px 26px rgba(26,31,78,0.12); }
 
 /* Palette: every colour as a three-can set */
 .lx-can-card .lx-cans { display: flex; justify-content: center; gap: 10px; padding: 22px 16px 6px; }
@@ -5091,6 +5092,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
         <div class="nap-line"><b>Hours:</b> Mon–Fri 8am–6pm · Sat 9am–3pm</div>
         <div class="nap-btns">
           <a class="btn-gold" href="https://g.page/viphomepainting" target="_blank" rel="noopener">See Us On Google</a>
+          <a class="nap-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=VIP%20Home%20Painting%20Irvine%20CA" target="_blank" rel="noopener">Open Google Maps</a>
         </div>
       </div>
     </div>
