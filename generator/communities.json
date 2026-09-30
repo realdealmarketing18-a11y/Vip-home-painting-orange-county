@@ -1926,6 +1926,14 @@
         {
           "problem": "A lump-sum quote you cannot compare against anything.",
           "solution": "Every estimate is broken out line by line — preparation, primer, coating, trim, accents — so it can be set against any other bid honestly."
+        },
+        {
+          "problem": "Hairline stucco cracks painted over instead of repaired.",
+          "solution": "Every crack is opened, filled and floated to match the texture around it before primer, so it does not show back through the new color within a season."
+        },
+        {
+          "problem": "Paint sprayed onto stucco that never reaches into the texture, so the wall looks uneven in low light.",
+          "solution": "Sherwin-Williams Emerald or Duration sprayed and back-rolled into the texture, two coats at the thickness the manufacturer specifies, then checked in raking light before sign-off."
         }
       ],
       "portfolio": {
@@ -1937,6 +1945,86 @@
         "headline": "Sixteen Homes in the Whole Community. Everyone Will See It.",
         "kicker": "Which is a good reason to look at the color on your own house before anyone else does.",
         "play_label": "Watch the Film"
+      },
+      "storyLayout": "D",
+      "schema": "legacy",
+      "layoutOptions": [
+        "offer"
+      ],
+      "master": {
+        "hero": {
+          "eyebrow": "Crown Pointe · Anaheim",
+          "h1": "Sixteen Homes in the Whole Community. Everyone Will See It.",
+          "deck": "Sixteen homes, and every owner knows every house. {They} were one signature away from painting theirs twice — and on a street this small, everyone would have seen it.",
+          "continue": "See how close it came"
+        },
+        "nearMiss": {
+          "label": "No. 1 · {Their} Near-Miss",
+          "story": "{They} had a scheme chosen from a chip and the crew nearly booked. Rendered on the whole front of their {place} house, it read far louder than the chip had promised — exactly the kind of change a small street notices first. It became the first scheme they ruled out.",
+          "fixLabel": "What Caught It"
+        },
+        "problemSolution": {
+          "h2": "5 Ways a Crown Pointe Repaint Goes Wrong — <span class=\"accent\">and the Fix for Each</span>"
+        },
+        "eliminated": {
+          "eyebrow": "They Visualized It",
+          "h2": "What Caught It: {schemes} Schemes on Their House, <span class=\"accent\">Ten Ruled Out Before a Neighbor Saw One</span>",
+          "lead": "The near-miss ended here: every scheme rendered on the front of {their} {place} house, body, trim and accent together, before anything was bought. Ten were ruled out and {chosen} stayed. In Crown Pointe the same half hour answers the one question sixteen neighbors will ask — whether the new color looks deliberate."
+        },
+        "viz": {
+          "h2": "Your Turn: Rule Out the Wrong Crown Pointe Color <span class=\"accent\">on Their House, Not Yours</span>"
+        },
+        "offer": {
+          "h2": "Your Crown Pointe Home in <span class=\"accent\">{schemes} Complete Schemes</span>, Before a Single Neighbor Sees One",
+          "sub": "Thirty minutes and one photo of the front of your house. Our design team returns it painted in {schemes} complete schemes, each named in exact Sherwin-Williams colors, with an estimate priced line by line. It is the same package {they} received for their {place} home, and it is complimentary."
+        },
+        "neighbors": {
+          "h2": "On a Street of Sixteen Homes, Your Color Is Judged <span class=\"accent\">for the Next 8 to 15 Years</span>",
+          "sub": "Crown Pointe is a private gated street of sixteen homes on S Crown Pointe Drive. The people who see your house are the same few households, every day. None of what follows shows the afternoon the crew leaves; all of it shows a few summers later, which is why each item is written into the estimate."
+        },
+        "painted": {
+          "h2": "Then We Painted It: 3 Steps on a Crown Pointe House, <span class=\"accent\">Each Decided Before the Crew Arrives</span>",
+          "sub": "For {they}, the color came first and everything else followed it — the details, the finish, the last touches — each seen on their own house while it could still change. A Crown Pointe project follows the same three steps, with the street kept clear and the neighbors’ cars and planting protected throughout."
+        },
+        "warranty": {
+          "h2": "The <span class=\"accent\">{warranty}</span> Is Written Into Your Crown Pointe Estimate, Not Promised at the Curb",
+          "body": "The {warranty} covers labor and materials, and it is printed on the itemized estimate you sign, next to the preparation it depends on: cracks floated back to the texture, bonding primer where the old coating has failed, and two coats of Sherwin-Williams Emerald or Duration. If something covered fails within the warranty period, VIP Home Painting comes back and puts it right."
+        },
+        "beforeCommit": {
+          "h2": "What Reaches a Crown Pointe Owner <span class=\"accent\">Before Anything Is Signed</span>",
+          "lead": "On a street of sixteen homes, the risk in a repaint is approving something everyone will see before you have seen it yourself. So four things come first: renders of your own house, the estimate priced line by line, the warranty in writing, and a color submission prepared for your association’s design review."
+        },
+        "services": {
+          "h2": "Exterior, Interior and Cabinet Painting in Crown Pointe, <span class=\"accent\">Priced on One Estimate</span>",
+          "items": [
+            {
+              "title": "Exterior House Painting — Crown Pointe",
+              "body": "Masking and shielding to the property line, neighboring cars and planting protected, and Sherwin-Williams Emerald or Duration sprayed with Graco and Titan airless equipment, then back-rolled. Starts at {rate} per square foot of paintable surface, measured on what is actually painted."
+            },
+            {
+              "title": "Interior House Painting — Crown Pointe",
+              "body": "Walls, ceilings, trim and doors, sequenced so the house stays livable. The same line-by-line estimate and the same Sherwin-Williams naming as the exterior."
+            },
+            {
+              "title": "Kitchen Cabinet Painting — Crown Pointe",
+              "body": "Cabinet doors and drawers are sprayed off-site in Sherwin-Williams urethane enamel for a hard, factory-smooth finish, then rehung — no brush marks and no lingering odor in the house."
+            }
+          ]
+        },
+        "serviceArea": {
+          "h2": "House Painters for Crown Pointe, Anaheim, <span class=\"accent\">and the Hillside Communities Nearby</span>",
+          "lead": "VIP Home Painting is based in Anaheim and paints across the hillside communities above Santa Ana Canyon. From Crown Pointe, the neighboring communities we paint are one click away, along with our exterior, interior and kitchen cabinet painting pages."
+        },
+        "faq": {
+          "h2": "Crown Pointe House Painting — <span class=\"accent\">Your Questions, Answered</span>"
+        },
+        "close": {
+          "h2": "Sixteen Neighbors Will See It. <span class=\"accent\">See It First, in 30 Minutes.</span>",
+          "ps": [
+            "{They} were one signature away from painting their house twice. What stopped it was seeing {schemes} complete schemes on the house itself, ruling out ten, and only then opening a can.",
+            "On a street as small as Crown Pointe, the whole community sees the result. One photo of the front of your house is all the consultation asks, and it is complimentary, with the itemized estimate included."
+          ]
+        }
       }
     }
   ]
