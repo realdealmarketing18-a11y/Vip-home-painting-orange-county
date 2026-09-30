@@ -848,7 +848,8 @@
         "hero": {
           "eyebrow": "Hidden Canyon · Irvine · Estate House Painting",
           "h1": "The Hidden Canyon Standard for <span class=\"gold\">Exterior House Painting</span> Begins With Every Color Seen on Your Estate",
-          "continue": "See the {schemes} schemes {they} weighed, then consider your own"
+          "continue": "Walk the estate with them",
+          "deck": "On a canyon-edge lot, one wall sits in shade while the next takes the full afternoon sun. {They} walked their house through both, and again after dark, before choosing a single color."
         },
         "neighbors": {
           "h2": "Behind the Hidden Canyon Gate, the Same Neighbors Live With Your Color <span class=\"accent\">for 8 to 15 Years</span>",
@@ -915,8 +916,52 @@
             "Everything on this page followed one sequence. {They} reviewed {schemes} complete schemes on their own house, set ten aside, and only then was paint ordered. Estate repaints often run the other way: a designer’s shortlist, sample boards on the entry wall, a considered best guess, and the real answer arriving on the day the masking comes off.",
             "Hidden Canyon asks for a quiet kind of certainty. The houses are few, the gate is staffed around the clock, and a color is lived with in full view of the same neighbors for years. Seeing it first took {they} thirty minutes and one photograph of the front of the house. Yours takes the same thirty minutes, costs nothing, and arrives with the itemized estimate."
           ]
+        },
+        "dusk": {
+          "eyebrow": "The Dusk Walk",
+          "h2": "Shade, Sun, Then Dark: <span class=\"accent\">3 Lights</span> Every Hidden Canyon Color Has to Pass",
+          "lead": "Hidden Canyon estates are Mediterranean and contemporary — smooth-troweled stucco, limestone details, canyon-edge lots. On a lot like that, the same color is seen in three very different lights in a single day, and smooth stucco hides nothing in any of them.",
+          "noonLabel": "By Day",
+          "noon": "One wall sits in canyon shade while the next takes full afternoon sun. A clean white can read faintly gray on the shaded side and glare on the sunny one; a warm neutral can go flat beside limestone. The whole front has to hold together across both.",
+          "duskLabel": "After Dark",
+          "dusk": "Once the sun is off the canyon, what shows is the light you put on the house yourself — lanterns, sconces, the glow at the entry — falling on your color. A scheme chosen by day alone has never been tested there.",
+          "chipLine": "Walking the property",
+          "scale": "{They} did the same walk on their own {place} property: the shaded side first, then the sunny one, then the whole front again after dark under their own fixtures. That is why, when they sat down with our design team, the lighting was settled before the color."
+        },
+        "viz": {
+          "h2": "Your Turn: Light a Hidden Canyon Estate First, <span class=\"accent\">Then Choose Its Color</span>",
+          "sub": "{They} made four decisions, lighting first — then color, texture and the garage door. On a canyon-edge estate the fixtures decide how the color reads once the sun has gone. Make all four on their house, before you make them on yours."
+        },
+        "specs": {
+          "h2": "The Hidden Canyon <span class=\"accent\">Specification</span> — Materials &amp; Method in Writing"
+        },
+        "palette": {
+          "eyebrow": "The Designer Palette",
+          "h2": "A Designer Palette for Hidden Canyon’s <span class=\"accent\">Smooth Stucco and Limestone</span>",
+          "lead": "Five colors that sit well against smooth-troweled stucco and limestone, and hold together between a shaded wall and a sunlit one. Each is shown as a set of three, with a trim and an accent beside it."
+        },
+        "proof": {
+          "eyebrow": "Our Work in Hidden Canyon",
+          "h2": "One Estate, Start to Finish: <span class=\"accent\">What a Hidden Canyon Owner Sees First</span>",
+          "lead": "The frame below is {their} {place} house, before and in the scheme they chose. A Hidden Canyon estate follows the same sequence: the light understood, every scheme seen on the house, and only then paint.",
+          "family": {
+            "tag": "Custom Visualization",
+            "headline": "{They}: the house before, and in {chosen}",
+            "story": "{They} saw their home in {schemes} complete schemes before a can was opened. Drag the slider: on the left, the house as it stood; on the right, the scheme they kept."
+          }
+        },
+        "process": {
+          "h2": "How a Hidden Canyon Project Runs, <span class=\"accent\">Planned Around the Gate</span>"
+        },
+        "faq": {
+          "h2": "Hidden Canyon Estate Painting — <span class=\"accent\">Questions, Answered Discreetly</span>"
         }
-      }
+      },
+      "storyLayout": "F",
+      "layoutOptions": [
+        "neighbors",
+        "warranty"
+      ]
     },
     {
       "slug": "woodbury",

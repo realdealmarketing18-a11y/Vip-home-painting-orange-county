@@ -4146,6 +4146,53 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   .film-close { top: 12px; right: 12px; padding: 9px 14px; }
 }
 
+/* ============================================================
+   STORY-LAYOUT PAGES ONLY (storyLayout B–F) — see story-layouts.js.
+   Loaded after page.css / city-page.css, and only on layout pages, so
+   no other page changes. Colours come only from the brand tokens the
+   generated pages carry (--navy, --gold, --gold-deep, --gold-bright,
+   --cream …, from design-system/); shadows are navy-based, never black.
+   ============================================================ */
+
+/* Hero: the layout's story line under the H1 */
+.hero-cinema .hero-deck {
+  font-family: var(--font-serif); font-style: italic; font-weight: 400;
+  font-size: clamp(17px, 2.1vw, 22px); line-height: 1.3;
+  color: var(--gold-bright); max-width: 720px; margin: 14px auto 0; text-align: center;
+}
+
+/* Flashback / dusk walk: a single column of story prose under the chip */
+.lx-story { max-width: 760px; margin: 0 auto; }
+.lx-story .pill-wrap { margin-bottom: 18px; }
+.lx-story .body { font-size: 17px; line-height: 1.65; margin: 0 0 16px; color: var(--navy); }
+
+/* Timeline: day label above each step title, and the honesty note */
+.lx-day { font-family: var(--font-sans); font-weight: 700; font-size: 10.5px;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-deep); margin: 4px 0 6px; }
+.lx-note { max-width: 760px; margin: 36px auto 0; text-align: center;
+  font-family: var(--font-serif); font-style: italic; font-size: 15px; line-height: 1.5; color: var(--gold-deep); }
+
+/* Near-miss No. 1: the family's card leads the grid */
+.ps-card.lx-near { border: 1.5px solid var(--gold); box-shadow: 0 10px 26px rgba(26,31,78,0.12); }
+
+/* Palette: every colour as a three-can set */
+.lx-can-card .lx-cans { display: flex; justify-content: center; gap: 10px; padding: 22px 16px 6px; }
+.lx-can-card .paint-can { width: 58px; height: 58px; }
+.lx-can-card .lx-with { font-style: italic; }
+
+/* Proof */
+.lx-proof-lead { max-width: 720px; margin: 14px auto 0; text-align: center; }
+.cases-grid.lx-single { grid-template-columns: minmax(0, 620px); justify-content: center; }
+
+@media (max-width: 860px) {
+  .cases-grid { grid-template-columns: 1fr; }
+  .cases-grid.lx-single { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .lx-can-card .paint-can { width: 48px; height: 48px; }
+  .lx-story .body { font-size: 16px; }
+}
+
 </style>
 </head>
 <body>
@@ -4220,12 +4267,17 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     <div class="hero-stack" id="heroStack">
       <div class="hero-fleuron" aria-hidden="true">&#10087;</div>
       <div class="eyebrow eyebrow-ruled">Hidden Canyon · Irvine · Estate House Painting</div>
-      <div class="pill-wrap pill-wrap-lede">
+      
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=hidden-canyon] › story (family, avatar, location) --><div class="pill-wrap pill-wrap-lede">
         <div class="avatar-pill"><div class="ph"><img src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"/></div>
           <div><div class="name">The Gallagher Family</div>
           <div class="sub-line">Pelican Hill, Newport Beach</div></div></div>
       </div>
+  <!-- /SWAP:CLIENT -->
       <h1 class="ttl-hero">The Hidden Canyon Standard for <span class="gold">Exterior House Painting</span> Begins With Every Color Seen on Your Estate</h1>
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=hidden-canyon] › master.hero.deck -->
+      <p class="hero-deck">On a canyon-edge lot, one wall sits in shade while the next takes the full afternoon sun. The Gallaghers walked their house through both, and again after dark, before choosing a single color.</p>
+  <!-- /SWAP:CLIENT -->
       <ol class="hero-beats">
         <li><span class="n">1</span><span class="t"><span class="w">They</span> visualized it</span></li>
         <li><span class="n">2</span><span class="t"><span class="w">They</span> loved it</span></li>
@@ -4272,9 +4324,9 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           <button class="hr-tray-cta" type="button" id="hrReplay">Discover</button>
         </div>
       </figure>
-      <a class="hero-continue" href="#viz">
+      <a class="hero-continue" href="#story">
         <span class="hc-rule" aria-hidden="true"></span>
-        <span class="hc-txt">See the 11 schemes the Gallaghers weighed, then consider your own</span>
+        <span class="hc-txt">Walk the estate with them</span>
         <span class="hc-arrow" aria-hidden="true">&#8595;</span>
       </a>
     </div>
@@ -4289,7 +4341,42 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   </section>
 
   <!-- ============ No. 01 — INTERACTIVE CUSTOM VISUALIZATION (the highlight) ============ -->
-  <section class="viz" id="viz" data-story>
+  
+
+  <div id="story" aria-hidden="true"></div>
+  <!-- ============ LAYOUT F · BEAT 2 ============ -->
+  <!-- SWAP:LOCAL --><!-- edit: generator/communities.json › communities[slug=hidden-canyon] › master.dusk -->
+  <section class="cream" id="dusk" data-story>
+    <div class="sec-head">
+      <div class="eyebrow">The Dusk Walk</div>
+      <h2 class="ttl">Shade, Sun, Then Dark: <span class="accent">3 Lights</span> Every Hidden Canyon Color Has to Pass</h2>
+      <p class="lead">Hidden Canyon estates are Mediterranean and contemporary — smooth-troweled stucco, limestone details, canyon-edge lots. On a lot like that, the same color is seen in three very different lights in a single day, and smooth stucco hides nothing in any of them.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card">
+        <div class="ps-lbl solution">By Day</div>
+        <p class="ps-p">One wall sits in canyon shade while the next takes full afternoon sun. A clean white can read faintly gray on the shaded side and glare on the sunny one; a warm neutral can go flat beside limestone. The whole front has to hold together across both.</p>
+      </div>
+      <div class="ps-card">
+        <div class="ps-lbl solution">After Dark</div>
+        <p class="ps-p">Once the sun is off the canyon, what shows is the light you put on the house yourself — lanterns, sconces, the glow at the entry — falling on your color. A scheme chosen by day alone has never been tested there.</p>
+      </div>
+    </div>
+    
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=hidden-canyon] › master.dusk.scale -->
+    <div class="lx-story" style="margin-top:36px;">
+      <div class="pill-wrap pill-wrap-lede">
+        <div class="avatar-pill"><div class="ph"><img src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"/></div>
+          <div><div class="name">The Gallagher Family</div>
+          <div class="sub-line">Walking the property</div></div></div>
+      </div>
+      <p class="body">The Gallaghers did the same walk on their own Newport Beach property: the shaded side first, then the sunny one, then the whole front again after dark under their own fixtures. That is why, when they sat down with our design team, the lighting was settled before the color.</p>
+    </div>
+  <!-- /SWAP:CLIENT -->
+  </section>
+  <!-- /SWAP:LOCAL -->
+
+  <!-- ============ LAYOUT F · BEAT 3 ============ --><section class="viz" id="viz" data-story>
     <div class="head">
       <!-- Third appearance of the chip, and the sub-line moves the story on:
            hero = who they are, band = the schemes they passed on, here = the
@@ -4302,9 +4389,11 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           <div class="sub-line">Everything they chose after the color</div></div></div>
       </div>
       <div class="eyebrow">Now It Is Your Turn</div>
-      <h2 class="ttl">How Do You Choose an Exterior Paint Color in Hidden Canyon Without Guessing? <span class="accent">Do What the Gallaghers Did &mdash; on Their House.</span></h2>
+  <!-- SWAP:VIZCOPY --><!-- edit: generator/communities.json › communities[slug=hidden-canyon] › master.viz.h2 · vizIntro · master.viz.sub -->
+      <h2 class="ttl">Your Turn: Light a Hidden Canyon Estate First, <span class="accent">Then Choose Its Color</span></h2>
       <p class="sub" style="text-align:center; font-size: 18px; max-width: 620px; margin: 0 auto 28px;">A Hidden Canyon estate gives a color very little to hide behind. Smooth-troweled stucco presents each wall as one continuous surface, the limestone beside it is not changing, and on a canyon-edge lot two sides of the same house rarely share the same light at the same hour. A white that reads soft at noon can turn cold by evening; a warm neutral can pick up the stone and drift creamy. The Gallaghers’ Newport Beach house is in the tool below, exactly as they reviewed it: choose a scheme, drag the slider, and see how much one decision changes the whole front of a house.</p>
-      <p class="viz-lede-cta">The Gallaghers made four decisions, not one &mdash; color, lighting, texture and the garage door. Each one changed how the last one looked. Make all four on their house, before you make them on yours.</p>
+      <p class="viz-lede-cta">The Gallaghers made four decisions, lighting first — then color, texture and the garage door. On a canyon-edge estate the fixtures decide how the color reads once the sun has gone. Make all four on their house, before you make them on yours.</p>
+  <!-- /SWAP:VIZCOPY -->
     </div>
 
     <div class="viz-flow">
@@ -4344,35 +4433,11 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <div class="viz-timeline" id="vizTimeline">
         <div class="tl-rail"><div class="tl-fill" id="tlFill"></div></div>
 
-        <!-- STEP 1 — Color -->
+                <!-- STEP 2 — Lighting -->
         <div class="tl-step active" data-step="1">
           <div class="tl-dot">1</div>
           <div class="tl-body">
-            <div class="tl-num-label">Step One</div>
-            <h3 class="tl-title">Choose Your <em>Color Scheme</em></h3>
-            <p class="tl-desc">Pick a style direction, then a palette — your home re-paints itself in real time.</p>
-            <div class="style-banner" id="styleBanner"><img id="styleBannerImg" alt="Style collection flat-lay" width="1400" height="594" loading="lazy" decoding="async"/></div>
-            <div class="viz-tabs" id="vizTabs"></div>
-            <div class="viz-style-desc" id="vizStyleDesc"></div>
-            <div class="scheme-grid" id="schemeGrid"></div>
-          </div>
-        </div>
-
-
-        <!-- Between the steps: the brand mark on the rail, and the reason this
-             step leads to the next one. Not a .tl-step -- the timeline JS
-             selects .tl-step only, so the numbered coins are untouched. -->
-        <div class="tl-link">
-          <img class="tl-link-mark" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt=""
-               width="128" height="294" loading="lazy" decoding="async"/>
-          <p class="tl-link-lead">Color is only half of what the street sees after dark.</p>
-          <p class="tl-link-sub">Fixtures change how a facade reads at night, which is why lighting is the next decision here rather than an afterthought on the invoice.</p>
-        </div>
-        <!-- STEP 2 — Lighting -->
-        <div class="tl-step" data-step="2">
-          <div class="tl-dot">2</div>
-          <div class="tl-body">
-            <div class="tl-num-label">Step Two · Lighting Fixtures</div>
+            <div class="tl-num-label">Step One · Lighting Fixtures</div>
             <h3 class="tl-title">The Right <em>Lighting</em></h3>
             <p class="tl-desc">From minimalist LED slots to wrought-iron lanterns — tap each fixture to see it glowing on your home.</p>
             <div class="elevate-options" data-cat="light">
@@ -4392,15 +4457,31 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           </div>
         </div>
 
+        <div class="tl-link">
+          <img class="tl-link-mark" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt=""
+               width="128" height="294" loading="lazy" decoding="async"/>
+          <p class="tl-link-lead">Light decided first. Now the color has to hold up under it.</p>
+          <p class="tl-link-sub">A color that glows under your fixtures can go flat by day, which is why the palette is chosen after the lighting, not before.</p>
+        </div>
+        <!-- STEP 1 — Color -->
+        <div class="tl-step" data-step="2">
+          <div class="tl-dot">2</div>
+          <div class="tl-body">
+            <div class="tl-num-label">Step Two</div>
+            <h3 class="tl-title">Choose Your <em>Color Scheme</em></h3>
+            <p class="tl-desc">Pick a style direction, then a palette — your home re-paints itself in real time.</p>
+            <div class="style-banner" id="styleBanner"><img id="styleBannerImg" alt="Style collection flat-lay" width="1400" height="594" loading="lazy" decoding="async"/></div>
+            <div class="viz-tabs" id="vizTabs"></div>
+            <div class="viz-style-desc" id="vizStyleDesc"></div>
+            <div class="scheme-grid" id="schemeGrid"></div>
+          </div>
+        </div>
 
-        <!-- Between the steps: the brand mark on the rail, and the reason this
-             step leads to the next one. Not a .tl-step -- the timeline JS
-             selects .tl-step only, so the numbered coins are untouched. -->
         <div class="tl-link">
           <img class="tl-link-mark" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt=""
                width="128" height="294" loading="lazy" decoding="async"/>
           <p class="tl-link-lead">Texture decides how the color behaves.</p>
-          <p class="tl-link-sub">The same pigment on smooth stucco and on cedar shake is not the same color in your light. That is precisely what a sample board cannot tell you.</p>
+          <p class="tl-link-sub">The same pigment on smooth stucco and on cedar shake is not the same color in your light.</p>
         </div>
         <!-- STEP 3 — Siding -->
         <div class="tl-step" data-step="3">
@@ -4426,15 +4507,11 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           </div>
         </div>
 
-
-        <!-- Between the steps: the brand mark on the rail, and the reason this
-             step leads to the next one. Not a .tl-step -- the timeline JS
-             selects .tl-step only, so the numbered coins are untouched. -->
         <div class="tl-link">
           <img class="tl-link-mark" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt=""
                width="128" height="294" loading="lazy" decoding="async"/>
-          <p class="tl-link-lead">The last decisions are the ones the street sees first.</p>
-          <p class="tl-link-sub">A garage door faces the road more squarely than any wall does, and it is the piece most homeowners leave to chance.</p>
+          <p class="tl-link-lead">The last decisions are the ones the road sees first.</p>
+          <p class="tl-link-sub">A garage door faces the drive more squarely than any wall does, and it is the piece most owners leave to chance.</p>
         </div>
         <!-- STEP 4 — Premium -->
         <div class="tl-step" data-step="4">
@@ -4487,7 +4564,9 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <div class="s5-head">
     <div class="tl-num-label">Step Five &middot; Your Home</div>
     <h3 class="s5-title">Now Do It On <em>Your House</em></h3>
-    <p class="s5-lede">You have just repainted a Newport Beach estate. Send us the front of your home and our design team renders it in your three closest palettes &mdash; the same way you just saw.</p>
+    
+  <!-- SWAP:VIZCOPY --><!-- edit: generator/communities.json › communities[slug=hidden-canyon] › master.viz.lede --><p class="s5-lede">You have just repainted a Newport Beach estate. Send us the front of your home and our design team renders it in your three closest palettes &mdash; the same way you just saw.</p>
+  <!-- /SWAP:VIZCOPY -->
       </div>
 
         <div class="s5">
@@ -4531,7 +4610,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
                   <div class="s5-fields">
                     <div class="s5-field">
                       <label for="s5Place">Address or community</label>
-                      <input id="s5Place" name="place" type="text" autocomplete="address-line1" placeholder="Orchard Hills, Irvine">
+                      <input id="s5Place" name="place" type="text" autocomplete="address-line1" placeholder="Hidden Canyon, Irvine">
                       <p class="s5-err" id="s5PlaceErr"></p>
                       <p class="s5-hint">Community is enough &mdash; it tells us the design-review rules you are working inside.</p>
                     </div>
@@ -4585,6 +4664,115 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   </section>
 
+  <!-- ============ LAYOUT F · BEAT 4 ============ -->
+  <section class="cream" id="specs">
+    <div class="sec-head">
+      <div class="eyebrow">Materials &amp; Method</div>
+      <h2 class="ttl">The Hidden Canyon <span class="accent">Specification</span> — Materials &amp; Method in Writing</h2>
+      <p class="lead">No mystery products, no shortcuts. This is the exact system we bring to every Hidden Canyon project — in writing, on every itemized estimate.</p>
+    </div>
+    <div class="spec-table">
+      <div class="st-head"><span class="t">Estate Painting Specification</span><span class="n">Prepared for Hidden Canyon, Irvine</span></div>
+      <div class="st-row"><span class="st-k">Surface Preparation</span><span class="st-v">Pressure wash, scrape and sand failing edges, <b>stucco crack and patch repair floated to match the existing texture</b>, and spot-priming with bonding primer — the finish is only as good as what's under it.</span></div>
+      <div class="st-row"><span class="st-k">Coating System</span><span class="st-v"><b>Sherwin-Williams Emerald and Duration</b> exterior acrylics for bodies and fascias; Emerald urethane trim enamel for doors, trim, and cabinetry. Two coats at the full thickness the manufacturer specifies, never over-thinned.</span></div>
+      <div class="st-row"><span class="st-k">Application</span><span class="st-v"><b>Graco and Titan professional airless spray rigs</b>, back-rolled on stucco to drive coating into the texture, with hand-cut lines at every color transition.</span></div>
+      <div class="st-row"><span class="st-k">Site Protection</span><span class="st-v">Full masking and containment for canyon-edge lots where one wall sits in shade while the next takes full afternoon sun — landscaping wrapped, hardscape covered, wind-checked spray scheduling, clean site every evening.</span></div>
+      <div class="st-row"><span class="st-k">Transparency</span><span class="st-v">Every proposal is <b>itemized line by line</b> — prep, primer, coating, trim, and accents priced separately. No lump sums, no hidden charges.</span></div>
+      <div class="st-row"><span class="st-k">Warranty</span><span class="st-v"><b>2-Year Warranty on labor and materials</b>, no questions asked. Licensed, Bonded &amp; Insured in the State of California.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ LAYOUT F · BEAT 5 ============ -->
+  <section class="" id="colors">
+    <div class="sec-head">
+      <div class="eyebrow">The Designer Palette</div>
+      <h2 class="ttl">A Designer Palette for Hidden Canyon’s <span class="accent">Smooth Stucco and Limestone</span></h2>
+      <p class="lead">Five colors that sit well against smooth-troweled stucco and limestone, and hold together between a shaded wall and a sunlit one. Each is shown as a set of three, with a trim and an accent beside it.</p>
+    </div>
+    <div class="swatch-grid">
+      <div class="swatch-card lx-can-card">
+        <div class="paint-cans lx-cans"><span class="paint-can" style="--c:#EDEAE0"></span><span class="paint-can" style="--c:#EDECE6"></span><span class="paint-can" style="--c:#434341"></span></div>
+        <div class="swatch-body">
+          <div class="swatch-name">Alabaster</div>
+          <div class="swatch-code">Sherwin-Williams · SW 7008</div>
+          <p class="swatch-note">The definitive luxury white — soft, warm, and the most-requested estate body color across Orange County.</p>
+          <p class="swatch-note lx-with">Shown as the body, with Pure White SW 7005 trim and Iron Ore SW 7069 accent.</p>
+        </div>
+      </div>
+      <div class="swatch-card lx-can-card">
+        <div class="paint-cans lx-cans"><span class="paint-can" style="--c:#8A857D"></span><span class="paint-can" style="--c:#EDEAE0"></span><span class="paint-can" style="--c:#434341"></span></div>
+        <div class="swatch-body">
+          <div class="swatch-name">Chatura Gray</div>
+          <div class="swatch-code">Sherwin-Williams · SW 9169</div>
+          <p class="swatch-note">A grounded warm gray for bodies and garage doors that holds its color in bright Southern California light.</p>
+          <p class="swatch-note lx-with">Shown as the body, with Alabaster SW 7008 trim and Iron Ore SW 7069 accent.</p>
+        </div>
+      </div>
+      <div class="swatch-card lx-can-card">
+        <div class="paint-cans lx-cans"><span class="paint-can" style="--c:#434341"></span><span class="paint-can" style="--c:#EDEAE0"></span><span class="paint-can" style="--c:#54504A"></span></div>
+        <div class="swatch-body">
+          <div class="swatch-name">Iron Ore</div>
+          <div class="swatch-code">Sherwin-Williams · SW 7069</div>
+          <p class="swatch-note">The modern deep charcoal — front doors, shutters, ironwork, and full accent volumes.</p>
+          <p class="swatch-note lx-with">Shown as the body, with Alabaster SW 7008 trim and Urbane Bronze SW 7048 accent.</p>
+        </div>
+      </div>
+      <div class="swatch-card lx-can-card">
+        <div class="paint-cans lx-cans"><span class="paint-can" style="--c:#EDEAE4"></span><span class="paint-can" style="--c:#EDEAE0"></span><span class="paint-can" style="--c:#434341"></span></div>
+        <div class="swatch-body">
+          <div class="swatch-name">Snowbound</div>
+          <div class="swatch-code">Sherwin-Williams · SW 7004</div>
+          <p class="swatch-note">A refined white with a slight warmth for smooth-troweled stucco. Worth seeing beside the limestone before choosing.</p>
+          <p class="swatch-note lx-with">Shown as the body, with Alabaster SW 7008 trim and Iron Ore SW 7069 accent.</p>
+        </div>
+      </div>
+      <div class="swatch-card lx-can-card">
+        <div class="paint-cans lx-cans"><span class="paint-can" style="--c:#2F2F30"></span><span class="paint-can" style="--c:#EDEAE0"></span><span class="paint-can" style="--c:#434341"></span></div>
+        <div class="swatch-body">
+          <div class="swatch-name">Tricorn Black</div>
+          <div class="swatch-code">Sherwin-Williams · SW 6258</div>
+          <p class="swatch-note">A true black for iron, gates and trim, anchoring a pale stucco body.</p>
+          <p class="swatch-note lx-with">Shown as the body, with Alabaster SW 7008 trim and Iron Ore SW 7069 accent.</p>
+        </div>
+      </div>
+    </div>
+    <div class="sec-head" style="margin:44px auto 0;">
+      <p class="lead" style="font-family:var(--font-serif); font-style:italic; font-size:16.5px;">Every palette here is rendered on <b>your own home</b> before you choose it — you approve a color you have already seen on the house, not a sample.</p>
+    </div>
+  </section>
+
+  <!-- ============ LAYOUT F · BEAT 6 ============ -->
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=hidden-canyon] › master.proof (+ story block: family, before/after photos) -->
+  <section class="navy" id="work" data-story>
+    <div class="cases-head">
+      <div class="eyebrow">Our Work in Hidden Canyon</div>
+      <h2 class="ttl">One Estate, Start to Finish: <span class="accent">What a Hidden Canyon Owner Sees First</span></h2>
+      <p class="sub lx-proof-lead">The frame below is the Gallaghers’ Newport Beach house, before and in the scheme they chose. A Hidden Canyon estate follows the same sequence: the light understood, every scheme seen on the house, and only then paint.</p>
+    </div>
+    <div class="cases-grid lx-single">
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=hidden-canyon] › master.proof.family (+ story block photos) -->
+      <article class="case-card">
+        <div class="pill-wrap"><div class="avatar-pill"><div class="ph"><img src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"/></div>
+          <div><div class="name">The Gallagher Family</div><div class="sub-line">Pelican Hill, Newport Beach</div></div></div></div>
+        <div style="text-align:center;"><div class="case-tag">Custom Visualization</div></div>
+        <h3 class="case-head">The Gallaghers: the house before, and in Coastal Organic Compound</h3>
+        <div class="ba-frame">
+          
+          <div class="ba-img before" style="background-image: url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
+          <div class="ba-img after"  style="background-image: url('../../orange-county-sales-page/viz-photos/scheme-organic.jpg')"></div>
+          <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
+          <div class="ba-label l">Before</div>
+          <div class="ba-label r">Chosen</div>
+        </div>
+        <p class="drop">The Gallaghers saw their home in 11 complete schemes before a can was opened. Drag the slider: on the left, the house as it stood; on the right, the scheme they kept.</p>
+        
+      </article>
+  <!-- /SWAP:CLIENT -->
+    </div>
+  </section>
+  <!-- /SWAP:CLIENT -->
+
+  <!-- SWAP:LOCAL --><!-- edit: generator/communities.json › communities[slug=hidden-canyon] › master.neighbors -->
   <section id="benefits" data-story>
     <div class="wwd-benefits">
       <div class="wb-head">
@@ -4627,344 +4815,15 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       </ul>
     </div>
   </section>
+  <!-- /SWAP:LOCAL -->
 
-  <section class="cand-band cand-band-solo" id="instead" data-story>
-    <div class="fl-head">
-      <div class="eyebrow">What Careful Owners Try First</div>
-      <h2>How Hidden Canyon Owners Usually Test a White, <span class="accent">and Why a Sample Board Cannot Settle It</span></h2>
-      <p class="fl-bridge">Before the Gallaghers saw their home rendered, they were where careful owners of a considered house usually begin: certain the color needed to change, and unwilling to change it on a guess. On an estate the hesitation is seldom about cost. It is about approving something permanent that everyone who comes through the gate will see.</p>
-    </div>
-    <p class="fl-lede">It often starts with a designer’s shortlist and a few large sample boards. Snowbound goes up by the front entry, Alabaster by the garage, a warmer neutral beside the limestone. At eleven in the morning all three look right. By evening the cleaner white has turned faintly gray on the shaded side, the warm one has picked up the stone and gone creamy, and nobody can say how any of them will look across a whole smooth wall. More boards are ordered and a second opinion is sought. The boards lean against the house for another season, and the house stays as it was.</p>
-    <div class="fl-tried">
-        <div class="fl-tried-hd">And you have already tried everything you are
-          supposed to try</div>
-        <ul>
-          <li><b>Weeks of research.</b> It narrowed the field to a shortlist. It told
-            you nothing about how any of them behaves at the size of a house.</li>
-          <li><b>Sample patches on three different walls.</b> A patch that size cannot
-            tell you how the whole house will behave. The most common regret afterwards
-            is not having painted them bigger.</li>
-          <li><b>Asking at the paint store.</b> Staff can advise on color. They have
-            never stood in front of your house, in your light, on your street.</li>
-          <li><b>Polling friends and neighbors.</b> What you get back is agreement
-            about a card, not about a house.</li>
-          <li><b>Comparing the finalists side by side.</b> Each one eliminated for an
-            undertone that only showed itself in your own lighting.</li>
-        </ul>
-      </div>
-    <p class="fl-turn">Every step there is sensible, and it is what the trade recommends. It fails for a structural reason. A sample board is a few square feet of color seen at one distance and one hour, while smooth-troweled stucco shows a color as one uninterrupted surface across the entire house. Only a view of the whole house can show that.</p>
-  </section>
-
-  <section class="cand-band" id="candidates" data-story>
-    <span class="cand-ghost" aria-hidden="true">VISUALIZED</span>
-    <div class="cand-head">
-      <div class="pill-wrap pill-wrap-lede">
-        <div class="avatar-pill"><div class="ph"><img src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"/></div>
-          <div><div class="name">The Gallagher Family</div>
-          <div class="sub-line">Their remaining 7 schemes</div></div></div>
-      </div>
-      <div class="eyebrow">They Visualized It</div>
-      <h2>The Gallaghers Reviewed Their House in <span class="accent">11 Schemes</span> and Set Ten Aside Before Any Paint Was Ordered</h2>
-      <p class="cand-lead">That is the discipline this page is built on: every option, body, trim and accent together, judged on the front of their own Newport Beach home rather than on a board. Below are the schemes they set aside and the one they kept, Coastal Organic Compound. On a Hidden Canyon estate the same review tends to be both quicker and stricter. Against smooth stucco and limestone, a white with the wrong undertone or a gray that goes flat in shade gives itself away across the whole front of the house, and it is far better to learn that from a render than from the wall.</p>
-    </div>
-    <template id="bandSchemes">
-      <i data-id="pebblebeach" data-nm="Pebble Beach Manor"        data-co="Accessible Beige SW 7036 &middot; Dover White SW 6385"   data-sw="#D1C7B8" data-trim="#EFE8D8" data-accent="#95948C" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg')"></i>
-      <i data-id="ibiza"       data-nm="Ibiza Luxury Villa"        data-co="Balanced Beige SW 7037 &middot; Aesthetic White SW 7035" data-sw="#D1C7B8" data-trim="#E8E3DA" data-accent="#C8B59B" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-ibiza.jpg')"></i>
-      <i data-id="pacificsage" data-nm="Pacific Sage Estate"       data-co="Evergreen Fog SW 9130 &middot; Shoji White SW 7042"      data-sw="#95978A" data-trim="#E6DFD3" data-accent="#A98D4B" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg')"></i>
-      <i data-id="obsidian"    data-nm="Obsidian Monolith"         data-co="Iron Ore SW 7069 &middot; Tricorn Black SW 6258"        data-sw="#434341" data-trim="#2F2F30" data-accent="#5B5E62" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg')"></i>
-      <i data-id="marinelayer" data-nm="Marine Layer"              data-co="Sea Salt SW 6204 &middot; High Reflective White SW 7757" data-sw="#CBD6D0" data-trim="#F7F7F1" data-accent="#BFC7C5" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-marinelayer.jpg')"></i>
-      <i data-id="resort"      data-nm="Beverly Hills Resort"      data-co="City Loft SW 7631, monochrome"                 data-sw="#B9B2A7" data-trim="#D6D2C9" data-accent="#8C6E4C" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-resort.jpg')"></i>
-      <i data-id="spanish"     data-nm="Santa Barbara Luxe"        data-co="Alabaster SW 7008 &middot; Tricorn Black SW 6258"       data-sw="#F1EDE2" data-trim="#2F2F30" data-accent="#B5714A" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-spanish.jpg')"></i>
-      <i data-id="organic"     data-nm="Coastal Organic Compound"  data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048"       data-sw="#EDE8DC" data-trim="#54504A" data-accent="#9C7B53" data-chosen="1" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-organic.jpg')"></i>
-</template>
-    <div class="cand-track" id="candTrack"></div>
-    <p class="cand-swipe">Swipe to see them all &rarr;</p>
-  </section>
-
-  <section id="process" data-story>
-    <div class="process-head">
-      <div class="eyebrow">Then We Painted It</div>
-      <h2 class="ttl">3 Steps From Render to a Repainted Hidden Canyon Estate, <span class="accent">Each Seen Before It Is Paid For</span></h2>
-      <p class="sub">For the Gallaghers, color came first and everything else followed: the lighting, the texture, the finishing details, each rendered on their own house while it could still be changed. A Hidden Canyon estate runs the same three steps. The questions are the ones a smooth, pale wall raises: where the dark accent stops, how the trim meets the stone, which details stay quiet. Each is answered on screen, with your designer if you have one, before anything is committed.</p>
-    </div>
-    <div class="steps">
-      <div class="step"><div class="step-num"><span>1</span></div>
-        <div class="demo-swipe">
-          <div class="ba-frame">
-            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-riviera.jpg')"></div>
-            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
-            <div class="ba-label l">Before</div>
-            <div class="ba-label r">After</div>
-          </div>
-        </div><div class="step-title">Personalized Exterior Color Consultation</div><div class="step-desc">We start with mood, not color. You describe how the house should feel, and that narrows eleven exterior palettes down to the few worth seeing on the whole facade.</div></div>
-      <div class="step"><div class="step-num"><span>2</span></div>
-        <div class="demo-swipe">
-          <div class="ba-frame">
-            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg')"></div>
-            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
-            <div class="ba-label l">Before</div>
-            <div class="ba-label r">After</div>
-          </div>
-        </div><div class="step-title">Customized Visualizations In 30 Minutes</div><div class="step-desc">Your own house comes back rendered in every direction you shortlisted &mdash; then the decisions no one else puts in front of you: lighting, siding texture, stone, and the garage door.</div></div>
-      <div class="step"><div class="step-num"><span>3</span></div>
-        <div class="demo-swipe">
-          <div class="ba-frame">
-            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg')"></div>
-            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
-            <div class="ba-label l">Before</div>
-            <div class="ba-label r">After</div>
-          </div>
-        </div><div class="step-title">An Itemized Painting Estimate</div><div class="step-desc">Exterior painting starts at $4.75 per square foot of paintable surface, and the estimate shows which surfaces we counted to get there. The 2-year warranty is written into it.</div></div>
-    </div>
-  </section>
-
-  <section class="cand-band cand-band-solo" id="offer" data-story>
-    <div class="cand-foot offer-stake">
-      <div class="eyebrow">What You Get</div>
-      <h2 class="os-ttl">Your Hidden Canyon Estate in <span class="accent">11 Complete Schemes</span>, Reviewed in 30 Minutes, Complimentary</h2>
-      <p class="os-sub">This is the package the Gallaghers received, offered on the same terms to Hidden Canyon owners. One photo of the front of the house goes to our design team and returns painted in 11 complete schemes, each named in Sherwin-Williams colors, together with an estimate priced line by line. The consultation takes thirty minutes at a time that suits the household, and anyone else with a say in the decision is welcome to join it. Nothing is charged, and nothing is scheduled until a scheme is chosen.</p>
-      <div class="pkg" id="pkg">
-        <figure class="pkg-hero" id="pkgHero"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-organic.jpg"
-                data-nm="Coastal Organic Compound"
-                data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048"
-                data-sw="#EDEAE0" data-trim="#54504A" data-accent="#9C7B53">
-          <div class="pkg-count" id="pkgCount"><b>01</b><i>/</i>11</div>
-          <img id="pkgHeroImg" src="../../orange-county-sales-page/viz-photos/scheme-organic.jpg"
-               alt="Newport Beach home exterior rendered in the Coastal Organic Compound scheme — Sherwin-Williams Alabaster SW 7008 and Urbane Bronze SW 7048"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <button type="button" class="pkg-zoom" id="pkgZoom"
-                  aria-label="View this color scheme full size">
-            <span aria-hidden="true">View full size</span>
-          </button>
-          <figcaption>
-            <span class="paint-cans" id="pkgHeroCans">
-              <span class="paint-can" style="--c:#EDEAE0"></span>
-              <span class="paint-can" style="--c:#54504A"></span>
-              <span class="paint-can" style="--c:#9C7B53"></span>
-            </span>
-            <span class="pkg-txt">
-              <span class="pkg-nm" id="pkgHeroNm">Coastal Organic Compound</span>
-              <span class="pkg-co" id="pkgHeroCo">Alabaster SW 7008 &middot; Urbane Bronze SW 7048</span>
-            </span>
-          </figcaption>
-        </figure>
-        <div class="pkg-grid">
-        <button type="button" class="pkg-thumb"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg"
-                data-nm="Pebble Beach Manor" data-co="Accessible Beige SW 7036 &middot; Dover White SW 6385"
-                data-sw="#D1C7B8" data-trim="#EFE8D8" data-accent="#95948C"
-                aria-label="Show this house in the Pebble Beach Manor scheme">
-          <img src="../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg" alt="Newport Beach home exterior rendered in the Pebble Beach Manor scheme — Sherwin-Williams Accessible Beige SW 7036 and Dover White SW 6385"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <span class="pkg-thumb-nm">Pebble Beach Manor</span>
-        </button>
-        <button type="button" class="pkg-thumb"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-ibiza.jpg"
-                data-nm="Ibiza Luxury Villa" data-co="Balanced Beige SW 7037 &middot; Aesthetic White SW 7035"
-                data-sw="#D1C7B8" data-trim="#E8E3DA" data-accent="#C8B59B"
-                aria-label="Show this house in the Ibiza Luxury Villa scheme">
-          <img src="../../orange-county-sales-page/viz-photos/scheme-ibiza.jpg" alt="Newport Beach home exterior rendered in the Ibiza Luxury Villa scheme — Sherwin-Williams Balanced Beige SW 7037 and Aesthetic White SW 7035"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <span class="pkg-thumb-nm">Ibiza Luxury Villa</span>
-        </button>
-        <button type="button" class="pkg-thumb"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg"
-                data-nm="Pacific Sage Estate" data-co="Evergreen Fog SW 9130 &middot; Shoji White SW 7042"
-                data-sw="#95978A" data-trim="#E6DFD3" data-accent="#A98D4B"
-                aria-label="Show this house in the Pacific Sage Estate scheme">
-          <img src="../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg" alt="Newport Beach home exterior rendered in the Pacific Sage Estate scheme — Sherwin-Williams Evergreen Fog SW 9130 and Shoji White SW 7042"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <span class="pkg-thumb-nm">Pacific Sage Estate</span>
-        </button>
-        <button type="button" class="pkg-thumb"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-marinelayer.jpg"
-                data-nm="Marine Layer" data-co="Sea Salt SW 6204 &middot; High Reflective White SW 7757"
-                data-sw="#CDD2CA" data-trim="#F7F7F1" data-accent="#BFC7C5"
-                aria-label="Show this house in the Marine Layer scheme">
-          <img src="../../orange-county-sales-page/viz-photos/scheme-marinelayer.jpg" alt="Newport Beach home exterior rendered in the Marine Layer scheme — Sherwin-Williams Sea Salt SW 6204 and High Reflective White SW 7757"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <span class="pkg-thumb-nm">Marine Layer</span>
-        </button>
-        <button type="button" class="pkg-thumb"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-admiral.jpg"
-                data-nm="Newport Admiral" data-co="Repose Gray SW 7015 &middot; Pure White SW 7005"
-                data-sw="#CCC9C0" data-trim="#F0EFE9" data-accent="#2F2F30"
-                aria-label="Show this house in the Newport Admiral scheme">
-          <img src="../../orange-county-sales-page/viz-photos/scheme-admiral.jpg" alt="Newport Beach home exterior rendered in the Newport Admiral scheme — Sherwin-Williams Repose Gray SW 7015 and Pure White SW 7005"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <span class="pkg-thumb-nm">Newport Admiral</span>
-        </button>
-        <button type="button" class="pkg-thumb"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-spanish.jpg"
-                data-nm="Santa Barbara Luxe" data-co="Alabaster SW 7008 &middot; Tricorn Black SW 6258"
-                data-sw="#F1EDE2" data-trim="#2F2F30" data-accent="#B5714A"
-                aria-label="Show this house in the Santa Barbara Luxe scheme">
-          <img src="../../orange-county-sales-page/viz-photos/scheme-spanish.jpg" alt="Newport Beach home exterior rendered in the Santa Barbara Luxe scheme — Sherwin-Williams Alabaster SW 7008 and Tricorn Black SW 6258"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <span class="pkg-thumb-nm">Santa Barbara Luxe</span>
-        </button>
-        <button type="button" class="pkg-thumb"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-resort.jpg"
-                data-nm="Beverly Hills Resort" data-co="City Loft SW 7631, monochrome"
-                data-sw="#D6D2C9" data-trim="#D6D2C9" data-accent="#8C6E4C"
-                aria-label="Show this house in the Beverly Hills Resort scheme">
-          <img src="../../orange-county-sales-page/viz-photos/scheme-resort.jpg" alt="Newport Beach home exterior rendered in the Beverly Hills Resort scheme — Sherwin-Williams City Loft SW 7631, monochrome"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <span class="pkg-thumb-nm">Beverly Hills Resort</span>
-        </button>
-        <button type="button" class="pkg-thumb"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-riviera.jpg"
-                data-nm="Riviera Tuxedo" data-co="Snowbound SW 7004 &middot; Black Magic SW 6991"
-                data-sw="#EDEAE0" data-trim="#2A2A2C" data-accent="#3B3B3E"
-                aria-label="Show this house in the Riviera Tuxedo scheme">
-          <img src="../../orange-county-sales-page/viz-photos/scheme-riviera.jpg" alt="Newport Beach home exterior rendered in the Riviera Tuxedo scheme — Sherwin-Williams Snowbound SW 7004 and Black Magic SW 6991"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <span class="pkg-thumb-nm">Riviera Tuxedo</span>
-        </button>
-        <button type="button" class="pkg-thumb"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-euro.jpg"
-                data-nm="Euro-Industrial Estate" data-co="Peppercorn SW 7674 &middot; Cityscape SW 7067"
-                data-sw="#585A5C" data-trim="#9A9C98" data-accent="#7E8285"
-                aria-label="Show this house in the Euro-Industrial Estate scheme">
-          <img src="../../orange-county-sales-page/viz-photos/scheme-euro.jpg" alt="Newport Beach home exterior rendered in the Euro-Industrial Estate scheme — Sherwin-Williams Peppercorn SW 7674 and Cityscape SW 7067"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <span class="pkg-thumb-nm">Euro-Industrial Estate</span>
-        </button>
-        <button type="button" class="pkg-thumb"
-                data-src="../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg"
-                data-nm="Obsidian Monolith" data-co="Iron Ore SW 7069 &middot; Tricorn Black SW 6258"
-                data-sw="#434341" data-trim="#2F2F30" data-accent="#5B5E62"
-                aria-label="Show this house in the Obsidian Monolith scheme">
-          <img src="../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg" alt="Newport Beach home exterior rendered in the Obsidian Monolith scheme — Sherwin-Williams Iron Ore SW 7069 and Tricorn Black SW 6258"
-               width="1200" height="750" loading="lazy" decoding="async"/>
-          <span class="pkg-thumb-nm">Obsidian Monolith</span>
-        </button>
-        </div>
-        <p class="pkg-cap">Every one of these is the same house.
-          <span class="pkg-hint">Tap any one to see it larger</span>
-          <span class="pkg-yours">This one belongs to the Gallaghers in Newport Beach.
-            <b>Yours gets the same eleven &mdash; on the front of your own house.</b></span></p>
-      </div>
-      <p class="os-anchor"><b>What three color variations cost elsewhere: $329.</b>
-        An independent color consultant&rsquo;s exterior package arrives as a written
-        report with three variations and a set of paint cards in the mail. VIP commits
-        to at least eleven &mdash; every one of them painted onto the front of your own
-        house &mdash; and charges nothing for it.</p>
-      <ul class="os-stack">
-        <li>30 minutes, in your own home</li>
-        <li><b>The front of your house, painted on screen</b> &mdash; not a sample board,
-          not a showroom, not somebody else&rsquo;s project photo</li>
-        <li><b>11</b> complete color schemes &mdash; body, trim and accent together</li>
-        <li><b>9</b> further options &mdash; lighting, texture, premium additions</li>
-        <li>The exact Sherwin-Williams colors for every one, by name and number</li>
-        <li>Color guidance matched to your street&rsquo;s architecture and light</li>
-        <li>A written estimate, <b>itemized</b> &mdash; prep, primer, coating, trim and
-          accents priced separately</li>
-        <li>Your HOA design-review package, prepared as part of the project</li>
-      </ul>
-      <p class="os-do">What you do: one thing. <b>Send a photo of the front of your house.</b></p>
-      <a href="#viz" class="btn-gold"><span class="col-2"><span>See Your Home In Every Color</span><span class="sub">Complimentary &middot; Itemized estimate included</span></span></a>
-    </div>
-  </section>
-
-  <section class="cream-deep" id="before-you-commit">
-    <div class="pillars-head">
-      <div class="eyebrow">Before You Commit</div>
-      <h2 class="ttl">What Reaches You Before a <span class="accent">Hidden Canyon</span> Repaint Is Approved</h2>
-      <p class="lead">At this level the risk in a repaint is rarely the price. It is committing to something the whole community will see without having seen it first. So four things reach you before any approval: renders of your own house, an estimate priced line by line, the warranty in writing, and a color submission prepared for Hidden Canyon’s design review. Each can be handed to a designer or property manager unchanged, and by the time you decide, the decision has already been seen.</p>
-    </div>
-    <div class="pillars">
-      <div class="pillar"><div class="num">1</div><div><h3>COMPLIMENTARY Custom Color Consultation</h3><p>Choosing the right colors can be overwhelming. VIP Home Painting&rsquo;s complimentary consultation lets you visualize and decide in 30 minutes.</p></div></div>
-      <div class="pillar"><div class="num">2</div><div><h3>2-Year Written Warranty</h3><p>Labor and materials, in writing, on every project. If something fails inside two years we come back and put it right.</p></div></div>
-      <div class="pillar"><div class="num">3</div><div><h3>Itemized, Line by Line</h3><p>VIP Home Painting prices prep, primer, coating, trim and accents separately, starting at $4.75 per square foot of paintable surface. You see what you are paying for before you sign.</p></div></div>
-      <div class="pillar"><div class="num">4</div><div><h3>Design Review Handled</h3><p>We prepare the submission package your community association asks for and carry it through approval. That is part of the project, not an add-on.</p></div></div>
-    </div>
-  </section>
-
-  <section class="cand-band cand-band-solo" id="settle" data-story>
-    <div class="reasons-head">
-      <div class="eyebrow">Before You Choose</div>
-      <h2>3 Decisions to Settle on Paper Before <span class="accent">Anyone Opens a Gallon</span> on a Hidden Canyon Estate</h2>
-      <p class="reasons-lead">Three decisions, each made on the whole house and written down before a crew is booked for Panorama, Shady Arbor or anywhere else behind the gate. None of them costs much to settle now. Any one of them, discovered on the wall, costs the job a second time. On a smooth-stucco estate they carry more weight than usual, because the finish leaves no texture to hide a wrong call behind.</p>
-    </div>
-    <ul class="cand-reasons">
-      <li>
-        <img class="cr-brush" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" loading="lazy" decoding="async"/>
-        <div class="demo-swipe">
-          <div class="ba-frame">
-            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg')"></div>
-            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
-            <div class="ba-label l">Before</div>
-            <div class="ba-label r">After</div>
-          </div>
-        </div>
-        <div><b>Never approve a color you have only seen at 2&times;2 feet.</b>
-          Eleven schemes on the whole front of your house, in your own light,
-          in 30 minutes &mdash; not three samples taped to a wall.</div>
-      </li>
-      <li>
-        <img class="cr-brush" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" loading="lazy" decoding="async"/>
-        <div class="demo-swipe">
-          <div class="ba-frame">
-            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-marinelayer.jpg')"></div>
-            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
-            <div class="ba-label l">Before</div>
-            <div class="ba-label r">After</div>
-          </div>
-        </div>
-        <div><b>What a wrong color actually costs &mdash; and it is not the paint.</b>
-          The second repaint costs exactly what the first one did. Same prep,
-          same primer, same crew. Paint is the cheap part of painting.</div>
-      </li>
-      <li>
-        <img class="cr-brush" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt="" width="128" height="294" loading="lazy" decoding="async"/>
-        <div class="demo-swipe">
-          <div class="ba-frame">
-            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-organic.jpg')"></div>
-            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
-            <div class="ba-label l">Before</div>
-            <div class="ba-label r">After</div>
-          </div>
-        </div>
-        <div><b>The number most painters will not put on their website.</b>
-          VIP exterior work starts at <b>$4.75</b> per square foot of paintable
-          surface, broken out line by line &mdash; prep, primer, coating, trim.</div>
-      </li>
-    </ul>
-  </section>
-
-  <section id="warranty" data-story>
-    <div class="warranty-section">
-      <div>
-        <div class="eyebrow">Written, Not Promised</div>
-        <h2 class="ttl">A Hidden Canyon Repaint Backed by the <span class="accent">2-Year Warranty</span>, in Writing Before Work Begins</h2>
-        <p class="body">The 2-Year Warranty covers labor and materials, and it appears on the itemized estimate you approve, so it can be read in full before a crew arrives. On a Hidden Canyon exterior the preparation behind it is listed as well: cracks in the smooth stucco floated back to the surrounding surface and primed, iron, gates and trim priced as their own lines, and two coats of Sherwin-Williams Emerald or Duration at the thickness the manufacturer specifies. Should anything fail within the warranty period, VIP Home Painting returns and corrects it. The terms are the same on every house; on an estate, the only difference is how closely the finish will be looked at.</p>
-        <ul class="checks-row" style="margin-top: 20px;">
-          <li>2-Year Warranty on Labor &amp; Materials</li>
-          <li>Licensed, Bonded &amp; Insured</li>
-          <li>Written into your itemized estimate</li>
-        </ul>
-      </div>
-      <div class="warranty-seal"><div class="seal-type" role="img" aria-label="VIP Home Painting 2-Year Warranty seal">
-        <span class="seal-term">2-Year</span>
-        <span class="seal-word">Warranty</span>
-        <span class="seal-rule"></span>
-        <span class="seal-sub">Labor &amp; Materials</span>
-      </div></div>
-    </div>
-  </section>
-
-  <section class="" id="fit">
+  <!-- ============ LAYOUT F · BEAT 7 ============ -->
+  <!-- SWAP:LOCAL --><!-- edit: generator/communities.json › communities[slug=hidden-canyon] › problems[] (local problems) · master.problemSolution.h2 -->
+  <section class="cream" id="fit" data-story>
     <div class="sec-head">
       <div class="eyebrow">Made For Hidden Canyon</div>
       <h2 class="ttl">5 Ways an Estate Repaint Goes Wrong in Hidden Canyon, <span class="accent">and What Prevents Each</span></h2>
+      
     </div>
     <div class="ps-grid">
       <div class="ps-card">
@@ -5004,28 +4863,74 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       </div>
     </div>
   </section>
+  <!-- /SWAP:LOCAL -->
 
-  <section class="cream-deep" id="services" data-story>
-    <div class="services-head">
-      <div class="eyebrow">Our Hidden Canyon Residential Painting Services</div>
-      <h2 class="ttl">Exterior, Interior and Cabinet Painting for Hidden Canyon Estates, <span class="accent">on One Itemized Estimate</span></h2>
+  <section class="" id="process">
+    <div class="sec-head">
+      <div class="eyebrow">The White-Glove Process</div>
+      <h2 class="ttl">How a Hidden Canyon Project Runs, <span class="accent">Planned Around the Gate</span></h2>
     </div>
-    <div class="services-grid">
-      <div class="service">
-        <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&auto=format&fit=crop&q=80')"></div>
-        <div class="service-body"><h3>Exterior House Painting — Hidden Canyon</h3><p>Smooth-troweled stucco, limestone details and the dark accents that frame them on Mediterranean and contemporary estates. Cracks floated back to the surrounding surface, the stone masked and protected, iron and trim priced as their own lines, and Sherwin-Williams Emerald or Duration sprayed with Graco and Titan airless rigs, then back-rolled. Priced from $4.75 per square foot of paintable surface, counted only on the surfaces that receive paint.</p><a class="svc-link" href="../../exterior-painting/">Exterior House Painting details</a></div>
+    <div class="glove-steps">
+      <div class="glove-step">
+        <div class="glove-num">1</div>
+        <div>
+          <h3 class="glove-title">Private Color Consultation</h3>
+          <p class="glove-desc">A 30-minute in-home consultation, then our design team renders your Hidden Canyon home in each candidate palette through our complimentary <em>Custom Visualization Service</em> — before anything is scheduled.</p>
+        </div>
       </div>
-      <div class="service">
-        <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900&auto=format&fit=crop&q=80')"></div>
-        <div class="service-body"><h3>Interior House Painting — Hidden Canyon</h3><p>Walls, ceilings, trim and crown molding, planned around the household and the gate. Often paired with the exterior when a new outside palette changes how the rooms facing it read, and simple to coordinate with a designer, since every color is named by Sherwin-Williams number. Like the exterior, it ends with a walkthrough with the founder.</p><a class="svc-link" href="../../interior-painting/">Interior House Painting details</a></div>
+      <div class="glove-step">
+        <div class="glove-num">2</div>
+        <div>
+          <h3 class="glove-title">Design Review, Handled</h3>
+          <p class="glove-desc">We prepare the complete color submission package for Hidden Canyon’s community design review — swatches, product data sheets, and a callout for each side of the house — so approval never stalls your project.</p>
+        </div>
       </div>
-      <div class="service">
-        <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&auto=format&fit=crop&q=80')"></div>
-        <div class="service-body"><h3>Kitchen Cabinet Painting — Hidden Canyon</h3><p>Doors and drawers removed and sprayed off-site in urethane enamel, cabinet boxes sprayed in place, and hardware re-hung square. A factory-style finish on the cabinetry already in the house, with the color named by number and agreed before a single door comes off.</p><a class="svc-link" href="../../kitchen-cabinet-painting/">Kitchen Cabinet Painting details</a></div>
+      <div class="glove-step">
+        <div class="glove-num">3</div>
+        <div>
+          <h3 class="glove-title">Estate-Grade Preparation</h3>
+          <p class="glove-desc">Pressure wash, stucco repair floated to match texture, sanding, and bonding primer. Landscaping and hardscape are masked and wrapped before a single gallon is opened.</p>
+        </div>
+      </div>
+      <div class="glove-step">
+        <div class="glove-num">4</div>
+        <div>
+          <h3 class="glove-title">Precision Spray Application</h3>
+          <p class="glove-desc">Sherwin-Williams Emerald applied with Graco and Titan airless equipment at the full thickness the manufacturer specifies, back-rolled on stucco, with hand-cut lines at every transition.</p>
+        </div>
+      </div>
+      <div class="glove-step">
+        <div class="glove-num">5</div>
+        <div>
+          <h3 class="glove-title">Founder’s Walkthrough &amp; Warranty</h3>
+          <p class="glove-desc">Raking-light inspection of every side of the house, touch-ups before you ask, and a signed walkthrough — backed by our 2-Year Warranty, no questions asked.</p>
+        </div>
       </div>
     </div>
   </section>
 
+  <section id="warranty" data-story>
+    <div class="warranty-section">
+      <div>
+        <div class="eyebrow">Written, Not Promised</div>
+        <h2 class="ttl">A Hidden Canyon Repaint Backed by the <span class="accent">2-Year Warranty</span>, in Writing Before Work Begins</h2>
+        <p class="body">The 2-Year Warranty covers labor and materials, and it appears on the itemized estimate you approve, so it can be read in full before a crew arrives. On a Hidden Canyon exterior the preparation behind it is listed as well: cracks in the smooth stucco floated back to the surrounding surface and primed, iron, gates and trim priced as their own lines, and two coats of Sherwin-Williams Emerald or Duration at the thickness the manufacturer specifies. Should anything fail within the warranty period, VIP Home Painting returns and corrects it. The terms are the same on every house; on an estate, the only difference is how closely the finish will be looked at.</p>
+        <ul class="checks-row" style="margin-top: 20px;">
+          <li>2-Year Warranty on Labor &amp; Materials</li>
+          <li>Licensed, Bonded &amp; Insured</li>
+          <li>Written into your itemized estimate</li>
+        </ul>
+      </div>
+      <div class="warranty-seal"><div class="seal-type" role="img" aria-label="VIP Home Painting 2-Year Warranty seal">
+        <span class="seal-term">2-Year</span>
+        <span class="seal-word">Warranty</span>
+        <span class="seal-rule"></span>
+        <span class="seal-sub">Labor &amp; Materials</span>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ============ LAYOUT F · BEAT 8 ============ -->
   <section class="cream" id="service-areas">
     <div class="areas-head">
       <div class="eyebrow">Where We Work</div>
@@ -5067,16 +4972,18 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
         <div class="nap-line"><b>Hours:</b> Mon–Fri 8am–6pm · Sat 9am–3pm</div>
         <div class="nap-btns">
           <a class="btn-gold" href="https://g.page/viphomepainting" target="_blank" rel="noopener">See Us On Google</a>
+          <a class="nap-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=VIP%20Home%20Painting%20Irvine%20CA" target="_blank" rel="noopener">Open Google Maps</a>
         </div>
       </div>
     </div>
   </section>
 
 
+  <!-- SWAP:FAQ --><!-- edit: generator/communities.json › communities[slug=hidden-canyon] › faqs[] (q, a) · master.faq.h2 -->
   <section class="cream" id="faq">
     <div class="faq-head">
       <div class="eyebrow sec-head-eyebrow">Frequently Asked Questions</div>
-      <h2 class="ttl">Hidden Canyon Home Painting — <span class="accent">Your Questions Answered</span></h2>
+      <h2 class="ttl">Hidden Canyon Estate Painting — <span class="accent">Questions, Answered Discreetly</span></h2>
     </div>
     <div class="faq-list">
       <details class="faq-item" open>
@@ -5113,6 +5020,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       </details>
     </div>
   </section>
+  <!-- /SWAP:FAQ -->
 
   <!-- ============ BYLINE + FINAL CTA ============ -->
   
@@ -5152,11 +5060,13 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Get My Complimentary Quote Now</span><span class="sub">No Pressure · No Obligation · Always Complimentary</span></span></a>
     </div>
     
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=hidden-canyon] › master.close.ps[] -->
     <div class="ps-close">
       <p><b>P.S.</b> &mdash; Everything on this page followed one sequence. The Gallaghers reviewed 11 complete schemes on their own house, set ten aside, and only then was paint ordered. Estate repaints often run the other way: a designer’s shortlist, sample boards on the entry wall, a considered best guess, and the real answer arriving on the day the masking comes off.</p>
       <p>Hidden Canyon asks for a quiet kind of certainty. The houses are few, the gate is staffed around the clock, and a color is lived with in full view of the same neighbors for years. Seeing it first took the Gallaghers thirty minutes and one photograph of the front of the house. Yours takes the same thirty minutes, costs nothing, and arrives with the itemized estimate.</p>
       <p class="ps-cta"><a href="tel:9093125400">(909) 312-5400</a></p>
     </div>
+  <!-- /SWAP:CLIENT -->
   </section>
 
   <!-- ============ FOOTER ============ -->
