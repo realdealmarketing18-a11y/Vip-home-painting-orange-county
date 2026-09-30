@@ -21,15 +21,27 @@ from HEADLINE-FORMULAS.md, and its own section order so no two pages share a lay
 | 4 | irvine/hidden-canyon | /irvine/hidden-canyon/ | done | 2026-09-29 | H1 = **A2** status play ("The Hidden Canyon Standard for Exterior House Painting Begins With Every Color Seen on Your Estate") — HEADLINE-FORMULAS Part D allows only B4 or A2 for Hidden Canyon, and B4 is taken by Orchard Hills. moduleOrder: neighbors → instead → eliminated → painted → offer → beforeCommit → settle → warranty → problemSolution → services → serviceArea. 8 FAQs, ~2,780 local words. Left out (not in research): association name, management company, rules, home values, job length, "Santa Barbara" style. |
 | 5 | irvine/woodbury | /irvine/woodbury/ | done | 2026-09-29 | H1 = **B2** how-to ("How to Choose Exterior Colors for Your Woodbury Home in 30 Minutes Without Paying to Paint It Twice") — Part D allows B1/B2/B5 for Woodbury; B5 is Portola Springs'. The `offer` section right under it pays off the 30 minutes. moduleOrder: offer → eliminated → instead → painted → problemSolution → settle → warranty → beforeCommit → neighbors → services → serviceArea. 8 FAQs, ~2,610 local words. Left out (not in research): home values, association rules/dues, job length, roof details, a cabinet price. |
 | 6 | irvine/stonegate | /irvine/stonegate/ | done | 2026-09-29 | H1 = **B1** ways/without ("3 Ways to Get Exterior House Painting Right in Stonegate Without Guessing From a Swatch") — Part D allows B1/B2/B5 for Stonegate; B2 is Woodbury's, B5 Portola Springs'. The `settle` section (second body section) pays off the 3 ways. moduleOrder: eliminated → settle → problemSolution → instead → offer → painted → neighbors → warranty → beforeCommit → services → serviceArea. 8 FAQs, ~2,740 local words. Left out (not in research): home values, association rules/dues, job length, roof and window details, shutters. |
-| 7 | anaheim/peralta-hills | /anaheim/peralta-hills/ | todo | | |
-| 8 | anaheim/summit-pointe | /anaheim/summit-pointe/ | todo | | |
-| 9 | anaheim/belsomet | /anaheim/belsomet/ | todo | | |
-| 10 | anaheim/crown-pointe | /anaheim/crown-pointe/ | todo | | |
-| 11 | irvine (city page) | /irvine/ | todo | | |
-| 12 | anaheim (city page) | /anaheim/ | todo | | |
+| 7 | anaheim/peralta-hills | /anaheim/peralta-hills/ | done (layout run) | 2026-09-30 | Restructured by the one-time layout run (see note above and docs/HANDOFF.md). Copy is placeholder-grade: Gallagher story + SWAP markers. |
+| 8 | anaheim/summit-pointe | /anaheim/summit-pointe/ | done (layout run) | 2026-09-30 | Restructured by the one-time layout run (see note above and docs/HANDOFF.md). Copy is placeholder-grade: Gallagher story + SWAP markers. |
+| 9 | anaheim/belsomet | /anaheim/belsomet/ | done (layout run) | 2026-09-30 | Restructured by the one-time layout run (see note above and docs/HANDOFF.md). Copy is placeholder-grade: Gallagher story + SWAP markers. |
+| 10 | anaheim/crown-pointe | /anaheim/crown-pointe/ | done (layout run) | 2026-09-30 | Restructured by the one-time layout run (see note above and docs/HANDOFF.md). Copy is placeholder-grade: Gallagher story + SWAP markers. |
+| 11 | irvine (city page) | /irvine/ | done (layout run) | 2026-09-30 | Restructured by the one-time layout run (see note above and docs/HANDOFF.md). Copy is placeholder-grade: Gallagher story + SWAP markers. |
+| 12 | anaheim (city page) | /anaheim/ | done (layout run) | 2026-09-30 | Restructured by the one-time layout run (see note above and docs/HANDOFF.md). Copy is placeholder-grade: Gallagher story + SWAP markers. |
 | 13 | FINAL SWEEP — cross-page duplicate check, internal links, sitemap | — | todo | | Runs after rows 1–12 |
 
 Staging base: https://realdealmarketing18-a11y.github.io/Vip-home-painting-orange-county
+
+## ⚠ Layout restructure — 2026-09-30 (branch `layout-restructure`)
+
+All 13 city and community pages now carry `storyLayout` (B–F) — see
+`generator/LAYOUTS.md`. On those pages **`moduleOrder` / `layout.module_order`
+no longer decide the section order** (the layout does; `moduleOrder` is kept only
+because the schema reads it). Rows 7–12 were restructured in that run: the four
+Anaheim communities and both city hubs got master-style copy blocks and the
+Gallagher story. If this task runs again, it must edit copy inside the page's
+`master` block, never reorder `moduleOrder`, and never remove `storyLayout`.
+Rows 7–12 are marked `done (layout run)` below for that reason — set any of them
+back to `todo` if you want the task to rewrite its copy on top of the layout.
 
 ## Decisions made by the rollout task (Fabian not present — change any of these)
 
