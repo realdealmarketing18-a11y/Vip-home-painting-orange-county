@@ -146,13 +146,15 @@
         "hero": {
           "eyebrow": "Orchard Hills · Irvine · Luxury Home Painting",
           "h1": "The Orchard Hills Homeowner’s Guide to <span class=\"gold\">Exterior House Painting</span> Without Living With the Wrong Color",
-          "continue": "Follow their story, then see your Orchard Hills home in every color"
+          "continue": "Follow their story, then see your Orchard Hills home in every color",
+          "deck": "{They} were approved on the first submission. In Orchard Hills, where each village association runs its own design review, a submission that answers every question up front is what gets a repaint moving."
         },
         "instead": {
-          "h2": "A Wrong Color Costs the Whole Job Twice — Even on the Most <span class=\"accent\">Carefully Chosen</span> Orchard Hills Home",
-          "bridge": "Before {they} saw their home rendered, they were where most Orchard Hills owners begin: a shortlist of warm whites and greiges, and no way of knowing which one would survive the hillside light.",
-          "lede": "It usually starts on a weekend, with sample pots. A patch of Alabaster goes up beside the stone wainscot and another of Accessible Beige around the side of the house. At ten in the morning both look right. By mid-afternoon, with the sun full on the south and west walls, one has gone chalky and the other reads yellow against the clay tile. The patches stay up for weeks. Nobody wants to be the one who chose wrong on a street where every house is judged against the one beside it, so the decision waits, and the house stays the color it already is.",
-          "turn": "None of that is carelessness. On a Tuscan or Santa Barbara exterior, the body color has to hold its own beside stone and tile that will never change, and a two-foot patch cannot show that relationship. Only the whole house can show it."
+          "eyebrow": "The Approval Trap",
+          "h2": "Orchard Hills Design Review: <span class=\"accent\">3 Traps That Cost Owners Weeks</span>",
+          "bridge": "Before {they} saw their house rendered, choosing was only half the problem. The other half was getting a color through review the first time.",
+          "lede": "Orchard Hills is several associations, not one, and each reviews exterior color in its own way. The traps are the same across all of them. A palette book says what has been approved nearby, and nothing about how a warm white will sit beside stone wainscot on a south-facing wall. A submission that is a chip and a description comes back with questions. And a resubmission restarts the clock, while the sample patches on the side of the house go on looking different every hour.",
+          "turn": "None of that is the association’s fault. A reviewer approves what a submission shows, and a chip shows very little of a hillside house."
         },
         "eliminated": {
           "h2": "{They} Saw <span class=\"accent\">{schemes} Color Schemes</span> on Their Own House, Then Eliminated Ten",
@@ -168,7 +170,8 @@
         },
         "offer": {
           "h2": "Avoid Choosing From a Card — See Your Orchard Hills Home in <span class=\"accent\">{schemes} Complete Schemes</span>, Complimentary",
-          "sub": "Thirty minutes, at a time that suits your household. You send one photo of the front of your Orchard Hills home; our design team returns it painted in {schemes} complete color schemes, each named in exact Sherwin-Williams colors, together with an estimate itemized line by line. It is the same package {they} received for their {place} home, and nothing in the household has to be rearranged for it."
+          "sub": "Thirty minutes, at a time that suits your household. You send one photo of the front of your Orchard Hills home; our design team returns it painted in {schemes} complete color schemes, each named in exact Sherwin-Williams colors, together with an estimate itemized line by line. It is the same package {they} received for their {place} home, and nothing in the household has to be rearranged for it.",
+          "eyebrow": "What {They} Submitted — Now Offered in Orchard Hills"
         },
         "neighbors": {
           "h2": "What Your Orchard Hills Neighbors Will See on Your House <span class=\"accent\">for the Next 8 to 15 Years</span>",
@@ -212,8 +215,59 @@
             "Everything on this page happened in one order: {they} saw their home in {schemes} complete color schemes, chose one, and only then did anyone open a can. Most Orchard Hills repaints run that order backwards. A card is held against the stone, everyone hopes it reads the same across the whole house, and the real answer arrives when the scaffolding comes down.",
             "On a hillside where the neighbors will look at the result for the next eight to fifteen years, that is the one decision worth settling first. The same thirty minutes {they} had are yours: one photo of the front of your home, complimentary, with an itemized estimate included."
           ]
+        },
+        "_parked": {
+          "instead": {
+            "h2": "A Wrong Color Costs the Whole Job Twice — Even on the Most <span class=\"accent\">Carefully Chosen</span> Orchard Hills Home",
+            "bridge": "Before {they} saw their home rendered, they were where most Orchard Hills owners begin: a shortlist of warm whites and greiges, and no way of knowing which one would survive the hillside light.",
+            "lede": "It usually starts on a weekend, with sample pots. A patch of Alabaster goes up beside the stone wainscot and another of Accessible Beige around the side of the house. At ten in the morning both look right. By mid-afternoon, with the sun full on the south and west walls, one has gone chalky and the other reads yellow against the clay tile. The patches stay up for weeks. Nobody wants to be the one who chose wrong on a street where every house is judged against the one beside it, so the decision waits, and the house stays the color it already is.",
+            "turn": "None of that is carelessness. On a Tuscan or Santa Barbara exterior, the body color has to hold its own beside stone and tile that will never change, and a two-foot patch cannot show that relationship. Only the whole house can show it."
+          }
+        },
+        "timeline": {
+          "eyebrow": "Approval, Then Painting",
+          "h2": "From Your Association’s Answer to a Repainted Orchard Hills Home: <span class=\"accent\">5 Steps</span>",
+          "lead": "After {they} chose, the association came first and the crew came second. Here is that order for a house in Orchard Hills.",
+          "days": [
+            {
+              "label": "Step One",
+              "title": "See Every Scheme",
+              "body": "The front of the house rendered in {schemes} complete schemes, each named in exact Sherwin-Williams colors."
+            },
+            {
+              "label": "Step Two",
+              "title": "Build the Submission",
+              "body": "The chosen scheme with each color by name and number, where each one goes, and the product data sheets, prepared for your Orchard Hills association’s review."
+            },
+            {
+              "label": "Step Three",
+              "title": "Wait for the Answer, Not the Crew",
+              "body": "The association sets the timing. Nothing is scheduled before its answer."
+            },
+            {
+              "label": "Step Four",
+              "title": "Prepare the Hillside Walls",
+              "body": "Stucco repaired and primed on the walls that take the afternoon sun, then two coats sprayed and back-rolled."
+            },
+            {
+              "label": "Step Five",
+              "title": "The Walkthrough",
+              "body": "Every side checked in raking light, touch-ups before you ask, and the {warranty} written into the estimate you signed."
+            }
+          ],
+          "note": "An illustrative order, not a promise of dates. Each association keeps its own calendar, and painting time depends on the house."
+        },
+        "viz": {
+          "h2": "Your Turn: Tell Us Your Orchard Hills Village, <span class=\"accent\">Then Send the Photo</span>"
+        },
+        "faq": {
+          "h2": "Orchard Hills Painting Questions — <span class=\"accent\">Design Review First</span>"
         }
-      }
+      },
+      "storyLayout": "E",
+      "layoutOptions": [
+        "services"
+      ]
     },
     {
       "slug": "altair",
