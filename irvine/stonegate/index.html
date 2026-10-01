@@ -4193,6 +4193,26 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   .lx-story .body { font-size: 16px; }
 }
 
+/* The Reveal: the finished house beside what they chose at each step */
+.lx-reveal { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: start; max-width: 1180px; margin: 0 auto; }
+.lx-reveal .lx-reveal-frame { aspect-ratio: 4 / 3; margin: 0; }
+.lx-spec { margin: 0; grid-template-columns: 1fr; }
+.lx-spec .spec-v { display: block; }
+.lx-spec-cans { margin-right: 6px; vertical-align: middle; }
+.lx-spec-cans .paint-can { width: 22px; height: 22px; }
+.lx-why { display: block; font-family: var(--font-serif); font-style: italic; font-weight: 400;
+  font-size: 14px; line-height: 1.45; color: var(--gold-deep); margin-top: 4px; letter-spacing: 0; text-transform: none; }
+.lx-gsm { list-style: none; padding: 0; margin: 32px auto 0; max-width: 1180px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.lx-gsm li { background: #fff; border: 1px solid rgba(168,138,71,0.30); padding: 16px 18px;
+  font-family: var(--font-serif); font-size: 15.5px; line-height: 1.45; color: var(--navy); }
+.lx-gsm b { display: block; font-family: var(--font-sans); font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 6px; }
+@media (max-width: 860px) {
+  .lx-reveal { grid-template-columns: 1fr; }
+  .lx-gsm { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 <body>
@@ -4290,7 +4310,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           <div class="hr-cand" data-nm="Riviera Tuxedo" data-co="Snowbound SW 7004 &middot; Black Magic SW 6991" data-sw="#EDEAE4" data-trim="#2A2A2C" data-accent="#3B3B3E" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-riviera.jpg')" role="img" aria-label="Newport Beach home exterior rendered in Riviera Tuxedo — Snowbound SW 7004 with Black Magic SW 6991 trim."></div>
           <div class="hr-cand" data-nm="Euro-Industrial Estate" data-co="Peppercorn SW 7674 &middot; Cityscape SW 7067" data-sw="#5E5A57" data-trim="#9A9C98" data-accent="#7E8285" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-euro.jpg')" role="img" aria-label="Newport Beach home exterior rendered in Euro-Industrial Estate — Peppercorn SW 7674 with Cityscape SW 7067 trim."></div>
           <div class="hr-cand" data-nm="Newport Admiral" data-co="Repose Gray SW 7015 &middot; Pure White SW 7005" data-sw="#C9C6C0" data-trim="#F0EFE9" data-accent="#2F2F30" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-admiral.jpg')" role="img" aria-label="Newport Beach home exterior rendered in Newport Admiral — Repose Gray SW 7015 with Pure White SW 7005 trim."></div>
-          <div class="hr-cand final" data-nm="Coastal Organic Compound" data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048" data-sw="#EDE8DC" data-trim="#54504A" data-accent="#9C7B53" data-chosen="1" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-organic.jpg')" role="img" aria-label="Newport Beach home exterior rendered in Coastal Organic Compound — Alabaster SW 7008 with Urbane Bronze SW 7048."></div>
+          <div class="hr-cand final" data-nm="Santa Barbara Luxe" data-co="Alabaster SW 7008 &middot; Tricorn Black SW 6258" data-sw="#F1EDE2" data-trim="#2F2F30" data-accent="#B5714A" data-chosen="1" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-spanish.jpg')" role="img" aria-label="Newport Beach home exterior rendered in Santa Barbara Luxe — Alabaster SW 7008 with Tricorn Black SW 6258."></div>
 
           <div class="hr-grab" id="hrGrab"></div>
           <div class="hr-seam" id="hrSeam">
@@ -4345,6 +4365,53 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <div id="story" aria-hidden="true"></div>
   <!-- ============ LAYOUT E · BEAT 2 ============ -->
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=stonegate] › master.reveal -->
+  <section class="cream-deep" id="reveal" data-story>
+    <div class="sec-head">
+      <div class="eyebrow">The Reveal</div>
+      <h2 class="ttl">HOA-Approved Paint Colors Are a Shortlist, Not an Answer: <span class="accent">The Stonegate House The Gallaghers Chose From 11</span></h2>
+      <p class="lead">The ending first: the Gallaghers’ Newport Beach house in Santa Barbara Luxe, with Bronze Coach Pendant lighting and Stacked Stone Veneer accents. An approved list tells you what the association has accepted before. It does not tell you which of those colors will look right on your house — that took seeing every scheme on it.</p>
+    </div>
+    <div class="lx-reveal">
+      <div class="ba-frame lx-reveal-frame">
+        <div class="ba-img before" style="background-image: url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
+        <div class="ba-img after"  style="background-image: url('../../orange-county-sales-page/viz-photos/siding-stacked-stone-veneer--spanish.jpg')"></div>
+        <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
+        <div class="ba-label l">Before</div>
+        <div class="ba-label r">Finished</div>
+      </div>
+      <div class="stage-spec lx-spec">
+        <div class="spec-head"><span class="sh-t">What The Gallaghers Chose</span><span class="sh-n">Step by step, in the visualizer’s order</span></div>
+          <div class="spec-row"><span class="spec-k">Color</span><span class="spec-v"><span class="paint-cans lx-spec-cans"><span class="paint-can" style="--c:#F1EDE2"></span><span class="paint-can" style="--c:#2F2F30"></span><span class="paint-can" style="--c:#B5714A"></span></span> Santa Barbara Luxe &middot; Alabaster SW 7008 · Tricorn Black SW 6258<em class="lx-why">Alabaster with Tricorn Black is the classic Santa Barbara pairing; the terracotta accent answers the roof tile.</em></span></div>
+          <div class="spec-row"><span class="spec-k">Lighting</span><span class="spec-v">Bronze Coach Pendant<em class="lx-why">Coach pendants suit a classic entry on a tight streetscape.</em></span></div>
+          <div class="spec-row"><span class="spec-k">Texture & Material</span><span class="spec-v">Stacked Stone Veneer<em class="lx-why">Stacked stone at the base gives a warm white body a grounded edge.</em></span></div>
+      </div>
+    </div>
+    <ul class="lx-gsm"><li><b>Their Goal</b>A Santa Barbara color that passes review and looks right on a close-set street.</li><li><b>The Style</b>Santa Barbara classic — a warm white body, near-black trim, a terracotta accent.</li><li><b>The Mood</b>Immaculate and unmistakably finished.</li></ul>
+  </section>
+  <!-- /SWAP:CLIENT -->
+
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=stonegate] › master.flashback (+ story block for the family) -->
+  <section class="cream" id="flashback" data-story>
+    <div class="sec-head">
+      <div class="eyebrow">Before the Color</div>
+      <h2 class="ttl">Stonegate Exterior House Painting, Put Off: <span class="accent">The 3 Things The Gallaghers Feared Getting Wrong</span></h2>
+      <p class="lead">Stonegate’s streets are close-set and immaculate, around Stonegate Park and the Jeffrey Open Space Trail. On a street like that, everyone sees the color you choose.</p>
+    </div>
+    <div class="lx-story">
+      <div class="pill-wrap pill-wrap-lede">
+        <div class="avatar-pill"><div class="ph"><img src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"/></div>
+          <div><div class="name">The Gallagher Family</div>
+          <div class="sub-line">Before anything changed</div></div></div>
+      </div>
+      <p class="body">The Gallaghers meant to repaint for a long time. Every time they got close, three worries pushed it back.</p>
+      <p class="body">The first was the street: on a close-set block, a wrong color is the first thing a neighbor sees. The second was the price, because a repaint done twice costs the whole job again. The third was the association, and a submission built on nothing more than a chip number.</p>
+      <p class="body">None of those worries was unreasonable. Each one came from the same gap — no way to see the finished house before paying for it.</p>
+    </div>
+  </section>
+  <!-- /SWAP:CLIENT -->
+
+  <!-- ============ LAYOUT E · BEAT 3 ============ -->
   <!-- SWAP:LOCAL --><!-- edit: generator/communities.json › communities[slug=stonegate] › master.instead -->
   <section class="cand-band cand-band-solo" id="instead" data-story>
     <div class="fl-head">
@@ -4374,7 +4441,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   </section>
   <!-- /SWAP:LOCAL -->
 
-  <!-- ============ LAYOUT E · BEAT 3 ============ -->
+  <!-- ============ LAYOUT E · BEAT 4 ============ -->
   <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=stonegate] › master.offer (+ story block) -->
   <section class="cand-band cand-band-solo" id="offer" data-story>
     <div class="cand-foot offer-stake">
@@ -4527,7 +4594,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   </section>
   <!-- /SWAP:CLIENT -->
 
-  <!-- ============ LAYOUT E · BEAT 4 ============ -->
+  <!-- ============ LAYOUT E · BEAT 5 ============ -->
   <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=stonegate] › master.timeline -->
   <section id="timeline" data-story>
     <div class="sec-head">
@@ -4581,7 +4648,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   </section>
   <!-- /SWAP:CLIENT -->
 
-  <!-- ============ LAYOUT E · BEAT 5 ============ --><section class="viz" id="viz" data-story>
+  <!-- ============ LAYOUT E · BEAT 6 ============ --><section class="viz" id="viz" data-story>
     <div class="head">
       <!-- Third appearance of the chip, and the sub-line moves the story on:
            hero = who they are, band = the schemes they passed on, here = the
@@ -4881,7 +4948,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   </section>
 
-  <!-- ============ LAYOUT E · BEAT 6 ============ -->
+  <!-- ============ LAYOUT E · BEAT 7 ============ -->
   <section id="warranty" data-story>
     <div class="warranty-section">
       <div>
@@ -4917,7 +4984,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     </div>
   </section>
 
-  <!-- ============ LAYOUT E · BEAT 7 ============ -->
+  <!-- ============ LAYOUT E · BEAT 8 ============ -->
   <section class="cream-deep" id="services" data-story>
     <div class="services-head">
       <div class="eyebrow">Our Stonegate Residential Painting Services</div>

@@ -4099,6 +4099,26 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   .lx-story .body { font-size: 16px; }
 }
 
+/* The Reveal: the finished house beside what they chose at each step */
+.lx-reveal { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: start; max-width: 1180px; margin: 0 auto; }
+.lx-reveal .lx-reveal-frame { aspect-ratio: 4 / 3; margin: 0; }
+.lx-spec { margin: 0; grid-template-columns: 1fr; }
+.lx-spec .spec-v { display: block; }
+.lx-spec-cans { margin-right: 6px; vertical-align: middle; }
+.lx-spec-cans .paint-can { width: 22px; height: 22px; }
+.lx-why { display: block; font-family: var(--font-serif); font-style: italic; font-weight: 400;
+  font-size: 14px; line-height: 1.45; color: var(--gold-deep); margin-top: 4px; letter-spacing: 0; text-transform: none; }
+.lx-gsm { list-style: none; padding: 0; margin: 32px auto 0; max-width: 1180px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.lx-gsm li { background: #fff; border: 1px solid rgba(168,138,71,0.30); padding: 16px 18px;
+  font-family: var(--font-serif); font-size: 15.5px; line-height: 1.45; color: var(--navy); }
+.lx-gsm b { display: block; font-family: var(--font-sans); font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 6px; }
+@media (max-width: 860px) {
+  .lx-reveal { grid-template-columns: 1fr; }
+  .lx-gsm { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 <body>
@@ -4183,7 +4203,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           <div class="hr-cand" data-nm="Riviera Tuxedo" data-co="Snowbound SW 7004 &middot; Black Magic SW 6991" data-sw="#EDEAE4" data-trim="#2A2A2C" data-accent="#3B3B3E" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-riviera.jpg')" role="img" aria-label="Newport Beach home exterior rendered in Riviera Tuxedo — Snowbound SW 7004 with Black Magic SW 6991 trim."></div>
           <div class="hr-cand" data-nm="Euro-Industrial Estate" data-co="Peppercorn SW 7674 &middot; Cityscape SW 7067" data-sw="#5E5A57" data-trim="#9A9C98" data-accent="#7E8285" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-euro.jpg')" role="img" aria-label="Newport Beach home exterior rendered in Euro-Industrial Estate — Peppercorn SW 7674 with Cityscape SW 7067 trim."></div>
           <div class="hr-cand" data-nm="Newport Admiral" data-co="Repose Gray SW 7015 &middot; Pure White SW 7005" data-sw="#C9C6C0" data-trim="#F0EFE9" data-accent="#2F2F30" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-admiral.jpg')" role="img" aria-label="Newport Beach home exterior rendered in Newport Admiral — Repose Gray SW 7015 with Pure White SW 7005 trim."></div>
-          <div class="hr-cand final" data-nm="Coastal Organic Compound" data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048" data-sw="#EDE8DC" data-trim="#54504A" data-accent="#9C7B53" data-chosen="1" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-organic.jpg')" role="img" aria-label="Newport Beach home exterior rendered in Coastal Organic Compound — Alabaster SW 7008 with Urbane Bronze SW 7048."></div>
+          <div class="hr-cand final" data-nm="Obsidian Monolith" data-co="Iron Ore SW 7069 &middot; Tricorn Black SW 6258" data-sw="#434341" data-trim="#2F2F30" data-accent="#5B5E62" data-chosen="1" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg')" role="img" aria-label="Newport Beach home exterior rendered in Obsidian Monolith — Iron Ore SW 7069 with Tricorn Black SW 6258."></div>
 
           <div class="hr-grab" id="hrGrab"></div>
           <div class="hr-seam" id="hrSeam">
@@ -4238,6 +4258,53 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <div id="story" aria-hidden="true"></div>
   <!-- ============ LAYOUT F · BEAT 2 ============ -->
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=belsomet] › master.reveal -->
+  <section class="cream-deep" id="reveal" data-story>
+    <div class="sec-head">
+      <div class="eyebrow">The Reveal</div>
+      <h2 class="ttl">Can a Bold Color Work on a Close-Set Belsomet Street? <span class="accent">The House The Gallaghers Saw Finished Before Saying Yes</span></h2>
+      <p class="lead">The ending first: the Gallaghers’ Newport Beach house in Obsidian Monolith, with LED Slot Sconce lighting and Board & Batten accents. A dark scheme is the hardest one to imagine from a chip — and the one that most needs to be seen whole, by day and after dark, before it goes on.</p>
+    </div>
+    <div class="lx-reveal">
+      <div class="ba-frame lx-reveal-frame">
+        <div class="ba-img before" style="background-image: url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
+        <div class="ba-img after"  style="background-image: url('../../orange-county-sales-page/viz-photos/light-led-slot-sconce--obsidian.jpg')"></div>
+        <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
+        <div class="ba-label l">Before</div>
+        <div class="ba-label r">Finished</div>
+      </div>
+      <div class="stage-spec lx-spec">
+        <div class="spec-head"><span class="sh-t">What The Gallaghers Chose</span><span class="sh-n">Step by step, in the visualizer’s order</span></div>
+          <div class="spec-row"><span class="spec-k">Color</span><span class="spec-v"><span class="paint-cans lx-spec-cans"><span class="paint-can" style="--c:#434341"></span><span class="paint-can" style="--c:#2F2F30"></span><span class="paint-can" style="--c:#5B5E62"></span></span> Obsidian Monolith &middot; Iron Ore SW 7069 · Tricorn Black SW 6258<em class="lx-why">Iron Ore is deep without going flat; Tricorn Black sharpens the outline; the steel accent keeps it from reading heavy.</em></span></div>
+          <div class="spec-row"><span class="spec-k">Lighting</span><span class="spec-v">LED Slot Sconce<em class="lx-why">Slot sconces lift a dark wall at night without fussy fixtures.</em></span></div>
+          <div class="spec-row"><span class="spec-k">Texture & Material</span><span class="spec-v">Board &amp; Batten<em class="lx-why">Board and batten adds vertical texture so a dark body never reads as a slab.</em></span></div>
+      </div>
+    </div>
+    <ul class="lx-gsm"><li><b>Their Goal</b>A bold, certain color that a hundred close neighbors would read as deliberate.</li><li><b>The Style</b>Modern dark — an iron-ore body, black trim, a steel accent.</li><li><b>The Mood</b>Bold and certain; striking under the city lights.</li></ul>
+  </section>
+  <!-- /SWAP:CLIENT -->
+
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=belsomet] › master.flashback (+ story block for the family) -->
+  <section class="cream" id="flashback" data-story>
+    <div class="sec-head">
+      <div class="eyebrow">Before the Color</div>
+      <h2 class="ttl">The 3 Worries That Kept The Gallaghers From Repainting — <span class="accent">Each Sharper on a Close-Set Street</span></h2>
+      <p class="lead">Belsomet is around a hundred homes behind the gate, on Bridgewood Drive and the courts and circles off it, with parcels close together and canyon and city-light views.</p>
+    </div>
+    <div class="lx-story">
+      <div class="pill-wrap pill-wrap-lede">
+        <div class="avatar-pill"><div class="ph"><img src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"/></div>
+          <div><div class="name">The Gallagher Family</div>
+          <div class="sub-line">Before anything changed</div></div></div>
+      </div>
+      <p class="body">The Gallaghers wanted something bolder than the house had ever been, and that is exactly what made them wait.</p>
+      <p class="body">Three worries stood in the way. A dark color might look heavy beside the house next door. It might read one way by canyon light and another under the lights after dark. And if it was wrong, the fix would be the whole job, in front of every neighbor on the street.</p>
+      <p class="body">On a street this close, each of those worries is reasonable. What they needed was a way to see the bold version on their own house before committing to it.</p>
+    </div>
+  </section>
+  <!-- /SWAP:CLIENT -->
+
+  <!-- ============ LAYOUT F · BEAT 3 ============ -->
   <!-- SWAP:LOCAL --><!-- edit: generator/communities.json › communities[slug=belsomet] › master.dusk -->
   <section class="cream" id="dusk" data-story>
     <div class="sec-head">
@@ -4263,13 +4330,13 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           <div><div class="name">The Gallagher Family</div>
           <div class="sub-line">Walking the street</div></div></div>
       </div>
-      <p class="body">The Gallaghers did the same walk at their own Newport Beach house: the front at midday, then again under their own fixtures after dark. Two very different houses — which is why the lighting was settled before the color when they sat down with our design team.</p>
+      <p class="body">The Gallaghers did the same walk at their own Newport Beach house: the front at midday, then again under their own fixtures after dark. Two very different houses — which is why the lighting mattered as much as the color when they sat down with our design team.</p>
     </div>
   <!-- /SWAP:CLIENT -->
   </section>
   <!-- /SWAP:LOCAL -->
 
-  <!-- ============ LAYOUT F · BEAT 3 ============ --><section class="viz" id="viz" data-story>
+  <!-- ============ LAYOUT F · BEAT 4 ============ --><section class="viz" id="viz" data-story>
     <div class="head">
       <!-- Third appearance of the chip, and the sub-line moves the story on:
            hero = who they are, band = the schemes they passed on, here = the
@@ -4283,9 +4350,9 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       </div>
       <div class="eyebrow">Now It Is Your Turn</div>
   <!-- SWAP:VIZCOPY --><!-- edit: generator/communities.json › communities[slug=belsomet] › master.viz.h2 · vizIntro · master.viz.sub -->
-      <h2 class="ttl">Your Turn: Light a Belsomet Home First, <span class="accent">Then Choose Its Color</span></h2>
+      <h2 class="ttl">Your Turn: Try a Belsomet Color by Canyon Light, <span class="accent">Then Under Your Own Fixtures</span></h2>
       <p class="sub" style="text-align:center; font-size: 18px; max-width: 620px; margin: 0 auto 28px;">Pick a direction and tap through the palettes — the home repaints itself in real time. Our design team does the same with the front of your house, at no cost, before anything is scheduled.</p>
-      <p class="viz-lede-cta">The Gallaghers made four decisions, lighting first — then color, texture and the garage door. On a street that is seen after dark by its own fixtures, the lighting decides which colors hold up. Make all four on their house, before you make them on yours.</p>
+      <p class="viz-lede-cta">The Gallaghers made four decisions, not one &mdash; color, lighting, texture and the garage door. Each one changed how the last one looked. Make all four on their house, before you make them on yours.</p>
   <!-- /SWAP:VIZCOPY -->
     </div>
 
@@ -4326,11 +4393,35 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <div class="viz-timeline" id="vizTimeline">
         <div class="tl-rail"><div class="tl-fill" id="tlFill"></div></div>
 
-                <!-- STEP 2 — Lighting -->
+        <!-- STEP 1 — Color -->
         <div class="tl-step active" data-step="1">
           <div class="tl-dot">1</div>
           <div class="tl-body">
-            <div class="tl-num-label">Step One · Lighting Fixtures</div>
+            <div class="tl-num-label">Step One</div>
+            <h3 class="tl-title">Choose Your <em>Color Scheme</em></h3>
+            <p class="tl-desc">Pick a style direction, then a palette — your home re-paints itself in real time.</p>
+            <div class="style-banner" id="styleBanner"><img id="styleBannerImg" alt="Style collection flat-lay" width="1400" height="594" loading="lazy" decoding="async"/></div>
+            <div class="viz-tabs" id="vizTabs"></div>
+            <div class="viz-style-desc" id="vizStyleDesc"></div>
+            <div class="scheme-grid" id="schemeGrid"></div>
+          </div>
+        </div>
+
+
+        <!-- Between the steps: the brand mark on the rail, and the reason this
+             step leads to the next one. Not a .tl-step -- the timeline JS
+             selects .tl-step only, so the numbered coins are untouched. -->
+        <div class="tl-link">
+          <img class="tl-link-mark" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt=""
+               width="128" height="294" loading="lazy" decoding="async"/>
+          <p class="tl-link-lead">Color is only half of what the street sees after dark.</p>
+          <p class="tl-link-sub">Fixtures change how a facade reads at night, which is why lighting is the next decision here rather than an afterthought on the invoice.</p>
+        </div>
+        <!-- STEP 2 — Lighting -->
+        <div class="tl-step" data-step="2">
+          <div class="tl-dot">2</div>
+          <div class="tl-body">
+            <div class="tl-num-label">Step Two · Lighting Fixtures</div>
             <h3 class="tl-title">The Right <em>Lighting</em></h3>
             <p class="tl-desc">From minimalist LED slots to wrought-iron lanterns — tap each fixture to see it glowing on your home.</p>
             <div class="elevate-options" data-cat="light">
@@ -4350,31 +4441,15 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           </div>
         </div>
 
-        <div class="tl-link">
-          <img class="tl-link-mark" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt=""
-               width="128" height="294" loading="lazy" decoding="async"/>
-          <p class="tl-link-lead">Light decided first. Now the color has to hold up under it.</p>
-          <p class="tl-link-sub">A color that glows under your fixtures can go flat by day, which is why the palette is chosen after the lighting, not before.</p>
-        </div>
-        <!-- STEP 1 — Color -->
-        <div class="tl-step" data-step="2">
-          <div class="tl-dot">2</div>
-          <div class="tl-body">
-            <div class="tl-num-label">Step Two</div>
-            <h3 class="tl-title">Choose Your <em>Color Scheme</em></h3>
-            <p class="tl-desc">Pick a style direction, then a palette — your home re-paints itself in real time.</p>
-            <div class="style-banner" id="styleBanner"><img id="styleBannerImg" alt="Style collection flat-lay" width="1400" height="594" loading="lazy" decoding="async"/></div>
-            <div class="viz-tabs" id="vizTabs"></div>
-            <div class="viz-style-desc" id="vizStyleDesc"></div>
-            <div class="scheme-grid" id="schemeGrid"></div>
-          </div>
-        </div>
 
+        <!-- Between the steps: the brand mark on the rail, and the reason this
+             step leads to the next one. Not a .tl-step -- the timeline JS
+             selects .tl-step only, so the numbered coins are untouched. -->
         <div class="tl-link">
           <img class="tl-link-mark" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt=""
                width="128" height="294" loading="lazy" decoding="async"/>
           <p class="tl-link-lead">Texture decides how the color behaves.</p>
-          <p class="tl-link-sub">The same pigment on smooth stucco and on cedar shake is not the same color in your light.</p>
+          <p class="tl-link-sub">The same pigment on smooth stucco and on cedar shake is not the same color in your light. That is precisely what a sample board cannot tell you.</p>
         </div>
         <!-- STEP 3 — Siding -->
         <div class="tl-step" data-step="3">
@@ -4400,11 +4475,15 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           </div>
         </div>
 
+
+        <!-- Between the steps: the brand mark on the rail, and the reason this
+             step leads to the next one. Not a .tl-step -- the timeline JS
+             selects .tl-step only, so the numbered coins are untouched. -->
         <div class="tl-link">
           <img class="tl-link-mark" src="../../orange-county-sales-page/assets/logos/logo-brush-navy.png" alt=""
                width="128" height="294" loading="lazy" decoding="async"/>
-          <p class="tl-link-lead">The last decisions are the ones the road sees first.</p>
-          <p class="tl-link-sub">A garage door faces the drive more squarely than any wall does, and it is the piece most owners leave to chance.</p>
+          <p class="tl-link-lead">The last decisions are the ones the street sees first.</p>
+          <p class="tl-link-sub">A garage door faces the road more squarely than any wall does, and it is the piece most homeowners leave to chance.</p>
         </div>
         <!-- STEP 4 — Premium -->
         <div class="tl-step" data-step="4">
@@ -4557,7 +4636,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   </section>
 
-  <!-- ============ LAYOUT F · BEAT 4 ============ -->
+  <!-- ============ LAYOUT F · BEAT 5 ============ -->
   <section class="cream" id="specs">
     <div class="sec-head">
       <div class="eyebrow">Materials &amp; Method</div>
@@ -4575,7 +4654,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     </div>
   </section>
 
-  <!-- ============ LAYOUT F · BEAT 5 ============ -->
+  <!-- ============ LAYOUT F · BEAT 6 ============ -->
   <section class="" id="colors">
     <div class="sec-head">
       <div class="eyebrow">The Designer Palette</div>
@@ -4634,7 +4713,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     </div>
   </section>
 
-  <!-- ============ LAYOUT F · BEAT 6 ============ -->
+  <!-- ============ LAYOUT F · BEAT 7 ============ -->
   <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=belsomet] › master.proof (+ story block: family, before/after photos) -->
   <section class="navy" id="work" data-story>
     <div class="cases-head">
@@ -4648,11 +4727,11 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
         <div class="pill-wrap"><div class="avatar-pill"><div class="ph"><img src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"/></div>
           <div><div class="name">The Gallagher Family</div><div class="sub-line">Pelican Hill, Newport Beach</div></div></div></div>
         <div style="text-align:center;"><div class="case-tag">Custom Visualization</div></div>
-        <h3 class="case-head">The Gallaghers: the house before, and in Coastal Organic Compound</h3>
+        <h3 class="case-head">The Gallaghers: the house before, and in Obsidian Monolith</h3>
         <div class="ba-frame">
           
           <div class="ba-img before" style="background-image: url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-          <div class="ba-img after"  style="background-image: url('../../orange-county-sales-page/viz-photos/scheme-organic.jpg')"></div>
+          <div class="ba-img after"  style="background-image: url('../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg')"></div>
           <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
           <div class="ba-label l">Before</div>
           <div class="ba-label r">Chosen</div>
@@ -4665,7 +4744,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   </section>
   <!-- /SWAP:CLIENT -->
 
-  <!-- ============ LAYOUT F · BEAT 7 ============ -->
+  <!-- ============ LAYOUT F · BEAT 8 ============ -->
   <!-- SWAP:LOCAL --><!-- edit: generator/communities.json › communities[slug=belsomet] › problems[] (local problems) · master.problemSolution.h2 -->
   <section class="" id="fit" data-story>
     <div class="sec-head">
@@ -4764,7 +4843,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     </div>
   </section>
 
-  <!-- ============ LAYOUT F · BEAT 8 ============ -->
+  <!-- ============ LAYOUT F · BEAT 9 ============ -->
   <section class="cream" id="service-areas">
     <div class="areas-head">
       <div class="eyebrow">Where We Work</div>

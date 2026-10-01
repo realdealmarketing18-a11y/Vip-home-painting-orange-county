@@ -660,6 +660,12 @@ function jsonLd(c, url, masterRendered) {
 /* ---------------- PAGE ---------------- */
 
 function buildPage(c) {
+  /* The structured data is built from the record as stored: a layout's
+     per-page placeholder scheme never reaches the schema. */
+  const schemaRec = MASTER.resolve(c);
+  /* Story-layout pages: turn the story block's scheme + additions into the
+     chosen scheme and photos the master modules read. */
+  if (STORY.isLayout(c)) c = STORY.expand(c);
   /* Master-process pages: fill {tokens} in title, meta, capsule, FAQ etc. */
   c = MASTER.resolve(c);
   /* a community belongs to exactly one city — see communities.json city field */
@@ -729,7 +735,7 @@ function buildPage(c) {
 
 <!-- ============ STRUCTURED DATA — LocalBusiness + Service + WebPage ============ -->
 <script type="application/ld+json">
-${jsonLd(c, url, layout ? schemaBasis(c) : (master ? rendered : null))}
+${jsonLd(layout ? schemaRec : c, url, layout ? schemaBasis(c) : (master ? rendered : null))}
 </script>
 
 <style>
@@ -1024,6 +1030,7 @@ function cityJsonLd(c, url, masterRendered) {
 }
 
 function buildCityPage(c) {
+  if (STORY.isLayout(c)) c = STORY.expand(c);
   const url = `${CFG.siteBase}/${c.slug}/`;
   const A = '../orange-county-sales-page';
   /* link() turns the absolute paths stored in cities.json into correct relative
@@ -1290,7 +1297,7 @@ Object.assign(MODULE_BUILDERS, MASTER.MODULES);
    generator/story-layouts.js and generator/LAYOUTS.md. */
 const STORY = require('./story-layouts.js')({
   CFG, esc, MASTER, MODULE_BUILDERS, CITY_MODULES, CITIES, cityOf,
-  vizSection, ctaButton, CORE_COLORS
+  vizSection, ctaButton, CORE_COLORS, BASE_PAGE
 });
 const LAYOUT_CSS = fs.readFileSync(path.join(__dirname, 'layout-page.css'), 'utf8');
 /* What the schema is built from on a layout page. The layout changes the

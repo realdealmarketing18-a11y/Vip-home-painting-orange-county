@@ -16,6 +16,8 @@
         comes before We Painted It (the painted steps / the painting days)
      4. SWAP markers are balanced, and the FAQ, visualizer copy and
         client story are all fenced
+     5. the story opens with The Reveal, and the visualizer steps keep the
+        standard order on every page
    Exits non-zero on any failure.
    ============================================================ */
 
@@ -72,6 +74,14 @@ for (const { c, rel } of pages) {
   const painted = Math.max(body.indexOf('id="process" data-story'), body.indexOf('id="timeline"'));
   if (vis >= 0 && painted >= 0 && vis > painted) probs.push('"We Painted It" comes before "They Visualized It"');
 
+  /* 5 · every page opens with The Reveal, and the visualizer steps never
+     change order: Color → Lighting → Texture → Finishing → Your Home */
+  const firstSec = (body.slice(body.indexOf('id="story"')).match(/<section[^>]*id="([^"]+)"/) || [])[1];
+  if (firstSec !== 'reveal') probs.push(`the story opens with #${firstSec}, not The Reveal`);
+  const order = (body.match(/<div class="tl-step[\s\S]*?<div class="s5-block"/) || [''])[0];
+  const seq = ['id="schemeGrid"', 'data-cat="light"', 'data-cat="siding"', 'data-cat="premium"'].map(k => order.indexOf(k));
+  if (seq.some(i => i < 0) || seq.some((v, i) => i && v < seq[i - 1])) probs.push('visualizer steps are not in the standard order (Color, Lighting, Texture, Finishing)');
+
   /* 4 · markers */
   for (const k of ['CLIENT', 'LOCAL', 'FAQ', 'VIZCOPY']) {
     const open = (html.match(new RegExp(`<!-- SWAP:${k} -->`, 'g')) || []).length;
@@ -81,7 +91,7 @@ for (const { c, rel } of pages) {
   }
 
   if (probs.length) probs.forEach(p => bad(`${rel} (layout ${c.storyLayout}): ${p}`));
-  else console.log(`   ok    ${rel} (layout ${c.storyLayout}) — ${list.length} unique H2s, form after pain, acts in order, markers balanced`);
+  else console.log(`   ok    ${rel} (layout ${c.storyLayout}) — ${list.length} unique H2s, opens with The Reveal, steps in order, form after pain, acts in order, markers balanced`);
 }
 
 console.log('');

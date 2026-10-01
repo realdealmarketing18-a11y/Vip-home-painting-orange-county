@@ -44,3 +44,23 @@
   .lx-can-card .paint-can { width: 48px; height: 48px; }
   .lx-story .body { font-size: 16px; }
 }
+
+/* The Reveal: the finished house beside what they chose at each step */
+.lx-reveal { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: start; max-width: 1180px; margin: 0 auto; }
+.lx-reveal .lx-reveal-frame { aspect-ratio: 4 / 3; margin: 0; }
+.lx-spec { margin: 0; grid-template-columns: 1fr; }
+.lx-spec .spec-v { display: block; }
+.lx-spec-cans { margin-right: 6px; vertical-align: middle; }
+.lx-spec-cans .paint-can { width: 22px; height: 22px; }
+.lx-why { display: block; font-family: var(--font-serif); font-style: italic; font-weight: 400;
+  font-size: 14px; line-height: 1.45; color: var(--gold-deep); margin-top: 4px; letter-spacing: 0; text-transform: none; }
+.lx-gsm { list-style: none; padding: 0; margin: 32px auto 0; max-width: 1180px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.lx-gsm li { background: #fff; border: 1px solid rgba(168,138,71,0.30); padding: 16px 18px;
+  font-family: var(--font-serif); font-size: 15.5px; line-height: 1.45; color: var(--navy); }
+.lx-gsm b { display: block; font-family: var(--font-sans); font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 6px; }
+@media (max-width: 860px) {
+  .lx-reveal { grid-template-columns: 1fr; }
+  .lx-gsm { grid-template-columns: 1fr; }
+}

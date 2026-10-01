@@ -24,6 +24,7 @@
    Localized words live in the page's `master` block (the same block the
    master-process modules read). New blocks this file reads:
      master.hero.deck      the layout's story line under the H1
+     master.reveal         THE REVEAL, every layout · the finished house + what they chose
      master.viz            { h2, sub, lede }   visualizer intro overrides
      master.flashback      Layout B · years in the same color
      master.timeline       Layouts B/E · the days, dated as placeholders
@@ -47,18 +48,24 @@
 
 module.exports = function makeStoryLayouts(ctx) {
   const { CFG, esc, MASTER, MODULE_BUILDERS, CITY_MODULES, CITIES, cityOf,
-          vizSection, ctaButton, CORE_COLORS } = ctx;
+          vizSection, ctaButton, CORE_COLORS, BASE_PAGE } = ctx;
   const A = CFG.assetBase;
 
   /* ---------------- THE FIVE LAYOUTS ----------------
      Slot = one story beat. { m: module, swap: marker kind, opt: add-in }.
      Hero, capsule, FAQ and the close (founder + CTA + P.S.) are fixed
      around the slots on every layout. */
+  /* THE REVEAL opens every layout: the finished house first (the hero reel
+     lands on the scheme they chose), then the specification they ended up
+     with, then the flashback to the years before it. Each layout's own story
+     runs after that. */
+  const REVEAL = [{ m: 'reveal', swap: 'CLIENT' }, { m: 'flashback', swap: 'CLIENT' }];
+
   const LAYOUTS = {
     B: {
       name: 'The Reveal', hint: 'starts at the ending, then flashes back',
       slots: [
-        [{ m: 'flashback', swap: 'CLIENT' }, { m: 'cost_of_wrong', swap: 'LOCAL' }],
+        [{ m: 'reveal', swap: 'CLIENT' }, { m: 'flashback', swap: 'CLIENT' }, { m: 'cost_of_wrong', swap: 'LOCAL' }],
         [{ m: 'instead', swap: 'LOCAL' }],
         [{ m: 'eliminated', swap: 'CLIENT' }],
         [{ m: 'timeline', swap: 'CLIENT' }],
@@ -71,6 +78,7 @@ module.exports = function makeStoryLayouts(ctx) {
     C: {
       name: 'The Villain', hint: 'the local condition is the enemy',
       slots: [
+        REVEAL,
         [{ m: 'spotlight', swap: 'LOCAL' }],
         [{ m: 'cost_of_wrong', swap: 'LOCAL' }],
         [{ m: 'eliminated', swap: 'CLIENT' }],
@@ -83,6 +91,7 @@ module.exports = function makeStoryLayouts(ctx) {
     D: {
       name: 'The Near-Miss', hint: 'one signature away from painting twice',
       slots: [
+        REVEAL,
         [{ m: 'problems', swap: 'LOCAL' }, { m: 'instead', swap: 'LOCAL', opt: 'instead' }],
         [{ m: 'eliminated', swap: 'CLIENT' }],
         [{ m: 'viz' }, { m: 'offer', swap: 'CLIENT', opt: 'offer' }],
@@ -96,6 +105,7 @@ module.exports = function makeStoryLayouts(ctx) {
       name: 'The Approval', hint: 'approved on the first submission',
       faqWeight: 'hoa',
       slots: [
+        REVEAL,
         [{ m: 'instead', swap: 'LOCAL' }],
         [{ m: 'eliminated', swap: 'CLIENT', opt: 'eliminated' }, { m: 'offer', swap: 'CLIENT' }],
         [{ m: 'timeline', swap: 'CLIENT' }],
@@ -106,8 +116,8 @@ module.exports = function makeStoryLayouts(ctx) {
     },
     F: {
       name: 'The Dusk Walk', hint: 'the property at noon, then at dusk',
-      vizOrder: ['light', 'color', 'siding', 'premium'],
       slots: [
+        REVEAL,
         [{ m: 'dusk', swap: 'LOCAL' }],
         [{ m: 'viz' }],
         [{ m: 'specs' }],
@@ -235,57 +245,7 @@ module.exports = function makeStoryLayouts(ctx) {
       html = html.replace(/<label for="s5Place">Address or community<\/label>/, '<label for="s5Place">Your community (or address)</label>');
     }
 
-    if (L.vizOrder) html = reorderSteps(html, L.vizOrder, c);
     return html;
-  }
-
-  /* Layout F: the steps run Lighting → Color → Texture → Finishing.
-     The visualizer script finds every control by id and data-cat, never
-     by position, so moving the blocks is enough; only the coins, the
-     "Step One…" labels and the opening highlight are renumbered. */
-  const WORD = ['One', 'Two', 'Three', 'Four'];
-  function reorderSteps(html, order, c) {
-    const start = html.indexOf('<!-- STEP 1');
-    const endMark = '\n\n    <!-- ============ STEP FIVE';
-    const end = html.indexOf(endMark);
-    if (start < 0 || end < 0) throw new Error(`${c.slug}: visualizer step markers not found — cannot reorder steps`);
-    const region = html.slice(start, end);
-    const closeAt = region.lastIndexOf('\n      </div>\n    </div>');
-    if (closeAt < 0) throw new Error(`${c.slug}: visualizer timeline close not found`);
-    const inner = region.slice(0, closeAt), rest = region.slice(closeAt);
-    /* blocks: step1, (link+step2), (link+step3), (link+step4) */
-    const parts = inner.split(/(?=\n\n\n        <!-- Between the steps:)/);
-    if (parts.length !== 4) throw new Error(`${c.slug}: expected 4 visualizer steps, found ${parts.length}`);
-    const steps = parts.map(p => {
-      const s = p.indexOf('<!-- STEP') >= 0 ? p.slice(p.indexOf('        <!-- STEP') >= 0 ? p.indexOf('        <!-- STEP') : p.indexOf('<!-- STEP')) : p;
-      const cat = (s.match(/data-cat="([a-z]+)"/) || [])[1] || 'color';
-      return { cat, html: s.replace(/^\s+/, '') };
-    });
-    const links = (M(c, 'viz') || {}).links || {};
-    const LINK = {
-      color: ['Light decided first. Now the color has to hold up under it.', 'A color that glows under your fixtures can go flat by day, which is why the palette is chosen after the lighting, not before.'],
-      siding: ['Texture decides how the color behaves.', 'The same pigment on smooth stucco and on cedar shake is not the same color in your light.'],
-      premium: ['The last decisions are the ones the road sees first.', 'A garage door faces the drive more squarely than any wall does, and it is the piece most owners leave to chance.']
-    };
-    const mark = `<img class="tl-link-mark" src="${A}/assets/logos/logo-brush-navy.png" alt=""
-               width="128" height="294" loading="lazy" decoding="async"/>`;
-    const out = order.map((cat, i) => {
-      const st = steps.find(s => s.cat === cat);
-      if (!st) throw new Error(`${c.slug}: visualizer has no step for "${cat}"`);
-      let h = st.html
-        .replace(/<div class="tl-step( active)?" data-step="\d">/, `<div class="tl-step${i === 0 ? ' active' : ''}" data-step="${i + 1}">`)
-        .replace(/<div class="tl-dot">\d<\/div>/, `<div class="tl-dot">${i + 1}</div>`)
-        .replace(/<div class="tl-num-label">Step (One|Two|Three|Four)/, `<div class="tl-num-label">Step ${WORD[i]}`);
-      if (i === 0) return `        ${h}`;
-      const [lead, sub] = links[cat] ? [tok(links[cat][0], c), tok(links[cat][1], c)] : LINK[cat];
-      return `\n\n        <div class="tl-link">
-          ${mark}
-          <p class="tl-link-lead">${lead}</p>
-          <p class="tl-link-sub">${sub}</p>
-        </div>
-        ${h}`;
-    }).join('');
-    return html.slice(0, start) + out + rest + html.slice(end);
   }
 
   /* B · Flashback — years in the same color, and why they waited. */
@@ -514,7 +474,139 @@ module.exports = function makeStoryLayouts(ctx) {
   </section>`;
   }
 
-  const NEW = { viz, flashback, timeline, problems, dusk, palette, proof };
+
+  /* ============================================================
+     THE REVEAL — what the homeowner ended up with.
+
+     The visualizer's steps never change order (Color → Lighting →
+     Texture → Finishing Touches → Your Home). What changes from page to
+     page is what the homeowner chose at each step, to match the goal,
+     style and mood they wanted. A page's `story` block says so:
+
+       "story": { "scheme": "spanish",
+                  "additions": { "light": "iron-scroll-lantern",
+                                 "siding": "stacked-stone-veneer",
+                                 "premium": "walnut-wood-garage" },
+                  "signature": "light",
+                  "goal": "…", "style": "…", "mood": "…" }
+
+     The scheme and options are the visualizer's own (read from the OC page
+     at build time), so every picture exists: scheme-<id>.jpg and the
+     <cat>-<option>--<scheme>.jpg combination renders.
+     ============================================================ */
+  const SCHEMES = [...BASE_PAGE.matchAll(/\{ id: '([a-z]+)',\s*name: '([^']+)',\s*sw: '([^']+)',\s*style: '([a-z]+)',\s*main: '(#[0-9A-Fa-f]{6})', trim: '(#[0-9A-Fa-f]{6})', accent: '(#[0-9A-Fa-f]{6})' \}/g)]
+    .map(m => ({ id: m[1], name: m[2], sw: m[3], style: m[4], main: m[5], trim: m[6], accent: m[7] }));
+  if (SCHEMES.length < 11) throw new Error(`story layouts: read ${SCHEMES.length} visualizer schemes from the OC page, expected 11 — did the SCHEMES array change?`);
+  const OPTIONS = {};
+  for (const m of BASE_PAGE.matchAll(/<div class="elevate-options" data-cat="([a-z]+)">([\s\S]*?)\n            <\/div>/g)) {
+    OPTIONS[m[1]] = [...m[2].matchAll(/<div class="elv-label">([^<]+)<\/div>/g)].map(x => x[1].replace(/&amp;/g, '&'));
+  }
+  const slug = (t) => t.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const optLabel = (cat, opt) => {
+    const hit = (OPTIONS[cat] || []).find(l => slug(l) === opt);
+    if (!hit) throw new Error(`story.additions.${cat} "${opt}" is not a visualizer option — choose from: ${(OPTIONS[cat] || []).map(slug).join(', ')}`);
+    return hit;
+  };
+  const STEP = { light: 'Lighting', siding: 'Texture & Material', premium: 'Finishing Touches' };
+
+  function expand(c) {
+    const st = c.story || {};
+    if (!st.scheme) return c;
+    const sc = SCHEMES.find(x => x.id === st.scheme);
+    if (!sc) throw new Error(`${c.slug}: story.scheme "${st.scheme}" is not one of the visualizer schemes: ${SCHEMES.map(x => x.id).join(', ')}`);
+    for (const [cat, opt] of Object.entries(st.additions || {})) optLabel(cat, opt);
+    return { ...c, story: {
+      ...st,
+      after: st.after || `scheme-${sc.id}.jpg`,
+      chosen: { id: sc.id, name: sc.name, colors: sc.sw.replace(/ · /g, ' &middot; '), body: sc.main, trim: sc.trim, accent: sc.accent, ...(st.chosen || {}) }
+    } };
+  }
+  const chosenId = (c) => ((c.story || {}).chosen || {}).id || 'organic';
+
+  /* Extra tokens for reveal copy: {additions} "Iron Scroll Lantern lighting
+     and a Walnut Wood Garage", {mood}, {style}, {goal}. */
+  function additionsLine(c) {
+    const ad = (c.story || {}).additions || {};
+    const parts = Object.entries(ad).map(([cat, opt]) => {
+      const l = optLabel(cat, opt);
+      return cat === 'light' ? `${l} lighting` : cat === 'siding' ? `${l} accents` : `${l === 'Limestone Pillars' ? '' : 'a '}${l}`;
+    });
+    return parts.length < 2 ? parts.join('') : `${parts.slice(0, -1).join(', ')} and ${parts[parts.length - 1]}`;
+  }
+  const rtok = (str, c) => {
+    const st = c.story || {};
+    return tok(String(str == null ? '' : str)
+      .replace(/\{additions\}/g, additionsLine(c))
+      .replace(/\{mood\}/g, st.mood || '').replace(/\{style\}/g, st.style || '').replace(/\{goal\}/g, st.goal || ''), c);
+  };
+
+  function reveal(c) {
+    const b = M(c, 'reveal'); if (!b || !b.h2) return '';
+    const st = c.story || {}, s = MASTER.storyOf(c);
+    const sc = SCHEMES.find(x => x.id === chosenId(c)) || SCHEMES.find(x => x.id === 'organic');
+    const ad = st.additions || {};
+    const sig = st.signature && ad[st.signature] ? `${st.signature}-${ad[st.signature]}--${sc.id}.jpg` : s.after;
+    const photo = (f) => `${A}/${s.photoDir}/${f}`;
+    const knob = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg>';
+    const row = (k, v, why) => `
+          <div class="spec-row"><span class="spec-k">${k}</span><span class="spec-v">${v}${why ? `<em class="lx-why">${rtok(why, c)}</em>` : ''}</span></div>`;
+    const why = b.why || {};
+    const rows = [
+      row('Color', `<span class="paint-cans lx-spec-cans">${can(sc.main)}${can(sc.trim)}${can(sc.accent)}</span> ${esc(sc.name)} &middot; ${esc(sc.sw)}`, why.color),
+      ...['light', 'siding', 'premium'].filter(cat => ad[cat]).map(cat => row(STEP[cat], esc(optLabel(cat, ad[cat])), why[cat]))
+    ].join('');
+    const gsm = [['Their Goal', st.goal], ['The Style', st.style], ['The Mood', st.mood]].filter(x => x[1]);
+    return `
+  <section class="cream-deep" id="reveal" data-story>
+    <div class="sec-head">
+      <div class="eyebrow">${rtok(b.eyebrow || 'The Reveal', c)}</div>
+      <h2 class="ttl">${rtok(b.h2, c)}</h2>
+      ${b.lead ? `<p class="lead">${rtok(b.lead, c)}</p>` : ''}
+    </div>
+    <div class="lx-reveal">
+      <div class="ba-frame lx-reveal-frame">
+        <div class="ba-img before" style="background-image: url('${photo(s.before)}')"></div>
+        <div class="ba-img after"  style="background-image: url('${photo(sig)}')"></div>
+        <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob">${knob}</div></div></div>
+        <div class="ba-label l">Before</div>
+        <div class="ba-label r">Finished</div>
+      </div>
+      <div class="stage-spec lx-spec">
+        <div class="spec-head"><span class="sh-t">${rtok(b.specTitle || 'What {They} Chose', c)}</span><span class="sh-n">Step by step, in the visualizer’s order</span></div>${rows}
+      </div>
+    </div>
+    ${gsm.length ? `<ul class="lx-gsm">${gsm.map(([k, v]) => `<li><b>${k}</b>${rtok(v, c)}</li>`).join('')}</ul>` : ''}
+  </section>`;
+  }
+
+  /* The hero reel previews three schemes and lands on the chosen one; the
+     schemes band walks the ones passed over and ends on it. When a page's
+     homeowner chose a scheme the master shows elsewhere, swap the two so
+     the chosen scheme is never also shown as a rejected one. */
+  function schemeAttrs(sc) {
+    return `data-nm="${sc.name}" data-co="${sc.sw.replace(/ · /g, ' &middot; ')}" data-sw="${sc.main}" data-trim="${sc.trim}" data-accent="${sc.accent}"`;
+  }
+  function swapInReel(html, c) {
+    const id = chosenId(c);
+    if (id === 'organic') return html;
+    const org = SCHEMES.find(x => x.id === 'organic');
+    return html.replace(new RegExp(`<div class="hr-cand" data-nm="[^"]*" data-co="[^"]*" data-sw="[^"]*" data-trim="[^"]*" data-accent="[^"]*" style="background-image:url\\('([^']*?)scheme-${id}\\.jpg'\\)"`),
+      (m, pre) => `<div class="hr-cand" ${schemeAttrs(org)} style="background-image:url('${pre}scheme-organic.jpg')"`);
+  }
+  function swapInBand(html, c) {
+    const id = chosenId(c);
+    if (id === 'organic') return html;
+    const sc = SCHEMES.find(x => x.id === id);
+    const pre = (html.match(/url\('([^']*?)scheme-organic\.jpg'\)/) || [])[1] || '';
+    /* organic becomes one of the passed-over schemes … */
+    let out = html.replace(/(<i data-id="organic"[^>]*?) data-chosen="1"/, '$1');
+    /* … the chosen scheme leaves the passed-over list, and closes the band */
+    out = out.replace(new RegExp(`\\s*<i data-id="${id}"[^>]*><\\/i>`), '');
+    return out.replace('</template>', `  <i data-id="${sc.id}" ${schemeAttrs(sc)} data-chosen="1" style="background-image:url('${pre}scheme-${sc.id}.jpg')"></i>\n</template>`);
+  }
+
+
+  const NEW = { viz, reveal, flashback, timeline, problems, dusk, palette, proof };
 
   /* Reused legacy / city modules, with optional heading overrides. */
   const OVERRIDE = {
@@ -529,6 +621,7 @@ module.exports = function makeStoryLayouts(ctx) {
     if (!fn) throw new Error(`${c.slug}: layout ${c.storyLayout} uses module "${key}", which has no builder`);
     let html = fn(city ? cWithRel : c, 0, nextBg(prevBg), H);
     if (OVERRIDE[key]) html = retitle(html, tokAll(M(c, OVERRIDE[key]), c));
+    if (key === 'eliminated') html = swapInBand(html, c);
     /* The old per-community map section carried an "Open Google Maps" link.
        The service-area section replaces it on a layout page, so the link
        moves with it rather than being dropped. */
@@ -583,12 +676,12 @@ module.exports = function makeStoryLayouts(ctx) {
   /* The hero: the family chip and the layout's story line are fenced. */
   function hero(c, html) {
     const h = M(c, 'hero') || {};
-    let out = html.replace(/(<div class="pill-wrap pill-wrap-lede">[\s\S]*?\n      <\/div>)/, (m) => swap('CLIENT', c, 'story (family, avatar, location)', m));
+    let out = swapInReel(html, c).replace(/(<div class="pill-wrap pill-wrap-lede">[\s\S]*?\n      <\/div>)/, (m) => swap('CLIENT', c, 'story (family, avatar, location)', m));
     /* The layout's story line sits under the H1 — the H1 itself (the
        page's keyword) is never rewritten by a layout. */
     if (h.deck) out = out.replace(/(<h1 class="ttl-hero">[\s\S]*?<\/h1>)/, (m) => `${m}${swap('CLIENT', c, 'master.hero.deck', `\n      <p class="hero-deck">${tok(h.deck, c)}</p>`)}`);
     return out.replace(/href="#viz"/, 'href="#story"');
   }
 
-  return { LAYOUTS, isLayout, resolveOrder, render, faq, close, hero, swap };
+  return { LAYOUTS, isLayout, resolveOrder, render, faq, close, hero, swap, expand, SCHEMES, OPTIONS };
 };

@@ -262,12 +262,45 @@
         },
         "faq": {
           "h2": "Orchard Hills Painting Questions — <span class=\"accent\">Design Review First</span>"
+        },
+        "reveal": {
+          "h2": "Exterior House Painting in Orchard Hills, Shown Finished First: <span class=\"accent\">One Scheme Kept From {schemes}</span>",
+          "lead": "The ending first: {their} {place} house in {chosen}, with {additions}. On a hillside lot where the afternoon sun lands full on the south and west walls, each choice was seen in that light before it was made.",
+          "why": {
+            "color": "Alabaster stays soft beside stone wainscot; Urbane Bronze gives the trim old-world weight.",
+            "light": "Iron lanterns belong with clay tile and stone.",
+            "siding": "Stacked stone answers the wainscot already on so many Orchard Hills fronts.",
+            "premium": "Limestone pillars frame the entry the way Tuscan architecture expects."
+          }
+        },
+        "flashback": {
+          "eyebrow": "Before the Color",
+          "h2": "Before the Hillside Saw It: <span class=\"accent\">3 Reasons {They} Kept Postponing the Repaint</span>",
+          "lead": "Orchard Hills sits along Loma Ridge, where hillside lots take the afternoon sun full on the south and west walls — the walls a wrong color shows on first.",
+          "chipLine": "Before anything changed",
+          "body": [
+            "{They} postponed the repaint more than once, and each time for a good reason.",
+            "The sample patches beside the stone wainscot looked right at ten in the morning and wrong by mid-afternoon. The association’s review wanted a decision in writing that they could not yet stand behind. And a hillside house is seen from below, by everyone, for years.",
+            "So the decision waited — not for lack of care, but because nothing they had tried could show them the whole house in its own light."
+          ]
         }
       },
       "storyLayout": "E",
       "layoutOptions": [
         "services"
-      ]
+      ],
+      "story": {
+        "scheme": "organic",
+        "additions": {
+          "light": "iron-scroll-lantern",
+          "siding": "stacked-stone-veneer",
+          "premium": "limestone-pillars"
+        },
+        "signature": "premium",
+        "goal": "A hillside house that looks finished from the street below it.",
+        "style": "Tuscan warmth — a soft white body, bronze trim, stone and limestone.",
+        "mood": "Old-world and warm, settled into the hill."
+      }
     },
     {
       "slug": "altair",
@@ -470,13 +503,46 @@
         },
         "faq": {
           "h2": "Altair Exterior Painting — <span class=\"accent\">What Owners Ask Before They Sign</span>"
+        },
+        "reveal": {
+          "h2": "Exterior Color Combinations for a Modern Altair Home: <span class=\"accent\">The One {They} Kept From {schemes}</span>",
+          "lead": "The ending first: {their} {place} house in {chosen}, with {additions}. On clean modern lines the body color is most of what the street sees, so every choice here was made on the whole house, plane by plane.",
+          "why": {
+            "color": "Peppercorn carries a broad plane without the harshness of black; Cityscape keeps the trim quiet.",
+            "light": "Slot sconces wash the wall in a thin line of light and add no ornament.",
+            "siding": "One vertical texture, so a single color never reads as a flat slab.",
+            "premium": "Smoked glass keeps the largest street-facing surface as sharp as the rest of the house."
+          }
+        },
+        "flashback": {
+          "eyebrow": "Before the Color",
+          "h2": "Why a Modern House Is the Hardest Place to Guess a Color: <span class=\"accent\">The 3 Reasons {They} Held Off</span>",
+          "lead": "Altair’s homes are modern and contemporary — broad stucco planes and metal accents, with little ornament to break a color up. On a house like that, there is nowhere for a near-miss to hide.",
+          "chipLine": "Before anything changed",
+          "body": [
+            "{They} lived with the old color longer than they meant to. Not out of indifference. Out of respect for how unforgiving a clean-lined house is.",
+            "Three things held them back. A gray that looked calm on a chip could turn cold across a whole plane. A white could go stark beside dark metal. And whatever they chose would cover the house in two or three colors, with nothing to soften a wrong one.",
+            "So the decision waited. On a modern Altair house the color is not decorating the design — it is the design — and a sample square cannot show how one tone behaves across a broad, uninterrupted wall."
+          ]
         }
       },
       "storyLayout": "D",
       "layoutOptions": [
         "instead",
         "offer"
-      ]
+      ],
+      "story": {
+        "scheme": "euro",
+        "additions": {
+          "light": "led-slot-sconce",
+          "siding": "board-batten",
+          "premium": "smoked-glass-garage"
+        },
+        "signature": "premium",
+        "goal": "A modern house that looks deliberate on every plane.",
+        "style": "Contemporary — a soft charcoal body, gray trim, metal and glass.",
+        "mood": "Crisp, architectural, quiet."
+      }
     },
     {
       "slug": "portola-springs",
@@ -717,13 +783,46 @@
         },
         "faq": {
           "h2": "Portola Springs Painting Questions — <span class=\"accent\">Association First</span>"
+        },
+        "reveal": {
+          "h2": "How to Replace a Builder Palette in Portola Springs in 30 Minutes — <span class=\"accent\">Starting With the House {They} Finished</span>",
+          "lead": "The ending first: {their} {place} house in {chosen}, with {additions}. Against warm roof tile and full inland sun, each choice was seen on the house before it was made.",
+          "why": {
+            "color": "Evergreen Fog sits naturally against the foothills; Shoji White keeps the trim warm beside the tile.",
+            "light": "Iron lanterns suit arched Mediterranean entries.",
+            "siding": "Stone at the base ties the house to the hillside it stands on.",
+            "premium": "A wood garage door softens the face of the house the street sees first."
+          }
+        },
+        "flashback": {
+          "eyebrow": "Before the Color",
+          "h2": "Why the Old Palette Stayed Up So Long: <span class=\"accent\">3 Doubts {They} Could Not Settle With a Sample</span>",
+          "lead": "Portola Springs steps up the foothills in Mediterranean and Spanish homes — arched entries, iron detail, tile roofs. The house a buyer moves into often still wears the palette it was built in.",
+          "chipLine": "Before anything changed",
+          "body": [
+            "{They} lived with colors they had never chosen for longer than they would like to admit.",
+            "Three doubts kept it that way. Whether a white would pick up the warmth of the roof tile and read almost peach by four o’clock. Whether a gray would go cold beside the stucco. And whether, after all the sample squares, they would still be paying for the job twice.",
+            "A sample pot could not settle any of the three. That is the honest reason the old palette lasted as long as it did."
+          ]
         }
       },
       "storyLayout": "E",
       "layoutOptions": [
         "eliminated",
         "beforeCommit"
-      ]
+      ],
+      "story": {
+        "scheme": "pacificsage",
+        "additions": {
+          "light": "iron-scroll-lantern",
+          "siding": "stacked-stone-veneer",
+          "premium": "walnut-wood-garage"
+        },
+        "signature": "light",
+        "goal": "Replace the palette the house was built in, without paying for it twice.",
+        "style": "Soft foothill — a sage-gray body, warm white trim, a golden accent.",
+        "mood": "Natural, quiet, at home against the hills."
+      }
     },
     {
       "slug": "hidden-canyon",
@@ -926,11 +1025,10 @@
           "duskLabel": "After Dark",
           "dusk": "Once the sun is off the canyon, what shows is the light you put on the house yourself — lanterns, sconces, the glow at the entry — falling on your color. A scheme chosen by day alone has never been tested there.",
           "chipLine": "Walking the property",
-          "scale": "{They} did the same walk on their own {place} property: the shaded side first, then the sunny one, then the whole front again after dark under their own fixtures. That is why, when they sat down with our design team, the lighting was settled before the color."
+          "scale": "{They} did the same walk on their own {place} property: the shaded side first, then the sunny one, then the whole front again after dark under their own fixtures. That is why, when they sat down with our design team, the lighting mattered as much as the color."
         },
         "viz": {
-          "h2": "Your Turn: Light a Hidden Canyon Estate First, <span class=\"accent\">Then Choose Its Color</span>",
-          "sub": "{They} made four decisions, lighting first — then color, texture and the garage door. On a canyon-edge estate the fixtures decide how the color reads once the sun has gone. Make all four on their house, before you make them on yours."
+          "h2": "Your Turn: Test a Hidden Canyon Color in Shade, Sun <span class=\"accent\">and After Dark</span>"
         },
         "specs": {
           "h2": "The Hidden Canyon <span class=\"accent\">Specification</span> — Materials &amp; Method in Writing"
@@ -955,13 +1053,44 @@
         },
         "faq": {
           "h2": "Hidden Canyon Estate Painting — <span class=\"accent\">Questions, Answered Discreetly</span>"
+        },
+        "reveal": {
+          "h2": "The Hidden Canyon Owner’s Guide to an Estate Color <span class=\"accent\">Seen Finished Before It Is Chosen</span>",
+          "lead": "The ending first: {their} {place} house in {chosen}, with {additions}. Smooth stucco hides nothing, and a canyon-edge lot shows a color in shade and sun at once — so each choice was seen on the whole house first.",
+          "why": {
+            "color": "Snowbound stays clean in shade without glaring in sun; Black Magic gives the trim a precise line.",
+            "light": "Slot sconces light the walls without competing with the architecture.",
+            "premium": "Limestone pillars carry the material already on many Hidden Canyon estates to the entry."
+          }
+        },
+        "flashback": {
+          "eyebrow": "Before the Color",
+          "h2": "The Careful Estate Owner’s Guide to Waiting: <span class=\"accent\">2 Lights {They} Could Not Test With a Sample</span>",
+          "lead": "Hidden Canyon estates are Mediterranean and contemporary — smooth-troweled stucco, limestone details, canyon-edge lots where one wall sits in shade while the next takes full afternoon sun.",
+          "chipLine": "Before anything changed",
+          "body": [
+            "{They} did what careful owners do: they waited until they could be sure.",
+            "Two lights made being sure impossible. By day, the same white read faintly gray on the shaded side and bright on the sunny one. After dark, only the light they put on the house themselves would show it at all. No sample board could stand in for either.",
+            "So the decision waited for a way to see the whole house in both lights — which is what the rest of this page is about."
+          ]
         }
       },
       "storyLayout": "F",
       "layoutOptions": [
         "neighbors",
         "warranty"
-      ]
+      ],
+      "story": {
+        "scheme": "riviera",
+        "additions": {
+          "light": "led-slot-sconce",
+          "premium": "limestone-pillars"
+        },
+        "signature": "premium",
+        "goal": "An estate color that holds together between canyon shade and full sun.",
+        "style": "Mediterranean-contemporary — a snow-white body, black trim, limestone.",
+        "mood": "Refined, quiet, assured."
+      }
     },
     {
       "slug": "woodbury",
@@ -1202,13 +1331,44 @@
         },
         "faq": {
           "h2": "Woodbury Painting Questions — <span class=\"accent\">Association Approval First</span>"
+        },
+        "reveal": {
+          "h2": "What Happens If You Paint Without HOA Approval? <span class=\"accent\">{They} Never Had to Find Out</span>",
+          "lead": "The ending first: {their} {place} house in {chosen}, with {additions}. In Woodbury, where the Woodbury Community Association reviews exterior color, a finished house starts with a submission the reviewer can actually read.",
+          "why": {
+            "color": "Balanced Beige suits Spanish Colonial and Tuscan stucco without leaning pink; Aesthetic White keeps the trim soft.",
+            "light": "Iron lanterns belong beside arched entries and garden walls.",
+            "premium": "A wood garage door warms the face of the house the paseo sees."
+          }
+        },
+        "flashback": {
+          "eyebrow": "Before the Submission",
+          "h2": "Before the Submission: <span class=\"accent\">3 Reasons {They} Sat on a Color for Years</span>",
+          "lead": "Woodbury is a walking village built around paseos and The Commons, so a house is seen from the side and the back as often as from the street — and a color change goes to design review before any crew is booked.",
+          "chipLine": "Before anything changed",
+          "body": [
+            "{They} knew the house needed color long before they did anything about it.",
+            "Three things kept the decision parked. The sample pots on the garage wall disagreed with each other at every hour of the day. A submission built on a chip number felt like asking permission for something they had not seen. And a mistake would be public, permanent and paid for twice.",
+            "So the pots stayed up and the house stayed the same. Waiting was not the problem. Having nothing better than a chip to decide with was."
+          ]
         }
       },
       "storyLayout": "E",
       "layoutOptions": [
         "eliminated",
         "services"
-      ]
+      ],
+      "story": {
+        "scheme": "ibiza",
+        "additions": {
+          "light": "iron-scroll-lantern",
+          "premium": "walnut-wood-garage"
+        },
+        "signature": "light",
+        "goal": "Approval on the first submission, and a color the paseo neighbors would admire.",
+        "style": "Spanish Colonial warmth — a balanced beige body with soft white trim.",
+        "mood": "Warm, garden-village calm."
+      }
     },
     {
       "slug": "stonegate",
@@ -1450,13 +1610,44 @@
         },
         "faq": {
           "h2": "Stonegate Painting Questions — <span class=\"accent\">Starting With the Association</span>"
+        },
+        "reveal": {
+          "h2": "HOA-Approved Paint Colors Are a Shortlist, Not an Answer: <span class=\"accent\">The Stonegate House {They} Chose From {schemes}</span>",
+          "lead": "The ending first: {their} {place} house in {chosen}, with {additions}. An approved list tells you what the association has accepted before. It does not tell you which of those colors will look right on your house — that took seeing every scheme on it.",
+          "why": {
+            "color": "Alabaster with Tricorn Black is the classic Santa Barbara pairing; the terracotta accent answers the roof tile.",
+            "light": "Coach pendants suit a classic entry on a tight streetscape.",
+            "siding": "Stacked stone at the base gives a warm white body a grounded edge."
+          }
+        },
+        "flashback": {
+          "eyebrow": "Before the Color",
+          "h2": "Stonegate Exterior House Painting, Put Off: <span class=\"accent\">The 3 Things {They} Feared Getting Wrong</span>",
+          "lead": "Stonegate’s streets are close-set and immaculate, around Stonegate Park and the Jeffrey Open Space Trail. On a street like that, everyone sees the color you choose.",
+          "chipLine": "Before anything changed",
+          "body": [
+            "{They} meant to repaint for a long time. Every time they got close, three worries pushed it back.",
+            "The first was the street: on a close-set block, a wrong color is the first thing a neighbor sees. The second was the price, because a repaint done twice costs the whole job again. The third was the association, and a submission built on nothing more than a chip number.",
+            "None of those worries was unreasonable. Each one came from the same gap — no way to see the finished house before paying for it."
+          ]
         }
       },
       "storyLayout": "E",
       "layoutOptions": [
         "beforeCommit",
         "services"
-      ]
+      ],
+      "story": {
+        "scheme": "spanish",
+        "additions": {
+          "light": "bronze-coach-pendant",
+          "siding": "stacked-stone-veneer"
+        },
+        "signature": "siding",
+        "goal": "A Santa Barbara color that passes review and looks right on a close-set street.",
+        "style": "Santa Barbara classic — a warm white body, near-black trim, a terracotta accent.",
+        "mood": "Immaculate and unmistakably finished."
+      }
     },
     {
       "city": "anaheim",
@@ -1561,11 +1752,10 @@
           "noon": "Across open ground the house is judged from two hundred feet, not twenty. The body color carries almost the whole impression and the trim reads as detail. A white that looks calm on a chip can glare across a long, sunlit wall.",
           "dusk": "When the sun goes, nothing on the road lights the house for you. What anyone sees after dark is your own exterior lighting on your own color, with nothing in between.",
           "chipLine": "Walking the property",
-          "scale": "{They} did the same walk on their own {place} property: the whole front from the far end of the drive at midday, then again under their own fixtures after dark. Two walks, two very different houses — which is why, when they sat down with our design team, the lighting was settled before the color."
+          "scale": "{They} did the same walk on their own {place} property: the whole front from the far end of the drive at midday, then again under their own fixtures after dark. Two walks, two very different houses — which is why, when they sat down with our design team, the lighting mattered as much as the color."
         },
         "viz": {
-          "h2": "Your Turn: Light a Peralta Hills House First, <span class=\"accent\">Then Choose Its Color</span>",
-          "sub": "{They} made four decisions, lighting first — then color, texture and the garage door. On a road with no streetlights, the fixtures decide which colors survive the dark. Make all four on their house, before you make them on yours."
+          "h2": "Your Turn: See a Peralta Hills Color by Day — <span class=\"accent\">Then Under the Lights You Choose</span>"
         },
         "palette": {
           "eyebrow": "The Designer Palette",
@@ -1575,7 +1765,7 @@
         "proof": {
           "eyebrow": "Our Work in Peralta Hills",
           "h2": "One House, Start to Finish: <span class=\"accent\">What a Peralta Hills Owner Sees First</span>",
-          "lead": "The frame below is {their} {place} house, before and in the scheme they chose. A Peralta Hills estate goes through the same sequence: the lighting settled, every scheme seen on the house, and only then paint.",
+          "lead": "The frame below is {their} {place} house, before and in the scheme they chose. A Peralta Hills estate goes through the same sequence: every scheme seen on the house, the lighting chosen to match it, and only then paint.",
           "family": {
             "tag": "Custom Visualization",
             "headline": "{They}: the house before, and in {chosen}",
@@ -1601,7 +1791,40 @@
             "{They} walked their house at noon and after dark, settled the lighting, and then saw {schemes} complete color schemes on the house before anyone opened a can.",
             "A Peralta Hills estate is seen from across an acre by day and only by its own light at night. One photo of the front of the house is all the consultation asks, and it is complimentary, with the itemized estimate included."
           ]
+        },
+        "reveal": {
+          "h2": "What Does Your House Look Like on a Road With No Streetlights? <span class=\"accent\">{They} Saw It Finished First</span>",
+          "lead": "The ending first: {their} {place} house in {chosen}, with {additions}. Where the only light on a house after dark is the light its owner installs, the lighting carries as much of the result as the color does.",
+          "why": {
+            "color": "One warm taupe reads as a whole from across open ground, where trim detail is lost at distance.",
+            "light": "Coach pendants give the house its own warm light on a road that has none.",
+            "siding": "Stone at the base grounds a large house on a large lot.",
+            "premium": "Wood warms the garage, the surface the drive faces head-on."
+          }
+        },
+        "flashback": {
+          "eyebrow": "Before the Color",
+          "h2": "Why an Estate Repaint Waits for Years: <span class=\"accent\">The 3 Questions {They} Could Not Answer With a Chip</span>",
+          "lead": "Peralta Hills was laid out to feel semi-rural: one-acre minimum lots, equestrian allowances, and no streetlights, curbs or gutters, by design. Each of those changes the question a color has to answer.",
+          "chipLine": "Before anything changed",
+          "body": [
+            "{They} let the decision sit for years, and three questions were the reason.",
+            "How would the body color read from far down the drive, where trim becomes detail? What would the house look like after dark, lit only by its own fixtures? And how could a two-foot sample answer either question for a house that size?",
+            "It could not. So the house waited — until there was a way to see it whole, by day and by night, before anything was painted."
+          ]
         }
+      },
+      "story": {
+        "scheme": "resort",
+        "additions": {
+          "light": "bronze-coach-pendant",
+          "siding": "stacked-stone-veneer",
+          "premium": "walnut-wood-garage"
+        },
+        "signature": "light",
+        "goal": "An estate color that reads across an acre by day and by its own light at night.",
+        "style": "Warm estate monochrome — one soft taupe, bronze-toned accents, stone.",
+        "mood": "Grand, warm, unhurried."
       }
     },
     {
@@ -1771,7 +1994,40 @@
             "{They} nearly refreshed the colors they already had. What changed their mind was seeing {schemes} complete schemes on the house itself, ruling out ten, and only then opening a can.",
             "In Summit Pointe a house is seen from far away and for years. One photo of the front of yours is all the consultation asks, and it is complimentary, with the itemized estimate included."
           ]
+        },
+        "reveal": {
+          "h2": "Does a Color Change Cost More Than a Refresh? <span class=\"accent\">In Summit Pointe, Almost Exactly the Same</span>",
+          "lead": "The ending first: {their} {place} house in {chosen}, with {additions}. Seen from a distance — the way so many Summit Pointe homes are seen, across 180 degrees of hillside — the old palette turned out to be the riskier choice, not the new color.",
+          "why": {
+            "color": "Sea Salt keeps the house light and readable at distance; bright trim gives the outline a clean edge.",
+            "light": "Slot sconces mark the entry without adding ornament to a simple front.",
+            "siding": "Cedar shake adds texture where a builder-era wall was flat.",
+            "premium": "Smoked glass updates the surface most visible from the street."
+          }
+        },
+        "flashback": {
+          "eyebrow": "Before the Color",
+          "h2": "Still Wearing the Builder’s Choice? <span class=\"accent\">The 3 Reasons {They} Kept It as Long as They Did</span>",
+          "lead": "Summit Pointe was built in 1991, and much of the street still wears the palette the builder picked. A repaint that simply refreshes it costs almost exactly what a change does — which makes the wait worth understanding.",
+          "chipLine": "Before anything changed",
+          "body": [
+            "{Their} house wore its original colors long after anyone loved them. Keeping them felt safe.",
+            "Three things made it feel that way. A refresh needed no decision. A change meant choosing from a fan deck with no way to see the result. And with homes seen from well beyond their own street, a wrong color would not stay a private mistake.",
+            "So the builder’s choice stayed, year after year. Not because it was right — because nothing showed them what right would look like until the brush was already loaded."
+          ]
         }
+      },
+      "story": {
+        "scheme": "marinelayer",
+        "additions": {
+          "light": "led-slot-sconce",
+          "siding": "cedar-shake",
+          "premium": "smoked-glass-garage"
+        },
+        "signature": "siding",
+        "goal": "Retire a tired builder palette for a color chosen on purpose.",
+        "style": "Airy — a sea-salt green-gray body with bright white trim.",
+        "mood": "Fresh and light, readable from across the hillside."
       }
     },
     {
@@ -1882,11 +2138,10 @@
           "duskLabel": "After Dark",
           "dusk": "When the city lights come on below, the house is seen by its own fixtures instead. A color is being judged across a much wider range of conditions than on a flat inland street, and a chip chosen indoors was never tested in any of them.",
           "chipLine": "Walking the street",
-          "scale": "{They} did the same walk at their own {place} house: the front at midday, then again under their own fixtures after dark. Two very different houses — which is why the lighting was settled before the color when they sat down with our design team."
+          "scale": "{They} did the same walk at their own {place} house: the front at midday, then again under their own fixtures after dark. Two very different houses — which is why the lighting mattered as much as the color when they sat down with our design team."
         },
         "viz": {
-          "h2": "Your Turn: Light a Belsomet Home First, <span class=\"accent\">Then Choose Its Color</span>",
-          "sub": "{They} made four decisions, lighting first — then color, texture and the garage door. On a street that is seen after dark by its own fixtures, the lighting decides which colors hold up. Make all four on their house, before you make them on yours."
+          "h2": "Your Turn: Try a Belsomet Color by Canyon Light, <span class=\"accent\">Then Under Your Own Fixtures</span>"
         },
         "specs": {
           "h2": "The Belsomet <span class=\"accent\">Specification</span>, Written Into Every Estimate"
@@ -1930,7 +2185,38 @@
             "{They} walked their house by day and after dark, settled the lighting, and then saw {schemes} complete color schemes on the house before anyone opened a can.",
             "In Belsomet the whole street sees the result. One photo of the front of your house is all the consultation asks, and it is complimentary, with the itemized estimate included."
           ]
+        },
+        "reveal": {
+          "h2": "Can a Bold Color Work on a Close-Set Belsomet Street? <span class=\"accent\">The House {They} Saw Finished Before Saying Yes</span>",
+          "lead": "The ending first: {their} {place} house in {chosen}, with {additions}. A dark scheme is the hardest one to imagine from a chip — and the one that most needs to be seen whole, by day and after dark, before it goes on.",
+          "why": {
+            "color": "Iron Ore is deep without going flat; Tricorn Black sharpens the outline; the steel accent keeps it from reading heavy.",
+            "light": "Slot sconces lift a dark wall at night without fussy fixtures.",
+            "siding": "Board and batten adds vertical texture so a dark body never reads as a slab."
+          }
+        },
+        "flashback": {
+          "eyebrow": "Before the Color",
+          "h2": "The 3 Worries That Kept {They} From Repainting — <span class=\"accent\">Each Sharper on a Close-Set Street</span>",
+          "lead": "Belsomet is around a hundred homes behind the gate, on Bridgewood Drive and the courts and circles off it, with parcels close together and canyon and city-light views.",
+          "chipLine": "Before anything changed",
+          "body": [
+            "{They} wanted something bolder than the house had ever been, and that is exactly what made them wait.",
+            "Three worries stood in the way. A dark color might look heavy beside the house next door. It might read one way by canyon light and another under the lights after dark. And if it was wrong, the fix would be the whole job, in front of every neighbor on the street.",
+            "On a street this close, each of those worries is reasonable. What they needed was a way to see the bold version on their own house before committing to it."
+          ]
         }
+      },
+      "story": {
+        "scheme": "obsidian",
+        "additions": {
+          "light": "led-slot-sconce",
+          "siding": "board-batten"
+        },
+        "signature": "light",
+        "goal": "A bold, certain color that a hundred close neighbors would read as deliberate.",
+        "style": "Modern dark — an iron-ore body, black trim, a steel accent.",
+        "mood": "Bold and certain; striking under the city lights."
       }
     },
     {
@@ -2106,7 +2392,38 @@
             "{They} were one signature away from painting their house twice. What stopped it was seeing {schemes} complete schemes on the house itself, ruling out ten, and only then opening a can.",
             "On a street as small as Crown Pointe, the whole community sees the result. One photo of the front of your house is all the consultation asks, and it is complimentary, with the itemized estimate included."
           ]
+        },
+        "reveal": {
+          "h2": "The Crown Pointe Homeowner’s Guide to a New Exterior Color <span class=\"accent\">Every Neighbor Reads as Deliberate</span>",
+          "lead": "The ending first: {their} {place} house in {chosen}, with {additions}. On a private street of sixteen homes, the test is not whether people notice — they will — but whether what they notice looks chosen.",
+          "why": {
+            "color": "Repose Gray reads composed rather than loud; Pure White keeps the trim crisp; the dark accent gives the door weight.",
+            "light": "Coach pendants frame the entry the way a classic house expects.",
+            "premium": "A wood garage door softens the surface closest to the street."
+          }
+        },
+        "flashback": {
+          "eyebrow": "Before the Color",
+          "h2": "Before {They} Changed a Thing: <span class=\"accent\">2 Fears About Painting on a Street This Small</span>",
+          "lead": "Crown Pointe is sixteen homes on S Crown Pointe Drive — small enough that every owner knows every house, and small enough that one repaint resets the standard for the whole street.",
+          "chipLine": "Before anything changed",
+          "body": [
+            "{They} put the repaint off for years, and the reasons were not about money.",
+            "The first fear was being the house that got it wrong, in full view of everyone who drives past it every day. The second was permanence: a color that disappoints is not a touch-up, it is the whole job again.",
+            "Both fears are sharper on a street as small as this one. There is no anonymous corner to hide a mistake, which is exactly why the decision deserved more than a chip held against the wall."
+          ]
         }
+      },
+      "story": {
+        "scheme": "admiral",
+        "additions": {
+          "light": "bronze-coach-pendant",
+          "premium": "walnut-wood-garage"
+        },
+        "signature": "light",
+        "goal": "A new color sixteen neighbors would read as deliberate.",
+        "style": "Quiet classic — a warm gray body, crisp white trim, a near-black door.",
+        "mood": "Composed and understated."
       }
     }
   ]

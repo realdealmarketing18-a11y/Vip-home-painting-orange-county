@@ -433,7 +433,29 @@
             "This page started at the end: {their} house finished, in {chosen}. Everything after it was how they got there — years of waiting, a list of careful steps that never showed the whole house, and {schemes} schemes on one photo that settled it.",
             "In Irvine the same half hour does one more job: it gives you colors named in exact Sherwin-Williams numbers to put in front of your association. One photo of the front of your house is all it asks, and it is complimentary, with the itemized estimate included."
           ]
+        },
+        "reveal": {
+          "h2": "How to Choose Exterior Paint Colors for an Irvine Home in 30 Minutes — <span class=\"accent\">Starting With the Finished House</span>",
+          "lead": "This is the ending first: {their} {place} house in {chosen}, with {additions}. Every choice below was seen on the house before it was made. Then the page goes back to the years before it.",
+          "why": {
+            "color": "Alabaster stays a soft white without leaning yellow; Urbane Bronze gives the trim weight.",
+            "light": "Warm pendants that read against bronze trim once the sun is down.",
+            "siding": "Stone at the base, so a soft white body has something to stand on.",
+            "premium": "Wood on the garage door warms the widest flat surface facing the street."
+          }
         }
+      },
+      "story": {
+        "scheme": "organic",
+        "additions": {
+          "light": "bronze-coach-pendant",
+          "siding": "stacked-stone-veneer",
+          "premium": "walnut-wood-garage"
+        },
+        "signature": "premium",
+        "goal": "A house that finally looked chosen, not inherited.",
+        "style": "Warm transitional — a soft white body, bronze trim, natural wood and stone.",
+        "mood": "Calm and settled; warm without tipping yellow."
       }
     },
     {
@@ -640,7 +662,40 @@
             "{They} did not beat the light with a better chip. They saw {schemes} complete schemes on their own house, ruled out ten, and only then did anyone open a can.",
             "VIP Home Painting is based here, on the same streets. One photo of the front of your house is all the consultation asks, and it is complimentary, with the itemized estimate included."
           ]
+        },
+        "reveal": {
+          "h2": "Avoid a Color That Turns Brassy by 2 O’Clock — <span class=\"accent\">Anaheim House Painting That Held Its Warmth</span>",
+          "lead": "The ending first: {their} {place} house in {chosen}, with {additions}. Each choice was judged against the kind of light that turns a warm white brassy on an open Anaheim Hills slope — before it was made.",
+          "why": {
+            "color": "Accessible Beige reads warm without the yellow lean a bright white takes on in hard sun.",
+            "light": "Iron lanterns give the entry a warm point of light once the slope goes dark.",
+            "siding": "Board and batten breaks up a long sunlit wall, so the beige reads as texture rather than a flat plane.",
+            "premium": "Wood warms the one surface that faces the street squarely."
+          }
+        },
+        "flashback": {
+          "eyebrow": "Before the Color",
+          "h2": "Home Exterior Color Mistakes: <span class=\"accent\">The 3 That Kept {They} Waiting</span> — and Why Anaheim Light Exposes Them",
+          "lead": "Anaheim Hills sits above the basin on open, largely unshaded slopes. The mistakes careful owners fear are the same everywhere. Up here, the afternoon simply exposes them sooner.",
+          "chipLine": "Before anything changed",
+          "body": [
+            "For years {their} house stayed the color it was. They knew it looked tired. They also knew three ways a repaint goes wrong, and each one kept the decision on hold.",
+            "The first was the undertone: a warm white that looks right on a card and leans yellow once it covers a whole wall in hard sun. The second was scale, because a two-foot sample patch says nothing about a whole house. The third was permanence. Get it wrong, and the fix is the whole job a second time.",
+            "So the samples stayed up and the house stayed the same. On a west-facing Anaheim Hills wall, where a warm white can go brassy by two in the afternoon, that hesitation is not indecision. It is good sense waiting for a better way to decide."
+          ]
         }
+      },
+      "story": {
+        "scheme": "pebblebeach",
+        "additions": {
+          "light": "iron-scroll-lantern",
+          "siding": "board-batten",
+          "premium": "walnut-wood-garage"
+        },
+        "signature": "light",
+        "goal": "A warm color that stays warm — not brassy — in hard afternoon sun.",
+        "style": "Soft beige body, warm off-white trim, a gray-stone accent.",
+        "mood": "Warm, settled, unbothered by the light."
       }
     }
   ]

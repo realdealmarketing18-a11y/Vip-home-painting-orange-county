@@ -4,6 +4,47 @@ Written for a developer with zero context. Everything below is real paths / real
 
 ---
 
+## 0a. LATEST — The Reveal opens every page (2026-10-01, same branch)
+
+Fabian's follow-up: every city and community page starts with **The Reveal**, then tells its
+own story; the visualizer steps stay in the same order everywhere; what changes per page is the
+homeowner's color scheme and additions, matched to the goal, style and mood they wanted.
+
+- **Every layout now opens hero → The Reveal → flashback.** The Reveal shows the finished house
+  (slider: before vs. the scheme plus their signature addition) and what they chose at each
+  visualizer step, with a one-line reason per choice and their goal / style / mood. The
+  flashback (years in the old color, why they waited) now exists on all 12 pages, not just Irvine.
+  The rest of each page keeps its layout's own story (Villain, Near-Miss, Approval, Dusk Walk).
+- **Visualizer steps are back in the standard order on every page** (Color → Lighting → Texture →
+  Finishing → Your Home). The Layout F reordering was removed; `verify-layouts.js` now fails a page
+  whose steps are out of order or whose story does not open with The Reveal.
+- **Each page's homeowner chose a different scheme and additions** (the `story` block):
+  Irvine & Orchard Hills — Coastal Organic Compound · Anaheim — Pebble Beach Manor · Altair —
+  Euro-Industrial Estate · Crown Pointe — Newport Admiral · Summit Pointe — Marine Layer ·
+  Woodbury — Ibiza Luxury Villa · Stonegate — Santa Barbara Luxe · Portola Springs — Pacific Sage
+  Estate · Hidden Canyon — Riviera Tuxedo · Peralta Hills — Beverly Hills Resort · Belsomet —
+  Obsidian Monolith. Chosen to fit each community's researched architecture and palette
+  (`research/*/05-communities.md`). The hero reel and schemes band end on that page's scheme.
+- **Headlines**: every Reveal and flashback H2 uses a Part A/B formula, an allowed number where it
+  fits, and the page keyword or a researched question — e.g. "How to Choose Exterior Paint Colors
+  for an Irvine Home in 30 Minutes", "What Happens If You Paint Without HOA Approval?" (Woodbury),
+  "HOA-Approved Paint Colors Are a Shortlist, Not an Answer" (Stonegate), "Home Exterior Color
+  Mistakes" (Anaheim).
+
+**Judgment calls**
+1. **The Gallaghers stay the placeholder family on every page, but each page shows a different
+   chosen scheme.** Their real choice (Coastal Organic Compound) is on the Irvine hub and Orchard
+   Hills only. On the other ten pages the scheme, additions, goal, style and mood are placeholders
+   standing in for that community's future client, fenced SWAP:CLIENT. Swapping the family is the
+   same one `story` block.
+2. **Schema unchanged.** Structured data is built from the record without the story scheme, so it
+   still describes the Gallaghers' real Coastal Organic Compound render on every page.
+3. **The offer's package gallery** (Altair, Crown Pointe and the four Approval pages) still opens on
+   Coastal Organic Compound — it is the master's 11-render gallery and its script is shared. The
+   chosen scheme leads everywhere else on the page.
+4. Twelve pages, eleven schemes: Orchard Hills repeats the Irvine hub's scheme because its own
+   researched palette (Alabaster, Urbane Bronze, stone) is exactly that scheme. Its additions differ.
+
 ## 0. LATEST — Story-layout restructure (2026-09-30, branch `layout-restructure`)
 
 One-time unattended run. **Not merged, not published.** Nothing in WordPress was
