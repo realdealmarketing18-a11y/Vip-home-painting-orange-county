@@ -117,3 +117,9 @@ node generator/verify-layouts.js  # opens with The Reveal, steps in standard ord
                                   # Visualized before Painted, SWAP markers balanced
 node generator/swap-checklist.js  # refresh docs/SWAP-CHECKLIST.md
 ```
+
+## The full workflow
+
+The end-to-end sales page + ad workflow — which files to create at each stage, who owns
+each stage, and how the ads are cut from the same story — is the `vip-sales-funnel`
+skill: `generator/skills/vip-sales-funnel/SKILL.md` and its `references/` templates.
