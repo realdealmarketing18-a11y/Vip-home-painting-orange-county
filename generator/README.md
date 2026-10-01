@@ -23,6 +23,8 @@ Outputs (all committed to the repo — GitHub Pages serves them as-is):
 | `communities.json` | All per-community content: SEO title/meta/H1, answer capsule, localized copy, extra SW colors, problem/solution items, and the module order. `config` holds site base URL, phone, and paths. |
 | `page.css` | Design system extracted from `orange-county-sales-page/index.html` (tokens, topbar, hero, footer) plus the five module styles. Inlined into every page. |
 | `generate.js` | Templates + build. Validates data, assembles pages, writes output. |
+| `story-layouts.js` | The five story layouts (B–F). A page with `storyLayout` in its record renders its sections in that layout's order, with SWAP placeholder markers. **Read `LAYOUTS.md`.** |
+| `verify-layouts.js` · `swap-checklist.js` | Layout gate, and the builder of `docs/SWAP-CHECKLIST.md`. |
 
 ## Architecture rules
 

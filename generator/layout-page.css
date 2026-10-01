@@ -1,0 +1,66 @@
+/* ============================================================
+   STORY-LAYOUT PAGES ONLY (storyLayout B–F) — see story-layouts.js.
+   Loaded after page.css / city-page.css, and only on layout pages, so
+   no other page changes. Colours come only from the brand tokens the
+   generated pages carry (--navy, --gold, --gold-deep, --gold-bright,
+   --cream …, from design-system/); shadows are navy-based, never black.
+   ============================================================ */
+
+/* Hero: the layout's story line under the H1 */
+.hero-cinema .hero-deck {
+  font-family: var(--font-serif); font-style: italic; font-weight: 400;
+  font-size: clamp(17px, 2.1vw, 22px); line-height: 1.3;
+  color: var(--gold-bright); max-width: 720px; margin: 14px auto 0; text-align: center;
+}
+
+/* Flashback / dusk walk: a single column of story prose under the chip */
+.lx-story { max-width: 760px; margin: 0 auto; }
+.lx-story .pill-wrap { margin-bottom: 18px; }
+.lx-story .body { font-size: 17px; line-height: 1.65; margin: 0 0 16px; color: var(--navy); }
+
+/* Timeline: day label above each step title, and the honesty note */
+.lx-day { font-family: var(--font-sans); font-weight: 700; font-size: 10.5px;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-deep); margin: 4px 0 6px; }
+.lx-note { max-width: 760px; margin: 36px auto 0; text-align: center;
+  font-family: var(--font-serif); font-style: italic; font-size: 15px; line-height: 1.5; color: var(--gold-deep); }
+
+/* Near-miss No. 1: the family's card leads the grid */
+.ps-card.lx-near { border: 1.5px solid var(--gold); box-shadow: 0 10px 26px rgba(26,31,78,0.12); }
+
+/* Palette: every colour as a three-can set */
+.lx-can-card .lx-cans { display: flex; justify-content: center; gap: 10px; padding: 22px 16px 6px; }
+.lx-can-card .paint-can { width: 58px; height: 58px; }
+.lx-can-card .lx-with { font-style: italic; }
+
+/* Proof */
+.lx-proof-lead { max-width: 720px; margin: 14px auto 0; text-align: center; }
+.cases-grid.lx-single { grid-template-columns: minmax(0, 620px); justify-content: center; }
+
+@media (max-width: 860px) {
+  .cases-grid { grid-template-columns: 1fr; }
+  .cases-grid.lx-single { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .lx-can-card .paint-can { width: 48px; height: 48px; }
+  .lx-story .body { font-size: 16px; }
+}
+
+/* The Reveal: the finished house beside what they chose at each step */
+.lx-reveal { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: start; max-width: 1180px; margin: 0 auto; }
+.lx-reveal .lx-reveal-frame { aspect-ratio: 4 / 3; margin: 0; }
+.lx-spec { margin: 0; grid-template-columns: 1fr; }
+.lx-spec .spec-v { display: block; }
+.lx-spec-cans { margin-right: 6px; vertical-align: middle; }
+.lx-spec-cans .paint-can { width: 22px; height: 22px; }
+.lx-why { display: block; font-family: var(--font-serif); font-style: italic; font-weight: 400;
+  font-size: 14px; line-height: 1.45; color: var(--gold-deep); margin-top: 4px; letter-spacing: 0; text-transform: none; }
+.lx-gsm { list-style: none; padding: 0; margin: 32px auto 0; max-width: 1180px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.lx-gsm li { background: #fff; border: 1px solid rgba(168,138,71,0.30); padding: 16px 18px;
+  font-family: var(--font-serif); font-size: 15.5px; line-height: 1.45; color: var(--navy); }
+.lx-gsm b { display: block; font-family: var(--font-sans); font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 6px; }
+@media (max-width: 860px) {
+  .lx-reveal { grid-template-columns: 1fr; }
+  .lx-gsm { grid-template-columns: 1fr; }
+}

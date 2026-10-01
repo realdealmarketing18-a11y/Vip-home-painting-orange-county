@@ -4052,6 +4052,73 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   .film-close { top: 12px; right: 12px; padding: 9px 14px; }
 }
 
+/* ============================================================
+   STORY-LAYOUT PAGES ONLY (storyLayout B–F) — see story-layouts.js.
+   Loaded after page.css / city-page.css, and only on layout pages, so
+   no other page changes. Colours come only from the brand tokens the
+   generated pages carry (--navy, --gold, --gold-deep, --gold-bright,
+   --cream …, from design-system/); shadows are navy-based, never black.
+   ============================================================ */
+
+/* Hero: the layout's story line under the H1 */
+.hero-cinema .hero-deck {
+  font-family: var(--font-serif); font-style: italic; font-weight: 400;
+  font-size: clamp(17px, 2.1vw, 22px); line-height: 1.3;
+  color: var(--gold-bright); max-width: 720px; margin: 14px auto 0; text-align: center;
+}
+
+/* Flashback / dusk walk: a single column of story prose under the chip */
+.lx-story { max-width: 760px; margin: 0 auto; }
+.lx-story .pill-wrap { margin-bottom: 18px; }
+.lx-story .body { font-size: 17px; line-height: 1.65; margin: 0 0 16px; color: var(--navy); }
+
+/* Timeline: day label above each step title, and the honesty note */
+.lx-day { font-family: var(--font-sans); font-weight: 700; font-size: 10.5px;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-deep); margin: 4px 0 6px; }
+.lx-note { max-width: 760px; margin: 36px auto 0; text-align: center;
+  font-family: var(--font-serif); font-style: italic; font-size: 15px; line-height: 1.5; color: var(--gold-deep); }
+
+/* Near-miss No. 1: the family's card leads the grid */
+.ps-card.lx-near { border: 1.5px solid var(--gold); box-shadow: 0 10px 26px rgba(26,31,78,0.12); }
+
+/* Palette: every colour as a three-can set */
+.lx-can-card .lx-cans { display: flex; justify-content: center; gap: 10px; padding: 22px 16px 6px; }
+.lx-can-card .paint-can { width: 58px; height: 58px; }
+.lx-can-card .lx-with { font-style: italic; }
+
+/* Proof */
+.lx-proof-lead { max-width: 720px; margin: 14px auto 0; text-align: center; }
+.cases-grid.lx-single { grid-template-columns: minmax(0, 620px); justify-content: center; }
+
+@media (max-width: 860px) {
+  .cases-grid { grid-template-columns: 1fr; }
+  .cases-grid.lx-single { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .lx-can-card .paint-can { width: 48px; height: 48px; }
+  .lx-story .body { font-size: 16px; }
+}
+
+/* The Reveal: the finished house beside what they chose at each step */
+.lx-reveal { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: start; max-width: 1180px; margin: 0 auto; }
+.lx-reveal .lx-reveal-frame { aspect-ratio: 4 / 3; margin: 0; }
+.lx-spec { margin: 0; grid-template-columns: 1fr; }
+.lx-spec .spec-v { display: block; }
+.lx-spec-cans { margin-right: 6px; vertical-align: middle; }
+.lx-spec-cans .paint-can { width: 22px; height: 22px; }
+.lx-why { display: block; font-family: var(--font-serif); font-style: italic; font-weight: 400;
+  font-size: 14px; line-height: 1.45; color: var(--gold-deep); margin-top: 4px; letter-spacing: 0; text-transform: none; }
+.lx-gsm { list-style: none; padding: 0; margin: 32px auto 0; max-width: 1180px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.lx-gsm li { background: #fff; border: 1px solid rgba(168,138,71,0.30); padding: 16px 18px;
+  font-family: var(--font-serif); font-size: 15.5px; line-height: 1.45; color: var(--navy); }
+.lx-gsm b { display: block; font-family: var(--font-sans); font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 6px; }
+@media (max-width: 860px) {
+  .lx-reveal { grid-template-columns: 1fr; }
+  .lx-gsm { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 <body>
@@ -4105,27 +4172,39 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   <!-- ============ HERO — unified cinematic style, static image ============ -->
   
-  <section class="hero hero-cinema hero-story" id="hero">
-    <div class="hero-photo" style="background-image:url('../../orange-county-sales-page/video/hero-poster.jpg');"></div>
+  <section class="hero hero-cinema" id="hero" data-story>
+    <div class="hero-photo" style="background-image:url('../../orange-county-sales-page/video/hero-poster.jpg')"></div>
     <div class="hero-scrim"></div>
     <div class="hero-goldframe" aria-hidden="true"></div>
 
-    <div class="hero-stack">
+    <div class="hero-stack" id="heroStack">
       <div class="hero-fleuron" aria-hidden="true">&#10087;</div>
-      <div class="eyebrow eyebrow-ruled">Crown Pointe</div>
-      <h1 class="ttl-hero">Sixteen Homes in the Whole Community. Everyone Will See It.</h1>
-      <div class="hero-kicker eyebrow-ruled">Which is a good reason to look at the color on your own house before anyone else does.</div>
-
+      <div class="eyebrow eyebrow-ruled">Crown Pointe · Anaheim</div>
       
-
-
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=crown-pointe] › story (family, avatar, location) --><div class="pill-wrap pill-wrap-lede">
+        <div class="avatar-pill"><div class="ph"><img src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"/></div>
+          <div><div class="name">The Gallagher Family</div>
+          <div class="sub-line">Pelican Hill, Newport Beach</div></div></div>
+      </div>
+  <!-- /SWAP:CLIENT -->
+      <h1 class="ttl-hero">Sixteen Homes in the Whole Community. Everyone Will See It.</h1>
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=crown-pointe] › master.hero.deck -->
+      <p class="hero-deck">Sixteen homes, and every owner knows every house. The Gallaghers were one signature away from painting theirs twice — and on a street this small, everyone would have seen it.</p>
+  <!-- /SWAP:CLIENT -->
+      <ol class="hero-beats">
+        <li><span class="n">1</span><span class="t"><span class="w">They</span> visualized it</span></li>
+        <li><span class="n">2</span><span class="t"><span class="w">They</span> loved it</span></li>
+        <li><span class="n">3</span><span class="t"><span class="w">We</span> painted it</span></li>
+      </ol>
       <figure class="hr-inset">
         <div class="hr-plate" id="hrPlate" data-hold="1100" data-dur="2600">
-          <div class="hr-before" id="hrBefore" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
-          <div class="hr-cand" data-nm="Riviera Tuxedo" data-co="Snowbound SW 7004 &middot; Black Magic SW 6991" data-sw="#EDEAE4" data-trim="#2A2A2C" data-accent="#3B3B3E" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-riviera.jpg')"></div>
-          <div class="hr-cand" data-nm="Euro-Industrial Estate" data-co="Peppercorn SW 7674 &middot; Cityscape SW 7067" data-sw="#5E5A57" data-trim="#9A9C98" data-accent="#7E8285" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-euro.jpg')"></div>
-          <div class="hr-cand" data-nm="Newport Admiral" data-co="Repose Gray SW 7015 &middot; Pure White SW 7005" data-sw="#C9C6C0" data-trim="#F0EFE9" data-accent="#2F2F30" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-admiral.jpg')"></div>
-          <div class="hr-cand final" data-nm="Coastal Organic Compound" data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048" data-sw="#EDE8DC" data-trim="#54504A" data-accent="#9C7B53" data-chosen="1" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-organic.jpg')"></div>
+          <div class="hr-before" id="hrBefore" role="img" aria-label="The Gallaghers’ Newport Beach home before repainting." style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
+
+          <div class="hr-cand" data-nm="Riviera Tuxedo" data-co="Snowbound SW 7004 &middot; Black Magic SW 6991" data-sw="#EDEAE4" data-trim="#2A2A2C" data-accent="#3B3B3E" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-riviera.jpg')" role="img" aria-label="Newport Beach home exterior rendered in Riviera Tuxedo — Snowbound SW 7004 with Black Magic SW 6991 trim."></div>
+          <div class="hr-cand" data-nm="Euro-Industrial Estate" data-co="Peppercorn SW 7674 &middot; Cityscape SW 7067" data-sw="#5E5A57" data-trim="#9A9C98" data-accent="#7E8285" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-euro.jpg')" role="img" aria-label="Newport Beach home exterior rendered in Euro-Industrial Estate — Peppercorn SW 7674 with Cityscape SW 7067 trim."></div>
+          <div class="hr-cand" data-nm="Coastal Organic Compound" data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048" data-sw="#EDEAE0" data-trim="#54504A" data-accent="#9C7B53" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-organic.jpg')" role="img" aria-label="Newport Beach home exterior rendered in Newport Admiral — Repose Gray SW 7015 with Pure White SW 7005 trim."></div>
+          <div class="hr-cand final" data-nm="Newport Admiral" data-co="Repose Gray SW 7015 &middot; Pure White SW 7005" data-sw="#CCC9C0" data-trim="#F0EFE9" data-accent="#2F2F30" data-chosen="1" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-admiral.jpg')" role="img" aria-label="Newport Beach home exterior rendered in Newport Admiral — Repose Gray SW 7015 with Pure White SW 7005."></div>
+
           <div class="hr-grab" id="hrGrab"></div>
           <div class="hr-seam" id="hrSeam">
             <span class="hr-knob">
@@ -4145,29 +4224,24 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           </div>
           <span class="hr-counter" id="hrCt"></span>
         </div>
+
+        <figcaption class="hr-caption">
+          <img class="hr-cap-face" src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="The Gallagher Family, Pelican Hill, Newport Beach" width="480" height="480" loading="lazy" decoding="async"/>
+          <span class="hr-cap-line">The Gallaghers saw their Newport Beach home
+            in all <b>11</b> color schemes. These <b>4</b> are a quick preview.</span>
+        </figcaption>
+
         <div class="hr-tray">
           <span class="hr-tray-label">They saw</span>
           <span class="hr-thumbs" id="hrThumbs"></span>
           <button class="hr-tray-cta" type="button" id="hrReplay">Discover</button>
         </div>
       </figure>
-
-      <div class="hero-cta-wrap">
-        <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Claim Complimentary Color Consultation</span><span class="sub">Irresistible Painting Estimates Included</span></span></a>
-        
-      </div>
-    </div>
-
-    <div class="hero-strip">
-      <div class="cell">
-        <img class="strip-badge" src="../../orange-county-sales-page/assets/badges/badge-color-schemes.png" alt="Custom Color Schemes badge"/>
-        <div class="lb">Custom Visualization</div><div class="sb">See it before we paint</div></div>
-      <div class="cell">
-        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-        <div class="lb">2-Year Warranty</div><div class="sb">No questions asked</div></div>
-      <div class="cell"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><div class="lb">Licensed &amp; Insured</div><div class="sb">Bonded in California</div></div>
-      <div class="cell"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><div class="lb">5-Day Transformations</div>
-        <div class="sb">Concierge scheduling</div></div>
+      <a class="hero-continue" href="#story">
+        <span class="hc-rule" aria-hidden="true"></span>
+        <span class="hc-txt">See how close it came</span>
+        <span class="hc-arrow" aria-hidden="true">&#8595;</span>
+      </a>
     </div>
   </section>
 
@@ -4180,7 +4254,137 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
   </section>
 
   <!-- ============ No. 01 — INTERACTIVE CUSTOM VISUALIZATION (the highlight) ============ -->
-  <section class="viz" id="viz" data-story>
+  
+
+  <div id="story" aria-hidden="true"></div>
+  <!-- ============ LAYOUT D · BEAT 2 ============ -->
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=crown-pointe] › master.reveal -->
+  <section class="cream-deep" id="reveal" data-story>
+    <div class="sec-head">
+      <div class="eyebrow">The Reveal</div>
+      <h2 class="ttl">The Crown Pointe Homeowner’s Guide to a New Exterior Color <span class="accent">Every Neighbor Reads as Deliberate</span></h2>
+      <p class="lead">The ending first: the Gallaghers’ Newport Beach house in Newport Admiral, with Bronze Coach Pendant lighting and a Walnut Wood Garage. On a private street of sixteen homes, the test is not whether people notice — they will — but whether what they notice looks chosen.</p>
+    </div>
+    <div class="lx-reveal">
+      <div class="ba-frame lx-reveal-frame">
+        <div class="ba-img before" style="background-image: url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
+        <div class="ba-img after"  style="background-image: url('../../orange-county-sales-page/viz-photos/light-bronze-coach-pendant--admiral.jpg')"></div>
+        <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
+        <div class="ba-label l">Before</div>
+        <div class="ba-label r">Finished</div>
+      </div>
+      <div class="stage-spec lx-spec">
+        <div class="spec-head"><span class="sh-t">What The Gallaghers Chose</span><span class="sh-n">Step by step, in the visualizer’s order</span></div>
+          <div class="spec-row"><span class="spec-k">Color</span><span class="spec-v"><span class="paint-cans lx-spec-cans"><span class="paint-can" style="--c:#CCC9C0"></span><span class="paint-can" style="--c:#F0EFE9"></span><span class="paint-can" style="--c:#2F2F30"></span></span> Newport Admiral &middot; Repose Gray SW 7015 · Pure White SW 7005<em class="lx-why">Repose Gray reads composed rather than loud; Pure White keeps the trim crisp; the dark accent gives the door weight.</em></span></div>
+          <div class="spec-row"><span class="spec-k">Lighting</span><span class="spec-v">Bronze Coach Pendant<em class="lx-why">Coach pendants frame the entry the way a classic house expects.</em></span></div>
+          <div class="spec-row"><span class="spec-k">Finishing Touches</span><span class="spec-v">Walnut Wood Garage<em class="lx-why">A wood garage door softens the surface closest to the street.</em></span></div>
+      </div>
+    </div>
+    <ul class="lx-gsm"><li><b>Their Goal</b>A new color sixteen neighbors would read as deliberate.</li><li><b>The Style</b>Quiet classic — a warm gray body, crisp white trim, a near-black door.</li><li><b>The Mood</b>Composed and understated.</li></ul>
+  </section>
+  <!-- /SWAP:CLIENT -->
+
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=crown-pointe] › master.flashback (+ story block for the family) -->
+  <section class="cream" id="flashback" data-story>
+    <div class="sec-head">
+      <div class="eyebrow">Before the Color</div>
+      <h2 class="ttl">Before The Gallaghers Changed a Thing: <span class="accent">2 Fears About Painting on a Street This Small</span></h2>
+      <p class="lead">Crown Pointe is sixteen homes on S Crown Pointe Drive — small enough that every owner knows every house, and small enough that one repaint resets the standard for the whole street.</p>
+    </div>
+    <div class="lx-story">
+      <div class="pill-wrap pill-wrap-lede">
+        <div class="avatar-pill"><div class="ph"><img src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"/></div>
+          <div><div class="name">The Gallagher Family</div>
+          <div class="sub-line">Before anything changed</div></div></div>
+      </div>
+      <p class="body">The Gallaghers put the repaint off for years, and the reasons were not about money.</p>
+      <p class="body">The first fear was being the house that got it wrong, in full view of everyone who drives past it every day. The second was permanence: a color that disappoints is not a touch-up, it is the whole job again.</p>
+      <p class="body">Both fears are sharper on a street as small as this one. There is no anonymous corner to hide a mistake, which is exactly why the decision deserved more than a chip held against the wall.</p>
+    </div>
+  </section>
+  <!-- /SWAP:CLIENT -->
+
+  <!-- ============ LAYOUT D · BEAT 3 ============ -->
+  <!-- SWAP:LOCAL --><!-- edit: generator/communities.json › communities[slug=crown-pointe] › problems[] (local problems) · master.problemSolution.h2 -->
+  <section class="" id="fit" data-story>
+    <div class="sec-head">
+      <div class="eyebrow">Made For Crown Pointe</div>
+      <h2 class="ttl">5 Ways a Crown Pointe Repaint Goes Wrong — <span class="accent">and the Fix for Each</span></h2>
+      
+    </div>
+    <div class="ps-grid">
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=crown-pointe] › master.nearMiss -->
+      <div class="ps-card lx-near">
+        <div class="ps-lbl problem">No. 1 · The Gallaghers’ Near-Miss</div>
+        <p class="ps-p">The Gallaghers had a scheme chosen from a chip and the crew nearly booked. Rendered on the whole front of their Newport Beach house, it read far louder than the chip had promised — exactly the kind of change a small street notices first. It became the first scheme they ruled out.</p>
+        <div class="ps-divider"></div>
+        <div class="ps-lbl solution">What Caught It</div>
+        <p class="ps-s">On a street this small the repaint is conspicuous either way. We render the finished palette on the front of your house first, so what the neighbors notice is that it looks deliberate.</p>
+      </div>
+  <!-- /SWAP:CLIENT -->
+      <div class="ps-card">
+        <div class="ps-lbl problem">The Problem</div>
+        <p class="ps-p">Close neighbors and a short private street.</p>
+        <div class="ps-divider"></div>
+        <div class="ps-lbl solution">The VIP Solution</div>
+        <p class="ps-s">Masking and shielding to the property line, neighboring cars and planting protected, the street kept clear, and spray work scheduled around wind.</p>
+      </div>
+      <div class="ps-card">
+        <div class="ps-lbl problem">The Problem</div>
+        <p class="ps-p">A lump-sum quote you cannot compare against anything.</p>
+        <div class="ps-divider"></div>
+        <div class="ps-lbl solution">The VIP Solution</div>
+        <p class="ps-s">Every estimate is broken out line by line — preparation, primer, coating, trim, accents — so it can be set against any other bid honestly.</p>
+      </div>
+      <div class="ps-card">
+        <div class="ps-lbl problem">The Problem</div>
+        <p class="ps-p">Hairline stucco cracks painted over instead of repaired.</p>
+        <div class="ps-divider"></div>
+        <div class="ps-lbl solution">The VIP Solution</div>
+        <p class="ps-s">Every crack is opened, filled and floated to match the texture around it before primer, so it does not show back through the new color within a season.</p>
+      </div>
+      <div class="ps-card">
+        <div class="ps-lbl problem">The Problem</div>
+        <p class="ps-p">Paint sprayed onto stucco that never reaches into the texture, so the wall looks uneven in low light.</p>
+        <div class="ps-divider"></div>
+        <div class="ps-lbl solution">The VIP Solution</div>
+        <p class="ps-s">Sherwin-Williams Emerald or Duration sprayed and back-rolled into the texture, two coats at the thickness the manufacturer specifies, then checked in raking light before sign-off.</p>
+      </div>
+    </div>
+  </section>
+  <!-- /SWAP:LOCAL -->
+
+  <!-- ============ LAYOUT D · BEAT 4 ============ -->
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=crown-pointe] › master.eliminated (+ story block: family, chosen scheme, photos) -->
+  <section class="cand-band" id="candidates" data-story>
+    <span class="cand-ghost" aria-hidden="true">VISUALIZED</span>
+    <div class="cand-head">
+      <div class="pill-wrap pill-wrap-lede">
+        <div class="avatar-pill"><div class="ph"><img src="../../orange-county-sales-page/assets/avatar-gallagher.jpg" alt="" width="480" height="480" loading="lazy" decoding="async"/></div>
+          <div><div class="name">The Gallagher Family</div>
+          <div class="sub-line">Their remaining 7 schemes</div></div></div>
+      </div>
+      <div class="eyebrow">They Visualized It</div>
+      <h2>What Caught It: 11 Schemes on Their House, <span class="accent">Ten Ruled Out Before a Neighbor Saw One</span></h2>
+      <p class="cand-lead">The near-miss ended here: every scheme rendered on the front of the Gallaghers’ Newport Beach house, body, trim and accent together, before anything was bought. Ten were ruled out and Newport Admiral stayed. In Crown Pointe the same half hour answers the one question sixteen neighbors will ask — whether the new color looks deliberate.</p>
+    </div>
+    <template id="bandSchemes">
+      <i data-id="pebblebeach" data-nm="Pebble Beach Manor"        data-co="Accessible Beige SW 7036 &middot; Dover White SW 6385"   data-sw="#D1C7B8" data-trim="#EFE8D8" data-accent="#95948C" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg')"></i>
+      <i data-id="ibiza"       data-nm="Ibiza Luxury Villa"        data-co="Balanced Beige SW 7037 &middot; Aesthetic White SW 7035" data-sw="#D1C7B8" data-trim="#E8E3DA" data-accent="#C8B59B" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-ibiza.jpg')"></i>
+      <i data-id="pacificsage" data-nm="Pacific Sage Estate"       data-co="Evergreen Fog SW 9130 &middot; Shoji White SW 7042"      data-sw="#95978A" data-trim="#E6DFD3" data-accent="#A98D4B" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg')"></i>
+      <i data-id="obsidian"    data-nm="Obsidian Monolith"         data-co="Iron Ore SW 7069 &middot; Tricorn Black SW 6258"        data-sw="#434341" data-trim="#2F2F30" data-accent="#5B5E62" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg')"></i>
+      <i data-id="marinelayer" data-nm="Marine Layer"              data-co="Sea Salt SW 6204 &middot; High Reflective White SW 7757" data-sw="#CBD6D0" data-trim="#F7F7F1" data-accent="#BFC7C5" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-marinelayer.jpg')"></i>
+      <i data-id="resort"      data-nm="Beverly Hills Resort"      data-co="City Loft SW 7631, monochrome"                 data-sw="#B9B2A7" data-trim="#D6D2C9" data-accent="#8C6E4C" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-resort.jpg')"></i>
+      <i data-id="spanish"     data-nm="Santa Barbara Luxe"        data-co="Alabaster SW 7008 &middot; Tricorn Black SW 6258"       data-sw="#F1EDE2" data-trim="#2F2F30" data-accent="#B5714A" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-spanish.jpg')"></i>
+      <i data-id="organic"     data-nm="Coastal Organic Compound"  data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048"       data-sw="#EDE8DC" data-trim="#54504A" data-accent="#9C7B53" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-organic.jpg')"></i>
+  <i data-id="admiral" data-nm="Newport Admiral" data-co="Repose Gray SW 7015 &middot; Pure White SW 7005" data-sw="#CCC9C0" data-trim="#F0EFE9" data-accent="#2F2F30" data-chosen="1" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-admiral.jpg')"></i>
+</template>
+    <div class="cand-track" id="candTrack"></div>
+    <p class="cand-swipe">Swipe to see them all &rarr;</p>
+  </section>
+  <!-- /SWAP:CLIENT -->
+
+  <!-- ============ LAYOUT D · BEAT 5 ============ --><section class="viz" id="viz" data-story>
     <div class="head">
       <!-- Third appearance of the chip, and the sub-line moves the story on:
            hero = who they are, band = the schemes they passed on, here = the
@@ -4192,10 +4396,12 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
           <div><div class="name">The Gallagher Family</div>
           <div class="sub-line">Everything they chose after the color</div></div></div>
       </div>
-      <div class="eyebrow">2 &middot; Now It Is Your Turn</div>
-      <h2 class="ttl">How Do You Choose an Exterior Paint Color in Crown Pointe Without Guessing? <span class="accent">Do What the Gallaghers Did &mdash; on Their House.</span></h2>
+      <div class="eyebrow">Now It Is Your Turn</div>
+  <!-- SWAP:VIZCOPY --><!-- edit: generator/communities.json › communities[slug=crown-pointe] › master.viz.h2 · vizIntro · master.viz.sub -->
+      <h2 class="ttl">Your Turn: Rule Out the Wrong Crown Pointe Color <span class="accent">on Their House, Not Yours</span></h2>
       <p class="sub" style="text-align:center; font-size: 18px; max-width: 620px; margin: 0 auto 28px;">Pick a direction and tap through the palettes. The home below repaints itself in real time — exactly what our design team does with the front of your house, at no cost, before anything is scheduled.</p>
       <p class="viz-lede-cta">The Gallaghers made four decisions, not one &mdash; color, lighting, texture and the garage door. Each one changed how the last one looked. Make all four on their house, before you make them on yours.</p>
+  <!-- /SWAP:VIZCOPY -->
     </div>
 
     <div class="viz-flow">
@@ -4378,7 +4584,9 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       <div class="s5-head">
     <div class="tl-num-label">Step Five &middot; Your Home</div>
     <h3 class="s5-title">Now Do It On <em>Your House</em></h3>
-    <p class="s5-lede">You have just repainted a Newport Beach estate. Send us the front of your home and our design team renders it in your three closest palettes &mdash; the same way you just saw.</p>
+    
+  <!-- SWAP:VIZCOPY --><!-- edit: generator/communities.json › communities[slug=crown-pointe] › master.viz.lede --><p class="s5-lede">You have just repainted a Newport Beach estate. Send us the front of your home and our design team renders it in your three closest palettes &mdash; the same way you just saw.</p>
+  <!-- /SWAP:VIZCOPY -->
       </div>
 
         <div class="s5">
@@ -4422,7 +4630,7 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
                   <div class="s5-fields">
                     <div class="s5-field">
                       <label for="s5Place">Address or community</label>
-                      <input id="s5Place" name="place" type="text" autocomplete="address-line1" placeholder="Orchard Hills, Irvine">
+                      <input id="s5Place" name="place" type="text" autocomplete="address-line1" placeholder="Crown Pointe, Anaheim">
                       <p class="s5-err" id="s5PlaceErr"></p>
                       <p class="s5-hint">Community is enough &mdash; it tells us the design-review rules you are working inside.</p>
                     </div>
@@ -4476,190 +4684,342 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
 
   </section>
 
-  <section class="cream-deep" id="process">
-    <div class="sec-head">
-      <div class="eyebrow">The White-Glove Process</div>
-      <h2 class="ttl">How a Crown Pointe Project <span class="accent">Actually Runs</span></h2>
-    </div>
-    <div class="glove-steps">
-      <div class="glove-step">
-        <div class="glove-num">1</div>
-        <div>
-          <h3 class="glove-title">Private Color Consultation</h3>
-          <p class="glove-desc">A 30-minute in-home consultation, then our design team renders your Crown Pointe home in each candidate palette through our complimentary <em>Custom Visualization Service</em> — before anything is scheduled.</p>
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=crown-pointe] › master.offer (+ story block) -->
+  <section class="cand-band cand-band-solo" id="offer" data-story>
+    <div class="cand-foot offer-stake">
+      <div class="eyebrow">What You Get</div>
+      <h2 class="os-ttl">Your Crown Pointe Home in <span class="accent">11 Complete Schemes</span>, Before a Single Neighbor Sees One</h2>
+      <p class="os-sub">Thirty minutes and one photo of the front of your house. Our design team returns it painted in 11 complete schemes, each named in exact Sherwin-Williams colors, with an estimate priced line by line. It is the same package the Gallaghers received for their Newport Beach home, and it is complimentary.</p>
+      <div class="pkg" id="pkg">
+        <figure class="pkg-hero" id="pkgHero"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-organic.jpg"
+                data-nm="Coastal Organic Compound"
+                data-co="Alabaster SW 7008 &middot; Urbane Bronze SW 7048"
+                data-sw="#EDEAE0" data-trim="#54504A" data-accent="#9C7B53">
+          <div class="pkg-count" id="pkgCount"><b>01</b><i>/</i>11</div>
+          <img id="pkgHeroImg" src="../../orange-county-sales-page/viz-photos/scheme-organic.jpg"
+               alt="Newport Beach home exterior rendered in the Coastal Organic Compound scheme — Sherwin-Williams Alabaster SW 7008 and Urbane Bronze SW 7048"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <button type="button" class="pkg-zoom" id="pkgZoom"
+                  aria-label="View this color scheme full size">
+            <span aria-hidden="true">View full size</span>
+          </button>
+          <figcaption>
+            <span class="paint-cans" id="pkgHeroCans">
+              <span class="paint-can" style="--c:#EDEAE0"></span>
+              <span class="paint-can" style="--c:#54504A"></span>
+              <span class="paint-can" style="--c:#9C7B53"></span>
+            </span>
+            <span class="pkg-txt">
+              <span class="pkg-nm" id="pkgHeroNm">Coastal Organic Compound</span>
+              <span class="pkg-co" id="pkgHeroCo">Alabaster SW 7008 &middot; Urbane Bronze SW 7048</span>
+            </span>
+          </figcaption>
+        </figure>
+        <div class="pkg-grid">
+        <button type="button" class="pkg-thumb"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg"
+                data-nm="Pebble Beach Manor" data-co="Accessible Beige SW 7036 &middot; Dover White SW 6385"
+                data-sw="#D1C7B8" data-trim="#EFE8D8" data-accent="#95948C"
+                aria-label="Show this house in the Pebble Beach Manor scheme">
+          <img src="../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg" alt="Newport Beach home exterior rendered in the Pebble Beach Manor scheme — Sherwin-Williams Accessible Beige SW 7036 and Dover White SW 6385"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <span class="pkg-thumb-nm">Pebble Beach Manor</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-ibiza.jpg"
+                data-nm="Ibiza Luxury Villa" data-co="Balanced Beige SW 7037 &middot; Aesthetic White SW 7035"
+                data-sw="#D1C7B8" data-trim="#E8E3DA" data-accent="#C8B59B"
+                aria-label="Show this house in the Ibiza Luxury Villa scheme">
+          <img src="../../orange-county-sales-page/viz-photos/scheme-ibiza.jpg" alt="Newport Beach home exterior rendered in the Ibiza Luxury Villa scheme — Sherwin-Williams Balanced Beige SW 7037 and Aesthetic White SW 7035"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <span class="pkg-thumb-nm">Ibiza Luxury Villa</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg"
+                data-nm="Pacific Sage Estate" data-co="Evergreen Fog SW 9130 &middot; Shoji White SW 7042"
+                data-sw="#95978A" data-trim="#E6DFD3" data-accent="#A98D4B"
+                aria-label="Show this house in the Pacific Sage Estate scheme">
+          <img src="../../orange-county-sales-page/viz-photos/scheme-pacificsage.jpg" alt="Newport Beach home exterior rendered in the Pacific Sage Estate scheme — Sherwin-Williams Evergreen Fog SW 9130 and Shoji White SW 7042"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <span class="pkg-thumb-nm">Pacific Sage Estate</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-marinelayer.jpg"
+                data-nm="Marine Layer" data-co="Sea Salt SW 6204 &middot; High Reflective White SW 7757"
+                data-sw="#CDD2CA" data-trim="#F7F7F1" data-accent="#BFC7C5"
+                aria-label="Show this house in the Marine Layer scheme">
+          <img src="../../orange-county-sales-page/viz-photos/scheme-marinelayer.jpg" alt="Newport Beach home exterior rendered in the Marine Layer scheme — Sherwin-Williams Sea Salt SW 6204 and High Reflective White SW 7757"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <span class="pkg-thumb-nm">Marine Layer</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-admiral.jpg"
+                data-nm="Newport Admiral" data-co="Repose Gray SW 7015 &middot; Pure White SW 7005"
+                data-sw="#CCC9C0" data-trim="#F0EFE9" data-accent="#2F2F30"
+                aria-label="Show this house in the Newport Admiral scheme">
+          <img src="../../orange-county-sales-page/viz-photos/scheme-admiral.jpg" alt="Newport Beach home exterior rendered in the Newport Admiral scheme — Sherwin-Williams Repose Gray SW 7015 and Pure White SW 7005"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <span class="pkg-thumb-nm">Newport Admiral</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-spanish.jpg"
+                data-nm="Santa Barbara Luxe" data-co="Alabaster SW 7008 &middot; Tricorn Black SW 6258"
+                data-sw="#F1EDE2" data-trim="#2F2F30" data-accent="#B5714A"
+                aria-label="Show this house in the Santa Barbara Luxe scheme">
+          <img src="../../orange-county-sales-page/viz-photos/scheme-spanish.jpg" alt="Newport Beach home exterior rendered in the Santa Barbara Luxe scheme — Sherwin-Williams Alabaster SW 7008 and Tricorn Black SW 6258"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <span class="pkg-thumb-nm">Santa Barbara Luxe</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-resort.jpg"
+                data-nm="Beverly Hills Resort" data-co="City Loft SW 7631, monochrome"
+                data-sw="#D6D2C9" data-trim="#D6D2C9" data-accent="#8C6E4C"
+                aria-label="Show this house in the Beverly Hills Resort scheme">
+          <img src="../../orange-county-sales-page/viz-photos/scheme-resort.jpg" alt="Newport Beach home exterior rendered in the Beverly Hills Resort scheme — Sherwin-Williams City Loft SW 7631, monochrome"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <span class="pkg-thumb-nm">Beverly Hills Resort</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-riviera.jpg"
+                data-nm="Riviera Tuxedo" data-co="Snowbound SW 7004 &middot; Black Magic SW 6991"
+                data-sw="#EDEAE0" data-trim="#2A2A2C" data-accent="#3B3B3E"
+                aria-label="Show this house in the Riviera Tuxedo scheme">
+          <img src="../../orange-county-sales-page/viz-photos/scheme-riviera.jpg" alt="Newport Beach home exterior rendered in the Riviera Tuxedo scheme — Sherwin-Williams Snowbound SW 7004 and Black Magic SW 6991"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <span class="pkg-thumb-nm">Riviera Tuxedo</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-euro.jpg"
+                data-nm="Euro-Industrial Estate" data-co="Peppercorn SW 7674 &middot; Cityscape SW 7067"
+                data-sw="#585A5C" data-trim="#9A9C98" data-accent="#7E8285"
+                aria-label="Show this house in the Euro-Industrial Estate scheme">
+          <img src="../../orange-county-sales-page/viz-photos/scheme-euro.jpg" alt="Newport Beach home exterior rendered in the Euro-Industrial Estate scheme — Sherwin-Williams Peppercorn SW 7674 and Cityscape SW 7067"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <span class="pkg-thumb-nm">Euro-Industrial Estate</span>
+        </button>
+        <button type="button" class="pkg-thumb"
+                data-src="../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg"
+                data-nm="Obsidian Monolith" data-co="Iron Ore SW 7069 &middot; Tricorn Black SW 6258"
+                data-sw="#434341" data-trim="#2F2F30" data-accent="#5B5E62"
+                aria-label="Show this house in the Obsidian Monolith scheme">
+          <img src="../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg" alt="Newport Beach home exterior rendered in the Obsidian Monolith scheme — Sherwin-Williams Iron Ore SW 7069 and Tricorn Black SW 6258"
+               width="1200" height="750" loading="lazy" decoding="async"/>
+          <span class="pkg-thumb-nm">Obsidian Monolith</span>
+        </button>
         </div>
+        <p class="pkg-cap">Every one of these is the same house.
+          <span class="pkg-hint">Tap any one to see it larger</span>
+          <span class="pkg-yours">This one belongs to the Gallaghers in Newport Beach.
+            <b>Yours gets the same eleven &mdash; on the front of your own house.</b></span></p>
       </div>
-      <div class="glove-step">
-        <div class="glove-num">2</div>
-        <div>
-          <h3 class="glove-title">Design Review, Handled</h3>
-          <p class="glove-desc">We prepare the complete color submission package for We prepare your association's design review package as part of the project, working from its current guidelines rather than assumptions. — swatches, product data sheets, and a callout for each side of the house — so approval never stalls your project.</p>
-        </div>
-      </div>
-      <div class="glove-step">
-        <div class="glove-num">3</div>
-        <div>
-          <h3 class="glove-title">Estate-Grade Preparation</h3>
-          <p class="glove-desc">Pressure wash, stucco repair floated to match texture, sanding, and bonding primer. Landscaping and hardscape are masked and wrapped before a single gallon is opened.</p>
-        </div>
-      </div>
-      <div class="glove-step">
-        <div class="glove-num">4</div>
-        <div>
-          <h3 class="glove-title">Precision Spray Application</h3>
-          <p class="glove-desc">Sherwin-Williams Emerald applied with Graco and Titan airless equipment at the full thickness the manufacturer specifies, back-rolled on stucco, with hand-cut lines at every transition.</p>
-        </div>
-      </div>
-      <div class="glove-step">
-        <div class="glove-num">5</div>
-        <div>
-          <h3 class="glove-title">Founder’s Walkthrough &amp; Warranty</h3>
-          <p class="glove-desc">Raking-light inspection of every side of the house, touch-ups before you ask, and a signed walkthrough — backed by our 2-Year Warranty, no questions asked.</p>
-        </div>
-      </div>
+      <p class="os-anchor"><b>What three color variations cost elsewhere: $329.</b>
+        An independent color consultant&rsquo;s exterior package arrives as a written
+        report with three variations and a set of paint cards in the mail. VIP commits
+        to at least eleven &mdash; every one of them painted onto the front of your own
+        house &mdash; and charges nothing for it.</p>
+      <ul class="os-stack">
+        <li>30 minutes, in your own home</li>
+        <li><b>The front of your house, painted on screen</b> &mdash; not a sample board,
+          not a showroom, not somebody else&rsquo;s project photo</li>
+        <li><b>11</b> complete color schemes &mdash; body, trim and accent together</li>
+        <li><b>9</b> further options &mdash; lighting, texture, premium additions</li>
+        <li>The exact Sherwin-Williams colors for every one, by name and number</li>
+        <li>Color guidance matched to your street&rsquo;s architecture and light</li>
+        <li>A written estimate, <b>itemized</b> &mdash; prep, primer, coating, trim and
+          accents priced separately</li>
+        <li>Your HOA design-review package, prepared as part of the project</li>
+      </ul>
+      <p class="os-do">What you do: one thing. <b>Send a photo of the front of your house.</b></p>
+      <a href="#viz" class="btn-gold"><span class="col-2"><span>See Your Home In Every Color</span><span class="sub">Complimentary &middot; Itemized estimate included</span></span></a>
     </div>
   </section>
+  <!-- /SWAP:CLIENT -->
 
-  <section class="" id="portfolio">
-    <div class="split-grid">
+  <!-- ============ LAYOUT D · BEAT 6 ============ -->
+  <!-- SWAP:LOCAL --><!-- edit: generator/communities.json › communities[slug=crown-pointe] › master.neighbors -->
+  <section id="benefits" data-story>
+    <div class="wwd-benefits">
+      <div class="wb-head">
+        <div class="eyebrow">What It Buys You</div>
+        <h2 class="ttl">On a Street of Sixteen Homes, Your Color Is Judged <span class="accent">for the Next 8 to 15 Years</span></h2>
+        <p class="wb-sub">Crown Pointe is a private gated street of sixteen homes on S Crown Pointe Drive. The people who see your house are the same few households, every day. None of what follows shows the afternoon the crew leaves; all of it shows a few summers later, which is why each item is written into the estimate.</p>
+      </div>
+      <ul class="wb-list">
+        <li><b>Your stucco holds the paint instead of shedding it.</b>
+          Sprayed paint lands on the peaks of the texture and never reaches the
+          valleys. Back-rolling works the wet coat down into the surface, so the film
+          bonds to the wall rather than sitting on the high points and peeling off
+          a facade you just paid five figures for.</li>
+        <li><b>The color you approved is the color in year six.</b>
+          Paint thinned to stretch a bucket lets UV through to the surface underneath, and
+          chalking and fade follow. Two coats at full wet-film thickness reach the
+          dry film the manufacturer designed the product around.</li>
+        <li><b>Repairs disappear instead of becoming scars.</b>
+          A patch that is not floated back to match the texture reads as a smooth
+          streak across a textured wall in raking afternoon light &mdash; visible from
+          the street, permanently.</li>
+        <li><b>Your next repaint is a repaint, not a rebuild.</b>
+          Paint does not fix rot, it conceals it until it is worse and costs more.
+          Wood is repaired before anything is coated over it.</li>
+        <li><b>Two separate companies stand behind the same wall.</b>
+          Sherwin-Williams Emerald and Duration carry the manufacturer&rsquo;s own
+          limited lifetime warranty on the coating. VIP&rsquo;s 2-year written warranty
+          covers labor and materials on top of it.</li>
+        <li><b>The flaws get found by us, in daylight.</b>
+          Low-angle light is what exposes lap marks, thin spots and misses. The work
+          is inspected under it at completion, which is why you are not the one who
+          notices a week later.</li>
+        <li><b>You keep living in your house while it happens.</b>
+          Cars, windows, roof tiles, plants and your neighbor&rsquo;s driveway come
+          out the way they went in, and the site is clean every evening. Your weekend
+          is not a job site.</li>
+        <li><b>Someone specific answers for the result.</b>
+          The founder walks the finished project and signs off on it, so there is a
+          name attached to the work and a person to talk to about it.</li>
+      </ul>
+    </div>
+  </section>
+  <!-- /SWAP:LOCAL -->
+
+  <!-- ============ LAYOUT D · BEAT 7 ============ -->
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=crown-pointe] › master.painted (+ story block) -->
+  <section id="process" data-story>
+    <div class="process-head">
+      <div class="eyebrow">Then We Painted It</div>
+      <h2 class="ttl">Then We Painted It: 3 Steps on a Crown Pointe House, <span class="accent">Each Decided Before the Crew Arrives</span></h2>
+      <p class="sub">For the Gallaghers, the color came first and everything else followed it — the details, the finish, the last touches — each seen on their own house while it could still change. A Crown Pointe project follows the same three steps, with the street kept clear and the neighbors’ cars and planting protected throughout.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-num"><span>1</span></div>
+        <div class="demo-swipe">
+          <div class="ba-frame">
+            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
+            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-riviera.jpg')"></div>
+            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
+            <div class="ba-label l">Before</div>
+            <div class="ba-label r">After</div>
+          </div>
+        </div><div class="step-title">Personalized Exterior Color Consultation</div><div class="step-desc">We start with mood, not color. You describe how the house should feel, and that narrows eleven exterior palettes down to the few worth seeing on the whole facade.</div></div>
+      <div class="step"><div class="step-num"><span>2</span></div>
+        <div class="demo-swipe">
+          <div class="ba-frame">
+            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
+            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-obsidian.jpg')"></div>
+            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
+            <div class="ba-label l">Before</div>
+            <div class="ba-label r">After</div>
+          </div>
+        </div><div class="step-title">Customized Visualizations In 30 Minutes</div><div class="step-desc">Your own house comes back rendered in every direction you shortlisted &mdash; then the decisions no one else puts in front of you: lighting, siding texture, stone, and the garage door.</div></div>
+      <div class="step"><div class="step-num"><span>3</span></div>
+        <div class="demo-swipe">
+          <div class="ba-frame">
+            <div class="ba-img before" style="background-image:url('../../orange-county-sales-page/viz-photos/base.webp')"></div>
+            <div class="ba-img after" style="background-image:url('../../orange-county-sales-page/viz-photos/scheme-pebblebeach.jpg')"></div>
+            <div class="ba-rail"><div class="ba-handle"><span class="pin top"></span><span class="pin bot"></span><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(12 0)"/></svg></div></div></div>
+            <div class="ba-label l">Before</div>
+            <div class="ba-label r">After</div>
+          </div>
+        </div><div class="step-title">An Itemized Painting Estimate</div><div class="step-desc">Exterior painting starts at $4.75 per square foot of paintable surface, and the estimate shows which surfaces we counted to get there. The 2-year warranty is written into it.</div></div>
+    </div>
+  </section>
+  <!-- /SWAP:CLIENT -->
+
+  <section id="warranty" data-story>
+    <div class="warranty-section">
       <div>
-        
-        <h2 class="ttl">Our Work in <span class="accent">Crown Pointe</span></h2>
-        <p class="body">Exteriors, interiors and cabinetry across Anaheim and the hillside communities.</p>
-        <ul class="checks-row">
-          <li>Graco &amp; Titan professional airless spray application</li>
-          <li>Sherwin-Williams Emerald &amp; Duration coating systems</li>
-          <li>Cabinet doors and drawers are sprayed off-site in Sherwin-Williams urethane enamel for a hard, factory-smooth finish, then rehung — no brush marks and no lingering odor in the house.</li>
-          <li>2-Year Warranty · Licensed, Bonded &amp; Insured</li>
+        <div class="eyebrow">Written, Not Promised</div>
+        <h2 class="ttl">The <span class="accent">2-Year Warranty</span> Is Written Into Your Crown Pointe Estimate, Not Promised at the Curb</h2>
+        <p class="body">The 2-Year Warranty covers labor and materials, and it is printed on the itemized estimate you sign, next to the preparation it depends on: cracks floated back to the texture, bonding primer where the old coating has failed, and two coats of Sherwin-Williams Emerald or Duration. If something covered fails within the warranty period, VIP Home Painting comes back and puts it right.</p>
+        <ul class="checks-row" style="margin-top: 20px;">
+          <li>2-Year Warranty on Labor &amp; Materials</li>
+          <li>Licensed, Bonded &amp; Insured</li>
+          <li>Written into your itemized estimate</li>
         </ul>
-        <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Claim Complimentary Color Consultation</span><span class="sub">Crown Pointe estimates, itemized line by line</span></span></a>
       </div>
-      <div class="photo-grid">
-          <div style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&auto=format&fit=crop&q=80')"></div>
-          <div style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&auto=format&fit=crop&q=80')"></div>
-          <div style="background-image:url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&auto=format&fit=crop&q=80')"></div>
-          <div style="background-image:url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&auto=format&fit=crop&q=80')"></div>
+      <div class="warranty-seal"><div class="seal-type" role="img" aria-label="VIP Home Painting 2-Year Warranty seal">
+        <span class="seal-term">2-Year</span>
+        <span class="seal-word">Warranty</span>
+        <span class="seal-rule"></span>
+        <span class="seal-sub">Labor &amp; Materials</span>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- ============ LAYOUT D · BEAT 8 ============ -->
+  <section class="cream-deep" id="before-you-commit">
+    <div class="pillars-head">
+      <div class="eyebrow">Before You Commit</div>
+      <h2 class="ttl">What Reaches a Crown Pointe Owner <span class="accent">Before Anything Is Signed</span></h2>
+      <p class="lead">On a street of sixteen homes, the risk in a repaint is approving something everyone will see before you have seen it yourself. So four things come first: renders of your own house, the estimate priced line by line, the warranty in writing, and a color submission prepared for your association’s design review.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar"><div class="num">1</div><div><h3>COMPLIMENTARY Custom Color Consultation</h3><p>Choosing the right colors can be overwhelming. VIP Home Painting&rsquo;s complimentary consultation lets you visualize and decide in 30 minutes.</p></div></div>
+      <div class="pillar"><div class="num">2</div><div><h3>2-Year Written Warranty</h3><p>Labor and materials, in writing, on every project. If something fails inside two years we come back and put it right.</p></div></div>
+      <div class="pillar"><div class="num">3</div><div><h3>Itemized, Line by Line</h3><p>VIP Home Painting prices prep, primer, coating, trim and accents separately, starting at $4.75 per square foot of paintable surface. You see what you are paying for before you sign.</p></div></div>
+      <div class="pillar"><div class="num">4</div><div><h3>Design Review Handled</h3><p>We prepare the submission package your community association asks for and carry it through approval. That is part of the project, not an add-on.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ============ LAYOUT D · BEAT 9 ============ -->
+  <section class="cream-deep" id="services" data-story>
+    <div class="services-head">
+      <div class="eyebrow">Our Crown Pointe Residential Painting Services</div>
+      <h2 class="ttl">Exterior, Interior and Cabinet Painting in Crown Pointe, <span class="accent">Priced on One Estimate</span></h2>
+    </div>
+    <div class="services-grid">
+      <div class="service">
+        <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&auto=format&fit=crop&q=80')"></div>
+        <div class="service-body"><h3>Exterior House Painting — Crown Pointe</h3><p>Masking and shielding to the property line, neighboring cars and planting protected, and Sherwin-Williams Emerald or Duration sprayed with Graco and Titan airless equipment, then back-rolled. Starts at $4.75 per square foot of paintable surface, measured on what is actually painted.</p><a class="svc-link" href="../../exterior-painting/">Exterior House Painting details</a></div>
+      </div>
+      <div class="service">
+        <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900&auto=format&fit=crop&q=80')"></div>
+        <div class="service-body"><h3>Interior House Painting — Crown Pointe</h3><p>Walls, ceilings, trim and doors, sequenced so the house stays livable. The same line-by-line estimate and the same Sherwin-Williams naming as the exterior.</p><a class="svc-link" href="../../interior-painting/">Interior House Painting details</a></div>
+      </div>
+      <div class="service">
+        <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&auto=format&fit=crop&q=80')"></div>
+        <div class="service-body"><h3>Kitchen Cabinet Painting — Crown Pointe</h3><p>Cabinet doors and drawers are sprayed off-site in Sherwin-Williams urethane enamel for a hard, factory-smooth finish, then rehung — no brush marks and no lingering odor in the house.</p><a class="svc-link" href="../../kitchen-cabinet-painting/">Kitchen Cabinet Painting details</a></div>
       </div>
     </div>
   </section>
 
-  <section class="cream" id="specs">
-    <div class="sec-head">
-      <div class="eyebrow">Materials &amp; Method</div>
-      <h2 class="ttl">The Crown Pointe <span class="accent">Specification</span></h2>
-      <p class="lead">No mystery products, no shortcuts. This is the exact system we bring to every Crown Pointe project — in writing, on every itemized estimate.</p>
+  <section class="cream" id="service-areas">
+    <div class="areas-head">
+      <div class="eyebrow">Where We Work</div>
+      <h2 class="ttl">House Painters for Crown Pointe, Anaheim, <span class="accent">and the Hillside Communities Nearby</span></h2>
+      <p class="lead">VIP Home Painting is based in Anaheim and paints across the hillside communities above Santa Ana Canyon. From Crown Pointe, the neighboring communities we paint are one click away, along with our exterior, interior and kitchen cabinet painting pages.</p>
     </div>
-    <div class="spec-table">
-      <div class="st-head"><span class="t">Estate Painting Specification</span><span class="n">Prepared for Crown Pointe, Anaheim</span></div>
-      <div class="st-row"><span class="st-k">Surface Preparation</span><span class="st-v">Pressure wash, scrape and sand failing edges, <b>stucco crack and patch repair floated to match the existing texture</b>, and spot-priming with bonding primer — the finish is only as good as what's under it.</span></div>
-      <div class="st-row"><span class="st-k">Coating System</span><span class="st-v"><b>Sherwin-Williams Emerald and Duration</b> exterior acrylics for bodies and fascias; Emerald urethane trim enamel for doors, trim, and cabinetry. Two coats at the full thickness the manufacturer specifies, never over-thinned.</span></div>
-      <div class="st-row"><span class="st-k">Application</span><span class="st-v"><b>Graco and Titan professional airless spray rigs</b>, back-rolled on stucco to drive coating into the texture, with hand-cut lines at every color transition.</span></div>
-      <div class="st-row"><span class="st-k">Site Protection</span><span class="st-v">Full masking and containment for Crown Pointe — landscaping wrapped, hardscape covered, wind-checked spray scheduling, clean site every evening.</span></div>
-      <div class="st-row"><span class="st-k">Transparency</span><span class="st-v">Every proposal is <b>itemized line by line</b> — prep, primer, coating, trim, and accents priced separately. No lump sums, no hidden charges.</span></div>
-      <div class="st-row"><span class="st-k">Warranty</span><span class="st-v"><b>2-Year Warranty on labor and materials</b>, no questions asked. Licensed, Bonded &amp; Insured in the State of California.</span></div>
-    </div>
-  </section>
-
-  <section class="" id="colors">
-    <div class="sec-head">
-      <div class="eyebrow">The Designer Color Guide</div>
-      <h2 class="ttl">A Palette Built For <span class="accent">Crown Pointe</span></h2>
-      
-    </div>
-    <div class="swatch-grid">
-      <div class="swatch-card">
-        <div class="swatch-chip" style="background:#EDEAE0;"></div>
-        <div class="swatch-body">
-          <div class="swatch-name">Alabaster</div>
-          <div class="swatch-code">Sherwin-Williams · SW 7008</div>
-          <p class="swatch-note">The definitive luxury white — soft, warm, and the most-requested estate body color across Orange County.</p>
+    <div class="city-hubs city-hubs-single">
+      <div class="city-hub">
+        <a class="ch-head" href="../">
+          <span class="ch-name">Anaheim</span>
+          <span class="ch-go">View Anaheim painting &rarr;</span>
+        </a>
+        <div class="ch-label">Neighboring communities we paint</div>
+        <div class="ch-links">
+          <a href="../peralta-hills/">Peralta Hills</a>
+          <a href="../summit-pointe/">Summit Pointe</a>
+          <a href="../belsomet/">Belsomet</a>
         </div>
-      </div>
-      <div class="swatch-card">
-        <div class="swatch-chip" style="background:#8A857D;"></div>
-        <div class="swatch-body">
-          <div class="swatch-name">Chatura Gray</div>
-          <div class="swatch-code">Sherwin-Williams · SW 9169</div>
-          <p class="swatch-note">A grounded warm gray for bodies and garage doors that holds its color in bright Southern California light.</p>
-        </div>
-      </div>
-      <div class="swatch-card">
-        <div class="swatch-chip" style="background:#434341;"></div>
-        <div class="swatch-body">
-          <div class="swatch-name">Iron Ore</div>
-          <div class="swatch-code">Sherwin-Williams · SW 7069</div>
-          <p class="swatch-note">The modern deep charcoal — front doors, shutters, ironwork, and full accent volumes.</p>
-        </div>
-      </div>
-      <div class="swatch-card">
-        <div class="swatch-chip" style="background:#EDEAE0;"></div>
-        <div class="swatch-body">
-          <div class="swatch-name">Alabaster</div>
-          <div class="swatch-code">Sherwin-Williams · SW 7008</div>
-          <p class="swatch-note">The most-requested warm white in Orange County — and one that needs checking against hard afternoon light before you commit to it here.</p>
-        </div>
-      </div>
-      <div class="swatch-card">
-        <div class="swatch-chip" style="background:#434341;"></div>
-        <div class="swatch-body">
-          <div class="swatch-name">Iron Ore</div>
-          <div class="swatch-code">Sherwin-Williams · SW 7069</div>
-          <p class="swatch-note">For doors, shutters and ironwork — the accent that reads instantly on a short, tight street.</p>
+        <div class="ch-foot">
+          
+          
+          <a href="../../exterior-painting/">Exterior House Painting</a>
+          <a href="../../interior-painting/">Interior House Painting</a>
+          <a href="../../kitchen-cabinet-painting/">Kitchen Cabinet Painting</a>
         </div>
       </div>
     </div>
-    <div class="sec-head" style="margin:44px auto 0;">
-      <p class="lead" style="font-family:var(--font-serif); font-style:italic; font-size:16.5px;">Every palette is test-rendered on <b>your own home</b> through our complimentary Custom Visualization Service — you approve a color you've already seen, not a paper swatch.</p>
-    </div>
-  </section>
-
-  <section class="navy" id="fit">
-    <div class="sec-head">
-      <div class="eyebrow">Made For Crown Pointe</div>
-      <h2 class="ttl">What Goes Wrong — And How <span class="accent">We Solve It</span></h2>
-    </div>
-    <div class="ps-grid">
-      <div class="ps-card">
-        <div class="ps-lbl problem">The Problem</div>
-        <p class="ps-p">Sixteen homes. There is nowhere to hide a mistake.</p>
-        <div class="ps-divider"></div>
-        <div class="ps-lbl solution">The VIP Solution</div>
-        <p class="ps-s">On a street this small the repaint is conspicuous either way. We render the finished palette on the front of your house first, so what the neighbors notice is that it looks deliberate.</p>
-      </div>
-      <div class="ps-card">
-        <div class="ps-lbl problem">The Problem</div>
-        <p class="ps-p">Close neighbors and a short private street.</p>
-        <div class="ps-divider"></div>
-        <div class="ps-lbl solution">The VIP Solution</div>
-        <p class="ps-s">Masking and shielding to the property line, neighboring cars and planting protected, the street kept clear, and spray work scheduled around wind.</p>
-      </div>
-      <div class="ps-card">
-        <div class="ps-lbl problem">The Problem</div>
-        <p class="ps-p">A lump-sum quote you cannot compare against anything.</p>
-        <div class="ps-divider"></div>
-        <div class="ps-lbl solution">The VIP Solution</div>
-        <p class="ps-s">Every estimate is broken out line by line — preparation, primer, coating, trim, accents — so it can be set against any other bid honestly.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="map">
-    <div class="sec-head">
-      <div class="eyebrow">Service Area · Find Us On Google</div>
-      <h2 class="ttl">Proudly Serving <span class="accent">Crown Pointe</span>, Anaheim</h2>
-      <p class="lead">VIP Home Painting is a service-area painting company covering every village of Anaheim. Save our Google profile, read our reviews, and see recent project photos before your consultation.</p>
-    </div>
-    <div class="map-grid">
+    <div class="map-grid" style="margin-top:40px;">
       <div class="map-embed">
         <iframe title="Map of Crown Pointe, Anaheim, CA — VIP Home Painting service area" src="https://www.google.com/maps?q=Crown%20Pointe%2C%20Anaheim%2C%20CA&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       </div>
       <div class="nap-card">
         <div class="nap-name">VIP Home Painting</div>
-        <div class="nap-line" style="font-family:var(--font-serif); font-style:italic; color:var(--gold-deep);">Luxury Residential Painting · Crown Pointe, Anaheim, CA</div>
+        <div class="nap-line" style="font-family:var(--font-serif); font-style:italic; color:var(--gold-deep);">Service-area painting company · based in Anaheim, CA</div>
         <div class="nap-line"><b>Phone:</b> <a href="tel:9093125400">(909) 312-5400</a></div>
         <div class="nap-line"><b>Email:</b> <a href="mailto:Contact@VIPHomePainting.com">Contact@VIPHomePainting.com</a></div>
         <div class="nap-line"><b>Hours:</b> Mon–Fri 8am–6pm · Sat 9am–3pm</div>
-        <div class="nap-line"><b>Service Area:</b> Orchard Hills · Altair · Portola Springs · Hidden Canyon · Woodbury · Stonegate · Peralta Hills · Summit Pointe · Belsomet · Crown Pointe &amp; all Anaheim villages</div>
         <div class="nap-btns">
           <a class="btn-gold" href="https://g.page/viphomepainting" target="_blank" rel="noopener">See Us On Google</a>
           <a class="nap-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=VIP%20Home%20Painting%20Anaheim%20CA" target="_blank" rel="noopener">Open Google Maps</a>
@@ -4668,10 +5028,12 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     </div>
   </section>
 
+
+  <!-- SWAP:FAQ --><!-- edit: generator/communities.json › communities[slug=crown-pointe] › faqs[] (q, a) · master.faq.h2 -->
   <section class="cream" id="faq">
     <div class="faq-head">
       <div class="eyebrow sec-head-eyebrow">Frequently Asked Questions</div>
-      <h2 class="ttl">Crown Pointe Home Painting — <span class="accent">Your Questions Answered</span></h2>
+      <h2 class="ttl">Crown Pointe House Painting — <span class="accent">Your Questions, Answered</span></h2>
     </div>
     <div class="faq-list">
       <details class="faq-item" open>
@@ -4696,11 +5058,32 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
       </details>
     </div>
   </section>
+  <!-- /SWAP:FAQ -->
 
   <!-- ============ BYLINE + FINAL CTA ============ -->
-  <section id="quote">
+  
+  <section id="quote" data-story>
+    <div class="scope-block">
+      <div class="eyebrow">Our Complete Scope of Work</div>
+      <h3 class="ttl">Every Service. <span class="accent">One Team.</span></h3>
+      <ul class="scope-list">
+        <li>Full Exterior Painting</li>
+        <li>Stucco Repair</li>
+        <li>Surface Preparation</li>
+        <li>Interior Walls</li>
+        <li>Wood Trim Replacement</li>
+        <li>Premium Paints Only</li>
+        <li>Cabinet Refinishing</li>
+        <li>Color Consultation</li>
+        <li>Clean Worksites</li>
+        <li>Garage Floor Coatings</li>
+        <li>Pressure Washing</li>
+        <li>Final Inspection</li>
+      </ul>
+    </div>
+
     <div class="byline">
-      <img class="byline-ph" src="../../orange-county-sales-page/assets/fabian.jpg" alt="Fabian — Founder, VIP Home Painting"/>
+      <img class="byline-ph" src="../../orange-county-sales-page/assets/fabian.jpg" alt="Fabian — Founder, VIP Home Painting" width="360" height="360" loading="lazy"/>
       <div class="byline-txt">
         <div class="byline-kicker">From the Desk of the Founder</div>
         <p class="byline-quote">"Every estate deserves to be seen before a single brushstroke. That's my promise to every Crown Pointe homeowner we serve."</p>
@@ -4710,10 +5093,18 @@ footer { background: var(--navy-deep); color: rgba(255,255,255,0.85); padding: 7
     </div>
 
     <div class="final-cta">
-      <div class="ck">Ready To Transform Your Crown Pointe Home?</div>
-      <h2 class="ttl">Let's Make Your Home the <em>Envy of Crown Pointe</em></h2>
+      <div class="ck">Ready To See Your Crown Pointe Home First?</div>
+      <h2 class="ttl">Sixteen Neighbors Will See It. <span class="accent">See It First, in 30 Minutes.</span></h2>
       <a href="tel:9093125400" class="btn-gold"><span class="col-2"><span>Get My Complimentary Quote Now</span><span class="sub">No Pressure · No Obligation · Always Complimentary</span></span></a>
     </div>
+    
+  <!-- SWAP:CLIENT --><!-- edit: generator/communities.json › communities[slug=crown-pointe] › master.close.ps[] -->
+    <div class="ps-close">
+      <p><b>P.S.</b> &mdash; The Gallaghers were one signature away from painting their house twice. What stopped it was seeing 11 complete schemes on the house itself, ruling out ten, and only then opening a can.</p>
+      <p>On a street as small as Crown Pointe, the whole community sees the result. One photo of the front of your house is all the consultation asks, and it is complimentary, with the itemized estimate included.</p>
+      <p class="ps-cta"><a href="tel:9093125400">(909) 312-5400</a></p>
+    </div>
+  <!-- /SWAP:CLIENT -->
   </section>
 
   <!-- ============ FOOTER ============ -->
@@ -5599,12 +5990,12 @@ setTimeout(() => {
       picB.className = 'pic-before';
       picB.style.backgroundImage = beforeBg;
       picB.setAttribute('role', 'img');
-      picB.setAttribute('aria-label', 'The Gallaghers’ Newport Beach home before repainting, unpainted.');
+      picB.setAttribute('aria-label', 'The Gallaghers’ Newport Beach home before repainting.');
       var picA = document.createElement('span');
       picA.className = 'pic-after';
       picA.style.backgroundImage = el.style.backgroundImage;
       picA.setAttribute('role', 'img');
-      picA.setAttribute('aria-label', 'Newport Beach estate exterior rendered in ' + nm + (co ? ' — ' + co + '.' : '.'));
+      picA.setAttribute('aria-label', 'Newport Beach home exterior rendered in ' + nm + (co ? ' — ' + co + '.' : '.'));
       var picS = document.createElement('span');
       picS.className = 'pic-seam';
       pic.appendChild(picB); pic.appendChild(picA); pic.appendChild(picS);

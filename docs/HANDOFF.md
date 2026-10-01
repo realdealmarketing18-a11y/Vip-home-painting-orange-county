@@ -4,6 +4,147 @@ Written for a developer with zero context. Everything below is real paths / real
 
 ---
 
+## 0a. LATEST — The Reveal opens every page (2026-10-01, same branch)
+
+Fabian's follow-up: every city and community page starts with **The Reveal**, then tells its
+own story; the visualizer steps stay in the same order everywhere; what changes per page is the
+homeowner's color scheme and additions, matched to the goal, style and mood they wanted.
+
+- **Every layout now opens hero → The Reveal → flashback.** The Reveal shows the finished house
+  (slider: before vs. the scheme plus their signature addition) and what they chose at each
+  visualizer step, with a one-line reason per choice and their goal / style / mood. The
+  flashback (years in the old color, why they waited) now exists on all 12 pages, not just Irvine.
+  The rest of each page keeps its layout's own story (Villain, Near-Miss, Approval, Dusk Walk).
+- **Visualizer steps are back in the standard order on every page** (Color → Lighting → Texture →
+  Finishing → Your Home). The Layout F reordering was removed; `verify-layouts.js` now fails a page
+  whose steps are out of order or whose story does not open with The Reveal.
+- **Each page's homeowner chose a different scheme and additions** (the `story` block):
+  Irvine & Orchard Hills — Coastal Organic Compound · Anaheim — Pebble Beach Manor · Altair —
+  Euro-Industrial Estate · Crown Pointe — Newport Admiral · Summit Pointe — Marine Layer ·
+  Woodbury — Ibiza Luxury Villa · Stonegate — Santa Barbara Luxe · Portola Springs — Pacific Sage
+  Estate · Hidden Canyon — Riviera Tuxedo · Peralta Hills — Beverly Hills Resort · Belsomet —
+  Obsidian Monolith. Chosen to fit each community's researched architecture and palette
+  (`research/*/05-communities.md`). The hero reel and schemes band end on that page's scheme.
+- **Headlines**: every Reveal and flashback H2 uses a Part A/B formula, an allowed number where it
+  fits, and the page keyword or a researched question — e.g. "How to Choose Exterior Paint Colors
+  for an Irvine Home in 30 Minutes", "What Happens If You Paint Without HOA Approval?" (Woodbury),
+  "HOA-Approved Paint Colors Are a Shortlist, Not an Answer" (Stonegate), "Home Exterior Color
+  Mistakes" (Anaheim).
+
+**Judgment calls**
+1. **The Gallaghers stay the placeholder family on every page, but each page shows a different
+   chosen scheme.** Their real choice (Coastal Organic Compound) is on the Irvine hub and Orchard
+   Hills only. On the other ten pages the scheme, additions, goal, style and mood are placeholders
+   standing in for that community's future client, fenced SWAP:CLIENT. Swapping the family is the
+   same one `story` block.
+2. **Schema unchanged.** Structured data is built from the record without the story scheme, so it
+   still describes the Gallaghers' real Coastal Organic Compound render on every page.
+3. **The offer's package gallery** (Altair, Crown Pointe and the four Approval pages) still opens on
+   Coastal Organic Compound — it is the master's 11-render gallery and its script is shared. The
+   chosen scheme leads everywhere else on the page.
+4. Twelve pages, eleven schemes: Orchard Hills repeats the Irvine hub's scheme because its own
+   researched palette (Alabaster, Urbane Bronze, stone) is exactly that scheme. Its additions differ.
+
+## 0. LATEST — Story-layout restructure (2026-09-30, branch `layout-restructure`)
+
+One-time unattended run. **Not merged, not published.** Nothing in WordPress was
+touched; `publish-wp.js` was not run; `config.staging` and `countyIndexable` are
+unchanged; no deployment settings or workflows were changed (the repo has none —
+GitHub Pages serves `main`, so this branch has no staging URL of its own and the
+pages below go live on github.io **only after the branch is merged to main**).
+
+### What changed
+
+- **Layout system in the generator** — `generator/story-layouts.js` (+ `layout-page.css`,
+  `verify-layouts.js`, `swap-checklist.js`, SOP in `generator/LAYOUTS.md`). A page opts in
+  with `"storyLayout": "B"…"F"` in its data record; pages without it build byte-for-byte as
+  before (checked: HOA page, guide + 4 articles, 3 service pages and the OC page are
+  identical to `main`).
+- **All 12 city/community pages assigned** exactly as briefed:
+  B /irvine/ · C /anaheim/ · D altair, crown-pointe, summit-pointe ·
+  E woodbury, stonegate, portola-springs, orchard-hills · F peralta-hills, hidden-canyon, belsomet.
+  One commit per page (Altair was the pilot).
+- **The Gallaghers are the hero, visualizer and proof family on every page**; Ceasar & Julie
+  moved from the Irvine hero into the "More Irvine Families" proof block.
+- **SWAP markers** (`CLIENT`, `LOCAL`, `FAQ`, `VIZCOPY`) are emitted in the built HTML, each
+  followed by a comment naming the data file and field. Full list with fields:
+  `docs/SWAP-CHECKLIST.md` (regenerate with `node generator/swap-checklist.js`).
+- Every page re-verified: `generate.js` + `verify-site.js` (26/26) + `verify-layouts.js`;
+  headless Chromium at 390px and 1440px — no horizontal scroll, no JS errors, no local 404s,
+  visualizer scheme + option clicks, both slider types and the photo form all work.
+  Title, meta description, canonical, robots and JSON-LD compared against `main`: identical on
+  all 12 pages. No internal link dropped on any page.
+
+### Judgment calls (change any of them)
+
+1. **The H1 is never rewritten by a layout.** Each layout's story headline ("The Gallaghers Were
+   One Signature Away From Painting Twice", "…Approved on the First Submission", etc.) is a
+   `hero.deck` line under the H1, fenced as SWAP:CLIENT. Three H1s *did* change, each to the
+   page's own stored `h1` field, and each noted in its commit:
+   - **/irvine/** — the old H1 named Ceasar & Julie (the brief moves them out of the hero). Now
+     `seo.h1`: "Every Other Irvine Painter Guesses. We Render It First."
+   - **/anaheim/** — the old H1 opened with "We", which fails the headline gate (check 12) once it
+     sits in a story hero. Now `seo.h1`: "Anaheim House Painters Who Show You the Color on Your
+     Own Home First". The old line lives on as the hometown-edge section's lead.
+   - **/anaheim/summit-pointe/** — "Built in 1991…" fails the headline gate (1991 is not an
+     approved headline number). Now the record's `h1`: "Summit Pointe Painting — See the Color
+     Before the Crew Arrives". "Built in 1991" moved into the hero story line.
+2. **Doorway guard kept as-is.** Pages sharing a layout keep the same story sequence and differ
+   by `layoutOptions` add-in sections (e.g. Altair adds `instead` + `offer`). The guard still
+   compares the order each page actually renders. Choices per page: `generator/LAYOUTS.md`.
+3. **Schema frozen.** Pages that were already on the master process keep their schema extras
+   (read from their original `moduleOrder`, kept in the record for that reason). The six pages
+   newly given master copy (4 Anaheim communities + both cities) carry `"schema": "legacy"` so
+   their JSON-LD stays byte-identical.
+4. **Copy a layout replaced is parked, not deleted** — `master._parked.instead` on the four E
+   pages (their old "what owners try first" copy; beat 2 is now the approval trap). Master blocks
+   a layout does not use (e.g. `settle` on Altair) stay in the data untouched.
+5. **Layout F's visualizer**: step blocks are reordered in the markup only (Lighting, Color,
+   Texture, Finishing, Your Home). The visualizer script was not touched — it finds controls by
+   id/`data-cat`, never position. New between-step lines were written for the new order.
+6. **Layout E "community field first"**: the form already asked for the community first; its
+   label now reads "Your community (or address)". Every layout page's placeholder now shows its
+   own community instead of "Orchard Hills, Irvine".
+7. **"HOA-weighted FAQ" (E)** reorders the *visible* FAQ so association questions come first; the
+   FAQPage schema keeps the data order (the schema is not to be touched).
+8. **Designer palettes (C, F)** render every colour as a three-can set (body, trim, accent), never
+   a flat chip. The trim/accent cans beside each colour are named on the card (Alabaster SW 7008
+   trim / Iron Ore SW 7069 accent by default) — a display choice, not a claim about any house.
+9. **Placeholders are honest about being illustrative.** The painting-days and approval timelines
+   use "First / Next / Then…" or "Step One…" (no promised day counts — earlier rollout rows
+   removed "5 working days" claims as unbacked) and carry a visible note that the order is
+   illustrative. The near-miss, flashback and "approved on the first submission" beats are
+   Gallagher placeholder story, fenced SWAP:CLIENT, as briefed.
+10. **Layout D needs five cards**: Crown Pointe and Summit Pointe had three local problems; two
+    general preparation problems (crack repair, back-rolling / itemized estimate) were added to
+    their `problems[]`. They are true of any stucco repaint and fenced SWAP:LOCAL.
+11. **Links moved, not dropped**: the old per-community map section's "Open Google Maps" link now
+    sits in the service-area section on every layout page.
+12. **OC-DESIGN-ROLLOUT.md rows 7–12 set to `done (layout run)`** with a note, so the paused hourly
+    task will not rewrite those pages against the old `moduleOrder` model if it is re-enabled.
+    Set any row back to `todo` to have it rewrite that page's copy on top of the layout.
+
+### Found, not fixed
+
+- Layout F reuses the legacy **specification** and **white-glove process** sections (the brief asks
+  for them). Their copy predates the rollout's clean-up and still says "no questions asked" and "a
+  signed walkthrough" — worth a look before publishing.
+- The city `pricing` and `cost_of_wrong` sections still quote a local market range ($2.74–$4.89) and
+  a "$4,000–$7,000" second-repaint figure. Existing copy, unchanged; neither is in `context/ABOUT-VIP.md`.
+- Push from this run was blocked: the session's git credentials did not include this repository, so
+  `layout-restructure` exists only as a git bundle delivered in the conversation (see below).
+
+### What is left
+
+1. **Get the branch onto GitHub**: from a clone of the repo, `git fetch <path-to>/layout-restructure.bundle
+   layout-restructure:layout-restructure && git push origin layout-restructure` (or re-run with the
+   repo attached with push access).
+2. Review the branch, merge to `main`, then check the pages on github.io.
+3. Swap the placeholders page by page using `docs/SWAP-CHECKLIST.md`.
+4. Re-enable the "VIP page rollout" scheduled task only if still wanted (read its note first).
+
+---
+
 ## 1. GOAL
 
 Build and refine a **luxury-magazine-style sales landing page** for VIP Home Painting's

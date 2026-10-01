@@ -1,0 +1,151 @@
+{
+  "slug": "{slug}",
+  "name": "{Community}",
+  "city": "{city}",
+  "title": "(SEO title — not changed by a layout)",
+  "metaDescription": "(meta — not changed by a layout)",
+  "primaryKeyword": "{community} exterior house painting",
+  "vizIntro": "(localized lede inside the visualizer — SWAP:VIZCOPY)",
+  "capsule": "(the short answer — names VIP Home Painting, the place, the rate, {warranty}, {phone})",
+  "context": {
+    "archNote": "",
+    "hoaNote": "",
+    "settingNote": ""
+  },
+  "moduleOrder": [
+    "(kept for the schema only on story-layout pages)"
+  ],
+  "geo": {
+    "lat": 0,
+    "lng": 0
+  },
+  "faqs": [
+    {
+      "q": "(a question people actually search)",
+      "a": "(answer opening with VIP Home Painting)"
+    }
+  ],
+  "extraColors": [
+    {
+      "name": "",
+      "code": "SW 0000",
+      "hex": "#000000",
+      "note": ""
+    }
+  ],
+  "problems": [
+    {
+      "p": "(local problem)",
+      "s": "(VIP solution)"
+    }
+  ],
+  "cabinetLine": "",
+  "storyLayout": "E",
+  "layoutOptions": [
+    "services"
+  ],
+  "story": {
+    "scheme": "ibiza",
+    "additions": {
+      "light": "iron-scroll-lantern",
+      "premium": "walnut-wood-garage"
+    },
+    "signature": "light",
+    "goal": "",
+    "style": "",
+    "mood": ""
+  },
+  "master": {
+    "hero": {
+      "eyebrow": "{Community} · {City}",
+      "h1": "(Part A/B formula + keyword — the H1)",
+      "deck": "(the layout's story line)",
+      "continue": ""
+    },
+    "reveal": {
+      "h2": "(formula + keyword or searched question + allowed number)",
+      "lead": "The ending first: {their} {place} house in {chosen}, with {additions}. …",
+      "why": {
+        "color": "",
+        "light": "",
+        "siding": "",
+        "premium": ""
+      }
+    },
+    "flashback": {
+      "eyebrow": "Before the Color",
+      "h2": "",
+      "lead": "(the local condition)",
+      "chipLine": "Before anything changed",
+      "body": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "instead": {
+      "h2": "",
+      "bridge": "",
+      "lede": "",
+      "turn": ""
+    },
+    "eliminated": {
+      "h2": "",
+      "lead": ""
+    },
+    "offer": {
+      "h2": "",
+      "sub": ""
+    },
+    "timeline": {
+      "h2": "",
+      "lead": "",
+      "days": [
+        {
+          "label": "Step One",
+          "title": "",
+          "body": ""
+        }
+      ],
+      "note": ""
+    },
+    "viz": {
+      "h2": "Your Turn: …"
+    },
+    "warranty": {
+      "h2": "",
+      "body": ""
+    },
+    "services": {
+      "h2": "",
+      "items": [
+        {
+          "title": "",
+          "body": ""
+        },
+        {
+          "title": "",
+          "body": ""
+        },
+        {
+          "title": "",
+          "body": ""
+        }
+      ]
+    },
+    "serviceArea": {
+      "h2": "",
+      "lead": ""
+    },
+    "faq": {
+      "h2": ""
+    },
+    "close": {
+      "h2": "",
+      "ps": [
+        "",
+        ""
+      ]
+    }
+  }
+}

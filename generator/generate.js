@@ -660,6 +660,12 @@ function jsonLd(c, url, masterRendered) {
 /* ---------------- PAGE ---------------- */
 
 function buildPage(c) {
+  /* The structured data is built from the record as stored: a layout's
+     per-page placeholder scheme never reaches the schema. */
+  const schemaRec = MASTER.resolve(c);
+  /* Story-layout pages: turn the story block's scheme + additions into the
+     chosen scheme and photos the master modules read. */
+  if (STORY.isLayout(c)) c = STORY.expand(c);
   /* Master-process pages: fill {tokens} in title, meta, capsule, FAQ etc. */
   c = MASTER.resolve(c);
   /* a community belongs to exactly one city — see communities.json city field */
@@ -673,8 +679,13 @@ function buildPage(c) {
   /* A page with a `master` block runs the OC page's story-led process
      (master-modules.js). Every other page renders exactly as before. */
   const master = MASTER.isMaster(c);
+  /* A story-layout page (storyLayout B–F) renders its sections in the
+     layout's order, visualizer included; see story-layouts.js. */
+  const layout = STORY.isLayout(c);
   const rendered = [];
-  const modules = c.moduleOrder
+  const modules = layout
+    ? STORY.render(c, { CFG, ctaButton, esc, link: linker(`/${cityDir}/${c.slug}/`) }).html
+    : c.moduleOrder
     .map((k, i) => {
       const html = MODULE_BUILDERS[k](c, i + 2, POSITION_BG[i % POSITION_BG.length]);
       if (html) rendered.push(k);
@@ -724,7 +735,7 @@ function buildPage(c) {
 
 <!-- ============ STRUCTURED DATA — LocalBusiness + Service + WebPage ============ -->
 <script type="application/ld+json">
-${jsonLd(c, url, master ? rendered : null)}
+${jsonLd(layout ? schemaRec : c, url, layout ? schemaBasis(c) : (master ? rendered : null))}
 </script>
 
 <style>
@@ -734,7 +745,7 @@ ${BASE_CSS}
 ${FAQ_CSS}
 /* === Community-page overrides + modules (generator/page.css) === */
 ${CSS}
-${FILM_CSS}
+${FILM_CSS}${layout ? '\n' + LAYOUT_CSS : ''}
 </style>
 </head>
 <body>
@@ -760,7 +771,7 @@ ${FILM_CSS}
   </header>
 
   <!-- ============ HERO — unified cinematic style, static image ============ -->
-  ${master ? MASTER.hero(c) : heroStory(c.hero_story, c.name, A) || `<section class="hero hero-cinema" id="hero">
+  ${layout ? STORY.hero(c, MASTER.hero(c)) : master ? MASTER.hero(c) : heroStory(c.hero_story, c.name, A) || `<section class="hero hero-cinema" id="hero">
     <div class="hero-photo" style="background-image:url('${A}/video/hero-poster.jpg');"></div>
     <div class="hero-scrim"></div>
     <div class="hero-goldframe" aria-hidden="true"></div>
@@ -807,13 +818,13 @@ ${heroReel(A)}
   </section>
 
   <!-- ============ No. 01 — INTERACTIVE CUSTOM VISUALIZATION (the highlight) ============ -->
-  ${master ? MASTER.vizAdjust(vizSection(c)) : vizSection(c)}
+  ${layout ? '' : master ? MASTER.vizAdjust(vizSection(c)) : vizSection(c)}
 ${modules}
 ${master ? '' : mapSection(c, c.moduleOrder.length + 2)}
-${faqSection(c, c.moduleOrder.length + 3)}
+${layout ? STORY.faq(c, faqSection(c, 0)) : faqSection(c, c.moduleOrder.length + 3)}
 
   <!-- ============ BYLINE + FINAL CTA ============ -->
-  ${master ? MASTER.close(c) : `<section id="quote">
+  ${layout ? STORY.close(c, MASTER.close(c)) : master ? MASTER.close(c) : `<section id="quote">
     <div class="byline">
       <img class="byline-ph" src="${A}/assets/fabian.jpg" alt="Fabian — Founder, VIP Home Painting"/>
       <div class="byline-txt">
@@ -1019,6 +1030,7 @@ function cityJsonLd(c, url, masterRendered) {
 }
 
 function buildCityPage(c) {
+  if (STORY.isLayout(c)) c = STORY.expand(c);
   const url = `${CFG.siteBase}/${c.slug}/`;
   const A = '../orange-county-sales-page';
   /* link() turns the absolute paths stored in cities.json into correct relative
@@ -1038,8 +1050,9 @@ function buildCityPage(c) {
   /* Same switch as the community pages: a `master` block turns on the OC
      page's story hero, P.S. close and master modules for this city hub. */
   const cityMaster = MASTER.isMaster(c);
+  const layout = STORY.isLayout(c);
   const rendered = [];
-  const modules = order.map((key, i) => {
+  const modules = layout ? STORY.render(c, H, cWithRel).html : order.map((key, i) => {
     const fn = CITY_MODULES[key] || MODULE_BUILDERS[key];
     if (!fn) throw new Error(`city ${c.slug}: no builder for module "${key}"`);
     const html = fn(cWithRel, i + 3, POSITION_BG[i % POSITION_BG.length], H);
@@ -1110,7 +1123,7 @@ function buildCityPage(c) {
 <meta name="robots" content="${ROBOTS_META}">
 
 <script type="application/ld+json">
-${cityJsonLd(c, url, cityMaster ? rendered : null)}
+${cityJsonLd(c, url, layout ? schemaBasis(c) : (cityMaster ? rendered : null))}
 </script>
 
 <style>
@@ -1118,7 +1131,7 @@ ${BASE_CSS}
 ${FAQ_CSS}
 ${CSS}
 ${CITY_CSS}
-${FILM_CSS}
+${FILM_CSS}${layout ? '\n' + LAYOUT_CSS : ''}
 </style>
 </head>
 <body>
@@ -1142,7 +1155,7 @@ ${FILM_CSS}
     </a>
   </header>
 
-  ${cityMaster ? MASTER.hero(c) : heroStory(c.hero_story, c.name, A) || `<section class="hero hero-cinema" id="hero">
+  ${layout ? STORY.hero(c, MASTER.hero(c)) : cityMaster ? MASTER.hero(c) : heroStory(c.hero_story, c.name, A) || `<section class="hero hero-cinema" id="hero">
     ${heroMedia}
     <div class="hero-scrim"></div>
     <div class="hero-goldframe" aria-hidden="true"></div>
@@ -1174,11 +1187,11 @@ ${heroReel(A)}
     </div>
   </section>
 
-  ${cityMaster ? MASTER.vizAdjust(vizSection({ name: c.name, vizIntro: c.seo.viz_intro })) : vizSection({ name: c.name, vizIntro: c.seo.viz_intro })}
+  ${layout ? '' : cityMaster ? MASTER.vizAdjust(vizSection({ name: c.name, vizIntro: c.seo.viz_intro })) : vizSection({ name: c.name, vizIntro: c.seo.viz_intro })}
 ${modules}
-${faqSec}
+${layout ? STORY.faq(c, faqSec) : faqSec}
 
-  ${cityMaster ? MASTER.close(c) : `<section id="quote">
+  ${layout ? STORY.close(c, MASTER.close(c)) : cityMaster ? MASTER.close(c) : `<section id="quote">
     <div class="byline">
       <img class="byline-ph" src="${A}/assets/fabian.jpg" alt="Fabian — Founder, VIP Home Painting"/>
       <div class="byline-txt">
@@ -1278,6 +1291,21 @@ const MASTER = require('./master-modules.js')({
   ROOT, DATA, CITIES, BLOG, SERVICES, linker, cityOf
 });
 Object.assign(MODULE_BUILDERS, MASTER.MODULES);
+
+/* The five story layouts (B–F). A page opts in with `storyLayout` in its
+   data record; pages without it render exactly as before. See
+   generator/story-layouts.js and generator/LAYOUTS.md. */
+const STORY = require('./story-layouts.js')({
+  CFG, esc, MASTER, MODULE_BUILDERS, CITY_MODULES, CITIES, cityOf,
+  vizSection, ctaButton, CORE_COLORS, BASE_PAGE
+});
+const LAYOUT_CSS = fs.readFileSync(path.join(__dirname, 'layout-page.css'), 'utf8');
+/* What the schema is built from on a layout page. The layout changes the
+   section ORDER, never the structured data: a page that ran the master
+   process keeps the extras it had (read from its original moduleOrder);
+   a page marked "schema": "legacy" keeps the plain graph it had. */
+const schemaBasis = (c) => (c.schema === 'legacy' ? null : (c.moduleOrder || []));
+const effectiveOrder = (c) => (STORY.isLayout(c) ? STORY.resolveOrder(c) : c.moduleOrder);
 const SERVICE_CSS = fs.readFileSync(path.join(__dirname, 'service-page.css'), 'utf8');
 const HOA_CSS = fs.readFileSync(path.join(__dirname, 'hoa-page.css'), 'utf8');
 
@@ -2216,9 +2244,13 @@ function auditOutput(html, label) {
 function validate() {
   const seen = new Set();
   for (const c of DATA.communities) {
-    const order = c.moduleOrder;
+    /* A story-layout page is judged on the section order it actually
+       renders — the layout's sequence plus its add-ins — not on the
+       moduleOrder it carries for its schema. */
+    const order = effectiveOrder(c);
     const known = Object.keys(MODULE_BUILDERS);
-    const unknown = order.filter(k => !known.includes(k));
+    /* layout modules are checked by story-layouts.js when they render */
+    const unknown = STORY.isLayout(c) ? [] : order.filter(k => !known.includes(k));
     if (unknown.length) {
       throw new Error(`${c.slug}: unknown module(s) [${unknown.join(', ')}] — known: ${known.join(', ')}`);
     }
@@ -2227,7 +2259,7 @@ function validate() {
     }
     const key = order.join('>');
     if (seen.has(key)) {
-      throw new Error(`${c.slug}: moduleOrder duplicates another community's layout (${key}) — every page must have a unique sequential order`);
+      throw new Error(`${c.slug}: section order duplicates another community's layout (${key}) — every page must have a unique sequential order${STORY.isLayout(c) ? `. Pages sharing story layout ${c.storyLayout} must differ in layoutOptions` : ''}`);
     }
     seen.add(key);
   }
@@ -2242,7 +2274,7 @@ function main() {
     auditOutput(html, `irvine/${c.slug}`);
     if (MASTER.isMaster(c)) MASTER.assertAssets(html, `${c.city || CFG.outputDir}/${c.slug}`);
     fs.writeFileSync(path.join(dir, 'index.html'), html, 'utf8');
-    console.log(`  ✓ ${c.city || CFG.outputDir}/${c.slug}/index.html  [${c.moduleOrder.join(' → ')}]`);
+    console.log(`  ✓ ${c.city || CFG.outputDir}/${c.slug}/index.html  [${STORY.isLayout(c) ? `LAYOUT ${c.storyLayout}: ` : ''}${effectiveOrder(c).join(' → ')}]`);
   }
   for (const city of CITIES.cities) {
     const dir = path.join(ROOT, city.slug);
@@ -2251,7 +2283,7 @@ function main() {
     auditOutput(chtml, `${city.slug} (city)`);
     if (MASTER.isMaster(city)) MASTER.assertAssets(chtml.split('../orange-county-sales-page').join(CFG.assetBase), `${city.slug} (city)`);
     fs.writeFileSync(path.join(dir, 'index.html'), chtml, 'utf8');
-    console.log(`  ✓ ${city.slug}/index.html  [CITY: ${(city.layout.module_order||[]).length} modules]`);
+    console.log(`  ✓ ${city.slug}/index.html  [CITY: ${STORY.isLayout(city) ? `LAYOUT ${city.storyLayout}: ${STORY.resolveOrder(city).join(' → ')}` : `${(city.layout.module_order||[]).length} modules`}]`);
     if (city.hoa_page) {
       const hdir = path.join(ROOT, city.slug, city.hoa_page.slug);
       fs.mkdirSync(hdir, { recursive: true });
