@@ -4,6 +4,67 @@ Written for a developer with zero context. Everything below is real paths / real
 
 ---
 
+## 0b. LATEST — Thank-you page `/thank-you/` (2026-10-20)
+
+A standalone page a homeowner lands on after sending their photo. **Not wired to anything yet** —
+the sales-page forms and Jobber still point where they did. Hand-built, not generated: it lives in
+`thank-you/` and `generate.js` never touches it. `noindex, nofollow`, and not in `sitemap.xml`.
+
+**Live:** https://realdealmarketing18-a11y.github.io/Vip-home-painting-orange-county/thank-you/
+**Personalised:** add `?community=orchard-hills-irvine` → the subhead reads "Your Orchard Hills
+home is in the studio." A known city slug on the end is dropped. Anything that is not a plain
+slug is ignored and the generic line shows ("Your home is in the studio.").
+
+### Every placeholder, and where to fill it
+
+All settings sit in one block at the top of the `<script>` in `thank-you/index.html`.
+
+| Placeholder | Where | What to do |
+|---|---|---|
+| **Quo number** | `SETTINGS.quoNumber` | Type Fabian's texting number. Until then step 02 shows `[QUO NUMBER]`. |
+| **Quo number in the contact card** | `thank-you/vip-home-painting.vcf` | Add a line `TEL;TYPE=CELL,VOICE:+1XXXXXXXXXX` above `END:VCARD`. The card holds the main office line now so the button is never broken. |
+| **Phone** | `SETTINGS.phone` | Header + "Questions?" button. Set to **(909) 312-5400** — see the open question below. |
+| **Financing line** | `SETTINGS.financing` | `false` removes "with monthly payment options on approved credit". **Unverified** — not in `context/OFFER.md`. |
+| **Meta Pixel ID** | `<head>`, block `META PIXEL` | Paste ID over `PIXEL_ID_HERE`, delete the comment markers. Fires `Lead` on load. |
+| **Google Ads conversion** | `<head>`, block `GOOGLE ADS` | Paste ID + label over `AW-CONVERSION_ID_HERE` / `CONVERSION_LABEL_HERE`, delete the comment markers. |
+| **VSL video** | `VSL.src`, `VSL.poster` | Drop the file in `thank-you/assets/`, set `src: 'assets/vsl-consultation.mp4'`. Empty = placeholder frame. `enabled: false` hides the section. |
+| **Hero frame 3 — Gallagher finished photo** | `thank-you/assets/home-01-painted.jpg` | A real photo of the painted house. Doesn't exist: the Gallagher imagery is rendered (`registry/client-stories.json`), and a render is never shown as "What we painted". |
+| **Homes 02 and 03** | `thank-you/assets/home-0N-{sent,palette-a,palette-b,painted}.jpg` + their `HOMES` entries | Real client, real photos, real SW colours. |
+| **Gallagher headline claim** | `FEATURED.client` | "Almost chose a color from a two-inch chip" is a story beat, not a confirmed fact — Fabian to confirm, same as the other SWAP:CLIENT copy. |
+
+Missing images are not broken images: each shows a striped box naming the exact file to add.
+
+**Home 01 (Gallagher) uses files already in the repo**, copied with clear names:
+`home-01-sent.webp` = `viz-photos/base.webp`, `home-01-palette-a.jpg` = Coastal Organic Compound
+(their real choice), `home-01-palette-b.jpg` = Pebble Beach Manor, `home-01-avatar.jpg`.
+
+### How to add a home to the gallery
+
+1. Put four photos in `thank-you/assets/`: `home-04-sent.jpg`, `home-04-palette-a.jpg`,
+   `home-04-palette-b.jpg`, `home-04-painted.jpg` (4:3, ~1600px wide, under 300 KB each).
+2. In `thank-you/index.html`, copy one block inside `HOMES = [ … ]`, paste it at the end, and
+   change: `name`, `place`, `story` (one line), the four file names, each palette's `scheme`
+   name, `colors` (`'Name SW 0000 · Name SW 0000'`) and `cans` (body, trim, accent hex codes).
+3. Delete `placeholder: true` once it's a real client. Commit and push; live in about a minute.
+
+To feature a different family in the hero, change `FEATURED` — the hero always uses the photos of
+the first home in `HOMES`.
+
+### Choices made
+- **Folder is `thank-you/assets/`, not `/assets/thank-you/`** — keeps the page in one folder and
+  nothing loose at root (FABIAN.md rule 5).
+- **Header is logo + tagline + phone, no menu** — someone who just converted shouldn't be handed
+  a menu to wander off through. Easy to add.
+- **Palettes show as three paint cans** next to the SW names (the paint-can rule).
+- **Reduced motion:** the hero holds on the render instead of cycling; carousels never animate.
+
+### Open question for Fabian
+- The brief asked for **(951) 557-0627** "as on the live pages", but every live page and the
+  build-enforced rule say **(909) 312-5400**. The page uses (909) until confirmed. One edit
+  (`SETTINGS.phone`) switches it.
+
+---
+
 ## 0a. LATEST — The Reveal opens every page (2026-10-01, same branch)
 
 Fabian's follow-up: every city and community page starts with **The Reveal**, then tells its
