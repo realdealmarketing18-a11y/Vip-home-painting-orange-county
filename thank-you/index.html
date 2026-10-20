@@ -11,7 +11,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap">
-<link rel="preload" as="image" href="assets/home-01-sent.webp">
 
 <!-- =====================================================================
      TRACKING PLACEHOLDERS — NOT ACTIVE.
@@ -116,21 +115,12 @@ END GOOGLE ADS -->
     stroke: var(--gold-bright); }
 
   /* ---------- 2. HERO ---------- */
-  .hero { padding: 36px 0 56px; }
-  .hero .wrap { display: grid; gap: 28px; }
+  .hero { padding: 32px 0 52px; text-align: center; }
+  .hero .wrap { display: grid; gap: 26px; }
+  .hero-copy { max-width: 820px; margin: 0 auto; }
+  .hero .lede { margin: 0 auto; }
+  .hero-video { width: 100%; max-width: 900px; margin: 0 auto; }
   .hero .ttl { font-size: clamp(28px, 7.4vw, 50px); }
-  .dissolve { position: relative; aspect-ratio: 4 / 3; border-radius: 6px; overflow: hidden;
-    background: var(--cream-deep); box-shadow: var(--shadow);
-    outline: 1px solid rgba(201,169,97,.55); outline-offset: 5px; }
-  .dissolve .fr { position: absolute; inset: 0; opacity: 0; transition: opacity 1.8s ease-in-out; }
-  .dissolve .fr.on { opacity: 1; }
-  .dissolve .fr img { width: 100%; height: 100%; object-fit: cover; }
-  .ex-badge { position: absolute; right: 10px; top: 10px; z-index: 2; background: rgba(255,255,255,.92);
-    color: var(--navy); font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
-    padding: 5px 9px; border-radius: 999px; border: 1px solid var(--gold); }
-  .frame-tag { position: absolute; left: 10px; bottom: 10px; z-index: 2;
-    background: rgba(20,24,56,.82); color: var(--cream); font-size: 10.5px; font-weight: 600;
-    letter-spacing: .16em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; }
 
   /* Placeholder — shown whenever an image file is not there yet.
      It names the exact file to drop in, so swapping is self-explanatory. */
@@ -270,8 +260,8 @@ END GOOGLE ADS -->
     .top-logo img { height: 46px; }
     .wm .vip { font-size: 21px; } .wm .tag { font-size: 10.5px; }
     .top-phone { font-size: 13.5px; }
-    .hero { padding: 64px 0 84px; }
-    .hero .wrap { grid-template-columns: 1fr 1.05fr; align-items: center; gap: 56px; }
+    .hero { padding: 56px 0 84px; }
+    .hero .wrap { gap: 36px; }
     .ways { grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
     .way { padding: 34px 32px; }
     .homes { grid-template-columns: 1fr 1fr; }
@@ -291,7 +281,6 @@ END GOOGLE ADS -->
   /* ---------- REDUCED MOTION — crossfade and carousels hold still ---------- */
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .dissolve .fr { transition: none; }
     .play-btn::after { animation: none; opacity: 0; }
     .dot::before { transition: none; }
   }
@@ -324,12 +313,23 @@ END GOOGLE ADS -->
   <!-- 2. HERO -->
   <section class="hero">
     <div class="wrap">
-      <div>
+      <div class="hero-copy">
         <p class="eyebrow">While we paint your home (digitally)</p>
         <h1 class="ttl" id="heroTitle">Your Home Is in the Studio. <span class="accent">Soon You&rsquo;ll See It in Colors You&rsquo;ve Never Pictured.</span></h1>
         <p class="lede">Our design team is rendering your actual house in the palettes closest to your style. Here&rsquo;s what happens next, and what you have to look forward to.</p>
       </div>
-      <div class="dissolve" id="dissolve" role="img" aria-label="Example: one phone photo of a home, then the same home rendered in two palettes."></div>
+      <!-- VIDEO: muted loop preview + gold play button for full sound. Set VSL in the script. -->
+      <div class="hero-video" id="heroVideo">
+        <div class="vsl" id="vsl">
+          <video id="vslVideo" muted loop playsinline preload="none" aria-label="Inside a 30-minute custom color consultation"></video>
+          <div class="ph-note"><span>Video placeholder: add the file and set <code>VSL.src</code></span></div>
+          <div class="overlay">
+            <button class="play-btn" id="vslPlay" type="button" aria-label="Play with sound"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+            <span class="play-lb">Watch with sound</span>
+          </div>
+        </div>
+        <p class="vsl-cap">Inside a 30-minute custom color consultation.</p>
+      </div>
     </div>
   </section>
 
@@ -399,26 +399,7 @@ END GOOGLE ADS -->
     </div>
   </section>
 
-  <!-- 6. SHORT VSL (optional — set VSL.enabled to false to hide) -->
-  <section id="vslSection">
-    <div class="wrap">
-      <div class="head-c">
-        <p class="eyebrow">What your consultation looks like</p>
-        <h2 class="ttl">Thirty Minutes. <span class="accent">Your House, Every Palette.</span></h2>
-      </div>
-      <div class="vsl" id="vsl">
-        <video id="vslVideo" muted loop playsinline preload="none" aria-label="Inside a 30-minute custom color consultation"></video>
-        <div class="ph-note"><span>Video placeholder: add the file and set <code>VSL.src</code></span></div>
-        <div class="overlay">
-          <button class="play-btn" id="vslPlay" type="button" aria-label="Play with sound"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
-          <span class="play-lb">Watch with sound</span>
-        </div>
-      </div>
-      <p class="vsl-cap">Inside a 30-minute custom color consultation.</p>
-    </div>
-  </section>
-
-  <!-- 7. CLOSE -->
+  <!-- 6. CLOSE -->
   <section class="navy close">
     <div class="wrap">
       <p class="line">Your house <em>is next.</em></p>
@@ -444,15 +425,15 @@ var SETTINGS = {
   financing:  true                // false removes "monthly payment options on approved credit"
 };
 
-/* Optional video. Leave src empty for the placeholder; enabled:false hides the section. */
-var VSL = { enabled: true, src: '', poster: '' };
+/* The hero video. src = the video file; poster = the still shown before it plays.
+   Leave src empty for the placeholder; enabled:false removes the player. */
+var VSL = { enabled: true, src: '', poster: 'assets/home-01-palette-a.jpg' };
 
 /* =======================================================================
    HOMES — the gallery. One entry = one card. Add a home by copying a
    block, changing the words, and dropping its four photos into assets/.
    cans = the three paint colours (body, trim, accent) as hex codes.
    placeholder: true shows a small "Placeholder" tag on the card.
-   The first home also plays in the hero, labelled "Example render".
    ======================================================================= */
 var HOMES = [
   {
@@ -519,7 +500,7 @@ var HOMES = [
   if (SETTINGS.quoNumber) document.querySelectorAll('[data-quo]').forEach(function (s) { s.textContent = SETTINGS.quoNumber; });
   if (!SETTINGS.financing) document.querySelectorAll('[data-financing]').forEach(function (s) { s.remove(); });
 
-  /* ---- hero: community name, example crossfade ---- */
+  /* ---- hero: community name ---- */
 
   /* ?community=orchard-hills-irvine  ->  "Orchard Hills" */
   var CITY_SLUGS = ['irvine', 'anaheim', 'newport-beach', 'coto-de-caza', 'laguna-beach', 'yorba-linda',
@@ -538,28 +519,6 @@ var HOMES = [
   var community = '';
   try { community = communityName(new URLSearchParams(location.search).get('community')); } catch (e) {}
   if (community) document.getElementById('heroTitle').firstChild.textContent = 'Your ' + community + ' Home Is in the Studio. ';
-
-  var h = HOMES[0];
-  var frames = [
-    { src: h.sent, tag: 'One phone photo' },
-    { src: h.paletteA.img, tag: 'Palette A · ' + h.paletteA.scheme },
-    { src: h.paletteB.img, tag: 'Palette B · ' + h.paletteB.scheme }
-  ];
-  var box = document.getElementById('dissolve');
-  var frs = frames.map(function (f, i) {
-    var fr = el('div', 'fr' + (i === (reduce ? 1 : 0) ? ' on' : ''));
-    var p = photo(f.src, '', i > 0); p.style.height = '100%'; fr.appendChild(p);
-    fr.appendChild(el('span', 'frame-tag', esc(f.tag)));
-    box.appendChild(fr); return fr;
-  });
-  box.appendChild(el('span', 'ex-badge', 'Example render'));
-  if (!reduce) {
-    var cur = 0;
-    setInterval(function () {
-      if (document.hidden) return;
-      frs[cur].classList.remove('on'); cur = (cur + 1) % frs.length; frs[cur].classList.add('on');
-    }, 3800);
-  }
 
   /* ---- gallery ---- */
   var homesEl = document.getElementById('homes');
@@ -627,11 +586,11 @@ var HOMES = [
   });
 
   /* ---- VSL: muted loop preview, gold button restarts it with sound ---- */
-  var sec = document.getElementById('vslSection');
+  var sec = document.getElementById('heroVideo');
   if (!VSL.enabled) { sec.remove(); return; }
   var vsl = document.getElementById('vsl'), vid = document.getElementById('vslVideo'), btn = document.getElementById('vslPlay');
-  if (!VSL.src) { vsl.classList.add('missing'); btn.disabled = true; btn.setAttribute('aria-label', 'Video coming soon'); return; }
   if (VSL.poster) vid.poster = VSL.poster;
+  if (!VSL.src) { vsl.classList.add('missing'); btn.disabled = true; btn.setAttribute('aria-label', 'Video coming soon'); return; }
   vid.addEventListener('error', function () { vsl.classList.add('missing'); }, true);
   /* nothing downloads until the player is nearly on screen — keeps the page fast on 5G */
   function load() { if (vid.src) return; vid.src = VSL.src; if (!reduce) { var p = vid.play(); if (p && p.catch) p.catch(function () {}); } }

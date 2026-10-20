@@ -13,7 +13,8 @@ the sales-page forms and Jobber still point where they did. Hand-built, not gene
 **Live:** https://realdealmarketing18-a11y.github.io/Vip-home-painting-orange-county/thank-you/
 **About their home, not a client story** (Fabian, 2026-10-20): once someone has sent a photo they
 are sold, so the page builds anticipation for their renders instead of retelling a case study.
-Order: confirmation → hero → what happens next → render preview → paint-chip comparison → video → close.
+Order: confirmation → hero (headline, then the video directly under it) → what happens next →
+render preview → paint-chip comparison → close.
 
 **Personalised:** add `?community=orchard-hills-irvine` → the headline reads "Your Orchard Hills
 Home Is in the Studio." A known city slug on the end is dropped. Anything that is not a plain
@@ -31,7 +32,7 @@ All settings sit in one block at the top of the `<script>` in `thank-you/index.h
 | **Financing line** | `SETTINGS.financing` | `false` removes "with monthly payment options on approved credit". **Unverified** — not in `context/OFFER.md`. |
 | **Meta Pixel ID** | `<head>`, block `META PIXEL` | Paste ID over `PIXEL_ID_HERE`, delete the comment markers. Fires `Lead` on load. |
 | **Google Ads conversion** | `<head>`, block `GOOGLE ADS` | Paste ID + label over `AW-CONVERSION_ID_HERE` / `CONVERSION_LABEL_HERE`, delete the comment markers. |
-| **VSL video** | `VSL.src`, `VSL.poster` | Drop the file in `thank-you/assets/`, set `src: 'assets/vsl-consultation.mp4'`. Empty = placeholder frame. `enabled: false` hides the section. |
+| **Hero video** | `VSL.src`, `VSL.poster` | Drop the file in `thank-you/assets/`, set `src: 'assets/vsl-consultation.mp4'`. Plays muted on a loop; the gold button restarts it with sound. Until then the still is the Coastal Organic Compound render (`poster`). `enabled: false` removes the player. |
 | **Gallagher finished photo** (gallery frame 4) | `thank-you/assets/home-01-painted.jpg` | A real photo of the painted house. Doesn't exist: the Gallagher imagery is rendered (`registry/client-stories.json`), and a render is never shown as "What we painted". |
 | **Homes 02 and 03** | `thank-you/assets/home-0N-{sent,palette-a,palette-b,painted}.jpg` + their `HOMES` entries | Real client, real photos, real SW colours. |
 
@@ -39,8 +40,7 @@ Missing images are not broken images: each shows a striped box naming the exact 
 
 **Home 01 (Gallagher) uses files already in the repo**, copied with clear names:
 `home-01-sent.webp` = `viz-photos/base.webp`, `home-01-palette-a.jpg` = Coastal Organic Compound
-(their real choice), `home-01-palette-b.jpg` = Pebble Beach Manor. The hero crossfades through
-those three, badged "Example render" so no one mistakes it for their own house.
+(their real choice), `home-01-palette-b.jpg` = Pebble Beach Manor.
 
 ### How to add a home to the gallery
 
@@ -51,7 +51,6 @@ those three, badged "Example render" so no one mistakes it for their own house.
    name, `colors` (`'Name SW 0000 · Name SW 0000'`) and `cans` (body, trim, accent hex codes).
 3. Delete `placeholder: true` once it's a real client. Commit and push; live in about a minute.
 
-The hero always plays the first home in `HOMES` — move a home to the top to feature it.
 
 ### Choices made
 - **Folder is `thank-you/assets/`, not `/assets/thank-you/`** — keeps the page in one folder and
