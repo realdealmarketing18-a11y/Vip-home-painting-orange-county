@@ -11,9 +11,13 @@ the sales-page forms and Jobber still point where they did. Hand-built, not gene
 `thank-you/` and `generate.js` never touches it. `noindex, nofollow`, and not in `sitemap.xml`.
 
 **Live:** https://realdealmarketing18-a11y.github.io/Vip-home-painting-orange-county/thank-you/
-**Personalised:** add `?community=orchard-hills-irvine` → the subhead reads "Your Orchard Hills
-home is in the studio." A known city slug on the end is dropped. Anything that is not a plain
-slug is ignored and the generic line shows ("Your home is in the studio.").
+**About their home, not a client story** (Fabian, 2026-10-20): once someone has sent a photo they
+are sold, so the page builds anticipation for their renders instead of retelling a case study.
+Order: confirmation → hero → what happens next → render preview → paint-chip comparison → video → close.
+
+**Personalised:** add `?community=orchard-hills-irvine` → the headline reads "Your Orchard Hills
+Home Is in the Studio." A known city slug on the end is dropped. Anything that is not a plain
+slug is ignored and the generic headline shows ("Your Home Is in the Studio.").
 
 ### Every placeholder, and where to fill it
 
@@ -28,27 +32,26 @@ All settings sit in one block at the top of the `<script>` in `thank-you/index.h
 | **Meta Pixel ID** | `<head>`, block `META PIXEL` | Paste ID over `PIXEL_ID_HERE`, delete the comment markers. Fires `Lead` on load. |
 | **Google Ads conversion** | `<head>`, block `GOOGLE ADS` | Paste ID + label over `AW-CONVERSION_ID_HERE` / `CONVERSION_LABEL_HERE`, delete the comment markers. |
 | **VSL video** | `VSL.src`, `VSL.poster` | Drop the file in `thank-you/assets/`, set `src: 'assets/vsl-consultation.mp4'`. Empty = placeholder frame. `enabled: false` hides the section. |
-| **Hero frame 3 — Gallagher finished photo** | `thank-you/assets/home-01-painted.jpg` | A real photo of the painted house. Doesn't exist: the Gallagher imagery is rendered (`registry/client-stories.json`), and a render is never shown as "What we painted". |
+| **Gallagher finished photo** (gallery frame 4) | `thank-you/assets/home-01-painted.jpg` | A real photo of the painted house. Doesn't exist: the Gallagher imagery is rendered (`registry/client-stories.json`), and a render is never shown as "What we painted". |
 | **Homes 02 and 03** | `thank-you/assets/home-0N-{sent,palette-a,palette-b,painted}.jpg` + their `HOMES` entries | Real client, real photos, real SW colours. |
-| **Gallagher headline claim** | `FEATURED.client` | "Almost chose a color from a two-inch chip" is a story beat, not a confirmed fact — Fabian to confirm, same as the other SWAP:CLIENT copy. |
 
 Missing images are not broken images: each shows a striped box naming the exact file to add.
 
 **Home 01 (Gallagher) uses files already in the repo**, copied with clear names:
 `home-01-sent.webp` = `viz-photos/base.webp`, `home-01-palette-a.jpg` = Coastal Organic Compound
-(their real choice), `home-01-palette-b.jpg` = Pebble Beach Manor, `home-01-avatar.jpg`.
+(their real choice), `home-01-palette-b.jpg` = Pebble Beach Manor. The hero crossfades through
+those three, badged "Example render" so no one mistakes it for their own house.
 
 ### How to add a home to the gallery
 
 1. Put four photos in `thank-you/assets/`: `home-04-sent.jpg`, `home-04-palette-a.jpg`,
    `home-04-palette-b.jpg`, `home-04-painted.jpg` (4:3, ~1600px wide, under 300 KB each).
 2. In `thank-you/index.html`, copy one block inside `HOMES = [ … ]`, paste it at the end, and
-   change: `name`, `place`, `story` (one line), the four file names, each palette's `scheme`
+   change: `name`, `place`, the four file names, each palette's `scheme`
    name, `colors` (`'Name SW 0000 · Name SW 0000'`) and `cans` (body, trim, accent hex codes).
 3. Delete `placeholder: true` once it's a real client. Commit and push; live in about a minute.
 
-To feature a different family in the hero, change `FEATURED` — the hero always uses the photos of
-the first home in `HOMES`.
+The hero always plays the first home in `HOMES` — move a home to the top to feature it.
 
 ### Choices made
 - **Folder is `thank-you/assets/`, not `/assets/thank-you/`** — keeps the page in one folder and
@@ -56,6 +59,7 @@ the first home in `HOMES`.
 - **Header is logo + tagline + phone, no menu** — someone who just converted shouldn't be handed
   a menu to wander off through. Easy to add.
 - **Palettes show as three paint cans** next to the SW names (the paint-can rule).
+- **No timing promise.** Step 02 says Fabian will text; no turnaround time until one is confirmed.
 - **Reduced motion:** the hero holds on the render instead of cycling; carousels never animate.
 
 ### Open question for Fabian

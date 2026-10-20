@@ -119,17 +119,15 @@ END GOOGLE ADS -->
   .hero { padding: 36px 0 56px; }
   .hero .wrap { display: grid; gap: 28px; }
   .hero .ttl { font-size: clamp(28px, 7.4vw, 50px); }
-  .chip { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 18px; }
-  .chip img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover;
-    border: 2px solid var(--gold); }
-  .chip .n { font-weight: 700; font-size: 14px; line-height: 1.2; }
-  .chip .p { font-family: var(--font-serif); font-style: italic; font-size: 13px; color: var(--gold-deep); }
   .dissolve { position: relative; aspect-ratio: 4 / 3; border-radius: 6px; overflow: hidden;
     background: var(--cream-deep); box-shadow: var(--shadow);
     outline: 1px solid rgba(201,169,97,.55); outline-offset: 5px; }
   .dissolve .fr { position: absolute; inset: 0; opacity: 0; transition: opacity 1.8s ease-in-out; }
   .dissolve .fr.on { opacity: 1; }
   .dissolve .fr img { width: 100%; height: 100%; object-fit: cover; }
+  .ex-badge { position: absolute; right: 10px; top: 10px; z-index: 2; background: rgba(255,255,255,.92);
+    color: var(--navy); font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+    padding: 5px 9px; border-radius: 999px; border: 1px solid var(--gold); }
   .frame-tag { position: absolute; left: 10px; bottom: 10px; z-index: 2;
     background: rgba(20,24,56,.82); color: var(--cream); font-size: 10.5px; font-weight: 600;
     letter-spacing: .16em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; }
@@ -179,8 +177,8 @@ END GOOGLE ADS -->
   .home { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: var(--shadow);
     border: 1px solid rgba(26,31,78,.07); min-width: 0; }
   .home-h { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 16px 18px 14px; }
-  .home-h .n { font-family: var(--font-serif); font-weight: 600; font-size: 19px; line-height: 1.2; }
-  .home-h .p { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-deep); margin-top: 3px; }
+  .home-h .n { font-family: var(--font-serif); font-weight: 600; font-size: 17px; line-height: 1.2; }
+  .home-h .p { font-size: 12.5px; color: var(--ink-2); margin-top: 2px; }
   .ph-flag { flex: none; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
     color: var(--ink-2); border: 1px dashed #B8B4A8; border-radius: 999px; padding: 4px 9px; }
   .car { position: relative; }
@@ -190,7 +188,7 @@ END GOOGLE ADS -->
   .slide { flex: 0 0 100%; scroll-snap-align: start; margin: 0; min-width: 0; }
   .slide .ph { aspect-ratio: 4 / 3; background: var(--cream-deep); }
   .slide .ph img { width: 100%; height: 100%; object-fit: cover; }
-  .slide figcaption { padding: 12px 18px 0; min-height: 66px; }
+  .slide figcaption { padding: 12px 18px 16px; min-height: 80px; }
   .slide .lb { font-size: 10.5px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-deep); }
   .slide .co { display: flex; align-items: center; gap: 10px; margin-top: 5px; font-size: 14px; color: var(--navy); line-height: 1.35; }
   /* arrows sit over the photo only: a 4:3 overlay matching the frame, not the caption */
@@ -209,8 +207,6 @@ END GOOGLE ADS -->
     display: flex; align-items: center; justify-content: center; }
   .dot::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #D5CFC1; transition: background .25s, transform .25s; }
   .dot[aria-current="true"]::before { background: var(--gold); transform: scale(1.3); }
-  .home-f { margin: 0; padding: 10px 18px 20px; font-family: var(--font-serif); font-style: italic;
-    font-size: 16.5px; line-height: 1.45; color: var(--navy); border-top: 1px solid rgba(201,169,97,.3); margin-top: 8px; }
 
   /* ---------- 5. VSL — two-state player ---------- */
   .vsl { position: relative; aspect-ratio: 16 / 9; max-width: 860px; margin: 0 auto; border-radius: 6px;
@@ -231,7 +227,7 @@ END GOOGLE ADS -->
   .play-btn svg { width: 22px; height: 22px; fill: var(--gold-bright); transform: translateX(2px); }
   .play-lb { color: var(--cream); font-size: 10.5px; font-weight: 600; letter-spacing: .26em; text-transform: uppercase; }
   .vsl-cap { text-align: center; margin: 22px auto 0; font-family: var(--font-serif); font-style: italic;
-    font-size: 17px; color: rgba(245,239,226,.85); }
+    font-size: 17px; color: var(--ink-2); }
 
   /* ---------- 6. WHAT HAPPENS NEXT ---------- */
   .steps { list-style: none; margin: 0 auto; padding: 0; max-width: 720px; display: grid; gap: 0; position: relative; }
@@ -330,23 +326,49 @@ END GOOGLE ADS -->
     <div class="wrap">
       <div>
         <p class="eyebrow">While we paint your home (digitally)</p>
-        <div class="chip">
-          <img id="heroAvatar" src="" alt="" width="80" height="80">
-          <div><div class="n" id="heroName"></div><div class="p" id="heroPlace"></div></div>
-        </div>
-        <h1 class="ttl"><span id="heroClient"></span> Almost Chose a Color From a Two-Inch Chip. <span class="accent">Here&rsquo;s What They Saw Instead.</span></h1>
-        <p class="lede" id="heroSub">Your home is in the studio. Every home below started exactly where yours is now: one photo.</p>
+        <h1 class="ttl" id="heroTitle">Your Home Is in the Studio. <span class="accent">Soon You&rsquo;ll See It in Colors You&rsquo;ve Never Pictured.</span></h1>
+        <p class="lede">Our design team is rendering your actual house in the palettes closest to your style. Here&rsquo;s what happens next, and what you have to look forward to.</p>
       </div>
-      <div class="dissolve" id="dissolve" role="img" aria-label="The photo the family sent, their color render, and the finished home."></div>
+      <div class="dissolve" id="dissolve" role="img" aria-label="Example: one phone photo of a home, then the same home rendered in two palettes."></div>
     </div>
   </section>
 
-  <!-- 3. TWO WAYS TO CHOOSE A COLOR -->
+  <!-- 3. WHAT HAPPENS NEXT -->
+  <section class="cream">
+    <div class="wrap">
+      <div class="head-c">
+        <p class="eyebrow">What happens next</p>
+        <h2 class="ttl">Three Steps. <span class="accent">The First Two Are Ours.</span></h2>
+      </div>
+      <ol class="steps">
+        <li class="step"><div class="step-num"><span>01</span></div>
+          <div><h3>Your renders</h3><p>Our design team renders your home in your three closest palettes.</p></div></li>
+        <li class="step"><div class="step-num"><span>02</span></div>
+          <div><h3>A text from Fabian</h3><p>Fabian texts you your renders from <b data-quo>[QUO NUMBER]</b>. Save it so you know it&rsquo;s us.</p></div></li>
+        <li class="step"><div class="step-num"><span>03</span></div>
+          <div><h3>Your consultation</h3><p>Your 30-minute color consultation: compare palettes side by side and get your itemized estimate<span data-financing>, with monthly payment options on approved credit</span>.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 4. RENDER PREVIEW — built from the HOMES list in the script below -->
+  <section id="gallery">
+    <div class="wrap">
+      <div class="head-c">
+        <p class="eyebrow">A preview of what&rsquo;s coming</p>
+        <h2 class="ttl">What Your Renders <span class="accent">Will Look Like</span></h2>
+        <p class="lede">Every one of these started as a single phone photo, just like yours. Swipe each home: the photo, two palettes rendered on it, and the finished house.</p>
+      </div>
+      <div class="homes" id="homes"></div>
+    </div>
+  </section>
+
+  <!-- 5. TWO WAYS TO CHOOSE A COLOR -->
   <section class="cream">
     <div class="wrap">
       <div class="head-c">
         <p class="eyebrow">Two ways to choose a color</p>
-        <h2 class="ttl">One Is a Guess. <span class="accent">One Is Your Actual House.</span></h2>
+        <h2 class="ttl">You Just Skipped <span class="accent">the Paint-Chip Gamble.</span></h2>
       </div>
       <div class="ways">
         <div class="way gamble">
@@ -377,20 +399,8 @@ END GOOGLE ADS -->
     </div>
   </section>
 
-  <!-- 4. TRANSFORMATION GALLERY — built from the HOMES list in the script below -->
-  <section id="gallery">
-    <div class="wrap">
-      <div class="head-c">
-        <p class="eyebrow">From one photo to the finished house</p>
-        <h2 class="ttl">Every One of These Homes Started <span class="accent">With a Single Photo</span></h2>
-        <p class="lede">Swipe each home: the photo they sent, two of the palettes our design team rendered on it, and what we painted.</p>
-      </div>
-      <div class="homes" id="homes"></div>
-    </div>
-  </section>
-
-  <!-- 5. SHORT VSL (optional — set VSL.enabled to false to hide) -->
-  <section class="navy" id="vslSection">
+  <!-- 6. SHORT VSL (optional — set VSL.enabled to false to hide) -->
+  <section id="vslSection">
     <div class="wrap">
       <div class="head-c">
         <p class="eyebrow">What your consultation looks like</p>
@@ -405,24 +415,6 @@ END GOOGLE ADS -->
         </div>
       </div>
       <p class="vsl-cap">Inside a 30-minute custom color consultation.</p>
-    </div>
-  </section>
-
-  <!-- 6. WHAT HAPPENS NEXT -->
-  <section class="cream">
-    <div class="wrap">
-      <div class="head-c">
-        <p class="eyebrow">What happens next</p>
-        <h2 class="ttl">Three Steps. <span class="accent">The First Two Are Ours.</span></h2>
-      </div>
-      <ol class="steps">
-        <li class="step"><div class="step-num"><span>01</span></div>
-          <div><h3>Your renders</h3><p>Our design team renders your home in your three closest palettes.</p></div></li>
-        <li class="step"><div class="step-num"><span>02</span></div>
-          <div><h3>A text from Fabian</h3><p>Fabian texts you your renders from <b data-quo>[QUO NUMBER]</b>. Save it so you know it&rsquo;s us.</p></div></li>
-        <li class="step"><div class="step-num"><span>03</span></div>
-          <div><h3>Your consultation</h3><p>Your 30-minute color consultation: compare palettes side by side and get your itemized estimate<span data-financing>, with monthly payment options on approved credit</span>.</p></div></li>
-      </ol>
     </div>
   </section>
 
@@ -452,15 +444,6 @@ var SETTINGS = {
   financing:  true                // false removes "monthly payment options on approved credit"
 };
 
-/* The featured family in the hero. Their photos come from HOMES[0]. */
-var FEATURED = {
-  client:  'The Gallaghers',               // goes into the headline
-  name:    'The Gallagher Family',
-  place:   'Pelican Hill, Newport Beach',
-  avatar:  'assets/home-01-avatar.jpg',
-  painted: 'assets/home-01-painted.jpg'    // the real finished photo
-};
-
 /* Optional video. Leave src empty for the placeholder; enabled:false hides the section. */
 var VSL = { enabled: true, src: '', poster: '' };
 
@@ -469,12 +452,12 @@ var VSL = { enabled: true, src: '', poster: '' };
    block, changing the words, and dropping its four photos into assets/.
    cans = the three paint colours (body, trim, accent) as hex codes.
    placeholder: true shows a small "Placeholder" tag on the card.
+   The first home also plays in the hero, labelled "Example render".
    ======================================================================= */
 var HOMES = [
   {
     name: 'The Gallagher Family',
     place: 'Pelican Hill, Newport Beach',
-    story: 'They saw their own house in Coastal Organic Compound before a single wall was painted.',
     sent: 'assets/home-01-sent.webp',
     paletteA: { img: 'assets/home-01-palette-a.jpg', scheme: 'Coastal Organic Compound',
                 colors: 'Alabaster SW 7008 · Urbane Bronze SW 7048', cans: ['#EDEAE0', '#54504A', '#9C7B53'] },
@@ -486,7 +469,6 @@ var HOMES = [
     placeholder: true,
     name: 'Client Name',
     place: 'Community, City',
-    story: 'One line of this family’s story goes here.',
     sent: 'assets/home-02-sent.jpg',
     paletteA: { img: 'assets/home-02-palette-a.jpg', scheme: 'Palette name',
                 colors: 'Color Name SW 0000 · Color Name SW 0000', cans: ['#E6E1D6', '#5A5650', '#A08866'] },
@@ -498,7 +480,6 @@ var HOMES = [
     placeholder: true,
     name: 'Client Name',
     place: 'Community, City',
-    story: 'One line of this family’s story goes here.',
     sent: 'assets/home-03-sent.jpg',
     paletteA: { img: 'assets/home-03-palette-a.jpg', scheme: 'Palette name',
                 colors: 'Color Name SW 0000 · Color Name SW 0000', cans: ['#E9E4D8', '#3F4148', '#9A7E5C'] },
@@ -538,13 +519,7 @@ var HOMES = [
   if (SETTINGS.quoNumber) document.querySelectorAll('[data-quo]').forEach(function (s) { s.textContent = SETTINGS.quoNumber; });
   if (!SETTINGS.financing) document.querySelectorAll('[data-financing]').forEach(function (s) { s.remove(); });
 
-  /* ---- hero: name, community, crossfade ---- */
-  document.getElementById('heroClient').textContent = FEATURED.client;
-  document.getElementById('heroName').textContent = FEATURED.name;
-  document.getElementById('heroPlace').textContent = FEATURED.place;
-  var av = document.getElementById('heroAvatar');
-  av.onerror = function () { av.parentNode.removeChild(av); };
-  av.src = FEATURED.avatar;
+  /* ---- hero: community name, example crossfade ---- */
 
   /* ?community=orchard-hills-irvine  ->  "Orchard Hills" */
   var CITY_SLUGS = ['irvine', 'anaheim', 'newport-beach', 'coto-de-caza', 'laguna-beach', 'yorba-linda',
@@ -562,22 +537,22 @@ var HOMES = [
   }
   var community = '';
   try { community = communityName(new URLSearchParams(location.search).get('community')); } catch (e) {}
-  document.getElementById('heroSub').textContent = (community ? 'Your ' + community + ' home is in the studio.' : 'Your home is in the studio.') +
-    ' Every home below started exactly where yours is now: one photo.';
+  if (community) document.getElementById('heroTitle').firstChild.textContent = 'Your ' + community + ' Home Is in the Studio. ';
 
   var h = HOMES[0];
   var frames = [
-    { src: h.sent, tag: 'The photo they sent', label: 'The photo they sent' },
-    { src: h.paletteA.img, tag: h.paletteA.scheme, label: 'Their render' },
-    { src: FEATURED.painted, tag: 'What we painted', label: 'Finished photo coming' }
+    { src: h.sent, tag: 'One phone photo' },
+    { src: h.paletteA.img, tag: 'Palette A · ' + h.paletteA.scheme },
+    { src: h.paletteB.img, tag: 'Palette B · ' + h.paletteB.scheme }
   ];
   var box = document.getElementById('dissolve');
   var frs = frames.map(function (f, i) {
     var fr = el('div', 'fr' + (i === (reduce ? 1 : 0) ? ' on' : ''));
-    var p = photo(f.src, '', i > 0, f.label); p.style.height = '100%'; fr.appendChild(p);
+    var p = photo(f.src, '', i > 0); p.style.height = '100%'; fr.appendChild(p);
     fr.appendChild(el('span', 'frame-tag', esc(f.tag)));
     box.appendChild(fr); return fr;
   });
+  box.appendChild(el('span', 'ex-badge', 'Example render'));
   if (!reduce) {
     var cur = 0;
     setInterval(function () {
@@ -594,12 +569,12 @@ var HOMES = [
   HOMES.forEach(function (home, hi) {
     var card = el('article', 'home');
     card.setAttribute('aria-label', home.name + ', ' + home.place);
-    var head = el('div', 'home-h', '<div><div class="n">' + esc(home.name) + '</div><div class="p">' + esc(home.place) + '</div></div>');
+    var head = el('div', 'home-h', '<div><div class="n">' + esc(home.place) + '</div><div class="p">' + esc(home.name) + '</div></div>');
     if (home.placeholder) head.appendChild(el('span', 'ph-flag', 'Placeholder'));
     card.appendChild(head);
 
     var slides = [
-      { src: home.sent, lb: 'The photo they sent', co: '' },
+      { src: home.sent, lb: 'The phone photo', co: '' },
       { src: home.paletteA.img, lb: 'Palette A — ' + home.paletteA.scheme, co: cans(home.paletteA.cans) + '<span>' + esc(home.paletteA.colors) + '</span>' },
       { src: home.paletteB.img, lb: 'Palette B — ' + home.paletteB.scheme, co: cans(home.paletteB.cans) + '<span>' + esc(home.paletteB.colors) + '</span>' },
       { src: home.painted, lb: 'What we painted', co: '' }
@@ -629,7 +604,6 @@ var HOMES = [
       dots.appendChild(d); return d;
     });
     card.appendChild(dots);
-    card.appendChild(el('p', 'home-f', esc(home.story)));
     homesEl.appendChild(card);
 
     function idx() { return Math.round(track.scrollLeft / Math.max(1, track.clientWidth)); }
