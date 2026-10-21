@@ -87,7 +87,11 @@ Settings sit in one block at the top of the `<script>` in `thank-you/index.html`
 data, in `generator/registry/nap.json`, and in every rule file and skill. Fabian chose to replace it
 everywhere, knowing Google matches the phone across the web: **the Google Business Profile, Bing
 Places, Yelp and directory listings must show (949) 418-6461 too**, or the mismatch costs Maps
-ranking. (The (951) 557-0627 in the original brief was never used.)
+ranking. **Live site done the same day:** the 22 live pages had drifted to (951) 557-0627 (edited in
+WordPress, outside this repo). Swapped number-only through Novamira, plus the theme's
+`functions.php` and `templates/vip-landing-page.php` ((909) → (949)); cache purged; all 24 live URLs
+checked: (949) present, no old number. Backups: post meta `_vip_phone_backup_20261021` per page,
+theme files in `wp-content/novamira-sandbox/backups-20261021/`.
 
 ---
 
