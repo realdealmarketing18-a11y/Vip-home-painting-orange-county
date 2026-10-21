@@ -36,6 +36,10 @@ form sends them.
 
 ### What the video has to show
 
+**The full script is `docs/THANK-YOU-VIDEO-SCRIPT.md`** (2026-10-21): ~70s, 16:9, beat by beat, with
+on-screen text for the muted autoplay, Fabian's VO, and every asset still needed. The list below is
+the source copy it was built from.
+
 The caption under it reads: "The steps your home painting project goes through, inside and out."
 The copy that used to be on the page, for the script:
 
