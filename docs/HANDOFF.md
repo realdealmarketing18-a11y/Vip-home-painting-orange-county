@@ -13,12 +13,18 @@ the sales-page forms and Jobber still point where they did. Hand-built, not gene
 **Live:** https://realdealmarketing18-a11y.github.io/Vip-home-painting-orange-county/thank-you/
 **About their home, not a client story** (Fabian, 2026-10-20): once someone has sent a photo they
 are sold, so the page builds anticipation for their renders instead of retelling a case study.
-Order: confirmation → hero (headline, then the video directly under it) → what happens next →
-exterior preview → **interior preview** → paint-chip comparison → close.
+Order: confirmation → hero (headline → **exterior + interior tiles** → video) → what happens next →
+render preview (one gallery, **Exterior | Interior** switch) → paint-chip comparison → close.
 
 **Speaks to interior and exterior leads alike** (Fabian, 2026-10-20): the main form takes both, so
-the hero and step 01 say "inside or out", and an interior gallery (rooms and cabinets) follows the
-exterior one. Interior renders are already promised on `/interior-painting/`.
+the hero and step 01 say "inside or out", two tiles under the headline show an exterior and an
+interior example side by side (each a slow photo → Palette A → Palette B crossfade, built from the
+first entry of `HOMES` and of `ROOMS`), and the gallery switches between the two lists.
+
+**`?project=interior | exterior | both`** — for the form to add when it's wired (with Jobber). The
+matching tile gets a gold outline and a "Your request" badge and goes first; `interior` also turns
+the headline into "Your [Community] Interior Is in the Studio" and opens the gallery on Interior.
+Missing or anything else: both tiles show evenly, gallery opens on Exterior. Interior renders are already promised on `/interior-painting/`.
 
 **Personalised:** add `?community=orchard-hills-irvine` → the headline reads "Your Orchard Hills
 Home Is in the Studio." A known city slug on the end is dropped. Anything that is not a plain

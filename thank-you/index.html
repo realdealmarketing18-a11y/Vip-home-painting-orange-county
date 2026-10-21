@@ -122,6 +122,37 @@ END GOOGLE ADS -->
   .hero-video { width: 100%; max-width: 900px; margin: 0 auto; }
   .hero .ttl { font-size: clamp(28px, 7.4vw, 50px); }
 
+  /* Two project tiles under the headline: exterior and interior side by side,
+     so every lead sees their own kind of project in the first screen. */
+  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; max-width: 900px; margin: 0 auto; text-align: left; }
+  .tile { position: relative; min-width: 0; border-radius: 8px; overflow: hidden; background: #fff;
+    border: 1px solid rgba(26,31,78,.08); box-shadow: var(--shadow); }
+  .tile.mine { border-color: var(--gold); box-shadow: var(--shadow), 0 0 0 2px var(--gold); }
+  .tile-h { padding: 10px 12px 9px; }
+  .tile-h .k { font-size: 9.5px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-deep); }
+  .tile-h .t { font-family: var(--font-serif); font-weight: 600; font-size: 15px; line-height: 1.2; margin-top: 2px; }
+  .tile-stage { position: relative; aspect-ratio: 4 / 5; background: var(--cream-deep); }
+  .tile-stage .fr { position: absolute; inset: 0; opacity: 0; transition: opacity 1.6s ease-in-out; }
+  .tile-stage .fr.on { opacity: 1; }
+  .tile-stage .ph { height: 100%; }
+  .tile-stage .ph img { width: 100%; height: 100%; object-fit: cover; }
+  .tile-stage .ph-note { font-size: 11px; padding: 10px; }
+  .tile-stage .ph-note b { font-size: 13px; }
+  .tile-stage .ph-note code { font-size: 9.5px; }
+  .tile-tag { position: absolute; left: 8px; bottom: 8px; z-index: 2; background: rgba(20,24,56,.82); color: var(--cream);
+    font-size: 9.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 5px 8px; border-radius: 999px; }
+  .mine-badge { position: absolute; top: 8px; right: 8px; z-index: 3; background: var(--gold-shine); color: var(--navy-deep);
+    font-size: 9.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; padding: 5px 9px; border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(20,24,56,.25); }
+
+  /* Exterior | Interior switch above the gallery */
+  .tabs { display: flex; justify-content: center; gap: 6px; margin: 0 auto 26px; padding: 5px; width: max-content;
+    border: 1px solid rgba(201,169,97,.6); border-radius: 999px; background: #fff; }
+  .tab { border: 0; background: none; cursor: pointer; font: inherit; font-size: 12.5px; font-weight: 700; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--navy); padding: 10px 20px; border-radius: 999px; min-height: 44px; }
+  .tab[aria-selected="true"] { background: var(--gold-shine); color: var(--navy-deep); box-shadow: 0 4px 12px rgba(201,169,97,.35); }
+  .tab:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
   /* Placeholder — shown whenever an image file is not there yet.
      It names the exact file to drop in, so swapping is self-explanatory. */
   .ph { position: relative; }
@@ -262,6 +293,12 @@ END GOOGLE ADS -->
     .top-phone { font-size: 13.5px; }
     .hero { padding: 56px 0 84px; }
     .hero .wrap { gap: 36px; }
+    .tiles { gap: 22px; }
+    .tile-h { padding: 14px 18px 12px; }
+    .tile-h .k { font-size: 10.5px; }
+    .tile-h .t { font-size: 20px; }
+    .tile-stage { aspect-ratio: 4 / 3; }
+    .tile-tag, .mine-badge { font-size: 10.5px; padding: 6px 10px; }
     .ways { grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
     .way { padding: 34px 32px; }
     .homes { grid-template-columns: 1fr 1fr; }
@@ -280,6 +317,7 @@ END GOOGLE ADS -->
 
   /* ---------- REDUCED MOTION — crossfade and carousels hold still ---------- */
   @media (prefers-reduced-motion: reduce) {
+    .tile-stage .fr { transition: none; }
     html { scroll-behavior: auto; }
     .play-btn::after { animation: none; opacity: 0; }
     .dot::before { transition: none; }
@@ -318,6 +356,8 @@ END GOOGLE ADS -->
         <h1 class="ttl" id="heroTitle">Your Home Is in the Studio. <span class="accent">Soon You&rsquo;ll See It in Colors You&rsquo;ve Never Pictured.</span></h1>
         <p class="lede">Our design team is rendering your actual home, inside or out, in the palettes closest to your style. Here&rsquo;s what happens next, and what you have to look forward to.</p>
       </div>
+      <!-- PROJECT TILES — built from the first entry of HOMES and of ROOMS -->
+      <div class="tiles" id="tiles"></div>
       <!-- VIDEO: muted loop preview + gold play button for full sound. Set VSL in the script. -->
       <div class="hero-video" id="heroVideo">
         <div class="vsl" id="vsl">
@@ -351,32 +391,25 @@ END GOOGLE ADS -->
     </div>
   </section>
 
-  <!-- 4. EXTERIOR PREVIEW — built from the HOMES list in the script below -->
+  <!-- 4. RENDER PREVIEW — HOMES and ROOMS lists in the script below, one switch between them -->
   <section id="gallery">
     <div class="wrap">
       <div class="head-c">
-        <p class="eyebrow">Exterior &middot; a preview of what&rsquo;s coming</p>
-        <h2 class="ttl">What Your Exterior Renders <span class="accent">Will Look Like</span></h2>
-        <p class="lede">Every one of these started as a single phone photo, just like yours. Swipe each home: the photo, two palettes rendered on it, and the finished house.</p>
+        <p class="eyebrow">A preview of what&rsquo;s coming</p>
+        <h2 class="ttl">What Your Renders <span class="accent">Will Look Like</span></h2>
+        <p class="lede">Every one of these started as a single phone photo, just like yours. Swipe each one: the photo, two palettes rendered on it, and the finished result.</p>
       </div>
-      <div class="homes" id="homes"></div>
+      <div class="tabs" role="tablist" aria-label="Exterior or interior">
+        <button class="tab" type="button" role="tab" id="tab-homes" aria-controls="homes" aria-selected="true">Exterior</button>
+        <button class="tab" type="button" role="tab" id="tab-rooms" aria-controls="rooms" aria-selected="false">Interior</button>
+      </div>
+      <div class="homes" id="homes" role="tabpanel" aria-labelledby="tab-homes"></div>
+      <div class="homes" id="rooms" role="tabpanel" aria-labelledby="tab-rooms" hidden></div>
     </div>
   </section>
 
-  <!-- 5. INTERIOR PREVIEW — built from the ROOMS list in the script below -->
-  <section class="cream" id="interior">
-    <div class="wrap">
-      <div class="head-c">
-        <p class="eyebrow">Interior &middot; rooms and cabinets</p>
-        <h2 class="ttl">Inside, Every Room <span class="accent">Gets Its Own Preview</span></h2>
-        <p class="lede">Living rooms, kitchens, cabinets. Swipe each room: the phone photo, two palettes rendered on it, and the finished room, all before anyone opens a can.</p>
-      </div>
-      <div class="homes" id="rooms"></div>
-    </div>
-  </section>
-
-  <!-- 6. TWO WAYS TO CHOOSE A COLOR -->
-  <section>
+  <!-- 5. TWO WAYS TO CHOOSE A COLOR -->
+  <section class="cream">
     <div class="wrap">
       <div class="head-c">
         <p class="eyebrow">Two ways to choose a color</p>
@@ -411,7 +444,7 @@ END GOOGLE ADS -->
     </div>
   </section>
 
-  <!-- 7. CLOSE -->
+  <!-- 6. CLOSE -->
   <section class="navy close">
     <div class="wrap">
       <p class="line">Your house <em>is next.</em></p>
@@ -573,7 +606,49 @@ var ROOMS = [
   }
   var community = '';
   try { community = communityName(new URLSearchParams(location.search).get('community')); } catch (e) {}
-  if (community) document.getElementById('heroTitle').firstChild.textContent = 'Your ' + community + ' Home Is in the Studio. ';
+  /* ?project=interior | exterior | both — what they asked for on the form */
+  var project = '';
+  try { project = (new URLSearchParams(location.search).get('project') || '').toLowerCase(); } catch (e) {}
+  if (['interior', 'exterior', 'both'].indexOf(project) < 0) project = '';
+  var place = community ? community + ' ' : '';
+  if (community || project === 'interior')
+    document.getElementById('heroTitle').firstChild.textContent = 'Your ' + place + (project === 'interior' ? 'Interior' : 'Home') + ' Is in the Studio. ';
+
+  /* ---- project tiles: exterior + interior, each a slow crossfade ---- */
+  var tilesEl = document.getElementById('tiles');
+  var TILES = [
+    { key: 'exterior', item: HOMES[0], k: 'Exterior &middot; example', t: 'Your home, outside' },
+    { key: 'interior', item: ROOMS[0], k: 'Interior &middot; example', t: 'Your rooms &amp; cabinets' }
+  ];
+  if (project === 'interior') TILES.reverse();
+  TILES.forEach(function (tl, ti) {
+    var it = tl.item, mine = project === tl.key || project === 'both';
+    var tile = el('div', 'tile' + (mine ? ' mine' : ''));
+    tile.appendChild(el('div', 'tile-h', '<div class="k">' + tl.k + '</div><div class="t">' + tl.t + '</div>'));
+    var stage = el('div', 'tile-stage');
+    stage.setAttribute('role', 'img');
+    stage.setAttribute('aria-label', tl.key + ' example: a phone photo, then the same space rendered in two palettes');
+    var frames = [[it.sent, 'Phone photo'], [it.paletteA.img, 'Palette A'], [it.paletteB.img, 'Palette B']];
+    var frs = frames.map(function (f, i) {
+      var fr = el('div', 'fr' + (i === (reduce ? 1 : 0) ? ' on' : ''));
+      fr.appendChild(photo(f[0], '', i > 0));
+      fr.appendChild(el('span', 'tile-tag', f[1]));
+      stage.appendChild(fr); return fr;
+    });
+    if (mine) stage.appendChild(el('span', 'mine-badge', 'Your request'));
+    tile.appendChild(stage);
+    tilesEl.appendChild(tile);
+    if (!reduce) {
+      var cur = 0;
+      /* the second tile runs half a beat behind the first, so they never change together */
+      setTimeout(function () {
+        setInterval(function () {
+          if (document.hidden) return;
+          frs[cur].classList.remove('on'); cur = (cur + 1) % frs.length; frs[cur].classList.add('on');
+        }, 3800);
+      }, ti * 1900);
+    }
+  });
 
   /* ---- galleries: exterior homes and interior rooms share one card ---- */
   var arrowL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>';
@@ -645,6 +720,17 @@ var ROOMS = [
   }
   gallery(HOMES, 'homes', 'photo');
   gallery(ROOMS, 'rooms', 'room');
+
+  /* ---- Exterior | Interior switch — opens on what they asked for ---- */
+  var tabs = [document.getElementById('tab-homes'), document.getElementById('tab-rooms')];
+  function show(i) {
+    tabs.forEach(function (b, bi) {
+      b.setAttribute('aria-selected', bi === i ? 'true' : 'false');
+      document.getElementById(b.getAttribute('aria-controls')).hidden = bi !== i;
+    });
+  }
+  tabs.forEach(function (b, bi) { b.addEventListener('click', function () { show(bi); }); });
+  if (project === 'interior') show(1);
 
   /* ---- VSL: muted loop preview, gold button restarts it with sound ---- */
   var sec = document.getElementById('heroVideo');
