@@ -67,7 +67,7 @@ footers pick up the new cross-link automatically.
 
 Never say "AI" in customer-facing copy — it's the "Custom Visualization
 Service" / "our design team". Navy `#1A1F4E` · Gold `#C9A961` · Cream
-`#F5EFE2` · Fraunces + Inter · (909) 312-5400.
+`#F5EFE2` · Fraunces + Inter · (949) 418-6461.
 
 ## The master sales process on a community or city page (added 2026-09-29)
 

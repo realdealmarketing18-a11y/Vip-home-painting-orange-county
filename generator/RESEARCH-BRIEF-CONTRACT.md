@@ -173,7 +173,7 @@ One file. `city` holds everything researched once. `communities[]` holds only th
       "primary_keyword": "Irvine house painters",
       "secondary_keywords": ["exterior painting Irvine CA", "kitchen cabinet painting Irvine", "HOA approved painter Irvine"],
       "meta_title": "Irvine House Painters | Luxury Exterior & Cabinet Painting — VIP",
-      "meta_desc": "Irvine's luxury house painters. See your home in every color before a single brushstroke — complimentary visualization + itemized estimate. 1-Year Warranty. (909) 312-5400.",
+      "meta_desc": "Irvine's luxury house painters. See your home in every color before a single brushstroke — complimentary visualization + itemized estimate. 1-Year Warranty. (949) 418-6461.",
       "h1": "Irvine's <span class=\"gold\">Luxury House Painters</span> — See It Before We Paint It",
       "answer_capsule": "60-110 words. Who, where, what, price anchor, warranty, phone.",
       "viz_intro": "60-110 words, unique to this page."

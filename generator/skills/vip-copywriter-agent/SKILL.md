@@ -141,7 +141,7 @@ this skill.
 **The one action. Never two.**
 
 A reel that asks for a comment *and* a call gets neither. The site's standing CTA is
-"Claim Complimentary Color Consultation" and the phone is **(909) 312-5400** — but in a
+"Claim Complimentary Color Consultation" and the phone is **(949) 418-6461** — but in a
 reel, pick one and only one.
 
 ---

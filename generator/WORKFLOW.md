@@ -178,7 +178,7 @@ Runs **inside** `generate.js` on every page as it's written. This is the gate th
 validator cannot be: it scans the **rendered HTML**, which is the only thing a customer reads.
 
 Fails the build on: `free` · `AI` · British `colour` · review or star claims ·
-market-average pricing · any phone but (909) 312-5400.
+market-average pricing · any phone but (949) 418-6461.
 
 > It caught "5-Star Rated" live on all six community pages on its first run.
 > **Rule: validate the artifact, not the input that produced it.**

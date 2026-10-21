@@ -135,7 +135,7 @@ Irvine = 8 pages. Every one needs its own slots filled.
 | "AI", "AI-powered", "automated" | → **"our design team"** / **"Custom Visualization Service"** |
 | "Irvine averages $4.75/sqft" | → "VIP **starts at** $4.75 per square foot of paintable surface" |
 | HOA rules not sourced in the brief | → "your community association's design review" |
-| Any phone but (909) 312-5400 | NAP consistency is a ranking factor |
+| Any phone but (949) 418-6461 | NAP consistency is a ranking factor |
 
 **Verified badges you may use:** Licensed, Bonded & Insured · 2-Year Warranty ·
 Sherwin-Williams Emerald & Duration · Graco & Titan airless application.
@@ -183,7 +183,7 @@ Fill the slots in `COPY-SLOTS.md` for whichever modules this page carries.
 Headline, one emotional sentence, then:
 ```
 Primary:    Claim Complimentary Color Consultation   (HOA pages: "Request a Bid")
-Secondary:  (909) 312-5400
+Secondary:  (949) 418-6461
 Disclaimer: Complimentary. No obligation.
 ```
 

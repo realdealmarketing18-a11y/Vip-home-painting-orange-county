@@ -66,7 +66,7 @@ architecture, palette, value tier, and HOA. The uniqueness is real, not paraphra
 - **Never "AI"** → "our design team" / "Custom Visualization Service"
 - **Never** "Irvine averages $4.75" → "VIP exterior work in Irvine **starts at** $4.75 per
   square foot of paintable surface"
-- Phone in customer-facing copy must be **(909) 312-5400** and nothing else
+- Phone in customer-facing copy must be **(949) 418-6461** and nothing else
 - No `aggregateRating`, no review counts, no "5-Star Rated" — **VIP has 9 reviews** and the
   rating is unconfirmed
 - Never name HOA rules that aren't in the brief with a source

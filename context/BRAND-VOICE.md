@@ -139,7 +139,7 @@ visualization, not with social proof we don't have.
 | "AI", "artificial intelligence", "AI-powered" | **"our design team"**, **"Custom Visualization Service"** |
 | "Irvine averages $4.75/sqft" | "VIP exterior work **starts at** $4.75 per square foot of paintable surface" |
 | `aggregateRating`, "5-Star Rated", review counts | *(omit entirely until verified)* |
-| Any phone but (909) 312-5400 in customer copy | **(909) 312-5400** |
+| Any phone but (949) 418-6461 in customer copy | **(949) 418-6461** |
 | HOA rules not sourced in the brief | "your community association's design review" |
 
 ---

@@ -1,9 +1,9 @@
 {
   "_doc": "Single source of truth for NAP. Inconsistent NAP across pages suppresses local pack rankings. Every page renders from these values.",
   "name": "VIP Home Painting",
-  "phone": "(909) 312-5400",
-  "phoneHref": "tel:9093125400",
-  "phoneE164": "+19093125400",
+  "phone": "(949) 418-6461",
+  "phoneHref": "tel:9494186461",
+  "phoneE164": "+19494186461",
   "email": "Contact@VIPHomePainting.com",
   "hours": {
     "monFri": "08:00-18:00",

@@ -542,7 +542,7 @@ function faqSection(c, no) {
   const items = c.faqs.map((f, i) => `
       <details class="faq-item"${i === 0 ? ' open' : ''}>
         <summary class="faq-q">${f.q}<span class="pm">+</span></summary>
-        <div class="faq-a">${f.a.replace('(909) 312-5400', `<a href="${CFG.phoneHref}">(909) 312-5400</a>`)}</div>
+        <div class="faq-a">${f.a.replace('(949) 418-6461', `<a href="${CFG.phoneHref}">(949) 418-6461</a>`)}</div>
       </details>`).join('');
   return `
   <section class="cream" id="faq">
@@ -699,7 +699,7 @@ function buildPage(c) {
     .join('\n            ');
 
   const capsuleText = c.capsule.replace(
-    'Call (909) 312-5400.',
+    'Call (949) 418-6461.',
     `Call <a href="${CFG.phoneHref}" style="color:var(--gold-deep); font-weight:700; text-decoration:none;">${CFG.phone}</a>.`
   );
 

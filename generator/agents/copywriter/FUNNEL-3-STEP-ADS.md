@@ -50,7 +50,7 @@ argue with it, and it is the single strongest asset this funnel has. Use it earl
 | **Formulas** | F5, F6, F2, F8 · B3 | F8, F7, F3 · B1, B2 | B5, B2 · direct offer |
 | **Format** | 15–30s reel, no company name in the first 3 seconds | 30–45s before/after sweep, or carousel | Static or 15s, one CTA, phone visible |
 | **Asset** | The 4 sq ft vs 3,000 sq ft argument, spoken to camera or over the reel | The hero reel: one house, four schemes, the chosen one | The visualizer + itemized estimate |
-| **CTA** | Soft — "watch what the sample actually hides" | "See the other seven on the page" → viphomepainting.com | "Book the complimentary 30 minutes" / call **(909) 312-5400** |
+| **CTA** | Soft — "watch what the sample actually hides" | "See the other seven on the page" → viphomepainting.com | "Book the complimentary 30 minutes" / call **(949) 418-6461** |
 | **What good looks like** | 3-second hold rate, saves and shares | Click to page, time on page, visualizer opens | Booked consultations — the only number that matters |
 
 **Never run Step 3 to cold traffic.** She has not yet agreed that her method is broken. An
@@ -158,7 +158,7 @@ service) and **B2** (how to, in a timeframe, without the negative).
 > scheme you are considering, and you get an itemized estimate — prep, primer, coating, trim
 > and accents priced line by line. VIP exterior work **starts at $4.75 per square foot of
 > paintable surface**. Two-year warranty on labor and materials.
-> Call **(909) 312-5400** or book on the page.
+> Call **(949) 418-6461** or book on the page.
 
 Three things in that paragraph are things no competitor on page one does: render the actual
 house, publish a rate at all, and itemize before signing. Say all three. Never claim the
@@ -234,7 +234,7 @@ where nothing checks it automatically. **This list is the check.**
 - ❌ **Fake scarcity** — spots left, deadlines, countdowns. `BRAND-VOICE.md`: no urgency
   theater.
 - ❌ **An address in a city VIP does not operate from.** Base is Anaheim.
-- ❌ **Any phone number other than (909) 312-5400.**
+- ❌ **Any phone number other than (949) 418-6461.**
 - ❌ **"VIP Premier Painting."** It is **VIP Home Painting**, always.
 
 ### And the two tests every draft has to pass

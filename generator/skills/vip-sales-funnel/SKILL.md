@@ -135,7 +135,7 @@ The ad set is the page, re-cut for the feed. Each ad step pulls from a specific 
 |---|---|---|---|
 | **1 · Name the problem** | cold | Flashback + the local condition (villain / trap / near-miss) | 15–30s reel or static; no company name in the first 3 seconds |
 | **2 · Prove the fix** | warm (watched 50%+, visited) | The Reveal + "they visualized it" band | before/after sweep of THEIR house in the scheme they chose |
-| **3 · Ask for the 30 minutes** | hot (page, 75% viewers, opened the visualizer) | Your Turn (visualizer + photo form) + warranty | one CTA, phone visible: **(909) 312-5400** |
+| **3 · Ask for the 30 minutes** | hot (page, 75% viewers, opened the visualizer) | Your Turn (visualizer + photo form) + warranty | one CTA, phone visible: **(949) 418-6461** |
 
 Rules that hold for every ad:
 - Same client, same scheme, same additions, same keyword as the page. Never a different story.

@@ -222,7 +222,7 @@ HARD RULES — build-enforced
 - Pricing is "VIP starts at $4.75 per square foot of paintable surface" — never
   "Anaheim averages". Do not compute project totals; Fabian has not supplied real
   job data, so leave those slots out.
-- Phone is (909) 312-5400 and nothing else. Address is Anaheim.
+- Phone is (949) 418-6461 and nothing else. Address is Anaheim.
 - Never invent street names, HOA rules, client stories or testimonials. If the
   brief does not verify it, it does not go on the page.
 

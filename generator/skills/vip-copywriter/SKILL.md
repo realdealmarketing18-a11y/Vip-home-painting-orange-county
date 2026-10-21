@@ -103,7 +103,7 @@ Hidden Canyon at $9.15M and Stonegate at $1.82M do not share a voice.
 - **"AI"** → *our design team* / *Custom Visualization Service*
 - "Irvine averages $4.75" → "VIP **starts at** $4.75 per sq ft of paintable surface"
 - HOA rules not sourced in the brief
-- Any phone but **(909) 312-5400**
+- Any phone but **(949) 418-6461**
 
 **The visualization is:** our design team renders the client's actual home in candidate
 palettes during a complimentary 30-minute consultation. **Not** twilight renders, 48-hour

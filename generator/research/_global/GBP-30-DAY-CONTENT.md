@@ -6,7 +6,7 @@
 ever. Three a week puts you in the top fifth of the market.
 
 **Rules baked in:** never "free" → *complimentary* · never "AI" → *our design team* · no
-review counts, no star claims, no fake scarcity. Phone is (909) 312-5400.
+review counts, no star claims, no fake scarcity. Phone is (949) 418-6461.
 
 ---
 
@@ -37,7 +37,7 @@ relevance for the organic pages, not the map.
 > already seen on your own house.
 >
 > Complimentary, and it takes about 30 minutes. Anaheim and across Orange County.
-> (909) 312-5400
+> (949) 418-6461
 
 **Photo:** Side-by-side — the same house in two different color schemes.
 **File:** `anaheim-color-visualization-before-after.jpg` · **CTA:** Call now
@@ -205,7 +205,7 @@ relevance for the organic pages, not the map.
 > repaint, the color consultation is the part worth doing early — it's complimentary, takes
 > about 30 minutes, and you'll see your home in every option before deciding anything.
 >
-> (909) 312-5400
+> (949) 418-6461
 
 **Photo:** Best finished project of the month, wide shot.
 **File:** `anaheim-exterior-painting-book-consultation.jpg`

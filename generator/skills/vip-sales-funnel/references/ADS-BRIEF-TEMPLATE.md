@@ -43,7 +43,7 @@ copy — never the other way round. Formulas: `HEADLINE-FORMULAS.md` Part F. Ord
 
 ## STEP 3 — Ask for the 30 minutes · hot (never cold)
 **Pulls from:** Your Turn (visualizer + photo form) + the written warranty.
-**Format:** static or 15s, one CTA, phone visible **(909) 312-5400**.
+**Format:** static or 15s, one CTA, phone visible **(949) 418-6461**.
 
 | # | Formula | Draft | Verdict + reason |
 |---|---|---|---|

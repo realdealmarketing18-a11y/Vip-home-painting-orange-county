@@ -15,7 +15,7 @@ from Fontana, which is where the existing reviews were earned.
 
 | | |
 |---|---|
-| Phone | **(909) 312-5400** — the only number that appears in customer-facing copy |
+| Phone | **(949) 418-6461** — the only number that appears in customer-facing copy |
 | Email | Contact@VIPHomePainting.com |
 | Hours | Mon–Fri 8am–6pm · Sat 9am–3pm |
 | Domain | viphomepainting.com (live but thin) |

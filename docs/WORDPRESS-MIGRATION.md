@@ -158,7 +158,7 @@ Quote" and a fake 5-star rating came from hardcoded generator strings, and absol
 - **No `aggregateRating`, no review counts, no star ratings.** VIP has **9** reviews and the
   rating is unconfirmed. A false one was live and was removed.
 - **Never invent** street names, HOA rules, client stories or reviews
-- Phone is **(909) 312-5400** and nothing else
+- Phone is **(949) 418-6461** and nothing else
 - Pricing: **"VIP starts at $4.75 per square foot of paintable surface"** — never
   "Irvine averages". No project totals; Fabian has not supplied job data
 - **Warranty is 2 years**, and it lives in `communities.json → config.warranty`. Never type

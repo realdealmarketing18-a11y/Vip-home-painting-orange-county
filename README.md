@@ -46,7 +46,7 @@ The system was built from these inputs (paths are read-only mounts from the user
 - **Tagline:** "Visualize It. Love It. Paint It."
 - **Logo:** Paintbrush whose bristles form a crown — navy ferrule with gold accents and a black handle.
 - **Persona:** Affluent SoCal homeowners ($2M–$20M homes) who value sophistication, low-friction concierge service, and zero risk of repaint regret.
-- **Phone:** (909) 312-5400 · **Web:** viphomepainting.com
+- **Phone:** (949) 418-6461 · **Web:** viphomepainting.com
 - **Critical rule — never write "AI" in customer copy.** The visualization service is described as "Custom Visualization Service," "VIP Concierge," or "our design team."
 
 ---
@@ -196,7 +196,7 @@ VIP Home Painting uses **two parallel icon systems** that should never be mixed 
 - **Substitution flag:** the original asset guide proposes a custom 1.5px-stroke icon set in the brand orange/navy/gold palette. We're substituting Lucide as the closest CDN-available equivalent with matching stroke weight + rounded caps. Flag this if a custom set later arrives.
 
 **Icons we use (mapped from copy template):**
-- `phone` — click-to-call (909) 312-5400
+- `phone` — click-to-call (949) 418-6461
 - `mail` — contact email
 - `map-pin` — service-area map / community pages
 - `calendar` — booking widget

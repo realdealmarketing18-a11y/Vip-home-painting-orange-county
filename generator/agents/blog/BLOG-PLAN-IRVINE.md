@@ -103,7 +103,7 @@ HARD RULES:
 - Never "free" → "complimentary". Never "AI" → "our design team".
 - No review counts, no star ratings — VIP has 9 reviews, rating unconfirmed.
 - Only streets that appear in 05-communities.md. Never invent one.
-- Phone: (909) 312-5400
+- Phone: (949) 418-6461
 - Write to the tier: Hidden Canyon $9.15M and Stonegate $1.82M are different readers.
 ```
 

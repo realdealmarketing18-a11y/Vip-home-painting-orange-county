@@ -65,8 +65,8 @@ Settings sit in one block at the top of the `<script>` in `thank-you/index.html`
 | Placeholder | Where | What to do |
 |---|---|---|
 | **Quo number** | `SETTINGS.quoNumber` | **Set: (949) 418-6461** (2026-10-21). Shows in Fabian's note. |
-| **Quo number in the contact card** | `thank-you/vip-home-painting.vcf` | **Set** — the card saves (949) 418-6461 as the mobile/text line and (909) 312-5400 as the office line. |
-| **Phone** | `SETTINGS.phone` | Header + "Questions?" button. Set to **(909) 312-5400** — see the open question below. |
+| **Quo number in the contact card** | `thank-you/vip-home-painting.vcf` | **Set** — the card saves (949) 418-6461, the one number for calls and texts. |
+| **Phone** | `SETTINGS.phone` | Header + "Questions?" button. **(949) 418-6461** — the business number site-wide since 2026-10-21. |
 | **Video** | `VSL.src`, `VSL.poster` | Drop the file in `thank-you/assets/`, set `src: 'assets/project-steps.mp4'`. Plays muted on a loop; the gold button restarts it with sound. Until then the still is the Coastal Organic Compound render (`poster`). `enabled: false` removes the player. |
 | **Meta Pixel ID** | `<head>`, block `META PIXEL` | Paste ID over `PIXEL_ID_HERE`, delete the comment markers. Fires `Lead` on load. |
 | **Google Ads conversion** | `<head>`, block `GOOGLE ADS` | Paste ID + label over `AW-CONVERSION_ID_HERE` / `CONVERSION_LABEL_HERE`, delete the comment markers. |
@@ -82,10 +82,12 @@ Settings sit in one block at the top of the `<script>` in `thank-you/index.html`
 - **No timing promise.** The note says Fabian will text; no turnaround time until one is confirmed.
 - **Nothing loads before it's needed:** the video file only downloads as the player comes on screen.
 
-### Open question for Fabian
-- The brief asked for **(951) 557-0627** "as on the live pages", but every live page and the
-  build-enforced rule say **(909) 312-5400**. The page uses (909) until confirmed. One edit
-  (`SETTINGS.phone`) switches it.
+### Phone number — settled 2026-10-21
+**(949) 418-6461** (Fabian's Quo line) replaced (909) 312-5400 on every page, in the structured
+data, in `generator/registry/nap.json`, and in every rule file and skill. Fabian chose to replace it
+everywhere, knowing Google matches the phone across the web: **the Google Business Profile, Bing
+Places, Yelp and directory listings must show (949) 418-6461 too**, or the mismatch costs Maps
+ranking. (The (951) 557-0627 in the original brief was never used.)
 
 ---
 
@@ -247,7 +249,7 @@ renders of a real estate transform live.
 - **Local preview:** `node C:\Users\Owner\oc-site\orange-county-sales-page\serve-oc.js` → http://localhost:5460/
 - **BRAND RULE (hard):** never say "AI" in customer-facing copy — always "Custom Visualization
   Service" / "our design team". Brand: Orange #E8833A · Navy #1A1F4E · Gold #C9A961 ·
-  Cream #F5EFE2 · Fonts Fraunces (serif) + Inter (sans) · Phone (909) 312-5400 ·
+  Cream #F5EFE2 · Fonts Fraunces (serif) + Inter (sans) · Phone (949) 418-6461 ·
   Tagline "Visualize It. Love It. Paint It."
 - There is an OLDER repo `realdealmarketing18-a11y/vip-lead-machine` (private, the whole
   business system, local at `C:\Users\Owner\VIP-Lead-Machine\`). The sales page was

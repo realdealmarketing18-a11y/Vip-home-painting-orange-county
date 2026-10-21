@@ -83,7 +83,7 @@ Ready to hire → sales page. Still deciding → blog.
 - No invented statistics, HOA rules, street names, or project totals
 - No fake urgency — no "spots left", no deadlines
 - Never *"Irvine averages $4.75"* → *"VIP starts at $4.75 per sq ft of paintable surface"*
-- Phone: **(909) 312-5400**
+- Phone: **(949) 418-6461**
 - Only streets that appear in `05-communities.md`
 
 ---

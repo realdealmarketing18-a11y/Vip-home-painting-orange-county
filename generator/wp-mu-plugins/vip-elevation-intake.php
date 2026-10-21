@@ -83,7 +83,7 @@ function vip_intake_receive(WP_REST_Request $req) {
     $count = (int) get_transient($key);
     if ($count >= VIP_INTAKE_RATE_LIMIT) {
         return new WP_Error('vip_rate_limited',
-            'That is a few more than we can take right now — please call (909) 312-5400.',
+            'That is a few more than we can take right now — please call (949) 418-6461.',
             ['status' => 429]);
     }
 
@@ -146,7 +146,7 @@ function vip_intake_receive(WP_REST_Request $req) {
 
     if (is_wp_error($attachment_id)) {
         return new WP_Error('vip_store_failed',
-            'We could not file that photo — please call (909) 312-5400.',
+            'We could not file that photo — please call (949) 418-6461.',
             ['status' => 500]);
     }
 

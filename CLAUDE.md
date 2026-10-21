@@ -194,7 +194,7 @@ one-line verify command.
   rating is unconfirmed. A false one was live and removed; a second one reached the front page.
 - **Never invent** street names, HOA rules, client stories, or reviews
 - **Never publish an address in a city VIP doesn't operate from** — base is Anaheim
-- Phone in customer copy is **(909) 312-5400** and nothing else
+- Phone in customer copy is **(949) 418-6461** and nothing else
 - Warranty is **2 years**, and it lives in `communities.json → config.warranty`. CertaPro also
   advertises 2, so **never write "longer than the competition."**
 - **A paint colour is never a flat chip** — it is three `.paint-can` cans (body, trim,
