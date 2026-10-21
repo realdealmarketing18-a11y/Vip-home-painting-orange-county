@@ -14,7 +14,11 @@ the sales-page forms and Jobber still point where they did. Hand-built, not gene
 **About their home, not a client story** (Fabian, 2026-10-20): once someone has sent a photo they
 are sold, so the page builds anticipation for their renders instead of retelling a case study.
 Order: confirmation → hero (headline, then the video directly under it) → what happens next →
-render preview → paint-chip comparison → close.
+exterior preview → **interior preview** → paint-chip comparison → close.
+
+**Speaks to interior and exterior leads alike** (Fabian, 2026-10-20): the main form takes both, so
+the hero and step 01 say "inside or out", and an interior gallery (rooms and cabinets) follows the
+exterior one. Interior renders are already promised on `/interior-painting/`.
 
 **Personalised:** add `?community=orchard-hills-irvine` → the headline reads "Your Orchard Hills
 Home Is in the Studio." A known city slug on the end is dropped. Anything that is not a plain
@@ -34,6 +38,7 @@ All settings sit in one block at the top of the `<script>` in `thank-you/index.h
 | **Google Ads conversion** | `<head>`, block `GOOGLE ADS` | Paste ID + label over `AW-CONVERSION_ID_HERE` / `CONVERSION_LABEL_HERE`, delete the comment markers. |
 | **Hero video** | `VSL.src`, `VSL.poster` | Drop the file in `thank-you/assets/`, set `src: 'assets/vsl-consultation.mp4'`. Plays muted on a loop; the gold button restarts it with sound. Until then the still is the Coastal Organic Compound render (`poster`). `enabled: false` removes the player. |
 | **Gallagher finished photo** (gallery frame 4) | `thank-you/assets/home-01-painted.jpg` | A real photo of the painted house. Doesn't exist: the Gallagher imagery is rendered (`registry/client-stories.json`), and a render is never shown as "What we painted". |
+| **Interior rooms 01–03** (Living Room, Kitchen Cabinets, Primary Bedroom) | `thank-you/assets/room-0N-{sent,palette-a,palette-b,painted}.jpg` + their `ROOMS` entries | All placeholders — no interior photos exist in the repo yet. Real rooms, real SW colours. |
 | **Homes 02 and 03** | `thank-you/assets/home-0N-{sent,palette-a,palette-b,painted}.jpg` + their `HOMES` entries | Real client, real photos, real SW colours. |
 
 Missing images are not broken images: each shows a striped box naming the exact file to add.
@@ -50,6 +55,10 @@ Missing images are not broken images: each shows a striped box naming the exact 
    change: `name`, `place`, the four file names, each palette's `scheme`
    name, `colors` (`'Name SW 0000 · Name SW 0000'`) and `cans` (body, trim, accent hex codes).
 3. Delete `placeholder: true` once it's a real client. Commit and push; live in about a minute.
+
+**Adding an interior room** works the same way in the `ROOMS = [ … ]` list, with files named
+`room-04-sent.jpg` etc. and one extra line, `room: 'Dining Room'`, which becomes the card title.
+Its `cans` are walls, trim and accent (or cabinet colour).
 
 
 ### Choices made

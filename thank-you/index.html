@@ -316,7 +316,7 @@ END GOOGLE ADS -->
       <div class="hero-copy">
         <p class="eyebrow">While we paint your home (digitally)</p>
         <h1 class="ttl" id="heroTitle">Your Home Is in the Studio. <span class="accent">Soon You&rsquo;ll See It in Colors You&rsquo;ve Never Pictured.</span></h1>
-        <p class="lede">Our design team is rendering your actual house in the palettes closest to your style. Here&rsquo;s what happens next, and what you have to look forward to.</p>
+        <p class="lede">Our design team is rendering your actual home, inside or out, in the palettes closest to your style. Here&rsquo;s what happens next, and what you have to look forward to.</p>
       </div>
       <!-- VIDEO: muted loop preview + gold play button for full sound. Set VSL in the script. -->
       <div class="hero-video" id="heroVideo">
@@ -342,7 +342,7 @@ END GOOGLE ADS -->
       </div>
       <ol class="steps">
         <li class="step"><div class="step-num"><span>01</span></div>
-          <div><h3>Your renders</h3><p>Our design team renders your home in your three closest palettes.</p></div></li>
+          <div><h3>Your renders</h3><p>Our design team renders your home, inside, outside or both, in your three closest palettes.</p></div></li>
         <li class="step"><div class="step-num"><span>02</span></div>
           <div><h3>A text from Fabian</h3><p>Fabian texts you your renders from <b data-quo>[QUO NUMBER]</b>. Save it so you know it&rsquo;s us.</p></div></li>
         <li class="step"><div class="step-num"><span>03</span></div>
@@ -351,20 +351,32 @@ END GOOGLE ADS -->
     </div>
   </section>
 
-  <!-- 4. RENDER PREVIEW — built from the HOMES list in the script below -->
+  <!-- 4. EXTERIOR PREVIEW — built from the HOMES list in the script below -->
   <section id="gallery">
     <div class="wrap">
       <div class="head-c">
-        <p class="eyebrow">A preview of what&rsquo;s coming</p>
-        <h2 class="ttl">What Your Renders <span class="accent">Will Look Like</span></h2>
+        <p class="eyebrow">Exterior &middot; a preview of what&rsquo;s coming</p>
+        <h2 class="ttl">What Your Exterior Renders <span class="accent">Will Look Like</span></h2>
         <p class="lede">Every one of these started as a single phone photo, just like yours. Swipe each home: the photo, two palettes rendered on it, and the finished house.</p>
       </div>
       <div class="homes" id="homes"></div>
     </div>
   </section>
 
-  <!-- 5. TWO WAYS TO CHOOSE A COLOR -->
-  <section class="cream">
+  <!-- 5. INTERIOR PREVIEW — built from the ROOMS list in the script below -->
+  <section class="cream" id="interior">
+    <div class="wrap">
+      <div class="head-c">
+        <p class="eyebrow">Interior &middot; rooms and cabinets</p>
+        <h2 class="ttl">Inside, Every Room <span class="accent">Gets Its Own Preview</span></h2>
+        <p class="lede">Living rooms, kitchens, cabinets. Swipe each room: the phone photo, two palettes rendered on it, and the finished room, all before anyone opens a can.</p>
+      </div>
+      <div class="homes" id="rooms"></div>
+    </div>
+  </section>
+
+  <!-- 6. TWO WAYS TO CHOOSE A COLOR -->
+  <section>
     <div class="wrap">
       <div class="head-c">
         <p class="eyebrow">Two ways to choose a color</p>
@@ -399,7 +411,7 @@ END GOOGLE ADS -->
     </div>
   </section>
 
-  <!-- 6. CLOSE -->
+  <!-- 7. CLOSE -->
   <section class="navy close">
     <div class="wrap">
       <p class="line">Your house <em>is next.</em></p>
@@ -470,6 +482,49 @@ var HOMES = [
   }
 ];
 
+/* =======================================================================
+   ROOMS — the interior gallery. Same shape as HOMES, plus `room`
+   (shown as the card title). cans = walls, trim, accent (or cabinets).
+   ======================================================================= */
+var ROOMS = [
+  {
+    placeholder: true,
+    room: 'Living Room',
+    name: 'Client Name',
+    place: 'Community, City',
+    sent: 'assets/room-01-sent.jpg',
+    paletteA: { img: 'assets/room-01-palette-a.jpg', scheme: 'Palette name',
+                colors: 'Color Name SW 0000 · Color Name SW 0000', cans: ['#ECE7DC', '#F6F3EC', '#7A6E5D'] },
+    paletteB: { img: 'assets/room-01-palette-b.jpg', scheme: 'Palette name',
+                colors: 'Color Name SW 0000 · Color Name SW 0000', cans: ['#D9D6CC', '#F4F2EC', '#4F5A5E'] },
+    painted: 'assets/room-01-painted.jpg'
+  },
+  {
+    placeholder: true,
+    room: 'Kitchen Cabinets',
+    name: 'Client Name',
+    place: 'Community, City',
+    sent: 'assets/room-02-sent.jpg',
+    paletteA: { img: 'assets/room-02-palette-a.jpg', scheme: 'Palette name',
+                colors: 'Color Name SW 0000 · Color Name SW 0000', cans: ['#F1EEE6', '#2F3A4A', '#B49A6A'] },
+    paletteB: { img: 'assets/room-02-palette-b.jpg', scheme: 'Palette name',
+                colors: 'Color Name SW 0000 · Color Name SW 0000', cans: ['#EDE9DF', '#5E6B5A', '#8C7A5C'] },
+    painted: 'assets/room-02-painted.jpg'
+  },
+  {
+    placeholder: true,
+    room: 'Primary Bedroom',
+    name: 'Client Name',
+    place: 'Community, City',
+    sent: 'assets/room-03-sent.jpg',
+    paletteA: { img: 'assets/room-03-palette-a.jpg', scheme: 'Palette name',
+                colors: 'Color Name SW 0000 · Color Name SW 0000', cans: ['#DCD5C9', '#F5F2EA', '#6B6460'] },
+    paletteB: { img: 'assets/room-03-palette-b.jpg', scheme: 'Palette name',
+                colors: 'Color Name SW 0000 · Color Name SW 0000', cans: ['#C9CFCB', '#F2F1EC', '#4A5550'] },
+    painted: 'assets/room-03-painted.jpg'
+  }
+];
+
 /* ======================= nothing to edit below ======================= */
 (function () {
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -520,70 +575,76 @@ var HOMES = [
   try { community = communityName(new URLSearchParams(location.search).get('community')); } catch (e) {}
   if (community) document.getElementById('heroTitle').firstChild.textContent = 'Your ' + community + ' Home Is in the Studio. ';
 
-  /* ---- gallery ---- */
-  var homesEl = document.getElementById('homes');
+  /* ---- galleries: exterior homes and interior rooms share one card ---- */
   var arrowL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>';
   var arrowR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
 
-  HOMES.forEach(function (home, hi) {
-    var card = el('article', 'home');
-    card.setAttribute('aria-label', home.name + ', ' + home.place);
-    var head = el('div', 'home-h', '<div><div class="n">' + esc(home.place) + '</div><div class="p">' + esc(home.name) + '</div></div>');
-    if (home.placeholder) head.appendChild(el('span', 'ph-flag', 'Placeholder'));
-    card.appendChild(head);
+  function gallery(list, mountId, doneWord) {
+    var mount = document.getElementById(mountId);
+    list.forEach(function (home) {
+      /* a room card leads with the room; a home card leads with where it is */
+      var title = home.room || home.place, sub = home.room ? home.place + ' · ' + home.name : home.name;
+      var card = el('article', 'home');
+      card.setAttribute('aria-label', title + ', ' + sub);
+      var head = el('div', 'home-h', '<div><div class="n">' + esc(title) + '</div><div class="p">' + esc(sub) + '</div></div>');
+      if (home.placeholder) head.appendChild(el('span', 'ph-flag', 'Placeholder'));
+      card.appendChild(head);
 
-    var slides = [
-      { src: home.sent, lb: 'The phone photo', co: '' },
-      { src: home.paletteA.img, lb: 'Palette A — ' + home.paletteA.scheme, co: cans(home.paletteA.cans) + '<span>' + esc(home.paletteA.colors) + '</span>' },
-      { src: home.paletteB.img, lb: 'Palette B — ' + home.paletteB.scheme, co: cans(home.paletteB.cans) + '<span>' + esc(home.paletteB.colors) + '</span>' },
-      { src: home.painted, lb: 'What we painted', co: '' }
-    ];
-    var car = el('div', 'car');
-    var track = el('div', 'track');
-    track.setAttribute('tabindex', '0');
-    track.setAttribute('aria-label', home.name + ': swipe for four photos');
-    slides.forEach(function (s, si) {
-      var fig = el('figure', 'slide');
-      fig.setAttribute('aria-label', (si + 1) + ' of 4');
-      /* the first home's first photo is above the fold on desktop; the rest wait */
-      fig.appendChild(photo(s.src, home.name + ': ' + s.lb.replace(/^.* — /, ''), !(hi === 0 && si === 0), si === 3 ? 'Finished photo coming' : 'Photo coming'));
-      fig.appendChild(el('figcaption', '', '<div class="lb">' + esc(s.lb) + '</div>' + (s.co ? '<div class="co">' + s.co + '</div>' : '')));
-      track.appendChild(fig);
-    });
-    var prev = el('button', 'arrow prev', arrowL); prev.type = 'button'; prev.setAttribute('aria-label', 'Previous photo');
-    var next = el('button', 'arrow next', arrowR); next.type = 'button'; next.setAttribute('aria-label', 'Next photo');
-    var arrows = el('div', 'arrows'); arrows.appendChild(prev); arrows.appendChild(next);
-    car.appendChild(track); car.appendChild(arrows);
-    card.appendChild(car);
+      var slides = [
+        { src: home.sent, lb: 'The phone photo', co: '' },
+        { src: home.paletteA.img, lb: 'Palette A — ' + home.paletteA.scheme, co: cans(home.paletteA.cans) + '<span>' + esc(home.paletteA.colors) + '</span>' },
+        { src: home.paletteB.img, lb: 'Palette B — ' + home.paletteB.scheme, co: cans(home.paletteB.cans) + '<span>' + esc(home.paletteB.colors) + '</span>' },
+        { src: home.painted, lb: 'What we painted', co: '' }
+      ];
+      var car = el('div', 'car');
+      var track = el('div', 'track');
+      track.setAttribute('tabindex', '0');
+      track.setAttribute('aria-label', title + ': swipe for four photos');
+      slides.forEach(function (s, si) {
+        var fig = el('figure', 'slide');
+        fig.setAttribute('aria-label', (si + 1) + ' of 4');
+        /* the hero video is above the fold, so every gallery photo can wait */
+        fig.appendChild(photo(s.src, title + ': ' + s.lb.replace(/^.* — /, ''), true, si === 3 ? 'Finished ' + doneWord + ' coming' : 'Photo coming'));
+        fig.appendChild(el('figcaption', '', '<div class="lb">' + esc(s.lb) + '</div>' + (s.co ? '<div class="co">' + s.co + '</div>' : '')));
+        track.appendChild(fig);
+      });
+      var prev = el('button', 'arrow prev', arrowL); prev.type = 'button'; prev.setAttribute('aria-label', 'Previous photo');
+      var next = el('button', 'arrow next', arrowR); next.type = 'button'; next.setAttribute('aria-label', 'Next photo');
+      var arrows = el('div', 'arrows'); arrows.appendChild(prev); arrows.appendChild(next);
+      car.appendChild(track); car.appendChild(arrows);
+      card.appendChild(car);
 
-    var dots = el('div', 'dots');
-    var dotEls = slides.map(function (s, si) {
-      var d = el('button', 'dot'); d.type = 'button'; d.setAttribute('aria-label', 'Photo ' + (si + 1) + ': ' + s.lb);
-      d.addEventListener('click', function () { go(si); });
-      dots.appendChild(d); return d;
-    });
-    card.appendChild(dots);
-    homesEl.appendChild(card);
+      var dots = el('div', 'dots');
+      var dotEls = slides.map(function (s, si) {
+        var d = el('button', 'dot'); d.type = 'button'; d.setAttribute('aria-label', 'Photo ' + (si + 1) + ': ' + s.lb);
+        d.addEventListener('click', function () { go(si); });
+        dots.appendChild(d); return d;
+      });
+      card.appendChild(dots);
+      mount.appendChild(card);
 
-    function idx() { return Math.round(track.scrollLeft / Math.max(1, track.clientWidth)); }
-    function go(i) {
-      i = Math.max(0, Math.min(slides.length - 1, i));
-      track.scrollTo({ left: i * track.clientWidth, behavior: reduce ? 'auto' : 'smooth' });
-    }
-    function sync() {
-      var i = idx();
-      dotEls.forEach(function (d, di) { d.setAttribute('aria-current', di === i ? 'true' : 'false'); });
-      prev.disabled = i === 0; next.disabled = i === slides.length - 1;
-    }
-    prev.addEventListener('click', function () { go(idx() - 1); });
-    next.addEventListener('click', function () { go(idx() + 1); });
-    track.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight') { e.preventDefault(); go(idx() + 1); }
-      if (e.key === 'ArrowLeft') { e.preventDefault(); go(idx() - 1); }
+      function idx() { return Math.round(track.scrollLeft / Math.max(1, track.clientWidth)); }
+      function go(i) {
+        i = Math.max(0, Math.min(slides.length - 1, i));
+        track.scrollTo({ left: i * track.clientWidth, behavior: reduce ? 'auto' : 'smooth' });
+      }
+      function sync() {
+        var i = idx();
+        dotEls.forEach(function (d, di) { d.setAttribute('aria-current', di === i ? 'true' : 'false'); });
+        prev.disabled = i === 0; next.disabled = i === slides.length - 1;
+      }
+      prev.addEventListener('click', function () { go(idx() - 1); });
+      next.addEventListener('click', function () { go(idx() + 1); });
+      track.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') { e.preventDefault(); go(idx() + 1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); go(idx() - 1); }
+      });
+      var t; track.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(sync, 60); }, { passive: true });
+      sync();
     });
-    var t; track.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(sync, 60); }, { passive: true });
-    sync();
-  });
+  }
+  gallery(HOMES, 'homes', 'photo');
+  gallery(ROOMS, 'rooms', 'room');
 
   /* ---- VSL: muted loop preview, gold button restarts it with sound ---- */
   var sec = document.getElementById('heroVideo');
