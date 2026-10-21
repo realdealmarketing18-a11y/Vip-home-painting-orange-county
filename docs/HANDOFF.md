@@ -4,81 +4,79 @@ Written for a developer with zero context. Everything below is real paths / real
 
 ---
 
-## 0b. LATEST — Thank-you page `/thank-you/` (2026-10-20)
+## 0b. LATEST — Thank-you page `/thank-you/` (2026-10-21)
 
 A standalone page a homeowner lands on after sending their photo. **Not wired to anything yet** —
 the sales-page forms and Jobber still point where they did. Hand-built, not generated: it lives in
 `thank-you/` and `generate.js` never touches it. `noindex, nofollow`, and not in `sitemap.xml`.
 
 **Live:** https://realdealmarketing18-a11y.github.io/Vip-home-painting-orange-county/thank-you/
-**About their home, not a client story** (Fabian, 2026-10-20): once someone has sent a photo they
-are sold, so the page builds anticipation for their renders instead of retelling a case study.
-Order: confirmation → hero (compact headline → compact **note from Fabian** → **video**) → what happens next → render preview (one gallery, **Exterior | Interior** switch) →
-paint-chip comparison → close. Chosen by Fabian on 2026-10-21 from three options ("Personal Note").
 
-**Speaks to interior and exterior leads alike** (Fabian, 2026-10-20/21): the main form takes both.
-The headline is one line for everyone: "Your Home Painting Project Is in the Studio. Soon You'll
-See It in Custom Color Schemes + Additions You've Never Pictured." Headline and note are kept small
-(2026-10-21) so the **video is the focus and fits the first iPhone screen**. The video carries the
-interior and exterior demonstrations — the steps a project goes through — so the hero has no
-photo strips of its own. Interior renders are already promised on `/interior-painting/`.
+**The page is three parts** (Fabian, 2026-10-21): confirmation bar → hero (compact headline,
+compact note from Fabian, **the video**) → close ("Your house is next." + Save Our Number +
+Questions? call button). Everything else — the next steps, the render previews, the paint-chip
+comparison — **lives in the video now**, so the page stays short and the video is the focus.
+On an iPhone the whole video sits on the first screen.
+
+How it got here: it started story-led around the Gallaghers; Fabian moved it to *their* home
+(once a photo is sent they're sold — build anticipation, don't re-sell), then to speaking to
+interior and exterior leads alike, then chose the "Personal Note" layout from three options, then
+cut it to the video.
+
+**Headline** (one line for interior and exterior clients): "Your Home Painting Project Is in the
+Studio. Soon You'll See It in Custom Color Schemes + Additions You've Never Pictured."
 
 **Fabian's note** (his words, approved 2026-10-21): "Your photo is with our design team now. When
 your renders are ready, I'll text them to you myself from [QUO NUMBER], so save the number. Then we
 sit down for 30 minutes and choose the one you'll love forever." Photo: `thank-you/assets/fabian.jpg`,
 the same crop the sales page uses (taken from rendered footage, not a photograph).
 
-**`?project=interior | exterior | both`** — for the form to add when it's wired (with Jobber). The
-gallery opens on Interior for `interior`; on Exterior otherwise.
+**Link parameters:** none are used. `?community=` and `?project=` are ignored — harmless if the
+form sends them.
 
-**`?community=` is no longer used.** The headline no longer names the community, so the parameter
-is ignored. Harmless if the form keeps sending it.
+### What the video has to show
+
+The caption under it reads: "The steps your home painting project goes through, inside and out."
+The copy that used to be on the page, for the script:
+
+1. **Your renders** — our design team renders your home, inside, outside or both, in your three
+   closest palettes.
+2. **A text from Fabian** — he texts the renders from the Quo number; save it so you know it's us.
+3. **Your consultation** — 30 minutes: compare palettes side by side and get the itemized
+   estimate. (The page used to add "with monthly payment options on approved credit" — **unverified**,
+   not in `context/OFFER.md`; confirm before it goes in the video.)
+4. **An exterior and an interior**, each going phone photo → Palette A → Palette B → finished.
+   No interior photos exist in the repo yet; the Gallagher exterior renders are in
+   `orange-county-sales-page/viz-photos/` (rendered, not photographed — never show a render as
+   "what we painted").
+5. **The paint-chip gamble vs the VIP way** — tiny swatches taped to the wall, guessing in full
+   sun, finding out after the crew leaves, repainting twice; versus your actual home rendered in
+   each palette, seen in daylight before day one, chosen with your family at the table, painted
+   once. A colour on screen is three paint cans, never a flat chip (BRAND-VOICE).
 
 ### Every placeholder, and where to fill it
 
-All settings sit in one block at the top of the `<script>` in `thank-you/index.html`.
+Settings sit in one block at the top of the `<script>` in `thank-you/index.html`.
 
 | Placeholder | Where | What to do |
 |---|---|---|
-| **Quo number** | `SETTINGS.quoNumber` | Type Fabian's texting number. Until then step 02 shows `[QUO NUMBER]`. |
+| **Quo number** | `SETTINGS.quoNumber` | Type Fabian's texting number. Until then the note shows `[QUO NUMBER]`. |
 | **Quo number in the contact card** | `thank-you/vip-home-painting.vcf` | Add a line `TEL;TYPE=CELL,VOICE:+1XXXXXXXXXX` above `END:VCARD`. The card holds the main office line now so the button is never broken. |
 | **Phone** | `SETTINGS.phone` | Header + "Questions?" button. Set to **(909) 312-5400** — see the open question below. |
-| **Financing line** | `SETTINGS.financing` | `false` removes "with monthly payment options on approved credit". **Unverified** — not in `context/OFFER.md`. |
+| **Video** | `VSL.src`, `VSL.poster` | Drop the file in `thank-you/assets/`, set `src: 'assets/project-steps.mp4'`. Plays muted on a loop; the gold button restarts it with sound. Until then the still is the Coastal Organic Compound render (`poster`). `enabled: false` removes the player. |
 | **Meta Pixel ID** | `<head>`, block `META PIXEL` | Paste ID over `PIXEL_ID_HERE`, delete the comment markers. Fires `Lead` on load. |
 | **Google Ads conversion** | `<head>`, block `GOOGLE ADS` | Paste ID + label over `AW-CONVERSION_ID_HERE` / `CONVERSION_LABEL_HERE`, delete the comment markers. |
-| **Hero video** | `VSL.src`, `VSL.poster` | Drop the file in `thank-you/assets/`, set `src: 'assets/vsl-consultation.mp4'`. Plays muted on a loop; the gold button restarts it with sound. Caption: "The steps your home painting project goes through, inside and out." — the video should show both an interior and an exterior. Until then the still is the Coastal Organic Compound render (`poster`). `enabled: false` removes the player. |
-| **Gallagher finished photo** (gallery frame 4) | `thank-you/assets/home-01-painted.jpg` | A real photo of the painted house. Doesn't exist: the Gallagher imagery is rendered (`registry/client-stories.json`), and a render is never shown as "What we painted". |
-| **Interior rooms 01–03** (Living Room, Kitchen Cabinets, Primary Bedroom) | `thank-you/assets/room-0N-{sent,palette-a,palette-b,painted}.jpg` + their `ROOMS` entries | All placeholders — no interior photos exist in the repo yet. Real rooms, real SW colours. |
-| **Homes 02 and 03** | `thank-you/assets/home-0N-{sent,palette-a,palette-b,painted}.jpg` + their `HOMES` entries | Real client, real photos, real SW colours. |
 
-Missing images are not broken images: each shows a striped box naming the exact file to add.
-
-**Home 01 (Gallagher) uses files already in the repo**, copied with clear names:
-`home-01-sent.webp` = `viz-photos/base.webp`, `home-01-palette-a.jpg` = Coastal Organic Compound
-(their real choice), `home-01-palette-b.jpg` = Pebble Beach Manor.
-
-### How to add a home to the gallery
-
-1. Put four photos in `thank-you/assets/`: `home-04-sent.jpg`, `home-04-palette-a.jpg`,
-   `home-04-palette-b.jpg`, `home-04-painted.jpg` (4:3, ~1600px wide, under 300 KB each).
-2. In `thank-you/index.html`, copy one block inside `HOMES = [ … ]`, paste it at the end, and
-   change: `name`, `place`, the four file names, each palette's `scheme`
-   name, `colors` (`'Name SW 0000 · Name SW 0000'`) and `cans` (body, trim, accent hex codes).
-3. Delete `placeholder: true` once it's a real client. Commit and push; live in about a minute.
-
-**Adding an interior room** works the same way in the `ROOMS = [ … ]` list, with files named
-`room-04-sent.jpg` etc. and one extra line, `room: 'Dining Room'`, which becomes the card title.
-Its `cans` are walls, trim and accent (or cabinet colour).
-
+`thank-you/assets/` holds only what the page uses: `logo-brush-navy.png`, `fabian.jpg`,
+`home-01-palette-a.jpg` (the video's still).
 
 ### Choices made
 - **Folder is `thank-you/assets/`, not `/assets/thank-you/`** — keeps the page in one folder and
   nothing loose at root (FABIAN.md rule 5).
 - **Header is logo + tagline + phone, no menu** — someone who just converted shouldn't be handed
   a menu to wander off through. Easy to add.
-- **Palettes show as three paint cans** next to the SW names (the paint-can rule).
-- **No timing promise.** Step 02 says Fabian will text; no turnaround time until one is confirmed.
-- **Reduced motion:** the hero holds on the render instead of cycling; carousels never animate.
+- **No timing promise.** The note says Fabian will text; no turnaround time until one is confirmed.
+- **Nothing loads before it's needed:** the video file only downloads as the player comes on screen.
 
 ### Open question for Fabian
 - The brief asked for **(951) 557-0627** "as on the live pages", but every live page and the
