@@ -13,15 +13,15 @@ the sales-page forms and Jobber still point where they did. Hand-built, not gene
 **Live:** https://realdealmarketing18-a11y.github.io/Vip-home-painting-orange-county/thank-you/
 **About their home, not a client story** (Fabian, 2026-10-20): once someone has sent a photo they
 are sold, so the page builds anticipation for their renders instead of retelling a case study.
-Order: confirmation → hero (headline → **note from Fabian** → **exterior + interior film strips** →
-video) → what happens next → render preview (one gallery, **Exterior | Interior** switch) →
+Order: confirmation → hero (compact headline → compact **note from Fabian** → **video**) → what happens next → render preview (one gallery, **Exterior | Interior** switch) →
 paint-chip comparison → close. Chosen by Fabian on 2026-10-21 from three options ("Personal Note").
 
 **Speaks to interior and exterior leads alike** (Fabian, 2026-10-20/21): the main form takes both.
 The headline is one line for everyone: "Your Home Painting Project Is in the Studio. Soon You'll
-See It in Custom Color Schemes + Additions You've Never Pictured." Under it, Fabian's note, then two
-film strips side by side, exterior and interior (phone photo → Palette A → Palette B, built from the
-first entry of `HOMES` and of `ROOMS`). Interior renders are already promised on `/interior-painting/`.
+See It in Custom Color Schemes + Additions You've Never Pictured." Headline and note are kept small
+(2026-10-21) so the **video is the focus and fits the first iPhone screen**. The video carries the
+interior and exterior demonstrations — the steps a project goes through — so the hero has no
+photo strips of its own. Interior renders are already promised on `/interior-painting/`.
 
 **Fabian's note** (his words, approved 2026-10-21): "Your photo is with our design team now. When
 your renders are ready, I'll text them to you myself from [QUO NUMBER], so save the number. Then we
@@ -29,8 +29,7 @@ sit down for 30 minutes and choose the one you'll love forever." Photo: `thank-y
 the same crop the sales page uses (taken from rendered footage, not a photograph).
 
 **`?project=interior | exterior | both`** — for the form to add when it's wired (with Jobber). The
-matching strip gets a gold "Your request" tag; `interior` puts the interior strip first and opens
-the gallery on Interior. Missing or anything else: exterior first, no tag.
+gallery opens on Interior for `interior`; on Exterior otherwise.
 
 **`?community=` is no longer used.** The headline no longer names the community, so the parameter
 is ignored. Harmless if the form keeps sending it.
@@ -47,7 +46,7 @@ All settings sit in one block at the top of the `<script>` in `thank-you/index.h
 | **Financing line** | `SETTINGS.financing` | `false` removes "with monthly payment options on approved credit". **Unverified** — not in `context/OFFER.md`. |
 | **Meta Pixel ID** | `<head>`, block `META PIXEL` | Paste ID over `PIXEL_ID_HERE`, delete the comment markers. Fires `Lead` on load. |
 | **Google Ads conversion** | `<head>`, block `GOOGLE ADS` | Paste ID + label over `AW-CONVERSION_ID_HERE` / `CONVERSION_LABEL_HERE`, delete the comment markers. |
-| **Hero video** | `VSL.src`, `VSL.poster` | Drop the file in `thank-you/assets/`, set `src: 'assets/vsl-consultation.mp4'`. Plays muted on a loop; the gold button restarts it with sound. Until then the still is the Coastal Organic Compound render (`poster`). `enabled: false` removes the player. |
+| **Hero video** | `VSL.src`, `VSL.poster` | Drop the file in `thank-you/assets/`, set `src: 'assets/vsl-consultation.mp4'`. Plays muted on a loop; the gold button restarts it with sound. Caption: "The steps your home painting project goes through, inside and out." — the video should show both an interior and an exterior. Until then the still is the Coastal Organic Compound render (`poster`). `enabled: false` removes the player. |
 | **Gallagher finished photo** (gallery frame 4) | `thank-you/assets/home-01-painted.jpg` | A real photo of the painted house. Doesn't exist: the Gallagher imagery is rendered (`registry/client-stories.json`), and a render is never shown as "What we painted". |
 | **Interior rooms 01–03** (Living Room, Kitchen Cabinets, Primary Bedroom) | `thank-you/assets/room-0N-{sent,palette-a,palette-b,painted}.jpg` + their `ROOMS` entries | All placeholders — no interior photos exist in the repo yet. Real rooms, real SW colours. |
 | **Homes 02 and 03** | `thank-you/assets/home-0N-{sent,palette-a,palette-b,painted}.jpg` + their `HOMES` entries | Real client, real photos, real SW colours. |

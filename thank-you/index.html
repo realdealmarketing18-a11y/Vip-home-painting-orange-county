@@ -115,12 +115,13 @@ END GOOGLE ADS -->
     stroke: var(--gold-bright); }
 
   /* ---------- 2. HERO ---------- */
-  .hero { padding: 32px 0 52px; text-align: center; }
-  .hero .wrap { display: grid; gap: 26px; }
+  .hero { padding: 22px 0 44px; text-align: center; }
+  .hero .wrap { display: grid; gap: 16px; }
   .hero-copy { max-width: 820px; margin: 0 auto; }
   .hero .lede { margin: 0 auto; }
   .hero-video { width: 100%; max-width: 900px; margin: 0 auto; }
-  .hero .ttl { font-size: clamp(28px, 7.4vw, 50px); }
+  .hero .eyebrow { margin-bottom: 8px; font-size: 10px; }
+  .hero .ttl { font-size: clamp(21px, 5.6vw, 32px); margin-bottom: 0; }
 
   /* Exterior | Interior switch above the gallery */
   .tabs { display: flex; justify-content: center; gap: 6px; margin: 0 auto 26px; padding: 5px; width: max-content;
@@ -224,7 +225,7 @@ END GOOGLE ADS -->
   @keyframes pulse { from { transform: scale(1); opacity: .6; } to { transform: scale(1.65); opacity: 0; } }
   .play-btn svg { width: 22px; height: 22px; fill: var(--gold-bright); transform: translateX(2px); }
   .play-lb { color: var(--cream); font-size: 10.5px; font-weight: 600; letter-spacing: .26em; text-transform: uppercase; }
-  .vsl-cap { text-align: center; margin: 22px auto 0; font-family: var(--font-serif); font-style: italic;
+  .vsl-cap { text-align: center; margin: 14px auto 0; font-family: var(--font-serif); font-style: italic;
     font-size: 17px; color: var(--ink-2); }
 
   /* ---------- 6. WHAT HAPPENS NEXT ---------- */
@@ -268,8 +269,8 @@ END GOOGLE ADS -->
     .top-logo img { height: 46px; }
     .wm .vip { font-size: 21px; } .wm .tag { font-size: 10.5px; }
     .top-phone { font-size: 13.5px; }
-    .hero { padding: 56px 0 84px; }
-    .hero .wrap { gap: 36px; }
+    .hero { padding: 36px 0 72px; }
+    .hero .wrap { gap: 22px; }
     .ways { grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
     .way { padding: 34px 32px; }
     .homes { grid-template-columns: 1fr 1fr; }
@@ -293,35 +294,18 @@ END GOOGLE ADS -->
     .dot::before { transition: none; }
   }
 
-  .note { display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: start; text-align: left;
-    width: 100%; max-width: 720px; margin: 0 auto; background: var(--cream); border-left: 3px solid var(--gold);
-    border-radius: 4px 10px 10px 4px; padding: 18px 18px 16px; }
-  .note img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); }
-  .note p { margin: 0; font-family: var(--font-serif); font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); }
-  .note p b { font-style: normal; font-family: var(--font-sans); font-size: 15px; }
-  .note .sig { margin-top: 10px; font-style: normal; font-family: var(--font-sans); font-size: 12px; font-weight: 700;
+  .note { display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: start; text-align: left;
+    width: 100%; max-width: 640px; margin: 0 auto; background: var(--cream); border-left: 3px solid var(--gold);
+    border-radius: 4px 10px 10px 4px; padding: 12px 14px; }
+  .note img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); }
+  .note p { margin: 0; font-family: var(--font-serif); font-style: italic; font-size: 14.5px; line-height: 1.45; color: var(--navy); }
+  .note p b { font-style: normal; font-family: var(--font-sans); font-size: 13px; }
+  .note .sig { margin-top: 6px; font-style: normal; font-family: var(--font-sans); font-size: 10.5px; font-weight: 700;
     letter-spacing: .16em; text-transform: uppercase; color: var(--gold-deep); }
-  .strips { width: 100%; max-width: 900px; margin: 0 auto; display: grid; gap: 22px; text-align: left; }
-  .strip-h { display: flex; align-items: center; gap: 10px; margin: 0 0 8px; }
-  .strip-h .k { font-size: 11px; font-weight: 700; letter-spacing: .24em; text-transform: uppercase; color: var(--gold-deep); }
-  .strip-h .yr { font-size: 9.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--navy-deep);
-    background: var(--gold-shine); padding: 4px 9px; border-radius: 999px; }
-  .strip-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .sf { position: relative; margin: 0; }
-  .sf:not(:last-child)::after { content: '\203A'; position: absolute; right: -11px; top: 38%; transform: translateY(-50%);
-    font-size: 22px; line-height: 1; color: var(--gold-deep); font-family: var(--font-serif); }
-  .sf .im { aspect-ratio: 4 / 5; border-radius: 6px; overflow: hidden; background: var(--cream-deep) center / cover no-repeat;
-    box-shadow: 0 6px 16px rgba(26,31,78,.12); display: flex; align-items: center; justify-content: center; }
-  .sf .im.missing { background: repeating-linear-gradient(135deg, var(--cream) 0 10px, var(--cream-deep) 10px 20px); }
-  .sf .im.missing::before { content: 'Photo coming'; font-family: var(--font-serif); font-size: 12px; color: var(--ink-2); }
-  .sf figcaption { margin-top: 6px; font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--navy); }
-  .sf figcaption span { display: block; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--ink-2); font-size: 11.5px; margin-top: 1px; }
   @media (min-width: 760px) {
-    .note { grid-template-columns: 72px 1fr; padding: 22px 26px; }
-    .note img { width: 72px; height: 72px; }
-    .note p { font-size: 19px; }
-    .strips { grid-template-columns: 1fr 1fr; gap: 32px; }
-    .sf figcaption { font-size: 10.5px; }
+    .note { grid-template-columns: 48px 1fr; padding: 14px 18px; }
+    .note img { width: 48px; height: 48px; }
+    .note p { font-size: 16px; }
   }
 </style>
 </head>
@@ -363,18 +347,16 @@ END GOOGLE ADS -->
           <p class="sig">Fabian Real, CEO</p>
         </div>
       </div>
-      <!-- FILM STRIPS — built from the first entry of HOMES and of ROOMS -->
-      <div class="strips" id="strips"></div>
       <div class="hero-video" id="heroVideo">
         <div class="vsl" id="vsl">
-          <video id="vslVideo" muted loop playsinline preload="none" aria-label="Inside a 30-minute custom color consultation"></video>
+          <video id="vslVideo" muted loop playsinline preload="none" aria-label="The steps your home painting project goes through, inside and out"></video>
           <div class="ph-note"><span>Video placeholder: add the file and set <code>VSL.src</code></span></div>
           <div class="overlay">
             <button class="play-btn" id="vslPlay" type="button" aria-label="Play with sound"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
             <span class="play-lb">Watch with sound</span>
           </div>
         </div>
-        <p class="vsl-cap">Inside a 30-minute custom color consultation.</p>
+        <p class="vsl-cap">The steps your home painting project goes through, inside and out.</p>
       </div>
     </div>
   </section>
@@ -598,35 +580,6 @@ var ROOMS = [
   var project = '';
   try { project = (new URLSearchParams(location.search).get('project') || '').toLowerCase(); } catch (e) {}
   if (['interior', 'exterior', 'both'].indexOf(project) < 0) project = '';
-
-  /* ---- film strips: phone photo -> Palette A -> Palette B, exterior and interior ---- */
-  var rows = [
-    { key: 'exterior', label: 'Exterior', it: HOMES[0] },
-    { key: 'interior', label: 'Interior', it: ROOMS[0] }
-  ];
-  if (project === 'interior') rows.reverse();
-  var stripsEl = document.getElementById('strips');
-  rows.forEach(function (r) {
-    var mine = project === r.key || project === 'both';
-    var wrap = el('div', '', '<div class="strip-h"><span class="k">' + r.label + '</span>' + (mine ? '<span class="yr">Your request</span>' : '') + '</div>');
-    var row = el('div', 'strip-row');
-    [[r.it.sent, 'Phone photo', ''], [r.it.paletteA.img, 'Palette A', r.it.paletteA.scheme], [r.it.paletteB.img, 'Palette B', r.it.paletteB.scheme]]
-      .forEach(function (f) {
-        var fig = el('figure', 'sf');
-        var im = el('div', 'im');
-        var probe = new Image();
-        probe.onload = function () { im.style.backgroundImage = 'url(' + f[0] + ')'; };
-        probe.onerror = function () { im.className = 'im missing'; };
-        probe.src = f[0];
-        fig.appendChild(im);
-        var cap = el('figcaption');
-        cap.textContent = f[1];
-        /* placeholder entries say "Palette name"; only a real scheme name is shown */
-        if (f[2] && f[2] !== 'Palette name') cap.appendChild(el('span', '', esc(f[2])));
-        fig.appendChild(cap); row.appendChild(fig);
-      });
-    wrap.appendChild(row); stripsEl.appendChild(wrap);
-  });
 
   /* ---- galleries: exterior homes and interior rooms share one card ---- */
   var arrowL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>';
