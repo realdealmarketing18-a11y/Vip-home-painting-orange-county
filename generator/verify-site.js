@@ -167,8 +167,13 @@ function copyProblems(body) {
   const hype = [...new Set((body.match(/\b(amazing|incredible|stunning|jaw-dropping|insane|unbeatable|world-class|cutting-edge|revolutionary|game-chang\w+)\b/gi) || [])
     .map(w => w.toLowerCase()))];
   if (hype.length) probs.push(`hype adjective(s) BRAND-VOICE bans: ${hype.join(', ')}`);
-  for (const ph of [...new Set(body.match(/\(\d{3}\)\s*\d{3}-\d{4}/g) || [])]) {
-    if (ph !== CFG.phone) probs.push(`wrong phone "${ph}"`);
+  /* Compare digits, not spelling. The Step Five block writes the number as
+     "(909)&nbsp;312&#8209;5400" so it never wraps; proseOf turns those entities
+     into spaces, and a plain-hyphen pattern let the old number sit on 20 pages
+     after the phone changed (2026-10-21). */
+  const cfgDigits = CFG.phone.replace(/\D/g, '');
+  for (const ph of [...new Set(body.match(/\(\d{3}\)[\s ]*\d{3}[\s \-‑]+\d{4}/g) || [])]) {
+    if (ph.replace(/\D/g, '') !== cfgDigits) probs.push(`wrong phone "${ph}"`);
   }
   /* The warranty length was hardcoded in generator source in 14 places and went
      stale the moment Fabian changed it. It lives in config now; this asserts the
@@ -595,6 +600,28 @@ console.log('\n12. headline contract');
   }
   const graded = perPageCount.filter(r => r.total >= 3).length;
   if (!thin) ok(`Essential 2 holds on all ${graded} page(s) with enough story headlines to grade`);
+}
+
+/* ---------- 13. one phone number, in every form it is written ---------- */
+/* The copy check reads prose only, so it cannot see a number inside a script
+   string ("text it to (909) 312-5400" in the Step Five fallback) or a tel:
+   link. When the phone changed on 2026-10-21 both kinds survived. This reads
+   the raw HTML of every page, the county page included, entities and all. */
+console.log('\n13. phone number');
+{
+  const want = CFG.phone.replace(/\D/g, '');
+  const sep = '(?:&nbsp;|&#160;|&#8209;|&#8211;|[\\s\\u00a0\\u2011.\\-])*';
+  const shown = new RegExp(`\\(\\d{3}\\)${sep}\\d{3}${sep}\\d{4}`, 'g');
+  let phoneBad = 0;
+  const all = [...pages.map(p => ({ rel: path.relative(ROOT, p.file), html: read(p) })),
+    { rel: 'orange-county-sales-page/index.html', html: fs.readFileSync(ocFile, 'utf8') }];
+  for (const { rel, html } of all) {
+    const found = new Set();
+    for (const m of html.match(shown) || []) if (m.replace(/&#\d+;|&nbsp;/g, '').replace(/\D/g, '') !== want) found.add(m);
+    for (const m of html.match(/tel:\+?\d{10,11}/g) || []) if (m.replace(/\D/g, '').slice(-10) !== want) found.add(m);
+    if (found.size) { phoneBad++; bad(`${rel}: other phone number(s) ${[...found].join(', ')} — config.phone is ${CFG.phone}`); }
+  }
+  if (!phoneBad) ok(`only ${CFG.phone} appears — text, tel: links and scripts — on all ${all.length} pages`);
 }
 
 console.log('');

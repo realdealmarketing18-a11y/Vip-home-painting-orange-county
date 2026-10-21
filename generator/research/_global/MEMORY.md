@@ -392,3 +392,18 @@ at a screenshot during rollout row 5, two months after the change.
 image. Draw it in type from config. When a fact changes, open the pages and *look* — a
 gate that reads text cannot see a picture. `verify-site.js` check 11 now fails generated
 pages that use either image.
+
+### F-20 · A number written with invisible characters survives a find-and-replace
+The phone changed to (949) 418-6461 on 2026-10-21. A plain-text replace caught every
+"(909) 312-5400" and every `tel:` link — and missed the Step Five line "Prefer to talk it
+through?" on 20 pages, because it is written `(909)&nbsp;312&#8209;5400` so it never wraps.
+The tap-to-call link under it changed; the number people read did not. The gate passed:
+its phone check matched a plain hyphen, read prose only, and so never saw the entity form
+or the copy inside a script string ("text it to …"). The live WordPress pages had the same
+hole for (951) 557-0627. Found by Fabian, from a screenshot.
+
+**The rule:** match a number by its digits, never by its spelling — allow `&nbsp;`,
+`&#8209;`, `‑`, dots and spaces between the groups — and search scripts and `tel:`
+links, not just prose. `verify-site.js` check 13 now does exactly that across every page
+including the county page, and fails on any number that is not `config.phone`. After any
+NAP change, also check the live site the same way (the live pages can drift from the repo).
