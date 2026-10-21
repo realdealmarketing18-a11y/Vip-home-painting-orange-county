@@ -64,8 +64,8 @@ Settings sit in one block at the top of the `<script>` in `thank-you/index.html`
 
 | Placeholder | Where | What to do |
 |---|---|---|
-| **Quo number** | `SETTINGS.quoNumber` | Type Fabian's texting number. Until then the note shows `[QUO NUMBER]`. |
-| **Quo number in the contact card** | `thank-you/vip-home-painting.vcf` | Add a line `TEL;TYPE=CELL,VOICE:+1XXXXXXXXXX` above `END:VCARD`. The card holds the main office line now so the button is never broken. |
+| **Quo number** | `SETTINGS.quoNumber` | **Set: (949) 418-6461** (2026-10-21). Shows in Fabian's note. |
+| **Quo number in the contact card** | `thank-you/vip-home-painting.vcf` | **Set** — the card saves (949) 418-6461 as the mobile/text line and (909) 312-5400 as the office line. |
 | **Phone** | `SETTINGS.phone` | Header + "Questions?" button. Set to **(909) 312-5400** — see the open question below. |
 | **Video** | `VSL.src`, `VSL.poster` | Drop the file in `thank-you/assets/`, set `src: 'assets/project-steps.mp4'`. Plays muted on a loop; the gold button restarts it with sound. Until then the still is the Coastal Organic Compound render (`poster`). `enabled: false` removes the player. |
 | **Meta Pixel ID** | `<head>`, block `META PIXEL` | Paste ID over `PIXEL_ID_HERE`, delete the comment markers. Fires `Lead` on load. |
