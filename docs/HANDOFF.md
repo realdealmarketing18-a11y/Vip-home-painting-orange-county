@@ -13,22 +13,27 @@ the sales-page forms and Jobber still point where they did. Hand-built, not gene
 **Live:** https://realdealmarketing18-a11y.github.io/Vip-home-painting-orange-county/thank-you/
 **About their home, not a client story** (Fabian, 2026-10-20): once someone has sent a photo they
 are sold, so the page builds anticipation for their renders instead of retelling a case study.
-Order: confirmation → hero (headline → **exterior + interior tiles** → video) → what happens next →
-render preview (one gallery, **Exterior | Interior** switch) → paint-chip comparison → close.
+Order: confirmation → hero (headline → **note from Fabian** → **exterior + interior film strips** →
+video) → what happens next → render preview (one gallery, **Exterior | Interior** switch) →
+paint-chip comparison → close. Chosen by Fabian on 2026-10-21 from three options ("Personal Note").
 
-**Speaks to interior and exterior leads alike** (Fabian, 2026-10-20): the main form takes both, so
-the hero and step 01 say "inside or out", two tiles under the headline show an exterior and an
-interior example side by side (each a slow photo → Palette A → Palette B crossfade, built from the
-first entry of `HOMES` and of `ROOMS`), and the gallery switches between the two lists.
+**Speaks to interior and exterior leads alike** (Fabian, 2026-10-20/21): the main form takes both.
+The headline is one line for everyone: "Your Home Painting Project Is in the Studio. Soon You'll
+See It in Custom Color Schemes + Additions You've Never Pictured." Under it, Fabian's note, then two
+film strips side by side, exterior and interior (phone photo → Palette A → Palette B, built from the
+first entry of `HOMES` and of `ROOMS`). Interior renders are already promised on `/interior-painting/`.
+
+**Fabian's note** (his words, approved 2026-10-21): "Your photo is with our design team now. When
+your renders are ready, I'll text them to you myself from [QUO NUMBER], so save the number. Then we
+sit down for 30 minutes and choose the one you'll love forever." Photo: `thank-you/assets/fabian.jpg`,
+the same crop the sales page uses (taken from rendered footage, not a photograph).
 
 **`?project=interior | exterior | both`** — for the form to add when it's wired (with Jobber). The
-matching tile gets a gold outline and a "Your request" badge and goes first; `interior` also turns
-the headline into "Your [Community] Interior Is in the Studio" and opens the gallery on Interior.
-Missing or anything else: both tiles show evenly, gallery opens on Exterior. Interior renders are already promised on `/interior-painting/`.
+matching strip gets a gold "Your request" tag; `interior` puts the interior strip first and opens
+the gallery on Interior. Missing or anything else: exterior first, no tag.
 
-**Personalised:** add `?community=orchard-hills-irvine` → the headline reads "Your Orchard Hills
-Home Is in the Studio." A known city slug on the end is dropped. Anything that is not a plain
-slug is ignored and the generic headline shows ("Your Home Is in the Studio.").
+**`?community=` is no longer used.** The headline no longer names the community, so the parameter
+is ignored. Harmless if the form keeps sending it.
 
 ### Every placeholder, and where to fill it
 
