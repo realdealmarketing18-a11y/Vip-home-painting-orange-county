@@ -10,7 +10,14 @@ A standalone page a homeowner lands on after sending their photo. **Not wired to
 the sales-page forms and Jobber still point where they did. Hand-built, not generated: it lives in
 `thank-you/` and `generate.js` never touches it. `noindex, nofollow`, and not in `sitemap.xml`.
 
-**Live:** https://realdealmarketing18-a11y.github.io/Vip-home-painting-orange-county/thank-you/
+**Live:** https://viphomepainting.com/thank-you/ — WordPress page **4236**, published via Novamira
+2026-10-24 (Elementor Canvas, `_vip_generated`, Rank Math `noindex, nofollow`, not in the sitemap).
+Its files live in `wp-content/uploads/vip-assets/thank-you/` (logo, Fabian's photo, the video still,
+the contact card); an `.htaccess` there serves the `.vcf` as `text/vcard` so phones offer to save it.
+**Nothing links to it yet** — the form's after-submit redirect is the Jobber/form step.
+`publish-wp.js` does not know this page: to update it, change `thank-you/index.html`, push, then
+re-run the same Novamira import (pulls the build page, rewrites `assets/` to the uploads folder).
+**Build copy:** https://realdealmarketing18-a11y.github.io/Vip-home-painting-orange-county/thank-you/
 
 **The page is three parts** (Fabian, 2026-10-21): confirmation bar → hero (compact headline,
 compact note from Fabian, **the video**) → close ("Your house is next." + Save Our Number +
