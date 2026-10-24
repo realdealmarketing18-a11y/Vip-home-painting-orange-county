@@ -236,14 +236,8 @@ module.exports = function makeStoryLayouts(ctx) {
     html = html.replace(/(<p class="s5-lede">)([\s\S]*?)(<\/p>)/, (m, a, body, z) =>
       swap('VIZCOPY', c, 'master.viz.lede', `${a}${v.lede ? tok(v.lede, c) : body}${z}`));
 
-    /* The form's first field is the community. Show this page's own. */
-    const placeHint = isCity(c)
-      ? `${((c.child_communities || [])[0] || {}).name || w.city}, ${w.city}`
-      : `${w.community}, ${w.city}`;
-    html = html.replace(/(<input id="s5Place"[^>]*placeholder=")[^"]*(")/, `$1${esc(placeHint)}$2`);
-    if (L.faqWeight === 'hoa') {
-      html = html.replace(/<label for="s5Place">Address or community<\/label>/, '<label for="s5Place">Your community (or address)</label>');
-    }
+    /* The form itself is Jobber's embed now (2026-10-24) — one form for every
+       page, nothing per-page to fill in. */
 
     return html;
   }

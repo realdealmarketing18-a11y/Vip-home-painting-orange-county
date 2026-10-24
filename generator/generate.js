@@ -46,6 +46,9 @@ function rewriteAssetPaths(text) {
     .replace(/src="assets\//g, `src="${CFG.assetBase}/assets/`)
     .replace(/url\('video\//g, `url('${CFG.assetBase}/video/`)
     .replace(/url\('viz-photos\//g, `url('${CFG.assetBase}/viz-photos/`)
+    /* Step Five's "what you get back" pair is real <img> tags (2026-10-24) —
+       the same 404 the brush had, one folder over. */
+    .replace(/src="viz-photos\//g, `src="${CFG.assetBase}/viz-photos/`)
     .replace(/const DIR = 'viz-photos\/';/, `const DIR = '${CFG.assetBase}/viz-photos/';`)
     .replace(/bImg\.src = 'viz-photos\//, `bImg.src = '${CFG.assetBase}/viz-photos/`);
 }
