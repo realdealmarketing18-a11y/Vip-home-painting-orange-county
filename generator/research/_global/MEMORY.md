@@ -407,3 +407,18 @@ hole for (951) 557-0627. Found by Fabian, from a screenshot.
 links, not just prose. `verify-site.js` check 13 now does exactly that across every page
 including the county page, and fails on any number that is not `config.phone`. After any
 NAP change, also check the live site the same way (the live pages can drift from the repo).
+
+### F-21 · Python on Windows rewrites every line ending
+A Python script edited the county page with `open(p, 'w')`. On Windows that writes `
+`
+for every `
+`, so the whole 6,000-line file switched to CRLF — while git, the generator and
+every other file use LF. `generate.js` then failed: its markers are written with `
+` and no
+longer matched ("visualizer head markers not found — did the OC page change?"). The content
+was fine; only the line endings changed, and nothing in the diff view showed it.
+
+**The rule:** edit files from Python in **binary** (`open(p,'rb')` / `open(p,'wb')`) or with
+`newline=''`, and keep the file's existing line endings. If `generate.js` says a marker is
+missing right after an edit, count `
+` in the file before suspecting the content.

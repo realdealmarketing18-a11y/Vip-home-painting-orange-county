@@ -4,6 +4,25 @@ Written for a developer with zero context. Everything below is real paths / real
 
 ---
 
+## 0c. LATEST — Step Five is the Jobber form (2026-10-24)
+
+Fabian chose **layout B**: on every page with Step Five (the front page + 12 city/community
+pages) the photo section is now **what you get back** (their photo → their render, and the
+three next steps) beside the **Jobber request form**, which takes the photo upload and files
+the request straight into Jobber. Form first on a phone. The old upload plate, the hand-built
+form and its script are gone; `wp-mu-plugins/vip-elevation-intake.php` is no longer called.
+Live on viphomepainting.com via Novamira (see WORKFLOW.md step 5, "Publishing without the
+Application Password"); each page's previous content is in post meta
+`_vip_pre_step5b_20261024`.
+
+**Open, in Jobber's own settings (not the site):** the form is Jobber orange, not VIP gold;
+its intro line reads "Visualize your homes and exterior and interior to empower you…" —
+suggested rewrite: "See your home, inside or out, in your three closest palettes — then
+decide in one 30-minute consultation."; and whether the embedded form can redirect to
+`/thank-you/` after submit.
+
+---
+
 ## 0b. LATEST — Thank-you page `/thank-you/` (2026-10-21)
 
 A standalone page a homeowner lands on after sending their photo. **Not wired to anything yet** —

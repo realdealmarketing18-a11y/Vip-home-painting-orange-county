@@ -170,6 +170,20 @@ copy names them only through `{they}` / `{their}` tokens. Fields, module names
 and the swap checklist: `generator/README.md`. Progress per page:
 `generator/rollout/OC-DESIGN-ROLLOUT.md`.
 
+**Publishing without the Application Password** (2026-10-24): `publish-wp.js --emit=DIR`
+writes each page's exact WordPress content and meta to `DIR/*.json` instead of sending it
+(set `ASSET_BASE=https://viphomepainting.com/wp-content/uploads/vip-assets` first, as for
+`--live`). Zip it, upload with Novamira `create-upload-link` into
+`wp-content/novamira-sandbox/`, then a Novamira PHP run updates each page by URL — back up
+the old `post_content` to post meta first, write the new content with `$wpdb->update`
+(not `wp_update_post`, which filters the raw HTML), set the meta, purge LiteSpeed. Compare
+live against the emitted content before writing, so drift made in WordPress is seen, not
+silently overwritten. Delete the sandbox folder after.
+
+**The photo form is Jobber's embed** (2026-10-24): Step Five on the OC page carries the
+Jobber request form (it takes the photo upload and files the request in Jobber), beside a
+"what you get back" card. Every page with Step Five inherits it at build time.
+
 ---
 
 ## STEP 6 · THE OUTPUT AUDIT

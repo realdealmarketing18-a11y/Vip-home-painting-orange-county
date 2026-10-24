@@ -43,6 +43,10 @@ const CFG = JSON.parse(fs.readFileSync(path.join(__dirname, 'communities.json'),
 const args = process.argv.slice(2);
 const LIVE = args.includes('--live');
 const ALLOW_STAGING = args.includes('--allow-staging');
+/* --emit=DIR writes each page's final WordPress content and meta to DIR as
+   JSON instead of sending it — for publishing through another channel
+   (Novamira) when the Application Password is not set on this machine. */
+const EMIT = (args.find(a => a.startsWith('--emit=')) || '').slice('--emit='.length);
 const onlyCity = args.find(a => !a.startsWith('--'));
 
 const WP_URL = (process.env.WP_URL || 'https://viphomepainting.com').replace(/\/$/, '');
@@ -266,6 +270,24 @@ ${x.scripts}
   return applyAssetOverrides(isCounty ? rewriteCountyPaths(html) : rewriteAssets(html));
 }
 
+/* The page meta WordPress stores — shared by --live and --emit. */
+function metaFor(p, x, wpPageUrl) {
+  return {
+    rank_math_title: x.fullTitle,
+    rank_math_description: x.description,
+    rank_math_canonical_url: wpPageUrl,
+    rank_math_robots: countyIndexable(p) ? ['index', 'follow']
+      : (/noindex/i.test(x.robots) ? ['noindex', 'nofollow'] : ['index', 'follow']),
+    rank_math_rich_snippet: 'off',
+    /* Tells wp-mu-plugins/vip-generated-pages.php to leave this page alone:
+       no wpautop (it injects <p> tags inside our <style> block and silently
+       kills CSS parsing) and no theme stylesheet (it overrides our fonts and
+       layout even under Elementor Canvas). Without this flag the page
+       publishes and renders as unstyled fragments. */
+    _vip_generated: '1'
+  };
+}
+
 /* ---------- WP REST ---------- */
 async function wp(endpoint, opts = {}) {
   const auth = Buffer.from(`${WP_USER}:${WP_PASS}`).toString('base64');
@@ -338,6 +360,15 @@ const findBySlug = async (slug, parent) => {
 
     const parentId = p.parentPath ? (idByPath[p.parentPath] ?? '?') : 0;
 
+    if (EMIT) {
+      fs.mkdirSync(EMIT, { recursive: true });
+      const out = { rel: p.isCounty ? '' : p.rel, slug: p.slug, isCounty: !!p.isCounty, title: x.title,
+        template: TEMPLATE, content, meta: metaFor(p, x, wpPageUrl) };
+      fs.writeFileSync(path.join(EMIT, (p.isCounty ? 'county' : p.rel.replace(/\//g, '__')) + '.json'), JSON.stringify(out));
+      console.log(`  emitted  ${p.isCounty ? '/' : '/' + p.rel + '/'}  ${(content.length / 1024).toFixed(0)}KB`);
+      continue;
+    }
+
     if (!LIVE) {
       idByPath[p.rel] = `<${p.slug}>`;
       console.log(`  ${p.type.padEnd(10)} ${p.isCounty ? '/  (front page)' : '/' + p.rel + '/'}`);
@@ -358,20 +389,7 @@ const findBySlug = async (slug, parent) => {
       status: 'publish',
       template: TEMPLATE,
       content,
-      meta: {
-        rank_math_title: x.fullTitle,
-        rank_math_description: x.description,
-        rank_math_canonical_url: wpPageUrl,
-        rank_math_robots: countyIndexable(p) ? ['index', 'follow']
-          : (/noindex/i.test(x.robots) ? ['noindex', 'nofollow'] : ['index', 'follow']),
-        rank_math_rich_snippet: 'off',
-        /* Tells wp-mu-plugins/vip-generated-pages.php to leave this page alone:
-           no wpautop (it injects <p> tags inside our <style> block and silently
-           kills CSS parsing) and no theme stylesheet (it overrides our fonts and
-           layout even under Elementor Canvas). Without this flag the page
-           publishes and renders as unstyled fragments. */
-        _vip_generated: '1'
-      }
+      meta: metaFor(p, x, wpPageUrl)
     };
 
     const saved = existing
